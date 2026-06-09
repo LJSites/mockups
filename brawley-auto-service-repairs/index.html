@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ARCHETYPE: Honest Heritage Service Shop — a warm, ledger/order-ticket feel for a
+  trustworthy, family-led desert-valley mechanic. NOT a dark performance-garage and NOT
+  a condensed-sans industrial poster (those flavors are already used by other auto sites).
+  STRUCTURAL DECISIONS:
+   - Palette: deep oxblood maroon (--acc #861f1f) + brass (--brass #c0892e) on warm bone
+     (--bg #f5efe4) and ink charcoal (--ink #221d18). Display font: Spectral (literary serif).
+     Body: Familjen Grotesk. No same-category site uses this palette+font pair.
+   - Hero: asymmetric split (left = type/ledger, right = single full-height photo), no overlay headline.
+   - Services: numbered ledger rows (left-aligned ##), not a 3-up icon-card grid.
+   - Stats strip: honest, sourced from real hours/reviews — no fabricated numbers.
+   - Testimonies: two stacked editorial columns of pull-quotes, no stars/avatars.
+   - Animation: none beyond hover transitions (deliberate, calm).
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brawley Auto Service &amp; Repairs — Honest, Full-Service Auto Care in Brawley, CA</title>
+<meta name="description" content="Full-service auto repair in Brawley, CA. AC, brakes, suspension, diagnostics, engine & transmission. Javier and team — honest work, clear pricing, fast turnaround. Call (760) 623-1013.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;0,800;1,400;1,500&family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f5efe4;
+    --bg2:#efe6d6;
+    --ink:#221d18;
+    --ink-soft:#534a40;
+    --acc:#861f1f;
+    --acc-dk:#5e1414;
+    --brass:#c0892e;
+    --line:#d8cdb8;
+    --paper:#fbf7ee;
+    --nav-h:68px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h);}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Familjen Grotesk',system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Spectral',Georgia,serif;font-weight:700;line-height:1.08;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(245,239,228,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{height:100%;display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Spectral';font-weight:800;font-size:1.16rem;letter-spacing:.2px;}
+  .brand .mark{
+    width:34px;height:34px;flex:0 0 34px;border-radius:50%;
+    background:var(--acc);color:var(--paper);
+    display:grid;place-items:center;font-family:'Spectral';font-weight:800;font-size:.95rem;
+    border:2px solid var(--brass);
+  }
+  .nav-links{display:flex;align-items:center;gap:30px;}
+  .nav-links a{font-size:.83rem;text-transform:uppercase;letter-spacing:.13em;font-weight:600;color:var(--ink-soft);transition:color .18s;}
+  .nav-links a:hover{color:var(--acc);}
+  .nav-call{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--acc);color:var(--paper);
+    padding:9px 17px;border-radius:3px;font-weight:600;font-size:.86rem;
+    letter-spacing:.02em;transition:background .18s,transform .18s;
+  }
+  .nav-call:hover{background:var(--acc-dk);transform:translateY(-1px);}
+  .nav-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{border-bottom:1px solid var(--line);}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:calc(100vh - var(--nav-h));}
+  .hero-left{display:flex;flex-direction:column;justify-content:center;padding:64px 56px 64px 0;}
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:.76rem;text-transform:uppercase;letter-spacing:.22em;font-weight:600;
+    color:var(--acc);margin-bottom:24px;
+  }
+  .kicker::before{content:"";width:30px;height:2px;background:var(--brass);display:inline-block;}
+  .hero h1{font-size:clamp(2.7rem,5.6vw,4.5rem);letter-spacing:-.01em;}
+  .hero h1 em{font-style:italic;color:var(--acc);font-weight:600;}
+  .hero p.lead{
+    margin-top:24px;max-width:30em;font-size:1.12rem;color:var(--ink-soft);
+  }
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:14px 26px;border-radius:3px;font-weight:600;font-size:.98rem;
+    transition:transform .18s,background .18s,box-shadow .18s;
+  }
+  .btn-primary{background:var(--acc);color:var(--paper);box-shadow:0 6px 18px -8px rgba(134,31,31,.6);}
+  .btn-primary:hover{background:var(--acc-dk);transform:translateY(-2px);}
+  .btn-ghost{border:1.5px solid var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);transform:translateY(-2px);}
+  .hero-meta{margin-top:30px;display:flex;gap:28px;flex-wrap:wrap;font-size:.9rem;color:var(--ink-soft);}
+  .hero-meta b{color:var(--ink);font-family:'Spectral';}
+  .hero-right{position:relative;}
+  .hero-right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero-right::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06);}
+  .hero-tag{
+    position:absolute;left:0;bottom:28px;z-index:2;
+    background:var(--ink);color:var(--paper);
+    padding:13px 22px;font-family:'Spectral';font-weight:600;font-size:.95rem;letter-spacing:.02em;
+  }
+  .hero-tag span{color:var(--brass);}
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{scroll-margin-top:var(--nav-h);}
+  .sec{padding:92px 0;}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:46px;}
+  .sec-num{font-family:'Spectral';font-weight:800;color:var(--brass);font-size:1.05rem;letter-spacing:.1em;}
+  .sec-head h2{font-size:clamp(2rem,3.6vw,2.85rem);}
+  .sec-head .rule{flex:1;height:1px;background:var(--line);align-self:center;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;}
+  .about-grid p{margin-bottom:18px;color:var(--ink-soft);font-size:1.06rem;}
+  .about-grid p strong{color:var(--ink);}
+  .about-photo{position:relative;}
+  .about-photo img{width:100%;height:430px;object-fit:cover;border:1px solid var(--line);}
+  .about-photo .stamp{
+    position:absolute;right:-14px;bottom:-14px;
+    background:var(--acc);color:var(--paper);
+    font-family:'Spectral';font-weight:700;font-size:.92rem;line-height:1.3;
+    padding:16px 20px;max-width:200px;
+    border:2px solid var(--brass);
+  }
+
+  /* ---------- STATS ---------- */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:18px;border:1px solid var(--line);background:var(--paper);}
+  .stat{padding:30px 26px;border-right:1px solid var(--line);}
+  .stat:last-child{border-right:none;}
+  .stat .n{font-family:'Spectral';font-weight:800;font-size:2.05rem;color:var(--acc);line-height:1;}
+  .stat .l{margin-top:9px;font-size:.84rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);}
+
+  /* ---------- SERVICES (ledger) ---------- */
+  .ledger{border-top:2px solid var(--ink);}
+  .row{
+    display:grid;grid-template-columns:64px 1fr 1.3fr;gap:28px;align-items:center;
+    padding:30px 8px;border-bottom:1px solid var(--line);
+    transition:background .2s,padding-left .2s;
+  }
+  .row:hover{background:var(--paper);padding-left:18px;}
+  .row .no{font-family:'Spectral';font-weight:800;font-size:1.5rem;color:var(--brass);}
+  .row h3{font-size:1.35rem;}
+  .row p{color:var(--ink-soft);font-size:1rem;}
+  .row:hover .no{color:var(--acc);}
+
+  /* ---------- TESTIMONIES ---------- */
+  .testimony{background:var(--ink);color:#ede4d4;border-top:1px solid var(--line);}
+  .testimony .sec-num{color:var(--brass);}
+  .testimony .sec-head h2{color:var(--paper);}
+  .testimony .rule{background:rgba(255,255,255,.18);}
+  .quote-cols{columns:2;column-gap:54px;}
+  blockquote{
+    break-inside:avoid;margin-bottom:42px;padding-left:22px;
+    border-left:3px solid var(--brass);
+  }
+  blockquote p{font-family:'Spectral';font-style:italic;font-size:1.18rem;line-height:1.5;color:#f0e8da;}
+  blockquote cite{
+    display:block;margin-top:14px;font-family:'Familjen Grotesk';font-style:normal;
+    font-size:.82rem;text-transform:uppercase;letter-spacing:.15em;color:var(--brass);font-weight:600;
+  }
+
+  /* ---------- VISIT ---------- */
+  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;border:1px solid var(--line);background:var(--paper);}
+  .visit-info{padding:48px 44px;}
+  .visit-info h3{font-size:1.3rem;margin-bottom:6px;}
+  .hours-list{margin:26px 0;border-top:1px solid var(--line);}
+  .hours-list li{
+    display:flex;justify-content:space-between;list-style:none;
+    padding:11px 0;border-bottom:1px solid var(--line);font-size:.96rem;
+  }
+  .hours-list li.today{color:var(--acc);font-weight:700;}
+  .hours-list li .d{color:var(--ink-soft);}
+  .hours-list li.today .d{color:var(--acc);}
+  .hours-list li .closed{color:var(--ink-soft);font-style:italic;}
+  .visit-contact{margin-top:22px;font-size:1rem;line-height:1.9;}
+  .visit-contact a{color:var(--acc);font-weight:600;border-bottom:1px solid transparent;transition:border-color .18s;}
+  .visit-contact a:hover{border-color:var(--acc);}
+  .findus{margin-top:24px;display:flex;gap:18px;flex-wrap:wrap;}
+  .findus a{
+    display:inline-flex;align-items:center;gap:8px;font-size:.83rem;font-weight:600;
+    text-transform:uppercase;letter-spacing:.1em;color:var(--ink-soft);transition:color .18s;
+  }
+  .findus a:hover{color:var(--acc);}
+  .visit-map{min-height:440px;}
+  .visit-map iframe{width:100%;height:100%;min-height:440px;border:0;filter:saturate(.85) contrast(1.02);}
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{background:var(--acc);color:var(--paper);text-align:center;padding:72px 24px;}
+  .cta-band h2{font-size:clamp(1.9rem,4vw,2.8rem);color:var(--paper);}
+  .cta-band p{margin:14px auto 30px;max-width:36em;color:rgba(255,255,255,.85);font-size:1.08rem;}
+  .cta-band .btn-primary{background:var(--paper);color:var(--acc);box-shadow:none;}
+  .cta-band .btn-primary:hover{background:var(--ink);color:var(--paper);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#b9ad9b;padding:54px 0 38px;}
+  .foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start;}
+  .foot-brand{display:flex;align-items:center;gap:12px;color:var(--paper);font-family:'Spectral';font-weight:800;font-size:1.2rem;}
+  .foot-brand .mark{width:34px;height:34px;border-radius:50%;background:var(--acc);color:var(--paper);display:grid;place-items:center;font-size:.95rem;border:2px solid var(--brass);}
+  .foot-col p{font-size:.93rem;line-height:1.8;}
+  .foot-col a{color:#cfc4b2;}
+  .foot-col a:hover{color:var(--brass);}
+  .foot-cred{margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);font-size:.84rem;color:#8c8170;}
+  .foot-cred a{color:var(--brass);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-left{padding:48px 0 44px;}
+    .hero-right{min-height:340px;}
+    .about-grid{grid-template-columns:1fr;gap:38px;}
+    .about-photo{order:-1;}
+    .visit-grid{grid-template-columns:1fr;}
+    .quote-cols{columns:1;}
+    .stats{grid-template-columns:1fr 1fr;}
+    .stat:nth-child(2){border-right:none;}
+    .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line);}
+  }
+  @media(max-width:620px){
+    body{font-size:16px;}
+    .nav-links{
+      position:absolute;top:var(--nav-h);left:0;right:0;
+      background:var(--bg);border-bottom:1px solid var(--line);
+      flex-direction:column;align-items:flex-start;gap:0;padding:8px 24px 18px;
+      display:none;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:11px 0;width:100%;border-bottom:1px solid var(--line);}
+    .nav-links .nav-call{margin-top:10px;}
+    .nav-toggle{display:inline-flex;background:none;border:1.5px solid var(--ink);border-radius:3px;padding:7px 10px;cursor:pointer;color:var(--ink);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;font-family:inherit;}
+    .row{grid-template-columns:46px 1fr;gap:14px;}
+    .row p{grid-column:1 / -1;}
+    .sec{padding:64px 0;}
+    .stats{grid-template-columns:1fr;}
+    .stat{border-right:none;border-bottom:1px solid var(--line);}
+    .stat:last-child{border-bottom:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="brand"><span class="mark">B</span> Brawley Auto Service&nbsp;&amp;&nbsp;Repairs</a>
+    <div class="nav-links" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#testimonies">Testimonies</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:+17606231013" class="nav-call">Call (760) 623-1013</a>
+    </div>
+    <button class="nav-toggle" id="navtoggle" aria-label="Menu">Menu</button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-left">
+      <span class="kicker">Brawley, California · Since the neighborhood needed it</span>
+      <h1>Honest hands under the hood, and <em>straight answers</em> at the counter.</h1>
+      <p class="lead">Full-service auto repair run by Javier and his crew — AC and brakes to engine and transmission rebuilds. We diagnose it, show you what's wrong, and quote the price before a single wrench turns.</p>
+      <div class="hero-cta">
+        <a href="tel:+17606231013" class="btn btn-primary">Call (760) 623-1013</a>
+        <a href="#services" class="btn btn-ghost">See what we fix</a>
+      </div>
+      <div class="hero-meta">
+        <span><b>790 B St</b> · Brawley, CA</span>
+        <span><b>Mon–Fri</b> · 8:00–4:30</span>
+        <span><b>Diagnostics</b> · with photo updates</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="./photos/01.jpg" alt="Brawley Auto Service & Repairs shop">
+      <div class="hero-tag">Family-run · <span>Full service</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap sec">
+      <div class="sec-head">
+        <span class="sec-num">01</span>
+        <h2>A shop the valley trusts</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p>At Brawley Auto Service &amp; Repairs, the work starts with a real diagnosis — not a guess. <strong>Javier and his team check the vehicle, tell you exactly what's wrong, and walk you through the pricing before they begin.</strong> Then they get it done with a turnaround that keeps you on the road.</p>
+          <p>From a noisy AC compressor in the Imperial Valley heat to worn brakes, tired suspension, or a full engine or transmission replacement, this is a shop that handles the whole car. Customers come back because the answers are honest and the work holds up.</p>
+          <p>It's the kind of place that sends you photos of the problem so you understand what you're paying for — and treats a stranded traveler the same way it treats a regular.</p>
+        </div>
+        <div class="about-photo">
+          <img src="./photos/02.jpg" alt="Inside the Brawley Auto Service & Repairs garage">
+          <div class="stamp">Diagnose · Explain · Repair — in that order.</div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="n">5</div><div class="l">Core service areas</div></div>
+        <div class="stat"><div class="n">Mon–Fri</div><div class="l">Open 8:00–4:30</div></div>
+        <div class="stat"><div class="n">Photo</div><div class="l">Updates on your repair</div></div>
+        <div class="stat"><div class="n">Up-front</div><div class="l">Pricing before work begins</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="sec" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">02</span>
+        <h2>What we fix</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="ledger">
+        <div class="row">
+          <span class="no">01</span>
+          <h3>Air Conditioning</h3>
+          <p>Recharges, compressor and component repair — because desert summers are no place for a dead AC.</p>
+        </div>
+        <div class="row">
+          <span class="no">02</span>
+          <h3>Brakes</h3>
+          <p>Pads, rotors, lines and full inspections so you stop the way you're supposed to, every time.</p>
+        </div>
+        <div class="row">
+          <span class="no">03</span>
+          <h3>Suspension &amp; Steering</h3>
+          <p>Shocks, struts and front-end work to smooth out the ride and keep the car tracking straight.</p>
+        </div>
+        <div class="row">
+          <span class="no">04</span>
+          <h3>Diagnostics</h3>
+          <p>Check-engine lights and hard-to-find faults — diagnosed clearly, explained in plain language, with photo proof.</p>
+        </div>
+        <div class="row">
+          <span class="no">05</span>
+          <h3>Engine &amp; Transmission</h3>
+          <p>Major repairs, rebuilds and full engine replacements — done right, with a turnaround that surprises people.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section class="testimony" id="testimonies">
+    <div class="wrap sec">
+      <div class="sec-head">
+        <span class="sec-num">03</span>
+        <h2>In their words</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="quote-cols">
+        <blockquote>
+          <p>"Javier was very professional and always kept me updated on progress of repair. They replaced my engine in 4 days and I couldn't be happier. Will continue to have all my cars serviced here."</p>
+          <cite>Adam F.</cite>
+        </blockquote>
+        <blockquote>
+          <p>"Javier and his team are indeed the very best. They diagnose your vehicle, let you know what is wrong and inform you of the pricing before they start working. Quick, with a fast turnaround. I recommend this place 110%."</p>
+          <cite>Elizabeth M.</cite>
+        </blockquote>
+        <blockquote>
+          <p>"Best diagnostics mechanics in the valley. Honest, efficient, and great customer service. I got updates with photographic proof. They explain everything so well and easy to understand — everything makes sense."</p>
+          <cite>Dan R.</cite>
+        </blockquote>
+        <blockquote>
+          <p>"These guys know what they are doing. Fast, friendly service. Total engine replacement. Happy camper — drove the new engine today. Wow. Better than new."</p>
+          <cite>Lane S.</cite>
+        </blockquote>
+        <blockquote>
+          <p>"Truly some of the most honest and skilled mechanics I have done business with. As a full-time traveler, I was in an emergency with my diesel bus. Their capability and concern truly saved my sanity. ¡Salud, señores!"</p>
+          <cite>Erin S.</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="sec" id="visit">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="sec-num">04</span>
+        <h2>Find the shop</h2>
+        <span class="rule"></span>
+      </div>
+      <div class="visit-grid">
+        <div class="visit-info">
+          <h3>Brawley Auto Service &amp; Repairs</h3>
+          <p style="color:var(--ink-soft)">790 B St, Brawley, CA 92227</p>
+
+          <ul class="hours-list" id="hours">
+            <li data-day="1"><span class="d">Monday</span><span>8:00 AM – 4:30 PM</span></li>
+            <li data-day="2"><span class="d">Tuesday</span><span>8:00 AM – 4:30 PM</span></li>
+            <li data-day="3"><span class="d">Wednesday</span><span>8:00 AM – 4:30 PM</span></li>
+            <li data-day="4"><span class="d">Thursday</span><span>8:00 AM – 4:30 PM</span></li>
+            <li data-day="5"><span class="d">Friday</span><span>8:00 AM – 4:30 PM</span></li>
+            <li data-day="6"><span class="d">Saturday</span><span class="closed">Closed</span></li>
+            <li data-day="0"><span class="d">Sunday</span><span class="closed">Closed</span></li>
+          </ul>
+
+          <div class="visit-contact">
+            <div>Phone: <a href="tel:+17606231013">(760) 623-1013</a></div>
+            <div>Best for: AC · brakes · suspension · diagnostics · engine &amp; transmission</div>
+          </div>
+
+          <div class="findus">
+            <a href="https://maps.google.com/?cid=10762260918034157268" target="_blank" rel="noopener">↗ Google Business listing</a>
+            <a href="https://www.google.com/maps?q=32.982773,-115.529526" target="_blank" rel="noopener">↗ Get directions</a>
+          </div>
+        </div>
+        <div class="visit-map">
+          <iframe
+            src="https://www.google.com/maps?q=790%20B%20St%2C%20Brawley%2C%20CA%2092227&z=15&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Map to Brawley Auto Service & Repairs"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>Something not running right?</h2>
+      <p>Bring it in and find out what's actually wrong — diagnosed clearly, priced up front, fixed fast. That's the Brawley Auto way.</p>
+      <a href="tel:+17606231013" class="btn btn-primary">Call (760) 623-1013</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand"><span class="mark">B</span> Brawley Auto Service &amp; Repairs</div>
+        <p style="margin-top:14px;max-width:24em;">Honest, full-service auto repair in the heart of the Imperial Valley. Diagnose, explain, repair — in that order.</p>
+      </div>
+      <div class="foot-col">
+        <p>
+          790 B St<br>Brawley, CA 92227<br>
+          <a href="tel:+17606231013">(760) 623-1013</a>
+        </p>
+      </div>
+      <div class="foot-col">
+        <p>
+          Mon – Fri · 8:00 AM – 4:30 PM<br>
+          Sat – Sun · Closed<br>
+          <a href="https://maps.google.com/?cid=10762260918034157268" target="_blank" rel="noopener">Google Business ↗</a>
+        </p>
+      </div>
+    </div>
+    <div class="foot-cred">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  var t=document.getElementById('navtoggle'),l=document.getElementById('navlinks');
+  t.addEventListener('click',function(){l.classList.toggle('open');});
+  l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('open');});});
+  // Highlight today's hours (honest, client-side only)
+  var today=new Date().getDay();
+  var row=document.querySelector('.hours-list li[data-day="'+today+'"]');
+  if(row){row.classList.add('today');}
+</script>
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!doctype html>
+<!--
+  ARCHETYPE: Neighborhood trade-counter / "service ledger" — a trustworthy,
+  document-stamped feel suited to a family-run cleaner that also handles
+  semi-official work (Live Scan fingerprinting, passport photos). Reads like a
+  dependable corner shop you've used for years, not a flashy brand.
+
+  KEY STRUCTURAL DECISIONS:
+  - HERO (layout: split-asymmetric) — left ink panel with type + brass rule,
+    right column a tall photo with a "garment ticket" stub overlay. Not a
+    centered-overlay hero.
+  - NAV — sticky slim bar, brass underline on active; scroll-padding-top set.
+  - SERVICES (layout: ledger-rows) — numbered horizontal ledger rows with a
+    hanging description, NOT a 3-card icon grid.
+  - TESTIMONIES — staggered two-up clipped "intake slips", no stars/avatars.
+  - ANIMATION — none beyond hover states. Quiet on purpose.
+  - PALETTE — ink navy #16202e, ivory #f4efe6, brass/ochre #b07d35, sage detail.
+  - DISPLAY FONT — Fraunces (warm high-contrast serif). BODY — Inter.
+  - MAP — keyless maps?q=...&output=embed.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>River Park Cleaners n Alterations — Dry Cleaning, Alterations, Live Scan & Passport Photos · Oxnard</title>
+<meta name="description" content="Family-run dry cleaning and on-the-spot alterations in Oxnard, plus Live Scan fingerprinting and passport photos. 2542 E Vineyard Ave. Call (805) 751-3355." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#16202e;
+    --ink-2:#1f2c3d;
+    --bg:#f4efe6;
+    --paper:#fbf8f2;
+    --acc:#b07d35;       /* brass / ochre */
+    --acc-deep:#8a5f23;
+    --sage:#5d6b54;
+    --line:#d9cfbe;
+    --muted:#6b7280;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    --nav-h:62px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{width:min(1120px,92vw);margin-inline:auto}
+  .eyebrow{
+    font-family:var(--sans);font-size:.72rem;font-weight:600;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--acc-deep);
+  }
+  h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;margin:0}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(244,239,230,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{height:100%;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--serif);font-weight:600;font-size:1.06rem;letter-spacing:.01em}
+  .brand .mark{
+    width:30px;height:30px;flex:none;border-radius:5px;background:var(--ink);color:var(--bg);
+    display:grid;place-items:center;font-family:var(--serif);font-size:.95rem;font-weight:700;
+  }
+  .nav-links{display:flex;align-items:center;gap:1.6rem}
+  .nav-links a{text-decoration:none;font-size:.86rem;font-weight:500;color:var(--ink);padding:4px 0;border-bottom:2px solid transparent}
+  .nav-links a:hover{border-color:var(--acc)}
+  .nav-links .hide-sm{}
+  .nav-call{
+    text-decoration:none;font-size:.84rem;font-weight:600;color:var(--bg);
+    background:var(--ink);padding:.5rem .85rem;border-radius:6px;white-space:nowrap;
+  }
+  .nav-call:hover{background:var(--ink-2)}
+  @media(max-width:760px){.nav-links .hide-sm{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:clamp(2.2rem,5vw,4.2rem) 0 clamp(2rem,4vw,3.4rem)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.4rem,3vw,3rem);align-items:stretch}
+  .hero-copy{align-self:center}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.25rem);letter-spacing:-.015em}
+  .hero h1 em{font-style:italic;color:var(--acc-deep)}
+  .hero-sub{margin:1.15rem 0 0;max-width:34ch;color:#3a4555;font-size:1.06rem}
+  .brass-rule{width:64px;height:3px;background:var(--acc);margin:1.4rem 0 0;border-radius:2px}
+  .hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+  .tag{
+    font-size:.78rem;font-weight:600;letter-spacing:.02em;color:var(--ink-2);
+    background:var(--paper);border:1px solid var(--line);padding:.4rem .7rem;border-radius:999px;
+  }
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.8rem}
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;
+    font-weight:600;font-size:.95rem;padding:.8rem 1.3rem;border-radius:7px;
+    transition:transform .12s ease,background .15s ease,color .15s ease;
+  }
+  .btn-primary{background:var(--acc);color:#fff;box-shadow:0 1px 0 var(--acc-deep)}
+  .btn-primary:hover{background:var(--acc-deep);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--bg)}
+
+  .hero-photo{position:relative;min-height:340px;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;min-height:340px}
+  .ticket{
+    position:absolute;left:16px;bottom:16px;right:16px;
+    background:var(--paper);border:1px solid var(--line);border-radius:9px;
+    padding:.85rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.8rem;
+    box-shadow:0 10px 30px rgba(22,32,46,.18);
+  }
+  .ticket .t-l{font-family:var(--serif);font-weight:600;font-size:1rem;line-height:1.2}
+  .ticket .t-l span{display:block;font-family:var(--sans);font-weight:500;font-size:.74rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin-top:2px}
+  .ticket .punch{
+    font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--acc-deep);
+    border-left:2px dashed var(--line);padding-left:.9rem;white-space:nowrap;
+  }
+  @media(max-width:820px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-photo{min-height:300px}
+    .hero-photo img{min-height:300px}
+  }
+
+  /* ---------- STRIP ---------- */
+  .strip{background:var(--ink);color:var(--bg)}
+  .strip-in{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;padding:1.5rem 0}
+  .strip-in div{padding:.4rem .2rem}
+  .strip h3{font-size:1.15rem;color:var(--bg)}
+  .strip p{margin:.35rem 0 0;font-size:.9rem;color:#c4cbd6;line-height:1.5}
+  @media(max-width:720px){.strip-in{grid-template-columns:1fr;gap:.4rem}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{scroll-margin-top:var(--nav-h)}
+  .sec{padding:clamp(3rem,6vw,5rem) 0}
+  .sec-head{max-width:48ch}
+  .sec-head h2{font-size:clamp(2rem,4.4vw,3rem);margin-top:.5rem;letter-spacing:-.01em}
+  .sec-head p{color:#3a4555;margin:.9rem 0 0}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.5rem,3vw,3rem);align-items:center;margin-top:1.5rem}
+  .about-body p{margin:0 0 1rem;color:#2c3848;font-size:1.06rem}
+  .about-body p:last-child{margin-bottom:0}
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+  .about-photos img{width:100%;height:200px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+  .about-photos img:first-child{grid-column:1 / -1;height:230px}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr}}
+
+  /* ---------- SERVICES (ledger rows) ---------- */
+  .ledger{margin-top:2rem;border-top:1px solid var(--ink)}
+  .row{
+    display:grid;grid-template-columns:auto 1fr auto;gap:1.2rem;align-items:start;
+    padding:1.5rem 0;border-bottom:1px solid var(--line);
+  }
+  .row .no{font-family:var(--serif);font-weight:500;font-size:1rem;color:var(--acc-deep);padding-top:.35rem;min-width:2.3ch}
+  .row .body h3{font-size:1.45rem;letter-spacing:-.01em}
+  .row .body p{margin:.45rem 0 0;color:#3a4555;max-width:60ch;font-size:1rem}
+  .row .meta{text-align:right;font-size:.82rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--sage);padding-top:.45rem;white-space:nowrap}
+  .row:hover .body h3{color:var(--acc-deep)}
+  @media(max-width:680px){
+    .row{grid-template-columns:auto 1fr;gap:.9rem}
+    .row .meta{grid-column:2;text-align:left;padding-top:.7rem}
+  }
+
+  /* ---------- TESTIMONIES (intake slips) ---------- */
+  .quotes{padding:clamp(3rem,6vw,5rem) 0;background:var(--ink);color:var(--bg)}
+  .quotes .eyebrow{color:var(--acc)}
+  .quotes h2{color:var(--bg)}
+  .slips{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2rem}
+  .slip{
+    background:var(--paper);color:var(--ink);border-radius:10px;padding:1.5rem 1.6rem;
+    position:relative;border:1px solid #e4dcce;
+  }
+  .slip::before{
+    content:"”";position:absolute;top:.2rem;right:1rem;font-family:var(--serif);
+    font-size:3.2rem;color:var(--line);line-height:1;
+  }
+  .slip p{margin:0;font-family:var(--serif);font-size:1.12rem;line-height:1.45;font-weight:400}
+  .slip .by{margin-top:1rem;font-family:var(--sans);font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--acc-deep)}
+  .slip.wide{grid-column:1 / -1}
+  .slip.shift{margin-top:.4rem}
+  @media(max-width:720px){.slips{grid-template-columns:1fr}.slip.wide{grid-column:auto}.slip.shift{margin-top:0}}
+
+  /* ---------- VISIT (hours + map) ---------- */
+  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.5rem,3vw,2.6rem);margin-top:1.8rem;align-items:start}
+  .hours{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:1.5rem 1.7rem}
+  .hours h3{font-size:1.3rem}
+  .hrs{margin:1rem 0 0;width:100%;border-collapse:collapse}
+  .hrs td{padding:.5rem 0;font-size:.95rem;border-bottom:1px solid var(--line)}
+  .hrs tr:last-child td{border-bottom:none}
+  .hrs td:last-child{text-align:right;font-variant-numeric:tabular-nums;color:#2c3848}
+  .hrs td.day{font-weight:500}
+  .hrs .closed{color:var(--acc-deep);font-weight:600}
+  .where{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+  .where a{color:var(--acc-deep);font-weight:600;text-decoration:none}
+  .where a:hover{text-decoration:underline}
+  .addr{font-size:.96rem;color:#2c3848;line-height:1.5}
+  .map{border-radius:12px;overflow:hidden;border:1px solid var(--line);min-height:340px}
+  .map iframe{width:100%;height:100%;min-height:340px;border:0;display:block;filter:grayscale(.12)}
+  @media(max-width:820px){.visit-grid{grid-template-columns:1fr}}
+
+  /* ---------- CTA BAND ---------- */
+  .band{background:var(--acc);color:#fff;text-align:center;padding:clamp(2.6rem,5vw,3.6rem) 0}
+  .band h2{font-size:clamp(1.8rem,4vw,2.7rem);color:#fff}
+  .band p{margin:.7rem auto 0;max-width:46ch;color:#fdf3e2}
+  .band .btn-primary{background:var(--ink);box-shadow:none;margin-top:1.5rem}
+  .band .btn-primary:hover{background:var(--ink-2)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#c4cbd6;padding:2.6rem 0 2rem}
+  .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;align-items:flex-start}
+  .foot-top .brand{color:var(--bg)}
+  .foot-top .mark{background:var(--bg);color:var(--ink)}
+  .foot-col h4{font-family:var(--sans);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:#8b94a3;margin:0 0 .6rem}
+  .foot-col a,.foot-col p{color:#dce1e8;text-decoration:none;font-size:.92rem;margin:.25rem 0;display:block}
+  .foot-col a:hover{color:var(--acc)}
+  .credit{margin-top:2.2rem;padding-top:1.3rem;border-top:1px solid #2a3647;font-size:.82rem;color:#8b94a3}
+  .credit a{color:var(--acc);text-decoration:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="mark">RP</span>River Park Cleaners</a>
+    <div class="nav-links">
+      <a class="hide-sm" href="#services">Services</a>
+      <a class="hide-sm" href="#about">About</a>
+      <a class="hide-sm" href="#say">Testimonies</a>
+      <a class="hide-sm" href="#visit">Hours &amp; Location</a>
+      <a class="nav-call" href="tel:+18057513355">Call (805) 751-3355</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Oxnard · Family-run since the neighborhood needed one</span>
+      <h1>Pressed, mended, and <em>handled with care.</em></h1>
+      <p class="hero-sub">Dry cleaning and on-the-spot alterations on E&nbsp;Vineyard Ave — plus Live&nbsp;Scan fingerprinting and passport photos, all under one roof.</p>
+      <div class="brass-rule"></div>
+      <div class="hero-tags">
+        <span class="tag">Dry Cleaning</span>
+        <span class="tag">Alterations &amp; Tailoring</span>
+        <span class="tag">Live Scan</span>
+        <span class="tag">Passport Photos</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="tel:+18057513355">Call (805) 751-3355</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=2542+E+Vineyard+Ave,+Oxnard,+CA+93036" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="./photos/01.jpg" alt="Inside River Park Cleaners n Alterations in Oxnard" />
+      <div class="ticket">
+        <div class="t-l">In by morning, ready by close<span>Same-day when you catch us right</span></div>
+        <div class="punch">No.&nbsp;001</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="wrap strip-in">
+    <div>
+      <h3>Repairs on the spot</h3>
+      <p>Caught a tear or a loose hem before an event? Come in at the right time and it's often fixed while you wait.</p>
+    </div>
+    <div>
+      <h3>The official stuff, too</h3>
+      <p>Live Scan fingerprinting and passport photos done patiently, with the steps explained — not rushed through.</p>
+    </div>
+    <div>
+      <h3>Last-minute? Ask us</h3>
+      <p>We've built our name on saying yes to the late alteration and the rush dry clean whenever we can.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What we do</span>
+      <h2>Four counters, one front door.</h2>
+      <p>A real cleaner and tailor that also takes care of the paperwork errands you'd otherwise drive across town for.</p>
+    </div>
+    <div class="ledger">
+      <div class="row">
+        <div class="no">01</div>
+        <div class="body">
+          <h3>Dry Cleaning</h3>
+          <p>Suits, dresses, coats, and the pieces you don't trust to a machine — cleaned and pressed to come back crisp. Rush turnaround available when you ask ahead.</p>
+        </div>
+        <div class="meta">Press &amp; Care</div>
+      </div>
+      <div class="row">
+        <div class="no">02</div>
+        <div class="body">
+          <h3>Alterations &amp; Tailoring</h3>
+          <p>Hems, takes-ins, zippers, and on-the-spot repairs — a ripped seam or jacket fixed while you wait when the timing's right. Customers bring their suits here and nowhere else.</p>
+        </div>
+        <div class="meta">Mend &amp; Fit</div>
+      </div>
+      <div class="row">
+        <div class="no">03</div>
+        <div class="body">
+          <h3>Live Scan Fingerprinting</h3>
+          <p>Electronic Live Scan for licensing, employment, and background checks — done by someone who'll take the time to walk you through the whole process.</p>
+        </div>
+        <div class="meta">By Appointment / Walk-in</div>
+      </div>
+      <div class="row">
+        <div class="no">04</div>
+        <div class="body">
+          <h3>Passport Photos</h3>
+          <p>Quick, correctly-sized passport and ID photos while you're already here — one less trip, one less line to stand in.</p>
+        </div>
+        <div class="meta">While You Wait</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Who you'll meet</span>
+      <h2>The kind of shop you keep going back to.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>River Park Cleaners n Alterations is a small, hands-on shop on E&nbsp;Vineyard Avenue in Oxnard. We press garments, fix what's torn, take in what's too loose, and let you knock out a Live Scan or a passport photo on the same visit.</p>
+        <p>People come back because we're easy to deal with and we do honest work — the nicest people doing a quality job, as our regulars put it. When you've got a last-minute alteration or a rush clean before something important, we'll do our best to make it happen.</p>
+        <p>If you're doing a Live Scan for the first time, ask — we'll explain every step so you walk out sure it was done right.</p>
+      </div>
+      <div class="about-photos">
+        <img src="./photos/02.jpg" alt="River Park Cleaners n Alterations storefront and counter" />
+        <img src="./photos/03.jpg" alt="Garments and alterations work at River Park Cleaners" />
+        <img src="./photos/04.jpg" alt="Service area at River Park Cleaners n Alterations" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="say" class="quotes">
+  <div class="wrap">
+    <span class="eyebrow">In their words</span>
+    <h2 style="font-size:clamp(2rem,4.4vw,3rem);margin-top:.5rem">What people say after they pick up.</h2>
+    <div class="slips">
+      <div class="slip wide">
+        <p>The best in the area. They are always willing to take in last-minute alterations. They are the nicest people and do a quality job. I only take my suits here to get altered and dry cleaned.</p>
+        <div class="by">— Bruno S.</div>
+      </div>
+      <div class="slip">
+        <p>Great service! I ripped a hole in my jacket armpit and they were able to repair it on the spot. Looks good as new.</p>
+        <div class="by">— V.</div>
+      </div>
+      <div class="slip shift">
+        <p>So happy I came here to do my Live Scan. Chang was so kind and helpful and took the time to explain the entire process. Amazing customer service — highly recommend!</p>
+        <div class="by">— Sandra M.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Find us</span>
+      <h2>Hours &amp; Location</h2>
+      <p>On E&nbsp;Vineyard Ave in the River Park area of Oxnard. Drop off early in the day for the best shot at same-day work.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="hours">
+        <h3>Hours</h3>
+        <table class="hrs">
+          <tr><td class="day">Monday</td><td>9:00 AM – 5:00 PM</td></tr>
+          <tr><td class="day">Tuesday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td class="day">Wednesday</td><td>9:00 AM – 5:00 PM</td></tr>
+          <tr><td class="day">Thursday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td class="day">Friday</td><td>9:00 AM – 5:00 PM</td></tr>
+          <tr><td class="day">Saturday</td><td>9:00 AM – 12:00 PM</td></tr>
+          <tr><td class="day">Sunday</td><td class="closed">Closed</td></tr>
+        </table>
+        <div class="where">
+          <p class="addr"><strong>2542 E Vineyard Ave</strong><br/>Oxnard, CA 93036</p>
+          <p style="margin:.7rem 0 0"><a href="tel:+18057513355">(805) 751-3355</a></p>
+          <p style="margin:.5rem 0 0"><a href="https://maps.google.com/?cid=7723463894109269113" target="_blank" rel="noopener">View on Google &rarr;</a></p>
+        </div>
+      </div>
+      <div class="map">
+        <iframe src="https://www.google.com/maps?q=2542+E+Vineyard+Ave,+Oxnard,+CA+93036&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to River Park Cleaners n Alterations"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="band">
+  <div class="wrap">
+    <h2>Got something that needs pressing, mending, or printed?</h2>
+    <p>Give us a call and we'll tell you exactly what we can turn around — and how fast.</p>
+    <a class="btn btn-primary" href="tel:+18057513355">Call (805) 751-3355</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="brand" href="#top"><span class="mark">RP</span>River Park Cleaners n Alterations</a>
+        <p style="margin:.8rem 0 0;max-width:34ch;color:#aeb6c2;font-size:.92rem">Dry cleaning, alterations, Live Scan &amp; passport photos in Oxnard, CA.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Visit</h4>
+        <p>2542 E Vineyard Ave</p>
+        <p>Oxnard, CA 93036</p>
+        <a href="https://www.google.com/maps?q=2542+E+Vineyard+Ave,+Oxnard,+CA+93036" target="_blank" rel="noopener">Get directions &rarr;</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="tel:+18057513355">(805) 751-3355</a>
+        <a href="https://maps.google.com/?cid=7723463894109269113" target="_blank" rel="noopener">Google Business listing</a>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

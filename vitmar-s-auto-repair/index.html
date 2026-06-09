@@ -1,0 +1,387 @@
+<!doctype html>
+<!--
+  ARCHETYPE: Modern Bold Garage — confident contemporary auto shop ("fast & approachable").
+  PALETTE: deep charcoal (#101317) + electric blue accent (#2f6bff) + off-white. Distinct from
+           other auto sites in work/ (no amber/red/orange/yellow accent, not the muted blue).
+  DISPLAY FONT: Space Grotesk (geometric grotesque) — not used by any sibling auto shop
+                (which use Anton / Oswald / Archivo Black / Teko / Barlow Condensed).
+  LAYOUT: asymmetric split hero (text left / stacked photo + speed badge right), a big
+          numbered "how it works / speed" band, services as a 2-col stacked rule-divided list,
+          bilingual Spanish tagline woven throughout, testimonies as an offset stacked column.
+  ANIMATION: none (static, sharp). No fade-up.
+  MAP: keyless maps?q=...&output=embed. PHOTOS: local ./photos/NN.jpg.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vitmar's Auto Repair — Salinas, CA</title>
+<meta name="description" content="Vitmar's Auto Repair in Salinas, CA. Fast, honest, bilingual auto repair and maintenance. Servicio en español. Call (831) 737-4818.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #101317;
+    --bg-2:      #161b21;
+    --ink:       #f3f5f8;
+    --muted:     #9aa4b2;
+    --line:      #262d36;
+    --acc:       #2f6bff;
+    --acc-2:     #5b8bff;
+    --nav-h:     68px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.disp{font-family:'Space Grotesk',sans-serif;line-height:1.02;letter-spacing:-.02em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+  .acc{color:var(--acc-2)}
+
+  /* ---- NAV ---- */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(16,19,23,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    display:flex;align-items:center;
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Space Grotesk';font-weight:700;font-size:1.12rem;letter-spacing:-.01em}
+  .mark{
+    width:30px;height:30px;border-radius:7px;background:var(--acc);
+    display:grid;place-items:center;font-family:'Space Grotesk';font-weight:700;
+    color:#fff;font-size:.95rem;transform:skewX(-9deg)
+  }
+  .mark span{transform:skewX(9deg)}
+  .navlinks{display:flex;gap:30px;align-items:center}
+  .navlinks a{font-size:.86rem;color:var(--muted);font-weight:500;transition:color .15s}
+  .navlinks a:hover{color:var(--ink)}
+  .navcall{
+    display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:#fff !important;
+    font-weight:600;font-size:.85rem;padding:10px 18px;border-radius:8px;transition:background .15s
+  }
+  .navcall:hover{background:#1e57f0}
+  @media(max-width:760px){.navlinks a:not(.navcall){display:none}}
+
+  /* ---- HERO ---- */
+  .hero{padding:64px 0 72px;position:relative}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(900px 420px at 78% -10%, rgba(47,107,255,.20), transparent 60%),
+      radial-gradient(600px 500px at -5% 110%, rgba(47,107,255,.08), transparent 60%);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .kick{display:inline-flex;align-items:center;gap:9px;font-size:.74rem;font-weight:600;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--acc-2);margin-bottom:22px}
+  .kick::before{content:"";width:26px;height:2px;background:var(--acc)}
+  .hero h1{font-size:clamp(2.6rem,6.2vw,4.5rem);font-weight:700}
+  .hero h1 em{font-style:normal;color:var(--acc-2);display:block}
+  .es{font-family:'Space Grotesk';font-weight:500;color:var(--muted);font-size:clamp(1rem,2.4vw,1.32rem);margin-top:18px}
+  .lede{color:var(--muted);font-size:1.06rem;max-width:30rem;margin:22px 0 30px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.96rem;
+    padding:15px 26px;border-radius:9px;transition:transform .12s,background .15s,border-color .15s
+  }
+  .btn-primary{background:var(--acc);color:#fff}
+  .btn-primary:hover{background:#1e57f0;transform:translateY(-2px)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--acc);color:var(--acc-2)}
+
+  .hero-art{position:relative}
+  .hero-art .photo{
+    border-radius:16px;overflow:hidden;border:1px solid var(--line);
+    aspect-ratio:4/5;background:var(--bg-2)
+  }
+  .hero-art .photo img{width:100%;height:100%;object-fit:cover}
+  .speed-badge{
+    position:absolute;left:-26px;bottom:30px;background:var(--acc);color:#fff;
+    padding:18px 22px;border-radius:13px;box-shadow:0 18px 40px rgba(47,107,255,.32);
+    transform:skewX(-6deg)
+  }
+  .speed-badge>div{transform:skewX(6deg)}
+  .speed-badge b{font-family:'Space Grotesk';font-weight:700;font-size:1.95rem;display:block;line-height:1}
+  .speed-badge small{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;opacity:.92}
+
+  /* ---- STRIP ---- */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2)}
+  .strip .wrap{display:flex;flex-wrap:wrap;gap:14px 48px;padding:20px 24px;align-items:center}
+  .strip span{font-family:'Space Grotesk';font-weight:500;color:var(--muted);font-size:.92rem;display:flex;align-items:center;gap:10px}
+  .strip span b{color:var(--ink);font-weight:600}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--acc)}
+
+  /* ---- SECTION SCAFFOLD ---- */
+  section{position:relative}
+  .pad{padding:84px 0}
+  .eyebrow{font-size:.74rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--acc-2);margin-bottom:14px}
+  .h-sec{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:700}
+
+  /* ---- ABOUT / SPEED BAND ---- */
+  .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .about p{color:var(--muted);margin-top:18px;font-size:1.04rem}
+  .about p + p{margin-top:14px}
+  .photo-stack{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px}
+  .photo-stack img{width:100%;height:100%;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
+  .photo-stack .tall{grid-row:span 2;aspect-ratio:3/4}
+  .photo-stack .wide{aspect-ratio:4/3}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:50px}
+  .step{background:var(--bg);padding:34px 30px}
+  .step .n{font-family:'Space Grotesk';font-weight:700;font-size:2.6rem;color:var(--acc);line-height:1}
+  .step h3{font-size:1.18rem;font-weight:600;margin:14px 0 8px}
+  .step p{color:var(--muted);font-size:.95rem}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
+
+  /* ---- SERVICES ---- */
+  .services{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .svc-list{margin-top:42px;display:grid;grid-template-columns:1fr 1fr;gap:0 64px}
+  .svc{display:flex;gap:20px;padding:26px 0;border-top:1px solid var(--line)}
+  .svc .idx{font-family:'Space Grotesk';font-weight:600;color:var(--acc);font-size:.95rem;padding-top:4px;min-width:34px}
+  .svc h3{font-size:1.22rem;font-weight:600;margin-bottom:5px}
+  .svc p{color:var(--muted);font-size:.94rem}
+  @media(max-width:680px){.svc-list{grid-template-columns:1fr;gap:0}}
+
+  /* ---- TESTIMONIES ---- */
+  .says .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+  .quotes{display:flex;flex-direction:column;gap:26px}
+  .quote{border-left:3px solid var(--acc);padding:6px 0 6px 26px}
+  .quote p{font-family:'Space Grotesk';font-weight:400;font-size:1.16rem;line-height:1.45;color:var(--ink)}
+  .quote .who{margin-top:12px;color:var(--muted);font-size:.86rem;font-weight:500;letter-spacing:.02em}
+  .quote .who::before{content:"— "}
+
+  /* ---- HOURS / LOCATION / CONTACT ---- */
+  .visit{background:var(--bg-2);border-top:1px solid var(--line)}
+  .visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+  .visit-info{padding:78px 56px 78px 0}
+  @media(max-width:860px){.visit-info{padding:60px 0 40px}}
+  .hours{margin-top:26px;border-top:1px solid var(--line)}
+  .hours .row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+  .hours .row.today{color:var(--ink)}
+  .hours .row .d{color:var(--muted)}
+  .hours .row.today .d{color:var(--acc-2);font-weight:600}
+  .hours .row .t{font-family:'Space Grotesk';font-weight:500}
+  .closed{color:var(--muted)}
+  .contact-lines{margin-top:30px;display:flex;flex-direction:column;gap:10px;font-size:1rem}
+  .contact-lines a:hover{color:var(--acc-2)}
+  .contact-lines .lbl{color:var(--muted);font-size:.82rem;display:block}
+  .visit-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  .map{position:relative;min-height:420px}
+  .map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-left:1px solid var(--line)}
+  @media(max-width:860px){.map{min-height:320px}.map iframe{position:relative;border-left:0;border-top:1px solid var(--line)}}
+
+  /* ---- FOOTER ---- */
+  footer{padding:50px 0 40px;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-start}
+  .f-brand{display:flex;align-items:center;gap:11px;font-family:'Space Grotesk';font-weight:700;font-size:1.05rem}
+  .f-meta{color:var(--muted);font-size:.9rem;margin-top:10px;max-width:26rem}
+  .f-links{display:flex;gap:22px;font-size:.9rem}
+  .f-links a{color:var(--muted);transition:color .15s}
+  .f-links a:hover{color:var(--acc-2)}
+  .credit{width:100%;margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+    color:var(--muted);font-size:.82rem}
+  .credit a{color:var(--acc-2)}
+
+  @media(max-width:860px){
+    .hero .wrap,.about .wrap,.says .wrap,.visit .wrap{grid-template-columns:1fr;gap:42px}
+    .hero{padding:42px 0 56px}
+    .speed-badge{left:auto;right:18px;bottom:18px}
+    .visit-info{order:1}.map{order:2}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="mark"><span>V</span></span> Vitmar's Auto Repair</a>
+    <div class="navlinks">
+      <a href="#about">Shop</a>
+      <a href="#services">Services</a>
+      <a href="#says">Testimonies</a>
+      <a href="#visit">Hours &amp; Location</a>
+      <a class="navcall" href="tel:+18317374818">Call (831) 737-4818</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="kick">Salinas, California · Bilingual service</span>
+      <h1>In, fixed,<em>back on the road.</em></h1>
+      <div class="es">Reparación rápida y honesta — se habla español.</div>
+      <p class="lede">A modern Salinas garage built on quick turnarounds and straight answers. Towing, diagnostics, and repairs handled fast — with a friendly crew that explains everything in English or Spanish.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="tel:+18317374818">Call now · Llámanos</a>
+        <a class="btn btn-ghost" href="#visit">Get directions</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="photo"><img src="./photos/02.jpg" alt="Inside Vitmar's Auto Repair shop in Salinas"></div>
+      <div class="speed-badge"><div><b>Same&#8209;day</b><small>diagnostics &amp; quotes</small></div></div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <span><i class="dot"></i> <b>Towing&nbsp;+&nbsp;repair</b> under one roof</span>
+    <span><i class="dot"></i> <b>Fair, up-front</b> pricing</span>
+    <span><i class="dot"></i> <b>English &amp; Spanish</b> · sin barreras</span>
+    <span><i class="dot"></i> <b>Open 6 days</b> a week</span>
+  </div>
+</div>
+
+<section class="about pad" id="about">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">The shop</div>
+      <h2 class="h-sec">Honest work, done quick.</h2>
+      <p>Vitmar's is the kind of neighborhood garage Salinas drivers keep coming back to. Whether it's a check-engine light after work, brakes that need replacing before a long drive, or a tune-up to keep an older car running strong — the crew gets to the diagnosis fast and tells you straight what it needs.</p>
+      <p>Need a tow? We handle towing and the repair together, so you're not bouncing between companies during rush hour. And because the whole team works in both English and Spanish, nothing gets lost in translation — you'll always know exactly what's happening with your car.</p>
+      <div class="cta-row" style="margin-top:28px">
+        <a class="btn btn-ghost" href="#services">See what we do</a>
+      </div>
+    </div>
+    <div class="photo-stack">
+      <img class="tall" src="./photos/04.jpg" alt="Mechanic at work at Vitmar's Auto Repair">
+      <img class="wide" src="./photos/05.jpg" alt="Vitmar's Auto Repair service bay">
+      <img class="wide" src="./photos/01.jpg" alt="Vitmar's Auto Repair shop exterior">
+    </div>
+  </div>
+</section>
+
+<section class="pad" style="padding-top:0">
+  <div class="wrap">
+    <div class="eyebrow">How it goes</div>
+    <h2 class="h-sec">Fast from the first call.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Call or roll in</h3>
+        <p>One quick conversation — in English or Spanish — and we know how to help. Need a tow? We'll get a truck out.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Quick diagnosis</h3>
+        <p>The mechanics check it over, find the real problem, and give you an honest estimate before any work starts.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>Fixed &amp; back out</h3>
+        <p>Parts ordered, repair done on time and at the quoted price. Often the same day — and sometimes a ride home.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services pad" id="services">
+  <div class="wrap">
+    <div class="eyebrow">What we do</div>
+    <h2 class="h-sec">Services &middot; Servicios</h2>
+    <div class="svc-list">
+      <div class="svc"><div class="idx">01</div><div><h3>Diagnostics &amp; check-engine</h3><p>Fast, accurate read on what's actually wrong — and what it'll take to fix it.</p></div></div>
+      <div class="svc"><div class="idx">02</div><div><h3>Towing &amp; recovery</h3><p>Towing and repair under one roof, so a breakdown doesn't turn into a runaround.</p></div></div>
+      <div class="svc"><div class="idx">03</div><div><h3>Brakes &amp; suspension</h3><p>Pads, rotors, and front-end work — for everyday cars and heavier rigs alike.</p></div></div>
+      <div class="svc"><div class="idx">04</div><div><h3>Tune-ups &amp; maintenance</h3><p>Keep an older car running great with regular, honest upkeep.</p></div></div>
+      <div class="svc"><div class="idx">05</div><div><h3>Engine &amp; mechanical repair</h3><p>Experienced mechanics who take pride in getting every detail right.</p></div></div>
+      <div class="svc"><div class="idx">06</div><div><h3>Lights &amp; electrical</h3><p>From a failing headlight to electrical gremlins — sorted quickly.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="says pad" id="says">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">In their words</div>
+      <h2 class="h-sec">Customer Testimonies</h2>
+      <p style="color:var(--muted);margin-top:18px">Real words from Salinas drivers — and a few from much farther away.</p>
+    </div>
+    <div class="quotes">
+      <blockquote class="quote">
+        <p>"The job was done well, on time, at the quoted price — and even a few little fixes thrown in. The mechanics obviously had pride in what they were doing. Would recommend Vitmar to anyone needing automotive service."</p>
+        <div class="who">Sander D.</div>
+      </blockquote>
+      <blockquote class="quote">
+        <p>"They sent a tow truck over within minutes. The mechanic quickly diagnosed the problem, gave me a recommendation, and even offered a ride home. Experienced, professional, swift, and very fair prices."</p>
+        <div class="who">Fen V.</div>
+      </blockquote>
+      <blockquote class="quote">
+        <p>"I appreciate the quick and sure service to get a tune-up and repair my lights. Everything was handled professionally and with a friendly smile. I'll definitely recommend this business."</p>
+        <div class="who">Sandra M.</div>
+      </blockquote>
+      <blockquote class="quote">
+        <p>"I have an older car and the mechanics at the shop always have it running great. I always trust them with my car."</p>
+        <div class="who">Juliana T.</div>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="visit-info">
+      <div class="eyebrow">Hours &amp; location</div>
+      <h2 class="h-sec">Stop by the shop.</h2>
+      <div class="hours" id="hours">
+        <div class="row"><span class="d">Monday</span><span class="t">8:30 AM – 6:30 PM</span></div>
+        <div class="row"><span class="d">Tuesday</span><span class="t">8:30 AM – 6:30 PM</span></div>
+        <div class="row"><span class="d">Wednesday</span><span class="t">8:30 AM – 6:30 PM</span></div>
+        <div class="row"><span class="d">Thursday</span><span class="t">8:30 AM – 6:30 PM</span></div>
+        <div class="row"><span class="d">Friday</span><span class="t">8:30 AM – 6:30 PM</span></div>
+        <div class="row"><span class="d">Saturday</span><span class="t">8:30 AM – 4:30 PM</span></div>
+        <div class="row"><span class="d">Sunday</span><span class="t closed">Closed</span></div>
+      </div>
+      <div class="contact-lines">
+        <div><span class="lbl">Address</span><a href="https://www.google.com/maps?q=139+Market+Way,+Salinas,+CA+93901" target="_blank" rel="noopener">139 Market Way, Salinas, CA 93901</a></div>
+        <div><span class="lbl">Phone</span><a href="tel:+18317374818">(831) 737-4818</a></div>
+      </div>
+      <div class="visit-cta">
+        <a class="btn btn-primary" href="tel:+18317374818">Call now</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=139+Market+Way,+Salinas,+CA+93901" target="_blank" rel="noopener">Get directions</a>
+      </div>
+    </div>
+    <div class="map">
+      <iframe src="https://www.google.com/maps?q=36.6783468,-121.6513758&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Vitmar's Auto Repair"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="f-brand"><span class="mark"><span>V</span></span> Vitmar's Auto Repair</div>
+      <p class="f-meta">Fast, honest, bilingual auto repair in Salinas. Reparación rápida y honesta — se habla español.</p>
+    </div>
+    <div class="f-links">
+      <a href="tel:+18317374818">Call</a>
+      <a href="https://www.google.com/maps?q=139+Market+Way,+Salinas,+CA+93901" target="_blank" rel="noopener">Directions</a>
+      <a href="https://maps.google.com/?cid=2224300011217288915" target="_blank" rel="noopener">Google listing</a>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Highlight today's hours row (0=Sun ... 6=Sat) — order in DOM is Mon..Sun
+  (function(){
+    var rows = document.querySelectorAll('#hours .row');
+    var js = new Date().getDay();        // 0 Sun .. 6 Sat
+    var idx = js === 0 ? 6 : js - 1;     // map to Mon-first ordering
+    if(rows[idx]) rows[idx].classList.add('today');
+  })();
+</script>
+</body>
+</html>

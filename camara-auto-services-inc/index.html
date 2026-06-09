@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<!--
+  ARCHETYPE: Heritage trade institution / vintage-industrial "family garage since 1973".
+  STRUCTURE:
+    - Two-column heritage hero (typographic left "EST. 1973" plate + bordered photo right), no dark-overlay/pill.
+    - Top metal "badge bar" nav: sticky, scroll-padding-top reserved so anchors clear it.
+    - Services as a numbered ledger/two-column rule-lined list (not 3 circular icons).
+    - Testimonies as stacked letterpress quote blocks, no stars/avatars/ratings.
+    - Hours rendered as a service-counter table; map keyless iframe alongside.
+    - Animation: none (static, deliberate — fits the "trusted institution" tone).
+  PALETTE: deep teal-blue (--bg 18233a) + oxblood accent (--acc) on warm cream (--cream).
+  DISPLAY FONT: Zilla Slab (slab serif). BODY: Inter.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Camara Auto Services, Inc. — Trusted Tulare Mechanics Since 1973</title>
+<meta name="description" content="Camara Auto Services, Inc. — full-service domestic, Asian & European auto repair in Tulare, CA. ASCCA member, family-trusted since 1973. Call (559) 688-5721.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#18233a;          /* deep teal-navy */
+    --bg2:#10182b;
+    --acc:#9e2b25;         /* oxblood */
+    --acc-hi:#bb3a30;
+    --cream:#f4ede0;       /* warm cream */
+    --cream2:#ece2d0;
+    --ink:#222a36;
+    --rule:#c9bca4;
+    --brass:#c2924a;
+    --muted:#5c6675;
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.slab{font-family:'Zilla Slab',Georgia,serif}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:600;color:var(--acc);
+  }
+
+  /* ---------- NAV (badge bar) ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:var(--bg);
+    border-bottom:3px solid var(--brass);
+    color:var(--cream);
+  }
+  .nav-in{
+    max-width:1140px;margin:0 auto;padding:0 24px;height:100%;
+    display:flex;align-items:center;justify-content:space-between;gap:18px;
+  }
+  .brand{display:flex;align-items:center;gap:12px;min-width:0}
+  .brand .badge{
+    width:38px;height:38px;flex:0 0 38px;border:2px solid var(--brass);
+    border-radius:50%;display:grid;place-items:center;
+    font-family:'Zilla Slab',serif;font-weight:700;font-size:.95rem;color:var(--brass);
+  }
+  .brand b{font-family:'Zilla Slab',serif;font-weight:700;font-size:1.06rem;
+    letter-spacing:.02em;color:var(--cream);white-space:nowrap}
+  .brand small{display:block;font-size:.62rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--brass);font-weight:600}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;
+    font-weight:500;color:var(--cream);opacity:.85;transition:opacity .15s,color .15s}
+  .nav-links a:hover{opacity:1;color:var(--brass)}
+  .nav-call{
+    font-family:'Zilla Slab',serif;font-weight:600;font-size:.92rem;
+    background:var(--acc);color:#fff;padding:9px 16px;border-radius:2px;
+    border:1px solid var(--acc-hi);transition:background .15s}
+  .nav-call:hover{background:var(--acc-hi)}
+  .nav-toggle{display:none;background:none;border:1px solid var(--brass);
+    color:var(--cream);padding:6px 10px;border-radius:2px;font-size:.8rem}
+
+  /* ---------- HERO ---------- */
+  header{background:var(--cream);border-bottom:1px solid var(--rule)}
+  .hero{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;
+    padding:64px 0 70px;
+  }
+  .est-plate{
+    display:inline-flex;align-items:center;gap:10px;
+    border:1px solid var(--ink);padding:6px 12px;margin-bottom:22px;
+    font-family:'Zilla Slab',serif;font-weight:600;font-size:.82rem;
+    letter-spacing:.16em;text-transform:uppercase;
+  }
+  .est-plate .dot{width:7px;height:7px;background:var(--acc);border-radius:50%}
+  .hero h1{
+    font-weight:700;font-size:clamp(2.5rem,5.4vw,4.2rem);line-height:1.02;
+    color:var(--ink);letter-spacing:-.01em;
+  }
+  .hero h1 .red{color:var(--acc)}
+  .hero .lead{
+    margin-top:22px;font-size:1.08rem;max-width:36ch;color:#3a424f;
+  }
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
+  .btn{
+    font-family:'Zilla Slab',serif;font-weight:600;font-size:1rem;
+    padding:13px 24px;border-radius:2px;display:inline-flex;align-items:center;gap:9px;
+    transition:transform .12s,background .15s,color .15s;border:2px solid transparent;
+  }
+  .btn-primary{background:var(--acc);color:#fff;border-color:var(--acc)}
+  .btn-primary:hover{background:var(--acc-hi);border-color:var(--acc-hi)}
+  .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--cream)}
+  .hero-fig{position:relative}
+  .hero-fig img{
+    width:100%;height:430px;object-fit:cover;
+    border:1px solid var(--ink);
+    box-shadow:14px 14px 0 rgba(24,35,58,.12);
+  }
+  .hero-fig .tag{
+    position:absolute;left:-10px;bottom:26px;background:var(--bg);color:var(--cream);
+    font-family:'Zilla Slab',serif;font-weight:600;font-size:.84rem;letter-spacing:.12em;
+    text-transform:uppercase;padding:9px 16px;border-left:4px solid var(--brass);
+  }
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust{background:var(--bg);color:var(--cream)}
+  .trust-in{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  }
+  .trust-in div{
+    padding:26px 22px;border-right:1px solid rgba(194,146,74,.28);
+  }
+  .trust-in div:last-child{border-right:none}
+  .trust-in b{font-family:'Zilla Slab',serif;display:block;font-size:1.7rem;
+    color:var(--brass);font-weight:700;line-height:1}
+  .trust-in span{font-size:.82rem;letter-spacing:.05em;color:#cfc6b6;display:block;margin-top:6px}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:78px 0}
+  .sec-head{margin-bottom:40px;max-width:60ch}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:700;color:var(--ink);
+    line-height:1.08;margin-top:8px;letter-spacing:-.01em}
+  .sec-head p{margin-top:14px;color:#3a424f;font-size:1.04rem}
+
+  /* About */
+  #about{background:var(--cream2)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .about-grid p{margin-bottom:16px;color:#363e4b}
+  .about-grid p:last-child{margin-bottom:0}
+  .about-pics{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .about-pics img{width:100%;height:200px;object-fit:cover;border:1px solid var(--ink)}
+  .about-pics img:first-child{grid-column:1 / -1;height:240px}
+
+  /* Services ledger */
+  .ledger{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+  .ledger .row{
+    display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline;
+    padding:20px 0;border-bottom:1px solid var(--rule);
+  }
+  .ledger .num{font-family:'Zilla Slab',serif;font-weight:600;color:var(--acc);
+    font-size:1.05rem;letter-spacing:.04em}
+  .ledger h3{font-family:'Zilla Slab',serif;font-weight:600;font-size:1.18rem;color:var(--ink)}
+  .ledger .row p{font-size:.95rem;color:var(--muted);margin-top:4px}
+  .svc-note{margin-top:34px;font-family:'Zilla Slab',serif;font-style:normal;
+    font-size:1.1rem;color:var(--ink)}
+  .svc-note span{color:var(--acc)}
+
+  /* Gallery */
+  #gallery{background:var(--bg);color:var(--cream)}
+  #gallery .sec-head h2{color:var(--cream)}
+  #gallery .sec-head .eyebrow{color:var(--brass)}
+  #gallery .sec-head p{color:#cfc6b6}
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .gal img{width:100%;height:240px;object-fit:cover;border:1px solid rgba(194,146,74,.4);
+    filter:saturate(1.02)}
+  .gal img:nth-child(1){grid-row:span 2;height:496px}
+
+  /* Testimonies */
+  #say{background:var(--cream)}
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  .qcard{
+    background:#fff;border:1px solid var(--rule);border-top:4px solid var(--acc);
+    padding:30px 30px 26px;
+  }
+  .qcard .mark{font-family:'Zilla Slab',serif;font-size:3rem;line-height:.6;
+    color:var(--brass);display:block;height:30px}
+  .qcard p{font-size:1.02rem;color:#2c333f;margin:6px 0 18px}
+  .qcard cite{font-family:'Zilla Slab',serif;font-style:normal;font-weight:600;
+    color:var(--acc);font-size:.96rem;letter-spacing:.03em}
+  .qcard.feat{grid-column:1 / -1;background:var(--bg);color:var(--cream);border-color:var(--bg)}
+  .qcard.feat p{color:#e8e0d2;font-size:1.16rem;font-family:'Zilla Slab',serif;line-height:1.45}
+  .qcard.feat cite{color:var(--brass)}
+
+  /* Visit (hours + map) */
+  #visit{background:var(--cream2)}
+  .visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:46px;align-items:stretch}
+  .counter{background:#fff;border:1px solid var(--ink)}
+  .counter .top{background:var(--bg);color:var(--cream);padding:20px 26px}
+  .counter .top b{font-family:'Zilla Slab',serif;font-size:1.3rem;font-weight:700;display:block}
+  .counter .top span{font-size:.84rem;color:#cfc6b6}
+  .counter .body{padding:8px 26px 24px}
+  .hrow{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px dashed var(--rule);
+    font-size:.96rem}
+  .hrow:last-child{border-bottom:none}
+  .hrow .day{font-weight:500}
+  .hrow .closed{color:var(--acc);font-weight:600}
+  .hrow.today{background:#fbf6ec;margin:0 -26px;padding-left:26px;padding-right:26px}
+  .hrow.today .day::after{content:" · Today";color:var(--brass);font-weight:600;font-size:.8rem}
+  .contact-block{padding:20px 26px 24px;border-top:2px solid var(--rule)}
+  .contact-block .line{display:flex;gap:12px;margin-bottom:12px;font-size:.97rem;align-items:flex-start}
+  .contact-block .line svg{flex:0 0 18px;margin-top:3px;stroke:var(--acc)}
+  .contact-block a{color:var(--ink);font-weight:500}
+  .contact-block a:hover{color:var(--acc)}
+  .findus{margin-top:6px;display:flex;gap:10px;flex-wrap:wrap}
+  .findus a{font-size:.8rem;letter-spacing:.04em;border:1px solid var(--ink);
+    padding:6px 12px;border-radius:2px;text-transform:uppercase;font-weight:600}
+  .findus a:hover{background:var(--ink);color:var(--cream)}
+  .mapwrap{border:1px solid var(--ink);min-height:420px;overflow:hidden}
+  .mapwrap iframe{width:100%;height:100%;min-height:420px;border:0;display:block;filter:grayscale(.18) contrast(1.02)}
+
+  /* CTA band */
+  .band{background:var(--acc);color:#fff;text-align:center;padding:64px 0}
+  .band h2{color:#fff;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700}
+  .band p{max-width:48ch;margin:14px auto 26px;color:#f6dedb;font-size:1.05rem}
+  .band .btn-light{background:var(--cream);color:var(--acc);border-color:var(--cream)}
+  .band .btn-light:hover{background:#fff}
+
+  /* Footer */
+  footer{background:var(--bg2);color:#cfc6b6;padding:54px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:34px}
+  footer h4{font-family:'Zilla Slab',serif;color:var(--cream);font-size:1.05rem;
+    margin-bottom:14px;font-weight:600}
+  footer .fbrand b{font-family:'Zilla Slab',serif;color:var(--cream);font-size:1.4rem;display:block}
+  footer .fbrand small{color:var(--brass);letter-spacing:.24em;font-size:.66rem;text-transform:uppercase}
+  footer .fbrand p{margin-top:12px;font-size:.92rem;max-width:34ch}
+  footer ul{list-style:none}
+  footer ul li{margin-bottom:9px;font-size:.92rem}
+  footer ul a:hover{color:var(--brass)}
+  .fsocial a{display:inline-block;margin-right:14px;font-size:.85rem;
+    border-bottom:1px solid transparent;padding-bottom:1px}
+  .fsocial a:hover{color:var(--cream);border-color:var(--brass)}
+  .credit{border-top:1px solid rgba(194,146,74,.2);padding-top:22px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.82rem}
+  .credit .mockup{color:#8d8474}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    :root{--nav-h:60px}
+    .nav-links{display:none}
+    .nav-toggle{display:inline-block}
+    .nav-links.open{
+      display:flex;flex-direction:column;position:absolute;top:var(--nav-h);left:0;right:0;
+      background:var(--bg);padding:18px 24px;gap:16px;border-bottom:3px solid var(--brass)
+    }
+    .hero{grid-template-columns:1fr;gap:34px;padding:46px 0 50px}
+    .hero-fig img{height:320px}
+    .trust-in{grid-template-columns:1fr 1fr}
+    .trust-in div:nth-child(2){border-right:none}
+    .trust-in div{border-bottom:1px solid rgba(194,146,74,.28)}
+    .about-grid{grid-template-columns:1fr;gap:30px}
+    .ledger{grid-template-columns:1fr}
+    .gal{grid-template-columns:1fr 1fr}
+    .gal img:nth-child(1){grid-row:auto;height:240px}
+    .quotes{grid-template-columns:1fr}
+    .visit-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr;gap:28px}
+  }
+  @media(max-width:480px){
+    .trust-in{grid-template-columns:1fr}
+    .trust-in div{border-right:none}
+    .gal{grid-template-columns:1fr}
+    .brand small{display:none}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="#top" class="brand">
+      <span class="badge">CA</span>
+      <span><b>Camara Auto Services</b><small>Tulare · Since 1973</small></span>
+    </a>
+    <div class="nav-links" id="menu">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">The Shop</a>
+      <a href="#say">Testimonies</a>
+      <a href="#visit">Hours &amp; Map</a>
+    </div>
+    <a href="tel:+15596885721" class="nav-call">(559) 688-5721</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">Menu</button>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <span class="est-plate"><span class="dot"></span>Established 1973 · ASCCA Member</span>
+        <h1>Half a century of <span class="red">honest repair</span> in Tulare.</h1>
+        <p class="lead">A family-trusted, full-service shop for domestic, Asian &amp; European vehicles — the same straight answers and careful work the valley has counted on for over 50 years.</p>
+        <div class="hero-cta">
+          <a href="tel:+15596885721" class="btn btn-primary">Call (559) 688-5721</a>
+          <a href="#visit" class="btn btn-ghost">Hours &amp; Directions</a>
+        </div>
+      </div>
+      <figure class="hero-fig">
+        <img src="./photos/01.jpg" alt="Classic cars up on the lifts inside the Camara Auto Services garage">
+        <span class="tag">In the bays today</span>
+      </figure>
+    </div>
+  </div>
+</header>
+
+<div class="trust">
+  <div class="wrap"><div class="trust-in">
+    <div><b>Est. 1973</b><span>Serving Tulare for 50+ years</span></div>
+    <div><b>ASCCA</b><span>Member — the sign you can trust</span></div>
+    <div><b>All Makes</b><span>Domestic · Asian · European</span></div>
+    <div><b>Smog &amp; More</b><span>Repairs, AC, brakes, diagnostics</span></div>
+  </div></div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <span class="eyebrow">Our Story</span>
+        <h2 class="slab" style="font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:700;line-height:1.08;margin:8px 0 18px">A neighborhood garage that earned its reputation.</h2>
+        <p>Since 1973, Camara Auto Services has kept Tulare moving. What started as a local shop on South K Street has become an institution — the place neighbors send their friends and family when something needs to be done right.</p>
+        <p>We work on everything from daily drivers to the classics our customers love, and we take the time to explain what your vehicle needs before any work begins. No surprises, no upsell — just an estimate you can trust and repairs that hold up.</p>
+        <p>As a proud member of the Automotive Service Councils of California (ASCCA), we hold ourselves to a professional standard. Walk in and you'll see decades of certifications and thank-you notes on the wall — and the people behind them are still right there at the counter.</p>
+      </div>
+      <div class="about-pics">
+        <img src="./photos/06.jpg" alt="The Camara Auto Services sign and storefront on South K Street, Tulare">
+        <img src="./photos/05.jpg" alt="Camara Auto Services team at the front counter">
+        <img src="./photos/03.jpg" alt="The Camara Auto Services waiting area and service counter">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What we do</span>
+      <h2>Full-service repair &amp; maintenance, all under one roof.</h2>
+      <p>From routine upkeep to the work that gets you back on the road, we handle it in-house with the diagnostics and parts to back it up.</p>
+    </div>
+    <div class="ledger">
+      <div class="row"><span class="num">01</span><div><h3>Smog Checks &amp; Pass</h3><p>Testing and the repairs to pass — get your tags, plates &amp; registration sorted.</p></div></div>
+      <div class="row"><span class="num">02</span><div><h3>Brakes &amp; Safety</h3><p>Inspections, pads, rotors and lines — "do you trust your brakes?" We'll tell you straight.</p></div></div>
+      <div class="row"><span class="num">03</span><div><h3>Air Conditioning</h3><p>AC service, Freon charge and component repair to beat the valley heat.</p></div></div>
+      <div class="row"><span class="num">04</span><div><h3>Engine &amp; Transmission</h3><p>Diagnostics, repair, and JASPER remanufactured engines &amp; transmissions.</p></div></div>
+      <div class="row"><span class="num">05</span><div><h3>Alignment &amp; Suspension</h3><p>Precision alignments and a Monroe RideExpert ride-control center.</p></div></div>
+      <div class="row"><span class="num">06</span><div><h3>Check-Engine &amp; Electrical</h3><p>"Is it on?" Sensor, computer &amp; electrical diagnostics done right.</p></div></div>
+    </div>
+    <p class="svc-note">Not sure what's wrong? <span>We can fix it</span> — bring it by and we'll take a look.</p>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">In the bays</span>
+      <h2>Inside the shop.</h2>
+      <p>Classics on the lifts, modern diagnostics on the bench — and the same crew you'll talk to at the counter.</p>
+    </div>
+    <div class="gal">
+      <img src="./photos/01.jpg" alt="Classic cars on the lifts inside the garage">
+      <img src="./photos/04.jpg" alt="Monroe RideExpert alignment equipment in use">
+      <img src="./photos/02.jpg" alt="Front exterior of Camara Auto Services with the road sign">
+      <img src="./photos/03.jpg" alt="The service counter and waiting room">
+      <img src="./photos/05.jpg" alt="Friendly staff at the Camara front desk">
+    </div>
+  </div>
+</section>
+
+<section id="say">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">In their words</span>
+      <h2>Customer Testimonies</h2>
+      <p>Folks in Tulare don't change mechanics often. Here's why they stay.</p>
+    </div>
+    <div class="quotes">
+      <div class="qcard feat">
+        <span class="mark">“</span>
+        <p>I work on a lot of my own vehicles, but when I need to take one in, this is the only place I trust.</p>
+        <cite>— Ricardo G.</cite>
+      </div>
+      <div class="qcard">
+        <span class="mark">“</span>
+        <p>The front receptionists are very welcoming, helpful and professional. The mechanics were very knowledgeable, answered all my questions and kept me informed. Being new to Tulare, I've found my regular service shop — I'd recommend this place to all my friends and family.</p>
+        <cite>— Valerie S.</cite>
+      </div>
+      <div class="qcard">
+        <span class="mark">“</span>
+        <p>We called to have my husband's AC serviced and got an appointment the next morning. The actual bill was less than the original estimate, and we were kept informed about the repairs and timeline. I recommend this business.</p>
+        <cite>— Diane R.</cite>
+      </div>
+      <div class="qcard">
+        <span class="mark">“</span>
+        <p>Put my truck in to have the catalytic converters changed &amp; got it back in a very timely manner. Very respectful, helpful &amp; explained everything before any work.</p>
+        <cite>— Michelle S.</cite>
+      </div>
+      <div class="qcard">
+        <span class="mark">“</span>
+        <p>Good place and good service — they fixed my car to pass smog and I got my plates and registration. I recommend them, they are fast and honest.</p>
+        <cite>— Kanon D.</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Find us</span>
+      <h2>Hours &amp; location.</h2>
+      <p>On South K Street in Tulare. Stop in during shop hours or give us a call to set an appointment.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="counter">
+        <div class="top">
+          <b>Shop Hours</b>
+          <span>Walk-ins welcome · appointments preferred for AC &amp; smog</span>
+        </div>
+        <div class="body" id="hours">
+          <div class="hrow" data-day="1"><span class="day">Monday</span><span>8:00 AM – 5:00 PM</span></div>
+          <div class="hrow" data-day="2"><span class="day">Tuesday</span><span>8:00 AM – 5:00 PM</span></div>
+          <div class="hrow" data-day="3"><span class="day">Wednesday</span><span>8:00 AM – 5:00 PM</span></div>
+          <div class="hrow" data-day="4"><span class="day">Thursday</span><span>8:00 AM – 5:00 PM</span></div>
+          <div class="hrow" data-day="5"><span class="day">Friday</span><span>8:00 AM – 5:00 PM</span></div>
+          <div class="hrow" data-day="6"><span class="day">Saturday</span><span class="closed">Closed</span></div>
+          <div class="hrow" data-day="0"><span class="day">Sunday</span><span class="closed">Closed</span></div>
+        </div>
+        <div class="contact-block">
+          <div class="line">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <a href="https://www.google.com/maps?q=440+S+K+St,+Tulare,+CA+93274" target="_blank" rel="noopener">440 S K St, Tulare, CA 93274</a>
+          </div>
+          <div class="line">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            <a href="tel:+15596885721">(559) 688-5721</a>
+          </div>
+          <div class="findus">
+            <a href="https://maps.google.com/?cid=5776207275324572700" target="_blank" rel="noopener">Google Business</a>
+            <a href="https://www.google.com/maps?q=440+S+K+St,+Tulare,+CA+93274" target="_blank" rel="noopener">Directions</a>
+          </div>
+        </div>
+      </div>
+      <div class="mapwrap">
+        <iframe src="https://www.google.com/maps?q=36.203502199999996,-119.3447482&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Camara Auto Services, 440 S K St, Tulare, CA"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap">
+    <h2 class="slab">Trust your car to the shop Tulare's trusted since 1973.</h2>
+    <p>Give us a call and we'll get you a straight estimate and an honest timeline — same as we have for over fifty years.</p>
+    <a href="tel:+15596885721" class="btn btn-light">Call (559) 688-5721</a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="fbrand">
+        <b>Camara Auto Services, Inc.</b>
+        <small>Tulare · Since 1973</small>
+        <p>Family-trusted, full-service auto repair for domestic, Asian &amp; European vehicles. ASCCA member.</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="https://www.google.com/maps?q=440+S+K+St,+Tulare,+CA+93274" target="_blank" rel="noopener">440 S K St, Tulare, CA 93274</a></li>
+          <li><a href="tel:+15596885721">(559) 688-5721</a></li>
+          <li>Mon–Fri · 8:00 AM – 5:00 PM</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Find us on</h4>
+        <div class="fsocial">
+          <a href="https://maps.google.com/?cid=5776207275324572700" target="_blank" rel="noopener">Google Business →</a>
+        </div>
+        <h4 style="margin-top:20px">Explore</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#say">Customer Testimonies</a></li>
+          <li><a href="#visit">Hours &amp; Map</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="credit">
+      <span>© <span id="yr"></span> Camara Auto Services, Inc. · Tulare, California</span>
+      <span class="mockup">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav
+  var t=document.getElementById('navToggle'),m=document.getElementById('menu');
+  t.addEventListener('click',function(){m.classList.toggle('open');});
+  m.addEventListener('click',function(e){if(e.target.tagName==='A')m.classList.remove('open');});
+  // year
+  document.getElementById('yr').textContent=new Date().getFullYear();
+  // highlight today's hours
+  var today=new Date().getDay();
+  var row=document.querySelector('.hrow[data-day="'+today+'"]');
+  if(row)row.classList.add('today');
+</script>
+</body>
+</html>

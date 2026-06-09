@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ARCHETYPE: Franco-Japanese patisserie — editorial / quiet-luxe.
+  Bakery 101, Santa Ana — French & Japanese-style cakes and pastries.
+
+  Design rationale (distinct from le-pain-du-jour, the other French bakery,
+  which is Cormorant Garamond + Jost + cream/gold poster):
+    - Palette: warm ivory (--bg) + deep plum-wine (--ink) + framboise rose (--acc).
+      A berry/cream patisserie palette, NOT gold-on-cream.
+    - Display: Fraunces (high-contrast modern serif). Body: Outfit (geometric sans).
+    - Layout: asymmetric editorial — split hero, magazine number-rules, a
+      horizontal scrolling "cake case" gallery, prose-style menu (no icon grid),
+      stacked testimonial column. No card-grid services, no overlay hero.
+    - Animation: none beyond gentle hover states. Intentional, calm.
+  Structural ids for QA: hero=split-editorial / service=prose-rules
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bakery 101 — French &amp; Japanese Cakes &amp; Pastries · Santa Ana</title>
+<meta name="description" content="Bakery 101 is a family-run Santa Ana bakery known for French- and Japanese-style cakes, fresh-berry chiffon, flaky croissants, and celebration cakes made to order.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF6F0;        /* warm ivory */
+    --bg-2:#F3E8E2;      /* soft blush panel */
+    --ink:#3A1B2A;       /* deep plum-wine */
+    --ink-soft:#6E4D5C;
+    --acc:#B4476B;       /* framboise rose */
+    --acc-deep:#8C2F52;
+    --line:#E3D2CB;
+    --gold:#C98C5A;      /* warm pastry caramel, used sparingly */
+    --nav-h:70px;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Outfit',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:var(--sans);font-weight:400;font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 26px}
+  .serif{font-family:var(--serif)}
+  .kicker{
+    font-family:var(--sans);font-weight:500;font-size:.74rem;letter-spacing:.28em;
+    text-transform:uppercase;color:var(--acc);
+  }
+  .ital{font-family:var(--serif);font-style:italic;font-weight:400}
+
+  /* ── NAV ───────────────────────────────────────────── */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    display:flex;align-items:center;
+    background:rgba(251,246,240,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{display:flex;align-items:baseline;gap:.5ch;font-family:var(--serif);font-weight:600;font-size:1.35rem;letter-spacing:.01em}
+  .brand b{color:var(--acc);font-weight:600}
+  .navlinks{display:flex;gap:34px;align-items:center}
+  .navlinks a{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--ink-soft);transition:color .2s}
+  .navlinks a:hover{color:var(--acc)}
+  .nav-cta{
+    font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+    color:var(--bg);background:var(--acc);padding:10px 18px;border-radius:2px;transition:background .2s
+  }
+  .nav-cta:hover{background:var(--acc-deep)}
+  @media(max-width:860px){.navlinks a:not(.nav-cta){display:none}}
+
+  /* ── HERO (split editorial) ────────────────────────── */
+  .hero{padding:64px 0 30px}
+  .hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .hero h1{
+    font-family:var(--serif);font-weight:400;letter-spacing:-.015em;
+    font-size:clamp(2.9rem,6.4vw,5rem);line-height:.98;color:var(--ink);
+  }
+  .hero h1 em{font-style:italic;color:var(--acc)}
+  .hero .lede{margin-top:24px;font-size:1.12rem;color:var(--ink-soft);max-width:30ch}
+  .hero .actions{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:.6ch;font-weight:600;font-size:.86rem;
+    letter-spacing:.1em;text-transform:uppercase;padding:14px 24px;border-radius:2px;transition:.2s
+  }
+  .btn-primary{background:var(--acc);color:#fff}
+  .btn-primary:hover{background:var(--acc-deep);transform:translateY(-1px)}
+  .btn-ghost{border:1px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--bg)}
+  .hero-figure{position:relative}
+  .hero-figure img{
+    width:100%;height:520px;object-fit:cover;border-radius:3px;
+    box-shadow:0 26px 60px -32px rgba(58,27,42,.6)
+  }
+  .hero-tag{
+    position:absolute;left:-22px;bottom:34px;background:var(--bg);
+    border:1px solid var(--line);padding:16px 22px;border-radius:3px;
+    box-shadow:0 14px 34px -22px rgba(58,27,42,.55);max-width:230px
+  }
+  .hero-tag .n{font-family:var(--serif);font-style:italic;font-size:1.35rem;color:var(--acc);line-height:1}
+  .hero-tag span{display:block;font-size:.84rem;color:var(--ink-soft);margin-top:6px}
+  @media(max-width:860px){
+    .hero{padding:40px 0 10px}
+    .hero .grid{grid-template-columns:1fr;gap:34px}
+    .hero-figure img{height:380px}
+    .hero-tag{left:14px;bottom:14px}
+  }
+
+  /* ── MARQUEE / specialties strip ───────────────────── */
+  .strip{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    margin-top:46px;padding:20px 0;background:var(--bg-2)
+  }
+  .strip .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 30px}
+  .strip span{font-family:var(--serif);font-style:italic;font-size:1.18rem;color:var(--ink)}
+  .strip span::before{content:"✦";color:var(--acc);font-style:normal;margin-right:14px;font-size:.7em;vertical-align:.18em}
+
+  /* ── SECTION shell ─────────────────────────────────── */
+  section{scroll-margin-top:var(--nav-h)}
+  .sec{padding:84px 0}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:40px}
+  .sec-num{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--acc)}
+  .sec-title{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,4.2vw,2.9rem);line-height:1.04;letter-spacing:-.01em}
+
+  /* ── ABOUT ─────────────────────────────────────────── */
+  .about{background:var(--bg-2)}
+  .about .grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center}
+  .about p{color:var(--ink-soft);font-size:1.08rem;margin-top:18px}
+  .about p:first-of-type{margin-top:0;color:var(--ink);font-size:1.2rem;font-family:var(--serif);line-height:1.5}
+  .about-img{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .about-img img{width:100%;height:230px;object-fit:cover;border-radius:3px}
+  .about-img img:first-child{height:474px;grid-row:span 2}
+  @media(max-width:860px){
+    .about .grid{grid-template-columns:1fr;gap:30px}
+    .about-img img:first-child{height:230px;grid-row:auto}
+  }
+
+  /* ── MENU (prose rules) ────────────────────────────── */
+  .menu-row{
+    display:grid;grid-template-columns:auto 1fr;gap:26px;
+    padding:30px 0;border-top:1px solid var(--line)
+  }
+  .menu-row:last-child{border-bottom:1px solid var(--line)}
+  .menu-row .mn{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--acc);line-height:1;padding-top:4px}
+  .menu-row h3{font-family:var(--serif);font-weight:500;font-size:1.5rem;margin-bottom:6px}
+  .menu-row p{color:var(--ink-soft);max-width:62ch}
+  .menu-note{margin-top:28px;font-style:italic;font-family:var(--serif);color:var(--ink-soft);font-size:1.05rem}
+  @media(max-width:560px){.menu-row{grid-template-columns:1fr;gap:6px}}
+
+  /* ── CASE (horizontal gallery) ─────────────────────── */
+  .case{background:var(--ink);color:var(--bg)}
+  .case .sec-title{color:var(--bg)}
+  .case .sec-num{color:#E6A6BE}
+  .case .kicker{color:#E6A6BE}
+  .rail{
+    display:flex;gap:18px;overflow-x:auto;padding:6px 26px 26px;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch
+  }
+  .rail::-webkit-scrollbar{height:8px}
+  .rail::-webkit-scrollbar-thumb{background:var(--acc);border-radius:8px}
+  .rail::-webkit-scrollbar-track{background:rgba(255,255,255,.1)}
+  .rail figure{flex:0 0 76%;max-width:440px;scroll-snap-align:start}
+  .rail img{width:100%;height:340px;object-fit:cover;border-radius:3px}
+  .rail figcaption{margin-top:12px;font-size:.92rem;color:#E7D4DA;font-family:var(--serif);font-style:italic}
+  @media(min-width:760px){.rail figure{flex-basis:38%}}
+
+  /* ── TESTIMONIES (stacked column) ──────────────────── */
+  .says .wrap{max-width:880px}
+  .quote{padding:34px 0;border-top:1px solid var(--line)}
+  .quote:first-of-type{border-top:none}
+  .quote blockquote{
+    font-family:var(--serif);font-weight:400;font-size:clamp(1.25rem,2.6vw,1.7rem);
+    line-height:1.42;color:var(--ink);letter-spacing:-.005em
+  }
+  .quote blockquote::before{content:"“";color:var(--acc);font-size:1.3em;line-height:0;vertical-align:-.25em;margin-right:.05ch}
+  .quote .by{margin-top:16px;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:600}
+
+  /* ── VISIT (hours + map) ───────────────────────────── */
+  .visit{background:var(--bg-2)}
+  .visit .grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch}
+  .hours-list{margin-top:6px;border-top:1px solid var(--line)}
+  .hours-list .r{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:.98rem}
+  .hours-list .r.today{color:var(--acc);font-weight:600}
+  .hours-list .r .d{letter-spacing:.04em}
+  .closed{color:var(--ink-soft);font-style:italic;font-family:var(--serif)}
+  .addr{margin-top:26px}
+  .addr .lbl{font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--acc);font-weight:500}
+  .addr p{margin:6px 0 0;font-size:1.06rem}
+  .addr a.tel{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--ink);display:inline-block;margin-top:4px;border-bottom:1px solid var(--acc)}
+  .findus{margin-top:22px;display:flex;gap:20px;flex-wrap:wrap}
+  .findus a{font-size:.84rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);border-bottom:1px solid transparent;transition:.2s;font-weight:500}
+  .findus a:hover{color:var(--acc);border-color:var(--acc)}
+  .map{border:1px solid var(--line);border-radius:3px;overflow:hidden;min-height:380px}
+  .map iframe{width:100%;height:100%;min-height:380px;border:0;display:block;filter:grayscale(.15)}
+  .visit .actions{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+  @media(max-width:860px){.visit .grid{grid-template-columns:1fr;gap:30px}}
+
+  /* ── FOOTER ────────────────────────────────────────── */
+  footer{background:var(--ink);color:var(--bg);padding:60px 0 34px}
+  footer .top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.14)}
+  footer .brand{color:var(--bg);font-size:1.7rem}
+  footer .brand b{color:#E6A6BE}
+  footer .fcol{font-size:.92rem;color:#E7D4DA;line-height:1.9}
+  footer .fcol a:hover{color:#fff;text-decoration:underline}
+  .credit{margin-top:26px;font-size:.82rem;color:#C7AEB7}
+  .credit a{color:#E6A6BE}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ───────────────────────────────────────────── -->
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Bakery&nbsp;<b>101</b></a>
+    <div class="navlinks">
+      <a href="#about">Our Story</a>
+      <a href="#menu">The Menu</a>
+      <a href="#case">Cake Case</a>
+      <a href="#says">In Their Words</a>
+      <a class="nav-cta" href="tel:+17147604155">Call to Order</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────── -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <p class="kicker">French &amp; Japanese Patisserie · Santa Ana</p>
+        <h1 class="serif">Cakes worth<br>the <em>occasion.</em></h1>
+        <p class="lede">A small, family-run bakery turning out fresh-berry chiffon, flaky croissants, and made-to-order celebration cakes — beautiful, and never too sweet.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="tel:+17147604155">Call to Order</a>
+          <a class="btn btn-ghost" href="#menu">See What We Bake</a>
+        </div>
+      </div>
+      <figure class="hero-figure">
+        <img src="./photos/03.jpg" alt="A glass case of whole berry-topped chiffon cakes and individual mousse cakes at Bakery 101">
+        <div class="hero-tag">
+          <span class="n serif">Made fresh in-house</span>
+          <span>Whole cakes &amp; slices daily — a bigger selection on weekends.</span>
+        </div>
+      </figure>
+    </div>
+  </div>
+</header>
+
+<!-- ── SPECIALTIES STRIP ─────────────────────────────── -->
+<div class="strip">
+  <div class="wrap">
+    <span>Triple-Berry Chiffon</span>
+    <span>Bûche de Noël</span>
+    <span>Mousse Cakes</span>
+    <span>Cream Croissants</span>
+    <span>Carrot Cake</span>
+  </div>
+</div>
+
+<!-- ── ABOUT ─────────────────────────────────────────── -->
+<section class="sec about" id="about">
+  <div class="wrap">
+    <div class="grid">
+      <div class="about-img">
+        <img src="./photos/06.jpg" alt="Inside Bakery 101 — pastry case and café counter">
+        <img src="./photos/05.jpg" alt="Freshly baked pastries at Bakery 101">
+        <img src="./photos/01.jpg" alt="The Bakery 101 storefront on S Bristol St in Santa Ana">
+      </div>
+      <div>
+        <div class="sec-head"><span class="sec-num serif">01</span><h2 class="sec-title serif">A mom-and-pop<br>patisserie.</h2></div>
+        <p>The kind of bakery people drive across town for — and then quietly keep to themselves.</p>
+        <p>Bakery 101 blends French and Japanese pastry traditions: soft, fluffy chiffon layered with real whipped cream and fresh berries, cocoa-intense yule logs at the holidays, and a case of mousse cakes that look as good as they taste. Cakes are made to order, packed with care, and balanced so the flavor — not the sugar — comes through.</p>
+        <p>There's a patio out front for a coffee and a treat, and a freshly baked something often waiting if the line runs a little long. Come say hello.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MENU (prose rules) ────────────────────────────── -->
+<section class="sec" id="menu">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num serif">02</span><h2 class="sec-title serif">What we bake</h2></div>
+
+    <div class="menu-row">
+      <div class="mn serif">i</div>
+      <div>
+        <h3>Whole Cakes &amp; Slices</h3>
+        <p>Berry-topped chiffon, chocolate whipped, black forest, and seasonal mousse cakes — available as whole cakes or by the slice, with a wider spread on weekends. Showpiece cakes for weddings, quinceañeras, and birthdays made to order.</p>
+      </div>
+    </div>
+    <div class="menu-row">
+      <div class="mn serif">ii</div>
+      <div>
+        <h3>Signature Bûche de Noël</h3>
+        <p>Our holiday tradition: a moist, cocoa-intense yule log that holds beautifully chilled or at room temperature. Order ahead during the season.</p>
+      </div>
+    </div>
+    <div class="menu-row">
+      <div class="mn serif">iii</div>
+      <div>
+        <h3>Pastries &amp; Croissants</h3>
+        <p>Flaky cream-filled croissants, fruit pastries, and a rotating case of individual mousse and soufflé cakes — including a raspberry-and-chocolate soufflé that regulars come back for.</p>
+      </div>
+    </div>
+    <div class="menu-row">
+      <div class="mn serif">iv</div>
+      <div>
+        <h3>Coffee Bar</h3>
+        <p>Americano, caffè latte, and cappuccino to enjoy on the patio alongside whatever caught your eye in the case.</p>
+      </div>
+    </div>
+
+    <p class="menu-note">Specialty cakes — triple-berry chiffon, tiered celebration cakes — are best ordered a few days ahead. Give us a call and we'll take care of the rest.</p>
+  </div>
+</section>
+
+<!-- ── CAKE CASE (horizontal gallery) ────────────────── -->
+<section class="sec case" id="case">
+  <div class="wrap">
+    <p class="kicker">From the case</p>
+    <div class="sec-head"><span class="sec-num serif">03</span><h2 class="sec-title serif">Today's cake case</h2></div>
+  </div>
+  <div class="rail">
+    <figure><img src="./photos/03.jpg" alt="Whole berry-topped chiffon cakes and black forest cakes in the display case"><figcaption>Whole cakes — fresh berries &amp; whipped cream</figcaption></figure>
+    <figure><img src="./photos/02.jpg" alt="A custom celebration cake with colorful decorations and toy car toppers"><figcaption>Made-to-order celebration cakes</figcaption></figure>
+    <figure><img src="./photos/06.jpg" alt="Rows of individual mousse and fruit cakes in the bakery case"><figcaption>Individual mousse &amp; fruit cakes</figcaption></figure>
+    <figure><img src="./photos/04.jpg" alt="A bright decorated birthday cake from Bakery 101"><figcaption>Birthday &amp; kids' cakes</figcaption></figure>
+    <figure><img src="./photos/05.jpg" alt="Freshly baked pastries at Bakery 101"><figcaption>Pastries, fresh that morning</figcaption></figure>
+  </div>
+</section>
+
+<!-- ── TESTIMONIES ───────────────────────────────────── -->
+<section class="sec says" id="says">
+  <div class="wrap">
+    <p class="kicker">In their words</p>
+    <div class="sec-head"><span class="sec-num serif">04</span><h2 class="sec-title serif">What people say</h2></div>
+
+    <div class="quote">
+      <blockquote>Just had their Bûche de Noël and I have to say it's the best I've had — moist and cocoa-intense without being overly sweet. The Yule log is an annual tradition, and this one is spectacular.</blockquote>
+      <div class="by">— C&nbsp;C.</div>
+    </div>
+    <div class="quote">
+      <blockquote>I had the delightful triple-berry cake and absolutely loved it. Whipped cream, soft and fluffy chiffon, then plenty of strawberries, blueberries, and raspberries — perfection. I love supporting a locally owned, mom-and-pop place.</blockquote>
+      <div class="by">— Melissa&nbsp;W.</div>
+    </div>
+    <div class="quote">
+      <blockquote>Love the cakes here. I got a Bûche de Noël for Christmas and it was a hit — very beautiful and delicious, not too sweet. The decorations were cute, too.</blockquote>
+      <div class="by">— Sophie&nbsp;G.</div>
+    </div>
+    <div class="quote">
+      <blockquote>The variety at this small bakery hit the spot. Everything was well packed and delicious — I highly recommend the raspberry and chocolate soufflé. There's a nice patio outside, too. I'll definitely be back.</blockquote>
+      <div class="by">— Dennis&nbsp;L.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VISIT ─────────────────────────────────────────── -->
+<section class="sec visit" id="visit">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="sec-head"><span class="sec-num serif">05</span><h2 class="sec-title serif">Come visit</h2></div>
+        <div class="hours-list" id="hours">
+          <div class="r"><span class="d">Monday</span><span class="closed">Closed</span></div>
+          <div class="r"><span class="d">Tuesday</span><span>10:30 AM – 8:30 PM</span></div>
+          <div class="r"><span class="d">Wednesday</span><span>10:30 AM – 8:30 PM</span></div>
+          <div class="r"><span class="d">Thursday</span><span>10:30 AM – 8:30 PM</span></div>
+          <div class="r"><span class="d">Friday</span><span>10:30 AM – 8:30 PM</span></div>
+          <div class="r"><span class="d">Saturday</span><span>10:30 AM – 8:30 PM</span></div>
+          <div class="r"><span class="d">Sunday</span><span>10:30 AM – 8:00 PM</span></div>
+        </div>
+
+        <div class="addr">
+          <span class="lbl">Find us</span>
+          <p>3388 S Bristol St #B<br>Santa Ana, CA 92704</p>
+          <a class="tel" href="tel:+17147604155">(714) 760-4155</a>
+          <div class="findus">
+            <a href="https://maps.google.com/?cid=14465366911309780593" target="_blank" rel="noopener">Google Business ↗</a>
+            <a href="https://www.google.com/maps?q=33.7018455,-117.88679&z=15" target="_blank" rel="noopener">Get Directions ↗</a>
+          </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="tel:+17147604155">Call to Order</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps?q=3388+S+Bristol+St+%23B,+Santa+Ana,+CA+92704" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+      </div>
+
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps?q=3388+S+Bristol+St+%23B,+Santa+Ana,+CA+92704&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Bakery 101, 3388 S Bristol St, Santa Ana"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ────────────────────────────────────────── -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="#top">Bakery&nbsp;<b>101</b></a>
+        <p class="fcol" style="margin-top:8px">French &amp; Japanese cakes &amp; pastries · Santa Ana, CA</p>
+      </div>
+      <div class="fcol">
+        3388 S Bristol St #B, Santa Ana, CA 92704<br>
+        <a href="tel:+17147604155">(714) 760-4155</a> ·
+        <a href="https://maps.google.com/?cid=14465366911309780593" target="_blank" rel="noopener">Google Business ↗</a>
+      </div>
+    </div>
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </div>
+</footer>
+
+<script>
+  // Highlight today's row in the hours list (cosmetic only).
+  (function(){
+    var idx=new Date().getDay(); // 0=Sun
+    var map={0:6,1:0,2:1,3:2,4:3,5:4,6:5}; // Sun row is last
+    var rows=document.querySelectorAll('#hours .r');
+    var t=rows[map[idx]];
+    if(t) t.classList.add('today');
+  })();
+</script>
+</body>
+</html>

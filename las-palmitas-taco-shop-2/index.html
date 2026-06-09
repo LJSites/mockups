@@ -1,0 +1,352 @@
+<!doctype html>
+<!--
+  Archetype: "Slow-Food Family Taqueria" — warm, hand-painted vintage-tile editorial.
+  NOT a poster/neon style. Anchored on the shop's real slogan: "The key to authentic
+  Mexican food is patience." Distinct from other taquerias in work/: terracotta + cream
+  + mustard + papel-picado deep-red palette; display font is RYE (vintage Latin / Western
+  woodtype) — no other taqueria here uses it. Bungee/Bebas/Alfa-Slab/Teko all avoided.
+
+  Structural decisions:
+   - Top: thin sticky bar (just wordmark + Call) — minimal, not a full nav drawer.
+   - Hero: asymmetric magazine split — big serif headline left, tall food photo right,
+     slogan ribbon underneath. No dark-overlay-centered-hero.
+   - "On the table" menu = price-list ledger (dotted leaders), grouped, with the
+     $1.99 Taco Monday / $1.00 Taco Sunday specials called out as a hand-written note.
+   - About = single warm prose column beside the dining-room photo.
+   - Testimonies = stacked editorial pull-quotes (no cards/avatars/stars).
+   - Photo strip band before the footer.
+   - One repeated CTA: "Call to Order" (tel:). Keyless maps iframe in Visit section.
+   - Animation: none beyond CSS hover. Deliberate.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Las Palmitas Taco Shop 2 — Authentic Tacos & Burritos · El Centro</title>
+<meta name="description" content="Las Palmitas Taco Shop 2 in El Centro, CA. Authentic Mexican tacos, burritos, fish tacos and carne asada fries — made to order, the way patience intends. Open 7am–10pm daily.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:      #f6ecd9;   /* warm cream / masa */
+    --paper:   #fcf6ea;
+    --ink:     #2c1810;   /* dark roast brown */
+    --acc:     #b4321f;   /* deep chile red */
+    --acc-2:   #d98324;   /* mustard / fried-masa gold */
+    --green:   #4f6f3a;   /* salsa verde */
+    --line:    #d8c39c;
+    --shadow:  rgba(44,24,16,.16);
+  }
+  *{box-sizing:border-box}
+  html{scroll-padding-top:60px;scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Karla",system-ui,sans-serif;font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{margin:0;line-height:1.05;font-weight:400}
+  .display{font-family:"Rye",cursive;letter-spacing:.01em}
+  .serif{font-family:"Fraunces",Georgia,serif}
+  a{color:inherit}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  .kicker{font-family:"Karla";text-transform:uppercase;letter-spacing:.26em;font-size:12px;font-weight:700;color:var(--acc)}
+
+  /* sticky bar */
+  .bar{position:sticky;top:0;z-index:40;background:var(--acc);color:#fcf6ea;
+    height:60px;display:flex;align-items:center;border-bottom:3px solid var(--ink)}
+  .bar .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .bar .mark{font-family:"Rye",cursive;font-size:20px;letter-spacing:.02em;line-height:1}
+  .bar .mark small{display:block;font-family:"Karla";font-size:9px;letter-spacing:.3em;
+    text-transform:uppercase;opacity:.85;font-weight:700;margin-top:2px}
+  .bar a.call{font-family:"Karla";font-weight:700;font-size:14px;text-decoration:none;
+    background:var(--acc-2);color:var(--ink);padding:8px 16px;border-radius:2px;
+    border:2px solid var(--ink);white-space:nowrap;transition:transform .12s ease}
+  .bar a.call:hover{transform:translateY(-2px)}
+
+  /* hero */
+  .hero{padding:54px 0 40px;border-bottom:2px dashed var(--line)}
+  .hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+  .hero h1{font-size:clamp(40px,7vw,82px)}
+  .hero h1 em{font-style:normal;color:var(--acc)}
+  .hero .sub{font-family:"Fraunces";font-style:italic;font-size:clamp(19px,2.4vw,24px);
+    color:var(--ink);margin:18px 0 4px;max-width:30ch}
+  .hero .meta{margin-top:20px;font-size:14px;letter-spacing:.04em;color:#6b4a36}
+  .hero .meta b{color:var(--ink)}
+  .hero-photo{position:relative}
+  .hero-photo img{width:100%;height:520px;object-fit:cover;border-radius:4px;
+    border:6px solid var(--paper);box-shadow:0 18px 40px var(--shadow);
+    outline:2px solid var(--line);outline-offset:-8px}
+  .hero-photo .tag{position:absolute;bottom:-16px;left:-14px;background:var(--acc-2);
+    color:var(--ink);font-family:"Rye",cursive;font-size:15px;padding:8px 18px;
+    border:2px solid var(--ink);transform:rotate(-3deg);box-shadow:0 6px 14px var(--shadow)}
+  .cta{display:inline-block;margin-top:24px;background:var(--acc);color:#fcf6ea;
+    font-family:"Karla";font-weight:700;letter-spacing:.04em;font-size:16px;
+    text-decoration:none;padding:14px 30px;border-radius:2px;border:2px solid var(--ink);
+    box-shadow:4px 4px 0 var(--ink);transition:transform .12s ease,box-shadow .12s ease}
+  .cta:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+
+  /* slogan ribbon */
+  .ribbon{background:var(--ink);color:var(--paper);padding:22px 0}
+  .ribbon p{margin:0;text-align:center;font-family:"Fraunces";font-style:italic;
+    font-size:clamp(18px,2.6vw,26px)}
+  .ribbon p b{font-style:normal;font-family:"Rye",cursive;color:var(--acc-2);font-weight:400}
+
+  /* generic section */
+  section{padding:64px 0}
+  .head{margin-bottom:30px}
+  .head h2{font-size:clamp(30px,4.4vw,46px);margin-top:8px}
+
+  /* about */
+  .about .grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center}
+  .about p{margin:0 0 16px;max-width:52ch}
+  .about img{width:100%;height:100%;min-height:360px;object-fit:cover;border-radius:4px;
+    border:5px solid var(--paper);outline:2px solid var(--line);outline-offset:-7px;
+    box-shadow:0 14px 32px var(--shadow)}
+
+  /* menu ledger */
+  .menu{background:var(--paper);border-top:2px dashed var(--line);border-bottom:2px dashed var(--line)}
+  .ledger{display:grid;grid-template-columns:1fr 1fr;gap:44px 64px}
+  .ledger h3{font-family:"Rye",cursive;font-size:24px;color:var(--acc);
+    margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+  .row{display:flex;align-items:baseline;gap:8px;margin:13px 0}
+  .row .n{font-family:"Fraunces";font-weight:600;font-size:18px;white-space:nowrap}
+  .row .d{flex:1;border-bottom:2px dotted var(--line);transform:translateY(-4px);min-width:14px}
+  .row .p{font-family:"Karla";font-weight:700;color:var(--acc);white-space:nowrap}
+  .row small{display:block;font-size:13px;color:#7a5a44;font-weight:400;font-family:"Karla"}
+  .specials{margin-top:38px;background:var(--green);color:var(--paper);
+    border:2px solid var(--ink);border-radius:4px;padding:22px 26px;
+    display:flex;flex-wrap:wrap;gap:18px 40px;align-items:center;
+    box-shadow:5px 5px 0 var(--ink)}
+  .specials .h{font-family:"Rye",cursive;font-size:20px;color:var(--acc-2)}
+  .specials .it b{font-family:"Fraunces";font-size:22px}
+  .menu .note{margin-top:18px;font-size:13.5px;color:#7a5a44;font-style:italic;font-family:"Fraunces"}
+
+  /* testimonies */
+  .says .quote{max-width:760px;margin:0 auto 42px;text-align:center}
+  .says blockquote{margin:0;font-family:"Fraunces";font-style:italic;
+    font-size:clamp(20px,2.7vw,27px);line-height:1.45}
+  .says blockquote::before{content:"\201C";color:var(--acc-2);font-family:"Rye",cursive;
+    font-style:normal;font-size:1.4em;line-height:0;vertical-align:-.25em;margin-right:.08em}
+  .says cite{display:block;margin-top:16px;font-style:normal;font-family:"Karla";
+    font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--acc)}
+  .says .div{width:54px;height:3px;background:var(--line);margin:0 auto 42px}
+
+  /* photo strip */
+  .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:10px 0 0}
+  .strip img{width:100%;height:230px;object-fit:cover;filter:saturate(1.03)}
+
+  /* visit */
+  .visit .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:46px;align-items:stretch}
+  .visit .info dt{font-family:"Rye",cursive;color:var(--acc);font-size:17px;margin-top:22px}
+  .visit .info dd{margin:6px 0 0;font-size:16px}
+  .visit .info dd a{color:var(--acc);font-weight:700;text-decoration:none}
+  .visit .info dd a:hover{text-decoration:underline}
+  .hours-list{margin:6px 0 0;font-size:15px}
+  .hours-list .open{color:var(--green);font-weight:700}
+  .map{border:5px solid var(--paper);outline:2px solid var(--line);outline-offset:-7px;
+    border-radius:4px;overflow:hidden;box-shadow:0 14px 32px var(--shadow);min-height:380px}
+  .map iframe{display:block;width:100%;height:100%;min-height:380px;border:0;filter:sepia(.12)}
+  .visit .cta{margin-top:8px}
+
+  /* footer */
+  footer{background:var(--ink);color:#e9d9c2;padding:48px 0 40px;text-align:center}
+  footer .fmark{font-family:"Rye",cursive;font-size:26px;color:var(--acc-2)}
+  footer .links{margin:18px 0 24px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  footer .links a{font-family:"Karla";font-weight:700;font-size:13px;text-decoration:none;
+    border:2px solid #5a4233;color:#e9d9c2;padding:8px 16px;border-radius:2px;transition:.15s}
+  footer .links a:hover{border-color:var(--acc-2);color:#fcf6ea}
+  footer .addr{font-size:14px;opacity:.85;line-height:1.7}
+  footer .credit{margin-top:26px;padding-top:20px;border-top:1px solid #4a3528;
+    font-size:12.5px;color:#b39a82}
+  footer .credit a{color:var(--acc-2);text-decoration:none}
+
+  @media(max-width:860px){
+    .hero .grid,.about .grid,.ledger,.visit .grid{grid-template-columns:1fr;gap:32px}
+    .hero-photo img{height:380px}
+    .hero-photo{margin-bottom:14px}
+    .strip{grid-template-columns:1fr 1fr}
+    .about img{min-height:280px}
+  }
+  @media(max-width:520px){
+    .bar .mark small{display:none}
+    .strip{grid-template-columns:1fr}
+    .strip img{height:240px}
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <div class="mark">Las Palmitas <small>Taco Shop · El Centro</small></div>
+    <a class="call" href="tel:+17603709120">Call to Order</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <span class="kicker">Authentic Mexican · El Centro, CA</span>
+        <h1 class="display">Tacos &amp;<br>burritos worth<br>the <em>wait.</em></h1>
+        <p class="sub serif">Carne asada, birria, fish tacos and carne asada fries — made to order, brought to your table.</p>
+        <div class="meta">880 Adams Ave · <b>Open 7&nbsp;AM – 10&nbsp;PM, every day</b></div>
+        <a class="cta" href="tel:+17603709120">Call to Order — (760) 370-9120</a>
+      </div>
+      <div class="hero-photo">
+        <img src="./photos/02.jpg" alt="A plate of street tacos topped with salsa verde, beside carne asada fries and an agua fresca at Las Palmitas Taco Shop 2">
+        <span class="tag">made to order</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLOGAN RIBBON -->
+<div class="ribbon">
+  <div class="wrap">
+    <p>“The key to authentic Mexican food is <b>patience.</b>”</p>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <span class="kicker">Our Kitchen</span>
+        <h2 class="display" style="font-size:clamp(28px,4vw,42px);margin-top:8px">Slow food,<br>made with love</h2>
+        <p class="serif" style="margin-top:18px">At Las Palmitas Taco Shop 2 we cook the unhurried way: nacho chips fried fresh to order, salsas built on the table-side stand, and every plate carried out to you when you dine in. Nothing sits under a lamp waiting.</p>
+        <p>That’s what regulars mean when they call us the best authentic tacos in El Centro. It isn’t fancy — it’s asada, birria, fish tacos and burritos done right, plus the carne asada fries people keep coming back for. Drive-thru when you’re short on time, a clean, easy dining room when you’re not.</p>
+        <p style="margin-bottom:0"><b>Open seven days a week, 7&nbsp;AM to 10&nbsp;PM</b> — breakfast burritos through a late dinner.</p>
+      </div>
+      <img src="./photos/01.jpg" alt="The bright, clean dining room at Las Palmitas Taco Shop 2 with wood floors and dark wood tables">
+    </div>
+  </div>
+</section>
+
+<!-- MENU LEDGER -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">On the Table</span>
+      <h2 class="display">The menu, more or less</h2>
+    </div>
+    <div class="ledger">
+      <div>
+        <h3>Tacos</h3>
+        <div class="row"><span class="n">Carne Asada Taco</span><span class="d"></span><span class="p">market</span></div>
+        <div class="row"><span class="n">Birria Taco<small>tender, super filling — ask and we’ll recommend it</small></span><span class="d"></span><span class="p">market</span></div>
+        <div class="row"><span class="n">Fish Taco<small>fresh-fried, cabbage &amp; pico</small></span><span class="d"></span><span class="p">market</span></div>
+        <div class="row"><span class="n">Pollo / Adobada Taco</span><span class="d"></span><span class="p">market</span></div>
+
+        <h3 style="margin-top:34px">From the Grill</h3>
+        <div class="row"><span class="n">Carne Asada Fries<small>fries, asada, cheese, salsa, crema</small></span><span class="d"></span><span class="p">market</span></div>
+        <div class="row"><span class="n">Nachos<small>chips made fresh to order</small></span><span class="d"></span><span class="p">market</span></div>
+      </div>
+      <div>
+        <h3>Burritos &amp; Plates</h3>
+        <div class="row"><span class="n">Carne Asada Burrito</span><span class="d"></span><span class="p">market</span></div>
+        <div class="row"><span class="n">Breakfast Burrito<small>served from 7 AM</small></span><span class="d"></span><span class="p">market</span></div>
+        <div class="row"><span class="n">Combo Plate<small>rice, beans &amp; your protein</small></span><span class="d"></span><span class="p">market</span></div>
+
+        <h3 style="margin-top:34px">On the Side</h3>
+        <div class="row"><span class="n">Chips &amp; Salsa</span><span class="d"></span><span class="p">$2.25</span></div>
+        <div class="row"><span class="n">Agua Fresca</span><span class="d"></span><span class="p">market</span></div>
+      </div>
+    </div>
+
+    <div class="specials">
+      <span class="h">Taco Days →</span>
+      <span class="it"><b>$1.99</b> tacos · Taco Monday</span>
+      <span class="it"><b>$1.00</b> tacos · Taco Sunday</span>
+    </div>
+    <p class="note">Prices for our specialty plates change with the market and the season — call (760) 370-9120 for today’s full menu and pricing.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="head" style="text-align:center">
+      <span class="kicker">In Their Words</span>
+      <h2 class="display">What people say</h2>
+    </div>
+
+    <div class="quote">
+      <blockquote class="serif">Thee best tacos around in town, hands down in El Centro, no joke — first place for authentic tacos.</blockquote>
+      <cite>Lance F.</cite>
+    </div>
+    <div class="div"></div>
+
+    <div class="quote">
+      <blockquote class="serif">We wanted some authentic Mexican food and we found the right place. The nacho chips were made fresh and to order, and when dining in they bring your food to your table. Food made to order, good service, great tasting food. I will definitely come back.</blockquote>
+      <cite>Nicole J.</cite>
+    </div>
+    <div class="div"></div>
+
+    <div class="quote">
+      <blockquote class="serif">Upon entering you are kindly greeted. They recommended me the birria tacos and — oh my. Super filling, tender and delicious. Please do yourselves a favor and order them.</blockquote>
+      <cite>Carolina V.</cite>
+    </div>
+    <div class="div"></div>
+
+    <div class="quote">
+      <blockquote class="serif">The fish tacos were delish. Dining area was clean, condiment station was clean and stocked. Come in on Sunday — it’s worth it.</blockquote>
+      <cite>Lila M.</cite>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="strip">
+  <img src="./photos/02.jpg" alt="Street tacos with salsa verde and carne asada fries">
+  <img src="./photos/04.jpg" alt="A fresh fish taco with cabbage, pico de gallo and cilantro">
+  <img src="./photos/03.jpg" alt="Food and drinks at Las Palmitas Taco Shop 2">
+</div>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="head">
+      <span class="kicker">Come Eat</span>
+      <h2 class="display">Find us in El Centro</h2>
+    </div>
+    <div class="grid">
+      <div class="info">
+        <dl>
+          <dt>Where</dt>
+          <dd>880 Adams Ave<br>El Centro, CA 92243</dd>
+          <dt>Phone</dt>
+          <dd><a href="tel:+17603709120">(760) 370-9120</a></dd>
+          <dt>Hours</dt>
+          <dd class="hours-list"><span class="open">Open every day · 7:00 AM – 10:00 PM</span><br>Monday through Sunday — dine in, drive-thru &amp; takeout</dd>
+        </dl>
+        <a class="cta" href="tel:+17603709120">Call to Order — (760) 370-9120</a>
+        <p style="margin-top:18px;font-size:14px"><a href="https://maps.google.com/?cid=5751125964623012532" target="_blank" rel="noopener" style="color:var(--acc);font-weight:700;text-decoration:none">View us on Google Maps →</a></p>
+      </div>
+      <div class="map">
+        <iframe src="https://www.google.com/maps?q=880%20Adams%20Ave%2C%20El%20Centro%2C%20CA%2092243&z=15&output=embed" title="Map to Las Palmitas Taco Shop 2, 880 Adams Ave, El Centro CA" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fmark">Las Palmitas Taco Shop 2</div>
+    <div class="links">
+      <a href="tel:+17603709120">Call (760) 370-9120</a>
+      <a href="https://www.google.com/maps?q=880%20Adams%20Ave%2C%20El%20Centro%2C%20CA%2092243&z=15&output=embed" target="_blank" rel="noopener">Get Directions</a>
+      <a href="https://maps.google.com/?cid=5751125964623012532" target="_blank" rel="noopener">Google Business</a>
+    </div>
+    <div class="addr">880 Adams Ave, El Centro, CA 92243 · Open daily 7 AM – 10 PM</div>
+    <div class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,458 @@
+<!-- coffee · classic-editorial · hero-layout 1 · svc-layout 2 · Playfair Display/Source Sans 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Ring Cafe — Downtown Santa Ana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --acc:#b91c1c;
+    --bg:#faf7f2;
+    --ink:#1a1208;
+    --muted:#6b5c4a;
+    --rule:#d9cfc3;
+    --nav-h:64px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+  body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:18px}
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-decoration:none}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:100;
+    height:var(--nav-h);
+    background:var(--bg);
+    border-bottom:1px solid var(--rule);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 clamp(1rem,4vw,3rem);
+  }
+  .brand{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:600;letter-spacing:0.02em;color:var(--ink)}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{font-size:0.85rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);transition:color 0.2s}
+  .nav-links a:hover{color:var(--acc)}
+  .nav-cta{
+    font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+    background:var(--acc);color:#fff;
+    padding:0.45rem 1.2rem;
+    transition:background 0.2s,transform 0.15s;
+  }
+  .nav-cta:hover{background:#991515;transform:translateY(-1px)}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+  .hamburger span{display:block;width:22px;height:2px;background:var(--ink);transition:transform 0.25s,opacity 0.25s}
+  @media(max-width:700px){
+    .nav-links,.nav-cta{display:none}
+    .hamburger{display:flex}
+  }
+
+  /* HERO — layout 1: left image panel */
+  .hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:calc(100vh - var(--nav-h));
+  }
+  .hero-image{
+    position:relative;overflow:hidden;
+  }
+  .hero-image img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform 8s ease;
+  }
+  .hero-image:hover img{transform:scale(1.04)}
+  .hero-image::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(26,18,8,0.18) 0%,rgba(26,18,8,0) 60%);
+  }
+  .hero-text{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(2.5rem,6vw,5rem) clamp(2rem,5vw,4.5rem);
+    background:var(--bg);
+  }
+  .hero-eyebrow{
+    font-size:0.78rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--acc);margin-bottom:1.25rem;
+  }
+  .hero-text h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(2.4rem,5.5vw,4rem);
+    line-height:1.12;font-weight:700;
+    color:var(--ink);margin-bottom:1.5rem;
+  }
+  .hero-text h1 em{font-style:italic;color:var(--acc)}
+  .hero-tagline{
+    font-size:1.1rem;font-weight:300;color:var(--muted);
+    max-width:38ch;margin-bottom:2.5rem;line-height:1.7;
+  }
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+  .btn-primary{
+    display:inline-block;
+    background:var(--acc);color:#fff;
+    font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+    padding:0.85rem 2rem;
+    transition:background 0.2s,transform 0.15s;
+  }
+  .btn-primary:hover{background:#991515;transform:translateY(-2px)}
+  .btn-ghost{
+    display:inline-block;
+    border:1.5px solid var(--acc);color:var(--acc);
+    font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+    padding:0.85rem 2rem;
+    transition:background 0.2s,color 0.2s,transform 0.15s;
+  }
+  .btn-ghost:hover{background:var(--acc);color:#fff;transform:translateY(-2px)}
+  @media(max-width:800px){
+    .hero{grid-template-columns:1fr}
+    .hero-image{min-height:260px}
+  }
+  @media(max-width:480px){
+    .hero-image{min-height:200px}
+    .hero-text h1{font-size:2rem}
+  }
+
+  /* SECTION WRAPPER */
+  section{padding:clamp(4rem,8vw,7rem) clamp(1.25rem,5vw,3rem)}
+  .container{max-width:1080px;margin:0 auto}
+  .section-label{
+    font-size:0.75rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--acc);margin-bottom:1rem;display:block;
+  }
+  .section-head{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.7rem,3.5vw,2.6rem);
+    font-weight:700;line-height:1.2;color:var(--ink);
+    margin-bottom:1.5rem;
+  }
+  .divider{
+    width:3rem;height:2px;background:var(--acc);
+    margin-bottom:2.5rem;
+  }
+
+  /* ABOUT */
+  #about{background:var(--bg)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+  .about-photos img{width:100%;height:200px;object-fit:cover}
+  .about-photos img:first-child{grid-column:span 2;height:260px}
+  .about-body p{font-size:1.05rem;font-weight:300;color:var(--muted);line-height:1.8;margin-bottom:1.25rem}
+  .about-body p:last-of-type{margin-bottom:0}
+  @media(max-width:750px){
+    .about-grid{grid-template-columns:1fr}
+    .about-photos{order:-1}
+  }
+
+  /* MENU — svc-layout 2: numbered/stacked list */
+  #menu{background:#f0ebe2}
+  .menu-intro{max-width:55ch;margin-bottom:3.5rem}
+  .menu-intro p{font-size:1rem;font-weight:300;color:var(--muted);line-height:1.8}
+  .menu-list{counter-reset:menu-counter;list-style:none;display:flex;flex-direction:column;gap:0}
+  .menu-item{
+    counter-increment:menu-counter;
+    display:grid;grid-template-columns:3.5rem 1fr auto;
+    align-items:baseline;gap:0 1.5rem;
+    padding:1.5rem 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .menu-item:first-child{border-top:1px solid var(--rule)}
+  .menu-num{
+    font-family:'Playfair Display',serif;
+    font-size:1.6rem;font-weight:700;font-style:italic;
+    color:var(--acc);line-height:1;
+    align-self:start;padding-top:0.1rem;
+  }
+  .menu-content{}
+  .menu-name{
+    font-family:'Playfair Display',serif;
+    font-size:1.15rem;font-weight:600;color:var(--ink);
+    margin-bottom:0.25rem;line-height:1.25;
+  }
+  .menu-desc{font-size:0.9rem;font-weight:300;color:var(--muted);line-height:1.6}
+  .menu-tag{
+    font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--acc);border:1px solid var(--acc);
+    padding:0.15rem 0.55rem;white-space:nowrap;align-self:start;margin-top:0.2rem;
+  }
+  @media(max-width:550px){
+    .menu-item{grid-template-columns:2.5rem 1fr;grid-template-rows:auto auto}
+    .menu-tag{grid-column:2;margin-top:0.5rem}
+  }
+
+  /* PHOTO STRIP */
+  .photo-strip{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    height:clamp(160px,28vw,340px);
+  }
+  .photo-strip img{width:100%;height:100%;object-fit:cover;transition:opacity 0.3s}
+  .photo-strip img:hover{opacity:0.88}
+  @media(max-width:550px){
+    .photo-strip{grid-template-columns:1fr 1fr;height:200px}
+    .photo-strip img:last-child{display:none}
+  }
+
+  /* TESTIMONIES */
+  #testimonies{background:var(--bg)}
+  .testimony-stack{display:flex;flex-direction:column;gap:2.5rem;max-width:700px}
+  .testimony{
+    border-left:3px solid var(--acc);
+    padding-left:1.75rem;
+  }
+  .testimony blockquote{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1rem,2vw,1.18rem);
+    font-style:italic;font-weight:400;
+    color:var(--ink);line-height:1.75;
+    margin-bottom:0.9rem;
+  }
+  .testimony cite{
+    font-size:0.8rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--acc);font-style:normal;
+  }
+
+  /* HOURS & LOCATION */
+  #visit{background:#f0ebe2}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
+  .hours-table{width:100%;border-collapse:collapse;margin-top:0.5rem}
+  .hours-table tr{border-bottom:1px solid var(--rule)}
+  .hours-table tr:last-child{border-bottom:none}
+  .hours-table td{padding:0.7rem 0;font-size:0.95rem}
+  .hours-table td:first-child{font-weight:600;color:var(--ink);width:40%}
+  .hours-table td:last-child{color:var(--muted)}
+  .closed{color:var(--acc)!important;font-weight:600!important}
+  .map-wrap{margin-top:1.5rem;position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+  .map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+  @media(max-width:750px){
+    .visit-grid{grid-template-columns:1fr}
+  }
+
+  /* CONTACT CTA */
+  #contact{background:var(--ink);color:#fff;text-align:center;padding:clamp(4rem,8vw,6rem) 1.25rem}
+  #contact .section-label{color:rgba(255,255,255,0.55)}
+  #contact .section-head{color:#fff}
+  #contact .divider{background:var(--acc);margin-left:auto;margin-right:auto}
+  #contact p{font-size:1rem;font-weight:300;color:rgba(255,255,255,0.72);max-width:48ch;margin:0 auto 2.5rem;line-height:1.8}
+  #contact .btn-primary{background:var(--acc)}
+  #contact .btn-primary:hover{background:#c02222}
+
+  /* FOOTER */
+  footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);padding:2rem clamp(1.25rem,5vw,3rem)}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.25rem}
+  .footer-brand{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:#fff}
+  .footer-social{display:flex;gap:1.25rem}
+  .footer-social a{font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);transition:color 0.2s}
+  .footer-social a:hover{color:#fff}
+  .footer-credit{width:100%;text-align:center;font-size:0.78rem;color:rgba(255,255,255,0.35);border-top:1px solid rgba(255,255,255,0.08);padding-top:1.25rem;margin-top:0.5rem}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="brand">El Ring Cafe</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a class="nav-cta btn-primary" href="#visit">Get Directions</a>
+  <button class="hamburger" aria-label="Open menu" onclick="this.closest('nav').querySelector('.nav-links').style.display='flex';this.style.display='none'">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO — left image, right text -->
+<section id="hero" style="padding:0">
+  <div class="hero">
+    <div class="hero-image">
+      <img src="./photos/01.jpg" alt="El Ring Cafe interior" loading="eager">
+    </div>
+    <div class="hero-text">
+      <span class="hero-eyebrow">Downtown Santa Ana · Est. in DTSA</span>
+      <h1>Where Coffee <em>Meets</em> Culture</h1>
+      <p class="hero-tagline">Signature lattes, inventive breakfast, and a toppings bar — a neighborhood original worth making a ritual of.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#visit">Get Directions</a>
+        <a class="btn-ghost" href="#menu">Explore the Menu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-body">
+      <span class="section-label">Our Story</span>
+      <h2 class="section-head">A New Kind of Gathering Place in DTSA</h2>
+      <div class="divider"></div>
+      <p>El Ring Cafe arrived in Downtown Santa Ana as something genuinely different — a coffee house with a culinary identity. The espresso program is thoughtful, the latte menu leans creative, and the kitchen goes well beyond a pastry case.</p>
+      <p>From the carne asada chilaquiles with a customizable toppings bar to the celebrated banana latte and honey strawberry matcha, every item is made with intention. The space itself invites you to stay a little longer.</p>
+      <p>Open Tuesday through Sunday, mornings only. Come early, order curiously.</p>
+    </div>
+    <div class="about-photos">
+      <img src="./photos/02.jpg" alt="El Ring Cafe coffee drinks" loading="lazy">
+      <img src="./photos/03.jpg" alt="El Ring Cafe food" loading="lazy">
+      <img src="./photos/04.jpg" alt="El Ring Cafe interior detail" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- MENU — numbered/stacked list -->
+<section id="menu">
+  <div class="container">
+    <span class="section-label">What We Make</span>
+    <h2 class="section-head">The Menu</h2>
+    <div class="divider"></div>
+    <div class="menu-intro">
+      <p>Inventive lattes brewed from quality beans, a full breakfast lineup with Mexican-inspired soul, and a toppings bar so you build your plate exactly right. Every item earns its place.</p>
+    </div>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <span class="menu-num">01</span>
+        <div class="menu-content">
+          <div class="menu-name">Banana Latte</div>
+          <div class="menu-desc">Rich espresso with real banana flavor and cold foam — our most-talked-about drink. A delicate shade and a deeply satisfying sip.</div>
+        </div>
+        <span class="menu-tag">Signature</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-num">02</span>
+        <div class="menu-content">
+          <div class="menu-name">Honey Strawberry Matcha</div>
+          <div class="menu-desc">Ceremonial-grade matcha layered with fresh strawberry and local honey. Bright, floral, and genuinely good.</div>
+        </div>
+        <span class="menu-tag">Matcha</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-num">03</span>
+        <div class="menu-content">
+          <div class="menu-name">Flan Latte</div>
+          <div class="menu-desc">The taste of a classic Mexican flan, reimagined as a latte. Caramel-forward, lightly sweet, not-too-much.</div>
+        </div>
+        <span class="menu-tag">Seasonal</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-num">04</span>
+        <div class="menu-content">
+          <div class="menu-name">Carne Asada Chilaquiles</div>
+          <div class="menu-desc">Crispy tortilla chips, house salsa, carne asada, and a toppings bar where you finish the plate your way. Super flavorful.</div>
+        </div>
+        <span class="menu-tag">Kitchen</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-num">05</span>
+        <div class="menu-content">
+          <div class="menu-name">Birria Grilled Cheese</div>
+          <div class="menu-desc">Slow-braised birria tucked inside a perfectly-pressed, deeply savory grilled cheese. A concept that delivers.</div>
+        </div>
+        <span class="menu-tag">Kitchen</span>
+      </li>
+      <li class="menu-item">
+        <span class="menu-num">06</span>
+        <div class="menu-content">
+          <div class="menu-name">Breakfast Burritos</div>
+          <div class="menu-desc">Hearty, well-seasoned, and generous. Everything you want from a breakfast burrito, done right.</div>
+        </div>
+        <span class="menu-tag">Kitchen</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <img src="./photos/05.jpg" alt="El Ring Cafe ambiance" loading="lazy">
+  <img src="./photos/06.jpg" alt="El Ring Cafe drinks detail" loading="lazy">
+  <img src="./photos/02.jpg" alt="El Ring Cafe coffee close-up" loading="lazy">
+</div>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="container">
+    <span class="section-label">Customer Testimonies</span>
+    <h2 class="section-head">In Their Words</h2>
+    <div class="divider"></div>
+    <div class="testimony-stack">
+      <div class="testimony">
+        <blockquote>"That might be the best banana latte I've had in a long time. The carne asada chilaquiles were super flavorful — and the toppings bar means you can customize your plate exactly how you like it. Definitely worth a visit."</blockquote>
+        <cite>— Daniel G.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"Such a cool and original concept. The coffee is supreme and the food is from another world. The birria grilled cheese is amazing."</blockquote>
+        <cite>— Jermaine S.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"Super yummy lattes! I am really picky about iced lattes but I really enjoy the banana latte — I love the taste of the coffee beans and the cold foam."</blockquote>
+        <cite>— Karla H.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"Lattes are amazing. Not too sweet. Service is excellent and fast."</blockquote>
+        <cite>— Eòsaph U.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"I had the flan latte — it was great. Their breakfast burritos are also super yummy. I can't wait to come back and try more drinks."</blockquote>
+        <cite>— Andra D.</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section id="visit">
+  <div class="container">
+    <span class="section-label">Find Us</span>
+    <h2 class="section-head">Hours &amp; Location</h2>
+    <div class="divider"></div>
+    <div class="visit-grid">
+      <div>
+        <table class="hours-table">
+          <tr><td>Monday</td><td class="closed">Closed</td></tr>
+          <tr><td>Tuesday</td><td>8:00 AM – 2:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>8:00 AM – 2:00 PM</td></tr>
+          <tr><td>Thursday</td><td>8:00 AM – 2:00 PM</td></tr>
+          <tr><td>Friday</td><td>8:00 AM – 2:00 PM</td></tr>
+          <tr><td>Saturday</td><td>9:00 AM – 3:00 PM</td></tr>
+          <tr><td>Sunday</td><td>9:00 AM – 3:00 PM</td></tr>
+        </table>
+        <p style="margin-top:1.5rem;font-size:0.9rem;color:var(--muted)">515 N Main St<br>Santa Ana, CA 92701</p>
+        <a class="btn-primary" href="https://www.google.com/maps?q=515+N+Main+St,+Santa+Ana,+CA+92701" target="_blank" rel="noopener" style="display:inline-block;margin-top:1.5rem">Get Directions</a>
+      </div>
+      <div>
+        <div class="map-wrap">
+          <iframe src="https://www.google.com/maps?q=515+N+Main+St,+Santa+Ana,+CA+92701&z=15&output=embed" allowfullscreen loading="lazy" title="El Ring Cafe location map"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section id="contact">
+  <div class="container">
+    <span class="section-label">Come In</span>
+    <h2 class="section-head">Ready for a Coffee Unlike Anywhere Else?</h2>
+    <div class="divider"></div>
+    <p>Find us at 515 N Main St in Downtown Santa Ana, Tuesday through Sunday. No reservations needed — just walk in and order something you've never tried before.</p>
+    <a class="btn-primary" href="https://www.google.com/maps?q=515+N+Main+St,+Santa+Ana,+CA+92701" target="_blank" rel="noopener">Get Directions</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand">El Ring Cafe</span>
+    <div class="footer-social">
+      <a href="https://maps.google.com/?cid=2899420073776438838&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google</a>
+    </div>
+    <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

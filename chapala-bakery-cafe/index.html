@@ -1,0 +1,614 @@
+<!-- bakery · classic-editorial · hero-layout 1 · svc-layout 2 · Playfair Display/Source Sans 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapala Bakery & Cafe — Whittier, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --acc:#b91c1c;
+      --bg:#faf7f2;
+      --ink:#1a1410;
+      --muted:#6b5e52;
+      --rule:#e2d9cc;
+      --nav-h:64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-padding-top: var(--nav-h);
+      scroll-behavior: smooth;
+    }
+
+    body{font-family:'Source Sans 3',sans-serif; background: var(--bg); color: var(--ink); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased;}
+
+    .brand{font-family:'Playfair Display',serif; letter-spacing: 0.01em;}
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+    }
+
+    .nav-logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      line-height: 1.2;
+    }
+    .nav-logo span { display: block; font-size: 0.65rem; font-family: 'Source Sans 3', sans-serif; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--acc); }
+
+    .nav-cta {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--acc);
+      border: 1.5px solid var(--acc);
+      padding: 0.45rem 1.1rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--acc); color: #fff; }
+
+    /* hamburger */
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span {
+      display: block; width: 22px; height: 1.5px; background: var(--ink); margin: 5px 0;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+
+    /* ── HERO — layout 1: left image ── */
+    #hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 88vh;
+    }
+    .hero-image {
+      order: 0;
+      overflow: hidden;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-text {
+      order: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 7vw, 5rem) clamp(2rem, 6vw, 4.5rem);
+      background: var(--bg);
+    }
+    .hero-overline {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--acc);
+      font-weight: 600;
+      margin-bottom: 1.1rem;
+    }
+    .hero-text h1 {
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+    }
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--acc);
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 36ch;
+      margin-bottom: 2.2rem;
+      line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #991515; }
+    .btn-ghost {
+      display: inline-block;
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      border: 1.5px solid var(--rule);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--ink); }
+
+    /* ── SECTION SHELLS ── */
+    section { padding: clamp(3.5rem, 8vw, 6.5rem) clamp(1.25rem, 6vw, 3rem); max-width: 1200px; margin: 0 auto; }
+    .section-rule { width: 100%; height: 1px; background: var(--rule); max-width: 1200px; margin: 0 auto; }
+
+    .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--acc);
+      margin-bottom: 0.9rem;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.18;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    h2 em { font-style: italic; }
+
+    /* ── ABOUT ── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: center;
+    }
+    .about-photos {
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 0.9rem;
+    }
+    .about-photos-top { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+    .about-photos-top img, .about-photos-btm img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+    .about-copy p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 1.1rem;
+      line-height: 1.75;
+    }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .about-copy strong { color: var(--ink); font-weight: 600; }
+
+    /* ── MENU / SPECIALTIES — numbered stacked list (layout 2) ── */
+    #menu { max-width: 1200px; }
+    .menu-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: start;
+    }
+    .menu-aside img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+    .menu-list { list-style: none; }
+    .menu-list li {
+      display: grid;
+      grid-template-columns: 2.8rem 1fr;
+      gap: 1rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .menu-list li:first-child { border-top: 1px solid var(--rule); }
+    .menu-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--acc);
+      line-height: 1;
+      padding-top: 0.1rem;
+    }
+    .menu-item-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+    .menu-item-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies { background: var(--ink); color: var(--bg); max-width: 100%; padding: 0; }
+    .testimonies-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(3.5rem, 8vw, 6.5rem) clamp(1.25rem, 6vw, 3rem);
+    }
+    #testimonies .section-tag { color: #e2b9a0; }
+    #testimonies h2 { color: var(--bg); margin-bottom: 3rem; }
+    .testimony-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .testimony-card {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 1.8rem;
+    }
+    .testimony-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.7;
+      color: #e8dfd5;
+      margin-bottom: 1.4rem;
+    }
+    .testimony-author {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--acc);
+    }
+    .testimony-author::before { content: '— '; }
+
+    /* ── HOURS & LOCATION ── */
+    #visit {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: start;
+    }
+    .hours-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      color: var(--ink);
+    }
+    .hours-table { width: 100%; border-collapse: collapse; }
+    .hours-table tr { border-bottom: 1px solid var(--rule); }
+    .hours-table td { padding: 0.6rem 0; font-size: 0.92rem; }
+    .hours-table td:first-child { color: var(--muted); padding-right: 1.5rem; }
+    .hours-table td:last-child { font-weight: 600; color: var(--ink); }
+    .contact-block { margin-top: 2.2rem; }
+    .contact-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.9rem;
+      color: var(--ink);
+    }
+    .contact-line {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+    .contact-line a { color: var(--acc); text-decoration: none; font-weight: 600; }
+    .contact-line a:hover { text-decoration: underline; }
+
+    .cta-visit {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: var(--acc);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .cta-visit:hover { background: #991515; }
+
+    .map-wrap { position: relative; padding-bottom: 65%; height: 0; overflow: hidden; }
+    .map-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #110e0b;
+      color: #9a8e83;
+      padding: clamp(2.5rem, 5vw, 3.5rem) clamp(1.25rem, 6vw, 3rem);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.5rem;
+    }
+    .footer-left .brand { font-size: 1.1rem; color: #f0e8df; }
+    .footer-left p { font-size: 0.82rem; margin-top: 0.4rem; }
+    .footer-links { display: flex; gap: 1.4rem; }
+    .footer-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #9a8e83;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #f0e8df; }
+    .footer-credit { font-size: 0.75rem; color: #5c524c; margin-top: 1.5rem; }
+    .footer-credit a { color: #7a6e67; text-decoration: none; }
+    .footer-credit a:hover { color: #9a8e83; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-image { height: 55vw; min-height: 300px; order: 0; }
+      .hero-text { order: 1; }
+      #about { grid-template-columns: 1fr; }
+      .about-photos { order: -1; }
+      .menu-inner { grid-template-columns: 1fr; }
+      .menu-aside { display: none; }
+      .testimony-grid { grid-template-columns: 1fr; }
+      #visit { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: block; }
+      nav.open .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: var(--bg);
+        padding: 1.5rem 1.5rem 2rem;
+        gap: 1.2rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      .about-photos-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="main-nav" aria-label="Main navigation">
+    <a href="#hero" class="nav-logo brand">
+      Chapala Bakery &amp; Cafe
+      <span>Whittier, CA</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Our Baked Goods</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a href="tel:+15626321182" class="nav-cta">Call Us</a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="this.closest('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO — left image, right text -->
+  <div id="hero">
+    <div class="hero-image">
+      <img src="./photos/01.jpg" alt="Fresh pan dulce at Chapala Bakery & Cafe" />
+    </div>
+    <div class="hero-text">
+      <p class="hero-overline">Est. in the Heart of Whittier</p>
+      <h1 class="brand">Pan Dulce,<br /><em>freshly baked</em><br />every morning.</h1>
+      <p class="hero-desc">Chapala Bakery &amp; Cafe brings Whittier the warm, sweet flavors of authentic Mexican baked goods — crafted fresh daily and priced so everyone can enjoy them.</p>
+      <div class="hero-actions">
+        <a href="tel:+15626321182" class="btn-primary">Call Now</a>
+        <a href="#visit" class="btn-ghost">Get Directions</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-rule"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-photos">
+      <div class="about-photos-top">
+        <img src="./photos/02.jpg" alt="Bakery display case" />
+        <img src="./photos/03.jpg" alt="Pan dulce variety" />
+      </div>
+      <div class="about-photos-btm">
+        <img src="./photos/04.jpg" alt="Inside Chapala Bakery & Cafe" />
+      </div>
+    </div>
+    <div class="about-copy">
+      <p class="section-tag">Our Story</p>
+      <h2>A neighborhood<br /><em>bakery with roots.</em></h2>
+      <p>Chapala Bakery &amp; Cafe has been a beloved corner of Greenleaf Avenue in Whittier — the kind of place locals return to every morning for warm concha, crispy churros, and a friendly face behind the counter.</p>
+      <p>We bake fresh every day, keeping prices <strong>honest and accessible</strong> for the whole community. Whether you're grabbing a dozen conchas on your way to work or settling in with a coffee, you're always welcome here.</p>
+      <p>Open <strong>7 days a week, 6 AM to 9 PM</strong> — so there's always time for something sweet.</p>
+    </div>
+  </section>
+
+  <div class="section-rule"></div>
+
+  <!-- MENU — numbered stacked list (layout 2) -->
+  <section id="menu">
+    <div class="menu-inner">
+      <div class="menu-aside">
+        <img src="./photos/05.jpg" alt="Freshly baked Mexican pastries" />
+      </div>
+      <div>
+        <p class="section-tag">What We Bake</p>
+        <h2>Our Baked Goods<br />&amp; <em>Cafe Favorites</em></h2>
+        <ul class="menu-list">
+          <li>
+            <span class="menu-num">01</span>
+            <div>
+              <p class="menu-item-title">Pan Dulce</p>
+              <p class="menu-item-desc">The heart of our bakery. Conchas, cuernos, polvorones, and more — baked fresh each morning in every flavor and shape traditional Mexican pastry demands.</p>
+            </div>
+          </li>
+          <li>
+            <span class="menu-num">02</span>
+            <div>
+              <p class="menu-item-title">Sweet Breads &amp; Rolls</p>
+              <p class="menu-item-desc">From soft bolillos to rich semitas, our bread selection covers the full range of Mexican bakery classics — all at truly affordable prices.</p>
+            </div>
+          </li>
+          <li>
+            <span class="menu-num">03</span>
+            <div>
+              <p class="menu-item-title">Cakes &amp; Pastries</p>
+              <p class="menu-item-desc">Tres leches, polvorones, empanadas dulces — rotating daily specials that keep our regulars surprised and coming back for more.</p>
+            </div>
+          </li>
+          <li>
+            <span class="menu-num">04</span>
+            <div>
+              <p class="menu-item-title">Cafe Drinks</p>
+              <p class="menu-item-desc">Pair your pan dulce with a hot cup of coffee or café de olla — the perfect morning ritual, served daily from open to close.</p>
+            </div>
+          </li>
+          <li>
+            <span class="menu-num">05</span>
+            <div>
+              <p class="menu-item-title">Box Orders</p>
+              <p class="menu-item-desc">Feeding a crowd? Pick a mix of your favorites by the dozen — perfect for office mornings, family gatherings, or any occasion worth celebrating.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <div id="testimonies">
+    <div class="testimonies-inner">
+      <p class="section-tag">In Their Words</p>
+      <h2>Customer Testimonies</h2>
+      <div class="testimony-grid">
+        <div class="testimony-card">
+          <p class="testimony-quote">"Love Mexico sweet bread, there always nice and fresh and affordable prices. The workers are very nice and polite."</p>
+          <p class="testimony-author">Richard L.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">"Delicious fresh Mexican baked goods in the heart of Whittier. Highly recommend a visit!"</p>
+          <p class="testimony-author">Michelle V.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">"Pan Dulce is delicious, staff very friendly I tried all kinds of Pan."</p>
+          <p class="testimony-author">Fer F.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VISIT -->
+  <section id="visit">
+    <div>
+      <p class="section-tag">Come Find Us</p>
+      <h2>Hours &amp; <em>Location</em></h2>
+      <div class="hours-block">
+        <h3>Hours</h3>
+        <table class="hours-table">
+          <tr><td>Monday</td><td>6:00 AM – 9:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>6:00 AM – 9:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>6:00 AM – 9:00 PM</td></tr>
+          <tr><td>Thursday</td><td>6:00 AM – 9:00 PM</td></tr>
+          <tr><td>Friday</td><td>6:00 AM – 9:00 PM</td></tr>
+          <tr><td>Saturday</td><td>6:00 AM – 9:00 PM</td></tr>
+          <tr><td>Sunday</td><td>6:00 AM – 9:00 PM</td></tr>
+        </table>
+      </div>
+      <div class="contact-block">
+        <h3>Contact &amp; Find Us</h3>
+        <p class="contact-line">7303 Greenleaf Ave, Whittier, CA 90602</p>
+        <p class="contact-line"><a href="tel:+15626321182">(562) 632-1182</a></p>
+        <p class="contact-line">
+          <a href="https://maps.google.com/?cid=12013833702807359825&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">View on Google Business ↗</a>
+        </p>
+        <a href="https://www.google.com/maps?q=7303+Greenleaf+Ave,+Whittier,+CA+90602" target="_blank" rel="noopener" class="cta-visit">Get Directions</a>
+      </div>
+    </div>
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps?q=7303+Greenleaf+Ave,+Whittier,+CA+90602&z=15&output=embed"
+        allowfullscreen
+        loading="lazy"
+        title="Chapala Bakery & Cafe on Google Maps"
+      ></iframe>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);max-width:100%;overflow:hidden;">
+    <img src="./photos/06.jpg" alt="Chapala Bakery exterior" style="width:100%;aspect-ratio:4/3;object-fit:cover;" />
+    <img src="./photos/01.jpg" alt="Pan dulce display" style="width:100%;aspect-ratio:4/3;object-fit:cover;" />
+    <img src="./photos/03.jpg" alt="Fresh baked goods" style="width:100%;aspect-ratio:4/3;object-fit:cover;" />
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="brand">Chapala Bakery &amp; Cafe</p>
+        <p>7303 Greenleaf Ave, Whittier, CA 90602</p>
+        <p><a href="tel:+15626321182" style="color:#9a8e83;">(562) 632-1182</a></p>
+      </div>
+      <div>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#menu">Menu</a>
+          <a href="#visit">Visit</a>
+          <a href="https://maps.google.com/?cid=12013833702807359825&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1200px;margin:1.5rem auto 0;padding:0 clamp(1.25rem,6vw,3rem);border-top:1px solid #2a2320;padding-top:1.25rem;">
+      <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>

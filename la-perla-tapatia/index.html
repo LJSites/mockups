@@ -1,0 +1,450 @@
+<!--
+  La Perla Tapatia — single-page mockup
+  Flavor / archetype: talavera-tile tapatia kitchen (Guadalajara-blue ceramic, warm cream paper,
+    market-+-buffet-+-panaderia family spot). Distinct from the other Mexican site in this batch:
+    cool talavera cyan on cream, DM Serif Display headlines, editorial magazine grid (NOT a centered
+    hero-overlay).
+  hero-layout: magazine-spread  (left editorial column of type, right full-bleed storefront photo,
+    talavera tile-strip seam between them)
+  service-layout: 2col-rows  (alternating photo / text rows, no card grid, no circular icons)
+  Palette: --acc #0891b2 (talavera cyan), --bg #fffdf5 (warm cream)
+  Display: DM Serif Display | Text: Inter
+  Animation: none (intentional — static, print-like)
+  Map: keyless google.com/maps?q=...&output=embed. Testimonies static, "First L." only, no scores.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>La Perla Tapatia — Authentic Mexican Food, Market &amp; Panadería · Oceanside</title>
+<meta name="description" content="La Perla Tapatia in Oceanside, CA — authentic Mexican plates, a buffet-style kitchen, fresh pan dulce and a Mexican market, all in one. Huge portions, green salsa, dogs welcome on the patio. Open 7am–10pm daily." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --acc:#0891b2;        /* talavera cyan */
+    --acc-deep:#075f74;
+    --bg:#fffdf5;          /* warm cream */
+    --ink:#1f2421;
+    --ink-soft:#5c635d;
+    --line:#e7e0cf;
+    --tile:#0891b2;
+    --marigold:#e0902f;    /* secondary warm accent, sampled from food/patio */
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    font-family:"Inter",system-ui,sans-serif;
+    background:var(--bg);color:var(--ink);
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:"DM Serif Display",Georgia,serif;font-weight:400;line-height:1.04;letter-spacing:.2px}
+  a{color:inherit;text-decoration:none}
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+  .eyebrow{font-family:"Inter";font-weight:600;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--acc)}
+
+  /* ---- talavera tile strip (pure CSS, repeated ornament) ---- */
+  .tilestrip{
+    height:18px;width:100%;
+    background:
+      repeating-linear-gradient(45deg,var(--acc) 0 9px,#fff 9px 18px,var(--marigold) 18px 27px,#fff 27px 36px);
+    background-size:36px 36px;
+    opacity:.92;
+  }
+
+  /* ---- NAV ---- */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(255,253,245,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    display:flex;align-items:center;
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{display:flex;align-items:baseline;gap:.55rem}
+  .brand b{font-family:"DM Serif Display",serif;font-weight:400;font-size:1.32rem;letter-spacing:.3px}
+  .brand span{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);font-weight:600}
+  .navlinks{display:flex;gap:1.9rem;align-items:center}
+  .navlinks a{font-size:.83rem;font-weight:500;color:var(--ink-soft);transition:color .15s}
+  .navlinks a:hover{color:var(--acc)}
+  .navcta{
+    background:var(--acc);color:#fff;padding:.5rem 1.05rem;border-radius:2px;
+    font-size:.82rem;font-weight:600;letter-spacing:.02em;transition:background .15s;
+  }
+  .navcta:hover{background:var(--acc-deep)}
+  @media(max-width:820px){.navlinks a:not(.navcta){display:none}}
+
+  /* ---- HERO : magazine spread ---- */
+  .hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(86vh - var(--nav-h))}
+  .hero-copy{padding:clamp(36px,6vw,76px) clamp(22px,5vw,68px);display:flex;flex-direction:column;justify-content:center;position:relative}
+  .hero-copy .est{font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--ink-soft);font-weight:600;margin-bottom:1.2rem}
+  .hero-copy h1{font-size:clamp(2.7rem,5.6vw,4.6rem)}
+  .hero-copy h1 em{font-style:italic;color:var(--acc)}
+  .hero-copy .lede{margin-top:1.5rem;font-size:1.06rem;color:var(--ink-soft);max-width:30ch}
+  .hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.7rem}
+  .hero-tags span{font-size:.72rem;font-weight:600;letter-spacing:.04em;border:1px solid var(--line);color:var(--ink-soft);padding:.32rem .7rem;border-radius:999px;background:#fff}
+  .hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2.1rem}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.95rem;padding:.85rem 1.5rem;border-radius:2px;transition:transform .12s,background .15s,box-shadow .15s}
+  .btn-primary{background:var(--acc);color:#fff;box-shadow:0 1px 0 var(--acc-deep)}
+  .btn-primary:hover{background:var(--acc-deep);transform:translateY(-1px)}
+  .btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--bg)}
+  .hero-photo{position:relative;border-left:6px solid var(--acc)}
+  .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.18))}
+  .hero-photo .credit{position:absolute;left:0;bottom:0;z-index:2;background:var(--acc);color:#fff;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;padding:.45rem .9rem}
+  @media(max-width:860px){
+    .hero{grid-template-columns:1fr;min-height:unset}
+    .hero-photo{height:46vh;min-height:300px;border-left:none;border-top:6px solid var(--acc);order:-1}
+    .hero-copy{padding:42px 22px 48px}
+  }
+
+  /* ---- marquee fact bar ---- */
+  .factbar{background:var(--acc-deep);color:#eafafd}
+  .factbar .wrap{display:flex;flex-wrap:wrap;gap:1rem 2.4rem;justify-content:center;padding:.9rem 22px;font-size:.82rem;letter-spacing:.04em}
+  .factbar b{font-family:"DM Serif Display",serif;font-weight:400;color:#fff;font-size:1.02rem;margin-right:.4rem}
+
+  /* ---- SECTION shell ---- */
+  section{padding:clamp(56px,8vw,104px) 0}
+  .sec-head{max-width:46ch;margin-bottom:clamp(34px,5vw,56px)}
+  .sec-head h2{font-size:clamp(2rem,4vw,3rem);margin-top:.5rem}
+  .sec-head p{margin-top:1rem;color:var(--ink-soft);font-size:1.04rem}
+
+  /* ---- ABOUT ---- */
+  #about{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,64px);align-items:center}
+  .about-grid .body p{margin-bottom:1.05rem;color:var(--ink-soft)}
+  .about-grid .body p:first-of-type{font-size:1.18rem;color:var(--ink);line-height:1.55}
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:200px 200px;gap:12px}
+  .about-photos figure{position:relative;overflow:hidden;border:1px solid var(--line)}
+  .about-photos figure:first-child{grid-column:1 / -1;grid-row:1}
+  @media(max-width:840px){.about-grid{grid-template-columns:1fr}.about-photos{grid-template-rows:180px 160px}}
+
+  /* ---- MENU : 2col alternating rows ---- */
+  .menu-rows{display:flex;flex-direction:column;gap:clamp(20px,3vw,30px)}
+  .mrow{display:grid;grid-template-columns:0.92fr 1.08fr;gap:clamp(22px,4vw,52px);align-items:center}
+  .mrow.flip .m-media{order:2}
+  .m-media{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--line);box-shadow:0 14px 30px -22px rgba(8,145,178,.55)}
+  .m-media .num{position:absolute;top:0;left:0;background:var(--acc);color:#fff;font-family:"DM Serif Display",serif;font-size:1.1rem;width:42px;height:42px;display:grid;place-items:center}
+  .m-text h3{font-size:1.7rem;margin-bottom:.5rem}
+  .m-text h3 .price{font-family:"Inter";font-weight:700;font-size:.95rem;color:var(--marigold);vertical-align:middle;margin-left:.6rem;letter-spacing:.02em}
+  .m-text>p{color:var(--ink-soft);margin-bottom:1rem}
+  .m-list{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+  .m-list li{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px dashed var(--line);padding-bottom:.5rem;font-size:.95rem}
+  .m-list li span:first-child{font-weight:600}
+  .m-list li .desc{font-weight:400;color:var(--ink-soft);display:block;font-size:.82rem;margin-top:.12rem}
+  .menu-note{margin-top:clamp(30px,4vw,46px);text-align:center;font-size:.92rem;color:var(--ink-soft)}
+  .menu-note em{color:var(--acc);font-style:normal;font-weight:600}
+  @media(max-width:760px){
+    .mrow,.mrow.flip{grid-template-columns:1fr}
+    .mrow.flip .m-media{order:0}
+  }
+
+  /* ---- TESTIMONIES ---- */
+  #say{background:var(--acc);color:#eafcff;position:relative}
+  #say .sec-head .eyebrow{color:#bdf0fb}
+  #say .sec-head h2{color:#fff}
+  .quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,3vw,30px)}
+  .quote{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.2);padding:clamp(24px,3vw,34px);border-radius:3px}
+  .quote .mark{font-family:"DM Serif Display",serif;font-size:3rem;line-height:.5;color:#bdf0fb;display:block;height:1.2rem}
+  .quote p{font-size:1.06rem;line-height:1.6;color:#f0feff}
+  .quote .by{margin-top:1.1rem;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#bdf0fb}
+  @media(max-width:720px){.quotes{grid-template-columns:1fr}}
+
+  /* ---- VISIT ---- */
+  #visit{background:#fff;border-top:1px solid var(--line)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(28px,4vw,56px)}
+  .hours-table{width:100%;border-collapse:collapse;margin-top:.4rem}
+  .hours-table td{padding:.62rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+  .hours-table td:last-child{text-align:right;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+  .hours-table tr.today td{color:var(--acc);font-weight:700}
+  .hours-table tr.today td:last-child{color:var(--acc)}
+  .open-pill{display:inline-flex;align-items:center;gap:.45rem;background:#e6f7eb;color:#1d7a3e;border:1px solid #bce6c8;font-weight:600;font-size:.8rem;padding:.3rem .75rem;border-radius:999px;margin-bottom:1.1rem}
+  .open-pill .dot{width:8px;height:8px;border-radius:50%;background:#27ae60}
+  .contact-lines{margin-top:1.6rem;display:flex;flex-direction:column;gap:.85rem}
+  .contact-lines a,.contact-lines div{display:flex;gap:.7rem;align-items:flex-start;font-size:.97rem;color:var(--ink)}
+  .contact-lines .lbl{color:var(--acc);font-weight:700;min-width:74px;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;padding-top:.18rem}
+  .findus{margin-top:1.7rem;display:flex;gap:.7rem;flex-wrap:wrap}
+  .findus a{display:inline-flex;align-items:center;gap:.45rem;border:1.5px solid var(--line);padding:.55rem .9rem;border-radius:2px;font-size:.84rem;font-weight:600;color:var(--ink);transition:.15s}
+  .findus a:hover{border-color:var(--acc);color:var(--acc)}
+  .mapbox{position:relative;min-height:340px;border:1px solid var(--line);overflow:hidden}
+  .mapbox iframe{width:100%;height:100%;min-height:340px;border:0;filter:grayscale(.12)}
+  @media(max-width:840px){.visit-grid{grid-template-columns:1fr}}
+
+  /* ---- final CTA band ---- */
+  .cta-band{background:var(--acc-deep);color:#fff;text-align:center}
+  .cta-band .wrap{padding:clamp(48px,7vw,82px) 22px}
+  .cta-band h2{font-size:clamp(1.9rem,4vw,3rem);color:#fff}
+  .cta-band p{margin-top:.9rem;color:#cdeef6;max-width:46ch;margin-left:auto;margin-right:auto}
+  .cta-band .btn{margin-top:1.8rem;background:#fff;color:var(--acc-deep)}
+  .cta-band .btn:hover{background:var(--bg)}
+
+  /* ---- FOOTER ---- */
+  footer{background:var(--ink);color:#cfd3cf;padding:48px 0 30px}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;align-items:flex-start}
+  .foot-brand b{font-family:"DM Serif Display",serif;color:#fff;font-size:1.5rem}
+  .foot-brand p{font-size:.86rem;margin-top:.5rem;max-width:30ch}
+  .foot-links{display:flex;flex-direction:column;gap:.5rem;font-size:.9rem}
+  .foot-links a:hover{color:#fff}
+  .credit{margin-top:34px;padding-top:18px;border-top:1px solid #3a3f3a;font-size:.8rem;color:#9aa09a;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .credit a{color:#cfd3cf}.credit a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <b>La Perla Tapatia</b><span>Oceanside</span>
+    </a>
+    <div class="navlinks">
+      <a href="#about">Our Story</a>
+      <a href="#menu">Kitchen &amp; Bakery</a>
+      <a href="#say">What People Say</a>
+      <a href="#visit">Visit</a>
+      <a class="navcta" href="tel:+17607218486">Call (760) 721-8486</a>
+    </div>
+  </div>
+</nav>
+
+<a id="top"></a>
+
+<!-- ===== HERO : magazine-spread ===== -->
+<header class="hero">
+  <div class="hero-copy">
+    <div class="est">Authentic Mexican Food · Market · Panadería</div>
+    <h1>Una <em>perla</em><br>tapatía en<br>Oceanside.</h1>
+    <p class="lede">A Guadalajara-style kitchen, buffet, and bakery on Mission Ave — generous plates, hot salsas, and pan dulce baked fresh, all under one roof.</p>
+    <div class="hero-tags">
+      <span>Buffet-style line</span>
+      <span>Fresh pan dulce</span>
+      <span>Mexican market</span>
+      <span>Patio &amp; dine-in</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://www.google.com/maps?q=1910+Mission+Ave%2C+Oceanside%2C+CA+92058" target="_blank" rel="noopener">Get Directions</a>
+      <a class="btn btn-ghost" href="tel:+17607218486">Call to Order</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <span class="credit">1910 Mission Ave</span>
+    <img src="./photos/04.jpg" alt="The La Perla Tapatia storefront sign reading Authentic Mexican Food, with colorful patio chairs below" />
+  </div>
+</header>
+
+<div class="tilestrip" aria-hidden="true"></div>
+
+<div class="factbar">
+  <div class="wrap">
+    <div><b>7am–10pm</b> open every day</div>
+    <div><b>$5</b> berry aguas frescas</div>
+    <div><b>Free</b> guacamole on plates</div>
+    <div><b>Dogs welcome</b> on the patio</div>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="body">
+      <div class="eyebrow">Our Story</div>
+      <h2 style="font-size:clamp(2rem,4vw,3rem);margin:.5rem 0 1.4rem">Three Mexican classics, one tile-lined room.</h2>
+      <p>La Perla Tapatia is where Oceanside comes for the real thing — a hot kitchen, a buffet-style line you can build your plate from, a panadería case full of sweet bread, and a little Mexican market to take a piece of home with you.</p>
+      <p>The portions are famous: regulars warn that one serving is plenty for two. The green salsa hits the perfect amount of spicy, the chilaquiles come divorciados if you ask, and the pan dulce keeps people lining up like a buffet. Tapatío hospitality, the kind that makes the vibe outmatched.</p>
+      <p>Come sit inside, or grab the patio with your dog — we open at 7 in the morning and the coffee, the bread, and the comal are already going.</p>
+    </div>
+    <div class="about-photos">
+      <figure><img src="./photos/03.jpg" alt="The buffet-style steam-table line with menu boards above at La Perla Tapatia" /></figure>
+      <figure><img src="./photos/01.jpg" alt="La Perla Tapatia building exterior with patio dining under a shade tree" /></figure>
+      <figure><img src="./photos/06.jpg" alt="A plate of enchiladas in mole sauce with rice and refried beans" /></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MENU : 2col-rows ===== -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Kitchen &amp; Bakery</div>
+      <h2>From the comal, the line, and the panadería.</h2>
+      <p>A taste of what regulars come back for. Full menu, daily specials, and the buffet line are all in-house — prices shown are sampled from recent plates.</p>
+    </div>
+
+    <div class="menu-rows">
+
+      <!-- row 1 -->
+      <div class="mrow">
+        <div class="m-media"><span class="num">01</span><img src="./photos/05.jpg" alt="Street tacos topped with creamy green salsa, cilantro, onion and radish" /></div>
+        <div class="m-text">
+          <h3>Tacos &amp; the Comal</h3>
+          <p>Hand-made tortillas, that perfectly-spicy green salsa, and meats off the grill — built the way you like, no extra charge for the guac.</p>
+          <ul class="m-list">
+            <li><span>Street Tacos</span><span></span><span class="desc" style="flex-basis:100%">Pastor, asada, carnitas — cilantro, onion, green salsa</span></li>
+            <li><span>Carne Asada Plate</span><span>$16.99</span></li>
+            <li><span>Two Hard-Shell Tacos</span><span>$13.99</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- row 2 (flipped) -->
+      <div class="mrow flip">
+        <div class="m-media"><span class="num">02</span><img src="./photos/02.jpg" alt="A chile relleno plate with red sauce, rice, refried beans and salad" /></div>
+        <div class="m-text">
+          <h3>Plates &amp; Specials</h3>
+          <p>The famous huge portions — rice, beans, and salad on every plate. Order your chilaquiles <em style="color:var(--acc);font-style:normal;font-weight:600">divorciados</em>, half red, half green.</p>
+          <ul class="m-list">
+            <li><span>Chilaquiles Divorciados</span><span></span><span class="desc" style="flex-basis:100%">Half red, half green — add arrachera (skirt steak)</span></li>
+            <li><span>Chile Relleno Plate</span><span></span></li>
+            <li><span>La Tapatía Torta</span><span>$15.14</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- row 3 -->
+      <div class="mrow">
+        <div class="m-media"><span class="num">03</span><img src="./photos/06.jpg" alt="Enchiladas bathed in dark mole sauce, topped with cabbage, avocado and onion" /></div>
+        <div class="m-text">
+          <h3>Panadería &amp; Aguas</h3>
+          <p>The best pan dulce in Oceanside, per the regulars — a full bakery case of conchas and sweet bread, plus those giant fresh fruit aguas frescas.</p>
+          <ul class="m-list">
+            <li><span>Pan Dulce</span><span></span><span class="desc" style="flex-basis:100%">Conchas &amp; sweet bread, fresh daily from the case</span></li>
+            <li><span>Berry Agua Fresca</span><span>$5</span></li>
+            <li><span>Enchiladas de Mole</span><span></span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="menu-note">Also a full <em>Mexican market</em> in-house — bread, groceries &amp; pantry staples to take home.</p>
+  </div>
+</section>
+
+<div class="tilestrip" aria-hidden="true"></div>
+
+<!-- ===== WHAT PEOPLE SAY ===== -->
+<section id="say">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">What People Say</div>
+      <h2>In their words.</h2>
+    </div>
+    <div class="quotes">
+      <figure class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>10/10 great food! Huge portions — one person cannot eat one of their servings. They don't charge for guacamole on food. The berry drink was huge, absolutely delicious, and only $5!</p>
+        <figcaption class="by">— Noel B.</figcaption>
+      </figure>
+      <figure class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>Ordered the chilaquiles plate divorciados — half red, half green — and added a piece of arrachera. Definitely a 10/10 plate. Highly recommended.</p>
+        <figcaption class="by">— Calavera C.</figcaption>
+      </figure>
+      <figure class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>Looooved this place! The green salsa is just the perfect amount of spicy, portions are great for the price, and the people were amazing and so friendly. The vibe here is outmatched!</p>
+        <figcaption class="by">— Martinnia B.</figcaption>
+      </figure>
+      <figure class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>My go-to for pan dulce in Oceanside. This place. They have dine-in tables, and their sweet bread is the best, in my opinion.</p>
+        <figcaption class="by">— Cynthia M.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT ===== -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Hours &amp; Location</div>
+      <h2>Find us on Mission Ave.</h2>
+    </div>
+    <div class="visit-grid">
+      <div>
+        <div class="open-pill"><span class="dot"></span> Open daily · 7:00 AM – 10:00 PM</div>
+        <table class="hours-table" id="hours">
+          <tr data-d="1"><td>Monday</td><td>7:00 AM – 10:00 PM</td></tr>
+          <tr data-d="2"><td>Tuesday</td><td>7:00 AM – 10:00 PM</td></tr>
+          <tr data-d="3"><td>Wednesday</td><td>7:00 AM – 10:00 PM</td></tr>
+          <tr data-d="4"><td>Thursday</td><td>7:00 AM – 10:00 PM</td></tr>
+          <tr data-d="5"><td>Friday</td><td>7:00 AM – 10:00 PM</td></tr>
+          <tr data-d="6"><td>Saturday</td><td>7:00 AM – 10:00 PM</td></tr>
+          <tr data-d="0"><td>Sunday</td><td>7:00 AM – 10:00 PM</td></tr>
+        </table>
+
+        <div class="contact-lines">
+          <a href="https://www.google.com/maps?q=1910+Mission+Ave%2C+Oceanside%2C+CA+92058" target="_blank" rel="noopener">
+            <span class="lbl">Address</span><span>1910 Mission Ave, Oceanside, CA 92058</span>
+          </a>
+          <a href="tel:+17607218486">
+            <span class="lbl">Phone</span><span>(760) 721-8486</span>
+          </a>
+        </div>
+
+        <div class="findus">
+          <a href="https://maps.google.com/?cid=7868843611803665859" target="_blank" rel="noopener">View on Google</a>
+          <a href="https://www.google.com/maps?q=1910+Mission+Ave%2C+Oceanside%2C+CA+92058" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+      </div>
+
+      <div class="mapbox">
+        <iframe
+          src="https://www.google.com/maps?q=1910%20Mission%20Ave%2C%20Oceanside%2C%20CA%2092058&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to La Perla Tapatia, 1910 Mission Ave, Oceanside, CA 92058"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<div class="cta-band">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#bdf0fb">Hambre?</div>
+    <h2>Bring an appetite — and maybe a friend to share.</h2>
+    <p>The plates are huge, the salsa's hot, and the pan dulce is fresh. We're open from 7am to 10pm, every single day.</p>
+    <a class="btn" href="https://www.google.com/maps?q=1910+Mission+Ave%2C+Oceanside%2C+CA+92058" target="_blank" rel="noopener">Get Directions</a>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <b>La Perla Tapatia</b>
+        <p>Authentic Mexican food, market &amp; panadería in Oceanside, California.</p>
+      </div>
+      <div class="foot-links">
+        <a href="#about">Our Story</a>
+        <a href="#menu">Kitchen &amp; Bakery</a>
+        <a href="#say">What People Say</a>
+        <a href="#visit">Hours &amp; Location</a>
+      </div>
+      <div class="foot-links">
+        <a href="tel:+17607218486">(760) 721-8486</a>
+        <a href="https://www.google.com/maps?q=1910+Mission+Ave%2C+Oceanside%2C+CA+92058" target="_blank" rel="noopener">1910 Mission Ave</a>
+        <a href="https://maps.google.com/?cid=7868843611803665859" target="_blank" rel="noopener">Google Business</a>
+      </div>
+    </div>
+    <div class="credit">
+      <span>Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</span>
+      <span>Open daily · 7am–10pm</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // highlight today's row in the hours table (no other JS / no animation)
+  (function(){
+    var d = new Date().getDay();
+    var row = document.querySelector('#hours tr[data-d="'+d+'"]');
+    if(row) row.classList.add('today');
+  })();
+</script>
+</body>
+</html>

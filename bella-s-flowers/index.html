@@ -1,0 +1,569 @@
+<!-- florist · classic-editorial · hero-layout 1 · svc-layout 2 · Playfair Display/Source Sans 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bella's Flowers — San Bernardino, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --acc:#b91c1c;
+    --bg:#faf7f2;
+    --ink:#1c1410;
+    --muted:#6b5c52;
+    --rule:#ddd5c8;
+    --nav-h:64px;
+  }
+  html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+  body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+  .brand{font-family:'Playfair Display',serif; font-weight:700;letter-spacing:-.01em}
+
+  /* ── NAV ── */
+  nav{
+    position:sticky;top:0;z-index:100;
+    height:var(--nav-h);
+    background:var(--bg);
+    border-bottom:1px solid var(--rule);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 clamp(1.25rem,4vw,3rem);
+  }
+  .nav-logo{font-size:1.25rem;color:var(--ink);text-decoration:none}
+  .nav-logo span{color:var(--acc)}
+  nav ul{list-style:none;display:flex;gap:clamp(1rem,2.5vw,2rem)}
+  nav ul a{
+    font-size:.875rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--muted);text-decoration:none;
+    transition:color .2s;
+  }
+  nav ul a:hover{color:var(--acc)}
+  .nav-cta{
+    display:inline-block;padding:.45rem 1.1rem;
+    border:1.5px solid var(--acc);color:var(--acc);
+    font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    text-decoration:none;
+    transition:background .2s,color .2s;
+  }
+  .nav-cta:hover{background:var(--acc);color:#fff}
+  .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;padding:.4rem}
+  .nav-mobile-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:4px 0;transition:transform .2s,opacity .2s}
+
+  /* ── HERO (layout 1 — image LEFT, text RIGHT) ── */
+  #hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:calc(100vh - var(--nav-h));
+  }
+  .hero-image{
+    position:relative;overflow:hidden;
+  }
+  .hero-image img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .8s ease;
+  }
+  .hero-image:hover img{transform:scale(1.02)}
+  .hero-text{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(2.5rem,6vw,5rem) clamp(2rem,5vw,4rem);
+  }
+  .hero-eyebrow{
+    font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--acc);font-weight:600;margin-bottom:1.25rem;
+  }
+  .hero-text h1{
+    font-size:clamp(2.4rem,5vw,4rem);
+    line-height:1.1;
+    font-weight:700;
+    font-family:'Playfair Display',serif;
+    margin-bottom:1.5rem;
+  }
+  .hero-text h1 em{font-style:italic;color:var(--acc)}
+  .hero-text p{
+    font-size:1.05rem;color:var(--muted);max-width:42ch;
+    line-height:1.75;margin-bottom:2.25rem;
+  }
+  .btn-primary{
+    display:inline-block;
+    padding:.75rem 2rem;
+    background:var(--acc);color:#fff;
+    font-family:'Source Sans 3',sans-serif;
+    font-size:.875rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    text-decoration:none;
+    border:none;cursor:pointer;
+    transition:background .2s,transform .15s;
+  }
+  .btn-primary:hover{background:#991b1b;transform:translateY(-1px)}
+  .hero-meta{
+    margin-top:2rem;
+    font-size:.8rem;color:var(--muted);letter-spacing:.04em;
+    display:flex;align-items:center;gap:.6rem;
+  }
+  .hero-meta::before{content:'';display:block;width:28px;height:1px;background:var(--rule)}
+
+  /* ── DIVIDER ── */
+  .section-rule{
+    height:1px;background:var(--rule);
+    margin:0 clamp(1.25rem,4vw,3rem);
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section{padding:clamp(4rem,8vw,7rem) clamp(1.25rem,4vw,3rem)}
+  .section-inner{max-width:1100px;margin:0 auto}
+  .section-label{
+    font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--acc);font-weight:600;margin-bottom:1rem;display:block;
+  }
+  .section-title{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.75rem,3.5vw,2.6rem);
+    font-weight:700;line-height:1.15;
+    margin-bottom:1.5rem;
+  }
+
+  /* ── ABOUT ── */
+  #about .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:4rem;align-items:center;
+  }
+  #about .about-images{
+    display:grid;grid-template-columns:1fr 1fr;gap:.75rem;
+  }
+  .about-img-main{grid-column:1/-1}
+  .about-img-main img,
+  .about-img-sm img{
+    width:100%;display:block;object-fit:cover;
+  }
+  .about-img-main img{height:280px}
+  .about-img-sm img{height:160px}
+  #about p{color:var(--muted);line-height:1.8;margin-bottom:1rem}
+  #about p:last-child{margin-bottom:0}
+  .about-accent{
+    border-left:3px solid var(--acc);
+    padding-left:1.25rem;
+    font-family:'Playfair Display',serif;
+    font-style:italic;font-size:1.1rem;
+    color:var(--ink);margin:1.5rem 0;
+  }
+
+  /* ── SERVICES (layout 2 — numbered/stacked list) ── */
+  #services{background:#f0ebe3}
+  #services .services-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:0;
+    border:1px solid var(--rule);
+  }
+  .svc-item{
+    padding:2.25rem 2rem;
+    border-bottom:1px solid var(--rule);
+    display:grid;grid-template-columns:2.5rem 1fr;
+    gap:1rem;align-items:start;
+    transition:background .2s;
+  }
+  .svc-item:nth-child(odd){border-right:1px solid var(--rule)}
+  .svc-item:hover{background:#ede7dc}
+  .svc-num{
+    font-family:'Playfair Display',serif;
+    font-size:1.4rem;font-weight:700;
+    color:var(--acc);line-height:1;
+    padding-top:.15rem;
+  }
+  .svc-name{
+    font-family:'Playfair Display',serif;
+    font-size:1.05rem;font-weight:600;
+    margin-bottom:.35rem;
+  }
+  .svc-desc{font-size:.9rem;color:var(--muted);line-height:1.6}
+  .services-cta{
+    margin-top:2.5rem;text-align:center;
+  }
+
+  /* ── GALLERY STRIP ── */
+  #gallery{padding:0}
+  .gallery-strip{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    height:340px;
+    overflow:hidden;
+  }
+  .gallery-strip img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .6s ease,opacity .3s;
+    opacity:.92;
+  }
+  .gallery-strip img:hover{transform:scale(1.04);opacity:1}
+
+  /* ── TESTIMONIES ── */
+  #testimonies{background:var(--bg)}
+  .testimonies-intro{
+    display:grid;grid-template-columns:1fr 2fr;
+    gap:3rem;margin-bottom:3.5rem;align-items:end;
+  }
+  .testimonies-intro .section-title{margin-bottom:0}
+  .testimonies-intro p{color:var(--muted);line-height:1.75}
+  .testimonies-list{display:flex;flex-direction:column;gap:0}
+  .testimony-item{
+    border-top:1px solid var(--rule);
+    padding:2rem 0;
+    display:grid;grid-template-columns:1fr auto;
+    gap:2rem;align-items:start;
+  }
+  .testimony-item:last-child{border-bottom:1px solid var(--rule)}
+  .testimony-quote{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:clamp(1rem,2vw,1.15rem);
+    line-height:1.7;
+    color:var(--ink);
+    position:relative;
+    padding-left:1.75rem;
+  }
+  .testimony-quote::before{
+    content:'\201C';
+    position:absolute;left:0;top:-.1em;
+    font-size:2.5rem;line-height:1;
+    color:var(--acc);font-style:normal;
+  }
+  .testimony-attr{
+    font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--muted);font-weight:600;white-space:nowrap;
+    padding-top:.3rem;
+  }
+
+  /* ── HOURS & LOCATION ── */
+  #location{background:#f0ebe3}
+  #location .loc-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:4rem;align-items:start;
+  }
+  .hours-table{width:100%;border-collapse:collapse;margin-top:1.5rem}
+  .hours-table tr{border-bottom:1px solid var(--rule)}
+  .hours-table td{padding:.6rem 0;font-size:.95rem}
+  .hours-table td:first-child{color:var(--muted);width:110px}
+  .hours-table td:last-child{font-weight:500}
+  .today-row td{color:var(--acc)!important;font-weight:600!important}
+  .map-wrap{
+    border:1px solid var(--rule);
+    overflow:hidden;
+    height:340px;
+  }
+  .map-wrap iframe{width:100%;height:100%;border:0;display:block}
+  .contact-block{margin-top:2rem}
+  .contact-block a{
+    display:block;
+    font-size:1.05rem;color:var(--ink);
+    text-decoration:none;margin-bottom:.5rem;
+    transition:color .2s;
+  }
+  .contact-block a:hover{color:var(--acc)}
+  .contact-block .c-label{
+    font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--muted);font-weight:600;margin-top:1.25rem;margin-bottom:.3rem;display:block;
+  }
+
+  /* ── CTA BAND ── */
+  #cta-band{
+    background:var(--acc);
+    padding:clamp(3rem,6vw,5rem) clamp(1.25rem,4vw,3rem);
+    text-align:center;
+  }
+  #cta-band h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.75rem,4vw,2.75rem);
+    color:#fff;font-weight:700;margin-bottom:.75rem;
+  }
+  #cta-band p{color:rgba(255,255,255,.8);font-size:1.05rem;margin-bottom:2rem}
+  .btn-outline-white{
+    display:inline-block;
+    padding:.75rem 2.25rem;
+    border:2px solid #fff;color:#fff;
+    font-size:.875rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    text-decoration:none;
+    transition:background .2s,color .2s;
+  }
+  .btn-outline-white:hover{background:#fff;color:var(--acc)}
+
+  /* ── FOOTER ── */
+  footer{
+    background:var(--ink);color:rgba(255,255,255,.55);
+    padding:2.5rem clamp(1.25rem,4vw,3rem);
+    font-size:.82rem;line-height:1.7;
+  }
+  .footer-inner{
+    max-width:1100px;margin:0 auto;
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:1rem;
+  }
+  footer a{color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
+  footer a:hover{color:#fff}
+  .footer-brand{color:#fff;font-family:'Playfair Display',serif;font-size:1rem}
+  .footer-links{display:flex;gap:1.25rem;flex-wrap:wrap}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    #hero{grid-template-columns:1fr;min-height:auto}
+    .hero-image{height:55vw;min-height:260px}
+    #about .about-grid{grid-template-columns:1fr;gap:2.5rem}
+    #services .services-grid{grid-template-columns:1fr}
+    .svc-item:nth-child(odd){border-right:none}
+    .testimonies-intro{grid-template-columns:1fr;gap:1rem}
+    #location .loc-grid{grid-template-columns:1fr;gap:2.5rem}
+    .gallery-strip{grid-template-columns:1fr 1fr;height:auto}
+    .gallery-strip img{height:180px}
+  }
+  @media(max-width:680px){
+    nav ul,.nav-cta{display:none}
+    .nav-mobile-toggle{display:block}
+    nav ul.open{
+      display:flex;flex-direction:column;
+      position:absolute;top:var(--nav-h);left:0;right:0;
+      background:var(--bg);border-bottom:1px solid var(--rule);
+      padding:1rem 1.5rem 1.5rem;gap:.75rem;z-index:99;
+    }
+    nav ul.open + .nav-cta{display:block;margin:0 1.5rem 1rem}
+    .testimony-item{grid-template-columns:1fr;gap:.5rem}
+    .gallery-strip{grid-template-columns:1fr}
+    .gallery-strip img{height:220px}
+    .footer-inner{flex-direction:column;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo brand">Bella's <span>Flowers</span></a>
+  <ul id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#location">Visit Us</a></li>
+  </ul>
+  <a href="tel:+19092645839" class="nav-cta">Call Now</a>
+  <button class="nav-mobile-toggle" aria-label="Menu" onclick="document.getElementById('nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO (layout 1 — image left, text right) -->
+<section id="hero">
+  <div class="hero-image">
+    <img src="./photos/01.jpg" alt="Beautiful floral arrangement by Bella's Flowers">
+  </div>
+  <div class="hero-text">
+    <span class="hero-eyebrow">Florist · San Bernardino, CA</span>
+    <h1 class="brand">Flowers for <em>every</em><br>moment that matters</h1>
+    <p>From same-day bouquets to full wedding florals, Bella's Flowers brings care, craft, and a personal touch to every arrangement — open seven days a week.</p>
+    <a href="tel:+19092645839" class="btn-primary">Call to Order</a>
+    <p class="hero-meta">Open daily 9 AM – 5 PM &nbsp;·&nbsp; (909) 264-5839</p>
+  </div>
+</section>
+
+<div class="section-rule"></div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-images">
+        <div class="about-img-main">
+          <img src="./photos/02.jpg" alt="Floral arrangements on display">
+        </div>
+        <div class="about-img-sm">
+          <img src="./photos/03.jpg" alt="Close-up flower detail">
+        </div>
+        <div class="about-img-sm">
+          <img src="./photos/04.jpg" alt="Colorful bouquet">
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title brand">A flower shop with heart in San Bernardino</h2>
+        <blockquote class="about-accent">"They went above and beyond our expectations."</blockquote>
+        <p>Bella's Flowers has been serving the Inland Empire community with artistry and genuine warmth. Whether you need a last-minute bouquet, hospital delivery, or full event florals, Gil and the team treat every order with the same care they'd give their own family's celebration.</p>
+        <p>Customers drive from across the valley — even from Redlands — because the quality and service are worth the trip. Seven days a week, 9 to 5, we're here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-rule"></div>
+
+<!-- SERVICES (layout 2 — numbered/stacked grid) -->
+<section class="section" id="services">
+  <div class="section-inner">
+    <span class="section-label">What We Do</span>
+    <h2 class="section-title brand">Every occasion, beautifully arranged</h2>
+    <div class="services-grid">
+      <div class="svc-item">
+        <div class="svc-num">01</div>
+        <div>
+          <div class="svc-name brand">Custom Bouquets</div>
+          <div class="svc-desc">Hand-crafted fresh arrangements built around your vision — roses, lilies, mixed seasonals, and more. Walk in or call ahead.</div>
+        </div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-num">02</div>
+        <div>
+          <div class="svc-name brand">Same-Day Delivery</div>
+          <div class="svc-desc">Need flowers today? We offer fast local delivery — even on short notice. Hospitals, homes, offices: we get them there.</div>
+        </div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-num">03</div>
+        <div>
+          <div class="svc-name brand">Wedding Florals</div>
+          <div class="svc-desc">Full ceremony and reception floral design — bridal bouquets, boutonnieres, centerpieces, altar pieces, and venue decoration.</div>
+        </div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-num">04</div>
+        <div>
+          <div class="svc-name brand">Event & Party Arrangements</div>
+          <div class="svc-desc">Quinceañeras, birthdays, corporate events, and celebrations of all kinds. We'll help create the atmosphere you're dreaming of.</div>
+        </div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-num">05</div>
+        <div>
+          <div class="svc-name brand">Sympathy & Memorial</div>
+          <div class="svc-desc">Thoughtful arrangements for difficult moments — wreaths, sprays, and casket pieces prepared with compassion and care.</div>
+        </div>
+      </div>
+      <div class="svc-item">
+        <div class="svc-num">06</div>
+        <div>
+          <div class="svc-name brand">Walk-In Welcome</div>
+          <div class="svc-desc">No appointment needed. Browse our shop, pick your stems, or let Gil guide you to the perfect arrangement. Open 7 days.</div>
+        </div>
+      </div>
+    </div>
+    <div class="services-cta">
+      <a href="tel:+19092645839" class="btn-primary">Call to Discuss Your Order</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<div id="gallery">
+  <div class="gallery-strip">
+    <img src="./photos/05.jpg" alt="Floral arrangement detail">
+    <img src="./photos/06.jpg" alt="Display of bouquets">
+    <img src="./photos/02.jpg" alt="Wedding florals">
+  </div>
+</div>
+
+<div class="section-rule"></div>
+
+<!-- TESTIMONIES -->
+<section class="section" id="testimonies">
+  <div class="section-inner">
+    <div class="testimonies-intro">
+      <div>
+        <span class="section-label">Testimonies</span>
+        <h2 class="section-title brand">Customer Testimonies</h2>
+      </div>
+      <p>Real words from the people who trust Bella's Flowers for their most meaningful moments — weddings, grief, celebrations, and everything in between.</p>
+    </div>
+    <div class="testimonies-list">
+      <div class="testimony-item">
+        <p class="testimony-quote">Had a great experience with a last minute rose bouquet order. Bella's Flowers stayed open an hour past close to put together a bouquet for me. It was beautiful and well received. I'll definitely be continuing to travel from Redlands to San Bernardino for any future flower needs.</p>
+        <span class="testimony-attr">Monica C.</span>
+      </div>
+      <div class="testimony-item">
+        <p class="testimony-quote">Bella's Flowers did such beautiful arrangements for my wedding. They decorated the church and the venue and it was all amazing. My husband and I are truly grateful. They went above and beyond our expectations. I highly recommend them for all events.</p>
+        <span class="testimony-attr">Ruth A.</span>
+      </div>
+      <div class="testimony-item">
+        <p class="testimony-quote">During a difficult time Bella's was very helpful with our arrangement and the specific type of arrangement we were looking for. They went above and beyond our expectations. The arrangement was beautiful and exactly what we wanted. They were very friendly, and communicative.</p>
+        <span class="testimony-attr">AliciA H.</span>
+      </div>
+      <div class="testimony-item">
+        <p class="testimony-quote">Great service — gave them a call to deliver flowers to a hospital because I couldn't, and they gave me great pricing and great service. Same day, quick and fast, one hour turnaround. Check them out.</p>
+        <span class="testimony-attr">E. Marshall</span>
+      </div>
+      <div class="testimony-item">
+        <p class="testimony-quote">Thank you Gil for all your help and great services!</p>
+        <span class="testimony-attr">Otilia O.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-rule"></div>
+
+<!-- HOURS & LOCATION -->
+<section class="section" id="location">
+  <div class="section-inner">
+    <div class="loc-grid">
+      <div>
+        <span class="section-label">Visit Us</span>
+        <h2 class="section-title brand">Come see us in<br>San Bernardino</h2>
+        <div class="contact-block">
+          <span class="c-label">Address</span>
+          <a href="https://maps.google.com/?cid=15313969933521602804" target="_blank" rel="noopener">
+            618 S Mt Vernon Ave #136<br>San Bernardino, CA 92410
+          </a>
+          <span class="c-label">Phone</span>
+          <a href="tel:+19092645839">(909) 264-5839</a>
+          <span class="c-label">Find Us Online</span>
+          <a href="https://maps.google.com/?cid=15313969933521602804&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business Listing →</a>
+        </div>
+        <table class="hours-table" aria-label="Business hours">
+          <tbody>
+            <tr><td>Monday</td><td>9:00 AM – 5:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>9:00 AM – 5:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>9:00 AM – 5:00 PM</td></tr>
+            <tr><td>Thursday</td><td>9:00 AM – 5:00 PM</td></tr>
+            <tr><td>Friday</td><td>9:00 AM – 5:00 PM</td></tr>
+            <tr><td>Saturday</td><td>9:00 AM – 5:00 PM</td></tr>
+            <tr><td>Sunday</td><td>9:00 AM – 5:00 PM</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=618+S+Mt+Vernon+Ave+%23136%2C+San+Bernardino%2C+CA+92410&z=15&output=embed"
+            loading="lazy"
+            title="Bella's Flowers location map"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="cta-band">
+  <h2 class="brand">Ready to order?</h2>
+  <p>Call us today — same-day arrangements available, seven days a week.</p>
+  <a href="tel:+19092645839" class="btn-outline-white">Call (909) 264-5839</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <span class="footer-brand brand">Bella's Flowers</span><br>
+      618 S Mt Vernon Ave #136, San Bernardino, CA 92410<br>
+      <a href="tel:+19092645839">(909) 264-5839</a>
+    </div>
+    <div>
+      <div class="footer-links">
+        <a href="https://maps.google.com/?cid=15313969933521602804&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+      </div>
+      <div style="margin-top:.75rem">
+        Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

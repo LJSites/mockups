@@ -1,0 +1,377 @@
+<!--
+  ROASTED THREADS SAC — single-page mockup
+  Flavor/archetype: streetwear-roaster (dark, bold) — coffee + vintage clothing + vinyl, Midtown Sacramento
+  Hero layout id: bento-grid (asymmetric tiled hero — wordmark tile + photo tiles + stat tiles)
+  Service layout id: sticker-cards (menu as oversized, slightly-rotated price stickers)
+  Palette: --bg #14110f (near-black) / --acc #f97316 (orange). Display: Space Grotesk. Body: Inter.
+  Animation: none beyond hover/marquee. No fade-up.
+  Real data only: tagline "Coffee. Vintage. Vinyl." (on cup/logo), menu prices from in-store card,
+  hours/phone/address from Google. Map: keyless embed. IG handle from websiteUri.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Roasted Threads SAC — Coffee. Vintage. Vinyl. | Midtown Sacramento</title>
+<meta name="description" content="Roasted Threads SAC — a Midtown Sacramento coffee shop with specialty matcha, vintage clothing, and a wall of vinyl. Coffee. Vintage. Vinyl." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { acc: '#f97316', bg: '#14110f', ink: '#f5f0ea' },
+        fontFamily: {
+          display: ['"Space Grotesk"', 'sans-serif'],
+          body: ['Inter', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root { --acc: #f97316; --bg: #14110f; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body { background: var(--bg); }
+  ::selection { background: var(--acc); color: #14110f; }
+
+  .font-display { font-family: "Space Grotesk", sans-serif; }
+  .font-body { font-family: "Inter", sans-serif; }
+
+  /* paper/grain texture overlay for the dark theme */
+  .grain::before {
+    content: "";
+    position: fixed; inset: 0; pointer-events: none; z-index: 1; opacity: .04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .ticker { overflow: hidden; white-space: nowrap; }
+  .ticker__track { display: inline-block; will-change: transform; animation: scroll-x 26s linear infinite; }
+  @keyframes scroll-x { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .ticker__track { animation: none; } }
+
+  .tile-img { filter: saturate(1.05) contrast(1.02); }
+  .underline-acc { box-shadow: inset 0 -0.28em 0 rgba(249,115,22,0.28); }
+
+  .btn-acc { background: var(--acc); color: #14110f; }
+  .btn-acc:hover { background: #ffb066; transform: translate(-2px,-2px); box-shadow: 6px 6px 0 #000; }
+  .btn-acc { transition: transform .12s ease, background .15s ease, box-shadow .12s ease; box-shadow: 0 0 0 #000; }
+
+  .sticker { transition: transform .14s ease; }
+  .sticker:hover { transform: rotate(0deg) translateY(-4px); }
+  .r1 { transform: rotate(-1.6deg); } .r2 { transform: rotate(1.4deg); } .r3 { transform: rotate(-0.8deg); }
+  .r4 { transform: rotate(1deg); } .r5 { transform: rotate(-1.2deg); } .r6 { transform: rotate(1.8deg); }
+
+  .navlink { position: relative; }
+  .navlink::after { content:""; position:absolute; left:0; bottom:-4px; height:2px; width:0; background:var(--acc); transition: width .2s ease; }
+  .navlink:hover::after { width:100%; }
+
+  .vinyl-dot {
+    background: repeating-radial-gradient(circle at center, #1c1815 0 2px, #14110f 2px 4px);
+  }
+</style>
+</head>
+<body class="font-body text-ink grain antialiased">
+
+<!-- ===== NAV ===== -->
+<header class="fixed top-0 inset-x-0 z-50 bg-bg/85 backdrop-blur border-b border-white/10">
+  <div class="max-w-6xl mx-auto px-5 h-[76px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5 group">
+      <span class="grid place-items-center w-9 h-9 rounded-full vinyl-dot ring-1 ring-acc/70">
+        <span class="w-2 h-2 rounded-full bg-acc"></span>
+      </span>
+      <span class="font-display font-700 tracking-tight text-[17px] leading-none">ROASTED<span class="text-acc">/</span>THREADS</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ink/75">
+      <a href="#menu" class="navlink hover:text-ink">Menu</a>
+      <a href="#shop" class="navlink hover:text-ink">Vintage &amp; Vinyl</a>
+      <a href="#visit" class="navlink hover:text-ink">Visit</a>
+      <a href="#say" class="navlink hover:text-ink">Word</a>
+    </nav>
+    <a href="tel:+19163965508" class="btn-acc font-display font-600 text-sm px-4 py-2 rounded-sm">Call Now</a>
+  </div>
+</header>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker bg-acc text-bg pt-[76px]">
+  <div class="ticker__track font-display font-600 text-[13px] tracking-[0.18em] py-2 uppercase">
+    <span class="px-6">Coffee</span><span class="px-1">✦</span><span class="px-6">Vintage</span><span class="px-1">✦</span><span class="px-6">Vinyl</span><span class="px-1">✦</span><span class="px-6">Specialty Matcha</span><span class="px-1">✦</span><span class="px-6">Midtown Sacramento</span><span class="px-1">✦</span>
+    <span class="px-6">Coffee</span><span class="px-1">✦</span><span class="px-6">Vintage</span><span class="px-1">✦</span><span class="px-6">Vinyl</span><span class="px-1">✦</span><span class="px-6">Specialty Matcha</span><span class="px-1">✦</span><span class="px-6">Midtown Sacramento</span><span class="px-1">✦</span>
+  </div>
+</div>
+
+<!-- ===== HERO — bento-grid ===== -->
+<section id="top" class="relative z-10 max-w-6xl mx-auto px-5 pt-8 md:pt-12 pb-10">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 auto-rows-[minmax(0,auto)]">
+
+    <!-- Wordmark tile -->
+    <div class="col-span-2 md:col-span-2 md:row-span-2 rounded-2xl border border-white/10 bg-[#1a1613] p-7 md:p-9 flex flex-col justify-between min-h-[260px] md:min-h-[420px]">
+      <div>
+        <span class="inline-block text-acc font-display font-600 text-xs tracking-[0.22em] uppercase">Midtown · Sacramento</span>
+        <h1 class="font-display font-700 leading-[0.92] tracking-tight mt-4 text-[clamp(2.6rem,8vw,5.4rem)]">
+          ROASTED<br>THREADS
+        </h1>
+      </div>
+      <div>
+        <p class="font-display text-acc text-lg md:text-xl tracking-[0.12em] uppercase mt-6">Coffee. Vintage. Vinyl.</p>
+        <p class="text-ink/70 mt-3 max-w-md text-[15px] leading-relaxed">
+          A specialty café where your latte comes with a record wall and a rack of vintage threads. Pull up, order a Cinnabear, and dig through the crates.
+        </p>
+        <div class="flex flex-wrap gap-3 mt-6">
+          <a href="#visit" class="btn-acc font-display font-600 px-5 py-3 rounded-sm">Get Directions</a>
+          <a href="#menu" class="font-display font-600 px-5 py-3 rounded-sm border border-white/20 hover:border-acc hover:text-acc transition">See the Menu</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interior tile (vinyl wall) -->
+    <div class="col-span-2 md:col-span-2 rounded-2xl overflow-hidden border border-white/10 bg-black min-h-[200px]">
+      <img src="./photos/01.jpg" alt="Interior of Roasted Threads with vinyl record wall and counter" class="tile-img w-full h-full object-cover min-h-[200px]" loading="eager" />
+    </div>
+
+    <!-- Latte art tile -->
+    <div class="rounded-2xl overflow-hidden border border-white/10 bg-black min-h-[150px]">
+      <img src="./photos/03.jpg" alt="Latte art in a branded Roasted Threads cup" class="tile-img w-full h-full object-cover min-h-[150px]" loading="lazy" />
+    </div>
+
+    <!-- Stat tile -->
+    <div class="rounded-2xl border border-acc/40 bg-acc/10 p-5 flex flex-col justify-center min-h-[150px]">
+      <span class="font-display font-700 text-4xl text-acc leading-none">7</span>
+      <span class="text-ink/80 text-sm mt-2 leading-tight">days a week<br>specialty drinks &amp; a record wall</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT / STRIP ===== -->
+<section class="relative z-10 max-w-6xl mx-auto px-5 py-10 md:py-14">
+  <div class="grid md:grid-cols-12 gap-8 items-center">
+    <div class="md:col-span-7">
+      <h2 class="font-display font-700 text-3xl md:text-4xl tracking-tight">More than a coffee run.</h2>
+      <p class="text-ink/75 mt-5 text-[15px] md:text-base leading-relaxed">
+        Roasted Threads sits a block off the Midtown Farmers Market, where the espresso machine, the clothing racks, and a wall built from real vinyl records share the same room. Order a drink, then dig through the threads and crates while you wait — most people come for one and leave with both.
+      </p>
+      <p class="text-ink/75 mt-4 text-[15px] md:text-base leading-relaxed">
+        Specialty matchas, the signature Cinnabear, and a rotating calendar of in-store events keep regulars coming back — before work, after the market, or just to hang.
+      </p>
+      <div class="flex flex-wrap gap-2.5 mt-7 font-display text-sm">
+        <span class="px-3.5 py-1.5 rounded-full border border-white/15 text-ink/80">Specialty Coffee</span>
+        <span class="px-3.5 py-1.5 rounded-full border border-white/15 text-ink/80">Specialty Matcha</span>
+        <span class="px-3.5 py-1.5 rounded-full border border-white/15 text-ink/80">Vintage Clothing</span>
+        <span class="px-3.5 py-1.5 rounded-full border border-white/15 text-ink/80">Vinyl Records</span>
+        <span class="px-3.5 py-1.5 rounded-full border border-white/15 text-ink/80">In-Store Events</span>
+      </div>
+    </div>
+    <div class="md:col-span-5">
+      <div class="rounded-2xl overflow-hidden border border-white/10 bg-black">
+        <img src="./photos/04.jpg" alt="Roasted Threads counter, espresso machine, logo and neighborhood map mural" class="tile-img w-full h-full object-cover aspect-[4/3]" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MENU — sticker-cards ===== -->
+<section id="menu" class="relative z-10 border-y border-white/10 bg-[#100d0b]">
+  <div class="max-w-6xl mx-auto px-5 py-14 md:py-20">
+    <div class="flex items-end justify-between flex-wrap gap-3 mb-10">
+      <div>
+        <span class="text-acc font-display font-600 text-xs tracking-[0.22em] uppercase">Pour yourself in</span>
+        <h2 class="font-display font-700 text-3xl md:text-5xl tracking-tight mt-2">Specialty Drinks</h2>
+      </div>
+      <span class="font-display text-ink/55 text-sm">Signature pours · $7.5 each</span>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
+
+      <!-- Cinnabear -->
+      <article class="sticker r1 bg-[#1c1714] rounded-xl border border-white/10 p-6 relative">
+        <span class="absolute -top-3 -right-3 btn-acc font-display font-700 text-lg px-3.5 py-1 rounded-full shadow-lg">$7.5</span>
+        <h3 class="font-display font-700 text-2xl tracking-tight">Cinnabear</h3>
+        <p class="text-ink/70 text-sm mt-3 leading-relaxed">Double shot iced latte with a honey drizzle &amp; cinnamon, topped with cold foam — and a little bear on top.</p>
+        <span class="inline-block mt-4 text-acc font-display text-xs tracking-[0.18em] uppercase">House signature</span>
+      </article>
+
+      <!-- Coconut Thai Tea -->
+      <article class="sticker r2 bg-[#1c1714] rounded-xl border border-white/10 p-6 relative">
+        <span class="absolute -top-3 -right-3 btn-acc font-display font-700 text-lg px-3.5 py-1 rounded-full shadow-lg">$7.5</span>
+        <h3 class="font-display font-700 text-2xl tracking-tight">Coconut Thai Tea</h3>
+        <p class="text-ink/70 text-sm mt-3 leading-relaxed">Classic iced Thai tea topped with coconut soft top &amp; toasted coconut flakes.</p>
+        <span class="inline-block mt-4 text-acc font-display text-xs tracking-[0.18em] uppercase">Iced favorite</span>
+      </article>
+
+      <!-- Vanilla Bean Matcha -->
+      <article class="sticker r3 bg-[#1c1714] rounded-xl border border-white/10 p-6 relative">
+        <span class="absolute -top-3 -right-3 btn-acc font-display font-700 text-lg px-3.5 py-1 rounded-full shadow-lg">$7.5</span>
+        <h3 class="font-display font-700 text-2xl tracking-tight">Sweet Vanilla Bean Matcha</h3>
+        <p class="text-ink/70 text-sm mt-3 leading-relaxed">Classic iced matcha latte infused with vanilla bean &amp; topped with cold foam.</p>
+        <span class="inline-block mt-4 text-acc font-display text-xs tracking-[0.18em] uppercase">Matcha lineup</span>
+      </article>
+    </div>
+
+    <p class="text-ink/55 text-sm mt-9 font-body">
+      Plus a full bar of lattes, espresso &amp; teas — and a secret menu the regulars know. Ask a barista what's pouring today.
+    </p>
+  </div>
+</section>
+
+<!-- ===== SHOP — vintage & vinyl ===== -->
+<section id="shop" class="relative z-10 max-w-6xl mx-auto px-5 py-14 md:py-20">
+  <div class="grid md:grid-cols-12 gap-6 md:gap-8 items-stretch">
+    <div class="md:col-span-5 flex flex-col justify-center">
+      <span class="text-acc font-display font-600 text-xs tracking-[0.22em] uppercase">The other half of the room</span>
+      <h2 class="font-display font-700 text-3xl md:text-5xl tracking-tight mt-3">Vintage &amp; Vinyl</h2>
+      <p class="text-ink/75 mt-5 text-[15px] leading-relaxed">
+        A curated rack of vintage clothing and a wall built from real records. Find a coat, flip through the crates, catch an in-store event. It's a café you stick around in.
+      </p>
+      <a href="#visit" class="btn-acc font-display font-600 px-5 py-3 rounded-sm mt-7 self-start">Get Directions</a>
+    </div>
+    <div class="md:col-span-7 grid grid-cols-2 gap-4">
+      <div class="rounded-2xl overflow-hidden border border-white/10 bg-black row-span-2">
+        <img src="./photos/06.jpg" alt="Wall of vinyl records above a leather booth" class="tile-img w-full h-full object-cover min-h-[320px]" loading="lazy" />
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-white/10 bg-black">
+        <img src="./photos/02.jpg" alt="Iced Cinnabear latte with a bear cookie on top" class="tile-img w-full h-full object-cover aspect-square" loading="lazy" />
+      </div>
+      <div class="rounded-2xl overflow-hidden border border-white/10 bg-black">
+        <img src="./photos/05.jpg" alt="Roasted Threads specialty drinks menu card" class="tile-img w-full h-full object-cover aspect-square" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT — hours + map ===== -->
+<section id="visit" class="relative z-10 border-t border-white/10 bg-[#100d0b]">
+  <div class="max-w-6xl mx-auto px-5 py-14 md:py-20 grid md:grid-cols-2 gap-10 md:gap-14">
+
+    <div>
+      <span class="text-acc font-display font-600 text-xs tracking-[0.22em] uppercase">Find us</span>
+      <h2 class="font-display font-700 text-3xl md:text-5xl tracking-tight mt-2">Visit the Shop</h2>
+
+      <div class="mt-7 space-y-1">
+        <p class="font-display font-600 text-lg">1420 16th St #150</p>
+        <p class="text-ink/70">Sacramento, CA 95814 · Midtown</p>
+        <a href="tel:+19163965508" class="inline-block text-acc font-display font-600 mt-2 hover:underline">(916) 396-5508</a>
+      </div>
+
+      <!-- Hours -->
+      <div class="mt-8 border border-white/10 rounded-xl overflow-hidden">
+        <div class="px-5 py-3 bg-[#1a1613] font-display font-600 text-sm tracking-[0.14em] uppercase text-ink/80">Hours</div>
+        <dl class="divide-y divide-white/[0.06] text-sm">
+          <div class="flex justify-between px-5 py-2.5"><dt class="text-ink/60">Monday</dt><dd class="text-ink/50">Closed</dd></div>
+          <div class="flex justify-between px-5 py-2.5"><dt class="text-ink/80">Tuesday</dt><dd>9:00 AM – 1:30 PM</dd></div>
+          <div class="flex justify-between px-5 py-2.5"><dt class="text-ink/80">Wednesday</dt><dd>9:00 AM – 1:30 PM</dd></div>
+          <div class="flex justify-between px-5 py-2.5"><dt class="text-ink/80">Thursday</dt><dd>9:00 AM – 1:30 PM</dd></div>
+          <div class="flex justify-between px-5 py-2.5"><dt class="text-ink/80">Friday</dt><dd>9:00 AM – 1:30 PM</dd></div>
+          <div class="flex justify-between px-5 py-2.5"><dt class="text-ink/80">Saturday</dt><dd class="text-acc font-medium">9:00 AM – 4:30 PM</dd></div>
+          <div class="flex justify-between px-5 py-2.5"><dt class="text-ink/80">Sunday</dt><dd class="text-acc font-medium">9:00 AM – 3:30 PM</dd></div>
+        </dl>
+      </div>
+
+      <p class="text-ink/55 text-sm mt-5">A block from the Midtown Farmers Market — make it the start (or the reward) of your Saturday.</p>
+
+      <div class="flex flex-wrap gap-4 mt-6 items-center text-sm">
+        <a href="https://www.instagram.com/roastedthreads_sac/" target="_blank" rel="noopener" class="font-display font-600 text-ink/80 hover:text-acc transition inline-flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-acc"></span>@roastedthreads_sac
+        </a>
+        <a href="https://maps.google.com/?cid=5313556543092705357" target="_blank" rel="noopener" class="font-display font-600 text-ink/80 hover:text-acc transition inline-flex items-center gap-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-acc"></span>Google Maps
+        </a>
+      </div>
+    </div>
+
+    <div class="flex flex-col">
+      <div class="rounded-2xl overflow-hidden border border-white/10 grow min-h-[320px] md:min-h-0">
+        <iframe
+          src="https://www.google.com/maps?q=1420%2016th%20St%20%23150%2C%20Sacramento%2C%20CA%2095814&z=15&output=embed"
+          class="w-full h-full min-h-[320px]"
+          style="border:0; filter: grayscale(0.4) contrast(1.05);"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Roasted Threads SAC"></iframe>
+      </div>
+      <a href="https://maps.google.com/?cid=5313556543092705357" target="_blank" rel="noopener" class="btn-acc font-display font-600 px-5 py-3 rounded-sm mt-4 text-center">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT PEOPLE SAY ===== -->
+<section id="say" class="relative z-10 max-w-6xl mx-auto px-5 py-14 md:py-20">
+  <div class="mb-10">
+    <span class="text-acc font-display font-600 text-xs tracking-[0.22em] uppercase">Straight from the regulars</span>
+    <h2 class="font-display font-700 text-3xl md:text-5xl tracking-tight mt-2">What People Say</h2>
+  </div>
+
+  <div class="columns-1 md:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
+    <figure class="break-inside-avoid mb-6 bg-[#1a1613] border border-white/10 rounded-xl p-6">
+      <span class="font-display text-acc text-4xl leading-none">“</span>
+      <blockquote class="text-ink/85 text-[15px] leading-relaxed mt-1">Loved the drinks here. So welcoming, from the people to the ambiance. After ordering my drink I got to check out the vinyls and clothes. Got to relax with my Strawberry Matcha in the store — definitely stopping by before work and after the Midtown Farmers Market.</blockquote>
+      <figcaption class="font-display font-600 text-sm mt-4 text-ink/70">Carissa N.</figcaption>
+    </figure>
+
+    <figure class="break-inside-avoid mb-6 bg-[#1a1613] border border-white/10 rounded-xl p-6">
+      <span class="font-display text-acc text-4xl leading-none">“</span>
+      <blockquote class="text-ink/85 text-[15px] leading-relaxed mt-1">Great coffee and atmosphere! The Cinnabear coffee is great along with their specialty matchas. Really cool selection of clothes and always seems to have cool events running. A great stop after the farmers market or on the way to work!</blockquote>
+      <figcaption class="font-display font-600 text-sm mt-4 text-ink/70">Joseph N.</figcaption>
+    </figure>
+
+    <figure class="break-inside-avoid mb-6 bg-[#1a1613] border border-white/10 rounded-xl p-6">
+      <span class="font-display text-acc text-4xl leading-none">“</span>
+      <blockquote class="text-ink/85 text-[15px] leading-relaxed mt-1">I don't ever really write reviews, but the vanilla bean latte is exceptional and the baristas are so nice. Cute little spot.</blockquote>
+      <figcaption class="font-display font-600 text-sm mt-4 text-ink/70">Merith M.</figcaption>
+    </figure>
+
+    <figure class="break-inside-avoid mb-6 bg-[#1a1613] border border-white/10 rounded-xl p-6">
+      <span class="font-display text-acc text-4xl leading-none">“</span>
+      <blockquote class="text-ink/85 text-[15px] leading-relaxed mt-1">Super great experience! We had the matcha and Thai tea and they were both delicious! The service was excellent — super friendly, kind, and helpful. Great selection of clothing; bought a super cute coat and they threw in a free tote bag. Would definitely come by again!</blockquote>
+      <figcaption class="font-display font-600 text-sm mt-4 text-ink/70">Lara J.</figcaption>
+    </figure>
+
+    <figure class="break-inside-avoid mb-6 bg-acc/10 border border-acc/40 rounded-xl p-6">
+      <span class="font-display text-acc text-4xl leading-none">“</span>
+      <blockquote class="text-ink/90 text-[15px] leading-relaxed mt-1">Obsessed with this spot. Amazing coffee, super cool vibe, and the mix of vintage clothing and vinyl records makes it such a fun place to hang out. Great energy all around — can't wait to come back.</blockquote>
+      <figcaption class="font-display font-600 text-sm mt-4 text-acc">Scotty (I-West-I815)</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ===== CTA BAND ===== -->
+<section class="relative z-10 bg-acc text-bg">
+  <div class="max-w-6xl mx-auto px-5 py-12 md:py-14 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+    <div>
+      <h2 class="font-display font-700 text-2xl md:text-4xl tracking-tight leading-tight">Coffee. Vintage. Vinyl.<br class="hidden md:block">Come dig in.</h2>
+      <p class="font-display font-500 text-bg/80 mt-2">1420 16th St #150 · Midtown Sacramento</p>
+    </div>
+    <a href="tel:+19163965508" class="font-display font-700 text-lg bg-bg text-ink px-7 py-4 rounded-sm hover:translate-y-[-2px] transition shadow-[6px_6px_0_rgba(0,0,0,0.25)]">Call (916) 396-5508</a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="relative z-10 bg-bg border-t border-white/10">
+  <div class="max-w-6xl mx-auto px-5 py-12">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <div class="flex items-center gap-2.5">
+        <span class="grid place-items-center w-9 h-9 rounded-full vinyl-dot ring-1 ring-acc/70">
+          <span class="w-2 h-2 rounded-full bg-acc"></span>
+        </span>
+        <div>
+          <p class="font-display font-700 tracking-tight leading-none">ROASTED<span class="text-acc">/</span>THREADS</p>
+          <p class="text-ink/50 text-xs mt-1 tracking-[0.12em] uppercase font-display">Coffee. Vintage. Vinyl.</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-5 text-sm font-display font-600 text-ink/75">
+        <a href="https://www.instagram.com/roastedthreads_sac/" target="_blank" rel="noopener" class="hover:text-acc transition">Instagram</a>
+        <a href="https://maps.google.com/?cid=5313556543092705357" target="_blank" rel="noopener" class="hover:text-acc transition">Google Maps</a>
+        <a href="tel:+19163965508" class="hover:text-acc transition">(916) 396-5508</a>
+      </div>
+    </div>
+    <div class="border-t border-white/10 mt-9 pt-6 flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between text-xs text-ink/45">
+      <p>© 2026 Roasted Threads SAC · 1420 16th St #150, Sacramento, CA 95814</p>
+      <p>Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

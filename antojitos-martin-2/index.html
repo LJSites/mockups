@@ -1,0 +1,514 @@
+<!--
+  ARCHETYPE: Fruit-market / juice-bar mercadito poster.
+  This is NOT a taqueria — it's a bright aguas-frescas + antojitos + treats stand.
+  Distinct from baby-s-tacos (Bungee + dark ink) and other Mexican spots in /work:
+    - Palette: leafy green (--bg cream-mint), citrus orange accent (--acc), sunny yellow pop.
+    - Display font: Fredoka (rounded, playful, juice-bar energy) — NOT a poster/condensed face.
+    - Body font: Nunito Sans.
+  STRUCTURAL DECISIONS:
+    - Hero: split — big rounded sticker headline left, storefront photo (06) right; sunburst ray bg.
+    - Nav: sticky top pill bar; scroll-padding-top reserved to avoid anchor overlap.
+    - Menu: NOT a 3-icon grid. Two stacked "stations" (Juice Bar / Kitchen) as price-list
+      style chip rows pulled from the real photographed menu board.
+    - Testimonies: offset masonry of speech-bubble cards, first name + last initial, no stars.
+    - Gallery: asymmetric mosaic of the real ./photos.
+    - Animation: subtle hover lift only. No scroll fade-up.
+  Map: keyless maps?q=...&output=embed. Photos: local ./photos/NN.jpg (6 exist). No fabricated stats.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Antojitos Martin #2 — Juice Bar &amp; Antojitos · Inglewood</title>
+<meta name="description" content="Fresh-squeezed juices, aguas frescas, bionicos, frappes, paletas & all-day antojitos mexicanos in Inglewood. Antojitos Martin #2 on Centinela Ave." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:    #f3f8ea;        /* pale mint-cream */
+    --bg2:   #ffffff;
+    --leaf:  #2f7d32;        /* leafy green */
+    --leaf-d:#1f5a22;
+    --acc:   #f06a1f;        /* citrus orange */
+    --acc-d: #d4530e;
+    --sun:   #ffc628;        /* sunny yellow */
+    --berry: #d6304a;        /* watermelon red */
+    --ink:   #20301c;        /* deep green-black */
+    --muted: #5d6b54;
+    --line:  #d9e6c8;
+    --radius:22px;
+    --shadow:0 14px 34px -18px rgba(31,90,34,.55);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:84px;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"Nunito Sans",system-ui,sans-serif; font-size:17px; line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:"Fredoka",sans-serif; font-weight:700; line-height:1.04; margin:0;}
+  a{color:inherit;}
+  img{display:block; max-width:100%;}
+  .wrap{width:min(1140px,92vw); margin-inline:auto;}
+  .eyebrow{
+    font-family:"Fredoka",sans-serif; font-weight:600; letter-spacing:.16em;
+    text-transform:uppercase; font-size:.72rem; color:var(--acc-d);
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:60;
+    background:rgba(243,248,234,.86); backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--line);
+  }
+  .nav .row{display:flex; align-items:center; gap:1rem; padding:.7rem 0; min-height:64px;}
+  .brand{display:flex; align-items:center; gap:.6rem; font-family:"Fredoka",sans-serif; font-weight:700; font-size:1.15rem;}
+  .seed{
+    width:38px; height:38px; flex:none; border-radius:50%;
+    background:radial-gradient(circle at 50% 45%, var(--sun) 0 38%, var(--acc) 39% 100%);
+    display:grid; place-items:center; box-shadow:0 0 0 3px #fff,0 6px 14px -6px rgba(0,0,0,.4);
+    position:relative;
+  }
+  .seed::after{content:"🍏"; font-size:18px; line-height:1;}
+  .nav-links{margin-left:auto; display:flex; align-items:center; gap:.3rem;}
+  .nav-links a{
+    font-family:"Fredoka",sans-serif; font-weight:500; font-size:.95rem;
+    text-decoration:none; color:var(--leaf-d); padding:.45rem .8rem; border-radius:999px;
+    transition:background .15s, color .15s;
+  }
+  .nav-links a:hover{background:var(--leaf); color:#fff;}
+  .nav-call{
+    background:var(--acc); color:#fff !important; font-weight:600;
+    box-shadow:0 8px 18px -8px var(--acc-d);
+  }
+  .nav-call:hover{background:var(--acc-d) !important; color:#fff !important;}
+  .nav-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative; overflow:hidden; padding:3.4rem 0 3.2rem;}
+  .hero::before{
+    content:""; position:absolute; inset:0; z-index:0;
+    background:
+      repeating-conic-gradient(from 0deg at 78% 30%, rgba(255,198,40,.20) 0deg 9deg, transparent 9deg 18deg);
+    -webkit-mask:radial-gradient(circle at 78% 30%, #000 0, transparent 62%);
+            mask:radial-gradient(circle at 78% 30%, #000 0, transparent 62%);
+    pointer-events:none;
+  }
+  .hero .grid{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns:1.05fr .95fr; gap:2.6rem; align-items:center;
+  }
+  .tag-pill{
+    display:inline-flex; align-items:center; gap:.5rem;
+    background:var(--leaf); color:#fff; font-family:"Fredoka",sans-serif; font-weight:600;
+    font-size:.82rem; letter-spacing:.04em; padding:.4rem .85rem; border-radius:999px;
+    box-shadow:var(--shadow);
+  }
+  .hero h1{
+    font-size:clamp(2.5rem,6vw,4rem); margin:1rem 0 .5rem; color:var(--ink);
+  }
+  .hero h1 .squeeze{
+    color:var(--acc); display:inline-block;
+    transform:rotate(-2.5deg);
+  }
+  .hero .lede{font-size:1.12rem; color:var(--muted); max-width:34ch;}
+  .hero .ctas{display:flex; flex-wrap:wrap; gap:.8rem; margin-top:1.6rem;}
+  .btn{
+    font-family:"Fredoka",sans-serif; font-weight:600; font-size:1rem;
+    text-decoration:none; padding:.8rem 1.45rem; border-radius:999px; display:inline-flex;
+    align-items:center; gap:.5rem; transition:transform .14s, box-shadow .14s, background .14s;
+  }
+  .btn-prim{background:var(--acc); color:#fff; box-shadow:0 12px 24px -10px var(--acc-d);}
+  .btn-prim:hover{transform:translateY(-2px); background:var(--acc-d);}
+  .btn-ghost{background:#fff; color:var(--leaf-d); border:2px solid var(--leaf);}
+  .btn-ghost:hover{transform:translateY(-2px); background:var(--leaf); color:#fff;}
+  .hero-photo{
+    position:relative; border-radius:28px; overflow:hidden;
+    box-shadow:var(--shadow); border:6px solid #fff; rotate:1.5deg;
+  }
+  .hero-photo img{width:100%; height:100%; object-fit:cover; aspect-ratio:4/3;}
+  .hero-badge{
+    position:absolute; left:-14px; bottom:-14px; rotate:-6deg;
+    background:var(--sun); color:var(--ink); font-family:"Fredoka",sans-serif; font-weight:700;
+    padding:.55rem 1rem; border-radius:14px; box-shadow:0 10px 20px -8px rgba(0,0,0,.4);
+    border:3px solid #fff; font-size:.95rem;
+  }
+  .open-strip{
+    margin-top:2.4rem; position:relative; z-index:1;
+    display:flex; flex-wrap:wrap; gap:.6rem 1.6rem; align-items:center;
+    background:#fff; border:2px solid var(--line); border-radius:var(--radius);
+    padding:.9rem 1.3rem; box-shadow:var(--shadow);
+  }
+  .open-strip .dot{width:9px; height:9px; border-radius:50%; background:var(--leaf); display:inline-block; margin-right:.4rem; box-shadow:0 0 0 4px rgba(47,125,50,.18);}
+  .open-strip b{font-family:"Fredoka",sans-serif;}
+  .open-strip span{color:var(--muted); font-size:.95rem;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:4.2rem 0;}
+  .sec-head{max-width:60ch;}
+  .sec-head h2{font-size:clamp(1.8rem,4vw,2.6rem); margin:.4rem 0 .6rem;}
+  .sec-head p{color:var(--muted); font-size:1.08rem;}
+
+  /* ---------- ABOUT ---------- */
+  #about{background:linear-gradient(180deg,var(--bg) 0,#eaf3da 100%);}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:2.4rem; align-items:center;}
+  .about-grid .copy p{margin:0 0 1rem;}
+  .fruit-tags{display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1.2rem;}
+  .fruit-tags span{
+    background:#fff; border:2px solid var(--line); color:var(--leaf-d);
+    font-family:"Fredoka",sans-serif; font-weight:500; font-size:.9rem;
+    padding:.35rem .8rem; border-radius:999px;
+  }
+  .about-photo{
+    border-radius:24px; overflow:hidden; border:6px solid #fff; box-shadow:var(--shadow);
+  }
+  .about-photo img{width:100%; aspect-ratio:1/1; object-fit:cover;}
+
+  /* ---------- MENU / STATIONS ---------- */
+  .stations{display:grid; grid-template-columns:1fr 1fr; gap:1.6rem; margin-top:2rem;}
+  .station{
+    background:#fff; border-radius:var(--radius); border:2px solid var(--line);
+    padding:1.6rem 1.6rem 1.8rem; box-shadow:var(--shadow);
+  }
+  .station.kitchen{border-color:#f1d8b0; background:#fffdf6;}
+  .station h3{
+    font-size:1.5rem; display:flex; align-items:center; gap:.55rem; margin-bottom:.2rem;
+  }
+  .station .lead{color:var(--muted); font-size:.96rem; margin:.25rem 0 1.1rem;}
+  .chips{display:flex; flex-wrap:wrap; gap:.5rem;}
+  .chip{
+    font-family:"Nunito Sans",sans-serif; font-weight:600; font-size:.92rem;
+    background:var(--bg); border:1.5px solid var(--line); border-radius:12px;
+    padding:.4rem .7rem; color:var(--ink);
+  }
+  .station.kitchen .chip{background:#fff6e9; border-color:#f1d8b0;}
+  .menu-note{
+    margin-top:1.6rem; text-align:center; color:var(--muted); font-size:.95rem;
+    font-style:italic;
+  }
+  .menu-note b{font-style:normal; color:var(--leaf-d); font-family:"Fredoka",sans-serif;}
+
+  /* ---------- GALLERY ---------- */
+  .mosaic{
+    display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:150px; gap:14px; margin-top:1.8rem;
+  }
+  .mosaic figure{margin:0; overflow:hidden; border-radius:18px; box-shadow:var(--shadow); border:4px solid #fff;}
+  .mosaic img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
+  .mosaic figure:hover img{transform:scale(1.06);}
+  .m-tall{grid-row:span 2;}
+  .m-wide{grid-column:span 2;}
+
+  /* ---------- TESTIMONIES ---------- */
+  #say{background:var(--leaf); color:#fff;}
+  #say .eyebrow{color:var(--sun);}
+  #say h2{color:#fff;}
+  #say .sub{color:#e3f1da; max-width:54ch;}
+  .bubbles{columns:3; column-gap:1.3rem; margin-top:2rem;}
+  .bubble{
+    break-inside:avoid; margin:0 0 1.3rem; background:#fff; color:var(--ink);
+    border-radius:20px; padding:1.3rem 1.4rem 1.2rem; position:relative;
+    box-shadow:0 16px 30px -18px rgba(0,0,0,.5);
+  }
+  .bubble::after{
+    content:""; position:absolute; left:34px; bottom:-13px;
+    border:13px solid transparent; border-top-color:#fff; border-bottom:0;
+  }
+  .bubble p{margin:0 0 .9rem; font-size:.99rem;}
+  .bubble .who{font-family:"Fredoka",sans-serif; font-weight:600; color:var(--acc-d); font-size:.95rem;}
+  .bubble .who::before{content:"— ";}
+
+  /* ---------- VISIT ---------- */
+  .visit-grid{display:grid; grid-template-columns:1fr 1.15fr; gap:2.4rem; align-items:stretch;}
+  .info-card{
+    background:#fff; border:2px solid var(--line); border-radius:var(--radius);
+    padding:1.8rem; box-shadow:var(--shadow);
+  }
+  .info-card h3{font-size:1.35rem; margin-bottom:.3rem;}
+  .hours{list-style:none; padding:0; margin:1rem 0 0; border-top:1.5px dashed var(--line);}
+  .hours li{display:flex; justify-content:space-between; padding:.5rem 0; border-bottom:1.5px dashed var(--line); font-size:.97rem;}
+  .hours li b{font-family:"Fredoka",sans-serif; font-weight:500;}
+  .hours .everyday{color:var(--leaf-d);}
+  .contact-line{margin-top:1.3rem; display:flex; flex-direction:column; gap:.55rem; font-size:1rem;}
+  .contact-line a{color:var(--leaf-d); font-weight:700; text-decoration:none;}
+  .contact-line a:hover{color:var(--acc-d);}
+  .find-us{margin-top:1.2rem; padding-top:1.1rem; border-top:1.5px dashed var(--line); font-size:.95rem;}
+  .find-us a{font-family:"Fredoka",sans-serif; color:var(--leaf-d); text-decoration:none; font-weight:500;}
+  .find-us a:hover{color:var(--acc-d); text-decoration:underline;}
+  .map-card{border-radius:var(--radius); overflow:hidden; border:6px solid #fff; box-shadow:var(--shadow); min-height:340px;}
+  .map-card iframe{width:100%; height:100%; min-height:340px; border:0; display:block;}
+  .visit-cta{margin-top:1.6rem;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink); color:#d9e6c8; padding:3rem 0 2.4rem; text-align:center;}
+  footer .seed{margin-inline:auto; margin-bottom:1rem;}
+  footer .fname{font-family:"Fredoka",sans-serif; font-weight:700; color:#fff; font-size:1.4rem;}
+  footer .fmeta{color:#a9bd99; font-size:.95rem; margin-top:.4rem;}
+  footer .fsocial{margin:1.2rem 0; display:flex; gap:1.4rem; justify-content:center; flex-wrap:wrap;}
+  footer .fsocial a{font-family:"Fredoka",sans-serif; color:var(--sun); text-decoration:none; font-weight:500;}
+  footer .fsocial a:hover{text-decoration:underline;}
+  footer .credit{
+    margin-top:1.6rem; padding-top:1.4rem; border-top:1px solid rgba(255,255,255,.12);
+    color:#8fa67e; font-size:.85rem;
+  }
+  footer .credit a{color:var(--sun);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:880px){
+    .hero .grid, .about-grid, .stations, .visit-grid{grid-template-columns:1fr;}
+    .hero-photo{rotate:0deg; max-width:480px;}
+    .bubbles{columns:2;}
+    .mosaic{grid-template-columns:repeat(2,1fr); grid-auto-rows:140px;}
+    .m-wide{grid-column:span 2;}
+  }
+  @media (max-width:600px){
+    body{font-size:16px;}
+    html{scroll-padding-top:72px;}
+    .nav-links{
+      position:absolute; top:64px; left:0; right:0; flex-direction:column; align-items:stretch;
+      background:var(--bg); border-bottom:2px solid var(--line); padding:.6rem .8rem 1rem; gap:.3rem;
+      display:none;
+    }
+    .nav-links.open{display:flex;}
+    .nav-links a{padding:.7rem .9rem;}
+    .nav-call{text-align:center;}
+    .nav-toggle{
+      display:inline-flex; margin-left:auto; background:var(--leaf); color:#fff; border:0;
+      width:42px; height:42px; border-radius:12px; font-size:1.3rem; cursor:pointer; align-items:center; justify-content:center;
+    }
+    .bubbles{columns:1;}
+    .mosaic{grid-template-columns:1fr; grid-auto-rows:200px;}
+    .m-tall, .m-wide{grid-row:auto; grid-column:auto;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap row">
+    <a href="#top" class="brand" style="text-decoration:none;">
+      <span class="seed" aria-hidden="true"></span>
+      <span>Antojitos Martin <span style="color:var(--acc);">#2</span></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <nav class="nav-links" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Photos</a>
+      <a href="#say">What People Say</a>
+      <a href="#visit">Visit</a>
+      <a class="nav-call" href="tel:+14247025214">Call (424) 702-5214</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <span class="tag-pill">🧃 Juice bar + antojitos · all day, every day</span>
+        <h1>Fresh-squeezed,<br><span class="squeeze">made-to-smile</span><br>antojitos.</h1>
+        <p class="lede">Aguas frescas by the barrel, bionicos, frappes, paletas &amp; a full kitchen of Mexican snacks &amp; treats — our second home on Centinela Ave in Inglewood.</p>
+        <div class="ctas">
+          <a class="btn btn-prim" href="tel:+14247025214">📞 Call Now</a>
+          <a class="btn btn-ghost" href="#menu">Peek the menu</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="./photos/06.jpg" alt="Antojitos Martin #2 storefront on Centinela Ave, Inglewood" />
+        <span class="hero-badge">Open 7am–8pm 🌞</span>
+      </div>
+    </div>
+
+    <div class="open-strip">
+      <span><span class="dot"></span><b>Open every day</b></span>
+      <span>7:00 AM – 8:00 PM</span>
+      <span>· 1300 Centinela Ave STE 103, Inglewood</span>
+      <span>· Juice bar &amp; restaurant, all in one</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="copy">
+      <span class="eyebrow">Our second location</span>
+      <h2 style="font-size:clamp(1.8rem,4vw,2.6rem); margin:.4rem 0 .9rem;">A market, a juice bar &amp; a kitchen — under one roof.</h2>
+      <p>Walk in and you'll find big jars of ruby watermelon, green pepino, and golden piña agua fresca lined up beside a wall of fresh fruit. Order a bionico, a Cinnamon Toast Crunch milkshake, a paleta, or sit down for all-day breakfast and lunch.</p>
+      <p>Antojitos Martin #2 is the newer Centinela spot — same energy, same friendly faces, same love for variety. Smoothies, ice cream, tortas, ceviche, tamales, wraps and more, all in one bright corner of Inglewood.</p>
+      <div class="fruit-tags">
+        <span>Aguas frescas</span>
+        <span>Bionicos</span>
+        <span>Frappes &amp; milkshakes</span>
+        <span>Paletas &amp; ice cream</span>
+        <span>All-day breakfast</span>
+        <span>Antojitos mexicanos</span>
+      </div>
+    </div>
+    <div class="about-photo">
+      <img src="./photos/05.jpg" alt="Barrels of fresh aguas frescas with pineapples and bananas at the juice bar" />
+    </div>
+  </div>
+</section>
+
+<!-- MENU / STATIONS -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">From the counter</span>
+      <h2>Two stations, one happy place.</h2>
+      <p>The juice bar up front, the kitchen in back. Here's a taste of what's on the boards — ask the crew for today's full lineup.</p>
+    </div>
+
+    <div class="stations">
+      <div class="station juice">
+        <h3>🥤 The Juice Bar</h3>
+        <p class="lead">Squeezed, blended &amp; poured to order.</p>
+        <div class="chips">
+          <span class="chip">Fresh aguas frescas</span>
+          <span class="chip">Fresh fruit juices</span>
+          <span class="chip">Smoothies</span>
+          <span class="chip">Bionicos</span>
+          <span class="chip">Frappes</span>
+          <span class="chip">Milkshakes</span>
+          <span class="chip">Cinnamon Toast Crunch shake</span>
+          <span class="chip">Paletas</span>
+          <span class="chip">Ice cream</span>
+          <span class="chip">Raspados</span>
+          <span class="chip">Snacks &amp; treats</span>
+        </div>
+      </div>
+
+      <div class="station kitchen">
+        <h3>🍳 The Kitchen</h3>
+        <p class="lead">All-day breakfast plus lunch favorites.</p>
+        <div class="chips">
+          <span class="chip">All-day pancakes</span>
+          <span class="chip">Tortas &amp; sandwiches</span>
+          <span class="chip">Smash burger combo</span>
+          <span class="chip">Tacos — shrimp · fish · veggie · chicken · steak</span>
+          <span class="chip">Quesadillas</span>
+          <span class="chip">Burritos</span>
+          <span class="chip">Taquitos</span>
+          <span class="chip">Asada fries</span>
+          <span class="chip">Salads</span>
+          <span class="chip">Ceviche &amp; tosticeviche</span>
+          <span class="chip">Empanadas</span>
+          <span class="chip">Tamales</span>
+          <span class="chip">Wraps</span>
+          <span class="chip">Sushi rolls</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="menu-note">Prices &amp; specials posted in-store — call <b>(424) 702-5214</b> to ask what's fresh today.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" style="background:#eaf3da;">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Take a look</span>
+      <h2>Bright counter, brighter flavors.</h2>
+    </div>
+    <div class="mosaic">
+      <figure class="m-tall"><img src="./photos/05.jpg" alt="Jars of fresh agua fresca lined up at the counter" /></figure>
+      <figure class="m-wide"><img src="./photos/03.jpg" alt="The full Antojitos Martin counter with fruit, snacks and menu boards" /></figure>
+      <figure><img src="./photos/02.jpg" alt="A delicious frappe topped with whipped cream and caramel" /></figure>
+      <figure><img src="./photos/01.jpg" alt="All-day pancakes display against the green plant wall" /></figure>
+      <figure class="m-wide"><img src="./photos/06.jpg" alt="Antojitos Martin #2 storefront in Inglewood" /></figure>
+      <figure><img src="./photos/04.jpg" alt="The kitchen food menu board" /></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="say">
+  <div class="wrap">
+    <span class="eyebrow">In their words</span>
+    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem); margin:.4rem 0 .6rem;">What people say</h2>
+    <p class="sub">A few notes from the folks who keep coming back.</p>
+    <div class="bubbles">
+      <div class="bubble">
+        <p>"My favorite place to get fresh juice. Excellent food and great workers — juice bar and a restaurant all in one, with smoothies, paletas, ice cream, all-day breakfast and great lunch options."</p>
+        <div class="who">Isabela C.</div>
+      </div>
+      <div class="bubble">
+        <p>"I ordered bionicos and a Cinnamon Toast Crunch milkshake. My daughter loved the milkshake and still keeps talking about how good it was. My bionico was great — I could eliminate the fruits I didn't want, and the portion size was huge. We look forward to eating there again."</p>
+        <div class="who">K. S.</div>
+      </div>
+      <div class="bubble">
+        <p>"First-time customer and I'm so happy they're in the area! Great customer service, energy and presence, plus so many varieties of menu items. I wish them the best at their second location!"</p>
+        <div class="who">Lj J.</div>
+      </div>
+      <div class="bubble">
+        <p>"This place is amazing! Ashley was great. All the way from Detroit — I'll keep coming back!"</p>
+        <div class="who">Unique B.</div>
+      </div>
+      <div class="bubble">
+        <p>"An extraordinary experience. Warm ambiance, attentive staff, and sensational flavors. Friendly, knowledgeable and attentive — I wholeheartedly recommend Antojitos Martin to everyone."</p>
+        <div class="who">Miguel T.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Come on by</span>
+      <h2>Find us on Centinela.</h2>
+      <p>We're inside on Centinela Ave in Inglewood — open every single day, morning to evening.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="info-card">
+        <h3>Hours &amp; contact</h3>
+        <ul class="hours">
+          <li><b class="everyday">Every day</b><span>7:00 AM – 8:00 PM</span></li>
+        </ul>
+        <div class="contact-line">
+          <span>📍 1300 Centinela Ave STE 103, Inglewood, CA 90302</span>
+          <span>📞 <a href="tel:+14247025214">(424) 702-5214</a></span>
+        </div>
+        <div class="find-us">
+          Find us on
+          <a href="https://maps.google.com/?cid=1794825006307477296" target="_blank" rel="noopener">Google Business ↗</a>
+        </div>
+        <div class="visit-cta">
+          <a class="btn btn-prim" href="https://www.google.com/maps?q=1300+Centinela+Ave+STE+103,+Inglewood,+CA+90302" target="_blank" rel="noopener">📍 Get Directions</a>
+        </div>
+      </div>
+      <div class="map-card">
+        <iframe
+          src="https://www.google.com/maps?q=1300%20Centinela%20Ave%20STE%20103%2C%20Inglewood%2C%20CA%2090302&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Antojitos Martin #2, 1300 Centinela Ave, Inglewood"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <span class="seed" aria-hidden="true"></span>
+    <div class="fname">Antojitos Martin #2</div>
+    <div class="fmeta">Juice bar &amp; antojitos · 1300 Centinela Ave STE 103, Inglewood, CA 90302</div>
+    <div class="fsocial">
+      <a href="tel:+14247025214">📞 (424) 702-5214</a>
+      <a href="https://maps.google.com/?cid=1794825006307477296" target="_blank" rel="noopener">📍 Google Business</a>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

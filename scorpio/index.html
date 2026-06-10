@@ -1,0 +1,470 @@
+<!--
+  Archetype: Nocturnal Astrological Editorial — a moody, water-sign coffee + natural-wine bar.
+  Scorpio (Midtown Sacramento): multi-roaster coffee by day, low-intervention wine by night,
+  Japandi-minimal seasonal food. Design-forward, cool, ink-dark.
+
+  Key structural decisions (deliberately DISTINCT from obscura-coffee's warm-gold grotesk treatment):
+    - PALETTE: deep ink-slate near-black (#0e1014) + cool desaturated lilac/periwinkle accent (#a9a4d8)
+      + bone text (#e7e4dc). A water-sign, after-dark cool — not warm gold.
+    - TYPE: Fraunces (high-contrast editorial serif, optical/italic display) paired with
+      Hanken Grotesk (clean neutral body). Obscura uses Familjen Grotesk + IBM Plex Sans — no overlap.
+    - HERO: left-aligned editorial masthead with a giant italic Fraunces wordmark + a "♏" glyph
+      and an offset duotone-ish photo column. No centered hero / no dark-overlay-on-stock.
+    - NAV: sticky top bar; scroll-padding-top reserved (66px) so anchor jumps clear it.
+    - MENU: editorial two-track layout — "By Day / By Night" price-leader rows, NOT a 3-card grid.
+    - TESTIMONIES: stacked editorial pull-quotes, oversized serif, first name + last initial. No stars.
+    - ANIMATION: restrained — a single quiet IntersectionObserver reveal on section headers only.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Scorpio — Coffee &amp; Natural Wine · Midtown Sacramento</title>
+<meta name="description" content="Scorpio: a multi-roaster coffee bar and natural, low-intervention wine bar with seasonal food in Midtown Sacramento. DAK, Sey &amp; friends. Open daily 7–4." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:      #0e1014;
+    --bg-2:    #14171d;
+    --panel:   #181b22;
+    --acc:     #a9a4d8;   /* cool periwinkle / lilac — water sign, after dark */
+    --acc-deep:#6f6aa6;
+    --text:    #e7e4dc;
+    --muted:   #9a9aa4;
+    --line:    #262a33;
+    --serif:   'Fraunces', Georgia, 'Times New Roman', serif;
+    --sans:    'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:66px; /* reserve sticky nav height for anchor jumps */
+  }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--acc);color:#0e1014}
+
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+
+  /* ---------- NAV ---------- */
+  nav.top{
+    position:sticky;top:0;z-index:50;
+    height:66px;display:flex;align-items:center;
+    background:rgba(14,16,20,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.top .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{
+    font-family:var(--serif);font-style:italic;font-weight:500;
+    font-size:1.35rem;letter-spacing:.01em;display:flex;align-items:center;gap:.5rem;
+  }
+  .brand .glyph{font-style:normal;color:var(--acc);font-size:1.2rem;transform:translateY(1px)}
+  .navlinks{display:flex;gap:2rem;align-items:center}
+  .navlinks a{
+    font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);transition:color .25s;
+  }
+  .navlinks a:hover{color:var(--text)}
+  .navlinks a.cta{
+    color:var(--acc);border:1px solid var(--acc);
+    padding:.5rem .95rem;border-radius:1px;transition:.25s;
+  }
+  .navlinks a.cta:hover{background:var(--acc);color:#0e1014}
+  @media(max-width:760px){ .navlinks a:not(.cta){display:none} }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    border-bottom:1px solid var(--line);
+    padding:72px 0 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:end;
+  }
+  .hero-kick{
+    font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--acc);
+    margin-bottom:1.6rem;
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:300;
+    font-size:clamp(3.6rem,11vw,7.8rem);
+    line-height:.92;
+    letter-spacing:-.02em;
+    margin-bottom:1.4rem;
+  }
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--acc)}
+  .hero h1 .sign{font-style:normal;color:var(--text);font-weight:300}
+  .hero-sub{
+    font-size:1.06rem;color:var(--muted);max-width:34ch;margin-bottom:2.1rem;font-weight:300;
+  }
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:1.4rem 2.4rem;font-size:.78rem;
+    letter-spacing:.05em;color:var(--muted);text-transform:uppercase;
+    padding-bottom:46px;
+  }
+  .hero-meta b{color:var(--text);font-weight:500}
+  .hero-photo{
+    position:relative;margin-bottom:-1px;
+  }
+  .hero-photo img{
+    width:100%;height:520px;object-fit:cover;
+    filter:grayscale(.18) contrast(1.04) brightness(.92);
+    border:1px solid var(--line);border-bottom:none;
+  }
+  .hero-photo .tag{
+    position:absolute;left:0;bottom:18px;background:var(--acc);color:#0e1014;
+    font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;
+    padding:.45rem .9rem;
+  }
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:36px}
+    .hero-photo img{height:340px}
+    .hero-meta{padding-bottom:34px}
+  }
+
+  /* marquee strip */
+  .strip{
+    background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    overflow:hidden;white-space:nowrap;
+  }
+  .strip-track{display:inline-block;padding:14px 0;animation:slide 34s linear infinite}
+  .strip-track span{
+    font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--muted);
+    margin:0 1.6rem;
+  }
+  .strip-track span b{color:var(--acc);font-style:normal;font-weight:500}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:96px 0;border-bottom:1px solid var(--line)}
+  .sec-head{
+    display:flex;align-items:baseline;gap:1rem;margin-bottom:48px;
+    opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease;
+  }
+  .sec-head.in{opacity:1;transform:none}
+  .sec-no{
+    font-family:var(--serif);font-style:italic;color:var(--acc);font-size:1.1rem;
+    flex:0 0 auto;
+  }
+  .sec-title{
+    font-family:var(--serif);font-weight:300;font-size:clamp(2rem,5vw,3.2rem);
+    line-height:1.02;letter-spacing:-.015em;
+  }
+  .sec-title em{font-style:italic;color:var(--acc)}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+  .about-lead{font-family:var(--serif);font-weight:300;font-size:1.5rem;line-height:1.4;letter-spacing:-.01em}
+  .about-lead em{font-style:italic;color:var(--acc)}
+  .about-body p{color:var(--muted);font-weight:300;margin-bottom:1.1rem;font-size:1.02rem}
+  .about-body p:last-child{margin-bottom:0}
+  .pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.8rem}
+  .pill{
+    border:1px solid var(--line);color:var(--muted);
+    font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+    padding:.45rem .8rem;border-radius:1px;
+  }
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:32px}}
+
+  /* ---------- MENU (By Day / By Night) ---------- */
+  .menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+  .menu-col h3{
+    font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.7rem;
+    color:var(--acc);margin-bottom:.3rem;
+  }
+  .menu-col .clock{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:1.8rem}
+  .row{
+    display:flex;align-items:baseline;gap:.8rem;padding:.95rem 0;border-top:1px solid var(--line);
+  }
+  .row:last-child{border-bottom:1px solid var(--line)}
+  .row .nm{font-weight:500;color:var(--text);white-space:nowrap}
+  .row .dot{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-3px)}
+  .row .pr{color:var(--acc);font-variant-numeric:tabular-nums;font-size:.9rem}
+  .row .desc{flex-basis:100%;color:var(--muted);font-size:.86rem;font-weight:300;margin-top:.15rem;padding-left:0}
+  .menu-note{margin-top:1.6rem;font-size:.8rem;color:var(--muted);font-weight:300;font-style:italic}
+  @media(max-width:760px){.menu-cols{grid-template-columns:1fr;gap:48px}}
+
+  /* ---------- GALLERY ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+  .gallery a{overflow:hidden;border:1px solid var(--line);position:relative}
+  .gallery img{width:100%;height:100%;object-fit:cover;filter:grayscale(.1) brightness(.94);transition:transform .9s ease,filter .9s ease}
+  .gallery a:hover img{transform:scale(1.05);filter:grayscale(0) brightness(1)}
+  .g-tall{grid-row:span 2}
+  .g-wide{grid-column:span 2}
+  @media(max-width:760px){
+    .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+    .g-wide{grid-column:span 2}
+    .g-tall{grid-row:span 1}
+  }
+
+  /* ---------- TESTIMONIES ---------- */
+  .voices{display:flex;flex-direction:column;gap:0}
+  .voice{padding:44px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:38px;align-items:start}
+  .voice:first-child{border-top:none;padding-top:0}
+  .voice .mark{font-family:var(--serif);font-style:italic;color:var(--acc);font-size:3rem;line-height:.7;flex:0 0 auto}
+  .voice blockquote{font-family:var(--serif);font-weight:300;font-size:clamp(1.25rem,2.6vw,1.85rem);line-height:1.42;letter-spacing:-.01em}
+  .voice cite{display:block;margin-top:1.1rem;font-family:var(--sans);font-style:normal;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  @media(max-width:620px){.voice{grid-template-columns:1fr;gap:16px}.voice .mark{font-size:2.2rem}}
+
+  /* ---------- VISIT ---------- */
+  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:stretch}
+  .hours-list{margin-top:.5rem}
+  .hours-list .hr{display:flex;justify-content:space-between;padding:.7rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+  .hours-list .hr .d{color:var(--muted);letter-spacing:.04em}
+  .hours-list .hr .t{color:var(--text);font-variant-numeric:tabular-nums}
+  .visit h4{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin:2.2rem 0 .8rem}
+  .visit p.addr{font-family:var(--serif);font-style:italic;font-size:1.25rem;line-height:1.4;font-weight:300}
+  .findus{margin-top:1.2rem;display:flex;flex-wrap:wrap;gap:1.2rem}
+  .findus a{font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid transparent;padding-bottom:2px;transition:.25s}
+  .findus a:hover{color:var(--acc);border-color:var(--acc)}
+  .mapbox{border:1px solid var(--line);overflow:hidden;min-height:380px}
+  .mapbox iframe{width:100%;height:100%;min-height:380px;border:0;filter:grayscale(.4) invert(.92) hue-rotate(180deg) contrast(.9)}
+  .visit .cta-big{
+    display:inline-block;margin-top:2rem;background:var(--acc);color:#0e1014;
+    font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;
+    padding:1rem 1.8rem;border-radius:1px;transition:.25s;
+  }
+  .visit .cta-big:hover{background:var(--text)}
+  @media(max-width:860px){.visit-grid{grid-template-columns:1fr;gap:36px}.mapbox{min-height:300px}}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:72px 0 56px;text-align:center;background:var(--bg-2)}
+  footer .fmark{font-family:var(--serif);font-style:italic;font-size:2.4rem;font-weight:300;margin-bottom:.5rem}
+  footer .fmark .glyph{font-style:normal;color:var(--acc)}
+  footer .ftag{color:var(--muted);font-size:.9rem;font-weight:300;margin-bottom:1.8rem}
+  footer .fsoc{display:flex;gap:1.6rem;justify-content:center;margin-bottom:2.4rem;flex-wrap:wrap}
+  footer .fsoc a{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);transition:color .25s}
+  footer .fsoc a:hover{color:var(--acc)}
+  footer .credit{font-size:.78rem;color:#6c6c76;border-top:1px solid var(--line);padding-top:1.8rem;max-width:640px;margin:0 auto;line-height:1.7}
+  footer .credit a{color:var(--acc)}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="glyph">♏</span> Scorpio</a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Space</a>
+      <a href="#voices">In Their Words</a>
+      <a href="#visit" class="cta">Visit</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="hero-kick">Coffee &amp; Natural Wine · Midtown Sacramento</p>
+        <h1><em>Scorpio</em><br><span class="sign">after dark.</span></h1>
+        <p class="hero-sub">A multi-roaster coffee bar by morning, a low-intervention wine bar by afternoon — with seasonal food that doesn't apologize for being a little weird and wonderful.</p>
+        <div class="hero-meta">
+          <span><b>Open daily</b> · 7AM–4PM</span>
+          <span><b>1905 16th St</b> · 95811</span>
+          <span><b>DAK</b> · Sey &amp; friends</span>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="./photos/01.jpg" alt="Inside Scorpio coffee and wine bar in Midtown Sacramento" />
+        <span class="tag">Japandi minimalism</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <span>Cortado</span><span>·</span><span>Matcha Cream Soda <b>signature</b></span><span>·</span><span>Mushroom Toast</span><span>·</span><span>Natural Wine</span><span>·</span><span>Müsli</span><span>·</span><span>Multi-roaster <b>DAK · Sey</b></span><span>·</span>
+    <span>Cortado</span><span>·</span><span>Matcha Cream Soda <b>signature</b></span><span>·</span><span>Mushroom Toast</span><span>·</span><span>Natural Wine</span><span>·</span><span>Müsli</span><span>·</span><span>Multi-roaster <b>DAK · Sey</b></span><span>·</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">01</span>
+      <h2 class="sec-title">A water sign, <em>poured slow.</em></h2>
+    </div>
+    <div class="about-grid">
+      <p class="about-lead">Scorpio is a coffee bar and natural-wine room in the heart of Midtown — built for the <em>solo morning</em>, the slow afternoon, and the kind of food you photograph before you taste.</p>
+      <div class="about-body">
+        <p>We pour from a rotating cast of specialty roasters — DAK, Sey, and friends — so the cup changes with the season and the harvest. Light-to-medium, fruity and balanced; milk textured the way it should be.</p>
+        <p>The kitchen leans Japandi: spare, intentional, vegetable-forward. Mushroom toast crowned with an onsen egg. Strawberry-miso toast with fresh ricotta and honey. Müsli with peach and berries. Clear dietary labels — veg, gluten-free, and oat-milk friendly throughout.</p>
+        <p>Come evening, the lights drop and the natural wine comes out: low-intervention, small-grower, poured by people who actually want to tell you about it.</p>
+        <div class="pills">
+          <span class="pill">Multi-roaster</span>
+          <span class="pill">Natural Wine</span>
+          <span class="pill">Seasonal Food</span>
+          <span class="pill">Veg · GF · Oat</span>
+          <span class="pill">Eat-in / To-go</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">02</span>
+      <h2 class="sec-title">By day, <em>by night.</em></h2>
+    </div>
+    <div class="menu-cols">
+      <div class="menu-col">
+        <h3>By Day</h3>
+        <p class="clock">7AM – 4PM · Coffee &amp; Kitchen</p>
+        <div class="row"><span class="nm">Cortado</span><span class="dot"></span><span class="pr">4.5</span><span class="desc">Two parts espresso, two parts steamed milk. Spot-on texture.</span></div>
+        <div class="row"><span class="nm">Flat White</span><span class="dot"></span><span class="pr">5</span></div>
+        <div class="row"><span class="nm">Oat Cappuccino</span><span class="dot"></span><span class="pr">5.5</span></div>
+        <div class="row"><span class="nm">Filter — single origin</span><span class="dot"></span><span class="pr">5</span><span class="desc">Light-to-medium, fruity &amp; balanced. Rotates with the roaster.</span></div>
+        <div class="row"><span class="nm">Matcha Cream Soda</span><span class="dot"></span><span class="pr">6.5</span><span class="desc">The signature. Iconic. Worth a second one.</span></div>
+      </div>
+      <div class="menu-col">
+        <h3>The Kitchen</h3>
+        <p class="clock">Seasonal · Veg · GF · Oat-friendly</p>
+        <div class="row"><span class="nm">Mushroom Toast</span><span class="dot"></span><span class="pr">14</span><span class="desc">A moody little masterpiece — savory shrooms, onsen egg, a touch of heat.</span></div>
+        <div class="row"><span class="nm">Strawberry-Miso Toast</span><span class="dot"></span><span class="pr">13</span><span class="desc">Fresh ricotta &amp; honey. Weird and wonderful.</span></div>
+        <div class="row"><span class="nm">Avocado Toast</span><span class="dot"></span><span class="pr">12</span></div>
+        <div class="row"><span class="nm">Müsli</span><span class="dot"></span><span class="pr">11</span><span class="desc">Crisp granola, fresh fruit, berries &amp; peach.</span></div>
+        <div class="row"><span class="nm">Pastry of the day</span><span class="dot"></span><span class="pr">—</span><span class="desc">Coffee cake · chocolate-chip walnut cookie · ricotta-honey toast.</span></div>
+      </div>
+    </div>
+    <p class="menu-note">Natural &amp; low-intervention wine poured by the glass through the afternoon. Prices reflect the ingredients — thoughtful, not cheap.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">03</span>
+      <h2 class="sec-title">The <em>space.</em></h2>
+    </div>
+    <div class="gallery">
+      <a class="g-tall" href="./photos/02.jpg" target="_blank" rel="noopener"><img src="./photos/02.jpg" alt="Scorpio interior" loading="lazy" /></a>
+      <a class="g-wide" href="./photos/03.jpg" target="_blank" rel="noopener"><img src="./photos/03.jpg" alt="Coffee and food at Scorpio" loading="lazy" /></a>
+      <a href="./photos/04.jpg" target="_blank" rel="noopener"><img src="./photos/04.jpg" alt="Detail at Scorpio" loading="lazy" /></a>
+      <a href="./photos/05.jpg" target="_blank" rel="noopener"><img src="./photos/05.jpg" alt="Seating at Scorpio" loading="lazy" /></a>
+      <a class="g-wide" href="./photos/06.jpg" target="_blank" rel="noopener"><img src="./photos/06.jpg" alt="Scorpio counter" loading="lazy" /></a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="voices">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">04</span>
+      <h2 class="sec-title">In their <em>words.</em></h2>
+    </div>
+    <div class="voices">
+      <div class="voice">
+        <span class="mark">“</span>
+        <div>
+          <blockquote>Such a calm and zen coffee place. The oat-milk cappuccinos, the coffee cake, the ricotta-honey-and-pear toast — all so delicate, the perfect level of sweetness.</blockquote>
+          <cite>— A. Sharma</cite>
+        </div>
+      </div>
+      <div class="voice">
+        <span class="mark">“</span>
+        <div>
+          <blockquote>The space is gorgeous, modern, designed so well. Light-to-medium roast, fruity and balanced — it reminded me of the coffee I loved in Barcelona. One of my new favorite spots in Sacramento.</blockquote>
+          <cite>— Maryam · food critic</cite>
+        </div>
+      </div>
+      <div class="voice">
+        <span class="mark">“</span>
+        <div>
+          <blockquote>The mushroom toast is a moody little masterpiece, crowned with that onsen egg. The Matcha Cream Soda? Iconic — I gasped, I sipped, I ordered another. Chic Japandi minimalism, and the staff is sweet.</blockquote>
+          <cite>— Jerry J.</cite>
+        </div>
+      </div>
+      <div class="voice">
+        <span class="mark">“</span>
+        <div>
+          <blockquote>I received the most joyful, patient welcome here. When I switched from eat-in to to-go they pivoted effortlessly. The mushroom toast is distinct — marvelously savory. Definitely a repeatable one.</blockquote>
+          <cite>— Lynn G.</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-no">05</span>
+      <h2 class="sec-title">Find <em>us.</em></h2>
+    </div>
+    <div class="visit-grid">
+      <div class="visit">
+        <h4>Hours</h4>
+        <div class="hours-list">
+          <div class="hr"><span class="d">Monday</span><span class="t">7:00 AM – 4:00 PM</span></div>
+          <div class="hr"><span class="d">Tuesday</span><span class="t">7:00 AM – 4:00 PM</span></div>
+          <div class="hr"><span class="d">Wednesday</span><span class="t">7:00 AM – 4:00 PM</span></div>
+          <div class="hr"><span class="d">Thursday</span><span class="t">7:00 AM – 4:00 PM</span></div>
+          <div class="hr"><span class="d">Friday</span><span class="t">7:00 AM – 4:00 PM</span></div>
+          <div class="hr"><span class="d">Saturday</span><span class="t">7:00 AM – 4:00 PM</span></div>
+          <div class="hr"><span class="d">Sunday</span><span class="t">7:00 AM – 4:00 PM</span></div>
+        </div>
+        <h4>Where</h4>
+        <p class="addr">1905 16th Street<br>Midtown · Sacramento, CA 95811</p>
+        <div class="findus">
+          <a href="https://maps.google.com/?cid=13423823285813069874" target="_blank" rel="noopener">Google Business ↗</a>
+          <a href="https://www.google.com/maps?q=1905+16th+St,+Sacramento,+CA+95811" target="_blank" rel="noopener">Get Directions ↗</a>
+        </div>
+        <a class="cta-big" href="https://www.google.com/maps?q=1905+16th+St,+Sacramento,+CA+95811" target="_blank" rel="noopener">Get Directions →</a>
+      </div>
+      <div class="mapbox">
+        <iframe
+          src="https://www.google.com/maps?q=1905%2016th%20St%2C%20Sacramento%2C%20CA%2095811&z=15&output=embed"
+          title="Map to Scorpio, 1905 16th St, Sacramento"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="fmark"><span class="glyph">♏</span> Scorpio</p>
+    <p class="ftag">Coffee &amp; natural wine · Midtown Sacramento · open daily 7–4</p>
+    <div class="fsoc">
+      <a href="https://maps.google.com/?cid=13423823285813069874" target="_blank" rel="noopener">Google Business</a>
+      <a href="https://www.google.com/maps?q=1905+16th+St,+Sacramento,+CA+95811" target="_blank" rel="noopener">Directions</a>
+    </div>
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </div>
+</footer>
+
+<script>
+  // Restrained reveal — section headers only.
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.sec-head').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

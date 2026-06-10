@@ -1,0 +1,456 @@
+<!--
+  Seabreeze Cleaners — Oxnard, CA
+  Flavor / archetype: coastal-editorial dry cleaner (magazine-style, airy, harbor light)
+  Hero layout id: full-bleed
+  Service layout id: 2col-rows
+  Designed by LJ Sites.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Seabreeze Cleaners — Dry Cleaning &amp; Laundry in Oxnard</title>
+<meta name="description" content="Seabreeze Cleaners on Harbor Blvd in Oxnard — careful dry cleaning, laundry, pressing and alterations from a team that remembers your name." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --acc:#0e7490;
+    --bg:#f6fbfb;
+    --ink:#13343b;
+    --ink-soft:#46666c;
+    --line:#d8e9ea;
+    --paper:#ffffff;
+    --acc-deep:#0a586a;
+    --nav-h:68px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:var(--nav-h);
+    -webkit-text-size-adjust:100%;
+  }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.disp{font-family:'Fraunces',Georgia,serif;font-weight:400;line-height:1.05;letter-spacing:-0.015em;}
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--acc);
+  }
+
+  /* ---------- NAV ---------- */
+  nav.bar{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(246,251,251,.86);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .bar .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:baseline;gap:.5ch;font-family:'Fraunces',serif;font-size:21px;letter-spacing:-.01em;}
+  .brand small{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);transform:translateY(-2px);}
+  .navlinks{display:flex;align-items:center;gap:34px;}
+  .navlinks a{font-size:14px;font-weight:500;color:var(--ink-soft);text-decoration:none;position:relative;padding:4px 0;transition:color .2s;}
+  .navlinks a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1.5px;background:var(--acc);transition:width .25s ease;}
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a:hover::after{width:100%;}
+  .navlinks .navcall{display:none;}
+  @media (max-width:760px){
+    .navlinks a:not(.navcall){display:none;}
+    .navlinks .navcall{
+      display:inline-flex;align-items:center;gap:7px;
+      background:var(--acc);color:#fff;padding:9px 16px;border-radius:999px;
+      font-weight:600;font-size:13px;text-decoration:none;
+    }
+    .navlinks .navcall::after{display:none;}
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Inter',sans-serif;font-weight:600;font-size:15px;
+    padding:14px 26px;border-radius:2px;text-decoration:none;cursor:pointer;
+    transition:transform .18s ease, box-shadow .25s ease, background .2s ease;
+  }
+  .btn-primary{background:var(--acc);color:#fff;box-shadow:0 1px 0 rgba(0,0,0,.04);}
+  .btn-primary:hover{background:var(--acc-deep);transform:translateY(-2px);box-shadow:0 12px 24px -12px rgba(14,116,144,.6);}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px);}
+  .btn svg{width:17px;height:17px;}
+
+  /* ---------- HERO (full-bleed) ---------- */
+  header.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;}
+  header.hero .bgimg{position:absolute;inset:0;background:url('./photos/01.jpg') center 38%/cover no-repeat;}
+  header.hero .scrim{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(8,55,67,.30) 0%, rgba(8,55,67,.18) 38%, rgba(8,55,67,.72) 100%);
+  }
+  header.hero .scrim2{position:absolute;inset:0;background:linear-gradient(90deg, rgba(8,55,67,.45), transparent 62%);}
+  .hero-inner{position:relative;z-index:2;width:100%;padding-bottom:7vh;padding-top:120px;color:#eafafa;}
+  .hero-inner .eyebrow{color:#7fd6e6;}
+  .hero h1{
+    color:#fff;
+    font-size:clamp(2.9rem,8vw,6rem);
+    max-width:14ch;
+    margin:.32em 0 .5em;
+    font-weight:300;
+  }
+  .hero h1 em{font-style:italic;color:#a8e4ef;font-weight:400;}
+  .hero .lede{max-width:42ch;font-size:clamp(1rem,2.4vw,1.22rem);color:#dcf2f4;font-weight:400;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;}
+  .hero .btn-ghost{color:#eafafa;border-color:rgba(255,255,255,.4);}
+  .hero .btn-ghost:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.08);}
+  .hero-meta{
+    position:relative;z-index:2;
+    display:flex;flex-wrap:wrap;gap:8px 34px;
+    border-top:1px solid rgba(255,255,255,.22);
+    margin-top:40px;padding-top:20px;
+    font-size:13.5px;letter-spacing:.02em;color:#cfeef1;
+  }
+  .hero-meta b{font-weight:600;color:#fff;}
+
+  /* ---------- INTRO / ABOUT ---------- */
+  section{padding:92px 0;}
+  .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+  .intro-copy h2{font-size:clamp(2rem,4.5vw,3rem);margin-bottom:.5em;font-weight:300;}
+  .intro-copy h2 em{font-style:italic;color:var(--acc);}
+  .intro-copy p{color:var(--ink-soft);margin-bottom:1.1em;max-width:50ch;}
+  .intro-copy p:last-child{margin-bottom:0;}
+  .intro-figure{position:relative;}
+  .intro-figure img{width:100%;height:520px;object-fit:cover;border-radius:3px;}
+  .intro-figure .tag{
+    position:absolute;left:-18px;bottom:34px;
+    background:var(--paper);border:1px solid var(--line);
+    padding:18px 22px;max-width:230px;border-radius:3px;
+    box-shadow:0 24px 50px -28px rgba(14,116,144,.45);
+  }
+  .intro-figure .tag .num{font-family:'Fraunces',serif;font-size:38px;color:var(--acc);line-height:1;}
+  .intro-figure .tag p{font-size:13.5px;color:var(--ink-soft);margin-top:6px;line-height:1.4;}
+
+  /* ---------- SERVICES (2col-rows) ---------- */
+  .services{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:54px;flex-wrap:wrap;}
+  .sec-head h2{font-size:clamp(2rem,4.5vw,3.1rem);font-weight:300;max-width:16ch;}
+  .sec-head h2 em{font-style:italic;color:var(--acc);}
+  .sec-head .note{max-width:34ch;color:var(--ink-soft);font-size:15px;}
+  .srow{
+    display:grid;grid-template-columns:64px 1fr 1fr;gap:32px;align-items:start;
+    padding:34px 0;border-top:1px solid var(--line);
+  }
+  .srow:last-child{border-bottom:1px solid var(--line);}
+  .srow .idx{font-family:'Fraunces',serif;font-size:30px;color:var(--acc);line-height:1;padding-top:2px;}
+  .srow h3{font-size:1.55rem;font-weight:400;margin-bottom:0;}
+  .srow .sdesc{color:var(--ink-soft);font-size:15.5px;}
+  .srow:hover h3{color:var(--acc);transition:color .2s;}
+
+  /* ---------- TESTIMONIES ---------- */
+  .says{background:linear-gradient(180deg,var(--bg),#eef7f8);}
+  .says .label{text-align:center;margin-bottom:14px;}
+  .says h2{text-align:center;font-size:clamp(2rem,5vw,3.2rem);font-weight:300;margin-bottom:60px;}
+  .says h2 em{font-style:italic;color:var(--acc);}
+  .quotes{columns:2;column-gap:32px;}
+  .quote{
+    break-inside:avoid;margin-bottom:32px;
+    background:var(--paper);border:1px solid var(--line);
+    border-radius:3px;padding:32px 30px;
+    box-shadow:0 18px 40px -32px rgba(14,116,144,.4);
+  }
+  .quote .mark{font-family:'Fraunces',serif;font-size:54px;line-height:.4;color:var(--acc);opacity:.4;display:block;height:24px;}
+  .quote p{font-family:'Fraunces',serif;font-size:1.18rem;font-weight:300;line-height:1.5;color:var(--ink);margin:10px 0 18px;}
+  .quote .by{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--acc);}
+
+  /* ---------- VISIT ---------- */
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--paper);}
+  .visit-info{padding:54px 50px;}
+  .visit-info h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:300;margin-bottom:6px;}
+  .visit-info h2 em{font-style:italic;color:var(--acc);}
+  .visit-info .sub{color:var(--ink-soft);margin-bottom:34px;}
+  .hours{list-style:none;margin:0 0 34px;border-top:1px solid var(--line);}
+  .hours li{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px;}
+  .hours li.today{color:var(--acc);font-weight:600;}
+  .hours .day{color:var(--ink-soft);}
+  .hours li.today .day{color:var(--acc);}
+  .hours .closed{color:#9bb3b6;}
+  .contact-rows{display:grid;gap:4px;margin-bottom:30px;}
+  .crow{display:flex;gap:14px;align-items:flex-start;padding:6px 0;}
+  .crow svg{width:18px;height:18px;color:var(--acc);flex:none;margin-top:3px;}
+  .crow a{text-decoration:none;}
+  .crow a:hover{color:var(--acc);}
+  .crow .small{font-size:13px;color:var(--ink-soft);}
+  .visit-map{position:relative;min-height:440px;background:#dceef0;}
+  .visit-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.18) contrast(1.02);}
+  .findus{margin-top:6px;display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-soft);flex-wrap:wrap;}
+  .findus a{display:inline-flex;align-items:center;gap:7px;color:var(--acc);text-decoration:none;font-weight:600;border:1px solid var(--line);padding:8px 14px;border-radius:999px;transition:.2s;}
+  .findus a:hover{border-color:var(--acc);background:#eef9fa;}
+
+  /* ---------- CTA STRIP ---------- */
+  .strip{background:var(--acc-deep);color:#eafafa;text-align:center;}
+  .strip .eyebrow{color:#7fd6e6;}
+  .strip h2{color:#fff;font-size:clamp(2rem,5vw,3.2rem);font-weight:300;margin:.3em auto .2em;max-width:18ch;}
+  .strip h2 em{font-style:italic;color:#a8e4ef;}
+  .strip p{color:#cdeef1;max-width:46ch;margin:0 auto 30px;}
+  .strip .btn-primary{background:#fff;color:var(--acc-deep);}
+  .strip .btn-primary:hover{background:#eafafa;color:var(--acc-deep);box-shadow:0 14px 30px -14px rgba(0,0,0,.5);}
+
+  /* ---------- FOOTER ---------- */
+  footer.foot{background:#0a2a32;color:#bcd9dd;padding:64px 0 40px;}
+  .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.1);}
+  .foot .brand{color:#fff;font-size:24px;}
+  .foot .brand small{color:#7fd6e6;}
+  .foot-col h4{font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#7fd6e6;margin-bottom:12px;font-weight:600;}
+  .foot-col a,.foot-col p{display:block;color:#bcd9dd;text-decoration:none;font-size:14.5px;line-height:1.9;}
+  .foot-col a:hover{color:#fff;}
+  .credit{margin-top:30px;font-size:13px;color:#7a9aa0;line-height:1.6;}
+  .credit a{color:#a8e4ef;text-decoration:none;}
+  .credit a:hover{text-decoration:underline;}
+
+  @media (max-width:880px){
+    .intro-grid{grid-template-columns:1fr;gap:42px;}
+    .intro-figure img{height:400px;}
+    .visit-grid{grid-template-columns:1fr;}
+    .visit-map{min-height:340px;}
+    .quotes{columns:1;}
+  }
+  @media (max-width:600px){
+    section{padding:64px 0;}
+    .srow{grid-template-columns:44px 1fr;gap:14px 16px;}
+    .srow .sdesc{grid-column:2;}
+    .visit-info{padding:40px 26px;}
+    .intro-figure .tag{left:0;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="bar">
+  <div class="wrap">
+    <a href="#top" class="brand" style="text-decoration:none">Seabreeze <small>Cleaners</small></a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#says">In Their Words</a>
+      <a href="#visit">Visit</a>
+      <a class="navcall" href="tel:+18059859393">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call
+      </a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="bgimg" role="img" aria-label="Inside Seabreeze Cleaners on Harbor Blvd"></div>
+  <div class="scrim"></div>
+  <div class="scrim2"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Harbor Blvd · Oxnard, California</span>
+    <h1>Crisp clothes,<br><em>kept by hand.</em></h1>
+    <p class="lede">A neighborhood dry cleaner where Isabel knows your name, your starch, and exactly which shirt is yours — for going on fifteen years.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="tel:+18059859393">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call (805) 985-9393
+      </a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps/dir/?api=1&destination=1003+Harbor+Blvd%2C+Oxnard%2C+CA+93035" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+    <div class="hero-meta">
+      <span><b>Dry Cleaning</b> &amp; Laundry</span>
+      <span><b>Pressing</b> &amp; Alterations</span>
+      <span><b>Open Mon–Sat</b></span>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap intro-grid">
+    <div class="intro-copy">
+      <span class="eyebrow">The shop on the corner</span>
+      <h2>The kind of place<br>that <em>remembers you.</em></h2>
+      <p>Seabreeze Cleaners has looked after Oxnard's wardrobes from the same Harbor Boulevard storefront for years — close enough to the channel that the morning fog still rolls in off the water.</p>
+      <p>It's a small team that treats your laundry like it's their own. Customers follow Isabel from as far as Camarillo, trusting her with their families' garments year after year. When you walk in, you're greeted by name; when you've got a back too sore to lift the basket, someone carries it for you.</p>
+      <p>Honest pricing, careful pressing, and the quiet confidence of a place that's been doing this a long time.</p>
+    </div>
+    <figure class="intro-figure">
+      <img src="./photos/02.jpg" alt="Garments pressed and ready at Seabreeze Cleaners" />
+      <div class="tag">
+        <div class="num">15<span style="font-size:20px">+</span></div>
+        <p>years of regulars trusting the same hands with their laundry</p>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>What we <em>look after</em></h2>
+      <p class="note">Drop it off in the morning, often back sooner than you'd expect. Everything below is handled in-house.</p>
+    </div>
+
+    <div class="srow">
+      <div class="idx">01</div>
+      <div><h3>Dry Cleaning</h3></div>
+      <p class="sdesc">Suits, dresses, delicates and everyday garments cleaned with care and returned looking sharp — no shortcuts, no surprises.</p>
+    </div>
+
+    <div class="srow">
+      <div class="idx">02</div>
+      <div><h3>Laundry &amp; Wash</h3></div>
+      <p class="sdesc">Loads big and small, washed and folded. Bring the whole basket — we'll even help you carry it in from the car and back out again.</p>
+    </div>
+
+    <div class="srow">
+      <div class="idx">03</div>
+      <div><h3>Pressing &amp; Finishing</h3></div>
+      <p class="sdesc">Crisp collars, clean creases and properly finished garments. Shirts that look the way they did the day you bought them.</p>
+    </div>
+
+    <div class="srow">
+      <div class="idx">04</div>
+      <div><h3>Alterations</h3></div>
+      <p class="sdesc">Hems, fit and repairs done right. A nicely-done alteration is the difference between a garment you tolerate and one you reach for.</p>
+    </div>
+  </div>
+</section>
+
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="label"><span class="eyebrow">In Their Words</span></div>
+    <h2>What people <em>say</em></h2>
+    <div class="quotes">
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>Always greets you as soon as you walk in, remembers your name and is quick to hand over your clean laundry. You will not find any other place like this.</p>
+        <span class="by">Alexandrina D.</span>
+      </div>
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>I injured my back and had loads of washing to do — they helped me carry it all in, did a fantastic job, and had it done earlier than expected. So kind and professional.</p>
+        <span class="by">Kim</span>
+      </div>
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>My garments were pressed and clean. Isabel is so kind I followed her from Camarillo. I've worked with her over fifteen years — I trust her with all of my family's laundry.</p>
+        <span class="by">Steve T.</span>
+      </div>
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>The owner is a nice lady and really honest. My clothes always nicely done, and my alterations too.</p>
+        <span class="by">Bella C.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="visit-grid">
+      <div class="visit-info">
+        <span class="eyebrow">Stop in</span>
+        <h2>Visit the <em>shop</em></h2>
+        <p class="sub">1003 Harbor Blvd, Oxnard, CA 93035</p>
+
+        <ul class="hours" id="hours">
+          <li data-day="1"><span class="day">Monday</span><span>8:00 AM – 5:00 PM</span></li>
+          <li data-day="2"><span class="day">Tuesday</span><span>8:00 AM – 5:00 PM</span></li>
+          <li data-day="3"><span class="day">Wednesday</span><span>8:00 AM – 5:00 PM</span></li>
+          <li data-day="4"><span class="day">Thursday</span><span>8:00 AM – 5:00 PM</span></li>
+          <li data-day="5"><span class="day">Friday</span><span>8:00 AM – 5:00 PM</span></li>
+          <li data-day="6"><span class="day">Saturday</span><span>9:30 AM – 3:00 PM</span></li>
+          <li data-day="0"><span class="day">Sunday</span><span class="closed">Closed</span></li>
+        </ul>
+
+        <div class="contact-rows">
+          <div class="crow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div><a href="tel:+18059859393">(805) 985-9393</a><div class="small">Call ahead with any questions</div></div>
+          </div>
+          <div class="crow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><a href="https://www.google.com/maps/dir/?api=1&destination=1003+Harbor+Blvd%2C+Oxnard%2C+CA+93035" target="_blank" rel="noopener">1003 Harbor Blvd, Oxnard</a><div class="small">Free parking out front</div></div>
+          </div>
+        </div>
+
+        <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&destination=1003+Harbor+Blvd%2C+Oxnard%2C+CA+93035" target="_blank" rel="noopener">Get Directions</a>
+
+        <div class="findus">
+          <span>Find us on</span>
+          <a href="https://maps.google.com/?cid=13029147537332117303" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Google
+          </a>
+        </div>
+      </div>
+      <div class="visit-map">
+        <iframe
+          src="https://www.google.com/maps?q=1003%20Harbor%20Blvd%2C%20Oxnard%2C%20CA%2093035&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Seabreeze Cleaners"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap">
+    <span class="eyebrow">Bring it by</span>
+    <h2>Let us take the <em>laundry off your hands</em></h2>
+    <p>Drop off today and pick up clothes that look after-the-tailor sharp. We're on Harbor Blvd, Monday through Saturday.</p>
+    <a class="btn btn-primary" href="tel:+18059859393">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call (805) 985-9393
+    </a>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="brand">Seabreeze <small>Cleaners</small></div>
+        <p style="margin-top:12px;max-width:30ch;color:#9bbcc1;font-size:14.5px;">Careful dry cleaning &amp; laundry on Harbor Blvd in Oxnard, California.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Visit</h4>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=1003+Harbor+Blvd%2C+Oxnard%2C+CA+93035" target="_blank" rel="noopener">1003 Harbor Blvd<br>Oxnard, CA 93035</a>
+      </div>
+      <div class="foot-col">
+        <h4>Hours</h4>
+        <p>Mon – Fri · 8a – 5p</p>
+        <p>Saturday · 9:30a – 3p</p>
+        <p>Sunday · Closed</p>
+      </div>
+      <div class="foot-col">
+        <h4>Get in touch</h4>
+        <a href="tel:+18059859393">(805) 985-9393</a>
+        <a href="https://maps.google.com/?cid=13029147537332117303" target="_blank" rel="noopener">Find us on Google</a>
+      </div>
+    </div>
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </div>
+</footer>
+
+<script>
+  // Highlight today's row in the hours list (cosmetic only)
+  (function(){
+    var d = new Date().getDay();
+    var row = document.querySelector('#hours li[data-day="'+d+'"]');
+    if(row) row.classList.add('today');
+  })();
+</script>
+</body>
+</html>

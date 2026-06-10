@@ -1,0 +1,435 @@
+<!-- laundry · crisp-utility · hero-layout 2 · svc-layout 0 · Oswald/Lato -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Cleaners – Mt Washington | Dry Cleaning & Alterations, Los Angeles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --acc:#0e7490;
+  --bg:#ecfeff;
+  --dark:#0c2833;
+  --mid:#1e6a80;
+  --light:#cceef5;
+  --text:#1a3540;
+  --muted:#4a7080;
+  --nav-h:64px;
+}
+html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.brand{font-family:'Oswald',serif;letter-spacing:.04em;font-weight:700}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  height:var(--nav-h);
+  background:#fff;
+  border-bottom:3px solid var(--acc);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(1rem,4vw,3rem);
+}
+.nav-logo{font-size:1.2rem;color:var(--acc);text-decoration:none;line-height:1.1}
+.nav-logo span{display:block;font-size:.65rem;font-family:'Lato',sans-serif;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.nav-links{display:flex;gap:clamp(.8rem,2vw,2rem);list-style:none}
+.nav-links a{font-family:'Oswald',serif;font-size:.95rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--text);text-decoration:none;padding-bottom:3px;border-bottom:2px solid transparent;transition:border-color .2s,color .2s}
+.nav-links a:hover{color:var(--acc);border-color:var(--acc)}
+.nav-cta{background:var(--acc);color:#fff;padding:.45rem 1.2rem;font-family:'Oswald',serif;font-size:.9rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:var(--mid)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--text);transition:transform .3s}
+
+/* ── HERO — full-bleed ── */
+.hero{
+  position:relative;
+  min-height:min(90vh,640px);
+  display:flex;align-items:flex-end;
+  overflow:hidden;
+}
+.hero-img{
+  position:absolute;inset:0;
+  background-image:url('./photos/01.jpg');
+  background-size:cover;background-position:center;
+  filter:brightness(.45) saturate(.8);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:clamp(2rem,6vw,5rem) clamp(1.5rem,6vw,5rem);
+  max-width:720px;
+}
+.hero-eyebrow{
+  font-family:'Oswald',serif;font-size:.8rem;font-weight:500;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--light);
+  margin-bottom:.75rem;
+}
+.hero h1{
+  font-family:'Oswald',serif;font-size:clamp(2.4rem,7vw,4.5rem);
+  font-weight:700;color:#fff;line-height:1.05;
+  text-transform:uppercase;letter-spacing:.02em;
+  margin-bottom:1rem;
+}
+.hero h1 em{color:var(--light);font-style:normal}
+.hero-sub{color:#d0ecf0;font-size:1.05rem;font-weight:300;margin-bottom:2rem;max-width:500px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem}
+.btn-primary{
+  display:inline-block;
+  background:var(--acc);color:#fff;
+  font-family:'Oswald',serif;font-size:1rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  padding:.75rem 2rem;text-decoration:none;
+  transition:background .2s,transform .15s;
+}
+.btn-primary:hover{background:var(--mid);transform:translateY(-2px)}
+.btn-outline{
+  display:inline-block;
+  border:2px solid rgba(255,255,255,.7);color:#fff;
+  font-family:'Oswald',serif;font-size:1rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  padding:.7rem 1.8rem;text-decoration:none;
+  transition:border-color .2s,background .2s;
+}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+
+/* ── TRUST BAR ── */
+.trust-bar{
+  background:var(--dark);color:#b8dde5;
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:0;
+}
+.trust-item{
+  padding:1rem 2rem;
+  font-family:'Oswald',serif;font-size:.85rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;
+  border-right:1px solid rgba(255,255,255,.1);
+}
+.trust-item:last-child{border-right:none}
+.trust-item strong{color:#fff}
+
+/* ── SECTION BASICS ── */
+section{padding:clamp(3rem,7vw,6rem) clamp(1.5rem,6vw,4rem)}
+.section-label{
+  font-family:'Oswald',serif;font-size:.75rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:.6rem;
+}
+.section-title{
+  font-family:'Oswald',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;
+  text-transform:uppercase;letter-spacing:.03em;color:var(--dark);
+  line-height:1.1;margin-bottom:1.5rem;
+}
+.inner{max-width:1140px;margin:0 auto}
+
+/* ── ABOUT ── */
+#about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.about-imgs img{width:100%;height:200px;object-fit:cover;display:block}
+.about-imgs img:first-child{grid-column:1/-1;height:240px}
+.about-body p{color:var(--muted);margin-bottom:1rem;font-size:1rem}
+.about-body p:last-of-type{margin-bottom:1.5rem}
+.highlight-stat{
+  display:inline-block;
+  border-left:3px solid var(--acc);padding-left:1rem;margin:1rem 0;
+  font-family:'Oswald',serif;font-size:1.4rem;font-weight:600;color:var(--acc);
+}
+.highlight-stat span{display:block;font-size:.75rem;font-family:'Lato',sans-serif;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* ── SERVICES — cards ── */
+#services{background:var(--bg)}
+.services-intro{max-width:600px;color:var(--muted);margin-bottom:2.5rem;font-size:1rem}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem}
+.svc-card{
+  background:#fff;border-top:3px solid var(--acc);
+  padding:1.5rem 1.75rem;
+  transition:box-shadow .2s,transform .2s;
+}
+.svc-card:hover{box-shadow:0 6px 24px rgba(14,116,144,.12);transform:translateY(-3px)}
+.svc-card h3{
+  font-family:'Oswald',serif;font-size:1.1rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--dark);margin-bottom:.5rem;
+}
+.svc-card p{font-size:.9rem;color:var(--muted);line-height:1.55}
+
+/* ── GALLERY ── */
+#gallery{background:#fff;padding-bottom:3rem}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:200px 200px;
+  gap:.75rem;margin-top:2rem;
+}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;display:block;transition:filter .3s}
+.gallery-grid img:hover{filter:brightness(.85)}
+.gallery-grid .wide{grid-column:span 2}
+
+/* ── TESTIMONIES ── */
+#testimonies{background:var(--dark)}
+#testimonies .section-label{color:var(--light);opacity:.7}
+#testimonies .section-title{color:#fff}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+.testi-card{background:rgba(255,255,255,.06);border-left:3px solid var(--acc);padding:1.5rem 1.75rem}
+.testi-quote{font-size:.97rem;color:#b8dde5;line-height:1.65;font-style:italic;margin-bottom:1rem}
+.testi-attr{font-family:'Oswald',serif;font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--light)}
+
+/* ── HOURS + MAP ── */
+#location{background:var(--bg)}
+.loc-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:start}
+.hours-table{width:100%;border-collapse:collapse;margin-top:1.5rem}
+.hours-table tr{border-bottom:1px solid var(--light)}
+.hours-table td{padding:.55rem .25rem;font-size:.93rem;color:var(--text)}
+.hours-table td:first-child{font-family:'Oswald',serif;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--dark);width:50%}
+.hours-table .closed{color:var(--muted);font-style:italic}
+.map-wrap{border-top:3px solid var(--acc)}
+.map-wrap iframe{display:block;width:100%;height:340px;border:none}
+.contact-row{margin-top:1.5rem}
+.contact-row a{
+  display:inline-block;font-family:'Oswald',serif;font-size:1rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--acc);text-decoration:none;margin-right:2rem;
+  border-bottom:1px solid transparent;transition:border-color .2s;
+}
+.contact-row a:hover{border-color:var(--acc)}
+
+/* ── CTA STRIP ── */
+.cta-strip{
+  background:var(--acc);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:1.5rem;padding:3rem clamp(1.5rem,6vw,4rem);
+}
+.cta-strip-text{
+  font-family:'Oswald',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:700;
+  text-transform:uppercase;letter-spacing:.02em;color:#fff;line-height:1.2;
+}
+.cta-strip-text span{color:var(--light)}
+.btn-white{
+  display:inline-block;background:#fff;color:var(--acc);
+  font-family:'Oswald',serif;font-size:1rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:.8rem 2.2rem;text-decoration:none;white-space:nowrap;
+  transition:background .2s,color .2s;
+}
+.btn-white:hover{background:var(--light);color:var(--mid)}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);padding:2.5rem clamp(1.5rem,6vw,4rem);color:rgba(255,255,255,.45);font-size:.82rem}
+.footer-inner{max-width:1140px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem}
+.footer-brand{font-family:'Oswald',serif;font-size:1.1rem;color:#fff;letter-spacing:.04em}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.82rem;transition:color .2s}
+.footer-links a:hover{color:#fff}
+.footer-credit{width:100%;text-align:center;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);margin-top:.5rem}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  .nav-links,.nav-cta{display:none}
+  .nav-toggle{display:flex}
+  nav.open .nav-links{
+    display:flex;flex-direction:column;
+    position:absolute;top:var(--nav-h);left:0;right:0;
+    background:#fff;border-bottom:2px solid var(--acc);
+    padding:1rem 1.5rem;gap:.75rem;z-index:99;
+  }
+  nav.open .nav-cta{display:block;margin:0 1.5rem 1rem}
+  .about-grid{grid-template-columns:1fr}
+  .about-imgs img:first-child{height:200px}
+  .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .gallery-grid .wide{grid-column:span 1}
+  .loc-grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .gallery-grid{grid-template-columns:1fr;grid-template-rows:auto}
+  .gallery-grid .wide{grid-column:span 1}
+  .trust-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo brand">The Cleaners<span>Mt Washington · Los Angeles</span></a>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#location">Hours &amp; Location</a></li>
+  </ul>
+  <a href="tel:+13232250979" class="nav-cta">Call Now</a>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO — full-bleed -->
+<section class="hero" id="home">
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Serving Mt Washington &amp; Northeast LA</p>
+    <h1 class="brand">Clean.<br><em>On Time.</em><br>Every Time.</h1>
+    <p class="hero-sub">Professional dry cleaning, expert alterations, and same-day steaming — trusted by this neighborhood for years.</p>
+    <div class="hero-actions">
+      <a href="tel:+13232250979" class="btn-primary">Call (323) 225-0979</a>
+      <a href="https://www.google.com/maps?q=4327+N+Figueroa+St,+Los+Angeles,+CA+90031&z=15" target="_blank" rel="noopener" class="btn-outline">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><strong>Open 6 AM</strong> Mon–Fri</div>
+  <div class="trust-item"><strong>Same-Day</strong> Steaming Available</div>
+  <div class="trust-item"><strong>Expert</strong> Alterations</div>
+  <div class="trust-item"><strong>4327 N Figueroa</strong> Mt Washington</div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="inner about-grid">
+    <div class="about-imgs">
+      <img src="./photos/02.jpg" alt="The Cleaners interior" loading="lazy">
+      <img src="./photos/03.jpg" alt="Clean garments on the rack" loading="lazy">
+      <img src="./photos/04.jpg" alt="Alterations in progress" loading="lazy">
+    </div>
+    <div class="about-body">
+      <p class="section-label">About Us</p>
+      <h2 class="section-title">A Neighborhood<br>Institution</h2>
+      <p>The Cleaners has been taking care of Mt Washington's garments for years. Locals drive past closer options to come here — because once you've experienced the quality, you don't settle for less.</p>
+      <p>From everyday dry cleaning to delicate costume steaming and precise alterations, our team handles every garment with the care it deserves. Drop off before work; pick up on your way home.</p>
+      <div class="highlight-stat">
+        Decades<span>of community trust</span>
+      </div>
+      <br>
+      <a href="tel:+13232250979" class="btn-primary">Call to Schedule</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES — cards (layout 0) -->
+<section id="services">
+  <div class="inner">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">Our Services</h2>
+    <p class="services-intro">Professional garment care for everyday essentials and one-of-a-kind pieces alike. Every item gets individual attention.</p>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <h3>Dry Cleaning</h3>
+        <p>Suits, dresses, coats, and delicates cleaned to manufacturer spec. Great prices without cutting corners on quality.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Alterations &amp; Tailoring</h3>
+        <p>Hems, tapers, resizing — we match the fit of garments you already love, so new clothes feel like they were made for you.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Steaming &amp; Pressing</h3>
+        <p>Need something ready fast? We steam and press garments — including costumes and formalwear — with quick turnaround times.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Laundry Service</h3>
+        <p>Drop off your everyday laundry and let us handle the wash, dry, and fold — clean and ready when you are.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Formal &amp; Special Occasion</h3>
+        <p>Wedding gowns, quinceañera dresses, costumes — handled with the extra care that irreplaceable garments require.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Same-Day Turnaround</h3>
+        <p>Urgent deadline? Call ahead and we'll do our best to accommodate — we've saved the day before and we'll do it again.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="inner">
+    <p class="section-label">Inside The Shop</p>
+    <h2 class="section-title">The Work Behind<br>Every Order</h2>
+    <div class="gallery-grid">
+      <img src="./photos/05.jpg" alt="Clean hanging garments" class="wide" loading="lazy">
+      <img src="./photos/06.jpg" alt="Shop exterior on N Figueroa" loading="lazy">
+      <img src="./photos/01.jpg" alt="Cleaners at work" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="inner">
+    <p class="section-label">Customer Testimonies</p>
+    <h2 class="section-title">In Their<br>Own Words</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="testi-quote">"They've been fantastic for years. I've been a loyal customer for a long time, and they never disappoint. Even though I live a few miles away, I always make the trip to get my dry cleaning done here. It's definitely worth the trip."</p>
+        <p class="testi-attr">— Eduardo O.</p>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"Great price! Awesome service! On time! Went to get my new jeans altered — I gave them my favorite pair so they could copy the length and taper. The new jeans were copied perfect! Will continue coming here for alterations!"</p>
+        <p class="testi-attr">— Napcide N.</p>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"I needed my daughter's costume for today, and I called this place and they saved the day. They steamed her dress for me in under one hour! Thank you guys."</p>
+        <p class="testi-attr">— Edith L.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS + LOCATION -->
+<section id="location">
+  <div class="inner loc-grid">
+    <div>
+      <p class="section-label">Hours &amp; Contact</p>
+      <h2 class="section-title">Find Us on<br>N Figueroa</h2>
+      <table class="hours-table">
+        <tr><td>Monday</td><td>6:00 AM – 7:00 PM</td></tr>
+        <tr><td>Tuesday</td><td>6:00 AM – 7:00 PM</td></tr>
+        <tr><td>Wednesday</td><td>6:00 AM – 7:00 PM</td></tr>
+        <tr><td>Thursday</td><td>6:00 AM – 7:00 PM</td></tr>
+        <tr><td>Friday</td><td>6:00 AM – 7:00 PM</td></tr>
+        <tr><td>Saturday</td><td>7:00 AM – 5:00 PM</td></tr>
+        <tr><td>Sunday</td><td class="closed">Closed</td></tr>
+      </table>
+      <div class="contact-row">
+        <a href="tel:+13232250979">(323) 225-0979</a>
+        <a href="https://www.google.com/maps?q=4327+N+Figueroa+St,+Los+Angeles,+CA+90031&z=15" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+      <div class="contact-row">
+        <a href="https://maps.google.com/?cid=3758171278129274413" target="_blank" rel="noopener">View on Google</a>
+      </div>
+    </div>
+    <div class="map-wrap">
+      <iframe src="https://www.google.com/maps?q=4327+N+Figueroa+St,+Los+Angeles,+CA+90031&z=15&output=embed" title="The Cleaners Mt Washington on Google Maps" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <p class="cta-strip-text">Ready to drop off? <span>We open at 6 AM.</span></p>
+  <a href="tel:+13232250979" class="btn-white">Call (323) 225-0979</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <span class="footer-brand brand">The Cleaners — Mt Washington</span>
+    <div class="footer-links">
+      <a href="https://maps.google.com/?cid=3758171278129274413" target="_blank" rel="noopener">Google Business</a>
+      <a href="tel:+13232250979">(323) 225-0979</a>
+    </div>
+    <p class="footer-credit">4327 N Figueroa St, Los Angeles, CA 90031 &nbsp;·&nbsp; Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav = document.getElementById('main-nav');
+  var tog = document.getElementById('nav-toggle');
+  tog.addEventListener('click', function(){
+    nav.classList.toggle('open');
+  });
+  document.querySelectorAll('.nav-links a').forEach(function(a){
+    a.addEventListener('click', function(){ nav.classList.remove('open'); });
+  });
+})();
+</script>
+</body>
+</html>

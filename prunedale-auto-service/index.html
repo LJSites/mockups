@@ -1,0 +1,366 @@
+<!--
+  ARCHETYPE: "The trusted neighborhood service-ledger" — a warm, honest,
+  family-run shop. Built around the reviews' emphasis on Edgar's honesty,
+  fairness, and judgment, not horsepower or speed.
+  STRUCTURE:
+    - Left-aligned split hero (text block + single photo), no dark-overlay
+      stock-photo cliché.
+    - Sticky slim nav with scroll-padding-top reservation.
+    - Services as a numbered, stacked ledger list (not a 3-up icon grid).
+    - "An honest mechanic" promise band pulled straight from the reviews.
+    - Testimonies as a two-column stacked quote stack (no cards/avatars/stars).
+    - Hours rendered as a shop "open sign" card beside the keyless map.
+  PALETTE: deep forest green (#1f3a2e) + warm parchment (#f4efe4) + brass
+    accent (#b07a2c). Distinct from every other auto shop in work/ (which use
+    amber/orange, blue, teal, or red on dark/grey).
+  FONTS: Roboto Slab (display) + Mulish (body) — used by no other auto shop.
+  ANIMATION: none beyond hover states.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Prunedale Auto Service — Honest Auto Repair in Prunedale &amp; Salinas</title>
+<meta name="description" content="Family-run auto repair and maintenance in Prunedale, CA. Honest diagnostics, fair rates, and work you can trust. Call (831) 663-9400." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700;800&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --green:#1f3a2e;
+    --green-deep:#152a20;
+    --parchment:#f4efe4;
+    --parchment-2:#ece4d2;
+    --brass:#b07a2c;
+    --brass-bright:#c98f33;
+    --ink:#222019;
+    --muted:#6b675d;
+    --line:#d9d0bd;
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h);}
+  body{
+    margin:0;
+    font-family:"Mulish",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--parchment);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:"Roboto Slab",Georgia,serif;font-weight:700;letter-spacing:-.01em;line-height:1.1;}
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{width:min(1120px,92%);margin-inline:auto;}
+
+  /* ---------- NAV ---------- */
+  nav.bar{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(31,58,46,.97);
+    color:var(--parchment);
+    backdrop-filter:saturate(120%) blur(2px);
+    border-bottom:1px solid rgba(176,122,44,.45);
+  }
+  nav.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:100%;}
+  .brandmark{display:flex;align-items:center;gap:.6rem;font-family:"Roboto Slab";font-weight:700;font-size:1.05rem;color:var(--parchment);text-decoration:none;}
+  .brandmark .tick{width:13px;height:13px;border:2px solid var(--brass-bright);border-radius:50%;flex:none;position:relative;}
+  .brandmark .tick::after{content:"";position:absolute;inset:2px;background:var(--brass-bright);border-radius:50%;}
+  .navlinks{display:flex;gap:1.6rem;align-items:center;}
+  .navlinks a{font-size:.83rem;font-weight:600;text-transform:uppercase;letter-spacing:.09em;text-decoration:none;color:var(--parchment);opacity:.85;transition:opacity .15s,color .15s;}
+  .navlinks a:hover{opacity:1;color:var(--brass-bright);}
+  .nav-call{display:inline-flex;align-items:center;gap:.45rem;background:var(--brass);color:#1c130a !important;padding:.5rem .95rem;border-radius:3px;font-weight:700;font-size:.83rem;letter-spacing:.03em;opacity:1 !important;transition:background .15s;}
+  .nav-call:hover{background:var(--brass-bright);}
+  @media(max-width:760px){.navlinks a:not(.nav-call){display:none;}}
+
+  /* ---------- HERO ---------- */
+  header.hero{background:var(--parchment);padding:clamp(2.6rem,6vw,4.6rem) 0 clamp(2.2rem,5vw,3.4rem);}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.6rem,4vw,3.2rem);align-items:center;}
+  .eyebrow{font-family:"Mulish";font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:.74rem;color:var(--brass);margin:0 0 1rem;}
+  .eyebrow span{display:inline-block;width:30px;height:2px;background:var(--brass);vertical-align:middle;margin-right:.6rem;}
+  .hero h1{font-size:clamp(2.2rem,5.4vw,3.5rem);font-weight:800;color:var(--green-deep);margin:0 0 1.1rem;}
+  .hero h1 em{font-style:normal;color:var(--brass);}
+  .hero p.lead{font-size:1.08rem;color:#403c33;max-width:46ch;margin:0 0 1.7rem;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;text-decoration:none;border-radius:3px;padding:.85rem 1.5rem;font-size:.96rem;transition:transform .12s,background .15s,box-shadow .15s;}
+  .btn-primary{background:var(--green);color:var(--parchment);box-shadow:0 2px 0 var(--green-deep);}
+  .btn-primary:hover{background:var(--green-deep);transform:translateY(-1px);}
+  .btn-ghost{border:1.5px solid var(--green);color:var(--green);background:transparent;}
+  .btn-ghost:hover{background:var(--green);color:var(--parchment);}
+  .hero-photo{position:relative;}
+  .hero-photo img{width:100%;height:clamp(300px,42vw,440px);object-fit:cover;border-radius:6px;border:1px solid var(--line);box-shadow:0 20px 40px -24px rgba(21,42,32,.5);}
+  .hero-photo .stamp{position:absolute;left:-14px;bottom:18px;background:var(--green);color:var(--parchment);font-family:"Roboto Slab";font-weight:600;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;padding:.55rem .9rem;border-left:4px solid var(--brass);box-shadow:0 10px 22px -12px rgba(0,0,0,.5);}
+  @media(max-width:820px){.hero-grid{grid-template-columns:1fr;}.hero-photo{order:-1;}.hero-photo .stamp{left:10px;}}
+
+  /* ---------- TRUST BAND ---------- */
+  .band{background:var(--green);color:var(--parchment);}
+  .band .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+  .band .cell{padding:1.7rem 1.4rem;border-right:1px solid rgba(244,239,228,.16);}
+  .band .cell:last-child{border-right:none;}
+  .band .cell h3{font-family:"Roboto Slab";font-size:1.02rem;color:var(--brass-bright);margin:0 0 .35rem;}
+  .band .cell p{margin:0;font-size:.93rem;color:rgba(244,239,228,.86);}
+  @media(max-width:720px){.band .wrap{grid-template-columns:1fr;}.band .cell{border-right:none;border-bottom:1px solid rgba(244,239,228,.16);}.band .cell:last-child{border-bottom:none;}}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:clamp(3rem,6vw,4.8rem) 0;}
+  .sec-head{margin-bottom:2.2rem;max-width:62ch;}
+  .sec-kicker{font-family:"Mulish";font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:var(--brass);margin:0 0 .7rem;}
+  .sec-head h2{font-size:clamp(1.7rem,3.6vw,2.4rem);color:var(--green-deep);margin:0 0 .7rem;}
+  .sec-head p{margin:0;color:var(--muted);font-size:1.04rem;}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.6rem,4vw,3rem);align-items:start;}
+  .about-grid .copy p{margin:0 0 1.05rem;color:#3c382f;font-size:1.05rem;}
+  .about-grid .copy p:last-child{margin-bottom:0;}
+  .sig{font-family:"Roboto Slab";font-style:italic;color:var(--green);font-weight:500;font-size:1.08rem;margin-top:.4rem !important;}
+  .pull{border-left:3px solid var(--brass);padding:1.4rem 1.5rem;background:var(--parchment-2);border-radius:0 6px 6px 0;}
+  .pull p{font-family:"Roboto Slab";font-weight:500;font-size:1.15rem;line-height:1.45;color:var(--green-deep);margin:0;}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;}}
+
+  /* Services ledger */
+  #services{background:var(--parchment-2);}
+  .ledger{border-top:1px solid var(--line);}
+  .ledger .row{display:grid;grid-template-columns:auto 1fr auto;gap:1.2rem;align-items:baseline;padding:1.35rem .2rem;border-bottom:1px solid var(--line);transition:background .15s;}
+  .ledger .row:hover{background:rgba(176,122,44,.07);}
+  .ledger .num{font-family:"Roboto Slab";font-weight:700;color:var(--brass);font-size:1rem;min-width:2.2ch;}
+  .ledger .name{font-family:"Roboto Slab";font-weight:600;color:var(--green-deep);font-size:1.18rem;}
+  .ledger .desc{display:block;font-family:"Mulish";font-weight:400;color:var(--muted);font-size:.95rem;margin-top:.2rem;}
+  .ledger .tag{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);background:rgba(31,58,46,.09);padding:.3rem .65rem;border-radius:3px;white-space:nowrap;}
+  .svc-note{margin-top:1.6rem;color:var(--muted);font-size:.95rem;}
+  @media(max-width:640px){.ledger .row{grid-template-columns:auto 1fr;}.ledger .tag{grid-column:2;justify-self:start;}}
+
+  /* Testimonies */
+  .quotes{columns:2;column-gap:2.4rem;}
+  .quotes figure{break-inside:avoid;margin:0 0 2rem;padding-left:1.3rem;border-left:3px solid var(--brass);}
+  .quotes blockquote{margin:0 0 .7rem;font-size:1.04rem;color:#36322a;font-weight:400;}
+  .quotes blockquote::before{content:"“";font-family:"Roboto Slab";color:var(--brass);font-size:1.4rem;line-height:0;}
+  .quotes figcaption{font-family:"Roboto Slab";font-weight:600;color:var(--green-deep);font-size:.95rem;}
+  @media(max-width:720px){.quotes{columns:1;}}
+
+  /* Visit */
+  #visit{background:var(--green-deep);color:var(--parchment);}
+  #visit .sec-head h2{color:var(--parchment);}
+  #visit .sec-kicker{color:var(--brass-bright);}
+  .visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(1.4rem,3.5vw,2.6rem);align-items:stretch;}
+  .opensign{background:var(--green);border:1px solid rgba(176,122,44,.4);border-radius:6px;padding:1.6rem 1.7rem;}
+  .opensign h3{font-family:"Roboto Slab";color:var(--brass-bright);font-size:1.05rem;margin:0 0 1rem;text-transform:uppercase;letter-spacing:.05em;}
+  .hours{list-style:none;margin:0 0 1.4rem;padding:0;}
+  .hours li{display:flex;justify-content:space-between;gap:1rem;padding:.42rem 0;border-bottom:1px dashed rgba(244,239,228,.18);font-size:.96rem;}
+  .hours li:last-child{border-bottom:none;}
+  .hours .day{color:rgba(244,239,228,.85);}
+  .hours .time{font-weight:700;color:var(--parchment);}
+  .hours .closed{color:#caa;font-weight:600;}
+  .opensign .addr{font-size:.96rem;color:rgba(244,239,228,.88);margin:0 0 .35rem;display:flex;gap:.55rem;}
+  .opensign .addr svg{flex:none;margin-top:3px;}
+  .opensign .ph{font-family:"Roboto Slab";font-weight:700;font-size:1.2rem;color:var(--brass-bright);text-decoration:none;display:inline-block;margin-top:.5rem;}
+  .opensign .ph:hover{color:var(--parchment);}
+  .mapwrap{border-radius:6px;overflow:hidden;border:1px solid rgba(176,122,44,.4);min-height:300px;}
+  .mapwrap iframe{width:100%;height:100%;min-height:340px;border:0;display:block;filter:saturate(.9);}
+  .visit-cta{margin-top:1.4rem;}
+  @media(max-width:820px){.visit-grid{grid-template-columns:1fr;}}
+
+  /* Footer */
+  footer.site{background:var(--green);color:rgba(244,239,228,.8);padding:2.6rem 0 2rem;border-top:3px solid var(--brass);}
+  footer.site .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.4rem;align-items:flex-start;margin-bottom:1.6rem;}
+  footer.site .fbrand{font-family:"Roboto Slab";font-weight:700;color:var(--parchment);font-size:1.15rem;}
+  footer.site .fbrand small{display:block;font-family:"Mulish";font-weight:400;font-size:.85rem;color:rgba(244,239,228,.7);margin-top:.3rem;}
+  footer.site .flinks{display:flex;flex-direction:column;gap:.4rem;font-size:.92rem;}
+  footer.site .flinks a{color:rgba(244,239,228,.85);text-decoration:none;}
+  footer.site .flinks a:hover{color:var(--brass-bright);text-decoration:underline;}
+  footer.site .credit{border-top:1px solid rgba(244,239,228,.16);padding-top:1.3rem;font-size:.82rem;color:rgba(244,239,228,.62);}
+  footer.site .credit a{color:var(--brass-bright);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<nav class="bar">
+  <div class="wrap">
+    <a href="#top" class="brandmark"><span class="tick"></span>Prunedale Auto Service</a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#words">What People Say</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:+18316639400" class="nav-call">(831) 663-9400</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><span></span>Family-run in Prunedale, CA</p>
+      <h1>Honest auto repair you can <em>actually trust.</em></h1>
+      <p class="lead">A neighborhood shop run by Edgar and his wife — straight answers, fair rates, and work done right the first time. Serving Prunedale and greater Salinas.</p>
+      <div class="hero-cta">
+        <a href="tel:+18316639400" class="btn btn-primary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call the Shop
+        </a>
+        <a href="https://www.google.com/maps?q=8485+Prunedale+North+Rd,+Salinas,+CA+93907" target="_blank" rel="noopener" class="btn btn-ghost">Get Directions</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="./photos/01.jpg" alt="Prunedale Auto Service in Salinas, California" />
+      <span class="stamp">Open Mon–Fri</span>
+    </div>
+  </div>
+</header>
+
+<div class="band">
+  <div class="wrap">
+    <div class="cell">
+      <h3>Straight answers</h3>
+      <p>If a job doesn't need doing, we'll tell you. No upsell, no surprises on the invoice.</p>
+    </div>
+    <div class="cell">
+      <h3>Fair, up-front rates</h3>
+      <p>You hear the price before the wrench turns — and we've been known to save folks a few bucks.</p>
+    </div>
+    <div class="cell">
+      <h3>Work done right</h3>
+      <p>Thorough, careful repairs from a shop that treats your car like its own.</p>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="copy">
+      <p class="sec-kicker">Our Shop</p>
+      <h2 style="font-family:'Roboto Slab';color:var(--green-deep);font-size:clamp(1.7rem,3.6vw,2.4rem);margin:0 0 1.2rem;line-height:1.1;">A reliable mechanic is something worth keeping.</h2>
+      <p>Prunedale Auto Service has been the go-to shop for Prunedale and Salinas drivers for years — the kind of place you start coming to for oil changes and smog checks, then trust with everything after that.</p>
+      <p>Edgar runs the shop alongside his wife, and the way they treat customers is the whole reason people keep coming back. He'll take a real look at what's going on, do what genuinely needs doing, and skip what doesn't. From routine maintenance on a daily driver to a full inspection and tune-up on a vehicle that's seen some years, the work here is first-rate and the judgment is honest.</p>
+      <p class="sig">— Edgar &amp; the team at Prunedale Auto Service</p>
+    </div>
+    <div class="pull">
+      <p>“His rates are fair, the work at the shop is first rate, and if something needs doing — or doesn't need doing — I know I can trust Edgar's judgment.”</p>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">What We Do</p>
+      <h2>Service for the way you actually drive.</h2>
+      <p>From the basics that keep you on the road to the work that brings an older vehicle back to life.</p>
+    </div>
+    <div class="ledger">
+      <div class="row">
+        <span class="num">01</span>
+        <span><span class="name">Oil Changes &amp; Routine Maintenance</span><span class="desc">Quick, thorough, and done while you wait — the everyday upkeep that keeps your car dependable.</span></span>
+        <span class="tag">Walk-in friendly</span>
+      </div>
+      <div class="row">
+        <span class="num">02</span>
+        <span><span class="name">Smog Checks</span><span class="desc">State smog inspections handled in-house so you can register without the runaround.</span></span>
+        <span class="tag">In-house</span>
+      </div>
+      <div class="row">
+        <span class="num">03</span>
+        <span><span class="name">Diagnostics &amp; Repairs</span><span class="desc">We pinpoint the real problem and fix it — engine, brakes, electrical and more — without padding the bill.</span></span>
+        <span class="tag">Honest quote</span>
+      </div>
+      <div class="row">
+        <span class="num">04</span>
+        <span><span class="name">Brakes, Shocks &amp; Alignment</span><span class="desc">Brake service, new shocks, and wheel alignment to keep your vehicle safe and tracking straight.</span></span>
+        <span class="tag">Safety</span>
+      </div>
+      <div class="row">
+        <span class="num">05</span>
+        <span><span class="name">Tune-Ups &amp; Inspections</span><span class="desc">Complete inspections and tune-ups, including bringing a long-parked or higher-mileage vehicle back to reliable.</span></span>
+        <span class="tag">Full check</span>
+      </div>
+      <div class="row">
+        <span class="num">06</span>
+        <span><span class="name">IID Calibrations &amp; Lockout Help</span><span class="desc">Ignition interlock device calibrations and lockout issues taken care of quickly and professionally.</span></span>
+        <span class="tag">By appointment</span>
+      </div>
+    </div>
+    <p class="svc-note">Not sure what your car needs? Give us a call at <a href="tel:+18316639400" style="color:var(--brass);font-weight:700;text-decoration:none;">(831) 663-9400</a> and we'll talk it through honestly before you bring it in.</p>
+  </div>
+</section>
+
+<section id="words">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">In Their Words</p>
+      <h2>What people say about Edgar.</h2>
+    </div>
+    <div class="quotes">
+      <figure>
+        <blockquote>Excellent service with a smile! Edgar was very helpful and knowledgeable in the problems I was having, fixed them in no time and I was back on the road. A+++ service and affordable! They care about the customer, highly recommended.</blockquote>
+        <figcaption>Matthew E.</figcaption>
+      </figure>
+      <figure>
+        <blockquote>Couldn't say enough nice things about the service and professionalism. Very friendly, very personable and very fair. Took care of my issue almost immediately and even saved me a few bucks. In the future I'll go here for all my IID calibrations and lockout issues.</blockquote>
+        <figcaption>MEN of T.</figcaption>
+      </figure>
+      <figure>
+        <blockquote>A loving wife, a faithful dog and an honest reliable auto mechanic are all you need in this life. I started going to their shop years ago for oil changes and smog checks, and I trust Edgar's ability and reliability completely. His rates are fair and the work is first rate.</blockquote>
+        <figcaption>James W.</figcaption>
+      </figure>
+      <figure>
+        <blockquote>I honestly love coming to this place. Everyone here is always very friendly — last time they were about to head out to lunch but changed my oil first. The mechanics are fast and thorough, and they never overcharge you like most places. Prices are reasonable and service is great.</blockquote>
+        <figcaption>Dioseli M.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">Find Us</p>
+      <h2>Stop by the shop.</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="opensign">
+        <h3>Shop Hours</h3>
+        <ul class="hours">
+          <li><span class="day">Monday</span><span class="time">9 AM – 6 PM</span></li>
+          <li><span class="day">Tuesday</span><span class="time">9 AM – 6 PM</span></li>
+          <li><span class="day">Wednesday</span><span class="time">9 AM – 6 PM</span></li>
+          <li><span class="day">Thursday</span><span class="time">9 AM – 6 PM</span></li>
+          <li><span class="day">Friday</span><span class="time">9 AM – 6 PM</span></li>
+          <li><span class="day">Saturday</span><span class="closed">Closed</span></li>
+          <li><span class="day">Sunday</span><span class="closed">Closed</span></li>
+        </ul>
+        <p class="addr">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--brass-bright)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          8485 Prunedale North Rd, Salinas, CA 93907
+        </p>
+        <a href="tel:+18316639400" class="ph">(831) 663-9400</a>
+        <div class="visit-cta">
+          <a href="https://www.google.com/maps?q=8485+Prunedale+North+Rd,+Salinas,+CA+93907" target="_blank" rel="noopener" class="btn btn-primary" style="background:var(--brass);color:#1c130a;box-shadow:0 2px 0 #8a5e1f;">Get Directions</a>
+        </div>
+      </div>
+      <div class="mapwrap">
+        <iframe src="https://www.google.com/maps?q=36.7952284,-121.6669795&z=15&output=embed" title="Map to Prunedale Auto Service" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="top">
+      <div class="fbrand">
+        Prunedale Auto Service
+        <small>Honest, family-run auto repair · Prunedale &amp; Salinas, CA</small>
+      </div>
+      <div class="flinks">
+        <a href="tel:+18316639400">(831) 663-9400</a>
+        <a href="https://www.google.com/maps?q=8485+Prunedale+North+Rd,+Salinas,+CA+93907" target="_blank" rel="noopener">8485 Prunedale North Rd, Salinas, CA</a>
+        <a href="https://maps.google.com/?cid=14382705511400497758" target="_blank" rel="noopener">View on Google</a>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

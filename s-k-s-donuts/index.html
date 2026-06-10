@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<!--
+  ARCHETYPE: Retro SoCal counter-shop / vintage Americana donut stand.
+  Inspired directly by the real storefront: bold red "SK'S DONUTS" sign on a
+  cobalt awning + blue-and-white checkerboard floor. Leans classic, hand-painted,
+  unpretentious — the reviews praise it for being a CLASSIC donut shop, not an
+  "over-stylized donut bar," so the design honors that: warm cream paper, cobalt
+  + cherry-red sign-painter palette, rounded Fredoka display type, checkerboard
+  trim band.
+  STRUCTURE: left-aligned poster hero w/ rotated price-tag badge (no dark-overlay
+  stock-photo center hero); horizontal photo strip; menu as a two-column
+  hand-lettered "paper" list (NOT icon cards); testimonies as offset sticky-note
+  quotes; hours as a 7-row ticket; map + visit panel side by side.
+  PALETTE: --bg cream #fbf5e9 / --acc cobalt #1f57c4 / --red cherry #e23636.
+  DISPLAY FONT: Fredoka. BODY: Hanken Grotesk.
+  Animation: none (static; honest, no fabricated stats/ratings).
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SK's Donuts — Classic Donuts & Breakfast in Oceanside, CA</title>
+<meta name="description" content="SK's Donuts on South Coast Hwy in Oceanside — fresh, fluffy classic donuts, big breakfast croissant sandwiches, and smoothies. Open 7 days at 4:30 AM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbf5e9;
+    --paper:#fffdf7;
+    --ink:#1c2430;
+    --acc:#1f57c4;       /* cobalt */
+    --acc-dk:#163f93;
+    --red:#e23636;       /* cherry */
+    --red-dk:#c22626;
+    --gold:#f3b53d;
+    --muted:#6a6357;
+    --line:#e7dcc4;
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Hanken Grotesk",system-ui,sans-serif;
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.disp{font-family:"Fredoka",system-ui,sans-serif;font-weight:700;line-height:1.02;letter-spacing:-.01em}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+  .wrap{width:min(1140px,92vw);margin-inline:auto}
+
+  /* checkerboard band */
+  .checker{
+    height:18px;
+    background:
+      repeating-linear-gradient(90deg,var(--acc) 0 18px,#fff 18px 36px);
+    -webkit-mask:repeating-linear-gradient(90deg,#000 0 18px,transparent 18px 36px) 0 0/36px 18px,
+                 repeating-linear-gradient(90deg,transparent 0 18px,#000 18px 36px) 0 0/36px 18px;
+    background:
+      repeating-conic-gradient(var(--acc) 0% 25%, #ffffff 0% 50%) 0 0/36px 36px;
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:var(--paper);border-bottom:3px solid var(--ink);
+    display:flex;align-items:center;
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:min(1140px,94vw)}
+  .brand{display:flex;align-items:center;gap:.55rem;font-family:"Fredoka";font-weight:700;font-size:1.32rem}
+  .brand .mark{
+    background:var(--red);color:#fff;border-radius:50%;
+    width:34px;height:34px;display:grid;place-items:center;font-size:.95rem;
+    box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--red);
+  }
+  .brand .red{color:var(--red)}
+  .navlinks{display:flex;gap:1.6rem;align-items:center}
+  .navlinks a{font-weight:600;font-size:.96rem;text-decoration:none;color:var(--ink);padding:.2rem 0;border-bottom:2px solid transparent;transition:.15s}
+  .navlinks a:hover{border-color:var(--red);color:var(--acc)}
+  .nav-cta{
+    background:var(--acc);color:#fff!important;font-family:"Fredoka";font-weight:600;
+    padding:.5rem .95rem!important;border-radius:999px;border:none!important;
+    text-decoration:none;box-shadow:0 3px 0 var(--acc-dk);transition:.12s;
+  }
+  .nav-cta:hover{transform:translateY(1px);box-shadow:0 2px 0 var(--acc-dk)}
+  .navlinks .show-sm{display:none}
+  @media(max-width:760px){
+    .navlinks a:not(.nav-cta){display:none}
+    .navlinks .show-sm{display:inline}
+  }
+
+  /* ===== HERO ===== */
+  .hero{padding:54px 0 30px;position:relative;overflow:hidden}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+  .kicker{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-family:"Fredoka";font-weight:600;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--acc);background:#e7eefc;border:2px solid var(--acc);
+    padding:.32rem .8rem;border-radius:999px;
+  }
+  .hero h1{font-size:clamp(2.9rem,7vw,4.7rem);margin:.5rem 0 .15rem}
+  .hero h1 .red{color:var(--red);display:inline-block;transform:rotate(-2deg)}
+  .hero h1 .sub{display:block;font-size:.34em;letter-spacing:.04em;color:var(--ink);font-weight:600;margin-top:.35rem}
+  .lede{font-size:1.12rem;color:#3a3f49;max-width:38ch;margin:1rem 0 1.4rem}
+  .cta-row{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
+  .btn{
+    font-family:"Fredoka";font-weight:600;text-decoration:none;border:none;cursor:pointer;
+    padding:.85rem 1.5rem;border-radius:999px;font-size:1.02rem;display:inline-flex;align-items:center;gap:.5rem;transition:.12s;
+  }
+  .btn-red{background:var(--red);color:#fff;box-shadow:0 4px 0 var(--red-dk)}
+  .btn-red:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--red-dk)}
+  .btn-out{background:transparent;color:var(--acc);border:2.5px solid var(--acc)!important;padding:.78rem 1.4rem}
+  .btn-out:hover{background:var(--acc);color:#fff}
+  .open-tag{font-size:.92rem;color:var(--muted);margin-top:1rem}
+  .open-tag b{color:var(--acc)}
+
+  .hero-art{position:relative}
+  .hero-art .photo{
+    border:5px solid #fff;border-radius:14px;overflow:hidden;
+    box-shadow:0 14px 0 -2px var(--acc),0 24px 40px rgba(20,30,60,.22);
+    transform:rotate(1.4deg);
+  }
+  .hero-art .photo img{width:100%;height:420px;object-fit:cover}
+  .badge{
+    position:absolute;top:-26px;left:-26px;z-index:3;
+    width:118px;height:118px;border-radius:50%;
+    background:var(--gold);color:#3a2a00;border:4px solid #fff;
+    display:grid;place-items:center;text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.2);transform:rotate(-12deg);
+    font-family:"Fredoka";line-height:1.05;
+  }
+  .badge b{font-size:1.55rem;display:block}
+  .badge span{font-size:.66rem;letter-spacing:.04em;text-transform:uppercase}
+
+  /* ===== PHOTO STRIP ===== */
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:18px 0 4px}
+  .strip img{height:200px;width:100%;object-fit:cover;border-radius:10px;border:3px solid #fff;box-shadow:0 6px 16px rgba(20,30,60,.12)}
+  @media(max-width:760px){.strip{grid-template-columns:repeat(2,1fr)}.strip img{height:150px}}
+
+  /* ===== SECTION SHELL ===== */
+  section{padding:62px 0}
+  .eyebrow{font-family:"Fredoka";font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:.8rem;color:var(--red)}
+  .h2{font-size:clamp(2rem,4.6vw,3rem);margin:.25rem 0 .2rem}
+
+  /* ABOUT */
+  .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .about p{color:#3a3f49;margin:.9rem 0}
+  .facts{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.4rem}
+  .pill{background:var(--paper);border:2px solid var(--line);border-radius:999px;padding:.42rem .9rem;font-weight:600;font-size:.92rem}
+  .pill b{color:var(--acc)}
+  .about-photo{border:5px solid #fff;border-radius:14px;overflow:hidden;box-shadow:0 16px 34px rgba(20,30,60,.18);transform:rotate(-1.2deg)}
+  .about-photo img{width:100%;height:430px;object-fit:cover}
+
+  /* MENU */
+  .menu{background:var(--acc);color:#fff;position:relative}
+  .menu .checker{position:absolute;inset:0 0 auto 0}
+  .menu-inner{padding-top:30px}
+  .menu .eyebrow{color:var(--gold)}
+  .menu .h2{color:#fff}
+  .menu .note{color:#cfe0ff;max-width:46ch}
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 46px;margin-top:30px}
+  .mcard{background:var(--paper);color:var(--ink);border-radius:14px;padding:24px 26px;box-shadow:0 12px 26px rgba(8,20,55,.3)}
+  .mcard h3{font-size:1.5rem;color:var(--acc);margin:0 0 .2rem}
+  .mcard .lead{color:var(--muted);font-size:.92rem;margin-bottom:.9rem}
+  .mline{display:flex;align-items:baseline;gap:.6rem;padding:.4rem 0;border-bottom:1px dashed var(--line)}
+  .mline:last-child{border-bottom:none}
+  .mline .name{font-weight:600}
+  .mline .dots{flex:1;border-bottom:2px dotted #cbb98e;transform:translateY(-3px)}
+  .mline .tag{font-family:"Fredoka";font-weight:600;color:var(--red);font-size:.82rem;white-space:nowrap}
+  @media(max-width:760px){.menu-grid{grid-template-columns:1fr}}
+
+  /* TESTIMONIES */
+  .says .wrap>.h2{text-align:center}
+  .says .eyebrow{text-align:center;display:block}
+  .notes{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:38px}
+  .note{
+    background:var(--paper);border:2px solid var(--line);border-radius:4px;
+    padding:26px 28px 24px;position:relative;
+    box-shadow:0 10px 22px rgba(20,30,60,.1);
+  }
+  .note:nth-child(odd){transform:rotate(-1deg)}
+  .note:nth-child(even){transform:rotate(1.1deg)}
+  .note::before{content:"“";position:absolute;top:-6px;left:14px;font-family:"Fredoka";font-size:3.4rem;color:var(--red);line-height:1}
+  .note p{margin:.4rem 0 1rem;font-size:1.02rem;color:#33383f}
+  .note .who{font-family:"Fredoka";font-weight:600;color:var(--acc)}
+  .note .who::before{content:"— "}
+  @media(max-width:760px){.notes{grid-template-columns:1fr}}
+
+  /* VISIT */
+  .visit{background:var(--paper);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+  .visit .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:46px;align-items:stretch}
+  .ticket{align-self:start}
+  .hours-tbl{width:100%;border-collapse:collapse;margin-top:1rem;background:var(--bg);border:2px solid var(--line);border-radius:12px;overflow:hidden}
+  .hours-tbl tr{border-bottom:1px solid var(--line)}
+  .hours-tbl tr:last-child{border-bottom:none}
+  .hours-tbl td{padding:.62rem 1rem}
+  .hours-tbl td:first-child{font-weight:600}
+  .hours-tbl td:last-child{text-align:right;color:var(--acc);font-family:"Fredoka";font-weight:600}
+  .hours-tbl tr.today{background:#e7eefc}
+  .hours-tbl tr.today td:first-child::after{content:" • today";color:var(--red);font-weight:700;font-size:.78rem}
+  .contact-line{margin-top:1.3rem;font-size:1.04rem}
+  .contact-line a{color:var(--acc);font-weight:600;text-decoration:none}
+  .contact-line a:hover{text-decoration:underline}
+  .findus{margin-top:1.2rem;display:flex;gap:.6rem;flex-wrap:wrap}
+  .findus a{display:inline-flex;align-items:center;gap:.4rem;background:var(--bg);border:2px solid var(--line);border-radius:999px;padding:.4rem .85rem;font-weight:600;font-size:.9rem;text-decoration:none;color:var(--ink)}
+  .findus a:hover{border-color:var(--acc);color:var(--acc)}
+  .mapbox{border:4px solid #fff;border-radius:14px;overflow:hidden;box-shadow:0 12px 28px rgba(20,30,60,.16);min-height:380px}
+  .mapbox iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:#cbd2dd;padding:46px 0 30px;text-align:center}
+  footer .ftbrand{font-family:"Fredoka";font-weight:700;font-size:1.6rem;color:#fff}
+  footer .ftbrand .red{color:var(--red)}
+  footer .ft-cta{margin:1rem 0 1.4rem;display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap}
+  footer a{color:#9fc0ff}
+  footer .small{font-size:.82rem;color:#8893a3;margin-top:1.6rem;line-height:1.7}
+  footer .credit{color:#b9c2cf}
+
+  @media(max-width:880px){
+    .hero .wrap,.about .wrap,.visit .wrap{grid-template-columns:1fr}
+    .hero-art{order:-1}
+    .badge{width:96px;height:96px;top:-18px;left:-12px}
+    .about-photo img,.hero-art .photo img{height:320px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top" style="text-decoration:none">
+      <span class="mark">SK</span>
+      <span>SK's <span class="red">Donuts</span></span>
+    </a>
+    <div class="navlinks">
+      <a href="#menu">Menu</a>
+      <a href="#about">About</a>
+      <a href="#says">What People Say</a>
+      <a href="#visit">Visit</a>
+      <a class="nav-cta" href="tel:+17607220455">Call <span class="show-sm">SK's</span> (760) 722-0455</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="kicker">★ Oceanside, California</span>
+      <h1>Fresh, fluffy<br><span class="red">donuts</span> &amp; <br>big breakfasts.<span class="sub">A classic SoCal donut shop on South Coast Hwy — open at 4:30 AM, seven days.</span></h1>
+      <p class="lede">Hand-made glazed, maple bars, apple fritters, our signature cinnamon crumble — plus loaded croissant breakfast sandwiches and smoothies. No fuss, no over-styling. Just the good stuff.</p>
+      <div class="cta-row">
+        <a class="btn btn-red" href="tel:+17607220455">📞 Call to Order</a>
+        <a class="btn btn-out" href="https://www.google.com/maps?q=1129+S+Coast+Hwy+%23+C,+Oceanside,+CA+92054" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+      <p class="open-tag">Open <b>every day</b> · 4:30 AM – 2:00 PM</p>
+    </div>
+    <div class="hero-art">
+      <div class="badge"><span><b>$20</b>buys a baker's<br>dozen +</span><span>holes</span></div>
+      <div class="photo"><img src="./photos/04.jpg" alt="A fresh box of SK's donuts — chocolate bars, maple bars, fritters and sprinkles"></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="strip">
+    <img src="./photos/05.jpg" alt="The donut case at SK's, stocked from the early morning">
+    <img src="./photos/06.jpg" alt="A loaded croissant breakfast sandwich">
+    <img src="./photos/02.jpg" alt="Pastrami breakfast sandwich with chips">
+    <img src="./photos/01.jpg" alt="The SK's Donuts storefront on South Coast Highway, Oceanside">
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">The Shop</span>
+      <h2 class="h2">A neighborhood donut counter, the way it should be.</h2>
+      <p>SK's Donuts sits in a little storefront on South Coast Highway in Oceanside, with the bright red sign and the blue-and-white checkered floor. The owners are behind the counter, the cases are stocked before sunrise, and the line moves fast.</p>
+      <p>Regulars come for the classics — buttermilk, blueberry, apple fritters, maple bars, that signature cinnamon crumble — and stay for the big croissant breakfast sandwiches and smoothies. Bring the kids before school; you'll likely walk out with an extra donut hole or two.</p>
+      <div class="facts">
+        <span class="pill"><b>Open</b> 7 days a week</span>
+        <span class="pill"><b>4:30 AM</b> fresh out the fryer</span>
+        <span class="pill"><b>Family</b> owned &amp; run</span>
+        <span class="pill"><b>Cash &amp; card</b></span>
+      </div>
+    </div>
+    <div class="about-photo">
+      <img src="./photos/05.jpg" alt="Inside SK's Donuts — the glass case full of fresh donuts above the checkered floor">
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="checker"></div>
+  <div class="wrap menu-inner">
+    <span class="eyebrow">From the Case</span>
+    <h2 class="h2">What's good here</h2>
+    <p class="note">Made fresh daily. Favorites pulled straight from what customers come back for — ask what just came out of the fryer.</p>
+    <div class="menu-grid">
+      <div class="mcard">
+        <h3>The Donuts</h3>
+        <p class="lead">Soft base dough, fried fresh every morning.</p>
+        <div class="mline"><span class="name">Glazed Yeast</span><span class="dots"></span><span class="tag">classic</span></div>
+        <div class="mline"><span class="name">Maple Bar</span><span class="dots"></span><span class="tag">favorite</span></div>
+        <div class="mline"><span class="name">Signature Cinnamon Crumble</span><span class="dots"></span><span class="tag">house</span></div>
+        <div class="mline"><span class="name">Apple Fritter</span><span class="dots"></span><span class="tag">big</span></div>
+        <div class="mline"><span class="name">Buttermilk &amp; Blueberry Cake</span><span class="dots"></span><span class="tag">cake</span></div>
+        <div class="mline"><span class="name">Chocolate Bars &amp; Sprinkles</span><span class="dots"></span><span class="tag">for the kids</span></div>
+        <div class="mline"><span class="name">Donut Holes by the bag</span><span class="dots"></span><span class="tag">+ freebies</span></div>
+      </div>
+      <div class="mcard">
+        <h3>Breakfast &amp; Drinks</h3>
+        <p class="lead">More than donuts — a real morning stop.</p>
+        <div class="mline"><span class="name">Croissant Breakfast Sandwich</span><span class="dots"></span><span class="tag">loaded</span></div>
+        <div class="mline"><span class="name">Ham &amp; Cheese Croissant</span><span class="dots"></span><span class="tag">on the window</span></div>
+        <div class="mline"><span class="name">Jalapeño Ham &amp; Cheese</span><span class="dots"></span><span class="tag">a little heat</span></div>
+        <div class="mline"><span class="name">Big Breakfast Sandwiches</span><span class="dots"></span><span class="tag">filling</span></div>
+        <div class="mline"><span class="name">Bagels &amp; Muffins</span><span class="dots"></span><span class="tag">daily</span></div>
+        <div class="mline"><span class="name">Smoothies</span><span class="dots"></span><span class="tag">fresh</span></div>
+        <div class="mline"><span class="name">Blended &amp; Hot Drinks</span><span class="dots"></span><span class="tag">to-go</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="says" id="says">
+  <div class="wrap">
+    <span class="eyebrow">In Their Words</span>
+    <h2 class="h2">What People Say</h2>
+    <div class="notes">
+      <div class="note">
+        <p>These are the best donuts on the coast — always fresh and fluffy. The maple bars are my favorite, followed by their signature cinnamon crumble. They always throw in an extra donut and/or donut holes for free. Nowhere else gets you a baker's dozen and a handful of holes for under $20.</p>
+        <span class="who">Brissa R.</span>
+      </div>
+      <div class="note">
+        <p>Soft and flavor-filled donuts. Big breakfast sandwiches! Owners were very nice and service is fast. Love the classic donut shop over the over-stylized "donut bar" stuff — the base dough is way better than the fancy hyped stuff. 10/10, would always come here.</p>
+        <span class="who">Mark F.</span>
+      </div>
+      <div class="note">
+        <p>This is our favorite donut shop! The sandwiches are yummy too, and the smoothies. They added a few donut holes to our order, and were fast and efficient. We go out of our way to stop by when on vacation — the buttermilk, blueberry, apple fritter and maple are all delicious.</p>
+        <span class="who">Janet M.</span>
+      </div>
+      <div class="note">
+        <p>Top-notch, classic SoCal doughnut shop. Inexpensive &amp; tasty. Glazed yeast &amp; blueberry cake both recommended. Friendly welcome, and you often get a freebie late in the day.</p>
+        <span class="who">Simon B.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="ticket">
+      <span class="eyebrow">Hours &amp; Location</span>
+      <h2 class="h2">Come by.</h2>
+      <table class="hours-tbl" id="hours">
+        <tr data-d="1"><td>Monday</td><td>4:30 AM – 2:00 PM</td></tr>
+        <tr data-d="2"><td>Tuesday</td><td>4:30 AM – 2:00 PM</td></tr>
+        <tr data-d="3"><td>Wednesday</td><td>4:30 AM – 2:00 PM</td></tr>
+        <tr data-d="4"><td>Thursday</td><td>4:30 AM – 2:00 PM</td></tr>
+        <tr data-d="5"><td>Friday</td><td>4:30 AM – 2:00 PM</td></tr>
+        <tr data-d="6"><td>Saturday</td><td>4:30 AM – 2:00 PM</td></tr>
+        <tr data-d="0"><td>Sunday</td><td>4:30 AM – 2:00 PM</td></tr>
+      </table>
+      <div class="contact-line">
+        📍 1129 S Coast Hwy # C, Oceanside, CA 92054<br>
+        📞 <a href="tel:+17607220455">(760) 722-0455</a>
+      </div>
+      <div class="findus">
+        <a href="https://maps.google.com/?cid=10166365067352764278" target="_blank" rel="noopener">★ Google Business</a>
+        <a href="https://www.google.com/maps?q=1129+S+Coast+Hwy+%23+C,+Oceanside,+CA+92054" target="_blank" rel="noopener">↗ Directions</a>
+      </div>
+      <div class="cta-row" style="margin-top:1.5rem">
+        <a class="btn btn-red" href="tel:+17607220455">📞 Call to Order</a>
+      </div>
+    </div>
+    <div class="mapbox">
+      <iframe src="https://www.google.com/maps?q=1129+S+Coast+Hwy+%23+C,+Oceanside,+CA+92054&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to SK's Donuts in Oceanside"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="ftbrand">SK's <span class="red">Donuts</span></div>
+    <div class="ft-cta">
+      <a class="btn btn-red" href="tel:+17607220455">📞 (760) 722-0455</a>
+      <a class="btn btn-out" style="color:#9fc0ff;border-color:#9fc0ff!important" href="https://www.google.com/maps?q=1129+S+Coast+Hwy+%23+C,+Oceanside,+CA+92054" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+    <p class="small">1129 S Coast Hwy # C, Oceanside, CA 92054 · Open 7 days, 4:30 AM – 2:00 PM<br>
+    <a href="https://maps.google.com/?cid=10166365067352764278" target="_blank" rel="noopener">Find us on Google</a></p>
+    <p class="small credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </div>
+</footer>
+
+<script>
+  // highlight today's row in the hours table (purely cosmetic, no fabricated data)
+  (function(){
+    var d=new Date().getDay();
+    var row=document.querySelector('#hours tr[data-d="'+d+'"]');
+    if(row)row.classList.add('today');
+  })();
+</script>
+</body>
+</html>

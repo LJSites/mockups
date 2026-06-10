@@ -1,0 +1,432 @@
+<!-- coffee · bold-dark · hero-layout 2 · svc-layout 1 · Archivo Black/Inter -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huskins Coffee — Santa Ana, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --acc:#14b8a6;
+  --bg:#0b1f1d;
+  --bg2:#0f2a27;
+  --bg3:#162f2c;
+  --text:#e8f0ef;
+  --muted:#7fa89f;
+  --nav-h:64px;
+}
+html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.brand{font-family:'Archivo Black',serif;letter-spacing:-0.02em}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;height:var(--nav-h);background:rgba(11,31,29,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,184,166,0.12);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,5vw,3rem)}
+.nav-logo{font-size:1.2rem;color:#fff;text-decoration:none}
+.nav-logo span{color:var(--acc)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.875rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{background:var(--acc);color:#0b1f1d;font-weight:600;font-size:.875rem;padding:.45rem 1.1rem;border-radius:3px;text-decoration:none;letter-spacing:.02em;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text);transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--bg2);border-bottom:1px solid rgba(20,184,166,.15);padding:1.5rem;z-index:99;flex-direction:column;gap:1rem}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--text);text-decoration:none;font-size:1rem;font-weight:500;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.mobile-menu .m-cta{background:var(--acc);color:#0b1f1d;text-align:center;border-radius:3px;font-weight:600;border:none;margin-top:.5rem}
+
+/* ── HERO (full-bleed layout 2) ── */
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('./photos/01.jpg') center/cover no-repeat;transform:scale(1.04);transition:transform 12s ease-out}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(11,31,29,1) 0%,rgba(11,31,29,.65) 45%,rgba(11,31,29,.15) 100%)}
+.hero-content{position:relative;z-index:2;padding:clamp(3rem,8vw,6rem) clamp(1.25rem,6vw,4rem);max-width:860px}
+.hero-eyebrow{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);margin-bottom:1rem;border-left:3px solid var(--acc);padding-left:.75rem}
+.hero h1{font-size:clamp(2.8rem,8vw,6rem);line-height:1;color:#fff;margin-bottom:1.25rem}
+.hero h1 em{color:var(--acc);font-style:normal}
+.hero-sub{font-size:clamp(1rem,2.2vw,1.25rem);color:rgba(232,240,239,.7);max-width:520px;margin-bottom:2rem;font-weight:300;line-height:1.7}
+.hero-actions{display:flex;flex-wrap:wrap;gap:.875rem;align-items:center}
+.btn-primary{background:var(--acc);color:#0b1f1d;font-weight:700;font-size:.95rem;padding:.8rem 2rem;border-radius:3px;text-decoration:none;letter-spacing:.02em;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-ghost{border:1.5px solid rgba(20,184,166,.45);color:var(--acc);font-weight:600;font-size:.95rem;padding:.75rem 1.75rem;border-radius:3px;text-decoration:none;letter-spacing:.02em;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:var(--acc);color:#fff}
+
+/* ── SECTION UTILITY ── */
+section{padding:clamp(4rem,9vw,7rem) clamp(1.25rem,6vw,4rem)}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:.75rem}
+.section-title{font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.1;color:#fff;margin-bottom:1.5rem}
+
+/* ── ABOUT ── */
+.about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+.about-img-stack{position:relative;aspect-ratio:4/5}
+.about-img-stack img{position:absolute;width:78%;height:100%;object-fit:cover;border-radius:4px}
+.about-img-stack .img-front{top:0;left:0}
+.about-img-stack .img-back{top:6%;right:0;height:88%;opacity:.55;filter:brightness(.7)}
+.about-text .section-title{margin-bottom:1rem}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:1rem;font-size:.975rem}
+.about-text p strong{color:var(--text);font-weight:600}
+.about-tag{display:inline-block;border:1px solid rgba(20,184,166,.3);color:var(--acc);font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .8rem;border-radius:2px;margin:.25rem .25rem 0 0}
+
+/* ── MENU / SERVICES (2-col rows layout 1) ── */
+.menu{background:var(--bg)}
+.menu-rows{display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(255,255,255,.07)}
+.menu-row{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:1rem;padding:1.25rem 0;border-bottom:1px solid rgba(255,255,255,.07);transition:background .2s}
+.menu-row:hover{background:rgba(20,184,166,.04);padding-left:.5rem}
+.menu-row-left{}
+.menu-row-name{font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:.25rem}
+.menu-row-desc{font-size:.85rem;color:var(--muted);line-height:1.5}
+.menu-row-tag{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);padding:.15rem .6rem;border:1px solid rgba(20,184,166,.3);border-radius:2px;white-space:nowrap}
+.menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem 4rem;margin-top:3rem}
+.menu-col-title{font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);border-bottom:1px solid rgba(20,184,166,.25);padding-bottom:.5rem;margin-bottom:1rem}
+
+/* ── PHOTO STRIP ── */
+.photo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--bg)}
+.photo-strip-item{aspect-ratio:4/3;overflow:hidden}
+.photo-strip-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .4s}
+.photo-strip-item:hover img{transform:scale(1.06);filter:brightness(1.1)}
+
+/* ── TESTIMONIES ── */
+.testimonies{background:var(--bg2)}
+.testimony-list{display:flex;flex-direction:column;gap:2rem;margin-top:2.5rem}
+.testimony-item{display:grid;grid-template-columns:3px 1fr;gap:1.25rem;align-items:start}
+.testimony-bar{background:var(--acc);height:100%;min-height:48px;border-radius:2px}
+.testimony-body{}
+.testimony-quote{font-size:clamp(.95rem,1.8vw,1.05rem);color:var(--text);line-height:1.75;font-style:italic;font-weight:300;margin-bottom:.6rem}
+.testimony-author{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+
+/* ── HOURS + MAP ── */
+.location{background:var(--bg3)}
+.location-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.hours-table{width:100%;border-collapse:collapse;margin-top:1.5rem;font-size:.925rem}
+.hours-table tr{border-bottom:1px solid rgba(255,255,255,.07)}
+.hours-table td{padding:.6rem 0;color:var(--muted)}
+.hours-table td:first-child{font-weight:600;color:var(--text);width:50%}
+.hours-note{font-size:.8rem;color:var(--muted);margin-top:1rem;font-style:italic}
+.map-wrap{border-radius:4px;overflow:hidden;border:1px solid rgba(20,184,166,.15)}
+.map-wrap iframe{display:block;width:100%;height:380px;border:none;filter:invert(.85) hue-rotate(160deg) saturate(0.6)}
+.contact-bar{margin-top:2rem;display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.contact-item{display:flex;align-items:center;gap:.5rem;font-size:.9rem;color:var(--muted)}
+.contact-item a{color:var(--acc);text-decoration:none;transition:color .2s}
+.contact-item a:hover{color:#fff}
+
+/* ── CTA BANNER ── */
+.cta-banner{background:var(--acc);padding:clamp(3rem,6vw,4.5rem) clamp(1.25rem,6vw,4rem);text-align:center}
+.cta-banner .section-label{color:rgba(11,31,29,.6)}
+.cta-banner h2{font-size:clamp(2rem,5vw,3.2rem);color:#0b1f1d;line-height:1.1;margin-bottom:1rem}
+.cta-banner p{color:rgba(11,31,29,.7);font-size:1rem;max-width:480px;margin:0 auto 2rem}
+.btn-dark{background:#0b1f1d;color:#fff;font-weight:700;font-size:.95rem;padding:.85rem 2.2rem;border-radius:3px;text-decoration:none;letter-spacing:.02em;display:inline-block;transition:opacity .2s}
+.btn-dark:hover{opacity:.85}
+
+/* ── FOOTER ── */
+footer{background:#070f0e;padding:clamp(2rem,4vw,3rem) clamp(1.25rem,6vw,4rem);border-top:1px solid rgba(20,184,166,.1)}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1.5rem}
+.footer-brand{font-size:1.1rem;color:#fff}
+.footer-brand span{color:var(--acc)}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{color:var(--muted);font-size:.85rem;text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--acc)}
+.footer-credit{width:100%;font-size:.78rem;color:rgba(127,168,159,.5);padding-top:1rem;border-top:1px solid rgba(255,255,255,.05);text-align:center}
+.footer-credit a{color:inherit;text-decoration:none}
+.footer-credit a:hover{color:var(--muted)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr}
+  .about-img-stack{aspect-ratio:16/9;max-height:320px}
+  .location-grid{grid-template-columns:1fr}
+  .menu-cols{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .photo-strip{grid-template-columns:1fr 1fr}
+  .photo-strip-item:last-child{display:none}
+  .hero{min-height:85vh}
+}
+@media(max-width:480px){
+  .photo-strip{grid-template-columns:1fr}
+  .photo-strip-item:last-child{display:block}
+  .hero h1{font-size:2.6rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#top" class="nav-logo brand">Huskins<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#testimonies">Stories</a></li>
+    <li><a href="#location">Visit</a></li>
+  </ul>
+  <a href="tel:+17144968258" class="nav-cta">Call Us</a>
+  <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#menu" onclick="closeMenu()">Menu</a>
+  <a href="#testimonies" onclick="closeMenu()">Stories</a>
+  <a href="#location" onclick="closeMenu()">Visit</a>
+  <a href="tel:+17144968258" class="m-cta" onclick="closeMenu()">Call Us — (714) 496-8258</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Santa Ana, CA · Est. Huskins</span>
+    <h1 class="brand">Coffee <em>Worth</em><br>Seeking Out.</h1>
+    <p class="hero-sub">House-roasted beans, Canadian maple lattes, and a peaceful corner in Santa Ana — where the work gets done and the coffee hits right.</p>
+    <div class="hero-actions">
+      <a href="#location" class="btn-primary">Get Directions</a>
+      <a href="tel:+17144968258" class="btn-ghost">Call (714) 496-8258</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img-stack">
+        <img class="img-back" src="./photos/03.jpg" alt="Huskins Coffee interior">
+        <img class="img-front" src="./photos/02.jpg" alt="Huskins Coffee drinks">
+      </div>
+      <div class="about-text">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title brand">Small-Batch Roasting. Big-Hearted Hospitality.</h2>
+        <p>Huskins Coffee is a <strong>specialty roaster and café</strong> tucked into the corner of 1st Street in Santa Ana. We roast in-house — you might catch Dev mid-batch when you walk in — and every cup is built on clean, complex flavors you can actually taste.</p>
+        <p>With <strong>Canadian roots</strong>, we brought real maple syrup north of the border: our Hometown Latte is the proof. Pair it with avocado toast or a freshly-baked oatmeal cookie, find a window seat, and stay a while.</p>
+        <p>Beyond the coffee we pour beers on tap, keep a light lunch menu, and make sure the Wi-Fi is solid — because the best meetings and deep-work sessions belong here.</p>
+        <div style="margin-top:1.25rem">
+          <span class="about-tag">House Roasting</span>
+          <span class="about-tag">Canadian Maple</span>
+          <span class="about-tag">Hockey Themed</span>
+          <span class="about-tag">Dine-In &amp; Patio</span>
+          <span class="about-tag">Beer on Tap</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MENU ── -->
+<section class="menu" id="menu">
+  <div class="section-inner">
+    <p class="section-label">What We Serve</p>
+    <h2 class="section-title brand">The Menu</h2>
+    <div class="menu-cols">
+      <div>
+        <p class="menu-col-title">Coffee &amp; Drinks</p>
+        <div class="menu-rows">
+          <div class="menu-row">
+            <div class="menu-row-left">
+              <div class="menu-row-name">Hometown Latte</div>
+              <div class="menu-row-desc">Espresso, steamed milk, and authentic Canadian maple syrup — the house signature</div>
+            </div>
+            <span class="menu-row-tag">Signature</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row-left">
+              <div class="menu-row-name">Shaken Espresso</div>
+              <div class="menu-row-desc">Over ice, lighter cinnamon — clean and refreshing; a crowd favourite</div>
+            </div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row-left">
+              <div class="menu-row-name">Matcha Latte</div>
+              <div class="menu-row-desc">Ceremonial-grade matcha, steamed or iced — smooth and earthy</div>
+            </div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row-left">
+              <div class="menu-row-name">House-Roasted Drip</div>
+              <div class="menu-row-desc">Brewed fresh from our in-house small-batch roast; complex and clean</div>
+            </div>
+            <span class="menu-row-tag">In-House</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row-left">
+              <div class="menu-row-name">Beer on Tap</div>
+              <div class="menu-row-desc">A rotating selection of draft beers — because why not</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="menu-col-title">Food</p>
+        <div class="menu-rows">
+          <div class="menu-row">
+            <div class="menu-row-left">
+              <div class="menu-row-name">Avocado Toast</div>
+              <div class="menu-row-desc">Made to order; housemade and fresh every time</div>
+            </div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row-left">
+              <div class="menu-row-name">Oatmeal Cookie</div>
+              <div class="menu-row-desc">Brought in from a local vendor — soft, chewy, and worth every bite</div>
+            </div>
+            <span class="menu-row-tag">Bakery</span>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row-left">
+              <div class="menu-row-name">Pastry Selection</div>
+              <div class="menu-row-desc">Daily rotation from our trusted local pastry vendor</div>
+            </div>
+          </div>
+          <div class="menu-row">
+            <div class="menu-row-left">
+              <div class="menu-row-name">Lunch Items</div>
+              <div class="menu-row-desc">Light lunch menu — ask the team what's on today</div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:.8rem;color:var(--muted);margin-top:1.25rem;font-style:italic">Text your order to (714) 496-8258 and pick up when you arrive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PHOTO STRIP ── -->
+<div class="photo-strip">
+  <div class="photo-strip-item"><img src="./photos/04.jpg" alt="Huskins Coffee"></div>
+  <div class="photo-strip-item"><img src="./photos/05.jpg" alt="Huskins Coffee space"></div>
+  <div class="photo-strip-item"><img src="./photos/06.jpg" alt="Huskins Coffee drinks"></div>
+</div>
+
+<!-- ── TESTIMONIES ── -->
+<section class="testimonies" id="testimonies">
+  <div class="section-inner">
+    <p class="section-label">In Their Words</p>
+    <h2 class="section-title brand">Customer Testimonies</h2>
+    <div class="testimony-list">
+      <div class="testimony-item">
+        <div class="testimony-bar"></div>
+        <div class="testimony-body">
+          <p class="testimony-quote">"I'm so happy to have discovered Huskins Coffee today! The customer service is A1. He even informed me that I could text my order to the number I called and it would be ready when I arrived! The interior design is so lovely and refreshing — very spacious with plenty of seating and outlets. The music selection was on point at a perfect volume where I could enjoy doing my solo work. Congrats Huskins — you're my new favorite coffee shop!"</p>
+          <p class="testimony-author">Fumi B.</p>
+        </div>
+      </div>
+      <div class="testimony-item">
+        <div class="testimony-bar"></div>
+        <div class="testimony-body">
+          <p class="testimony-quote">"Really enjoyed this spot! Dev who was roasting coffee beans when we got there took care of us and was very kind and personable. The coffee was tasty and loved that the flavors were complex and clean. The maple syrup additions were unique and definitely a new favorite. Loved the decor and space — was peaceful and could see myself coming back with friends or my laptop."</p>
+          <p class="testimony-author">Rachel S.</p>
+        </div>
+      </div>
+      <div class="testimony-item">
+        <div class="testimony-bar"></div>
+        <div class="testimony-body">
+          <p class="testimony-quote">"Had the Shaken Espresso, lighter cinnamon over ice — it was great!! For a business meeting I liked it because it was not overly crowded. Loved the Hockey Theming."</p>
+          <p class="testimony-author">Chad</p>
+        </div>
+      </div>
+      <div class="testimony-item">
+        <div class="testimony-bar"></div>
+        <div class="testimony-body">
+          <p class="testimony-quote">"The indoor ambience is nice and relaxing. Plenty of seating with plenty of natural light. Corner location makes it easy to find. Friendly staff."</p>
+          <p class="testimony-author">W. O.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOCATION / HOURS ── -->
+<section class="location" id="location">
+  <div class="section-inner">
+    <p class="section-label">Find Us</p>
+    <h2 class="section-title brand">Hours &amp; Location</h2>
+    <div class="location-grid">
+      <div>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>Monday</td><td>Closed</td></tr>
+            <tr><td>Tuesday</td><td>Closed</td></tr>
+            <tr><td>Wednesday</td><td>8:00 AM – 1:30 PM</td></tr>
+            <tr><td>Thursday</td><td>8:00 AM – 1:30 PM</td></tr>
+            <tr><td>Friday</td><td>8:00 AM – 1:30 PM</td></tr>
+            <tr><td>Saturday</td><td>8:00 AM – 1:30 PM</td></tr>
+            <tr><td>Sunday</td><td>8:00 AM – 1:30 PM</td></tr>
+          </tbody>
+        </table>
+        <p class="hours-note">Open Wed–Sun · Hours subject to change — call ahead if you're making a special trip.</p>
+        <div class="contact-bar">
+          <div class="contact-item">📍 <a href="https://www.google.com/maps?q=1901+E+1st+St+%23138+Santa+Ana+CA+92705&z=15" target="_blank" rel="noopener">1901 E 1st St #138, Santa Ana, CA 92705</a></div>
+        </div>
+        <div class="contact-bar">
+          <div class="contact-item">📞 <a href="tel:+17144968258">(714) 496-8258</a></div>
+        </div>
+        <div style="margin-top:1.5rem">
+          <a href="https://maps.google.com/?cid=2914710809982766660" target="_blank" rel="noopener" class="btn-ghost" style="font-size:.85rem">View on Google Maps</a>
+        </div>
+      </div>
+      <div>
+        <div class="map-wrap">
+          <iframe src="https://www.google.com/maps?q=1901+E+1st+St+%23138+Santa+Ana+CA+92705&z=15&output=embed" title="Huskins Coffee location" allowfullscreen loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BANNER ── -->
+<section class="cta-banner">
+  <p class="section-label">Come In</p>
+  <h2 class="brand">Your Corner of Santa Ana Awaits.</h2>
+  <p>Dine in, hit the patio, or text ahead and grab your order on the go. We're here Wednesday through Sunday.</p>
+  <a href="tel:+17144968258" class="btn-dark">Call (714) 496-8258</a>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand">Huskins<span>.</span></span>
+      <div style="font-size:.78rem;color:var(--muted);margin-top:.3rem">1901 E 1st St #138, Santa Ana, CA</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://maps.google.com/?cid=2914710809982766660&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+      <a href="tel:+17144968258">(714) 496-8258</a>
+    </div>
+    <div class="footer-credit">
+      Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Hero parallax-lite on scroll
+const heroBg = document.getElementById('heroBg');
+window.addEventListener('scroll',()=>{
+  const y = window.scrollY;
+  if(y < window.innerHeight){
+    heroBg.style.transform = `scale(1.04) translateY(${y*0.2}px)`;
+  }
+},{passive:true});
+
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+document.addEventListener('click',e=>{
+  const menu = document.getElementById('mobileMenu');
+  if(menu.classList.contains('open') && !menu.contains(e.target) && !e.target.closest('.hamburger')){
+    menu.classList.remove('open');
+  }
+});
+</script>
+</body>
+</html>

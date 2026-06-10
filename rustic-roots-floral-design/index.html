@@ -1,0 +1,840 @@
+<!-- florist · classic-editorial · hero-layout 1 · svc-layout 2 · Playfair Display/Source Sans 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rustic Roots Floral Design — Exeter, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --acc:#b91c1c;
+      --bg:#faf7f2;
+      --ink:#1c1612;
+      --muted:#6b5e52;
+      --rule:#d9cfc5;
+      --nav-h:64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-padding-top: var(--nav-h);
+      scroll-behavior: smooth;
+    }
+
+    body{font-family:'Source Sans 3',sans-serif}
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.65;
+      font-weight: 400;
+    }
+
+    .brand{font-family:'Playfair Display',serif;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+    }
+
+    .nav-logo span {
+      color: var(--acc);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--acc); }
+
+    .nav-cta {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--acc);
+      border: 1.5px solid var(--acc);
+      padding: 0.45rem 1.1rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: var(--acc);
+      color: #fff;
+    }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .nav-mobile-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      transition: opacity 0.2s;
+    }
+
+    /* ─── HERO (layout 1 — left image) ─── */
+    #hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(92vh - var(--nav-h));
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+      background: var(--bg);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-copy h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-copy h1 em {
+      font-style: italic;
+      color: var(--acc);
+    }
+
+    .hero-copy p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 42ch;
+      margin-bottom: 2.4rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: #991818; }
+
+    .hero-tel {
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      border-bottom: 1.5px solid var(--rule);
+      padding-bottom: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .hero-tel:hover {
+      color: var(--acc);
+      border-color: var(--acc);
+    }
+
+    /* ─── SECTION COMMONS ─── */
+    section {
+      padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 6vw, 5rem);
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-rule {
+      width: 48px;
+      height: 2px;
+      background: var(--acc);
+      margin-bottom: 2rem;
+    }
+
+    /* ─── ABOUT ─── */
+    #about {
+      background: #fff;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+    }
+
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .about-photos img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    .about-photos img:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/10;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      font-size: 1.02rem;
+      line-height: 1.75;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    /* ─── SERVICES (layout 2 — numbered/stacked list) ─── */
+    #services {
+      background: var(--bg);
+    }
+
+    .services-header {
+      max-width: 560px;
+      margin-bottom: 3.5rem;
+    }
+
+    .services-list {
+      list-style: none;
+      counter-reset: svc;
+      max-width: 800px;
+    }
+
+    .services-list li {
+      counter-increment: svc;
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      gap: 1rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+    }
+
+    .services-list li:first-child {
+      border-top: 1px solid var(--rule);
+    }
+
+    .svc-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--acc);
+      opacity: 0.6;
+      line-height: 1;
+      padding-top: 0.15rem;
+    }
+
+    .svc-num::before {
+      content: counter(svc, decimal-leading-zero);
+    }
+
+    .svc-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.35rem;
+    }
+
+    .svc-body p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ─── GALLERY STRIP ─── */
+    #gallery {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+
+    .gallery-strip img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      transition: opacity 0.25s;
+    }
+
+    .gallery-strip img:hover { opacity: 0.88; }
+
+    /* ─── TESTIMONIES ─── */
+    #testimonies {
+      background: #fff;
+    }
+
+    .testimonies-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .testimony {
+      border-left: 2px solid var(--acc);
+      padding: 0.2rem 0 0.2rem 1.8rem;
+    }
+
+    .testimony blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 1.75;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .testimony cite {
+      font-style: normal;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ─── HOURS & LOCATION ─── */
+    #location {
+      background: var(--bg);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      margin-top: 1.5rem;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hours-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .hours-table td {
+      padding: 0.65rem 0;
+      color: var(--muted);
+    }
+
+    .hours-table td:first-child {
+      font-weight: 600;
+      color: var(--ink);
+      width: 45%;
+    }
+
+    .hours-closed {
+      color: #9e8e82 !important;
+      font-style: italic;
+    }
+
+    .location-address {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-top: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .location-cta {
+      margin-top: 1.5rem;
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--acc);
+      border-bottom: 1.5px solid var(--acc);
+      padding-bottom: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .location-cta:hover { opacity: 0.7; }
+
+    .map-wrap {
+      border: 1px solid var(--rule);
+      overflow: hidden;
+    }
+
+    .map-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 380px;
+      border: none;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    #contact .section-label { color: #d97070; }
+    #contact .section-heading { color: #fff; }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+    }
+
+    .contact-info p {
+      color: #cfc4ba;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      max-width: 38ch;
+      line-height: 1.7;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .contact-link-item {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      color: #e2d8cf;
+      font-size: 0.95rem;
+    }
+
+    .contact-link-item a {
+      color: #fff;
+      font-weight: 600;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      padding-bottom: 1px;
+      transition: border-color 0.2s;
+    }
+
+    .contact-link-item a:hover { border-color: rgba(255,255,255,0.8); }
+
+    .contact-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #9e8070;
+      min-width: 60px;
+    }
+
+    .contact-cta-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .contact-cta-block .btn-primary {
+      font-size: 0.85rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .social-links a {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9e8070;
+      transition: color 0.2s;
+    }
+
+    .social-links a:hover { color: #fff; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #111;
+      padding: 1.5rem clamp(1.25rem, 6vw, 5rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    footer p {
+      font-size: 0.78rem;
+      color: #5a4e45;
+      line-height: 1.5;
+    }
+
+    footer a {
+      color: #8a7060;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: #ccc; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      #hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-image {
+        height: 55vw;
+        min-height: 280px;
+      }
+
+      .about-grid,
+      .location-grid,
+      .contact-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonies-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links, .nav-cta {
+        display: none;
+      }
+
+      .nav-mobile-toggle {
+        display: flex;
+      }
+
+      .gallery-strip {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .about-photos {
+        grid-template-columns: 1fr;
+      }
+
+      .about-photos img:first-child {
+        grid-column: auto;
+      }
+
+      .gallery-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .services-list li {
+        grid-template-columns: 2.5rem 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo brand">Rustic Roots <span>&amp;</span> Floral Design</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Hours</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:5597252164" class="nav-cta">Call Us</a>
+    <button class="nav-mobile-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO — layout 1 (left image) -->
+  <section id="hero">
+    <div class="hero-image">
+      <img src="./photos/02.jpg" alt="Rustic Roots floral arrangement" />
+    </div>
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Exeter &amp; Woodlake, CA</p>
+      <h1>Florals rooted in <em>beauty,</em> shaped for you.</h1>
+      <p>From intimate gatherings to once-in-a-lifetime weddings, Rustic Roots brings a timeless, romantic sensibility to every arrangement — locally crafted with genuine care.</p>
+      <div class="hero-actions">
+        <a href="tel:5597252164" class="btn-primary">Call Now</a>
+        <a href="tel:5597252164" class="hero-tel">(559) 725-2164</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-photos">
+          <img src="./photos/01.jpg" alt="Wedding florals by Rustic Roots" />
+          <img src="./photos/04.jpg" alt="Floral arrangement detail" />
+          <img src="./photos/05.jpg" alt="Bouquet by Rustic Roots" />
+        </div>
+        <div class="about-text">
+          <p class="section-label">About Us</p>
+          <h2 class="section-heading brand">Jalisca's art — your celebration.</h2>
+          <div class="section-rule"></div>
+          <p>Rustic Roots Floral Design is the creative work of Jalisca, a floral artist based in the San Joaquin Valley who brings a signature style to every event — abundant, thoughtfully arranged, full of romantic elegance.</p>
+          <p>Whether you're planning a wedding, a birthday, or a quiet arrangement to brighten a room, each piece is crafted with the same love and attention: flowers chosen to tell a story, colors selected to set a mood, designs executed to stand apart.</p>
+          <p>Serving Exeter, Woodlake, and the surrounding Central Valley communities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES — layout 2 (numbered/stacked list) -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="services-header">
+        <p class="section-label">What We Offer</p>
+        <h2 class="section-heading brand">From bouquets to full wedding florals.</h2>
+        <div class="section-rule"></div>
+      </div>
+      <ol class="services-list">
+        <li>
+          <span class="svc-num"></span>
+          <div class="svc-body">
+            <h3>Wedding &amp; Event Florals</h3>
+            <p>Full-service floral design for weddings — bridal bouquets, ceremony arches, reception centerpieces, and more. Every detail coordinated to your vision.</p>
+          </div>
+        </li>
+        <li>
+          <span class="svc-num"></span>
+          <div class="svc-body">
+            <h3>Custom Arrangements</h3>
+            <p>Hand-designed bouquets and arrangements for any occasion — birthdays, anniversaries, sympathy, or simply because. Fresh, seasonal flowers with a personal touch.</p>
+          </div>
+        </li>
+        <li>
+          <span class="svc-num"></span>
+          <div class="svc-body">
+            <h3>Venue &amp; Table Styling</h3>
+            <p>Tablescapes, altar pieces, aisle runners, and accent florals that transform any space. Designed to photograph beautifully and feel effortlessly elegant in person.</p>
+          </div>
+        </li>
+        <li>
+          <span class="svc-num"></span>
+          <div class="svc-body">
+            <h3>Consultations &amp; Custom Orders</h3>
+            <p>Every event is different — call or message to discuss your date, style, and budget. Jalisca works closely with clients to bring even the most particular vision to life.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- GALLERY STRIP -->
+  <section id="gallery">
+    <div class="gallery-strip">
+      <img src="./photos/03.jpg" alt="Floral arrangement" />
+      <img src="./photos/06.jpg" alt="Wedding flowers" />
+      <img src="./photos/01.jpg" alt="Rustic Roots work" />
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="section-inner">
+      <p class="section-label">Customer Testimonies</p>
+      <h2 class="section-heading brand">In their own words.</h2>
+      <div class="section-rule"></div>
+      <div class="testimonies-grid">
+        <div class="testimony">
+          <blockquote>"Jalisca did an amazing job at our wedding! She executed the design perfectly and was great to work with. Thank you so much!!"</blockquote>
+          <cite>— Carolyn G.</cite>
+        </div>
+        <div class="testimony">
+          <blockquote>"We were so excited to have Jalisca from Rustic Roots as our wedding florist! Not only is she a friend, but she truly went above and beyond to make our day feel magical. The florals were absolutely stunning — abundant, thoughtfully arranged, and full of beauty. Her signature style has a timeless, romantic feel, which brought a traditional elegance to our wedding that everyone loved."</blockquote>
+          <cite>— Lauryn T.</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section id="location">
+    <div class="section-inner">
+      <div class="location-grid">
+        <div>
+          <p class="section-label">Visit Us</p>
+          <h2 class="section-heading brand">Hours &amp; location.</h2>
+          <div class="section-rule"></div>
+          <table class="hours-table">
+            <tbody>
+              <tr><td>Monday</td><td>10:00 AM – 5:00 PM</td></tr>
+              <tr><td>Tuesday</td><td>10:00 AM – 5:00 PM</td></tr>
+              <tr><td>Wednesday</td><td>10:00 AM – 5:00 PM</td></tr>
+              <tr><td>Thursday</td><td>10:00 AM – 6:00 PM</td></tr>
+              <tr><td>Friday</td><td>10:00 AM – 6:00 PM</td></tr>
+              <tr><td>Saturday</td><td>10:00 AM – 6:00 PM</td></tr>
+              <tr><td>Sunday</td><td class="hours-closed">Closed</td></tr>
+            </tbody>
+          </table>
+          <p class="location-address">20940 Ave 296<br />Exeter, CA 93221</p>
+          <a href="https://maps.google.com/?q=20940+Ave+296,+Exeter,+CA+93221" target="_blank" rel="noopener" class="location-cta">Get Directions &rarr;</a>
+        </div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=20940+Ave+296,+Exeter,+CA+93221&z=15&output=embed"
+            title="Rustic Roots Floral Design location"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="contact-inner">
+        <div class="contact-info">
+          <p class="section-label">Get in Touch</p>
+          <h2 class="section-heading brand">Ready to bring your vision to life?</h2>
+          <p>Call or message us to discuss your event. Whether it's a single bouquet or a full wedding build-out, Rustic Roots is ready to make it beautiful.</p>
+          <div class="contact-links">
+            <div class="contact-link-item">
+              <span class="contact-label">Phone</span>
+              <a href="tel:5597252164">(559) 725-2164</a>
+            </div>
+            <div class="contact-link-item">
+              <span class="contact-label">Address</span>
+              <span>20940 Ave 296, Exeter, CA 93221</span>
+            </div>
+          </div>
+          <div class="social-links">
+            <a href="https://maps.google.com/?cid=5186633014692797395&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+          </div>
+        </div>
+        <div class="contact-cta-block">
+          <img src="./photos/06.jpg" alt="Floral detail" style="width:100%;max-width:420px;aspect-ratio:4/3;object-fit:cover;" />
+          <a href="tel:5597252164" class="btn-primary" style="margin-top:0.5rem;">Call Now — (559) 725-2164</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="brand" style="font-size:0.88rem;font-weight:600;color:#6b5e52;">Rustic Roots Floral Design</p>
+    <p>Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>

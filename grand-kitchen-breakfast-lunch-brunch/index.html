@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ARCHETYPE: Warm garden-brunch cafe — editorial, hand-tended.
+  Family-owned (Anna) breakfast/lunch/brunch spot in Glendale; reviews praise
+  fresh healthy cooking + personal warmth. Designed AROUND that, not "restaurant".
+
+  Distinct from other work/ food sites:
+    palette  — soft sage + warm cream + terracotta-clay accent + deep olive ink
+               (others: cream/amber/green poster, dark editorial brown, red diner)
+    display  — Fraunces (soft serif), body Figtree (none of these pairings used)
+    layout   — asymmetric magazine hero (text left / stacked photo column right),
+               horizontal-scroll "from the kitchen" menu strip, numbered prose
+               testimonies (NO cards/avatars/stars), split hours+map footer band.
+  Animation: none beyond gentle hover states (intentional, calm).
+  Map: keyless maps?q=...&output=embed. Photos: local ./photos/NN.jpg only.
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grand Kitchen — Breakfast, Lunch &amp; Brunch in Glendale</title>
+<meta name="description" content="Grand Kitchen is a family-owned breakfast, lunch & brunch cafe in Glendale, CA. Fresh, healthy cooking made with love — plus catering & lunch boxes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f1e7;        /* warm cream */
+    --paper:#fbfaf4;
+    --sage:#e3e7d6;      /* soft sage block */
+    --sage-deep:#cdd6ba;
+    --ink:#2c3322;       /* deep olive ink */
+    --ink-soft:#525a45;
+    --acc:#c66a45;       /* terracotta clay */
+    --acc-deep:#a8512f;
+    --line:#d9d4c2;
+    --gold:#b88a3e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:74px}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:'Figtree',system-ui,sans-serif;
+    font-weight:400;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Fraunces',Georgia,serif}
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{width:min(1140px,92vw);margin:0 auto}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(244,241,231,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{height:74px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+  .brand{display:flex;align-items:baseline;gap:.55rem;text-decoration:none}
+  .brand b{font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;letter-spacing:-.01em}
+  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--acc);transform:translateY(-2px)}
+  .brand small{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  nav.links{display:flex;gap:1.9rem;align-items:center}
+  nav.links a{text-decoration:none;font-size:.86rem;font-weight:500;color:var(--ink-soft);padding:.2rem 0;position:relative;transition:color .2s}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:-3px;height:2px;width:0;background:var(--acc);transition:width .25s}
+  nav.links a:hover{color:var(--ink)}nav.links a:hover::after{width:100%}
+  .nav-cta{display:inline-flex;align-items:center;gap:.45rem;background:var(--ink);color:var(--paper);
+    text-decoration:none;font-weight:600;font-size:.84rem;padding:.62rem 1.05rem;border-radius:2px;transition:background .2s}
+  .nav-cta:hover{background:var(--acc-deep)}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:3px;padding:.45rem .6rem;font-size:.8rem;color:var(--ink);cursor:pointer}
+
+  /* ---------- hero ---------- */
+  .hero{padding:4.4rem 0 3.6rem}
+  .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:3.2rem;align-items:center}
+  .kick{display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:600;color:var(--acc-deep);margin-bottom:1.4rem}
+  .kick::before{content:"";width:30px;height:1px;background:var(--acc)}
+  h1{font-size:clamp(2.7rem,6vw,4.5rem);font-weight:500;line-height:1.02;letter-spacing:-.02em}
+  h1 em{font-style:italic;color:var(--acc-deep);font-weight:500}
+  .lede{margin-top:1.5rem;font-size:1.12rem;color:var(--ink-soft);max-width:30rem}
+  .hero-cta{margin-top:2.1rem;display:flex;flex-wrap:wrap;gap:.8rem}
+  .btn{display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;font-weight:600;font-size:.95rem;
+    padding:.85rem 1.5rem;border-radius:2px;transition:transform .15s,background .2s,color .2s}
+  .btn-pri{background:var(--acc);color:#fff}
+  .btn-pri:hover{background:var(--acc-deep);transform:translateY(-1px)}
+  .btn-sec{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+  .btn-sec:hover{background:var(--ink);color:var(--paper)}
+  .hero-meta{margin-top:2.2rem;display:flex;gap:1.8rem;font-size:.84rem;color:var(--ink-soft);flex-wrap:wrap}
+  .hero-meta b{display:block;font-family:'Fraunces',serif;color:var(--ink);font-size:1rem;font-weight:600}
+
+  /* stacked photo column */
+  .photo-stack{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:.7rem}
+  .photo-stack figure{overflow:hidden;border-radius:4px;background:var(--sage)}
+  .photo-stack img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .photo-stack figure:hover img{transform:scale(1.045)}
+  .ps-tall{grid-row:1/3;height:100%}
+  .ps-tall img{min-height:340px}
+  .ps-a img,.ps-b img{height:170px}
+
+  /* ---------- about ---------- */
+  .band-sage{background:var(--sage)}
+  .about{padding:4.4rem 0}
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem;align-items:start}
+  .sec-label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;color:var(--acc-deep);margin-bottom:1rem}
+  .about h2{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:500;line-height:1.1;letter-spacing:-.01em}
+  .about p{margin-top:1.1rem;color:var(--ink-soft);font-size:1.04rem}
+  .about p.first{margin-top:0}
+  .sig{margin-top:1.6rem;font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;color:var(--ink)}
+  .pills{margin-top:1.7rem;display:flex;flex-wrap:wrap;gap:.6rem}
+  .pill{font-size:.82rem;font-weight:500;padding:.4rem .9rem;border:1px solid var(--sage-deep);border-radius:100px;background:var(--paper);color:var(--ink-soft)}
+
+  /* ---------- menu strip ---------- */
+  .menu{padding:4.6rem 0}
+  .menu-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
+  .menu-head h2{font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:500;letter-spacing:-.01em}
+  .menu-head p{color:var(--ink-soft);max-width:24rem;margin-top:.5rem}
+  .strip{display:flex;gap:1.3rem;overflow-x:auto;padding-bottom:1rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .strip::-webkit-scrollbar{height:7px}
+  .strip::-webkit-scrollbar-thumb{background:var(--sage-deep);border-radius:10px}
+  .card{flex:0 0 78%;max-width:340px;scroll-snap-align:start;background:var(--paper);border:1px solid var(--line);border-radius:5px;overflow:hidden;display:flex;flex-direction:column}
+  .card .ph{height:188px;background:var(--sage);overflow:hidden}
+  .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .card:hover .ph img{transform:scale(1.05)}
+  .card .body{padding:1.25rem 1.3rem 1.5rem}
+  .card .tag{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc-deep);font-weight:600}
+  .card h3{font-size:1.32rem;font-weight:600;margin-top:.45rem;font-style:italic}
+  .card p{font-size:.93rem;color:var(--ink-soft);margin-top:.55rem}
+  .menu-note{margin-top:1.7rem;font-size:.92rem;color:var(--ink-soft)}
+  .menu-note b{color:var(--ink)}
+
+  /* ---------- testimonies ---------- */
+  .says{background:var(--ink);color:var(--bg);padding:5rem 0}
+  .says .sec-label{color:var(--gold)}
+  .says h2{font-family:'Fraunces',serif;font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:500;color:var(--paper);letter-spacing:-.01em;margin-bottom:2.6rem}
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:2.6rem 3.4rem}
+  .q{position:relative;padding-left:2.6rem}
+  .q .num{position:absolute;left:0;top:.1rem;font-family:'Fraunces',serif;font-style:italic;font-size:1.5rem;color:var(--gold)}
+  .q p{font-family:'Fraunces',serif;font-weight:400;font-size:1.12rem;line-height:1.55;color:#eceadd}
+  .q .who{margin-top:.9rem;font-family:'Figtree',sans-serif;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--gold)}
+  .q.wide{grid-column:1/-1}
+
+  /* ---------- visit ---------- */
+  .visit{padding:4.8rem 0}
+  .visit-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .visit-info{padding:2.6rem 2.4rem;background:var(--paper)}
+  .visit-info h2{font-size:1.9rem;font-weight:500;letter-spacing:-.01em}
+  .hours{margin-top:1.6rem;border-top:1px solid var(--line)}
+  .hrow{display:flex;justify-content:space-between;padding:.62rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+  .hrow span:first-child{color:var(--ink-soft)}
+  .hrow.today{font-weight:600}
+  .hrow.today span:first-child{color:var(--ink)}
+  .hrow .closed{color:var(--acc-deep);font-weight:600}
+  .addr{margin-top:1.7rem;font-size:.96rem;line-height:1.7;color:var(--ink-soft)}
+  .addr a{color:var(--acc-deep);font-weight:600;text-decoration:none}
+  .addr a:hover{text-decoration:underline}
+  .findus{margin-top:1.6rem;display:flex;gap:.7rem;flex-wrap:wrap}
+  .findus a{display:inline-flex;align-items:center;gap:.45rem;font-size:.84rem;font-weight:600;text-decoration:none;
+    color:var(--ink);border:1px solid var(--line);border-radius:3px;padding:.5rem .9rem;transition:border-color .2s,color .2s}
+  .findus a:hover{border-color:var(--acc);color:var(--acc-deep)}
+  .map{min-height:380px;background:var(--sage)}
+  .map iframe{width:100%;height:100%;min-height:380px;border:0;display:block;filter:saturate(.92)}
+
+  /* ---------- closing cta ---------- */
+  .close{background:var(--sage);padding:4.2rem 0;text-align:center}
+  .close h2{font-size:clamp(2rem,4vw,3rem);font-weight:500;letter-spacing:-.02em;max-width:18ch;margin:0 auto;line-height:1.08}
+  .close h2 em{font-style:italic;color:var(--acc-deep)}
+  .close .btn{margin-top:1.9rem}
+  .close .phone{margin-top:1.1rem;font-size:.92rem;color:var(--ink-soft)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:#bcc1ab;padding:3rem 0 2.4rem}
+  .foot-top{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-start;border-bottom:1px solid #3c4431;padding-bottom:1.8rem}
+  .foot-brand b{font-family:'Fraunces',serif;color:var(--paper);font-size:1.3rem;font-weight:600}
+  .foot-brand p{font-size:.88rem;margin-top:.5rem;max-width:24rem}
+  .foot-links{display:flex;gap:1.4rem;font-size:.86rem;flex-wrap:wrap}
+  .foot-links a{color:#cdd2bb;text-decoration:none}
+  .foot-links a:hover{color:var(--gold)}
+  .credit{margin-top:1.7rem;font-size:.8rem;color:#8a9079}
+  .credit a{color:var(--gold);text-decoration:none}
+  .credit a:hover{text-decoration:underline}
+
+  @media(max-width:880px){
+    .hero-grid,.about-grid,.menu-head,.quotes,.visit-grid{grid-template-columns:1fr}
+    .hero{padding:2.8rem 0}
+    .photo-stack{margin-top:.5rem}
+    .ps-tall img{min-height:240px}
+    .card{flex:0 0 84%}
+    .map{min-height:300px}.map iframe{min-height:300px}
+    nav.links{display:none}
+    .menu-btn{display:inline-block}
+    .nav-cta{display:none}
+  }
+  @media(max-width:520px){
+    .hero-meta{gap:1.2rem}
+    .photo-stack{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <span class="dot"></span>
+      <b>Grand Kitchen</b>
+      <small>Glendale</small>
+    </a>
+    <nav class="links">
+      <a href="#about">Our Story</a>
+      <a href="#menu">The Kitchen</a>
+      <a href="#says">In Their Words</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="nav-cta" href="tel:+17472729678">Call &middot; (747) 272-9678</a>
+    <button class="menu-btn" onclick="document.getElementById('about').scrollIntoView()">Menu</button>
+  </div>
+</header>
+
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kick">Family-owned · Breakfast · Lunch · Brunch</span>
+      <h1>Fresh, healthy cooking made with <em>love</em>.</h1>
+      <p class="lede">A small family kitchen in Glendale where every soup, salad, and plate is prepared from scratch — and you're greeted like a regular from the first visit.</p>
+      <div class="hero-cta">
+        <a class="btn btn-pri" href="tel:+17472729678">Call to Order</a>
+        <a class="btn btn-sec" href="#menu">See the Kitchen</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>Open daily</b>from 8:30 AM</div>
+        <div><b>Dine in &amp; to-go</b>Catering · Lunch boxes</div>
+        <div><b>Glendale, CA</b>1124 S Adams St</div>
+      </div>
+    </div>
+    <div class="photo-stack">
+      <figure class="ps-tall"><img src="./photos/01.jpg" alt="A fresh plate from Grand Kitchen" loading="eager"></figure>
+      <figure class="ps-a"><img src="./photos/02.jpg" alt="Breakfast at Grand Kitchen"></figure>
+      <figure class="ps-b"><img src="./photos/03.jpg" alt="Inside Grand Kitchen"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band-sage" id="about">
+  <div class="wrap about">
+    <div class="about-grid">
+      <div>
+        <div class="sec-label">Our Story</div>
+        <h2>Cooked the way you'd cook for family.</h2>
+      </div>
+      <div>
+        <p class="first">Grand Kitchen is a family-run cafe tucked on South Adams Street, serving breakfast, lunch, and brunch to the Glendale neighborhood. We're a simple spot — counter service, a few tables — but the cooking is anything but ordinary.</p>
+        <p>You'll find lentil soup and yogurt soup, kale &amp; quinoa salads, perogi, avocado toast, fluffy pancakes, kabob plates, and carefully made coffee. Anna and the team are happy to walk you through the menu, talk ingredients, and never make you feel rushed. Healthy options are hard to find around here — so we lead with them, and put care into every dish.</p>
+        <p class="sig">— Anna &amp; the Grand Kitchen family</p>
+        <div class="pills">
+          <span class="pill">Breakfast all morning</span>
+          <span class="pill">Healthy &amp; fresh</span>
+          <span class="pill">Catering</span>
+          <span class="pill">Lunch boxes</span>
+          <span class="pill">Made from scratch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <div>
+        <div class="sec-label">From the Kitchen</div>
+        <h2>A taste of what we serve.</h2>
+      </div>
+      <p>Our menu shifts with what's fresh — here are a few favorites our regulars keep coming back for.</p>
+    </div>
+    <div class="strip">
+      <article class="card">
+        <div class="ph"><img src="./photos/04.jpg" alt="Breakfast & brunch plates"></div>
+        <div class="body">
+          <span class="tag">Breakfast &amp; Brunch</span>
+          <h3>Mornings, done right</h3>
+          <p>Fluffy pancakes, avocado toast, and a perfectly prepared coffee — fresh, generous, and worth the trip.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="ph"><img src="./photos/05.jpg" alt="Soups & salads"></div>
+        <div class="body">
+          <span class="tag">Soups &amp; Salads</span>
+          <h3>Healthy, the tasty way</h3>
+          <p>Lentil and yogurt soups, kale &amp; quinoa salad — the rare healthy lunch in Glendale that you'll actually crave.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="ph"><img src="./photos/06.jpg" alt="Lunch plates"></div>
+        <div class="body">
+          <span class="tag">Lunch Plates</span>
+          <h3>Hearty &amp; homemade</h3>
+          <p>Beef kabob plates, rice &amp; chicken, perogi — flavorful, satisfying, and easy on the wallet.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="ph"><img src="./photos/01.jpg" alt="Catering & lunch boxes"></div>
+        <div class="body">
+          <span class="tag">Catering &amp; To-Go</span>
+          <h3>Feed the whole table</h3>
+          <p>Lunch boxes and catering for the office, the gathering, or the day you just don't feel like cooking.</p>
+        </div>
+      </article>
+    </div>
+    <p class="menu-note"><b>Want the full menu or a catering quote?</b> Give us a call at <a href="tel:+17472729678" style="color:var(--acc-deep);font-weight:600;text-decoration:none">(747) 272-9678</a> — we're glad to help.</p>
+  </div>
+</section>
+
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="sec-label">In Their Words</div>
+    <h2>What our guests tell us.</h2>
+    <div class="quotes">
+      <div class="q wide">
+        <span class="num">01</span>
+        <p>"I stopped here for soup because I wasn't feeling well — it was the best decision of the day. Anna told me about her love of healthy food and the ingredients in everything I asked about. The lentil soup was absolutely amazing, and the kale and quinoa salad was delicious. There aren't many healthy options in Glendale, especially soups. Meeting someone so passionate about good food made me believe there are still good people who put love in their cooking."</p>
+        <div class="who">Nicole E.</div>
+      </div>
+      <div class="q">
+        <span class="num">02</span>
+        <p>"The food was delicious and tasted fresh. I had the beef kabob plate with mashed potatoes and my colleague had the avocado toast — we were both satisfied. Good, healthy food at a decent price point. If I'm in the area again I'll surely stop by."</p>
+        <div class="who">Fernando T.</div>
+      </div>
+      <div class="q">
+        <span class="num">03</span>
+        <p>"This was the best breakfast we've had here in LA! Everything was incredibly fresh — you have to try their pancakes, they're amazing. The coffee was excellent too, and the owner is super friendly and welcoming."</p>
+        <div class="who">Yannick H.</div>
+      </div>
+      <div class="q">
+        <span class="num">04</span>
+        <p>"I took her suggestion of a kale and quinoa salad with rice and chicken — so flavorful and healthy! The place is simple but the cooking is delicious. You can tell they put care into their dishes."</p>
+        <div class="who">Robiee Z.</div>
+      </div>
+      <div class="q">
+        <span class="num">05</span>
+        <p>"A pleasant experience visiting and eating here. Everything is really delicious and made with love. The owner, Anna, is really sweet and caring."</p>
+        <div class="who">Olga M.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="visit-grid">
+      <div class="visit-info">
+        <div class="sec-label">Visit Us</div>
+        <h2>Stop by &amp; say hello.</h2>
+        <div class="hours" id="hours">
+          <div class="hrow"><span>Monday</span><span>8:30 AM – 7:30 PM</span></div>
+          <div class="hrow"><span>Tuesday</span><span>8:30 AM – 7:30 PM</span></div>
+          <div class="hrow"><span>Wednesday</span><span>8:30 AM – 7:30 PM</span></div>
+          <div class="hrow"><span>Thursday</span><span>8:30 AM – 7:30 PM</span></div>
+          <div class="hrow"><span>Friday</span><span>8:30 AM – 7:30 PM</span></div>
+          <div class="hrow"><span>Saturday</span><span>10:00 AM – 5:00 PM</span></div>
+          <div class="hrow"><span>Sunday</span><span class="closed">Closed</span></div>
+        </div>
+        <p class="addr">
+          1124 S Adams St<br>Glendale, CA 91205<br>
+          <a href="https://www.google.com/maps?q=1124+S+Adams+St,+Glendale,+CA+91205" target="_blank" rel="noopener">Get directions →</a>
+        </p>
+        <div class="findus">
+          <a href="tel:+17472729678">Call (747) 272-9678</a>
+          <a href="https://maps.google.com/?cid=3467330716328104151" target="_blank" rel="noopener">Google Business</a>
+        </div>
+      </div>
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps?q=1124+S+Adams+St,+Glendale,+CA+91205&z=15&output=embed"
+          title="Map to Grand Kitchen, 1124 S Adams St, Glendale, CA"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <h2>Come hungry. Leave like <em>family</em>.</h2>
+    <a class="btn btn-pri" href="tel:+17472729678">Call Now · (747) 272-9678</a>
+    <p class="phone">Open Mon–Fri 8:30 AM–7:30 PM · Sat 10 AM–5 PM · 1124 S Adams St, Glendale</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <b>Grand Kitchen</b>
+        <p>A family-owned breakfast, lunch &amp; brunch cafe in Glendale — fresh, healthy cooking made with love.</p>
+      </div>
+      <div class="foot-links">
+        <a href="#about">Our Story</a>
+        <a href="#menu">The Kitchen</a>
+        <a href="#says">In Their Words</a>
+        <a href="#visit">Visit</a>
+        <a href="https://maps.google.com/?cid=3467330716328104151" target="_blank" rel="noopener">Google Business</a>
+      </div>
+    </div>
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </div>
+</footer>
+
+<script>
+  // Highlight today's hours row (0 = Sunday)
+  (function(){
+    var rows = document.querySelectorAll('#hours .hrow');
+    var idx = new Date().getDay();           // 0 Sun ... 6 Sat
+    var map = {1:0,2:1,3:2,4:3,5:4,6:5,0:6};  // weekday -> row order (Mon first)
+    var r = rows[map[idx]];
+    if(r) r.classList.add('today');
+  })();
+</script>
+</body>
+</html>

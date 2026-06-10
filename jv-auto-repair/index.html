@@ -1,0 +1,832 @@
+<!-- auto · warm-boutique · hero-layout 0 · svc-layout 0 · Fraunces/Nunito Sans -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JV Auto Repair — Honest Car Care in Visalia, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300&family=Nunito+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --acc:#be123c;
+      --bg:#fff1f2;
+      --dark:#1a1a1a;
+      --mid:#4b2c35;
+      --soft:#fde4e9;
+      --border:#f9c0ca;
+      --text:#2c1a1e;
+      --nav-h:64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+    }
+
+    body{font-family:'Nunito Sans',sans-serif}
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── TYPOGRAPHY ── */
+    .brand{font-family:'Fraunces',serif; font-weight: 700; letter-spacing: -0.02em; color: var(--acc); }
+
+    h1, h2, h3 { font-family: 'Fraunces', serif; line-height: 1.15; }
+
+    h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 600; color: var(--mid); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      gap: 1rem;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-size: 1.3rem;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      color: var(--mid);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--acc); }
+
+    .nav-cta {
+      background: var(--acc);
+      color: #fff;
+      padding: 0.55rem 1.2rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover { background: var(--mid); transform: translateY(-1px); }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--mid);
+      border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem;
+      z-index: 99;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--mid);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── HERO ── */
+    #hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(90vh - var(--nav-h));
+      overflow: hidden;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+      background: var(--bg);
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--soft);
+      color: var(--acc);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 4px;
+      margin-bottom: 1.25rem;
+      width: fit-content;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      font-weight: 700;
+      color: var(--mid);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .hero-content h1 em {
+      font-style: italic;
+      color: var(--acc);
+    }
+
+    .hero-content p {
+      font-size: 1.05rem;
+      color: #5a3a41;
+      max-width: 480px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--acc);
+      color: #fff;
+      padding: 0.8rem 1.75rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--mid);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(190,18,60,0.25);
+    }
+
+    .btn-secondary {
+      color: var(--acc);
+      font-weight: 700;
+      font-size: 1rem;
+      border-bottom: 2px solid var(--acc);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-secondary:hover { color: var(--mid); border-color: var(--mid); }
+
+    .hero-trust {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-trust-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-trust-item strong {
+      font-family: 'Fraunces', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--acc);
+    }
+
+    .hero-trust-item span {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #7a4a52;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .hero-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--bg) 0%, transparent 30%);
+      pointer-events: none;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      padding: clamp(3.5rem, 7vw, 6rem) clamp(1.25rem, 6vw, 4rem);
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      margin-bottom: 2.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: #fff;
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .about-photos img {
+      border-radius: 12px;
+      height: 220px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .about-photos img:first-child {
+      grid-column: 1 / -1;
+      height: 260px;
+    }
+
+    .about-copy p {
+      color: #5a3a41;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .about-copy p:last-child { margin-bottom: 0; }
+
+    .about-copy strong {
+      color: var(--mid);
+      font-weight: 700;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--bg);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .service-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem 1.5rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 8px 28px rgba(190,18,60,0.1);
+      transform: translateY(-3px);
+    }
+
+    .service-card-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--soft);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      font-size: 1.35rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--mid);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: #7a4a52;
+      line-height: 1.6;
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies {
+      background: var(--mid);
+    }
+
+    #testimonies .section-label {
+      color: var(--soft);
+      opacity: 0.8;
+    }
+
+    #testimonies h2 { color: #fff; }
+
+    .testimonies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .testimony-card {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 14px;
+      padding: 1.75rem 1.5rem;
+      transition: background 0.2s;
+    }
+
+    .testimony-card:hover {
+      background: rgba(255,255,255,0.13);
+    }
+
+    .testimony-quote {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: #fde4e9;
+      line-height: 1.65;
+      margin-bottom: 1.1rem;
+    }
+
+    .testimony-quote::before {
+      content: '\201C';
+      font-size: 2.5rem;
+      color: var(--acc);
+      line-height: 0;
+      vertical-align: -0.5rem;
+      margin-right: 0.2rem;
+    }
+
+    .testimony-attr {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ── HOURS + MAP ── */
+    #visit {
+      background: #fff;
+    }
+
+    .visit-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: start;
+    }
+
+    .hours-block h3 {
+      font-size: 1.35rem;
+      color: var(--mid);
+      margin-bottom: 1.25rem;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr { border-bottom: 1px solid var(--border); }
+
+    .hours-table tr:last-child { border-bottom: none; }
+
+    .hours-table td {
+      padding: 0.65rem 0;
+      font-size: 0.95rem;
+      color: #5a3a41;
+    }
+
+    .hours-table td:first-child { font-weight: 600; color: var(--mid); }
+
+    .hours-table .closed { color: #b89099; }
+
+    .hours-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #9a6070;
+      line-height: 1.6;
+    }
+
+    .address-block {
+      margin-top: 2rem;
+    }
+
+    .address-block h3 {
+      font-size: 1.2rem;
+      color: var(--mid);
+      margin-bottom: 0.6rem;
+    }
+
+    .address-block p {
+      color: #5a3a41;
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .address-block a {
+      color: var(--acc);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .address-block a:hover { color: var(--mid); }
+
+    .map-frame {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      height: 380px;
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ── CTA STRIP ── */
+    #cta-strip {
+      background: var(--acc);
+      text-align: center;
+      padding: clamp(3rem, 6vw, 4.5rem) 1.5rem;
+    }
+
+    #cta-strip h2 {
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    #cta-strip p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.05rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .btn-white {
+      display: inline-block;
+      background: #fff;
+      color: var(--acc);
+      padding: 0.85rem 2rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+
+    .btn-white:hover {
+      background: var(--soft);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.55);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+
+    footer .brand { color: rgba(255,255,255,0.85); font-size: 1.1rem; display: inline-block; margin-bottom: 0.5rem; }
+
+    footer a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    footer a:hover { color: #fff; }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 0.75rem 0;
+    }
+
+    .footer-divider {
+      margin: 1rem auto;
+      width: 40px;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      #hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-photo {
+        height: 52vw;
+        min-height: 240px;
+      }
+
+      .hero-photo::after {
+        background: linear-gradient(180deg, transparent 60%, var(--bg) 100%);
+      }
+
+      .about-inner,
+      .visit-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    @media (max-width: 520px) {
+      .about-photos img:first-child { height: 200px; }
+      .about-photos img { height: 160px; }
+      .hero-trust { gap: 1.25rem; }
+      .map-frame { height: 280px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="brand nav-logo">JV Auto Repair</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#visit">Visit Us</a></li>
+    </ul>
+    <a href="tel:+15597997325" class="nav-cta">Call (559) 799-7325</a>
+    <button class="nav-hamburger" aria-label="Menu" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('open')">About</a>
+    <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+    <a href="#testimonies" onclick="document.getElementById('mobileMenu').classList.remove('open')">Testimonies</a>
+    <a href="#visit" onclick="document.getElementById('mobileMenu').classList.remove('open')">Visit Us</a>
+    <a href="tel:+15597997325" onclick="document.getElementById('mobileMenu').classList.remove('open')">Call (559) 799-7325</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Visalia, CA · Honest Auto Repair</span>
+      <h1>Your car, <em>cared for</em> like family.</h1>
+      <p>Jorge and the JV team have been keeping Visalia families on the road with honest diagnostics, fair prices, and same-day service on most repairs. No upsells. No surprises.</p>
+      <div class="hero-actions">
+        <a href="tel:+15597997325" class="btn-primary">Call Now</a>
+        <a href="https://www.google.com/maps?q=945+N+Burke+St,+Visalia,+CA+93292&z=15" target="_blank" rel="noopener" class="btn-secondary">Get Directions</a>
+      </div>
+      <div class="hero-trust">
+        <div class="hero-trust-item">
+          <strong>Same-Day</strong>
+          <span>Service available</span>
+        </div>
+        <div class="hero-trust-item">
+          <strong>Honest</strong>
+          <span>Straight answers only</span>
+        </div>
+        <div class="hero-trust-item">
+          <strong>Family</strong>
+          <span>Treated like one of us</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="./photos/01.jpg" alt="JV Auto Repair shop in Visalia" />
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section">
+      <div class="about-inner">
+        <div class="about-photos">
+          <img src="./photos/02.jpg" alt="Inside JV Auto Repair" />
+          <img src="./photos/03.jpg" alt="JV Auto Repair team" />
+          <img src="./photos/04.jpg" alt="JV Auto Repair service bay" />
+        </div>
+        <div class="about-copy">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title">Straightforward service you can trust.</h2>
+          <p>JV Auto Repair is a locally owned shop on North Burke Street in Visalia. <strong>Jorge</strong> built this business on a single principle: tell people the truth about their vehicle, charge a fair price, and do the work right the first time.</p>
+          <p>Too many shops recommend unnecessary repairs — Jorge doesn't. He'll tell you what actually needs fixing now, what can wait, and what you can skip entirely. Customers come back because they trust the diagnosis, not just the price.</p>
+          <p>Whether it's a routine oil change or a complex engine repair, your car gets the same careful attention. Most repairs are done within a day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-card-icon">🔧</div>
+          <h3>General Repair</h3>
+          <p>From brakes and belts to suspension and steering — we handle the full range of mechanical repairs with quality parts.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-icon">🩺</div>
+          <h3>Honest Diagnostics</h3>
+          <p>We'll tell you exactly what your car needs — and what it doesn't. No upselling, no inflated repair lists.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-icon">🛢️</div>
+          <h3>Oil Change & Maintenance</h3>
+          <p>Quick, reliable oil changes plus full fluid checks, filters, and preventive maintenance to keep you driving longer.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-icon">⚙️</div>
+          <h3>Engine & Transmission</h3>
+          <p>Deeper mechanical work handled with care. We diagnose engine troubles and transmission issues before they become bigger problems.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-icon">🚗</div>
+          <h3>Multi-Vehicle Service</h3>
+          <p>Cars, vans, trucks — Jorge and the team work on them all. Bring your whole fleet.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-icon">⚡</div>
+          <h3>Same-Day Turnaround</h3>
+          <p>Most repairs completed the same day. We respect your time and keep you updated throughout the process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="section">
+      <p class="section-label">In Their Words</p>
+      <h2 class="section-title" style="color:#fff; margin-bottom:2.5rem;">Customer Testimonies</h2>
+      <div class="testimonies-grid">
+        <div class="testimony-card">
+          <p class="testimony-quote">Saved tons of money. Discount Tire wanted to do all kinds of stuff to my van and most of the work wasn't needed. Thanks a lot for your honesty.</p>
+          <p class="testimony-attr">— Ana Z.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">Jorge was very helpful and answered all my questions. They were able to fix the parts my car needed within a day. I'm happy with the service and will be back.</p>
+          <p class="testimony-attr">— Yazmin H.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">You want honest and punctual service, this is the place. Jorge was friendly and his staff got the job done. This is my go-to mechanic from now on!</p>
+          <p class="testimony-attr">— Shanda A.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">I've brought multiple vehicles here and left happy every time. Very good, honest mechanic — I will recommend Jorge to anyone who needs repairs without breaking the bank.</p>
+          <p class="testimony-attr">— Baldemar G.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">Look no further! Best auto repair in town. Quality work, low prices and every time I got an issue these guys take care of me like family.</p>
+          <p class="testimony-attr">— Solomon G.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT / HOURS + MAP -->
+  <section id="visit">
+    <div class="section">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Hours &amp; Location</h2>
+      <div class="visit-inner">
+        <div>
+          <div class="hours-block">
+            <h3>Shop Hours</h3>
+            <table class="hours-table">
+              <tbody>
+                <tr><td>Monday</td><td>8:00 AM – 5:00 PM</td></tr>
+                <tr><td>Tuesday</td><td>8:00 AM – 5:00 PM</td></tr>
+                <tr><td>Wednesday</td><td>8:00 AM – 5:00 PM</td></tr>
+                <tr><td>Thursday</td><td>8:00 AM – 5:00 PM</td></tr>
+                <tr><td>Friday</td><td>8:00 AM – 5:00 PM</td></tr>
+                <tr><td>Saturday</td><td class="closed">Closed</td></tr>
+                <tr><td>Sunday</td><td class="closed">Closed</td></tr>
+              </tbody>
+            </table>
+            <p class="hours-note">Walk-ins welcome Monday–Friday. For larger repairs, calling ahead is appreciated so we can get your car in and out as fast as possible.</p>
+          </div>
+          <div class="address-block">
+            <h3>Address &amp; Contact</h3>
+            <p>945 N Burke St</p>
+            <p>Visalia, CA 93292</p>
+            <p style="margin-top:0.6rem;"><a href="tel:+15597997325">(559) 799-7325</a></p>
+            <p style="margin-top:0.5rem;"><a href="https://maps.google.com/?cid=7270010647128820917" target="_blank" rel="noopener">View on Google Maps ↗</a></p>
+          </div>
+        </div>
+        <div class="map-frame">
+          <iframe
+            src="https://www.google.com/maps?q=945+N+Burke+St,+Visalia,+CA+93292&z=15&output=embed"
+            title="JV Auto Repair location map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section id="cta-strip">
+    <h2>Ready to bring your car in?</h2>
+    <p>Call us Monday through Friday — we'll get you in and get it done right.</p>
+    <a href="tel:+15597997325" class="btn-white">Call (559) 799-7325</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="brand">JV Auto Repair</span>
+    <p>945 N Burke St · Visalia, CA 93292 · <a href="tel:+15597997325">(559) 799-7325</a></p>
+    <div class="footer-links">
+      <a href="https://maps.google.com/?cid=7270010647128820917" target="_blank" rel="noopener">Google Business</a>
+    </div>
+    <div class="footer-divider"></div>
+    <p>Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </footer>
+
+</body>
+</html>

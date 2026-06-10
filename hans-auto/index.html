@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ARCHETYPE: Honest Modern Neighborhood Mechanic — "the shop you trust."
+  A sleek, warm, light editorial layout for an owner-run K-Town LA auto shop
+  known for honesty and going the extra mile (engine-bay cleaned, free fixes).
+
+  DISTINCT from other auto shops in work/:
+    - Palette: warm paper (--bg #f4f1ea) + graphite ink (--ink #1f211f) + burnt
+      amber accent (--acc #d2691e) and pine support (--pine #1f5f4f). No dark
+      garage, no navy, no oxblood, no cyan — none of the other auto shops use this.
+    - Display font: Sora (geometric humanist). No other auto shop uses Sora.
+      (Sora only appears on a coffee shop + a barber — different categories.)
+    - Body font: IBM Plex Sans.
+    - Layout: asymmetric LEFT-text / RIGHT-photo split hero (not centered/full-bleed),
+      sticky top nav (scroll-padding-top reserved), services as a numbered
+      two-column ROW LIST (not a 3-card icon grid), testimonies as offset
+      pull-quote prose blocks (no cards/avatars/stars).
+  ANIMATION: none beyond hover states + subtle nav shadow on scroll.
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hans Auto — Honest Car Repair in Los Angeles</title>
+<meta name="description" content="Hans Auto on W Pico Blvd, Los Angeles — honest, expert car repair and maintenance from a trusted owner-run shop. Oil changes, brakes, cooling, transmission service & more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f4f1ea;
+    --bg2:#ebe6db;
+    --paper:#fbf9f4;
+    --ink:#1f211f;
+    --ink2:#4a4d48;
+    --line:#ddd6c8;
+    --acc:#d2691e;       /* burnt amber */
+    --acc-dk:#b1530f;
+    --pine:#1f5f4f;      /* deep pine — quiet trust accent */
+    --nav-h:68px;
+    --maxw:1160px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:'IBM Plex Sans',system-ui,sans-serif;
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.disp{font-family:'Sora',system-ui,sans-serif;line-height:1.04;letter-spacing:-.02em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+  .acc{color:var(--acc)}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(244,241,234,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s;
+  }
+  header.nav.scrolled{border-bottom-color:var(--line);box-shadow:0 6px 24px -18px rgba(0,0,0,.4)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:100%;
+    max-width:var(--maxw);margin:0 auto;padding:0 26px}
+  .brand{display:flex;align-items:center;gap:12px;font-family:'Sora';font-weight:700;font-size:1.12rem;letter-spacing:-.01em}
+  .mark{width:34px;height:34px;border-radius:9px;background:var(--ink);color:var(--bg);
+    display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:1rem;letter-spacing:-.04em}
+  .mark span{color:var(--acc)}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-size:.92rem;font-weight:500;color:var(--ink2);transition:color .15s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-call{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);
+    padding:10px 18px;border-radius:999px;font-weight:600;font-size:.9rem;transition:background .15s,transform .15s}
+  .nav-call:hover{background:var(--acc-dk);transform:translateY(-1px)}
+  .nav-toggle{display:none;background:none;border:0;cursor:pointer;color:var(--ink)}
+  @media(max-width:860px){
+    .nav-links a:not(.nav-call){display:none}
+    .nav-call{padding:9px 15px}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:62px 0 70px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .kick{display:inline-flex;align-items:center;gap:10px;font-family:'Sora';font-weight:600;
+    font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--pine);margin-bottom:22px}
+  .kick::before{content:"";width:30px;height:2px;background:var(--acc)}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.3rem);font-weight:800}
+  .hero h1 em{font-style:normal;color:var(--acc);display:block}
+  .hero p.lead{margin-top:22px;font-size:1.16rem;color:var(--ink2);max-width:30em}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:'Sora';font-weight:600;
+    padding:14px 26px;border-radius:999px;font-size:.98rem;transition:transform .15s,background .15s,box-shadow .15s}
+  .btn-pri{background:var(--acc);color:#fff;box-shadow:0 14px 30px -16px rgba(210,105,30,.8)}
+  .btn-pri:hover{background:var(--acc-dk);transform:translateY(-2px)}
+  .btn-ghost{border:1.5px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--bg)}
+  .hero-meta{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
+  .hm{font-size:.9rem;color:var(--ink2)}
+  .hm b{display:block;font-family:'Sora';font-weight:600;color:var(--ink);font-size:1rem;letter-spacing:-.01em}
+
+  .hero-photo{position:relative}
+  .hero-photo img{width:100%;height:480px;object-fit:cover;border-radius:18px;
+    box-shadow:0 40px 70px -40px rgba(31,33,31,.6)}
+  .hero-badge{position:absolute;left:-20px;bottom:-22px;background:var(--paper);
+    border:1px solid var(--line);border-radius:14px;padding:16px 20px;
+    box-shadow:0 26px 50px -28px rgba(31,33,31,.55);max-width:230px}
+  .hero-badge .t{font-family:'Sora';font-weight:700;font-size:1.02rem;letter-spacing:-.01em}
+  .hero-badge .s{font-size:.84rem;color:var(--ink2);margin-top:4px}
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .hero-photo img{height:340px}
+    .hero-badge{left:14px}
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:78px 0}
+  .sec-kick{font-family:'Sora';font-weight:600;font-size:.78rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--acc);margin-bottom:14px}
+  .sec-h{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:800;max-width:16em}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--bg2)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .about-body p{color:var(--ink2);margin-top:18px;font-size:1.08rem}
+  .about-body p:first-child{margin-top:24px}
+  .about-strip{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .about-strip img{width:100%;height:210px;object-fit:cover;border-radius:14px}
+  .about-strip img:nth-child(1){grid-column:1/3;height:240px}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:38px}}
+
+  /* ---------- SERVICES (numbered two-column row list) ---------- */
+  .svc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:42px}
+  .svc-note{max-width:24em;color:var(--ink2);font-size:1rem}
+  .svc-list{border-top:1px solid var(--line)}
+  .svc-row{display:grid;grid-template-columns:54px 1fr 1.3fr;gap:24px;align-items:baseline;
+    padding:26px 6px;border-bottom:1px solid var(--line);transition:background .15s}
+  .svc-row:hover{background:var(--paper)}
+  .svc-num{font-family:'Sora';font-weight:700;color:var(--acc);font-size:1.05rem}
+  .svc-name{font-family:'Sora';font-weight:600;font-size:1.28rem;letter-spacing:-.01em}
+  .svc-desc{color:var(--ink2);font-size:1rem}
+  @media(max-width:720px){
+    .svc-row{grid-template-columns:40px 1fr;gap:6px 16px}
+    .svc-desc{grid-column:2/3;margin-top:6px}
+  }
+
+  /* ---------- TESTIMONIES (offset pull-quotes) ---------- */
+  .says{background:var(--ink);color:var(--bg)}
+  .says .sec-kick{color:var(--acc)}
+  .says .sec-h{color:#fff}
+  .quotes{margin-top:48px;display:grid;gap:46px}
+  .q{max-width:46em}
+  .q:nth-child(even){margin-left:auto}
+  .q blockquote{font-family:'Sora';font-weight:500;font-size:clamp(1.2rem,2.4vw,1.7rem);
+    line-height:1.32;letter-spacing:-.01em;color:#f4f1ea}
+  .q blockquote::before{content:"“";color:var(--acc);font-size:1.1em;margin-right:.05em}
+  .q .who{margin-top:16px;font-size:.92rem;letter-spacing:.04em;color:#b9b6ac;font-weight:500}
+  .q .who b{color:var(--acc);font-weight:600}
+
+  /* ---------- HOURS + LOCATION ---------- */
+  .visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:46px;align-items:stretch}
+  .hours{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:30px}
+  .hours h3{font-size:1.4rem;font-weight:700;margin-bottom:6px}
+  .hours .addr{color:var(--ink2);font-size:.96rem;margin-bottom:20px}
+  .hrow{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:.96rem}
+  .hrow:last-child{border-bottom:0}
+  .hrow .d{font-family:'Sora';font-weight:500}
+  .hrow.closed .t{color:var(--acc-dk);font-weight:600}
+  .hrow.today{background:rgba(210,105,30,.08);margin:0 -14px;padding-left:14px;padding-right:14px;border-radius:8px}
+  .findus{margin-top:22px;font-size:.92rem;color:var(--ink2)}
+  .findus a{color:var(--pine);font-weight:600;border-bottom:1px solid var(--line)}
+  .findus a:hover{border-bottom-color:var(--pine)}
+  .map{border-radius:16px;overflow:hidden;border:1px solid var(--line);min-height:380px;background:var(--bg2)}
+  .map iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+  @media(max-width:860px){.visit-grid{grid-template-columns:1fr}}
+
+  /* ---------- CTA BAND ---------- */
+  .band{background:var(--pine);color:#fff;text-align:center;padding:72px 0}
+  .band h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:800;color:#fff}
+  .band p{margin-top:14px;color:#cfe0da;font-size:1.1rem}
+  .band .btn-pri{margin-top:30px}
+  .band .phone{display:block;margin-top:18px;font-family:'Sora';font-weight:700;font-size:1.3rem;letter-spacing:-.01em}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--bg2);padding:48px 0 38px;border-top:1px solid var(--line)}
+  .foot-top{display:flex;justify-content:space-between;gap:26px;flex-wrap:wrap;align-items:flex-start}
+  .foot-brand{display:flex;align-items:center;gap:12px;font-family:'Sora';font-weight:700;font-size:1.1rem}
+  .foot-col h4{font-family:'Sora';font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-bottom:12px}
+  .foot-col a,.foot-col p{display:block;color:var(--ink2);font-size:.95rem;margin-bottom:7px}
+  .foot-col a:hover{color:var(--acc-dk)}
+  .credit{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);
+    font-size:.86rem;color:var(--ink2);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .credit a{color:var(--pine);font-weight:600}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top"><span class="mark">H<span>·</span></span> Hans Auto</a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#says">Testimonies</a>
+      <a href="#visit">Hours &amp; Location</a>
+      <a class="nav-call" href="tel:+13234632774">Call (323) 463-2774</a>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="kick">Car repair on W Pico Blvd, LA</span>
+      <h1>Honest work.<em>Done right.</em></h1>
+      <p class="lead">Hans Auto is an owner-run repair shop in Los Angeles where the
+        fix you pay for is the fix you actually need — explained plainly, before
+        anything gets done.</p>
+      <div class="hero-cta">
+        <a class="btn btn-pri" href="tel:+13234632774">Call Now</a>
+        <a class="btn btn-ghost" href="#visit">Get Directions</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hm"><b>Open Mon–Sat</b>Closed Sundays</div>
+        <div class="hm"><b>2921 W Pico Blvd</b>Los Angeles, CA 90006</div>
+        <div class="hm"><b>Walk-ins welcome</b>Waiting area on site</div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="./photos/01.jpg" alt="Hans Auto repair shop in Los Angeles" loading="eager">
+      <div class="hero-badge">
+        <div class="t">Only what your car needs</div>
+        <div class="s">No upsells. We tell you what's essential and what can wait.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-body">
+      <div class="sec-kick">About the shop</div>
+      <h2 class="sec-h">A neighborhood mechanic people come back to for years.</h2>
+      <p>Hans Auto has served drivers in the W Pico / Koreatown area through everyday
+        oil changes, brakes and tune-ups all the way to cooling-system and
+        transmission work. Longtime customers — many with cars well past 100,000
+        miles — keep their vehicles running here because the work is fast, fair,
+        and straightforward.</p>
+      <p>The owner takes the time to explain what's going on and focuses on the
+        repairs that matter. It's the kind of place where a small fix gets handled
+        as a courtesy, and where you leave knowing exactly what was done to your car.</p>
+    </div>
+    <div class="about-strip">
+      <img src="./photos/02.jpg" alt="Inside the Hans Auto service bay">
+      <img src="./photos/03.jpg" alt="Vehicle being serviced at Hans Auto">
+      <img src="./photos/04.jpg" alt="Hans Auto workshop detail">
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="svc-head">
+      <div>
+        <div class="sec-kick">What we do</div>
+        <h2 class="sec-h">Maintenance &amp; repair, the essentials covered.</h2>
+      </div>
+      <p class="svc-note">From routine upkeep to the repairs that keep a high-mileage
+        car on the road. Not sure what you need? Call and ask — we'll tell you straight.</p>
+    </div>
+    <div class="svc-list">
+      <div class="svc-row">
+        <div class="svc-num">01</div>
+        <div class="svc-name">Oil Changes &amp; Tune-Ups</div>
+        <div class="svc-desc">Routine maintenance that keeps your engine healthy — usually a quick in-and-out with a place to wait.</div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-num">02</div>
+        <div class="svc-name">Brakes &amp; Discs</div>
+        <div class="svc-desc">Brake pad and disc inspection and replacement, including diagnosing that noise from under the car.</div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-num">03</div>
+        <div class="svc-name">Cooling System</div>
+        <div class="svc-desc">Thermostat, serpentine belt, fluids and cooling repairs — fixing only what's actually failing.</div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-num">04</div>
+        <div class="svc-name">Transmission Service</div>
+        <div class="svc-desc">Transmission fluid changes and upkeep to protect one of the most expensive parts of your car.</div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-num">05</div>
+        <div class="svc-name">Fluids &amp; Top-Offs</div>
+        <div class="svc-desc">Fluid checks and replenishment, often done as a courtesy when you're already in for service.</div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-num">06</div>
+        <div class="svc-name">Diagnostics</div>
+        <div class="svc-desc">Chasing down that "service required" light and other warnings — finding the real cause before we quote.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="sec-kick">In their words</div>
+    <h2 class="sec-h">What people say about Hans Auto</h2>
+    <div class="quotes">
+      <div class="q">
+        <blockquote>I was deeply impressed by the owner's honesty and expertise. He explained everything clearly and focused on the essential repairs, so I didn't have to worry about unnecessary services — and he even cleaned my engine bay. If you're looking for a reliable, honest mechanic in LA, I highly recommend this place.”</blockquote>
+        <div class="who">— <b>HappyBlueBird</b></div>
+      </div>
+      <div class="q">
+        <blockquote>Han's always offers excellent service and they're all so respectful. I've been coming here for years for oil changes, tune-ups and repairs — they try to give you the best price every time, and my car has well over 100k miles and is still going strong. I highly recommend Han's!”</blockquote>
+        <div class="who">— <b>Anna G.</b></div>
+      </div>
+      <div class="q">
+        <blockquote>Everyone here is incredibly nice, and in my experience they've always done fast, honest work. Came in to replace my fuel intake and get new brake pads — I was in and out in about an hour, and paid less than another shop quoted me.”</blockquote>
+        <div class="who">— <b>Alli</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-kick">Stop by</div>
+    <h2 class="sec-h" style="margin-bottom:40px">Hours &amp; Location</h2>
+    <div class="visit-grid">
+      <div class="hours">
+        <h3>Hans Auto</h3>
+        <div class="addr">2921 W Pico Blvd, Los Angeles, CA 90006</div>
+        <div class="hrow"><span class="d">Monday</span><span class="t">8AM–12, 1–5:30PM</span></div>
+        <div class="hrow"><span class="d">Tuesday</span><span class="t">8AM–12, 1–5:30PM</span></div>
+        <div class="hrow"><span class="d">Wednesday</span><span class="t">8AM–12, 1–5:30PM</span></div>
+        <div class="hrow"><span class="d">Thursday</span><span class="t">8AM–12, 1–5:30PM</span></div>
+        <div class="hrow"><span class="d">Friday</span><span class="t">8AM–12, 1–5:30PM</span></div>
+        <div class="hrow"><span class="d">Saturday</span><span class="t">8AM–12, 1–3:30PM</span></div>
+        <div class="hrow closed"><span class="d">Sunday</span><span class="t">Closed</span></div>
+        <div class="findus">Find us on
+          <a href="https://maps.google.com/?cid=6008666269346785582" target="_blank" rel="noopener">Google Business</a>.
+        </div>
+      </div>
+      <div class="map">
+        <iframe src="https://www.google.com/maps?q=2921%20W%20Pico%20Blvd%2C%20Los%20Angeles%2C%20CA%2090006&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Hans Auto"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Need a repair you can trust?</h2>
+    <p>Call Hans Auto — we'll tell you what your car actually needs.</p>
+    <a class="btn btn-pri" href="tel:+13234632774">Call Now</a>
+    <a class="phone" href="tel:+13234632774">(323) 463-2774</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand"><span class="mark">H<span>·</span></span> Hans Auto</div>
+        <p style="color:var(--ink2);font-size:.95rem;margin-top:12px;max-width:24em">
+          Honest, owner-run car repair and maintenance in Los Angeles.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Visit</h4>
+        <a href="https://www.google.com/maps?q=2921%20W%20Pico%20Blvd%2C%20Los%20Angeles%2C%20CA%2090006" target="_blank" rel="noopener">2921 W Pico Blvd<br>Los Angeles, CA 90006</a>
+        <a href="https://maps.google.com/?cid=6008666269346785582" target="_blank" rel="noopener">Google Business</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="tel:+13234632774">(323) 463-2774</a>
+        <p>Mon–Fri 8AM–5:30PM<br>Sat 8AM–3:30PM · Sun closed</p>
+      </div>
+    </div>
+    <div class="credit">
+      <span>Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</span>
+      <span>&copy; Hans Auto, Los Angeles</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // sticky nav shadow on scroll
+  var nav=document.getElementById('nav');
+  var onScroll=function(){ nav.classList.toggle('scrolled', window.scrollY>8); };
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // highlight today's hours row
+  (function(){
+    var rows=document.querySelectorAll('.visit .hrow');
+    var dow=new Date().getDay(); // 0=Sun..6=Sat
+    var map={1:0,2:1,3:2,4:3,5:4,6:5,0:6};
+    var idx=map[dow];
+    if(rows[idx]) rows[idx].classList.add('today');
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!-- bakery · fresh-natural · hero-layout 1 · svc-layout 1 · DM Serif Display/Work Sans -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Morena Market — Sanger, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --acc:#15803d;
+      --bg:#f7fee7;
+      --dark:#1a2b1a;
+      --mid:#3d5a3d;
+      --light:#dcfce7;
+      --nav-h:64px;
+    }
+    html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+    body{font-family:'Work Sans',sans-serif;background:var(--bg);color:var(--dark);line-height:1.6}
+    .brand{font-family:'DM Serif Display',serif; letter-spacing:-.01em}
+
+    /* NAV */
+    nav{
+      position:sticky;top:0;z-index:100;
+      height:var(--nav-h);
+      background:var(--bg);
+      border-bottom:1px solid #bbf7d0;
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0 5vw;
+    }
+    .nav-logo{font-size:1.35rem;color:var(--dark);text-decoration:none}
+    .nav-logo span{color:var(--acc)}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{
+      text-decoration:none;color:var(--mid);font-size:.9rem;font-weight:500;
+      transition:color .2s;
+    }
+    .nav-links a:hover{color:var(--acc)}
+    .nav-cta{
+      background:var(--acc);color:#fff;padding:.45rem 1.1rem;border-radius:4px;
+      text-decoration:none;font-size:.88rem;font-weight:600;
+      transition:background .2s;
+    }
+    .nav-cta:hover{background:var(--mid)}
+    .nav-mobile-toggle{display:none;background:none;border:none;cursor:pointer;font-size:1.4rem;color:var(--dark)}
+
+    /* HERO — left-image (layout 1) */
+    #home{
+      display:grid;grid-template-columns:1fr 1fr;min-height:88vh;
+    }
+    .hero-img{
+      position:relative;overflow:hidden;
+    }
+    .hero-img img{
+      width:100%;height:100%;object-fit:cover;display:block;
+      transition:transform .6s ease;
+    }
+    .hero-img:hover img{transform:scale(1.03)}
+    .hero-img-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to right, rgba(21,128,61,.18) 0%, transparent 70%);
+    }
+    .hero-text{
+      display:flex;flex-direction:column;justify-content:center;
+      padding:6vw 6vw 6vw 4vw;
+    }
+    .hero-eyebrow{
+      font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
+      color:var(--acc);font-weight:600;margin-bottom:1rem;
+    }
+    .hero-text h1{
+      font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.08;
+      color:var(--dark);margin-bottom:1.1rem;
+    }
+    .hero-text p{
+      font-size:1.05rem;color:var(--mid);max-width:38ch;margin-bottom:2rem;
+      font-weight:300;line-height:1.7;
+    }
+    .hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn-primary{
+      background:var(--acc);color:#fff;padding:.7rem 1.6rem;
+      border-radius:4px;text-decoration:none;font-weight:600;font-size:.95rem;
+      transition:background .2s,transform .15s;
+      display:inline-block;
+    }
+    .btn-primary:hover{background:var(--mid);transform:translateY(-2px)}
+    .btn-outline{
+      border:2px solid var(--acc);color:var(--acc);padding:.65rem 1.5rem;
+      border-radius:4px;text-decoration:none;font-weight:600;font-size:.95rem;
+      transition:background .2s,color .2s,transform .15s;
+      display:inline-block;
+    }
+    .btn-outline:hover{background:var(--acc);color:#fff;transform:translateY(-2px)}
+
+    /* STRIP */
+    .hours-strip{
+      background:var(--acc);color:#fff;
+      display:flex;justify-content:center;align-items:center;
+      gap:3rem;flex-wrap:wrap;
+      padding:1rem 5vw;font-size:.85rem;font-weight:500;letter-spacing:.02em;
+    }
+    .hours-strip strong{font-weight:700}
+
+    /* ABOUT */
+    #about{
+      display:grid;grid-template-columns:1fr 1fr;gap:0;
+      padding:0;overflow:hidden;
+    }
+    .about-photos{display:grid;grid-template-rows:60% 40%;height:520px}
+    .about-photos img{width:100%;height:100%;object-fit:cover;display:block}
+    .about-photos .ap-top{height:60%}
+    .about-photos .ap-bot{height:40%;display:grid;grid-template-columns:1fr 1fr}
+    .about-photos .ap-bot img{height:100%}
+    .about-body{
+      display:flex;flex-direction:column;justify-content:center;
+      padding:5vw 6vw;background:#fff;
+    }
+    .section-label{
+      font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;
+      color:var(--acc);font-weight:600;margin-bottom:.7rem;
+    }
+    .about-body h2{font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.15;margin-bottom:1.2rem}
+    .about-body p{color:var(--mid);font-size:1rem;line-height:1.75;font-weight:300;margin-bottom:1rem}
+
+    /* OFFERINGS — 2-col rows (svc-layout 1) */
+    #offerings{padding:6rem 5vw;background:var(--bg)}
+    .offerings-header{text-align:center;margin-bottom:3.5rem}
+    .offerings-header h2{font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:.6rem}
+    .offerings-header p{color:var(--mid);font-size:1rem;font-weight:300;max-width:52ch;margin:0 auto}
+    .offerings-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:0;
+      max-width:860px;margin:0 auto;
+      border:1px solid #bbf7d0;border-radius:8px;overflow:hidden;
+    }
+    .offering-row{
+      display:flex;align-items:flex-start;gap:1.1rem;
+      padding:1.3rem 1.6rem;border-bottom:1px solid #bbf7d0;
+      transition:background .2s;
+    }
+    .offering-row:nth-child(odd){border-right:1px solid #bbf7d0}
+    .offering-row:last-child,.offering-row:nth-last-child(2):nth-child(odd){border-bottom:none}
+    .offering-row:hover{background:#f0fdf4}
+    .offering-dot{
+      width:8px;height:8px;border-radius:50%;background:var(--acc);
+      flex-shrink:0;margin-top:.5rem;
+    }
+    .offering-row h3{font-size:1rem;font-weight:600;color:var(--dark);margin-bottom:.2rem}
+    .offering-row p{font-size:.88rem;color:var(--mid);font-weight:300;line-height:1.5}
+
+    /* HOURS + MAP */
+    #visit{
+      display:grid;grid-template-columns:1fr 1fr;
+      background:#fff;
+    }
+    .visit-info{padding:5rem 5vw;display:flex;flex-direction:column;justify-content:center}
+    .visit-info h2{font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:2rem}
+    .hours-list{width:100%;border-collapse:collapse;margin-bottom:2rem}
+    .hours-list tr{border-bottom:1px solid #e7f5e9}
+    .hours-list td{padding:.55rem 0;font-size:.92rem;color:var(--mid)}
+    .hours-list td:first-child{font-weight:500;color:var(--dark);width:130px}
+    .hours-list tr:last-child{border-bottom:none}
+    .visit-cta{margin-top:.5rem}
+    .map-pane{min-height:420px;overflow:hidden}
+    .map-pane iframe{width:100%;height:100%;border:none;display:block;min-height:420px}
+
+    /* TESTIMONIES */
+    #testimonies{
+      padding:6rem 5vw;
+      background:var(--light);
+    }
+    .testimonies-header{text-align:center;margin-bottom:3rem}
+    .testimonies-header h2{font-size:clamp(1.8rem,3vw,2.6rem)}
+    .tcard-list{
+      display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:860px;margin:0 auto;
+    }
+    .tcard{
+      background:#fff;padding:2rem 2.2rem;border-radius:8px;
+      border-left:4px solid var(--acc);
+      position:relative;
+    }
+    .tcard blockquote{
+      font-size:1.05rem;font-style:italic;color:var(--dark);
+      line-height:1.7;margin-bottom:1.1rem;
+    }
+    .tcard blockquote::before{
+      content:'\201C';font-family:'DM Serif Display',serif;
+      font-size:3rem;color:var(--acc);line-height:1;
+      display:block;margin-bottom:-.6rem;opacity:.4;
+    }
+    .tcard cite{
+      font-size:.85rem;font-weight:600;color:var(--mid);
+      text-transform:uppercase;letter-spacing:.08em;font-style:normal;
+    }
+
+    /* CONTACT */
+    #contact{
+      padding:5rem 5vw;background:var(--dark);color:#fff;
+      display:flex;flex-direction:column;align-items:center;text-align:center;
+    }
+    #contact .section-label{color:#86efac}
+    #contact h2{font-size:clamp(1.8rem,3vw,2.6rem);margin-bottom:.8rem;color:#fff}
+    #contact p{color:#a7c9a7;font-size:1rem;font-weight:300;margin-bottom:2rem;max-width:46ch}
+    .contact-block{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem}
+    .contact-item{
+      background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);
+      border-radius:6px;padding:1rem 1.8rem;min-width:180px;
+    }
+    .contact-item .ci-label{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#86efac;font-weight:600;margin-bottom:.4rem}
+    .contact-item a,.contact-item span{color:#fff;text-decoration:none;font-size:.98rem;font-weight:500}
+    .contact-item a:hover{color:#86efac}
+    .social-links{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem}
+    .social-link{
+      color:#a7c9a7;text-decoration:none;font-size:.85rem;font-weight:500;
+      border-bottom:1px solid transparent;padding-bottom:2px;
+      transition:color .2s,border-color .2s;
+    }
+    .social-link:hover{color:#86efac;border-color:#86efac}
+
+    /* FOOTER */
+    footer{
+      background:#111d11;color:#4a634a;text-align:center;
+      padding:1.5rem 5vw;font-size:.8rem;line-height:1.7;
+    }
+    footer a{color:#4a634a;text-decoration:underline}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      #home{grid-template-columns:1fr;min-height:auto}
+      .hero-img{height:55vw;min-height:260px}
+      .hero-text{padding:3rem 5vw}
+      #about{grid-template-columns:1fr}
+      .about-photos{height:300px}
+      .offerings-grid{grid-template-columns:1fr}
+      .offering-row:nth-child(odd){border-right:none}
+      #visit{grid-template-columns:1fr}
+      .map-pane{min-height:300px}
+      .tcard-list{grid-template-columns:1fr}
+    }
+    @media(max-width:640px){
+      .nav-links,.nav-cta{display:none}
+      .nav-mobile-toggle{display:block}
+      .hours-strip{gap:1.2rem;font-size:.78rem}
+      .about-photos{height:220px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="nav-logo brand">La Morena <span>Market</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#offerings">What We Carry</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="tel:+15598753547">Call Now</a>
+    <button class="nav-mobile-toggle" aria-label="Menu">&#9776;</button>
+  </nav>
+
+  <!-- HERO — left image -->
+  <section id="home">
+    <div class="hero-img">
+      <img src="./photos/01.jpg" alt="La Morena Market storefront" />
+      <div class="hero-img-overlay"></div>
+    </div>
+    <div class="hero-text">
+      <p class="hero-eyebrow">Sanger, CA · Open Early</p>
+      <h1 class="brand">Your neighborhood<br /><em>mercado</em>,<br />fresh every day.</h1>
+      <p>La Morena Market has served the Sanger community with fresh bread, everyday essentials, and a warm welcome since before the sun comes up.</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="tel:+15598753547">Call Now</a>
+        <a class="btn-outline" href="https://maps.google.com/?cid=1494385065774815755" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS STRIP -->
+  <div class="hours-strip">
+    <span><strong>Mon–Sat</strong> 4:30 AM – 8:00 PM</span>
+    <span>·</span>
+    <span><strong>Sunday</strong> 5:00 AM – 2:00 PM</span>
+    <span>·</span>
+    <span>716 L St, Sanger, CA</span>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-photos">
+      <img class="ap-top" src="./photos/02.jpg" alt="Market interior" style="height:60%;object-position:center" />
+      <div class="ap-bot">
+        <img src="./photos/03.jpg" alt="Fresh goods at La Morena Market" />
+        <img src="./photos/04.jpg" alt="Products on shelf" />
+      </div>
+    </div>
+    <div class="about-body">
+      <p class="section-label">About Us</p>
+      <h2 class="brand">A little store<br />with a lot of heart.</h2>
+      <p>La Morena Market is a family-run convenience store in the heart of Sanger. We open before dawn so early risers — farmworkers, commuters, neighbors — always find fresh bread, cold drinks, and a friendly face waiting for them.</p>
+      <p>The owners pour genuine care into everything they stock. Customers keep coming back not just for the groceries, but for the feeling of community that comes with every visit.</p>
+    </div>
+  </section>
+
+  <!-- OFFERINGS — 2-col rows -->
+  <section id="offerings">
+    <div class="offerings-header">
+      <p class="section-label">What We Carry</p>
+      <h2 class="brand">Everything you need,<br />close to home.</h2>
+      <p>From morning staples to evening essentials, we keep the shelves stocked and the bread fresh.</p>
+    </div>
+    <div class="offerings-grid">
+      <div class="offering-row">
+        <div class="offering-dot"></div>
+        <div>
+          <h3>Fresh-Baked Bread</h3>
+          <p>Daily pan dulce and bolillos — the reason neighbors stop in every morning.</p>
+        </div>
+      </div>
+      <div class="offering-row">
+        <div class="offering-dot"></div>
+        <div>
+          <h3>Groceries & Produce</h3>
+          <p>Everyday pantry staples, fresh fruits, and vegetables at honest prices.</p>
+        </div>
+      </div>
+      <div class="offering-row">
+        <div class="offering-dot"></div>
+        <div>
+          <h3>Cold Beverages</h3>
+          <p>Sodas, juices, agua fresca, and chilled drinks for the Central Valley heat.</p>
+        </div>
+      </div>
+      <div class="offering-row">
+        <div class="offering-dot"></div>
+        <div>
+          <h3>Snacks & Candy</h3>
+          <p>Mexican and American snacks, chips, and sweets for every craving.</p>
+        </div>
+      </div>
+      <div class="offering-row">
+        <div class="offering-dot"></div>
+        <div>
+          <h3>Household Essentials</h3>
+          <p>Cleaning supplies, personal care, and the little things you always need.</p>
+        </div>
+      </div>
+      <div class="offering-row">
+        <div class="offering-dot"></div>
+        <div>
+          <h3>Phone & Prepaid Cards</h3>
+          <p>Minutes, data refills, and prepaid cards to stay connected.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT: HOURS + MAP -->
+  <section id="visit">
+    <div class="visit-info">
+      <p class="section-label">Hours &amp; Location</p>
+      <h2 class="brand">Come see us.</h2>
+      <table class="hours-list">
+        <tbody>
+          <tr><td>Monday</td><td>4:30 AM – 8:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>4:30 AM – 8:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>4:30 AM – 8:00 PM</td></tr>
+          <tr><td>Thursday</td><td>4:30 AM – 8:00 PM</td></tr>
+          <tr><td>Friday</td><td>4:30 AM – 8:00 PM</td></tr>
+          <tr><td>Saturday</td><td>4:30 AM – 8:00 PM</td></tr>
+          <tr><td>Sunday</td><td>5:00 AM – 2:00 PM</td></tr>
+        </tbody>
+      </table>
+      <p style="color:var(--mid);font-size:.92rem;margin-bottom:1.5rem">716 L St, Sanger, CA 93657</p>
+      <a class="btn-primary visit-cta" href="https://maps.google.com/?cid=1494385065774815755" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+    <div class="map-pane">
+      <iframe
+        src="https://www.google.com/maps?q=716+L+St,+Sanger,+CA+93657&z=15&output=embed"
+        width="100%"
+        height="100%"
+        style="border:0;min-height:420px"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="La Morena Market map">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="testimonies-header">
+      <p class="section-label">Customer Testimonies</p>
+      <h2 class="brand">What people say.</h2>
+    </div>
+    <div class="tcard-list">
+      <div class="tcard">
+        <blockquote>"I enjoy the bread. It's really good."</blockquote>
+        <cite>Abogado J. M.</cite>
+      </div>
+      <div class="tcard">
+        <blockquote>"Love it and the owners too."</blockquote>
+        <cite>Cynthia B.</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label">Contact</p>
+    <h2 class="brand">Get in touch.</h2>
+    <p>Give us a call or stop by anytime we're open — we'd love to see you.</p>
+    <div class="contact-block">
+      <div class="contact-item">
+        <div class="ci-label">Phone</div>
+        <a href="tel:+15598753547">(559) 875-3547</a>
+      </div>
+      <div class="contact-item">
+        <div class="ci-label">Address</div>
+        <span>716 L St, Sanger, CA 93657</span>
+      </div>
+      <div class="contact-item">
+        <div class="ci-label">Open Early</div>
+        <span>Mon–Sat from 4:30 AM</span>
+      </div>
+    </div>
+    <div class="social-links">
+      <a class="social-link" href="https://maps.google.com/?cid=1494385065774815755&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+    </div>
+    <a class="btn-primary" href="tel:+15598753547">Call Now</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>La Morena Market &mdash; 716 L St, Sanger, CA 93657 &mdash; <a href="tel:+15598753547">(559) 875-3547</a></p>
+    <p style="margin-top:.4rem">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </footer>
+
+  <script>
+    // Mobile nav toggle (simple show/hide)
+    const toggle = document.querySelector('.nav-mobile-toggle');
+    const links = document.querySelector('.nav-links');
+    const cta = document.querySelector('.nav-cta');
+    if(toggle){
+      toggle.addEventListener('click',()=>{
+        const open = links.style.display === 'flex';
+        links.style.display = open ? 'none' : 'flex';
+        links.style.flexDirection = 'column';
+        links.style.position = 'absolute';
+        links.style.top = 'var(--nav-h)';
+        links.style.left = '0';
+        links.style.right = '0';
+        links.style.background = 'var(--bg)';
+        links.style.padding = '1rem 5vw';
+        links.style.borderBottom = '1px solid #bbf7d0';
+        links.style.gap = '1rem';
+        if(!open){ links.style.display='flex'; }
+        else { links.style.display='none'; }
+      });
+      // Close on link click
+      document.querySelectorAll('.nav-links a').forEach(a=>{
+        a.addEventListener('click',()=>{ links.style.display='none'; });
+      });
+    }
+  </script>
+
+</body>
+</html>

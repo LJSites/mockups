@@ -1,0 +1,441 @@
+<!--
+  Flavor/archetype: desert technical garage — dark, industrial, amber-on-near-black,
+    Oswald condensed display set against a utilitarian body face. Reads like a
+    service bay: ruled rows, stencil-y numerals, no glossy stock-photo hero.
+  hero-layout: typographic-noPhoto — oversized condensed wordmark + tagline,
+    no photo behind the H1; the single real photo is a framed band lower on the page.
+  service-layout: 2col-rows — services as full-width ruled rows (label left,
+    description right), like a shop work-order ticket.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Desert Automotive Services / Desert RV Service — Brawley, CA</title>
+<meta name="description" content="Auto and RV repair and maintenance in Brawley, CA. Honest work, fair prices. Family-run service for cars, trucks, and recreational vehicles in the Imperial Valley." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow:wght@400;500;600&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --acc:#f59e0b;
+    --bg:#0f1115;
+    --bg-2:#161a21;
+    --bg-3:#1d222b;
+    --line:#2a2f3a;
+    --ink:#e9ecf1;
+    --muted:#9aa2b1;
+    --nav-h:68px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Barlow',system-ui,sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.dsp{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.01em;line-height:1}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 24px}
+  .acc{color:var(--acc)}
+  .eyebrow{
+    font-family:'Barlow Semi Condensed',sans-serif;
+    text-transform:uppercase;letter-spacing:.32em;font-weight:600;
+    font-size:.72rem;color:var(--acc);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(15,17,21,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand .mark{
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:1.15rem;
+    color:var(--bg);background:var(--acc);
+    padding:2px 9px;letter-spacing:.04em;line-height:1.3;
+  }
+  .brand .name{font-family:'Oswald',sans-serif;font-weight:500;font-size:1.02rem;text-transform:uppercase;letter-spacing:.04em}
+  .navlinks{display:none;gap:30px;align-items:center}
+  .navlinks a{
+    font-family:'Barlow Semi Condensed',sans-serif;text-transform:uppercase;
+    letter-spacing:.12em;font-size:.82rem;font-weight:600;color:var(--muted);
+    transition:color .18s;
+  }
+  .navlinks a:hover{color:var(--ink)}
+  .nav-cta{
+    font-family:'Barlow Semi Condensed',sans-serif;text-transform:uppercase;
+    letter-spacing:.1em;font-size:.82rem;font-weight:600;
+    color:var(--acc);border:1px solid var(--acc);padding:8px 16px;
+    transition:background .18s,color .18s;
+  }
+  .nav-cta:hover{background:var(--acc);color:var(--bg)}
+  @media(min-width:880px){.navlinks{display:flex}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;padding:84px 0 72px;overflow:hidden;
+    border-bottom:1px solid var(--line);
+    background:
+      radial-gradient(900px 500px at 85% -10%, rgba(245,158,11,.10), transparent 60%),
+      linear-gradient(180deg,var(--bg) 0%,#0c0e12 100%);
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px);
+    background-size:100% 56px;
+    -webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);
+            mask-image:linear-gradient(180deg,transparent,#000 30%,#000 70%,transparent);
+  }
+  .hero-inner{position:relative;z-index:1;max-width:880px}
+  .hero h1{
+    font-weight:700;
+    font-size:clamp(2.9rem,11vw,6.4rem);
+    margin:18px 0 0;letter-spacing:-.005em;
+  }
+  .hero h1 .light{color:var(--muted);font-weight:300}
+  .hero h1 .amp{color:var(--acc);font-weight:600}
+  .hero .sub{
+    margin-top:24px;max-width:560px;color:var(--muted);
+    font-size:1.08rem;
+  }
+  .hero .sub strong{color:var(--ink);font-weight:600}
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:10px 14px;margin-top:30px;
+  }
+  .chip{
+    font-family:'Barlow Semi Condensed',sans-serif;text-transform:uppercase;
+    letter-spacing:.1em;font-size:.74rem;font-weight:600;color:var(--ink);
+    border:1px solid var(--line);background:var(--bg-2);padding:7px 13px;
+  }
+  .chip .dot{color:var(--acc)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.06em;
+    font-weight:600;font-size:1rem;padding:15px 26px;
+    transition:transform .15s,box-shadow .2s,background .2s,color .2s;
+  }
+  .btn-primary{background:var(--acc);color:#1a1206;box-shadow:0 0 0 0 rgba(245,158,11,.5)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 26px -8px rgba(245,158,11,.55)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink);background:transparent}
+  .btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+  .btn svg{width:18px;height:18px}
+
+  /* section scaffolding */
+  section{padding:78px 0}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:42px;flex-wrap:wrap}
+  .sec-head h2{font-weight:600;font-size:clamp(1.8rem,5vw,2.6rem);color:var(--ink)}
+  .sec-num{font-family:'Oswald',sans-serif;font-weight:300;color:var(--line);font-size:clamp(1.8rem,5vw,2.6rem);line-height:1}
+
+  /* ---------- ABOUT ---------- */
+  #about{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;gap:34px}
+  .about-grid p{color:var(--muted);font-size:1.06rem;margin-bottom:18px}
+  .about-grid p strong{color:var(--ink);font-weight:600}
+  .stat-row{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .stat{background:var(--bg-2);padding:22px 20px}
+  .stat .k{font-family:'Oswald',sans-serif;font-weight:600;font-size:1.7rem;color:var(--acc);line-height:1}
+  .stat .l{font-family:'Barlow Semi Condensed',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:var(--muted);margin-top:8px}
+  @media(min-width:820px){.about-grid{grid-template-columns:1.2fr .8fr;align-items:start}}
+
+  /* ---------- SERVICES (2col-rows) ---------- */
+  .svc-list{border-top:1px solid var(--line)}
+  .svc-row{
+    display:grid;grid-template-columns:1fr;gap:6px;
+    padding:26px 4px;border-bottom:1px solid var(--line);
+    transition:background .18s,padding-left .18s;
+  }
+  .svc-row:hover{background:var(--bg-2);padding-left:14px}
+  .svc-row .svc-id{font-family:'Oswald',sans-serif;font-weight:300;color:var(--acc);font-size:.9rem;letter-spacing:.1em}
+  .svc-row h3{font-weight:500;font-size:1.45rem;color:var(--ink)}
+  .svc-row p{color:var(--muted);font-size:1rem;max-width:62ch}
+  @media(min-width:760px){
+    .svc-row{grid-template-columns:64px 1fr 1.3fr;gap:24px;align-items:start}
+    .svc-row .svc-id{padding-top:8px}
+    .svc-row h3{padding-top:2px}
+  }
+
+  /* ---------- PHOTO BAND ---------- */
+  .photo-band{position:relative;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .photo-band img{display:block;width:100%;height:clamp(260px,46vw,520px);object-fit:cover;filter:saturate(.92) contrast(1.02)}
+  .photo-band .tag{
+    position:absolute;left:0;bottom:0;
+    background:var(--acc);color:#1a1206;
+    font-family:'Oswald',sans-serif;text-transform:uppercase;font-weight:600;
+    letter-spacing:.06em;font-size:.86rem;padding:9px 18px;
+  }
+  .photo-band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,21,.25),transparent 35%,rgba(15,17,21,.35));pointer-events:none}
+
+  /* ---------- TESTIMONIES ---------- */
+  #say{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .quotes{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  .q{background:var(--bg-2);padding:32px 28px;display:flex;flex-direction:column;gap:18px}
+  .q .qm{font-family:'Oswald',sans-serif;color:var(--acc);font-size:2.4rem;line-height:.6;font-weight:700}
+  .q p{color:var(--ink);font-size:1.04rem;font-style:italic}
+  .q .who{font-family:'Barlow Semi Condensed',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;color:var(--muted);font-weight:600;margin-top:auto}
+  @media(min-width:900px){.quotes{grid-template-columns:repeat(3,1fr)}}
+
+  /* ---------- HOURS / LOCATION ---------- */
+  .visit-grid{display:grid;gap:0;border:1px solid var(--line)}
+  .visit-info{background:var(--bg-2);padding:34px 30px}
+  .hours-list{margin-top:6px}
+  .hr{display:flex;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .hr:last-child{border-bottom:none}
+  .hr .d{font-family:'Barlow Semi Condensed',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-weight:600;font-size:.92rem;color:var(--muted)}
+  .hr.today .d,.hr.today .t{color:var(--acc)}
+  .hr .t{font-variant-numeric:tabular-nums;font-weight:500;font-size:.95rem}
+  .hr .t.closed{color:#6b7280}
+  .addr-block{margin-top:30px}
+  .addr-block .lab{font-family:'Barlow Semi Condensed',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;color:var(--acc);font-weight:600;margin-bottom:8px}
+  .addr-block a.tel{font-family:'Oswald',sans-serif;font-size:1.5rem;font-weight:500;color:var(--ink);transition:color .18s}
+  .addr-block a.tel:hover{color:var(--acc)}
+  .map-frame{min-height:340px;background:var(--bg-3)}
+  .map-frame iframe{display:block;width:100%;height:100%;min-height:340px;border:0;filter:grayscale(.3) invert(.92) hue-rotate(180deg) contrast(.9)}
+  @media(min-width:860px){.visit-grid{grid-template-columns:1fr 1.1fr}}
+
+  /* ---------- FINAL CTA ---------- */
+  .final{
+    text-align:center;
+    background:
+      radial-gradient(700px 360px at 50% 0%, rgba(245,158,11,.12), transparent 65%),
+      var(--bg);
+  }
+  .final h2{font-weight:600;font-size:clamp(2rem,6vw,3.4rem);margin-bottom:14px}
+  .final p{color:var(--muted);max-width:540px;margin:0 auto 32px;font-size:1.08rem}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);background:#0b0d11;padding:46px 0 38px}
+  .foot-grid{display:flex;flex-direction:column;gap:24px}
+  .foot-top{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:flex-start}
+  .foot-brand .name{font-family:'Oswald',sans-serif;text-transform:uppercase;font-weight:600;font-size:1.1rem;letter-spacing:.04em}
+  .foot-brand .meta{color:var(--muted);font-size:.92rem;margin-top:6px}
+  .foot-links{display:flex;gap:22px;flex-wrap:wrap}
+  .foot-links a{font-family:'Barlow Semi Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.8rem;font-weight:600;color:var(--muted);transition:color .18s}
+  .foot-links a:hover{color:var(--acc)}
+  .credit{border-top:1px solid var(--line);padding-top:22px;color:#6b7280;font-size:.86rem}
+  .credit a{color:var(--muted)}
+  .credit a:hover{color:var(--acc)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand" aria-label="Desert Automotive Services home">
+      <span class="mark">DAS</span>
+      <span class="name">Desert Automotive</span>
+    </a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#say">What People Say</a>
+      <a href="#visit">Hours &amp; Location</a>
+    </div>
+    <a href="tel:+17603449200" class="nav-cta">Call (760) 344-9200</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Brawley, CA &middot; Imperial Valley</span>
+    <h1>
+      Desert<br>
+      Automotive <span class="amp">&amp;</span><br>
+      <span class="light">RV Service</span>
+    </h1>
+    <p class="sub">Cars, trucks, and recreational vehicles — diagnosed straight and fixed right. <strong>A family-run shop on Main Street</strong> where you get a real estimate before the wrench turns.</p>
+    <div class="hero-meta">
+      <span class="chip"><span class="dot">&#9656;</span> Auto Repair</span>
+      <span class="chip"><span class="dot">&#9656;</span> RV Service</span>
+      <span class="chip"><span class="dot">&#9656;</span> Estimates Up Front</span>
+      <span class="chip"><span class="dot">&#9656;</span> Mon&ndash;Fri 8&ndash;5</span>
+    </div>
+    <div class="hero-cta">
+      <a href="tel:+17603449200" class="btn btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call Now
+      </a>
+      <a href="#visit" class="btn btn-ghost">Hours &amp; Directions</a>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>The Shop</h2></div>
+    <div class="about-grid">
+      <div>
+        <p><strong>Desert Automotive Services / Desert RV Service</strong> keeps the Imperial Valley moving — from daily drivers and work trucks to the RVs that get families down the road. We're a small, hands-on crew on Main Street in Brawley, and we treat every job like it's our own vehicle on the lift.</p>
+        <p>What customers tell us they appreciate most is plain talk: you'll meet the people doing the work, get a <strong>ball-park number up front</strong>, and hear an honest timeline before anything starts. No upsell theater — just the repairs your vehicle actually needs.</p>
+        <p>Auto or RV, we'd rather earn the next visit than rush this one.</p>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><div class="k">Auto</div><div class="l">Cars &amp; Trucks</div></div>
+        <div class="stat"><div class="k">RV</div><div class="l">Recreational Vehicles</div></div>
+        <div class="stat"><div class="k">M&ndash;F</div><div class="l">8 AM &ndash; 5 PM</div></div>
+        <div class="stat"><div class="k">Main St</div><div class="l">Brawley, CA</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES (2col-rows) -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>What We Do</h2></div>
+    <div class="svc-list">
+      <div class="svc-row">
+        <span class="svc-id">/ 01</span>
+        <h3>Auto Repair &amp; Diagnostics</h3>
+        <p>Engine, brakes, suspension, electrical, and check-engine work for cars and trucks — diagnosed before it's quoted, so you know what you're paying for.</p>
+      </div>
+      <div class="svc-row">
+        <span class="svc-id">/ 02</span>
+        <h3>RV Service &amp; Repair</h3>
+        <p>Mechanical and brake work to get your motorhome or trailer road-ready and safe for the trip ahead, with a clear checklist of what was done.</p>
+      </div>
+      <div class="svc-row">
+        <span class="svc-id">/ 03</span>
+        <h3>Routine Maintenance</h3>
+        <p>Oil changes, fluids, filters, and tune-ups that keep cars, trucks, and RVs running the way they should and catch small problems early.</p>
+      </div>
+      <div class="svc-row">
+        <span class="svc-id">/ 04</span>
+        <h3>Brake &amp; Safety Work</h3>
+        <p>Brake inspection and repair for everyday vehicles and heavier RVs — because stopping power isn't the place to cut corners.</p>
+      </div>
+      <div class="svc-row">
+        <span class="svc-id">/ 05</span>
+        <h3>Body &amp; Collision Estimates</h3>
+        <p>Banged-up bumper or panel? Come in for a same-week ball-park estimate, then firm numbers and a timeline before any work begins.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO BAND -->
+<div class="photo-band">
+  <img src="./photos/01.jpg" alt="Desert Automotive Services / Desert RV Service in Brawley, CA" loading="lazy" />
+  <span class="tag">On Main Street &middot; Brawley</span>
+</div>
+
+<!-- TESTIMONIES -->
+<section id="say">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>What People Say</h2></div>
+    <div class="quotes">
+      <figure class="q">
+        <span class="qm">&ldquo;</span>
+        <p>Met with me, took me out immediately for a ball-park number, and got back to me the same week with exact numbers and timelines. From that point on, everything was seamless. Happy with the outcome and the process.</p>
+        <figcaption class="who">Christina E.</figcaption>
+      </figure>
+      <figure class="q">
+        <span class="qm">&ldquo;</span>
+        <p>Super friendly staff. First place I felt I wasn't getting taken advantage of, and very great prices. Will definitely be taking my car there for any future issues. Highly recommend!</p>
+        <figcaption class="who">Cassandra R.</figcaption>
+      </figure>
+      <figure class="q">
+        <span class="qm">&ldquo;</span>
+        <p>Best automotive shop in the valley.</p>
+        <figcaption class="who">Deuce R.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS / LOCATION -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Hours &amp; Location</h2></div>
+    <div class="visit-grid">
+      <div class="visit-info">
+        <div class="addr-block" style="margin-top:0">
+          <div class="lab">Find Us</div>
+          <div style="font-size:1.06rem;color:var(--ink)">1300 Main St<br>Brawley, CA 92227</div>
+        </div>
+        <div class="hours-list" style="margin-top:28px">
+          <div class="lab" style="font-family:'Barlow Semi Condensed',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;color:var(--acc);font-weight:600;margin-bottom:8px">Shop Hours</div>
+          <div class="hr" id="hr-1"><span class="d">Monday</span><span class="t">8:00 AM – 5:00 PM</span></div>
+          <div class="hr" id="hr-2"><span class="d">Tuesday</span><span class="t">8:00 AM – 5:00 PM</span></div>
+          <div class="hr" id="hr-3"><span class="d">Wednesday</span><span class="t">8:00 AM – 5:00 PM</span></div>
+          <div class="hr" id="hr-4"><span class="d">Thursday</span><span class="t">8:00 AM – 5:00 PM</span></div>
+          <div class="hr" id="hr-5"><span class="d">Friday</span><span class="t">8:00 AM – 5:00 PM</span></div>
+          <div class="hr" id="hr-6"><span class="d">Saturday</span><span class="t closed">Closed</span></div>
+          <div class="hr" id="hr-0"><span class="d">Sunday</span><span class="t closed">Closed</span></div>
+        </div>
+        <div class="addr-block">
+          <div class="lab">Call The Shop</div>
+          <a href="tel:+17603449200" class="tel">(760) 344-9200</a>
+        </div>
+        <div class="hero-cta" style="margin-top:24px">
+          <a href="https://www.google.com/maps?q=1300%20Main%20St%2C%20Brawley%2C%20CA%2092227" target="_blank" rel="noopener" class="btn btn-ghost" style="padding:13px 22px;font-size:.92rem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Get Directions
+          </a>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe
+          title="Map to Desert Automotive Services / Desert RV Service"
+          src="https://www.google.com/maps?q=1300%20Main%20St%2C%20Brawley%2C%20CA%2092227&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="wrap">
+    <span class="eyebrow">Auto &amp; RV &middot; Brawley, CA</span>
+    <h2>Need It Looked At?</h2>
+    <p>Call the shop for a straight answer and an up-front estimate. We'll tell you what your vehicle actually needs.</p>
+    <a href="tel:+17603449200" class="btn btn-primary">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call (760) 344-9200
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="name">Desert Automotive Services / Desert RV Service</div>
+        <div class="meta">1300 Main St, Brawley, CA 92227 &middot; (760) 344-9200</div>
+      </div>
+      <div class="foot-links">
+        <a href="tel:+17603449200">Call</a>
+        <a href="https://www.google.com/maps?q=1300%20Main%20St%2C%20Brawley%2C%20CA%2092227" target="_blank" rel="noopener">Directions</a>
+        <a href="https://maps.google.com/?cid=1172013246518336258" target="_blank" rel="noopener">Google Business</a>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Highlight today's hours row (local time).
+  (function(){
+    var d = new Date().getDay(); // 0 Sun .. 6 Sat
+    var el = document.getElementById('hr-' + d);
+    if(el){ el.classList.add('today'); }
+  })();
+</script>
+</body>
+</html>

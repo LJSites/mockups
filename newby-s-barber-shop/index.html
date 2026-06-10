@@ -1,0 +1,509 @@
+<!-- barber · classic-editorial · hero-layout 1 · svc-layout 2 · Playfair Display/Source Sans 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Newby's Barber Shop — Hesperia, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --acc:#b91c1c;
+    --bg:#faf7f2;
+    --ink:#1a1a1a;
+    --muted:#5c5249;
+    --rule:#d9d0c4;
+    --nav-h:64px;
+  }
+  html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+  body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:1rem}
+  .brand{font-family:'Playfair Display',serif; font-weight:700;letter-spacing:-.01em}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:100;
+    background:var(--bg);
+    border-bottom:1px solid var(--rule);
+    height:var(--nav-h);
+    display:flex;align-items:center;
+    padding:0 clamp(1.25rem,5vw,3rem);
+    gap:1.5rem;
+  }
+  nav .brand{font-size:1.15rem;color:var(--ink);text-decoration:none;flex:1}
+  nav .brand span{color:var(--acc)}
+  nav ul{list-style:none;display:flex;gap:clamp(1rem,3vw,2rem)}
+  nav ul a{
+    font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--muted);text-decoration:none;
+    transition:color .2s;
+  }
+  nav ul a:hover{color:var(--acc)}
+  nav .cta-nav{
+    background:var(--acc);color:#fff;
+    padding:.45rem 1.1rem;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;
+    text-decoration:none;
+    border:none;cursor:pointer;
+    transition:background .2s,opacity .2s;
+    white-space:nowrap;
+  }
+  nav .cta-nav:hover{background:#991b1b}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.25rem}
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:.2s}
+
+  /* HERO — left image layout */
+  .hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:calc(100vh - var(--nav-h));
+    max-height:780px;
+  }
+  .hero-img{
+    position:relative;overflow:hidden;
+  }
+  .hero-img img{
+    width:100%;height:100%;object-fit:cover;object-position:center top;
+    display:block;
+  }
+  .hero-img::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(to right,rgba(26,26,26,.18) 0%,transparent 60%);
+  }
+  .hero-copy{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(2.5rem,6vw,5rem) clamp(2rem,5vw,4rem);
+    background:var(--bg);
+  }
+  .hero-eyebrow{
+    font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--acc);margin-bottom:1.25rem;
+  }
+  .hero-copy h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(2.4rem,4.5vw,3.6rem);
+    line-height:1.12;font-weight:700;
+    color:var(--ink);margin-bottom:1.25rem;
+  }
+  .hero-copy h1 em{font-style:italic;color:var(--acc)}
+  .hero-copy .sub{
+    font-size:1.05rem;color:var(--muted);
+    max-width:38ch;margin-bottom:2.25rem;line-height:1.6;
+  }
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+  .btn-primary{
+    background:var(--acc);color:#fff;
+    padding:.75rem 1.75rem;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;
+    text-decoration:none;display:inline-block;
+    transition:background .2s;
+  }
+  .btn-primary:hover{background:#991b1b}
+  .btn-ghost{
+    color:var(--acc);font-size:.9rem;letter-spacing:.04em;
+    text-decoration:none;border-bottom:1px solid var(--acc);padding-bottom:1px;
+    transition:color .2s,border-color .2s;
+  }
+  .btn-ghost:hover{color:#991b1b;border-color:#991b1b}
+
+  /* DIVIDER */
+  .rule{border:none;border-top:1px solid var(--rule);margin:0}
+
+  /* SECTION WRAPPER */
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.25rem,5vw,3rem)}
+
+  /* ABOUT */
+  #about{padding:clamp(4rem,8vw,7rem) 0}
+  .about-inner{
+    display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,5rem);
+    align-items:start;
+  }
+  .about-text .section-label{
+    font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--acc);margin-bottom:1rem;display:block;
+  }
+  .about-text h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.8rem,3.5vw,2.6rem);
+    line-height:1.2;margin-bottom:1.5rem;
+  }
+  .about-text p{color:var(--muted);font-size:1rem;line-height:1.75;margin-bottom:1rem}
+  .about-photo-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:.75rem;
+  }
+  .about-photo-grid img{
+    width:100%;aspect-ratio:3/4;object-fit:cover;display:block;
+  }
+  .about-photo-grid img:first-child{
+    grid-column:1/-1;aspect-ratio:16/9;
+  }
+
+  /* SERVICES — numbered stacked list */
+  #services{
+    padding:clamp(4rem,8vw,7rem) 0;
+    background:#f3ede4;
+  }
+  .services-inner{
+    display:grid;grid-template-columns:1fr 2fr;gap:clamp(2.5rem,6vw,4rem);
+    align-items:start;
+  }
+  .services-header .section-label{
+    font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--acc);margin-bottom:1rem;display:block;
+  }
+  .services-header h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.8rem,3vw,2.4rem);
+    line-height:1.2;margin-bottom:1.25rem;
+  }
+  .services-header p{color:var(--muted);font-size:.95rem;line-height:1.7}
+  .svc-list{list-style:none;counter-reset:svc}
+  .svc-list li{
+    counter-increment:svc;
+    display:grid;grid-template-columns:2.5rem 1fr auto;
+    align-items:baseline;gap:.5rem 1rem;
+    padding:1.25rem 0;
+    border-bottom:1px solid var(--rule);
+  }
+  .svc-list li::before{
+    content:counter(svc,decimal-leading-zero);
+    font-family:'Playfair Display',serif;
+    font-size:.8rem;color:var(--acc);
+    padding-top:.15rem;
+  }
+  .svc-name{font-size:1rem;font-weight:600;color:var(--ink)}
+  .svc-desc{
+    font-size:.88rem;color:var(--muted);
+    grid-column:2;margin-top:.2rem;line-height:1.55;
+  }
+  .svc-note{font-size:.82rem;color:var(--acc);white-space:nowrap;font-style:italic}
+
+  /* GALLERY */
+  #gallery{padding:clamp(3rem,6vw,5rem) 0}
+  .gallery-label{
+    font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--acc);display:block;margin-bottom:2rem;text-align:center;
+  }
+  .gallery-strip{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:.75rem;
+  }
+  .gallery-strip img{
+    width:100%;aspect-ratio:1;object-fit:cover;display:block;
+    transition:transform .3s;
+  }
+  .gallery-strip img:hover{transform:scale(1.02)}
+
+  /* TESTIMONIES */
+  #testimonies{
+    padding:clamp(4rem,8vw,7rem) 0;
+    background:#f3ede4;
+  }
+  .testimonies-header{text-align:center;margin-bottom:3.5rem}
+  .testimonies-header .section-label{
+    font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--acc);display:block;margin-bottom:.75rem;
+  }
+  .testimonies-header h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.8rem,3vw,2.4rem);
+  }
+  .testimony-stack{
+    max-width:700px;margin:0 auto;
+    display:flex;flex-direction:column;gap:2.5rem;
+  }
+  .testimony{
+    border-left:3px solid var(--acc);
+    padding:.25rem 0 .25rem 1.75rem;
+  }
+  .testimony blockquote{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.05rem,2vw,1.2rem);
+    font-style:italic;line-height:1.7;color:var(--ink);
+    margin-bottom:.75rem;
+  }
+  .testimony cite{
+    font-style:normal;font-size:.82rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--muted);
+  }
+
+  /* HOURS & LOCATION */
+  #location{padding:clamp(4rem,8vw,7rem) 0}
+  .location-inner{
+    display:grid;grid-template-columns:1fr 1fr;gap:clamp(2.5rem,6vw,4rem);
+    align-items:start;
+  }
+  .location-info .section-label{
+    font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--acc);display:block;margin-bottom:1rem;
+  }
+  .location-info h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.6rem,3vw,2.2rem);
+    margin-bottom:1.75rem;line-height:1.25;
+  }
+  address{font-style:normal;color:var(--muted);font-size:.95rem;margin-bottom:1.5rem;line-height:1.7}
+  address a{color:var(--acc);text-decoration:none}
+  address a:hover{text-decoration:underline}
+  .hours-grid{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1.5rem}
+  .hours-grid dt{font-size:.88rem;font-weight:600;color:var(--ink)}
+  .hours-grid dd{font-size:.88rem;color:var(--muted)}
+  .map-container{
+    position:relative;padding-top:65%;overflow:hidden;
+    border:1px solid var(--rule);
+  }
+  .map-container iframe{
+    position:absolute;inset:0;width:100%;height:100%;border:0;
+  }
+
+  /* CTA BAND */
+  #contact{
+    padding:clamp(3.5rem,7vw,5.5rem) 0;
+    background:var(--ink);color:#fff;
+    text-align:center;
+  }
+  #contact h2{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.8rem,4vw,2.8rem);
+    margin-bottom:.75rem;
+  }
+  #contact p{color:#c9bfb4;font-size:1rem;margin-bottom:2rem}
+  .btn-light{
+    background:#fff;color:var(--ink);
+    padding:.8rem 2rem;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;
+    text-decoration:none;display:inline-block;
+    transition:background .2s,color .2s;
+  }
+  .btn-light:hover{background:var(--acc);color:#fff}
+
+  /* FOOTER */
+  footer{
+    background:var(--bg);border-top:1px solid var(--rule);
+    padding:2rem clamp(1.25rem,5vw,3rem);
+    display:flex;flex-wrap:wrap;gap:1rem;align-items:center;
+    justify-content:space-between;
+  }
+  .footer-brand{font-size:.9rem;color:var(--muted)}
+  .footer-links{display:flex;gap:1.25rem;flex-wrap:wrap}
+  .footer-links a{
+    font-size:.82rem;color:var(--muted);text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:color .2s,border-color .2s;
+  }
+  .footer-links a:hover{color:var(--acc);border-color:var(--acc)}
+  .footer-credit{
+    font-size:.78rem;color:#998f85;
+    width:100%;text-align:center;margin-top:.5rem;
+  }
+
+  /* RESPONSIVE */
+  @media(max-width:820px){
+    .hero{grid-template-columns:1fr;max-height:none}
+    .hero-img{aspect-ratio:4/3;min-height:280px}
+    .about-inner{grid-template-columns:1fr}
+    .services-inner{grid-template-columns:1fr}
+    .location-inner{grid-template-columns:1fr}
+    .gallery-strip{grid-template-columns:1fr 1fr}
+    nav ul{display:none;position:absolute;top:var(--nav-h);left:0;right:0;
+      background:var(--bg);border-bottom:1px solid var(--rule);
+      flex-direction:column;padding:1rem clamp(1.25rem,5vw,3rem);gap:.5rem;z-index:99}
+    nav ul.open{display:flex}
+    .nav-toggle{display:block}
+    nav .cta-nav{display:none}
+  }
+  @media(max-width:520px){
+    .gallery-strip{grid-template-columns:1fr}
+    .about-photo-grid{grid-template-columns:1fr}
+    .about-photo-grid img:first-child{aspect-ratio:4/3}
+    .svc-list li{grid-template-columns:2rem 1fr}
+    .svc-note{grid-column:2}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="brand">Newby<span>'</span>s Barber Shop</a>
+  <button class="nav-toggle" aria-label="Toggle menu" id="navBtn">
+    <span></span><span></span><span></span>
+  </button>
+  <ul id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#location">Hours &amp; Location</a></li>
+  </ul>
+  <a class="cta-nav" href="tel:7609489916">Call Now</a>
+</nav>
+
+<!-- HERO — left image -->
+<section class="hero" id="top">
+  <div class="hero-img">
+    <img src="./photos/01.jpg" alt="Inside Newby's Barber Shop">
+  </div>
+  <div class="hero-copy">
+    <p class="hero-eyebrow">Hesperia, CA · Est. in the community</p>
+    <h1 class="brand">Classic cuts. <em>No appointment</em> needed.</h1>
+    <p class="sub">Newby's has been the go-to barber shop on Main Street — walk in, choose your barber, and leave looking sharp.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="tel:7609489916">Call Now</a>
+      <a class="btn-ghost" href="#location">Hours &amp; Location</a>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-inner">
+      <div class="about-text">
+        <span class="section-label">The Shop</span>
+        <h2 class="brand">A real barber shop on Main Street</h2>
+        <p>Newby's Barber Shop is where Hesperia comes for a proper cut. No gimmicks, no reservation apps — just a full team of skilled barbers ready to take you in the moment you walk through the door.</p>
+        <p>From classic fades and tapers to full beard shaves, trims, and color, plus a licensed beautician on staff, Newby's offers more than most. Budget-friendly prices, walk-ins always welcomed, and a rotating crew of more than six barbers on busy days.</p>
+      </div>
+      <div class="about-photo-grid">
+        <img src="./photos/02.jpg" alt="Barber at work">
+        <img src="./photos/03.jpg" alt="Shop interior">
+        <img src="./photos/04.jpg" alt="Haircut detail">
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="services-inner">
+      <div class="services-header">
+        <span class="section-label">What We Offer</span>
+        <h2 class="brand">Full-service barbering &amp; beauty</h2>
+        <p>Walk in and choose the look you want. Every barber is ready to deliver — and if you find one you love, just ask for their schedule.</p>
+      </div>
+      <ol class="svc-list">
+        <li>
+          <span class="svc-name">Haircut</span>
+          <span class="svc-desc">Classic cuts, fades, tapers — executed clean. Walk right in.</span>
+          <span class="svc-note">Walk-in welcome</span>
+        </li>
+        <li>
+          <span class="svc-name">Beard Trim &amp; Shape</span>
+          <span class="svc-desc">Edge work, line-ups, and full beard shaping to frame your face.</span>
+        </li>
+        <li>
+          <span class="svc-name">Straight Razor Shave</span>
+          <span class="svc-desc">Traditional hot-towel shave — a ritual that never goes out of style.</span>
+        </li>
+        <li>
+          <span class="svc-name">Hair Color</span>
+          <span class="svc-desc">Touch-ups, blends, and full color services for a refreshed look.</span>
+        </li>
+        <li>
+          <span class="svc-name">Beauty Services</span>
+          <span class="svc-desc">Full-service beautician on staff. Just ask for her when you arrive.</span>
+          <span class="svc-note">Ask at the desk</span>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <span class="gallery-label">The Shop in Action</span>
+    <div class="gallery-strip">
+      <img src="./photos/05.jpg" alt="Barber shop scene">
+      <img src="./photos/06.jpg" alt="Haircut close-up">
+      <img src="./photos/02.jpg" alt="Shop atmosphere">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="wrap">
+    <div class="testimonies-header">
+      <span class="section-label">Customer Testimonies</span>
+      <h2 class="brand">In Their Words</h2>
+    </div>
+    <div class="testimony-stack">
+      <div class="testimony">
+        <blockquote>"Best place to go. No annoying appointment needed, lot's of talented barber's to choose from, and prices are great. I typically tip $15 extra just because I feel they are worth and better than the other places that require appointments."</blockquote>
+        <cite>— Vivid W.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"Great place, budget friendly. Find a barber you like and ask for their schedule because there's more than 6 cutting in certain days. Walking-in's always welcomed. Beards, shaves, trims and color are a few services offered. There's a full pledged beautician, just ask for her."</blockquote>
+        <cite>— Arnolf R.</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section id="location">
+  <div class="wrap">
+    <div class="location-inner">
+      <div class="location-info">
+        <span class="section-label">Find Us</span>
+        <h2 class="brand">Hours &amp; Location</h2>
+        <address>
+          16294 Main St<br>
+          Hesperia, CA 92345<br><br>
+          <a href="tel:7609489916">(760) 948-9916</a>
+        </address>
+        <dl class="hours-grid">
+          <dt>Mon – Sat</dt><dd>8:00 AM – 5:00 PM</dd>
+          <dt>Sunday</dt><dd>8:00 AM – 4:00 PM</dd>
+        </dl>
+      </div>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps?q=16294+Main+St,+Hesperia,+CA+92345&z=15&output=embed"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Newby's Barber Shop map">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="contact">
+  <div class="wrap">
+    <h2 class="brand">Ready for a fresh cut?</h2>
+    <p>No appointment needed. Walk in anytime during business hours.</p>
+    <a class="btn-light" href="tel:7609489916">Call (760) 948-9916</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand"><strong>Newby's Barber Shop</strong> &nbsp;·&nbsp; 16294 Main St, Hesperia, CA</span>
+  <div class="footer-links">
+    <a href="https://maps.google.com/?cid=9453852807507183641&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+    <a href="tel:7609489916">(760) 948-9916</a>
+  </div>
+  <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+</footer>
+
+<script>
+  const btn = document.getElementById('navBtn');
+  const links = document.getElementById('navLinks');
+  btn.addEventListener('click', () => {
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => links.classList.remove('open'));
+  });
+</script>
+</body>
+</html>

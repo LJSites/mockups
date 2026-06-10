@@ -1,0 +1,417 @@
+<!--
+  Lola's Bakery — Riverside, CA
+  Flavor / archetype: vintage bakeshop (old-fashioned neighborhood panadería; pressed-tin, gold-rule, deckled labels)
+  Hero layout id: hero-left-aligned (copy left, framed pan-dulce case photo right)
+  Service layout id: service-price-table (ruled price list / menu-card, not icon cards)
+  Palette: --acc #be185d (raspberry), --bg #fff6f9 (powdered-sugar pink); ink #3a2a30, gold hairlines
+  Display font: Playfair Display (display) + Cormorant Garamond (sub) + Inter (body)
+  Animation: none (static; only hover state transitions)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lola's Bakery — Cakes, Conchas &amp; Pan Dulce in Riverside, CA</title>
+<meta name="description" content="Lola's Bakery in Riverside, CA — custom cakes, pan dulce, conchas and cupcakes baked fresh daily. Open 7am–9pm, every day. Call (951) 683-1219." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --acc:#be185d;          /* raspberry */
+    --acc-deep:#831843;
+    --bg:#fff6f9;           /* powdered-sugar pink */
+    --ink:#3a2a30;
+    --ink-soft:#6f5b62;
+    --gold:#b08847;
+    --cream:#fffdfb;
+    --line:#e8cdd7;
+    --nav-h:68px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(255,246,249,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:baseline;gap:.55rem;font-family:'Playfair Display',serif;font-weight:700}
+  .brand .lola{font-size:1.45rem;color:var(--acc-deep);letter-spacing:.3px}
+  .brand .est{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--gold)}
+  nav.links{display:flex;align-items:center;gap:2rem}
+  nav.links a{font-size:.82rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;transition:color .2s}
+  nav.links a:hover{color:var(--acc)}
+  .nav-call{display:inline-block;font-family:'Inter';font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;
+    border:1.5px solid var(--acc);color:var(--acc);padding:.5rem .95rem;border-radius:2px;transition:.2s}
+  .nav-call:hover{background:var(--acc);color:#fff}
+  @media(max-width:860px){nav.links a:not(.nav-call){display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:64px 0 30px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+  .eyebrow{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--acc);margin-bottom:.4rem}
+  .rule-sm{width:54px;height:2px;background:var(--gold);margin:.2rem 0 1.3rem}
+  h1.hero-title{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.7rem,6vw,4.2rem);line-height:1.02;color:var(--acc-deep);letter-spacing:-.5px}
+  h1.hero-title em{font-style:italic;font-weight:500;color:var(--ink)}
+  .hero-sub{margin:1.4rem 0 2rem;font-size:1.07rem;color:var(--ink-soft);max-width:30rem}
+  .hero-actions{display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:.6rem;
+    background:var(--acc);color:#fff;font-weight:600;font-size:.95rem;letter-spacing:.02em;
+    padding:.95rem 1.7rem;border-radius:3px;
+    box-shadow:0 8px 22px -10px rgba(190,24,93,.65);transition:.2s}
+  .btn-primary:hover{background:var(--acc-deep);transform:translateY(-2px)}
+  .hero-hours{font-family:'Cormorant Garamond',serif;font-size:1.18rem;color:var(--ink);font-style:italic}
+  .hero-hours b{font-style:normal;font-family:'Inter';font-weight:600;font-size:.95rem;color:var(--acc-deep)}
+  .hero-photo{position:relative}
+  .hero-photo .frame{
+    border:1px solid var(--line);padding:12px;background:var(--cream);
+    box-shadow:0 30px 60px -34px rgba(131,24,67,.5)}
+  .hero-photo .frame img{width:100%;height:480px;object-fit:cover}
+  .hero-photo .tag{
+    position:absolute;bottom:-22px;left:-18px;background:var(--acc-deep);color:#fff;
+    font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;
+    padding:.7rem 1.3rem;box-shadow:0 12px 26px -12px rgba(0,0,0,.5)}
+  @media(max-width:860px){
+    .hero{padding:40px 0 18px}
+    .hero-grid{grid-template-columns:1fr;gap:40px}
+    .hero-photo .frame img{height:340px}
+    .hero-photo .tag{left:8px;bottom:-18px}
+  }
+
+  /* ---------- marquee strip ---------- */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--cream);margin-top:40px}
+  .strip-inner{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 2.4rem;padding:18px 24px;
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--gold)}
+  .strip-inner span{color:var(--acc-deep)}
+  .strip-inner i{color:var(--line);font-style:normal}
+
+  /* ---------- section frame ---------- */
+  section{padding:84px 0}
+  .sec-head{text-align:center;margin-bottom:54px}
+  .sec-kicker{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--acc);font-weight:600}
+  .sec-title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(2rem,4vw,2.8rem);color:var(--acc-deep);margin-top:.5rem}
+  .sec-title .rule{display:block;width:60px;height:2px;background:var(--gold);margin:.9rem auto 0}
+
+  /* ---------- about ---------- */
+  #about{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:54px;align-items:center}
+  .about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .about-imgs img{width:100%;height:230px;object-fit:cover;border:1px solid var(--line);padding:8px;background:var(--bg)}
+  .about-imgs img:first-child{grid-row:span 2;height:auto;min-height:474px}
+  .about-copy h3{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--acc-deep);margin-bottom:1rem;line-height:1.2}
+  .about-copy p{color:var(--ink-soft);margin-bottom:1rem}
+  .about-copy p .pull{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--acc)}
+  @media(max-width:860px){
+    .about-grid{grid-template-columns:1fr;gap:34px}
+    .about-imgs img:first-child{min-height:0;height:230px;grid-row:auto}
+  }
+
+  /* ---------- menu / price table ---------- */
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px 64px}
+  .menu-block h4{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--acc-deep);
+    padding-bottom:.6rem;margin-bottom:1rem;border-bottom:2px solid var(--gold);display:flex;align-items:baseline;justify-content:space-between}
+  .menu-block h4 small{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--gold);text-transform:none;letter-spacing:0}
+  .price-row{display:flex;align-items:baseline;gap:.6rem;padding:.62rem 0;border-bottom:1px dotted var(--line)}
+  .price-row:last-child{border-bottom:none}
+  .price-row .name{font-weight:600;color:var(--ink);white-space:nowrap}
+  .price-row .desc{font-size:.86rem;color:var(--ink-soft)}
+  .price-row .dots{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-3px);min-width:14px}
+  .price-row .price{font-family:'Playfair Display',serif;font-weight:600;color:var(--acc)}
+  .menu-note{text-align:center;margin-top:46px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--ink-soft)}
+  .menu-note b{font-style:normal;color:var(--acc-deep);font-family:'Inter';font-weight:600}
+  @media(max-width:760px){.menu-grid{grid-template-columns:1fr;gap:8px 0}}
+
+  /* ---------- gallery ---------- */
+  #gallery{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .gal figure{position:relative;overflow:hidden;border:1px solid var(--line);background:var(--bg);padding:8px}
+  .gal img{width:100%;height:300px;object-fit:cover;transition:transform .5s ease}
+  .gal figure:hover img{transform:scale(1.05)}
+  .gal figcaption{position:absolute;left:8px;right:8px;bottom:8px;background:rgba(131,24,67,.86);color:#fff;
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.02rem;padding:.45rem .8rem;
+    opacity:0;transform:translateY(8px);transition:.3s}
+  .gal figure:hover figcaption{opacity:1;transform:none}
+  @media(max-width:760px){.gal{grid-template-columns:1fr 1fr}.gal img{height:220px}}
+
+  /* ---------- testimonies ---------- */
+  .says-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .quote{background:var(--cream);border:1px solid var(--line);padding:34px 32px;position:relative}
+  .quote::before{content:"\201C";position:absolute;top:2px;left:18px;font-family:'Playfair Display',serif;
+    font-size:5rem;color:var(--line);line-height:1}
+  .quote p{position:relative;font-family:'Cormorant Garamond',serif;font-size:1.28rem;color:var(--ink);line-height:1.5;margin-bottom:1.1rem}
+  .quote .who{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);font-weight:600}
+  @media(max-width:760px){.says-grid{grid-template-columns:1fr}}
+
+  /* ---------- visit ---------- */
+  #visit{background:var(--cream);border-top:1px solid var(--line)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:stretch}
+  .visit-card h3{font-family:'Playfair Display',serif;font-size:1.7rem;color:var(--acc-deep);margin-bottom:1.2rem}
+  .info-row{display:flex;gap:.8rem;padding:.55rem 0;border-bottom:1px dotted var(--line);font-size:.98rem}
+  .info-row .lab{min-width:96px;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);font-weight:600;padding-top:.18rem}
+  .hours-list{margin:.3rem 0 0}
+  .hours-list .day{display:flex;justify-content:space-between;padding:.3rem 0;border-bottom:1px dotted var(--line);font-size:.95rem}
+  .hours-list .day:last-child{border-bottom:none}
+  .hours-list .day b{font-weight:600;color:var(--acc-deep)}
+  .visit-actions{margin-top:1.6rem;display:flex;gap:1rem;flex-wrap:wrap}
+  .findus{margin-top:1.5rem;font-size:.95rem;color:var(--ink-soft)}
+  .findus a{color:var(--acc);font-weight:600;border-bottom:1px solid var(--line)}
+  .findus a:hover{border-color:var(--acc)}
+  .map-frame{border:1px solid var(--line);padding:10px;background:var(--bg);height:100%;min-height:380px}
+  .map-frame iframe{width:100%;height:100%;min-height:360px;border:0;display:block;filter:grayscale(.15)}
+  @media(max-width:860px){.visit-grid{grid-template-columns:1fr;gap:32px}.map-frame{min-height:320px}}
+
+  /* ---------- footer ---------- */
+  footer.site{background:var(--acc-deep);color:#f6dfe8;padding:58px 0 30px}
+  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.15)}
+  .foot-brand .lola{font-family:'Playfair Display',serif;font-size:1.7rem;color:#fff}
+  .foot-brand p{margin-top:.5rem;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:#f0c6d6;max-width:22rem}
+  .foot-cols{display:flex;gap:60px;flex-wrap:wrap}
+  .foot-col h5{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:#f0a9c3;margin-bottom:.8rem}
+  .foot-col a,.foot-col p{display:block;font-size:.95rem;color:#f6dfe8;margin-bottom:.45rem;transition:color .2s}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{padding-top:24px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.82rem;color:#e1a8bd}
+  .credit{color:#f0c6d6}
+  .credit a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <span class="lola">Lola's Bakery</span>
+      <span class="est">Riverside</span>
+    </a>
+    <nav class="links">
+      <a href="#about">Our Story</a>
+      <a href="#menu">The Counter</a>
+      <a href="#gallery">Custom Cakes</a>
+      <a href="#says">Kind Words</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:+19516831219" class="nav-call">(951) 683-1219</a>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- HERO — hero-left-aligned -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">A Riverside panadería &amp; cake shop</p>
+      <span class="rule-sm"></span>
+      <h1 class="hero-title">Fresh-baked<br><em>conchas, cakes</em><br>&amp; pan dulce.</h1>
+      <p class="hero-sub">Trays of conchas and pan dulce out every morning, plus custom cakes and cupcakes made to order for the days that matter — birthdays, weddings, baptisms and baby showers.</p>
+      <div class="hero-actions">
+        <a href="tel:+19516831219" class="btn-primary">Call to Order &middot; (951) 683-1219</a>
+        <span class="hero-hours"><b>Open every day</b> · 7am – 9pm</span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="frame"><img src="./photos/01.jpg" alt="The pan dulce case at Lola's Bakery, filled with fresh conchas and Mexican sweet bread" /></div>
+      <span class="tag">Baked fresh, every day</span>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap strip-inner">
+    <span>Conchas</span><i>&middot;</i><span>Custom Cakes</span><i>&middot;</i><span>Cupcakes</span><i>&middot;</i><span>Pan Dulce</span><i>&middot;</i><span>Quinceañera &amp; Wedding</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-imgs">
+      <img src="./photos/02.jpg" alt="Fresh berry-topped mini cakes on a tray at Lola's Bakery" />
+      <img src="./photos/05.jpg" alt="Tiered white celebration cake decorated for a First Communion" />
+      <img src="./photos/06.jpg" alt="Gender-reveal cupcakes with pink and blue frosting" />
+    </div>
+    <div class="about-copy">
+      <p class="sec-kicker" style="text-align:left">Our Story</p>
+      <h3>A neighborhood bakery that bakes the way it always has.</h3>
+      <p>Lola's has been a Chicago Avenue fixture for years — the kind of family bakery where the case is restocked all morning and the team will work with you on a cake right up to the day before your event. <span class="pull">Bring in a photo of what you want; we'll make it happen.</span></p>
+      <p>From a dozen cupcakes for a gender reveal to a full wedding cake, the orders are affordable, the work is detailed, and the welcome is genuine. It's a real Riverside bakery, run by people who care how it tastes and how it looks.</p>
+      <a href="tel:+19516831219" class="btn-primary" style="margin-top:.6rem">Order a Custom Cake</a>
+    </div>
+  </div>
+</section>
+
+<!-- MENU — service-price-table -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">From the Counter</p>
+      <h2 class="sec-title">What We Bake<span class="rule"></span></h2>
+    </div>
+    <div class="menu-grid">
+
+      <div class="menu-block">
+        <h4>Pan Dulce &amp; Daily Bread <small>fresh each morning</small></h4>
+        <div class="price-row"><span class="name">Conchas</span><span class="desc">the house classic, soft &amp; sugar-shelled</span><span class="dots"></span><span class="price">market</span></div>
+        <div class="price-row"><span class="name">Assorted Pan Dulce</span><span class="desc">orejas, cuernos, empanadas &amp; more</span><span class="dots"></span><span class="price">market</span></div>
+        <div class="price-row"><span class="name">By the Dozen</span><span class="desc">mix &amp; match the case</span><span class="dots"></span><span class="price">ask</span></div>
+      </div>
+
+      <div class="menu-block">
+        <h4>Cupcakes <small>by the half-dozen &amp; dozen</small></h4>
+        <div class="price-row"><span class="name">Fresh-Fruit Minis</span><span class="desc">whipped cream, strawberries &amp; berries</span><span class="dots"></span><span class="price">market</span></div>
+        <div class="price-row"><span class="name">Celebration Cupcakes</span><span class="desc">decorated for any theme or color</span><span class="dots"></span><span class="price">order</span></div>
+        <div class="price-row"><span class="name">Gender-Reveal Sets</span><span class="desc">a dozen, made special</span><span class="dots"></span><span class="price">order</span></div>
+      </div>
+
+      <div class="menu-block">
+        <h4>Custom Cakes <small>made to order</small></h4>
+        <div class="price-row"><span class="name">Birthday &amp; Themed</span><span class="desc">photo cakes, characters &amp; more</span><span class="dots"></span><span class="price">quote</span></div>
+        <div class="price-row"><span class="name">Baby Shower &amp; Reveal</span><span class="desc">tiered, two-tone buttercream</span><span class="dots"></span><span class="price">quote</span></div>
+        <div class="price-row"><span class="name">Sheet Cakes</span><span class="desc">great for any gathering</span><span class="dots"></span><span class="price">quote</span></div>
+      </div>
+
+      <div class="menu-block">
+        <h4>Special Occasions <small>order ahead</small></h4>
+        <div class="price-row"><span class="name">Wedding Cakes</span><span class="desc">beautiful &amp; reasonably priced</span><span class="dots"></span><span class="price">quote</span></div>
+        <div class="price-row"><span class="name">Quinceañera</span><span class="desc">tiered &amp; detailed to your colors</span><span class="dots"></span><span class="price">quote</span></div>
+        <div class="price-row"><span class="name">Baptism &amp; Communion</span><span class="desc">classic white &amp; gold designs</span><span class="dots"></span><span class="price">quote</span></div>
+      </div>
+
+    </div>
+    <p class="menu-note">Custom orders welcome — <b>call (951) 683-1219</b> to talk through your cake.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">Made to Order</p>
+      <h2 class="sec-title">Custom Cakes &amp; Cupcakes<span class="rule"></span></h2>
+    </div>
+    <div class="gal">
+      <figure><img src="./photos/03.jpg" alt="Custom themed heart-shaped cake with red and black buttercream" /><figcaption>Themed photo cakes</figcaption></figure>
+      <figure><img src="./photos/04.jpg" alt="Pink and blue 'Oh Baby' gender-reveal tiered cake with teddy-bear toppers" /><figcaption>Baby shower &amp; reveals</figcaption></figure>
+      <figure><img src="./photos/05.jpg" alt="Two-tier white First Communion cake with gold detailing" /><figcaption>Baptism &amp; communion</figcaption></figure>
+      <figure><img src="./photos/02.jpg" alt="Mini fresh-fruit cakes topped with whipped cream and berries" /><figcaption>Fresh-fruit minis</figcaption></figure>
+      <figure><img src="./photos/06.jpg" alt="Boy and girl gender-reveal cupcakes" /><figcaption>Gender-reveal cupcakes</figcaption></figure>
+      <figure><img src="./photos/01.jpg" alt="Display case of conchas and assorted pan dulce" /><figcaption>The daily pan dulce case</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="says">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">In Their Words</p>
+      <h2 class="sec-title">What People Say<span class="rule"></span></h2>
+    </div>
+    <div class="says-grid">
+      <div class="quote">
+        <p>Thank you for this beautiful cake. It looked amazing and it was delicious. I switched up the day before the event and sent in a photo of what I wanted and the lady worked with me — it came out perfect.</p>
+        <div class="who">Ashley R.</div>
+      </div>
+      <div class="quote">
+        <p>Exceeded our expectations! We asked for gender-reveal cupcakes and they went above and beyond. Affordable, easy to order, and delicious. I can tell you really tried to make it special.</p>
+        <div class="who">Jamie Q.</div>
+      </div>
+      <div class="quote">
+        <p>The food is always on point. I always come here when I visit California. Kept it professional with enthusiasm — still an immaculate experience.</p>
+        <div class="who">Trevon C.</div>
+      </div>
+      <div class="quote">
+        <p>I had my wedding cake made here. It was absolutely beautiful and so reasonably priced — delicious and moist, everyone in my family said so. I'll order all my future cakes from here.</p>
+        <div class="who">Karla G.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-kicker">Stop By</p>
+      <h2 class="sec-title">Hours &amp; Location<span class="rule"></span></h2>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-card">
+        <h3>Come see the case</h3>
+        <div class="info-row"><span class="lab">Address</span><span>4026 Chicago Ave<br>Riverside, CA 92507</span></div>
+        <div class="info-row"><span class="lab">Phone</span><span><a href="tel:+19516831219" style="color:var(--acc);font-weight:600">(951) 683-1219</a></span></div>
+        <div class="info-row" style="border-bottom:none;display:block">
+          <span class="lab" style="display:block;margin-bottom:.5rem">Hours</span>
+          <div class="hours-list">
+            <div class="day"><span>Monday – Friday</span><b>7:00 AM – 9:00 PM</b></div>
+            <div class="day"><span>Saturday</span><b>7:00 AM – 9:00 PM</b></div>
+            <div class="day"><span>Sunday</span><b>7:00 AM – 9:00 PM</b></div>
+          </div>
+        </div>
+        <div class="visit-actions">
+          <a href="https://www.google.com/maps?q=4026%20Chicago%20Ave%2C%20Riverside%2C%20CA%2092507" target="_blank" rel="noopener" class="btn-primary">Get Directions</a>
+        </div>
+        <p class="findus">Find us on
+          <a href="https://www.facebook.com/Lolasbakeryriverside" target="_blank" rel="noopener">Facebook</a> &amp;
+          <a href="https://maps.google.com/?cid=14317007824150456032" target="_blank" rel="noopener">Google</a>.
+        </p>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=4026%20Chicago%20Ave%2C%20Riverside%2C%20CA%2092507&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Lola's Bakery, 4026 Chicago Ave, Riverside, CA"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="lola">Lola's Bakery</span>
+        <p>Conchas, pan dulce &amp; custom cakes baked fresh in Riverside, California.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h5>Visit</h5>
+          <p>4026 Chicago Ave<br>Riverside, CA 92507</p>
+          <p>Open daily · 7am – 9pm</p>
+        </div>
+        <div class="foot-col">
+          <h5>Order</h5>
+          <a href="tel:+19516831219">(951) 683-1219</a>
+          <a href="https://www.google.com/maps?q=4026%20Chicago%20Ave%2C%20Riverside%2C%20CA%2092507" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+        <div class="foot-col">
+          <h5>Find Us</h5>
+          <a href="https://www.facebook.com/Lolasbakeryriverside" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://maps.google.com/?cid=14317007824150456032" target="_blank" rel="noopener">Google Business</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Lola's Bakery · Riverside, CA</span>
+      <span class="credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

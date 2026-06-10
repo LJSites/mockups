@@ -1,0 +1,464 @@
+<!--
+  Flavor/archetype: rustic-espresso bar — warm clay & cream, small-town drive-thru cafe, letterpress menu feel
+  Hero layout: left-aligned (text column left, single photo right)
+  Service layout: numbered-stack (menu groups as a vertical numbered ledger)
+  Palette: --acc #7c2d12 (roasted clay) / --bg #faf6f2 (warm cream)
+  Display: Fraunces (soft, bookish serif) + Inter for body
+  Real data only: name, menu prices from in-store board (photo 03), hours, address, phone, 3 hand-picked quotes.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rebekah's Espresso &amp; Joshua's — Drive-Thru Coffee in Lemoore, CA</title>
+<meta name="description" content="Rebekah's Espresso & Joshua's — a small-town drive-thru espresso bar in Lemoore, CA. Dirty chai, frosted coffee coolers, fresh-brewed blends. We serve with excellence." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --acc:#7c2d12;
+    --bg:#faf6f2;
+    --ink:#2a1c14;
+    --muted:#6b5648;
+    --line:#e4d8cc;
+    --cream:#fffdfa;
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Fraunces',Georgia,serif}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(250,246,242,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:1.18rem;letter-spacing:.2px;color:var(--acc)}
+  .brand span{color:var(--ink)}
+  .navlinks{display:flex;gap:30px;align-items:center}
+  .navlinks a{font-size:.84rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;transition:color .18s}
+  .navlinks a:hover{color:var(--acc)}
+  .navcta{
+    border:1.5px solid var(--acc);color:var(--acc);
+    padding:8px 16px;border-radius:2px;font-weight:600;font-size:.82rem;
+    letter-spacing:.06em;transition:background .18s,color .18s;
+  }
+  .navcta:hover{background:var(--acc);color:var(--cream)}
+  .navlinks .menulink{display:inline}
+  @media(max-width:760px){.navlinks .menulink{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:64px 0 54px;border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .eyebrow{
+    display:inline-block;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--acc);font-weight:600;margin-bottom:22px;
+  }
+  .eyebrow::before{content:"";display:inline-block;width:30px;height:1.5px;background:var(--acc);vertical-align:middle;margin-right:12px;margin-bottom:4px}
+  .hero h1{font-size:clamp(2.5rem,5.4vw,4.1rem);line-height:1.02;font-weight:500;letter-spacing:-.5px}
+  .hero h1 em{font-style:italic;color:var(--acc)}
+  .hero p.lede{margin-top:24px;font-size:1.12rem;color:var(--muted);max-width:30ch}
+  .hero .motto{margin-top:18px;font-family:'Fraunces',serif;font-style:italic;font-size:1.05rem;color:var(--ink)}
+  .cta-row{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    background:var(--acc);color:var(--cream);
+    padding:14px 26px;border-radius:2px;font-weight:600;font-size:.95rem;letter-spacing:.02em;
+    transition:transform .15s,box-shadow .2s,background .2s;
+    box-shadow:0 1px 0 rgba(124,45,18,.35);
+  }
+  .btn:hover{background:#681f0a;transform:translateY(-1px);box-shadow:0 6px 18px rgba(124,45,18,.28)}
+  .btn-ghost{background:transparent;color:var(--acc);border:1.5px solid var(--line);box-shadow:none;font-weight:500}
+  .btn-ghost:hover{background:transparent;border-color:var(--acc);box-shadow:none}
+  .hero-photo{position:relative}
+  .hero-photo img{
+    width:100%;height:520px;object-fit:cover;border-radius:3px;
+    border:1px solid var(--line);
+    box-shadow:0 22px 50px -22px rgba(42,28,20,.4);
+  }
+  .hero-stamp{
+    position:absolute;left:-26px;bottom:34px;
+    background:var(--cream);border:1px solid var(--line);
+    padding:14px 20px;border-radius:2px;
+    box-shadow:0 10px 28px -14px rgba(42,28,20,.4);
+    max-width:200px;
+  }
+  .hero-stamp b{font-family:'Fraunces',serif;color:var(--acc);display:block;font-size:1.05rem}
+  .hero-stamp small{color:var(--muted);font-size:.82rem;line-height:1.4;display:block;margin-top:3px}
+  @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr;gap:38px}
+    .hero-photo img{height:380px}
+    .hero-stamp{left:auto;right:18px;bottom:18px}
+  }
+
+  /* ---------- ribbon ---------- */
+  .ribbon{background:var(--acc);color:#f6e9e1}
+  .ribbon .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 40px;padding:16px 24px;text-align:center}
+  .ribbon span{font-family:'Fraunces',serif;font-style:italic;font-size:1rem;letter-spacing:.01em;opacity:.95}
+  .ribbon span::before{content:"·";margin-right:40px;opacity:.5}
+  .ribbon span:first-child::before{content:none;margin:0}
+  @media(max-width:680px){.ribbon span::before{content:none;margin:0}}
+
+  /* ---------- section frame ---------- */
+  section{padding:74px 0}
+  .sec-head{margin-bottom:44px}
+  .sec-kicker{font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);font-weight:600}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:500;margin-top:10px;letter-spacing:-.3px}
+
+  /* ---------- about ---------- */
+  .about{border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:54px;align-items:center}
+  .about p{color:var(--muted);margin-bottom:18px;font-size:1.05rem}
+  .about p strong{color:var(--ink);font-weight:600}
+  .about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .about-imgs img{width:100%;height:240px;object-fit:cover;border-radius:3px;border:1px solid var(--line)}
+  .about-imgs img:first-child{grid-column:1/-1;height:220px}
+  @media(max-width:880px){.about-grid{grid-template-columns:1fr;gap:36px}}
+
+  /* ---------- menu (numbered-stack) ---------- */
+  .menu{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .menu-note{color:var(--muted);font-size:.95rem;margin-top:8px;font-style:italic;font-family:'Fraunces',serif}
+  .menu-groups{display:grid;grid-template-columns:1fr 1fr;gap:48px 64px;margin-top:8px}
+  @media(max-width:760px){.menu-groups{grid-template-columns:1fr;gap:40px}}
+  .mgroup{position:relative;padding-left:62px}
+  .mnum{
+    position:absolute;left:0;top:-4px;
+    font-family:'Fraunces',serif;font-size:2.4rem;color:var(--acc);opacity:.32;font-weight:500;
+    line-height:1;
+  }
+  .mgroup h3{font-size:1.32rem;font-weight:600;margin-bottom:4px}
+  .mgroup .gsub{font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+  .mitem{display:flex;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px dotted var(--line)}
+  .mitem:last-child{border-bottom:none}
+  .mitem .name{font-weight:500}
+  .mitem .dots{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-4px);min-width:14px}
+  .mitem .price{font-family:'Fraunces',serif;color:var(--acc);font-weight:500;white-space:nowrap}
+  .mitem .star{color:var(--acc)}
+
+  /* ---------- gallery ---------- */
+  .gallery-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .gallery-strip img{width:100%;height:230px;object-fit:cover;border-radius:3px;border:1px solid var(--line);transition:transform .3s}
+  .gallery-strip img:hover{transform:scale(1.015)}
+  @media(max-width:760px){.gallery-strip{grid-template-columns:1fr 1fr}.gallery-strip img{height:180px}}
+
+  /* ---------- testimonies ---------- */
+  .says{background:var(--acc);color:#f4e6de}
+  .says .sec-kicker{color:#e9b6a2}
+  .says .sec-head h2{color:#fffaf6}
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+  @media(max-width:880px){.quotes{grid-template-columns:1fr}}
+  .quote{border-top:2px solid rgba(255,255,255,.22);padding-top:22px}
+  .quote .mark{font-family:'Fraunces',serif;font-size:3rem;line-height:.4;color:#e9b6a2;display:block;height:26px}
+  .quote p{font-family:'Fraunces',serif;font-size:1.12rem;line-height:1.55;font-style:italic;color:#fdf3ee}
+  .quote cite{display:block;margin-top:18px;font-style:normal;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:#e9b6a2;font-family:'Inter',sans-serif}
+
+  /* ---------- visit ---------- */
+  .visit-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--cream)}
+  @media(max-width:880px){.visit-grid{grid-template-columns:1fr}}
+  .visit-info{padding:44px 42px}
+  .visit-info h3{font-size:1.5rem;font-weight:500;margin-bottom:4px}
+  .visit-info .addr{color:var(--muted);margin-bottom:26px}
+  .hrow{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dotted var(--line);font-size:.97rem}
+  .hrow.today{color:var(--acc);font-weight:600}
+  .hrow .day{color:var(--muted)}
+  .hrow.today .day{color:var(--acc)}
+  .closed{color:#a98c7c}
+  .visit-info .btn{margin-top:28px}
+  .visit-map iframe{width:100%;height:100%;min-height:420px;border:0;display:block;filter:saturate(.92)}
+  .findus{margin-top:24px;font-size:.92rem;color:var(--muted)}
+  .findus a{color:var(--acc);font-weight:600;border-bottom:1px solid var(--line);padding-bottom:1px}
+  .findus a:hover{border-color:var(--acc)}
+
+  /* ---------- footer ---------- */
+  footer{background:#241710;color:#cdb7a8;padding:54px 0 30px}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;padding-bottom:30px;border-bottom:1px solid rgba(255,255,255,.1)}
+  .foot-brand{font-family:'Fraunces',serif;font-size:1.4rem;color:#fdf3ee}
+  .foot-brand span{color:#e9b6a2}
+  .foot-motto{font-family:'Fraunces',serif;font-style:italic;color:#cdb7a8;margin-top:6px;font-size:.98rem}
+  .foot-col h4{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:#e9b6a2;margin-bottom:12px}
+  .foot-col a,.foot-col p{display:block;color:#cdb7a8;font-size:.95rem;margin-bottom:6px}
+  .foot-col a:hover{color:#fff}
+  .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
+  .credit{padding-top:26px;font-size:.84rem;color:#9b8475;line-height:1.6}
+  .credit a{color:#e9b6a2}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">Rebekah's <span>Espresso</span></a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#menu" class="menulink">Menu</a>
+      <a href="#visit">Visit</a>
+      <a class="navcta" href="tel:+15599258832">Call to Order</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Drive-Thru &amp; Café · Lemoore, CA</span>
+        <h1>Small-batch coffee, <em>poured with intention.</em></h1>
+        <p class="lede">A neighborhood espresso bar where the chai is famous, the baristas know your order, and every cup comes with a little joy on the side.</p>
+        <p class="motto">"Intimacy over coffee — we serve with excellence."</p>
+        <div class="cta-row">
+          <a class="btn" href="tel:+15599258832">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92Z"/></svg>
+            Call to Order &middot; (559) 925-8832
+          </a>
+          <a class="btn btn-ghost" href="#menu">See the Menu</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="./photos/04.jpg" alt="An iced Rebekah's Espresso drink in a branded cup reading 'We Serve with Excellence'" />
+        <div class="hero-stamp">
+          <b>A cup of joy.</b>
+          <small>Hand-stickered drinks &amp; a window bell at the drive-thru.</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- RIBBON -->
+<div class="ribbon">
+  <div class="wrap">
+    <span>Famous dirty chai</span>
+    <span>Drive-thru window</span>
+    <span>Fresh-brewed daily blends</span>
+    <span>Open 7am–2pm, Mon–Sat</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="sec-head" style="margin-bottom:26px">
+          <span class="sec-kicker">Our Corner of Lemoore</span>
+          <h2>The little espresso bar on Hanford Armona Road.</h2>
+        </div>
+        <p>Rebekah's Espresso &amp; Joshua's is a family-run coffee stop tucked into Lemoore, just off the Hanford Armona Road. Pull up to the drive-thru or step inside — either way you'll find drinks pulled with care and a barista who's genuinely glad you came by.</p>
+        <p>We're known around town for our <strong>dirty chai</strong>, frosted coffee coolers, and a rotating barista's daily pick scrawled on the board out front. Beans are roasted into our own blends — the <strong>Felleke</strong>, the <strong>Blue Nile</strong>, French Vanilla and Hazelnut — and you can take a bag home, too.</p>
+        <p>Don't be shy at the drive-thru: there's a window bell if no one's at the glass, since the same hands sometimes help next door. Ring it — your coffee's worth the moment.</p>
+      </div>
+      <div class="about-imgs">
+        <img src="./photos/05.jpg" alt="An iced caramel latte beside a small 'Hello Coffee' sign on the counter" />
+        <img src="./photos/01.jpg" alt="A blended Rebekah's drink topped with whipped cream, sprinkles and a 'Cup of Joy' sticker" />
+        <img src="./photos/06.jpg" alt="A large blended iced coffee with a pink straw" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU — numbered-stack -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">The Board</span>
+      <h2>What's pouring.</h2>
+      <p class="menu-note">★ Can be made hot, iced, or blended. Most drinks come in Regular &amp; Large.</p>
+    </div>
+    <div class="menu-groups">
+
+      <div class="mgroup">
+        <span class="mnum">01</span>
+        <h3>Espresso</h3>
+        <p class="gsub">The house favorites</p>
+        <div class="mitem"><span class="name">The Buzz</span><span class="dots"></span><span class="price">1.80</span></div>
+        <div class="mitem"><span class="name">Caramel Macchiato <span class="star">★</span></span><span class="dots"></span><span class="price">3.95 / 4.45</span></div>
+        <div class="mitem"><span class="name">Con Panna</span><span class="dots"></span><span class="price">2.00</span></div>
+        <div class="mitem"><span class="name">Café Latte <span class="star">★</span></span><span class="dots"></span><span class="price">3.45 / 3.75</span></div>
+        <div class="mitem"><span class="name">White Mocha <span class="star">★</span></span><span class="dots"></span><span class="price">3.85 / 4.15</span></div>
+        <div class="mitem"><span class="name">Café Mocha <span class="star">★</span></span><span class="dots"></span><span class="price">3.85 / 4.15</span></div>
+        <div class="mitem"><span class="name">Hazelnut Latte <span class="star">★</span></span><span class="dots"></span><span class="price">3.85 / 4.15</span></div>
+        <div class="mitem"><span class="name">Vanilla Latte <span class="star">★</span></span><span class="dots"></span><span class="price">3.85 / 4.15</span></div>
+        <div class="mitem"><span class="name">Café Breve <span class="star">★</span></span><span class="dots"></span><span class="price">3.45 / 3.75</span></div>
+        <div class="mitem"><span class="name">Café Americano</span><span class="dots"></span><span class="price">2.45 / 2.65</span></div>
+      </div>
+
+      <div class="mgroup">
+        <span class="mnum">02</span>
+        <h3>Tea &amp; More</h3>
+        <p class="gsub">Chai, refreshers &amp; coolers</p>
+        <div class="mitem"><span class="name">Hot Tea — black, green, herbal, oolong</span><span class="dots"></span><span class="price">1.85 / 1.90</span></div>
+        <div class="mitem"><span class="name">Iced Tea</span><span class="dots"></span><span class="price">2.85 / 3.40</span></div>
+        <div class="mitem"><span class="name">Chai <span class="star">★</span></span><span class="dots"></span><span class="price">3.45 / 3.85</span></div>
+        <div class="mitem"><span class="name">Steamer</span><span class="dots"></span><span class="price">2.85 / 3.00</span></div>
+        <div class="mitem"><span class="name">Hot Chocolate</span><span class="dots"></span><span class="price">2.85 / 3.00</span></div>
+        <div class="mitem"><span class="name">Lemon Refresher</span><span class="dots"></span><span class="price">2.65 / 3.50</span></div>
+        <div class="mitem"><span class="name">Italian Cream Soda</span><span class="dots"></span><span class="price">3.05 / 3.70</span></div>
+        <div class="mitem"><span class="name">Frosted Coffee Cooler</span><span class="dots"></span><span class="price">4.15 / 4.55</span></div>
+        <div class="mitem"><span class="name">Fruit Smoothie</span><span class="dots"></span><span class="price">4.15 / 4.65</span></div>
+      </div>
+
+      <div class="mgroup">
+        <span class="mnum">03</span>
+        <h3>Brewed Coffee</h3>
+        <p class="gsub">From our own blends</p>
+        <div class="mitem"><span class="name">Fresh Brewed Coffee</span><span class="dots"></span><span class="price">1.85 / 2.15</span></div>
+        <div class="mitem"><span class="name">Blue Nile Dark Roast</span><span class="dots"></span><span class="price">1.85 / 2.15</span></div>
+        <div class="mitem"><span class="name">Decaf</span><span class="dots"></span><span class="price">1.85 / 2.15</span></div>
+        <div class="mitem"><span class="name">Cold Brew</span><span class="dots"></span><span class="price">2.45 / 2.65</span></div>
+      </div>
+
+      <div class="mgroup">
+        <span class="mnum">04</span>
+        <h3>Beans to Go</h3>
+        <p class="gsub">Take a blend home</p>
+        <div class="mitem"><span class="name">1 lb Bag of Coffee</span><span class="dots"></span><span class="price">15.00</span></div>
+        <div class="mitem"><span class="name">½ lb Bag of Coffee</span><span class="dots"></span><span class="price">7.50</span></div>
+        <div class="mitem"><span class="name">5 lb Bag of Coffee</span><span class="dots"></span><span class="price">75.00</span></div>
+        <div class="mitem"><span class="name">12pk Single Pod Cups</span><span class="dots"></span><span class="price">10.00</span></div>
+        <div class="mitem"><span class="name">Blends: Felleke · Blue Nile · French Vanilla · Hazelnut · Decaf Felleke</span><span class="dots"></span><span class="price"></span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section style="padding-top:74px;padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:30px">
+      <span class="sec-kicker">From the Counter</span>
+      <h2>A few we've poured lately.</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="gallery-strip">
+      <img src="./photos/02.jpg" alt="Two strawberry lemonades beside the barista's daily-pick chalk sign" />
+      <img src="./photos/01.jpg" alt="Blended drink with whipped cream, sprinkles and a 'Cup of Joy' sticker" />
+      <img src="./photos/05.jpg" alt="Iced caramel latte beside a 'Hello Coffee' sign" />
+      <img src="./photos/06.jpg" alt="Large blended iced coffee with a pink straw" />
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="says">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">In Their Words</span>
+      <h2>What people say.</h2>
+    </div>
+    <div class="quotes">
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>They have THE BEST drinks in town. Especially the Chai — omg their Chai is amazing! My go-to is the Oatmilk Dirty Chai blended. The baristas are the kindest, and I love the stickers they add to brighten your spirit.</p>
+        <cite>— Mal R.</cite>
+      </div>
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>Amazing coffee and great service! The coffee has a very earthy flavor. Amazing experience — and they have a drive-through!</p>
+        <cite>— Clarissa A.</cite>
+      </div>
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>Love the baristas at Rebekah's! Pictured is my usual: a large iced dirty spice chai with almond milk. Yum!</p>
+        <cite>— Tiffany F.</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Find Us</span>
+      <h2>Hours &amp; location.</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-info">
+        <h3>Rebekah's Espresso &amp; Joshua's</h3>
+        <p class="addr">111 E Hanford Armona Rd #B<br>Lemoore, CA 93245</p>
+
+        <div class="hrow" data-day="1"><span class="day">Monday</span><span>7:00 AM – 2:00 PM</span></div>
+        <div class="hrow" data-day="2"><span class="day">Tuesday</span><span>7:00 AM – 2:00 PM</span></div>
+        <div class="hrow" data-day="3"><span class="day">Wednesday</span><span>7:00 AM – 2:00 PM</span></div>
+        <div class="hrow" data-day="4"><span class="day">Thursday</span><span>7:00 AM – 2:00 PM</span></div>
+        <div class="hrow" data-day="5"><span class="day">Friday</span><span>7:00 AM – 2:00 PM</span></div>
+        <div class="hrow" data-day="6"><span class="day">Saturday</span><span>7:00 AM – 2:00 PM</span></div>
+        <div class="hrow" data-day="0"><span class="day">Sunday</span><span class="closed">Closed</span></div>
+
+        <a class="btn" href="tel:+15599258832">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.69 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.56 2.81.69A2 2 0 0 1 22 16.92Z"/></svg>
+          Call to Order
+        </a>
+        <p class="findus">Prefer a map? <a href="https://maps.google.com/?cid=9858266365389114262" target="_blank" rel="noopener">View us on Google &rarr;</a></p>
+      </div>
+      <div class="visit-map">
+        <iframe
+          src="https://www.google.com/maps?q=111%20E%20Hanford%20Armona%20Rd%20%23B%2C%20Lemoore%2C%20CA%2093245&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Rebekah's Espresso & Joshua's, Lemoore CA"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">Rebekah's <span>Espresso &amp; Joshua's</span></div>
+        <p class="foot-motto">Intimacy over coffee · We serve with excellence.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Visit</h4>
+          <p>111 E Hanford Armona Rd #B</p>
+          <p>Lemoore, CA 93245</p>
+          <a href="https://maps.google.com/?cid=9858266365389114262" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+        <div class="foot-col">
+          <h4>Order</h4>
+          <a href="tel:+15599258832">(559) 925-8832</a>
+          <p>Mon–Sat · 7am – 2pm</p>
+          <p>Sunday · Closed</p>
+        </div>
+      </div>
+    </div>
+    <p class="credit">
+      &copy; 2026 Rebekah's Espresso &amp; Joshua's · Lemoore, California<br>
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Highlight today's hours row (purely cosmetic)
+  (function(){
+    var today = new Date().getDay(); // 0 = Sunday
+    var row = document.querySelector('.hrow[data-day="'+today+'"]');
+    if(row){ row.classList.add('today'); }
+  })();
+</script>
+
+</body>
+</html>

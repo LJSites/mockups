@@ -1,0 +1,809 @@
+<!-- coffee · energetic · hero-layout 1 · svc-layout 2 · Bebas Neue/Barlow -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TNT's Cafe — Hesperia, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --acc:#ea580c;
+    --bg:#fffbeb;
+    --dark:#1c1008;
+    --mid:#7c4a1e;
+    --light:#fef3c7;
+    --nav-h:64px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-h);
+  }
+
+  body{font-family:'Barlow',sans-serif}
+
+  body {
+    background: var(--bg);
+    color: var(--dark);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .brand{font-family:'Bebas Neue',serif; letter-spacing: 0.03em;}
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+    border-bottom: 3px solid var(--acc);
+  }
+
+  .nav-logo {
+    font-size: 1.8rem;
+    color: var(--bg);
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: #d4b896;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--acc); }
+
+  .nav-cta {
+    background: var(--acc);
+    color: #fff !important;
+    padding: 0.4rem 1rem;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: #c2450a !important; color: #fff !important; }
+
+  /* ── HERO (layout 1 = left-image) ── */
+  #hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: calc(90vh - var(--nav-h));
+    background: var(--dark);
+  }
+
+  .hero-img {
+    overflow: hidden;
+    max-height: 700px;
+  }
+
+  .hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.9);
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3.5rem 2.5rem 3.5rem 3rem;
+    background: var(--dark);
+    position: relative;
+  }
+
+  .hero-content::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--acc);
+  }
+
+  .hero-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-headline {
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    line-height: 0.95;
+    color: var(--bg);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-headline span { color: var(--acc); }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: #d4b896;
+    max-width: 38ch;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .hero-cta-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--acc);
+    color: #fff;
+    font-family: 'Bebas Neue', serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    padding: 0.7rem 1.8rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: #c2450a; transform: translateY(-2px); }
+
+  .btn-ghost {
+    display: inline-block;
+    color: var(--bg);
+    font-family: 'Bebas Neue', serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
+    padding: 0.7rem 1.8rem;
+    border: 2px solid #7c4a1e;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover { border-color: var(--acc); color: var(--acc); }
+
+  .hero-hours-strip {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #2e1a0e;
+    font-size: 0.85rem;
+    color: #a07050;
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .hero-hours-strip strong {
+    color: var(--bg);
+    font-weight: 700;
+    display: block;
+  }
+
+  /* ── TICKER STRIP ── */
+  .ticker {
+    background: var(--acc);
+    color: #fff;
+    padding: 0.55rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 28s linear infinite;
+    font-family: 'Bebas Neue', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(100vw); }
+    to { transform: translateX(-100%); }
+  }
+
+  /* ── SECTION SHELLS ── */
+  section { padding: 5rem 1.5rem; }
+
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(2.5rem, 5vw, 3.8rem);
+    line-height: 1;
+    color: var(--dark);
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1.05rem;
+    color: var(--mid);
+    max-width: 55ch;
+    margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--light); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .about-photos img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+  }
+
+  .about-photos img:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/7;
+  }
+
+  .about-text p {
+    color: var(--mid);
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  /* ── MENU (svc-layout 2 = numbered/stacked list) ── */
+  #menu { background: var(--dark); color: var(--bg); }
+
+  #menu .section-label { color: #d4b896; }
+  #menu .section-title { color: var(--bg); }
+  #menu .section-sub { color: #a07050; }
+
+  .menu-stack {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 3rem;
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #2e1a0e;
+    position: relative;
+  }
+
+  .menu-num {
+    font-family: 'Bebas Neue', serif;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--acc);
+    opacity: 0.35;
+    min-width: 2.5rem;
+    text-align: right;
+    transition: opacity 0.2s;
+  }
+
+  .menu-item:hover .menu-num { opacity: 1; }
+
+  .menu-details { flex: 1; }
+
+  .menu-name {
+    font-family: 'Bebas Neue', serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
+    color: var(--bg);
+    line-height: 1.1;
+    margin-bottom: 0.3rem;
+  }
+
+  .menu-desc {
+    font-size: 0.9rem;
+    color: #a07050;
+    font-style: italic;
+  }
+
+  .menu-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 3rem;
+    grid-column: 1 / -1;
+  }
+
+  .menu-photos img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+    filter: saturate(0.85);
+    transition: filter 0.3s;
+  }
+
+  .menu-photos img:hover { filter: saturate(1.1); }
+
+  /* ── TESTIMONIES ── */
+  #testimonies { background: var(--bg); }
+
+  .testimony-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .testimony-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding: 2rem 0;
+    border-bottom: 1px solid #f0d9b5;
+  }
+
+  .testimony-item:first-child { border-top: 1px solid #f0d9b5; }
+
+  .testimony-initial {
+    width: 56px;
+    height: 56px;
+    background: var(--acc);
+    color: #fff;
+    font-family: 'Bebas Neue', serif;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .testimony-quote {
+    font-size: 1rem;
+    color: var(--mid);
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 0.6rem;
+  }
+
+  .testimony-attr {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dark);
+  }
+
+  /* ── HOURS & LOCATION ── */
+  #location { background: var(--light); }
+
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  .hours-table tr {
+    border-bottom: 1px solid #f0d9b5;
+  }
+
+  .hours-table td {
+    padding: 0.65rem 0;
+    color: var(--mid);
+  }
+
+  .hours-table td:first-child {
+    font-weight: 600;
+    color: var(--dark);
+    width: 45%;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .map-wrap {
+    border-radius: 2px;
+    overflow: hidden;
+    border: 3px solid var(--dark);
+  }
+
+  .map-wrap iframe {
+    display: block;
+    width: 100%;
+    height: 300px;
+    border: 0;
+  }
+
+  .location-cta {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* ── CONTACT / FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: #d4b896;
+    padding: 3rem 1.5rem 2rem;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #2e1a0e;
+  }
+
+  .footer-brand-name {
+    font-size: 2.8rem;
+    line-height: 1;
+    color: var(--bg);
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.85rem;
+    color: var(--acc);
+    font-style: italic;
+  }
+
+  .footer-col h4 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col p, .footer-col a {
+    font-size: 0.9rem;
+    color: #a07050;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.4rem;
+    transition: color 0.2s;
+  }
+
+  .footer-col a:hover { color: var(--bg); }
+
+  .social-links { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+
+  .social-link {
+    font-family: 'Bebas Neue', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: #7c4a1e;
+    text-decoration: none;
+    border: 1px solid #2e1a0e;
+    padding: 0.3rem 0.7rem;
+    border-radius: 1px;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .social-link:hover { border-color: var(--acc); color: var(--acc); }
+
+  .footer-credit {
+    max-width: 1100px;
+    margin: 1.5rem auto 0;
+    font-size: 0.78rem;
+    color: #4a2e14;
+    text-align: center;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    #hero {
+      grid-template-columns: 1fr;
+      grid-template-rows: 45vh auto;
+      min-height: auto;
+    }
+
+    .hero-img { max-height: 45vh; }
+
+    .hero-content {
+      padding: 2.5rem 1.5rem 2.5rem 2rem;
+    }
+
+    .hero-content::before { display: none; }
+
+    .hero-headline { font-size: 3.8rem; }
+
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+    .menu-stack { grid-template-columns: 1fr; }
+
+    .menu-photos { grid-template-columns: 1fr; }
+
+    .location-grid { grid-template-columns: 1fr; }
+
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+
+    .nav-links { display: none; }
+
+    .testimony-item { grid-template-columns: 60px 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-hours-strip { flex-direction: column; gap: 0.75rem; }
+    section { padding: 3.5rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo brand">TNT's Cafe</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#location">Hours &amp; Location</a></li>
+    <li><a href="tel:7609473663" class="nav-cta">Call Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO (layout 1: left image, right copy) -->
+<section id="hero">
+  <div class="hero-img">
+    <img src="./photos/01.jpg" alt="TNT's Cafe — food and atmosphere">
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Hesperia, CA · Since Day One</p>
+    <h1 class="hero-headline brand">Real<br><span>Home</span><br>Cooking</h1>
+    <p class="hero-sub">Big plates, real flavor, friendly faces — the kind of place that keeps you coming back for years.</p>
+    <div class="hero-cta-group">
+      <a href="tel:7609473663" class="btn-primary">Call Now</a>
+      <a href="https://maps.google.com/?cid=11798556476387547661" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+    </div>
+    <div class="hero-hours-strip">
+      <div>
+        <strong>Mon–Sat</strong>
+        6:30 AM – 2:30 PM
+      </div>
+      <div>
+        <strong>Sunday</strong>
+        6:30 AM – 2:30 PM
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <span class="ticker-inner">
+    &nbsp; BREAKFAST &bull; LUNCH &bull; HOME-COOKED FLAVOR &bull; HESPERIA'S HIDDEN GEM &bull; BIG PORTIONS &bull; GREAT PRICES &bull; FRIENDLY STAFF &bull; BREAKFAST &bull; LUNCH &bull; HOME-COOKED FLAVOR &bull; HESPERIA'S HIDDEN GEM &bull; BIG PORTIONS &bull; GREAT PRICES &bull;
+  </span>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photos">
+        <img src="./photos/02.jpg" alt="TNT's Cafe interior">
+        <img src="./photos/03.jpg" alt="TNT's Cafe food">
+        <img src="./photos/04.jpg" alt="TNT's Cafe dining">
+      </div>
+      <div class="about-text">
+        <p class="section-label">About the Cafe</p>
+        <h2 class="section-title brand">The Heart of Bear Valley Rd</h2>
+        <p>TNT's Cafe is Hesperia's go-to for honest, no-fuss American cooking — the kind that tastes like someone's mother made it. Big portions at prices that make sense, in a room that's lived-in and loud with real conversation.</p>
+        <p>Whether you roll in for a short-stack breakfast before work or a late-morning pastrami sandwich with your crew, the food is the same every time: fresh, seasoned right, and worth the drive.</p>
+        <p>The staff know their regulars, they fix mistakes without making it weird, and they keep the tables clean even when it's packed. That's the TNT standard, and it hasn't changed in years.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU (svc-layout 2: numbered / stacked list) -->
+<section id="menu">
+  <div class="container">
+    <p class="section-label">What We Serve</p>
+    <h2 class="section-title brand">The Good Stuff</h2>
+    <p class="section-sub">Classic American diner fare done right — generous plates that don't need a menu description, just an appetite.</p>
+
+    <div class="menu-stack">
+      <div class="menu-item">
+        <span class="menu-num">01</span>
+        <div class="menu-details">
+          <div class="menu-name">Porkchop &amp; Eggs</div>
+          <div class="menu-desc">Juicy porkchop, eggs your way, potatoes with onions &amp; bell peppers</div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-num">02</span>
+        <div class="menu-details">
+          <div class="menu-name">Ruben-Style Pastrami</div>
+          <div class="menu-desc">Stacked pastrami sandwich, made to order, served fresh &amp; hot</div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-num">03</span>
+        <div class="menu-details">
+          <div class="menu-name">Homemade Onion Rings</div>
+          <div class="menu-desc">Crispy, hand-battered, the real deal — order the side, don't skip it</div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-num">04</span>
+        <div class="menu-details">
+          <div class="menu-name">Breakfast Plates</div>
+          <div class="menu-desc">Eggs, toast, hashbrowns — the works, served all day until 2:30</div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-num">05</span>
+        <div class="menu-details">
+          <div class="menu-name">Lunch Specials</div>
+          <div class="menu-desc">Daily rotating specials — always filling, always at a good price</div>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-num">06</span>
+        <div class="menu-details">
+          <div class="menu-name">House Sides</div>
+          <div class="menu-desc">Potatoes, toast, fresh sides — portions are big enough to share</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-photos">
+      <img src="./photos/05.jpg" alt="TNT's Cafe dish">
+      <img src="./photos/06.jpg" alt="TNT's Cafe plating">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="container">
+    <p class="section-label">In Their Words</p>
+    <h2 class="section-title brand">Customer Testimonies</h2>
+    <p class="section-sub">A few words from people who know what they're talking about.</p>
+
+    <div class="testimony-list">
+      <div class="testimony-item">
+        <div class="testimony-initial">F</div>
+        <div>
+          <p class="testimony-quote">"A good American dinner! The food was good and filling. The portion size was quite large at a good price. The waiting staff were friendly and helpful. We will definitely be back for more."</p>
+          <span class="testimony-attr">Fawn S.</span>
+        </div>
+      </div>
+      <div class="testimony-item">
+        <div class="testimony-initial">J</div>
+        <div>
+          <p class="testimony-quote">"A good ol' hole in the wall place to grab a bite to eat. Can't go wrong — food has a taste similar to home cooked. Portion wise very big; 1 plate is enough for two people. Friendly staff &amp; environment is nice."</p>
+          <span class="testimony-attr">Jennifer C.</span>
+        </div>
+      </div>
+      <div class="testimony-item">
+        <div class="testimony-initial">L</div>
+        <div>
+          <p class="testimony-quote">"You can't help but admire the consistency with this place — the food is the same, always the same level of amazing flavor no matter how much time has passed. The service is amazing, staff is absolutely the best!"</p>
+          <span class="testimony-attr">Life as L.</span>
+        </div>
+      </div>
+      <div class="testimony-item">
+        <div class="testimony-initial">C</div>
+        <div>
+          <p class="testimony-quote">"We ordered the Ruben-style pastrami sandwich with homemade onion rings and a porkchop &amp; eggs breakfast. The food was served fresh &amp; hot. All the food was pleasantly seasoned. The waitstaff was extremely attentive. It definitely has the 'Happy Days Are Here Again' kinda vibe!"</p>
+          <span class="testimony-attr">Cmapps B.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section id="location">
+  <div class="container">
+    <p class="section-label">Find Us</p>
+    <h2 class="section-title brand">Hours &amp; Location</h2>
+    <div class="location-grid">
+      <div>
+        <table class="hours-table">
+          <tr><td>Monday</td><td>6:30 AM – 2:30 PM</td></tr>
+          <tr><td>Tuesday</td><td>6:30 AM – 2:30 PM</td></tr>
+          <tr><td>Wednesday</td><td>6:30 AM – 2:30 PM</td></tr>
+          <tr><td>Thursday</td><td>6:30 AM – 2:30 PM</td></tr>
+          <tr><td>Friday</td><td>6:30 AM – 2:30 PM</td></tr>
+          <tr><td>Saturday</td><td>6:30 AM – 2:30 PM</td></tr>
+          <tr><td>Sunday</td><td>6:30 AM – 2:30 PM</td></tr>
+        </table>
+        <div class="location-cta">
+          <a href="tel:7609473663" class="btn-primary">Call Now</a>
+          <a href="https://maps.google.com/?cid=11798556476387547661" target="_blank" rel="noopener" class="btn-ghost" style="border-color:#7c4a1e;color:var(--dark);">Get Directions</a>
+        </div>
+        <p style="margin-top:1.5rem;font-size:0.9rem;color:var(--mid);">14767 Bear Valley Rd<br>Hesperia, CA 92345<br><a href="tel:7609473663" style="color:var(--acc);text-decoration:none;font-weight:600;">(760) 947-3663</a></p>
+      </div>
+      <div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=14767+Bear+Valley+Rd,+Hesperia,+CA+92345&z=15&output=embed"
+            width="100%"
+            height="300"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="TNT's Cafe location map"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p style="margin-top:1rem;font-size:0.8rem;color:#a07050;">Parking available in front and in the rear alley.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name brand">TNT's<br>Cafe</div>
+      <p class="footer-tagline">Real food. Real portions. Every day.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:7609473663">(760) 947-3663</a>
+      <p>14767 Bear Valley Rd<br>Hesperia, CA 92345</p>
+      <p>Mon–Sun: 6:30 AM – 2:30 PM</p>
+    </div>
+    <div class="footer-col">
+      <h4>Find Us Online</h4>
+      <a href="https://maps.google.com/?cid=11798556476387547661&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+      <div class="social-links">
+        <a href="https://maps.google.com/?cid=11798556476387547661&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="social-link">Google</a>
+      </div>
+    </div>
+  </div>
+  <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+</footer>
+
+</body>
+</html>

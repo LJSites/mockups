@@ -1,0 +1,778 @@
+<!-- bakery · technical-clean · hero-layout 0 · svc-layout 1 · Space Grotesk/IBM Plex Sans -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HelenGrace Homemade Pastries — Chico, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── tokens ── */
+    :root {
+      --acc:#2563eb;
+      --bg:#f8fafc;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --border:#e2e8f0;
+      --nav-h:64px;
+    }
+
+    /* ── reset / base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-padding-top: var(--nav-h); }
+    body{font-family:'IBM Plex Sans',sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; font-size: 16px; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── brand wordmark ── */
+    .brand{font-family:'Space Grotesk',serif; font-weight: 700; letter-spacing: -0.02em; }
+
+    /* ── nav ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+    }
+    .nav-logo { font-size: 1.125rem; }
+    .nav-logo span { color: var(--acc); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    .nav-links a {
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--acc); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--acc);
+      color: #fff;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 0.45rem 1.1rem;
+      border-radius: 4px;
+      transition: opacity 0.15s;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+    .nav-cta:hover { opacity: 0.88; }
+    .nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-mobile-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      margin: 4px 0;
+      transition: transform 0.2s;
+    }
+
+    /* ── hero (layout 0 — right image) ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(88vh - var(--nav-h));
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2rem, 6vw, 5rem) clamp(1.5rem, 4vw, 4rem);
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: 'Space Grotesk', serif;
+      font-size: clamp(2.2rem, 5vw, 3.75rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--acc); }
+    .hero-sub {
+      font-size: 1.0625rem;
+      color: var(--muted);
+      max-width: 38ch;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: #fff;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      padding: 0.75rem 1.75rem;
+      border-radius: 4px;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .btn-ghost {
+      display: inline-block;
+      border: 1.5px solid var(--border);
+      color: var(--ink);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      padding: 0.75rem 1.75rem;
+      border-radius: 4px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-ghost:hover { border-color: var(--acc); color: var(--acc); }
+    .hero-meta {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 2rem;
+      font-size: 0.8125rem;
+      color: var(--muted);
+    }
+    .hero-meta strong { display: block; color: var(--ink); font-weight: 600; font-size: 0.9375rem; margin-bottom: 0.2rem; }
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-image-grid {
+      display: grid;
+      grid-template-rows: 2fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      height: 100%;
+      gap: 3px;
+    }
+    .hero-image-grid .main {
+      grid-row: 1 / 2;
+      grid-column: 1 / 3;
+      overflow: hidden;
+    }
+    .hero-image-grid .thumb {
+      overflow: hidden;
+    }
+    .hero-image-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .hero-image-grid img:hover { transform: scale(1.03); }
+
+    /* ── section shell ── */
+    .section {
+      padding: clamp(3rem, 6vw, 5.5rem) clamp(1.25rem, 5vw, 3rem);
+    }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Space Grotesk', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .section-body {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 60ch;
+      line-height: 1.75;
+    }
+
+    /* ── about ── */
+    #about { background: #fff; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+    }
+    .about-image { border-radius: 2px; overflow: hidden; }
+    .about-image img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .about-text .section-body { max-width: 50ch; margin-bottom: 1.5rem; }
+    .about-stat-row {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .about-stat strong {
+      font-family: 'Space Grotesk', serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--acc);
+      display: block;
+    }
+    .about-stat span { font-size: 0.8125rem; color: var(--muted); }
+
+    /* ── menu / offerings (layout 1 — 2-col rows) ── */
+    #menu { background: var(--bg); }
+    .menu-rows { display: flex; flex-direction: column; gap: 0; margin-top: 2.5rem; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+    .menu-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 1.25rem 1.75rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    .menu-row:last-child { border-bottom: none; }
+    .menu-row:hover { background: #fff; }
+    .menu-row-name {
+      font-family: 'Space Grotesk', serif;
+      font-weight: 600;
+      font-size: 1.0625rem;
+      margin-bottom: 0.25rem;
+    }
+    .menu-row-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 55ch;
+    }
+    .menu-row-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--acc);
+      background: #eff6ff;
+      padding: 0.25rem 0.65rem;
+      border-radius: 2px;
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+    .menu-note {
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── gallery strip ── */
+    #gallery { background: #fff; }
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-top: 2rem;
+    }
+    .gallery-strip img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 2px;
+      transition: opacity 0.2s;
+    }
+    .gallery-strip img:hover { opacity: 0.88; }
+
+    /* ── testimonies ── */
+    #testimonies { background: var(--bg); }
+    .testimony-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    .testimony-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.75rem;
+      position: relative;
+    }
+    .testimony-card::before {
+      content: '"';
+      font-family: 'Space Grotesk', serif;
+      font-size: 4rem;
+      line-height: 1;
+      color: #dbeafe;
+      position: absolute;
+      top: 1rem;
+      left: 1.25rem;
+    }
+    .testimony-quote {
+      font-size: 0.9375rem;
+      line-height: 1.75;
+      color: var(--ink);
+      padding-top: 1.5rem;
+      font-style: italic;
+    }
+    .testimony-attr {
+      margin-top: 1.25rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--acc);
+      font-style: normal;
+      font-family: 'Space Grotesk', serif;
+    }
+
+    /* ── hours + location ── */
+    #visit { background: #fff; }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: start;
+      margin-top: 2rem;
+    }
+    .hours-table { width: 100%; border-collapse: collapse; }
+    .hours-table tr { border-bottom: 1px solid var(--border); }
+    .hours-table tr:last-child { border-bottom: none; }
+    .hours-table td { padding: 0.65rem 0; font-size: 0.9375rem; }
+    .hours-table td:last-child { text-align: right; color: var(--muted); }
+    .hours-table tr.today td { font-weight: 600; color: var(--acc); }
+    .hours-table .closed { color: #94a3b8; }
+    .map-wrap {
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .map-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 340px;
+      border: none;
+    }
+    .address-line {
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .directions-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--acc);
+      font-weight: 600;
+      font-size: 0.875rem;
+      margin-top: 0.75rem;
+      transition: opacity 0.15s;
+    }
+    .directions-link:hover { opacity: 0.75; }
+
+    /* ── cta banner ── */
+    .cta-banner {
+      background: var(--ink);
+      color: #fff;
+      text-align: center;
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 3rem);
+    }
+    .cta-banner .section-label { color: #93c5fd; }
+    .cta-banner .section-title { color: #fff; margin: 0 auto 1rem; max-width: 20ch; }
+    .cta-banner p { color: #94a3b8; max-width: 44ch; margin: 0 auto 2rem; }
+    .cta-banner .btn-primary { background: var(--acc); }
+
+    /* ── footer ── */
+    .footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem clamp(1.25rem, 5vw, 3rem);
+    }
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer-brand { font-size: 1rem; }
+    .footer-brand small { display: block; font-size: 0.8125rem; color: var(--muted); margin-top: 0.25rem; font-weight: 400; }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .footer-links a {
+      font-size: 0.875rem;
+      color: var(--muted);
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--acc); }
+    .footer-divider { border: none; border-top: 1px solid var(--border); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .footer-credit { font-size: 0.8125rem; color: var(--muted); }
+    .footer-credit a { color: var(--acc); }
+
+    /* ── mobile ── */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+      .hero-image-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 280px;
+        height: 280px;
+      }
+      .hero-image-grid .main {
+        grid-row: 1;
+        grid-column: 1;
+      }
+      .hero-image-grid .thumb { display: none; }
+      .hero-text { padding: 2.5rem 1.25rem 2rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-image { order: -1; }
+      .testimony-grid { grid-template-columns: 1fr; }
+      .visit-grid { grid-template-columns: 1fr; }
+      .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+      .nav-links, .nav-cta { display: none; }
+      .nav-mobile-toggle { display: block; }
+    }
+    @media (max-width: 520px) {
+      .gallery-strip { grid-template-columns: 1fr; }
+      .hero-meta { flex-direction: column; gap: 1rem; }
+      .about-stat-row { gap: 1.25rem; }
+    }
+
+    /* ── mobile nav drawer ── */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      top: var(--nav-h);
+      background: #fff;
+      z-index: 90;
+      padding: 2rem 1.5rem;
+      flex-direction: column;
+      gap: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .nav-drawer.open { display: flex; }
+    .nav-drawer a {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: var(--ink);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-drawer .btn-primary { margin-top: 0.5rem; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav class="nav" id="top">
+    <a href="#top" class="nav-logo brand">HelenGrace <span>Pastries</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <a href="https://maps.google.com/?cid=15418573118523113267" class="nav-cta" target="_blank" rel="noopener">Get Directions</a>
+    <button class="nav-mobile-toggle" aria-label="Open menu" onclick="document.getElementById('drawer').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- mobile drawer -->
+  <div class="nav-drawer" id="drawer">
+    <a href="#about" onclick="document.getElementById('drawer').classList.remove('open')">About</a>
+    <a href="#menu" onclick="document.getElementById('drawer').classList.remove('open')">Menu</a>
+    <a href="#testimonies" onclick="document.getElementById('drawer').classList.remove('open')">Testimonies</a>
+    <a href="#visit" onclick="document.getElementById('drawer').classList.remove('open')">Visit Us</a>
+    <a href="https://maps.google.com/?cid=15418573118523113267" class="btn-primary" target="_blank" rel="noopener">Get Directions</a>
+  </div>
+
+  <!-- ── HERO (layout 0 — right image) ── -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Chico, CA · Handmade With Love</p>
+      <h1><span class="brand">HelenGrace</span><br />Homemade<br /><em>Pastries</em></h1>
+      <p class="hero-sub">A hidden-gem bakery pouring genuine care into every crust, cream, and crumble — from Bourbon Pecan pie to fresh-fruit preserves, baked fresh each week.</p>
+      <div class="hero-actions">
+        <a href="https://maps.google.com/?cid=15418573118523113267" class="btn-primary" target="_blank" rel="noopener">Get Directions</a>
+        <a href="#menu" class="btn-ghost">See the Menu</a>
+      </div>
+      <div class="hero-meta">
+        <div>
+          <strong>Thu – Fri</strong>
+          8:30 AM – 2:00 PM
+        </div>
+        <div>
+          <strong>Saturday</strong>
+          8:00 AM – 12:30 PM
+        </div>
+        <div>
+          <strong>Location</strong>
+          2240 Park Ave, Chico
+        </div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="hero-image-grid">
+        <div class="main"><img src="./photos/01.jpg" alt="HelenGrace Homemade Pastries — freshly baked goods" /></div>
+        <div class="thumb"><img src="./photos/02.jpg" alt="Pastries close-up" /></div>
+        <div class="thumb"><img src="./photos/03.jpg" alt="Baked pies at HelenGrace" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section class="section" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-image">
+          <img src="./photos/04.jpg" alt="Inside HelenGrace bakery" />
+        </div>
+        <div class="about-text">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title">A bakery born from the joy of baking</h2>
+          <p class="section-body">Jenny and the HelenGrace team bake everything from scratch — you can feel it the moment you walk through the door. The shop smells of warm pastry and fruit, and the owners greet you like a regular even on your first visit.</p>
+          <p class="section-body" style="margin-top:1rem;">Weekly menus rotate to showcase seasonal produce and customer favorites. Pies, cakes, cookies, savory pot pies, and house-made preserves — every single thing made with an intention that shows up on your plate.</p>
+          <div class="about-stat-row">
+            <div class="about-stat"><strong>Thu–Sat</strong><span>Open weekly</span></div>
+            <div class="about-stat"><strong>100%</strong><span>From scratch</span></div>
+            <div class="about-stat"><strong>Special</strong><span>Orders welcome</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MENU (layout 1 — 2-col rows) ── -->
+  <section class="section" id="menu">
+    <div class="section-inner">
+      <p class="section-label">What We Bake</p>
+      <h2 class="section-title">This week's offerings</h2>
+      <p class="section-body">Menus change weekly — follow HelenGrace on Facebook for the current lineup or reach out for a special order.</p>
+
+      <div class="menu-rows">
+        <div class="menu-row">
+          <div>
+            <div class="menu-row-name">Bourbon Pecan Pie</div>
+            <div class="menu-row-desc">Rich, deep-caramel filling with toasted pecans and a hint of bourbon, set in a hand-crimped butter crust.</div>
+          </div>
+          <div class="menu-row-tag">Signature</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-row-name">Banana Cream Pie</div>
+            <div class="menu-row-desc">Light, cloud-like custard layered with fresh banana slices — a dream of a dessert pie.</div>
+          </div>
+          <div class="menu-row-tag">Fan Fave</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-row-name">Mangonada Pie</div>
+            <div class="menu-row-desc">Bright, tropical mango filling with the tangy-sweet balance that keeps customers coming back.</div>
+          </div>
+          <div class="menu-row-tag">Seasonal</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-row-name">Vanilla USA Pie</div>
+            <div class="menu-row-desc">Silky vanilla custard with fresh, ripe seasonal fruit and a perfectly flaky crust — not too sweet, exactly right.</div>
+          </div>
+          <div class="menu-row-tag">Classic</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-row-name">Ginger Snaps</div>
+            <div class="menu-row-desc">Mouthwatering, crisp-edged cookies with a genuine spiced ginger bite unlike anything store-bought.</div>
+          </div>
+          <div class="menu-row-tag">Cookies</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-row-name">Chicken Pot Pie</div>
+            <div class="menu-row-desc">A savory standout — hearty, homestyle filling sealed under a golden, buttery pastry lid.</div>
+          </div>
+          <div class="menu-row-tag">Savory</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-row-name">House Fruit Preserves</div>
+            <div class="menu-row-desc">Small-batch jars of seasonal fruit — nectarine, stone fruit, and more. Limited quantities each week.</div>
+          </div>
+          <div class="menu-row-tag">Pantry</div>
+        </div>
+        <div class="menu-row">
+          <div>
+            <div class="menu-row-name">Custom Cakes &amp; Pies</div>
+            <div class="menu-row-desc">Birthdays, holidays, and any occasion — HelenGrace takes special orders. Contact to discuss.</div>
+          </div>
+          <div class="menu-row-tag">Order</div>
+        </div>
+      </div>
+      <p class="menu-note">Menu rotates weekly. Check Facebook for the current selection or to place a special order.</p>
+    </div>
+  </section>
+
+  <!-- ── PHOTO GALLERY ── -->
+  <section class="section" id="gallery">
+    <div class="section-inner">
+      <p class="section-label">From the Bakery</p>
+      <h2 class="section-title">Every visit smells this good</h2>
+      <div class="gallery-strip">
+        <img src="./photos/01.jpg" alt="HelenGrace baked goods display" />
+        <img src="./photos/02.jpg" alt="Fresh pastries close-up" />
+        <img src="./photos/03.jpg" alt="Pies at HelenGrace" />
+        <img src="./photos/04.jpg" alt="Inside the bakery" />
+        <img src="./photos/05.jpg" alt="Seasonal pastry offerings" />
+        <img src="./photos/06.jpg" alt="HelenGrace cookies and treats" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CUSTOMER TESTIMONIES ── -->
+  <section class="section" id="testimonies">
+    <div class="section-inner">
+      <p class="section-label">Customer Testimonies</p>
+      <h2 class="section-title">In their words</h2>
+      <div class="testimony-grid">
+        <div class="testimony-card">
+          <p class="testimony-quote">"The Bourbon Pecan pie was out of this world and the Banana Cream...a dream!! Plus, I've never had such mouthwatering Ginger Snaps in my life! Truly delicious pastries — the lovely, local business owners clearly pour their love into everything they bake and present!"</p>
+          <p class="testimony-attr">— Heather F.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">"It's a hole in the wall hidden gem that has become our favorite place to grab a pie and cookies. Jenny is such a wonderful person and definitely loves baking — you could see it as soon as you come up to the door."</p>
+          <p class="testimony-attr">— J L.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">"Ordered a Mangonada pie and it was SO tasty! Pickup was easy and the employees were so sweet. It smelled so wonderful walking in to the shop I didn't want to leave!"</p>
+          <p class="testimony-attr">— Mikayla J.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">"Since HelenGrace opened, no holiday or birthday celebration in our family is complete without a HelenGrace pie or cake. Everything single thing I have tried has been absolutely delicious."</p>
+          <p class="testimony-attr">— Marlena G.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">"The vanilla custard was so yummy, not too sweet. The crust was exactly as it should be. The owner took care of us and she was so kind. The bakery smelled so good — 10/10 would highly recommend."</p>
+          <p class="testimony-attr">— Melissa C.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VISIT (hours + map) ── -->
+  <section class="section" id="visit">
+    <div class="section-inner">
+      <p class="section-label">Hours &amp; Location</p>
+      <h2 class="section-title">Come find us in Chico</h2>
+      <div class="visit-grid">
+        <div>
+          <table class="hours-table">
+            <tbody>
+              <tr><td>Monday</td><td class="closed">Closed</td></tr>
+              <tr><td>Tuesday</td><td class="closed">Closed</td></tr>
+              <tr><td>Wednesday</td><td class="closed">Closed</td></tr>
+              <tr><td>Thursday</td><td>8:30 AM – 2:00 PM</td></tr>
+              <tr><td>Friday</td><td>8:30 AM – 2:00 PM</td></tr>
+              <tr><td>Saturday</td><td>8:00 AM – 12:30 PM</td></tr>
+              <tr><td>Sunday</td><td class="closed">Closed</td></tr>
+            </tbody>
+          </table>
+          <p class="address-line" style="margin-top:1.5rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            2240 Park Ave, Chico, CA 95928
+          </p>
+          <a href="https://maps.google.com/?cid=15418573118523113267" class="directions-link" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            Open in Google Maps
+          </a>
+          <p style="margin-top:2rem; font-size:0.875rem; color:var(--muted);">Follow HelenGrace on Facebook for the weekly menu and holiday specials.</p>
+        </div>
+        <div>
+          <div class="map-wrap">
+            <iframe
+              src="https://www.google.com/maps?q=2240+Park+Ave,+Chico,+CA+95928&z=15&output=embed"
+              title="HelenGrace Homemade Pastries location"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <p class="address-line" style="margin-top:0.75rem; font-size:0.8125rem;">2240 Park Ave · Chico, CA 95928</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA BANNER ── -->
+  <section class="cta-banner">
+    <div class="section-inner" style="max-width:800px">
+      <p class="section-label">Visit Us This Week</p>
+      <h2 class="section-title">The best pie in Chico won't wait</h2>
+      <p>Thursday & Friday 8:30 AM – 2:00 PM · Saturday 8:00 AM – 12:30 PM. Come early — popular items sell out.</p>
+      <a href="https://maps.google.com/?cid=15418573118523113267" class="btn-primary" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand" style="font-size:1.0625rem;">HelenGrace <span style="color:var(--acc)">Pastries</span></span>
+          <small>2240 Park Ave · Chico, CA 95928</small>
+          <small>Thu–Fri 8:30 AM–2 PM · Sat 8 AM–12:30 PM</small>
+        </div>
+        <div class="footer-links">
+          <a href="https://maps.google.com/?cid=15418573118523113267" target="_blank" rel="noopener">Google Business</a>
+          <a href="#about">About</a>
+          <a href="#menu">Menu</a>
+          <a href="#visit">Hours</a>
+        </div>
+      </div>
+      <hr class="footer-divider" />
+      <div class="footer-bottom">
+        <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+        <p style="font-size:0.8125rem; color:var(--muted);">© 2025 HelenGrace Homemade Pastries</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!--
+  River Church cafe — single-page mockup
+  Flavor/archetype: calm-minimal neighborhood cafe (quiet, editorial, typography-led)
+  Hero layout: typographic-noPhoto (oversized Spectral wordmark, no hero image, color-block field)
+  Service layout: italic-prose (menu as a flowing italic prose list, not a card grid)
+  Single photo only → leaned on Spectral type, teal/off-white palette, ruled lines, and one framed photo moment.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>River Church cafe — Anaheim</title>
+<meta name="description" content="River Church cafe — a calm neighborhood coffee shop in downtown Anaheim. Smooth brews, fresh pastries, friendly faces." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --acc: #0d9488;
+    --bg: #f7faf9;
+    --ink: #1c2826;
+    --muted: #5c6b68;
+    --line: #d8e3e0;
+    --nav-h: 64px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-h);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .serif { font-family: 'Spectral', Georgia, serif; }
+  a { color: inherit; }
+
+  /* ---- NAV ---- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    height: var(--nav-h);
+    background: rgba(247,250,249,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+  .brand {
+    font-family: 'Spectral', serif; font-weight: 500; font-size: 1.2rem;
+    letter-spacing: .2px; text-decoration: none; color: var(--ink);
+  }
+  .brand span { color: var(--acc); }
+  .nav-links { display: none; gap: 30px; align-items: center; }
+  .nav-links a {
+    text-decoration: none; color: var(--muted); font-size: .82rem;
+    letter-spacing: .12em; text-transform: uppercase; font-weight: 500;
+    transition: color .2s ease;
+  }
+  .nav-links a:hover { color: var(--acc); }
+  @media (min-width: 820px) { .nav-links { display: flex; } }
+
+  /* ---- HERO ---- */
+  .hero { padding: 84px 0 72px; }
+  .eyebrow {
+    font-size: .75rem; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--acc); font-weight: 600; margin-bottom: 26px;
+  }
+  .hero h1 {
+    font-family: 'Spectral', serif; font-weight: 400;
+    font-size: clamp(3.2rem, 11vw, 7.2rem);
+    line-height: .98; letter-spacing: -.01em; color: var(--ink);
+  }
+  .hero h1 em { font-style: italic; color: var(--acc); font-weight: 300; }
+  .hero-lede {
+    margin-top: 30px; max-width: 40ch;
+    font-size: clamp(1.05rem, 2.4vw, 1.28rem); color: var(--muted);
+    font-family: 'Spectral', serif; font-weight: 300; line-height: 1.55;
+  }
+  .hero-meta {
+    margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px 28px;
+    align-items: center;
+    font-size: .82rem; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .hero-meta .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--acc); display: inline-block; margin-right: 10px; vertical-align: middle; }
+
+  /* ---- BUTTON ---- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--acc); color: #fff; text-decoration: none;
+    font-weight: 600; font-size: .9rem; letter-spacing: .02em;
+    padding: 15px 30px; border-radius: 2px;
+    transition: background .2s ease, transform .2s ease;
+  }
+  .btn:hover { background: #0b7d72; transform: translateY(-1px); }
+  .btn.ghost { background: transparent; color: var(--acc); border: 1px solid var(--acc); }
+  .btn.ghost:hover { background: var(--acc); color: #fff; }
+  .hero-cta { margin-top: 44px; display: flex; flex-wrap: wrap; gap: 16px; }
+
+  /* ---- SECTION SCAFFOLD ---- */
+  section { scroll-margin-top: var(--nav-h); }
+  .band { padding: 80px 0; border-top: 1px solid var(--line); }
+  .sec-label {
+    font-size: .72rem; letter-spacing: .26em; text-transform: uppercase;
+    color: var(--acc); font-weight: 600; margin-bottom: 22px;
+  }
+  .sec-title {
+    font-family: 'Spectral', serif; font-weight: 400;
+    font-size: clamp(1.9rem, 4.5vw, 2.8rem); line-height: 1.1;
+    letter-spacing: -.01em; margin-bottom: 24px;
+  }
+
+  /* ---- ABOUT ---- */
+  .about-grid { display: grid; gap: 48px; align-items: center; }
+  @media (min-width: 860px) { .about-grid { grid-template-columns: 1.05fr .95fr; gap: 64px; } }
+  .about-copy p {
+    font-family: 'Spectral', serif; font-weight: 300;
+    font-size: 1.15rem; color: #34423f; line-height: 1.7; margin-bottom: 18px;
+  }
+  .about-copy p.drop::first-letter {
+    font-family: 'Spectral', serif; font-size: 3.4rem; line-height: .8;
+    float: left; padding: 6px 12px 0 0; color: var(--acc); font-weight: 500;
+  }
+  .photo-frame {
+    position: relative; padding: 12px; background: #fff;
+    border: 1px solid var(--line);
+    box-shadow: 0 24px 48px -28px rgba(13,148,136,.35);
+  }
+  .photo-frame img { display: block; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; }
+  .photo-cap {
+    margin-top: 14px; font-size: .78rem; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--muted); text-align: center;
+  }
+
+  /* ---- MENU (italic prose) ---- */
+  .menu-band { background: #eef4f2; }
+  .menu-grid { display: grid; gap: 46px; }
+  @media (min-width: 760px) { .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 56px; } }
+  .menu-col h3 {
+    font-family: 'Spectral', serif; font-style: italic; font-weight: 500;
+    font-size: 1.5rem; color: var(--acc); margin-bottom: 18px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--line);
+  }
+  .menu-prose {
+    font-family: 'Spectral', serif; font-weight: 300; font-size: 1.12rem;
+    line-height: 1.85; color: #34423f;
+  }
+  .menu-prose .item { font-style: italic; font-weight: 400; color: var(--ink); }
+  .menu-prose .item::after { content: " — "; font-style: normal; color: var(--muted); }
+  .menu-note {
+    margin-top: 30px; font-size: .95rem; color: var(--muted);
+    font-family: 'Spectral', serif; font-style: italic;
+  }
+
+  /* ---- TESTIMONIES ---- */
+  .says-grid { display: grid; gap: 40px; }
+  @media (min-width: 760px) { .says-grid { grid-template-columns: 1fr 1fr; gap: 56px; } }
+  .quote {
+    border-left: 2px solid var(--acc); padding-left: 26px;
+  }
+  .quote p {
+    font-family: 'Spectral', serif; font-style: italic; font-weight: 300;
+    font-size: 1.4rem; line-height: 1.5; color: var(--ink); margin-bottom: 16px;
+  }
+  .quote cite {
+    font-style: normal; font-size: .8rem; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--muted); font-weight: 600;
+  }
+
+  /* ---- VISIT ---- */
+  .visit-grid { display: grid; gap: 48px; }
+  @media (min-width: 880px) { .visit-grid { grid-template-columns: .85fr 1.15fr; gap: 56px; } }
+  .hours-list { list-style: none; }
+  .hours-list li {
+    display: flex; justify-content: space-between; gap: 16px;
+    padding: 13px 0; border-bottom: 1px solid var(--line);
+    font-size: .98rem;
+  }
+  .hours-list li span:first-child { color: var(--muted); }
+  .hours-list li span:last-child { font-weight: 500; }
+  .addr-block { margin: 28px 0; }
+  .addr-block .addr {
+    font-family: 'Spectral', serif; font-size: 1.2rem; line-height: 1.5; color: var(--ink);
+  }
+  .map-frame {
+    border: 1px solid var(--line); background: #fff; padding: 8px;
+    box-shadow: 0 20px 40px -30px rgba(13,148,136,.4);
+  }
+  .map-frame iframe { display: block; width: 100%; height: 360px; border: 0; filter: grayscale(.2); }
+
+  /* ---- CTA STRIP ---- */
+  .cta-strip { background: var(--acc); color: #fff; text-align: center; padding: 76px 0; }
+  .cta-strip h2 {
+    font-family: 'Spectral', serif; font-weight: 400;
+    font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; margin-bottom: 22px;
+  }
+  .cta-strip h2 em { font-style: italic; color: #c6efe9; }
+  .cta-strip p { color: #d7f2ee; max-width: 44ch; margin: 0 auto 34px; }
+  .cta-strip .btn { background: #fff; color: var(--acc); }
+  .cta-strip .btn:hover { background: #eafaf7; }
+
+  /* ---- FOOTER ---- */
+  footer { background: #122220; color: #aec4bf; padding: 56px 0 40px; }
+  .foot-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 28px; margin-bottom: 38px; }
+  .foot-brand { font-family: 'Spectral', serif; font-size: 1.5rem; color: #fff; }
+  .foot-brand span { color: #5eead4; }
+  .foot-links { display: flex; flex-wrap: wrap; gap: 22px; align-items: center; }
+  .foot-links a { color: #aec4bf; text-decoration: none; font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; transition: color .2s; }
+  .foot-links a:hover { color: #5eead4; }
+  .foot-rule { border: 0; border-top: 1px solid #24403b; margin: 0 0 26px; }
+  .foot-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; font-size: .8rem; color: #76928c; }
+  .credit { color: #8fa8a3; }
+  .credit a { color: #5eead4; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">River Church <span>cafe</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#says">Voices</a>
+      <a href="#visit">Visit</a>
+      <a href="https://maps.google.com/?cid=11512738261369132241" target="_blank" rel="noopener">Directions</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <p class="eyebrow">Downtown Anaheim · Coffee Shop</p>
+    <h1>Slow mornings,<br />smooth brews,<br /><em>good company.</em></h1>
+    <p class="hero-lede">A calm corner of Broadway where the coffee is honest, the pastries are fresh, and there's always a seat to settle into.</p>
+    <div class="hero-cta">
+      <a href="https://www.google.com/maps?q=201%20E%20Broadway%2C%20Anaheim%2C%20CA%2092805&z=15" target="_blank" rel="noopener" class="btn">Get Directions →</a>
+      <a href="#menu" class="btn ghost">See the menu</a>
+    </div>
+    <div class="hero-meta">
+      <span><span class="dot"></span>201 E Broadway, Anaheim</span>
+      <span><span class="dot"></span>Open daily for coffee &amp; pastries</span>
+    </div>
+  </div>
+</header>
+
+<section class="band" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <p class="sec-label">The place</p>
+      <h2 class="sec-title">A neighborhood cafe, the way they used to be.</h2>
+      <p class="drop">River Church cafe sits right on East Broadway, a few steps from the heart of downtown Anaheim. It's the kind of spot people fold into their week — the Sunday-morning ritual, the mid-afternoon reset, the catch-up that runs a little long because the seats are too comfortable to leave.</p>
+      <p>The brews are smooth, the pastries come out fresh, and the welcome is genuine. No rush, no fuss — just a warm, lively room and a cup made with care.</p>
+    </div>
+    <div>
+      <div class="photo-frame">
+        <img src="./photos/01.jpg" alt="Inside River Church cafe in Anaheim" loading="lazy" />
+      </div>
+      <p class="photo-cap">Inside the cafe · East Broadway</p>
+    </div>
+  </div>
+</section>
+
+<section class="band menu-band" id="menu">
+  <div class="wrap">
+    <p class="sec-label">On the counter</p>
+    <h2 class="sec-title">What we pour &amp; bake.</h2>
+    <div class="menu-grid">
+      <div class="menu-col">
+        <h3>From the bar</h3>
+        <p class="menu-prose">
+          <span class="item">Drip &amp; pour-over</span> a clean, smooth cup for the people who keep it simple.
+          <span class="item">Espresso</span> short, honest shots pulled to order.
+          <span class="item">Latte &amp; cappuccino</span> steamed milk, balanced and warm.
+          <span class="item">Cold brew &amp; iced</span> slow-steeped for the bright days.
+        </p>
+      </div>
+      <div class="menu-col">
+        <h3>From the case</h3>
+        <p class="menu-prose">
+          <span class="item">Fresh pastries</span> baked goods that come out warm through the morning.
+          <span class="item">Morning bites</span> something to pair with that first cup.
+          <span class="item">Sweet treats</span> for the afternoon pick-me-up.
+        </p>
+        <p class="menu-note">Sample menu — pop in to see the day's bakes and seasonal pours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="says">
+  <div class="wrap">
+    <p class="sec-label">In their words</p>
+    <h2 class="sec-title">What people say.</h2>
+    <div class="says-grid">
+      <blockquote class="quote">
+        <p>"Best place to get your Sunday started."</p>
+        <cite>— Adrian M.</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>"A lively vibe with smooth brews and fresh pastries. Friendly service and a great spot to recharge or catch up."</p>
+        <cite>— Alvin A.</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="visit">
+  <div class="wrap">
+    <p class="sec-label">Find us</p>
+    <h2 class="sec-title">Come sit a while.</h2>
+    <div class="visit-grid">
+      <div>
+        <ul class="hours-list">
+          <li><span>Monday</span><span>Open</span></li>
+          <li><span>Tuesday</span><span>Open</span></li>
+          <li><span>Wednesday</span><span>Open</span></li>
+          <li><span>Thursday</span><span>Open</span></li>
+          <li><span>Friday</span><span>Open</span></li>
+          <li><span>Saturday</span><span>Open</span></li>
+          <li><span>Sunday</span><span>Open</span></li>
+        </ul>
+        <div class="addr-block">
+          <p class="addr">201 E Broadway<br />Anaheim, CA 92805</p>
+        </div>
+        <a href="https://www.google.com/maps?q=201%20E%20Broadway%2C%20Anaheim%2C%20CA%2092805&z=15" target="_blank" rel="noopener" class="btn">Get Directions →</a>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=201%20E%20Broadway%2C%20Anaheim%2C%20CA%2092805&z=15&output=embed"
+          title="Map to River Church cafe, 201 E Broadway, Anaheim, CA"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Your <em>next favorite cup</em> is on Broadway.</h2>
+    <p>Stop by River Church cafe in downtown Anaheim — we'll have the coffee ready.</p>
+    <a href="https://www.google.com/maps?q=201%20E%20Broadway%2C%20Anaheim%2C%20CA%2092805&z=15" target="_blank" rel="noopener" class="btn">Get Directions →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">River Church <span>cafe</span></div>
+      <div class="foot-links">
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#visit">Visit</a>
+        <a href="https://maps.google.com/?cid=11512738261369132241" target="_blank" rel="noopener">Google Business</a>
+      </div>
+    </div>
+    <hr class="foot-rule" />
+    <div class="foot-meta">
+      <span>201 E Broadway, Anaheim, CA 92805</span>
+      <span class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

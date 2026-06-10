@@ -1,0 +1,553 @@
+<!--
+  BARBER KINGZ — mockup by LJ Sites
+  Flavor/archetype: regal dark barbershop (crown-and-throne, gold-leaf on near-black)
+  Hero layout id: full-bleed (illuminated-sign photo behind a centered crown wordmark)
+  Service layout id: sticker-cards (gold-bordered cards w/ corner crown stamp, offset on a dark felt grid)
+  Palette: --bg #0a0a0a near-black  ·  --acc #eab308 royal gold
+  Display: Cinzel (engraved/regal serif)  ·  Body: Inter
+  Notes: no API-key map (keyless output=embed); testimonies static, first-name + initial only;
+         sticky nav w/ scroll-padding-top; one repeated CTA = Call Now (tel:).
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Barber Kingz — Barbershop in Hesperia, CA</title>
+<meta name="description" content="Barber Kingz — a highly-rated, welcoming barbershop in Hesperia, CA. Open late, all forms of payment, kids welcome. Call (760) 998-2799." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --acc:#eab308;
+    --acc-deep:#b8860b;
+    --panel:#111111;
+    --panel-2:#161514;
+    --line:rgba(234,179,8,.22);
+    --ink:#f3f1ec;
+    --mute:#a3a09a;
+    --nav-h:72px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .display{font-family:'Cinzel',serif;letter-spacing:.02em}
+  .gold{color:var(--acc)}
+  .eyebrow{
+    font-family:'Cinzel',serif;font-weight:600;letter-spacing:.42em;
+    text-transform:uppercase;font-size:.7rem;color:var(--acc);
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(8,8,8,.82);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:12px}
+  .crown{
+    width:34px;height:34px;flex:none;color:var(--acc);
+    filter:drop-shadow(0 0 6px rgba(234,179,8,.35));
+  }
+  .brand b{font-family:'Cinzel',serif;font-weight:800;font-size:1.05rem;letter-spacing:.16em;line-height:1}
+  .brand span{display:block;font-size:.58rem;letter-spacing:.45em;color:var(--mute);margin-top:3px}
+  nav.links{display:flex;align-items:center;gap:34px}
+  nav.links a{
+    font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);
+    transition:color .2s;position:relative;
+  }
+  nav.links a:hover{color:var(--acc)}
+  .nav-call{
+    display:inline-flex;align-items:center;gap:8px;
+    border:1px solid var(--acc);color:var(--acc);
+    padding:9px 18px;border-radius:2px;font-size:.74rem;letter-spacing:.16em;
+    text-transform:uppercase;font-weight:600;transition:.2s;
+  }
+  .nav-call:hover{background:var(--acc);color:#0a0a0a}
+  .burger{display:none;background:none;border:0;color:var(--acc);cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:calc(100vh - var(--nav-h));display:flex;align-items:center;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) brightness(.5) contrast(1.05)}
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(120% 90% at 50% 8%, rgba(234,179,8,.10), transparent 55%),
+      linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.78) 55%, var(--bg) 100%);
+  }
+  .hero-content{position:relative;z-index:2;width:100%;text-align:center;padding:60px 0}
+  .hero-content .eyebrow{margin-bottom:22px}
+  .hero h1{
+    font-family:'Cinzel',serif;font-weight:900;line-height:.96;
+    font-size:clamp(3rem,11vw,7.5rem);letter-spacing:.02em;
+    text-shadow:0 2px 30px rgba(0,0,0,.6);
+  }
+  .hero h1 .of{display:block;font-size:.42em;letter-spacing:.5em;color:var(--mute);font-weight:600;margin-top:10px}
+  .hero-rule{display:flex;align-items:center;justify-content:center;gap:18px;margin:30px 0 26px}
+  .hero-rule span{height:1px;width:min(120px,22vw);background:linear-gradient(90deg,transparent,var(--acc))}
+  .hero-rule span:last-child{background:linear-gradient(90deg,var(--acc),transparent)}
+  .hero-rule .dot{width:7px;height:7px;background:var(--acc);transform:rotate(45deg);flex:none}
+  .hero-sub{max-width:600px;margin:0 auto 38px;color:#d8d5cf;font-size:1.06rem;font-weight:300}
+  .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .btn-gold{
+    display:inline-flex;align-items:center;gap:11px;
+    background:linear-gradient(180deg,var(--acc),var(--acc-deep));color:#1a1300;
+    font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.84rem;
+    padding:16px 32px;border-radius:2px;
+    box-shadow:0 8px 30px rgba(234,179,8,.22);transition:.2s;
+  }
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 38px rgba(234,179,8,.34)}
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:11px;
+    border:1px solid rgba(243,241,236,.35);color:var(--ink);
+    font-weight:600;letter-spacing:.12em;text-transform:uppercase;font-size:.84rem;
+    padding:16px 30px;border-radius:2px;transition:.2s;
+  }
+  .btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+  .hero-tags{
+    position:relative;z-index:2;margin-top:48px;display:flex;gap:30px;justify-content:center;
+    flex-wrap:wrap;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mute);
+  }
+  .hero-tags i{color:var(--acc);font-style:normal}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:96px 0;position:relative}
+  .sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
+  .sec-head .eyebrow{display:block;margin-bottom:16px}
+  .sec-head h2{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(1.9rem,4.5vw,3rem);line-height:1.05}
+  .sec-head p{color:var(--mute);margin-top:16px;font-weight:300}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:linear-gradient(180deg,var(--bg),#0c0b0a)}
+  .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+  .about-copy .eyebrow{display:block;margin-bottom:18px}
+  .about-copy h2{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.08;margin-bottom:22px}
+  .about-copy p{color:#cfccc5;font-weight:300;margin-bottom:18px}
+  .about-stats{display:flex;gap:36px;margin-top:34px;flex-wrap:wrap}
+  .stat b{font-family:'Cinzel',serif;font-size:1.7rem;color:var(--acc);display:block;line-height:1}
+  .stat span{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-top:8px;display:block}
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px}
+  .about-photos .frame{position:relative;border:1px solid var(--line);overflow:hidden;background:#000}
+  .about-photos .frame img{width:100%;height:100%;object-fit:cover;transition:.5s;filter:grayscale(.1)}
+  .about-photos .frame:hover img{transform:scale(1.05)}
+  .about-photos .tall{grid-row:span 2;aspect-ratio:3/5}
+  .about-photos .wide{aspect-ratio:4/3}
+
+  /* ---------- SERVICES (sticker-cards) ---------- */
+  .services{
+    background:
+      linear-gradient(0deg, rgba(234,179,8,.03), rgba(234,179,8,.03)),
+      var(--panel);
+    background-image:
+      linear-gradient(rgba(234,179,8,.045) 1px,transparent 1px),
+      linear-gradient(90deg, rgba(234,179,8,.045) 1px,transparent 1px);
+    background-size:38px 38px;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .sticker-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .sticker{
+    position:relative;background:var(--panel-2);border:1px solid var(--line);
+    padding:34px 28px 30px;border-radius:3px;
+    box-shadow:0 18px 40px rgba(0,0,0,.5);transition:.25s;
+  }
+  .sticker:nth-child(even){transform:translateY(14px)}
+  .sticker:hover{transform:translateY(-6px);border-color:var(--acc)}
+  .sticker:nth-child(even):hover{transform:translateY(8px)}
+  .sticker .stamp{
+    position:absolute;top:-15px;right:18px;width:42px;height:42px;
+    background:linear-gradient(180deg,var(--acc),var(--acc-deep));color:#1a1300;
+    display:grid;place-items:center;border-radius:50%;
+    box-shadow:0 6px 18px rgba(234,179,8,.3);border:2px solid #1a1300;
+  }
+  .sticker .stamp svg{width:22px;height:22px}
+  .sticker .no{font-family:'Cinzel',serif;color:var(--acc-deep);font-size:.8rem;letter-spacing:.3em}
+  .sticker h3{font-family:'Cinzel',serif;font-weight:700;font-size:1.32rem;margin:10px 0 12px}
+  .sticker p{color:var(--mute);font-size:.92rem;font-weight:300}
+  .services-note{text-align:center;margin-top:48px;color:var(--mute);font-size:.92rem;font-weight:300}
+  .services-note b{color:var(--ink);font-weight:500}
+
+  /* ---------- GALLERY STRIP ---------- */
+  .gallery{padding:0}
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+  .gallery-grid a{position:relative;aspect-ratio:1;overflow:hidden;background:#000}
+  .gallery-grid img{width:100%;height:100%;object-fit:cover;filter:grayscale(.2) brightness(.85);transition:.5s}
+  .gallery-grid a:hover img{filter:none;transform:scale(1.06)}
+  .gallery-grid a::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(234,179,8,.12)}
+
+  /* ---------- TESTIMONIES ---------- */
+  .says{background:linear-gradient(180deg,#0c0b0a,var(--bg))}
+  .quote-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:980px;margin:0 auto}
+  .quote-grid .q{
+    background:var(--panel-2);border:1px solid var(--line);border-radius:3px;
+    padding:32px 30px;position:relative;
+  }
+  .quote-grid .q.span{grid-column:1 / -1}
+  .q .mark{font-family:'Cinzel',serif;color:var(--acc);font-size:3.4rem;line-height:.6;height:26px;display:block}
+  .q p{color:#dad7d0;font-weight:300;font-style:italic;margin:14px 0 18px;font-size:.98rem}
+  .q .who{display:flex;align-items:center;gap:12px}
+  .q .who .seal{
+    width:30px;height:30px;border:1px solid var(--acc);color:var(--acc);border-radius:50%;
+    display:grid;place-items:center;font-family:'Cinzel',serif;font-weight:700;font-size:.8rem;flex:none;
+  }
+  .q .who b{font-family:'Cinzel',serif;font-weight:600;font-size:.92rem;letter-spacing:.04em}
+
+  /* ---------- VISIT (hours + map) ---------- */
+  .visit{background:var(--panel);border-top:1px solid var(--line)}
+  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .visit-info{padding:46px 42px;background:var(--panel-2)}
+  .visit-info h3{font-family:'Cinzel',serif;font-weight:700;font-size:1.5rem;margin-bottom:6px}
+  .visit-info .addr{color:var(--mute);font-weight:300;margin-bottom:30px;line-height:1.5}
+  .hours{list-style:none;border-top:1px solid var(--line)}
+  .hours li{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:12px 2px;border-bottom:1px solid rgba(234,179,8,.1);font-size:.92rem;
+  }
+  .hours li span:first-child{color:#cfccc5;letter-spacing:.04em}
+  .hours li span:last-child{color:var(--acc);font-variant-numeric:tabular-nums;font-size:.86rem}
+  .hours li.closed span:last-child{color:#6b6862;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem}
+  .hours li.today{background:rgba(234,179,8,.07);margin:0 -12px;padding-left:12px;padding-right:12px;border-radius:2px}
+  .hours li.today span:first-child{color:var(--ink);font-weight:600}
+  .visit-call{margin-top:30px}
+  .visit-map{position:relative;min-height:420px}
+  .visit-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.4) invert(.92) contrast(.85) hue-rotate(180deg)}
+  .findus{margin-top:24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+  .findus a{color:var(--acc);border-bottom:1px solid var(--line);padding-bottom:2px;transition:.2s}
+  .findus a:hover{border-color:var(--acc)}
+
+  /* ---------- CLOSER ---------- */
+  .closer{text-align:center;background:linear-gradient(180deg,var(--bg),#0c0b0a)}
+  .closer .crown-lg{width:54px;height:54px;color:var(--acc);margin:0 auto 22px;filter:drop-shadow(0 0 12px rgba(234,179,8,.4))}
+  .closer h2{font-family:'Cinzel',serif;font-weight:700;font-size:clamp(2rem,5vw,3.4rem);line-height:1.05;margin-bottom:18px}
+  .closer p{color:var(--mute);font-weight:300;max-width:520px;margin:0 auto 36px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#070707;border-top:1px solid var(--line);padding:56px 0 38px}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap}
+  .foot-brand .brand b{font-size:1.2rem}
+  .foot-brand p{color:var(--mute);font-size:.86rem;font-weight:300;margin-top:14px;max-width:320px}
+  .foot-col h4{font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin-bottom:14px}
+  .foot-col a,.foot-col p{display:block;color:var(--mute);font-size:.9rem;font-weight:300;margin-bottom:9px;transition:.2s}
+  .foot-col a:hover{color:var(--acc)}
+  .credit{
+    margin-top:42px;padding-top:24px;border-top:1px solid rgba(234,179,8,.12);
+    text-align:center;color:#6f6c66;font-size:.8rem;font-weight:300;
+  }
+  .credit a{color:var(--acc)}
+  .legal{text-align:center;color:#46443f;font-size:.72rem;margin-top:10px}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    nav.links{
+      position:fixed;top:var(--nav-h);left:0;right:0;
+      flex-direction:column;gap:0;background:rgba(8,8,8,.97);
+      border-bottom:1px solid var(--line);padding:8px 0;
+      transform:translateY(-130%);transition:transform .3s;
+    }
+    nav.links.open{transform:translateY(0)}
+    nav.links a{padding:15px 24px;width:100%;text-align:center}
+    nav.links .nav-call{margin:12px auto 14px}
+    .burger{display:block}
+    .about-grid{grid-template-columns:1fr;gap:42px}
+    .visit-grid{grid-template-columns:1fr}
+    .sticker-grid{grid-template-columns:1fr 1fr}
+    .quote-grid .q.span{grid-column:auto}
+  }
+  @media(max-width:620px){
+    section{padding:72px 0}
+    .sticker-grid{grid-template-columns:1fr}
+    .sticker:nth-child(even){transform:none}
+    .quote-grid{grid-template-columns:1fr}
+    .gallery-grid{grid-template-columns:repeat(2,1fr)}
+    .about-stats{gap:26px}
+    .visit-info{padding:36px 26px}
+  }
+</style>
+</head>
+<body>
+
+<!-- crown svg symbol reused -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ic-crown" viewBox="0 0 24 24">
+    <path fill="currentColor" d="M3 7l3.2 3L9 5l3 4 3-4 2.8 5L21 7l-1.4 11H4.4L3 7zm1.6 13.2h14.8v1.6H4.6v-1.6z"/>
+  </symbol>
+</svg>
+
+<!-- ===== NAV ===== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <svg class="crown" aria-hidden="true"><use href="#ic-crown"/></svg>
+      <span>
+        <b>BARBER KINGZ</b>
+        <span>Hesperia · CA</span>
+      </span>
+    </a>
+    <nav class="links" id="menu">
+      <a href="#about">The Shop</a>
+      <a href="#services">Services</a>
+      <a href="#says">What People Say</a>
+      <a href="#visit">Visit</a>
+      <a class="nav-call" href="tel:+17609982799">Call (760) 998-2799</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-bg"><img src="./photos/01.jpg" alt="Barber Kingz illuminated storefront sign" /></div>
+  <div class="wrap hero-content">
+    <div class="eyebrow">Barbershop · Hesperia, California</div>
+    <h1>
+      Barber<br>Kingz
+      <span class="of">Where Every Chair Is A Throne</span>
+    </h1>
+    <div class="hero-rule"><span></span><i class="dot"></i><span></span></div>
+    <p class="hero-sub">A welcoming High Desert barbershop where skilled barbers, good music, and a clean cut have made us a local favorite. Walk in. Sit back. Leave looking like royalty.</p>
+    <div class="cta-row">
+      <a class="btn-gold" href="tel:+17609982799">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+        Call Now
+      </a>
+      <a class="btn-ghost" href="#services">View Services</a>
+    </div>
+  </div>
+  <div class="wrap hero-tags" style="position:relative">
+    <div><i>★</i> Open Late — Til 7 PM</div>
+    <div><i>★</i> All Forms of Payment</div>
+    <div><i>★</i> Kids &amp; Families Welcome</div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <span class="eyebrow">The Shop</span>
+      <h2>A hidden gem the<br>whole High Desert<br>came to claim.</h2>
+      <p>Step inside Barber Kingz and the difference is immediate — a clean, modern shop, trendy music in the background, and a crew that greets every person who walks through the door. From fresh fades to a first toddler haircut, our barbers take the time to get it right.</p>
+      <p>We're open late, take every form of payment, and treat first-timers and regulars like family. It's the kind of welcome that turns a one-time walk-in into your barbershop for good.</p>
+      <div class="about-stats">
+        <div class="stat"><b>6 Days</b><span>Open A Week</span></div>
+        <div class="stat"><b>Til 7PM</b><span>Late Weeknights</span></div>
+        <div class="stat"><b>All Ages</b><span>Kids Welcome</span></div>
+      </div>
+    </div>
+    <div class="about-photos">
+      <div class="frame tall"><img src="./photos/04.jpg" alt="The owners of Barber Kingz at the shop entrance" /></div>
+      <div class="frame wide"><img src="./photos/03.jpg" alt="Inside Barber Kingz — barbers at work under ring lights" /></div>
+      <div class="frame wide"><img src="./photos/06.jpg" alt="Barbers cutting hair at Barber Kingz" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICES ===== -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The Chair Awaits</span>
+      <h2>Cuts Fit For A King</h2>
+      <p>Skilled, patient barbers and a clean line every time — for the whole family.</p>
+    </div>
+    <div class="sticker-grid">
+      <div class="sticker">
+        <div class="stamp"><svg viewBox="0 0 24 24"><use href="#ic-crown"/></svg></div>
+        <div class="no">No. 01</div>
+        <h3>Classic Cuts &amp; Fades</h3>
+        <p>Skin fades, tapers, scissor work and clean line-ups — dialed in to exactly what you ask for, finished sharp.</p>
+      </div>
+      <div class="sticker">
+        <div class="stamp"><svg viewBox="0 0 24 24"><use href="#ic-crown"/></svg></div>
+        <div class="no">No. 02</div>
+        <h3>Beard &amp; Line-Ups</h3>
+        <p>Beard shaping, edge-ups and detail work to frame the cut and keep you looking crisp between visits.</p>
+      </div>
+      <div class="sticker">
+        <div class="stamp"><svg viewBox="0 0 24 24"><use href="#ic-crown"/></svg></div>
+        <div class="no">No. 03</div>
+        <h3>Kids &amp; First Haircuts</h3>
+        <p>Patient barbers who are great with wiggling little ones — making first haircuts an easy, happy experience.</p>
+      </div>
+      <div class="sticker">
+        <div class="stamp"><svg viewBox="0 0 24 24"><use href="#ic-crown"/></svg></div>
+        <div class="no">No. 04</div>
+        <h3>The Full Sit-Down</h3>
+        <p>Cut, line-up and finish — the complete chair experience, good music included, no rush on the details.</p>
+      </div>
+      <div class="sticker">
+        <div class="stamp"><svg viewBox="0 0 24 24"><use href="#ic-crown"/></svg></div>
+        <div class="no">No. 05</div>
+        <h3>Walk-Ins Welcome</h3>
+        <p>Open late on weeknights and every weekend — swing by when it works for you. No appointment required.</p>
+      </div>
+      <div class="sticker">
+        <div class="stamp"><svg viewBox="0 0 24 24"><use href="#ic-crown"/></svg></div>
+        <div class="no">No. 06</div>
+        <h3>Any Way You Pay</h3>
+        <p>Cash, card, tap — we take all forms of payment, so getting a fresh cut is never a hassle.</p>
+      </div>
+    </div>
+    <p class="services-note">Not sure what you need? <b>Just ask when you sit down</b> — our barbers will sort you out. Call <a class="gold" href="tel:+17609982799">(760) 998-2799</a>.</p>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section class="gallery" aria-label="Photos of Barber Kingz">
+  <div class="gallery-grid">
+    <a href="#visit"><img src="./photos/02.jpg" alt="Barber Kingz community event with families" /></a>
+    <a href="#visit"><img src="./photos/05.jpg" alt="Barber Kingz storefront exterior in Hesperia" /></a>
+    <a href="#visit"><img src="./photos/03.jpg" alt="Interior of Barber Kingz barbershop" /></a>
+    <a href="#visit"><img src="./photos/06.jpg" alt="Barbers at work inside Barber Kingz" /></a>
+  </div>
+</section>
+
+<!-- ===== WHAT PEOPLE SAY ===== -->
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">In Their Words</span>
+      <h2>What People Say</h2>
+      <p>From neighbors who found their barber and never looked back.</p>
+    </div>
+    <div class="quote-grid">
+      <div class="q span">
+        <span class="mark">&ldquo;</span>
+        <p>The barbershop was extremely nice inside and playing trendy music, and all the barbers greeted us very nicely. Most importantly, the barber did an excellent job on my son's hair. My son was very happy with his haircut.</p>
+        <div class="who"><span class="seal">R</span><b>Regina R.</b></div>
+      </div>
+      <div class="q">
+        <span class="mark">&ldquo;</span>
+        <p>1st time here &amp; brought my toddler to get a haircut. Raina did a beautiful job! She was extremely patient, asking me questions, making sure she was cutting it the way I wanted. Thank you Raina!</p>
+        <div class="who"><span class="seal">C</span><b>Cristalina A.</b></div>
+      </div>
+      <div class="q">
+        <span class="mark">&ldquo;</span>
+        <p>Best barbershop in town. Great kind people and great stories too. Highly recommended! They will take care of you and your family.</p>
+        <div class="who"><span class="seal">I</span><b>Isaac M.</b></div>
+      </div>
+      <div class="q">
+        <span class="mark">&ldquo;</span>
+        <p>Sean gave this little dude exactly what he wanted. He was very patient with a wiggling child. All the barbers made it a very welcoming spot. We will for sure be coming back.</p>
+        <div class="who"><span class="seal">D</span><b>Darci G.</b></div>
+      </div>
+      <div class="q">
+        <span class="mark">&ldquo;</span>
+        <p>Found this hidden gem! Their prices were reasonable. Owner and employees were very welcoming, great music in the background. The men in there really know how to do hair.</p>
+        <div class="who"><span class="seal">S</span><b>Shanesha L.</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISIT ===== -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Find The Throne</span>
+      <h2>Hours &amp; Location</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-info">
+        <h3>Barber Kingz</h3>
+        <p class="addr">16330 Walnut St #6<br>Hesperia, CA 92345</p>
+        <ul class="hours" id="hours">
+          <li data-day="1" class="closed"><span>Monday</span><span>Closed</span></li>
+          <li data-day="2"><span>Tuesday</span><span>9:30 AM – 7:00 PM</span></li>
+          <li data-day="3"><span>Wednesday</span><span>9:30 AM – 7:00 PM</span></li>
+          <li data-day="4"><span>Thursday</span><span>9:30 AM – 7:00 PM</span></li>
+          <li data-day="5"><span>Friday</span><span>9:30 AM – 7:00 PM</span></li>
+          <li data-day="6"><span>Saturday</span><span>8:00 AM – 6:00 PM</span></li>
+          <li data-day="0"><span>Sunday</span><span>9:30 AM – 2:00 PM</span></li>
+        </ul>
+        <div class="visit-call">
+          <a class="btn-gold" href="tel:+17609982799">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+            Call Now
+          </a>
+        </div>
+        <div class="findus">
+          <span>Find us on</span>
+          <a href="https://maps.google.com/?cid=13530943001492963731" target="_blank" rel="noopener">Google</a>
+        </div>
+      </div>
+      <div class="visit-map">
+        <iframe
+          title="Map to Barber Kingz, 16330 Walnut St #6, Hesperia, CA 92345"
+          src="https://www.google.com/maps?q=16330%20Walnut%20St%20%236%2C%20Hesperia%2C%20CA%2092345&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLOSER ===== -->
+<section class="closer">
+  <div class="wrap">
+    <svg class="crown-lg" aria-hidden="true"><use href="#ic-crown"/></svg>
+    <h2>Your Crown Is Waiting</h2>
+    <p>No appointment, no fuss — walk in, get a clean cut, and leave looking like royalty. We'll take care of you and your family.</p>
+    <a class="btn-gold" href="tel:+17609982799">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z"/></svg>
+      Call (760) 998-2799
+    </a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">
+          <svg class="crown" aria-hidden="true"><use href="#ic-crown"/></svg>
+          <span><b>BARBER KINGZ</b><span>Hesperia · CA</span></span>
+        </div>
+        <p>A welcoming, highly-rated barbershop in the High Desert. Fresh cuts for the whole family — walk-ins welcome.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Visit</h4>
+        <p>16330 Walnut St #6</p>
+        <p>Hesperia, CA 92345</p>
+        <a href="https://maps.google.com/?cid=13530943001492963731" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="tel:+17609982799">(760) 998-2799</a>
+        <p>Tue–Fri · 9:30–7 · Sat 8–6 · Sun 9:30–2</p>
+      </div>
+    </div>
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+    <p class="legal">© <span id="yr"></span> Barber Kingz · Hesperia, California</p>
+  </div>
+</footer>
+
+<script>
+  // mobile nav
+  var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',function(){menu.classList.toggle('open')});
+  menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('open')})});
+  // highlight today's hours
+  var today=new Date().getDay();
+  var row=document.querySelector('#hours li[data-day="'+today+'"]');
+  if(row) row.classList.add('today');
+  // year
+  document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>

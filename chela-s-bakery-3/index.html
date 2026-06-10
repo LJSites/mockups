@@ -1,0 +1,653 @@
+<!-- bakery · industrial-poster · hero-layout 2 · svc-layout 0 · Anton/Roboto -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chela's Bakery #3 — Riverside's Panadería</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-padding-top:64px}
+:root{
+  --acc:#d97706;
+  --bg:#1c1917;
+  --bg2:#292524;
+  --bg3:#3c3835;
+  --txt:#e7e5e4;
+  --txt-mute:#a8a29e;
+  --nav-h:64px;
+}
+body{font-family:'Roboto',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
+.brand{font-family:'Anton',serif;letter-spacing:.04em;text-transform:uppercase}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  height:var(--nav-h);
+  background:rgba(28,25,23,.95);
+  backdrop-filter:blur(8px);
+  border-bottom:2px solid var(--acc);
+  display:flex;align-items:center;
+  padding:0 1.5rem;
+  gap:1rem;
+}
+.nav-logo{
+  font-family:'Anton',serif;
+  font-size:1.35rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--acc);
+  text-decoration:none;
+  flex-shrink:0;
+}
+.nav-logo span{color:var(--txt)}
+nav ul{
+  display:flex;gap:.25rem;
+  list-style:none;
+  margin-left:auto;
+  flex-wrap:wrap;
+}
+nav ul a{
+  display:block;
+  padding:.35rem .7rem;
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--txt-mute);
+  text-decoration:none;
+  border-bottom:2px solid transparent;
+  transition:color .2s,border-color .2s;
+}
+nav ul a:hover{color:var(--acc);border-color:var(--acc)}
+.nav-cta{
+  margin-left:.75rem;
+  background:var(--acc);
+  color:#1c1917 !important;
+  padding:.4rem .9rem !important;
+  border-bottom:none !important;
+  font-weight:700;
+  transition:background .2s !important;
+}
+.nav-cta:hover{background:#b45309 !important}
+
+/* HERO — full-bleed */
+#hero{
+  position:relative;
+  min-height:90vh;
+  display:flex;align-items:flex-end;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('./photos/01.jpg');
+  background-size:cover;background-position:center 30%;
+  filter:brightness(.45) contrast(1.1) saturate(.8);
+}
+.hero-noise{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to top, rgba(28,25,23,1) 0%, rgba(28,25,23,.4) 45%, transparent 70%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,.03) 2px,
+      rgba(0,0,0,.03) 4px
+    );
+}
+.hero-content{
+  position:relative;
+  padding:4rem 2rem 4rem;
+  max-width:860px;
+}
+.hero-eyebrow{
+  display:inline-block;
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--acc);
+  border:1px solid var(--acc);
+  padding:.3rem .75rem;
+  margin-bottom:1.25rem;
+}
+.hero-h1{
+  font-family:'Anton',serif;
+  font-size:clamp(3.2rem,10vw,7rem);
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  line-height:.95;
+  color:#fff;
+  margin-bottom:1.25rem;
+}
+.hero-h1 em{color:var(--acc);font-style:normal}
+.hero-sub{
+  font-size:1.05rem;
+  font-weight:300;
+  color:var(--txt);
+  max-width:480px;
+  margin-bottom:2.25rem;
+  line-height:1.55;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  display:inline-block;
+  background:var(--acc);
+  color:#1c1917;
+  font-weight:700;
+  font-size:.85rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:.85rem 2rem;
+  text-decoration:none;
+  transition:background .2s,transform .15s;
+}
+.btn-primary:hover{background:#b45309;transform:translateY(-2px)}
+.btn-outline{
+  display:inline-block;
+  border:2px solid var(--txt-mute);
+  color:var(--txt);
+  font-weight:700;
+  font-size:.85rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:.85rem 2rem;
+  text-decoration:none;
+  transition:border-color .2s,color .2s,transform .15s;
+}
+.btn-outline:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px)}
+
+/* STRIP */
+.strip{
+  background:var(--acc);
+  color:#1c1917;
+  padding:.6rem 1.5rem;
+  display:flex;gap:2rem;align-items:center;
+  flex-wrap:wrap;
+  overflow:hidden;
+}
+.strip-item{
+  font-family:'Anton',serif;
+  font-size:.9rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.strip-sep{color:rgba(28,25,23,.4)}
+
+/* SECTION WRAPPER */
+section{padding:5rem 1.5rem}
+.container{max-width:1040px;margin:0 auto}
+.sec-label{
+  font-size:.7rem;
+  font-weight:700;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--acc);
+  margin-bottom:.75rem;
+  display:block;
+}
+.sec-h2{
+  font-family:'Anton',serif;
+  font-size:clamp(2rem,5vw,3.4rem);
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  line-height:1;
+  color:#fff;
+  margin-bottom:1.5rem;
+}
+.sec-rule{
+  width:3rem;height:3px;
+  background:var(--acc);
+  margin-bottom:2rem;
+}
+
+/* ABOUT */
+#about{background:var(--bg2)}
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:3rem;
+  align-items:center;
+}
+@media(min-width:700px){
+  .about-grid{grid-template-columns:1fr 1fr}
+}
+.about-img{
+  width:100%;aspect-ratio:4/3;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  border-left:4px solid var(--acc);
+}
+.about-text p{
+  color:var(--txt);
+  font-size:1rem;
+  line-height:1.75;
+  margin-bottom:1rem;
+}
+.about-text p:last-child{margin-bottom:0}
+.about-highlight{
+  border-left:3px solid var(--acc);
+  padding-left:1.25rem;
+  font-style:italic;
+  font-size:1.05rem;
+  color:var(--txt-mute);
+  margin-top:1.5rem;
+}
+
+/* MENU / OFFERINGS */
+#menu{background:var(--bg)}
+.cards-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:1.25rem;
+}
+.card{
+  background:var(--bg2);
+  border-top:3px solid var(--acc);
+  padding:1.5rem;
+  transition:transform .2s;
+}
+.card:hover{transform:translateY(-4px)}
+.card-photo{
+  width:100%;aspect-ratio:4/3;
+  object-fit:cover;
+  margin-bottom:1rem;
+  display:block;
+}
+.card-name{
+  font-family:'Anton',serif;
+  font-size:1.15rem;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:#fff;
+  margin-bottom:.4rem;
+}
+.card-desc{
+  font-size:.85rem;
+  color:var(--txt-mute);
+  line-height:1.5;
+}
+
+/* PHOTOS BAND */
+#gallery{background:var(--bg3)}
+.photo-band{
+  display:flex;
+  gap:4px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.photo-band::-webkit-scrollbar{display:none}
+.photo-band img{
+  flex-shrink:0;
+  width:280px;height:280px;
+  object-fit:cover;
+  scroll-snap-align:start;
+  transition:filter .25s;
+}
+.photo-band img:hover{filter:brightness(1.15)}
+@media(min-width:700px){
+  .photo-band img{width:340px;height:340px}
+}
+
+/* TESTIMONIES */
+#testimonies{background:var(--bg2)}
+.testi-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1.5rem;
+}
+@media(min-width:700px){
+  .testi-grid{grid-template-columns:1fr 1fr}
+}
+.testi-card{
+  background:var(--bg);
+  border-left:4px solid var(--acc);
+  padding:1.75rem 1.5rem;
+}
+.testi-quote{
+  font-size:.97rem;
+  color:var(--txt);
+  line-height:1.7;
+  margin-bottom:1.25rem;
+  font-style:italic;
+}
+.testi-quote::before{
+  content:'\201C';
+  font-family:'Anton',serif;
+  font-size:2.5rem;
+  color:var(--acc);
+  line-height:.6;
+  display:block;
+  margin-bottom:.5rem;
+}
+.testi-attr{
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--acc);
+}
+
+/* HOURS + LOCATION */
+#visit{background:var(--bg)}
+.visit-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:3rem;
+}
+@media(min-width:700px){
+  .visit-grid{grid-template-columns:1fr 1fr}
+}
+.hours-table{width:100%;border-collapse:collapse}
+.hours-table tr{border-bottom:1px solid var(--bg3)}
+.hours-table td{
+  padding:.65rem .25rem;
+  font-size:.9rem;
+  color:var(--txt);
+}
+.hours-table td:first-child{
+  font-weight:700;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  font-size:.78rem;
+  color:var(--txt-mute);
+  width:46%;
+}
+.hours-note{
+  margin-top:1rem;
+  font-size:.78rem;
+  color:var(--txt-mute);
+}
+.map-wrap{
+  width:100%;
+  aspect-ratio:4/3;
+  overflow:hidden;
+  border:0;
+}
+.map-wrap iframe{
+  width:100%;height:100%;
+  border:0;display:block;
+  filter:grayscale(1) invert(0) contrast(1.05);
+}
+.contact-block{margin-top:2rem}
+.contact-line{
+  display:flex;align-items:baseline;gap:.75rem;
+  margin-bottom:.75rem;
+  font-size:.95rem;
+  color:var(--txt);
+}
+.contact-line strong{
+  font-size:.68rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--acc);
+  font-weight:700;
+  min-width:80px;
+  flex-shrink:0;
+}
+.contact-line a{color:var(--txt);text-decoration:none;transition:color .2s}
+.contact-line a:hover{color:var(--acc)}
+
+/* CTA BAND */
+.cta-band{
+  background:var(--acc);
+  padding:3.5rem 1.5rem;
+  text-align:center;
+}
+.cta-band .sec-h2{color:#1c1917;margin-bottom:1rem}
+.cta-band p{
+  color:rgba(28,25,23,.7);
+  font-size:1rem;
+  margin-bottom:2rem;
+}
+.btn-dark{
+  display:inline-block;
+  background:#1c1917;
+  color:var(--acc);
+  font-weight:700;
+  font-size:.85rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  padding:.9rem 2.25rem;
+  text-decoration:none;
+  transition:background .2s;
+}
+.btn-dark:hover{background:#3c3835}
+
+/* FOOTER */
+footer{
+  background:var(--bg);
+  border-top:1px solid var(--bg3);
+  padding:2.5rem 1.5rem;
+}
+.footer-inner{
+  max-width:1040px;margin:0 auto;
+  display:flex;flex-direction:column;gap:1.25rem;
+}
+@media(min-width:700px){
+  .footer-inner{flex-direction:row;align-items:center;justify-content:space-between}
+}
+.footer-brand{
+  font-family:'Anton',serif;
+  font-size:1.3rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  color:var(--acc);
+}
+.footer-brand span{color:var(--txt-mute)}
+.footer-links{display:flex;gap:1rem;flex-wrap:wrap}
+.footer-links a{
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--txt-mute);
+  text-decoration:none;
+  transition:color .2s;
+}
+.footer-links a:hover{color:var(--acc)}
+.footer-credit{
+  font-size:.7rem;
+  color:var(--txt-mute);
+  max-width:1040px;
+  margin:1rem auto 0;
+  border-top:1px solid var(--bg3);
+  padding-top:1rem;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo brand">Chela's <span>#3</span></a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="tel:+19515886272" class="nav-cta">Call Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Riverside's Panadería · Est. Arlington</div>
+    <h1 class="hero-h1 brand">Baked <em>fresh</em><br>every day</h1>
+    <p class="hero-sub">Handmade pan dulce, tortillas, and champurrado — made from scratch in the heart of Riverside. Open late so you never miss your pan.</p>
+    <div class="hero-actions">
+      <a href="tel:+19515886272" class="btn-primary">Call Now</a>
+      <a href="https://www.google.com/maps?q=10295+Arlington+Ave+%23+B%2C+Riverside%2C+CA+92503&z=15" target="_blank" rel="noopener" class="btn-outline">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<div class="strip">
+  <span class="strip-item">Open Daily</span>
+  <span class="strip-sep">|</span>
+  <span class="strip-item">Mon–Fri 7AM–8PM</span>
+  <span class="strip-sep">|</span>
+  <span class="strip-item">Sat–Sun 6:30AM–7PM</span>
+  <span class="strip-sep">|</span>
+  <span class="strip-item">(951) 588-6272</span>
+  <span class="strip-sep">|</span>
+  <span class="strip-item">Cash &amp; Card Accepted</span>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <img class="about-img" src="./photos/02.jpg" alt="Inside Chela's Bakery #3">
+      <div class="about-text">
+        <span class="sec-label">Our Story</span>
+        <h2 class="sec-h2">A Panadería<br>You Can Trust</h2>
+        <div class="sec-rule"></div>
+        <p>Chela's Bakery #3 brings the warmth of a traditional Mexican panadería to Arlington Avenue in Riverside. We're the spot for families who know that a good pan dulce starts before sunrise — our bakers are in early every morning so the shelves are full of fresh bread when you walk in.</p>
+        <p>We keep things simple and honest: real ingredients, fair prices, and a clean, organized shop so every customer feels good about what they're bringing home. We carry pan dulce, flour tortillas, and serve champurrado — the good stuff your abuela made.</p>
+        <p class="about-highlight">Open late every weekday until 8PM, and weekends until 7PM — because good pan shouldn't have a curfew.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU CARDS -->
+<section id="menu">
+  <div class="container">
+    <span class="sec-label">What We Make</span>
+    <h2 class="sec-h2">Fresh From<br>The Oven</h2>
+    <div class="sec-rule"></div>
+    <div class="cards-grid">
+      <div class="card">
+        <img class="card-photo" src="./photos/03.jpg" alt="Pan Dulce">
+        <div class="card-name">Pan Dulce</div>
+        <p class="card-desc">Conchas, cuernos, polvorones, and more — a full rotating selection baked fresh each morning. Always soft, always worth it.</p>
+      </div>
+      <div class="card">
+        <img class="card-photo" src="./photos/04.jpg" alt="Flour Tortillas">
+        <div class="card-name">Tortillas</div>
+        <p class="card-desc">House-made flour tortillas, soft and pliable — perfect alongside any meal or straight off the comal. Corn tortillas vary by availability.</p>
+      </div>
+      <div class="card">
+        <img class="card-photo" src="./photos/05.jpg" alt="Champurrado">
+        <div class="card-name">Champurrado</div>
+        <p class="card-desc">Thick, rich Mexican hot chocolate made in-house. The perfect companion to any pan dulce on a Riverside morning.</p>
+      </div>
+      <div class="card">
+        <img class="card-photo" src="./photos/06.jpg" alt="Specialty Breads">
+        <div class="card-name">Specialty Breads</div>
+        <p class="card-desc">Seasonal and rotating specialty loaves — ask in-store what's fresh today. We always have something new coming out of the oven.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO BAND -->
+<section id="gallery" style="padding:3rem 0">
+  <div style="padding:0 1.5rem 1.5rem">
+    <span class="sec-label">The Bakery</span>
+  </div>
+  <div class="photo-band">
+    <img src="./photos/01.jpg" alt="Chela's Bakery storefront">
+    <img src="./photos/02.jpg" alt="Inside the bakery">
+    <img src="./photos/03.jpg" alt="Pan dulce selection">
+    <img src="./photos/04.jpg" alt="Fresh tortillas">
+    <img src="./photos/05.jpg" alt="Champurrado">
+    <img src="./photos/06.jpg" alt="Specialty baked goods">
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="container">
+    <span class="sec-label">Customer Testimonies</span>
+    <h2 class="sec-h2">What People<br>Are Saying</h2>
+    <div class="sec-rule"></div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="testi-quote">This location #3 is in a great spot. I like that they stay open till 7 on the weekends. Not many panaderías stay open this late. This place is well kept, organized, and clean. This made me feel comfortable buying for the family. Great quality, so the bread is really good.</p>
+        <div class="testi-attr">Sam R.</div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">Great quality — the bread is really good. They take cash and card with a $1 processing fee. I also overheard that they serve champurrado. I'll definitely be trying it on my next visit. There was a bit of a line at the time of my visit, but it moved pretty fast.</p>
+        <div class="testi-attr">Rodrigo I.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2 class="sec-h2 brand">Ready For<br>Fresh Pan?</h2>
+  <p>Stop by today — we're on Arlington Ave in Riverside, open late every day.</p>
+  <a href="tel:+19515886272" class="btn-dark">Call (951) 588-6272</a>
+</div>
+
+<!-- VISIT / HOURS / MAP -->
+<section id="visit">
+  <div class="container">
+    <span class="sec-label">Hours &amp; Location</span>
+    <h2 class="sec-h2">Come Find Us</h2>
+    <div class="sec-rule"></div>
+    <div class="visit-grid">
+      <div>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>Monday</td><td>7:00 AM – 8:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>7:00 AM – 8:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>7:00 AM – 8:00 PM</td></tr>
+            <tr><td>Thursday</td><td>7:00 AM – 8:00 PM</td></tr>
+            <tr><td>Friday</td><td>7:00 AM – 8:00 PM</td></tr>
+            <tr><td>Saturday</td><td>6:30 AM – 7:00 PM</td></tr>
+            <tr><td>Sunday</td><td>6:30 AM – 7:00 PM</td></tr>
+          </tbody>
+        </table>
+        <p class="hours-note">$1 processing fee for card payments.</p>
+        <div class="contact-block">
+          <div class="contact-line"><strong>Phone</strong><a href="tel:+19515886272">(951) 588-6272</a></div>
+          <div class="contact-line"><strong>Address</strong><span>10295 Arlington Ave #B, Riverside, CA 92503</span></div>
+          <div class="contact-line"><strong>Google</strong><a href="https://maps.google.com/?cid=12128102505880515535&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">View on Google Maps</a></div>
+        </div>
+      </div>
+      <div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=10295+Arlington+Ave+%23+B%2C+Riverside%2C+CA+92503&z=15&output=embed"
+            title="Chela's Bakery #3 location"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand brand">Chela's <span>Bakery #3</span></div>
+    <div class="footer-links">
+      <a href="https://maps.google.com/?cid=12128102505880515535&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+      <a href="tel:+19515886272">Call Us</a>
+      <a href="#visit">Hours</a>
+    </div>
+  </div>
+  <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+</footer>
+
+</body>
+</html>

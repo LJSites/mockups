@@ -1,0 +1,693 @@
+<!-- auto · industrial-poster · hero-layout 2 · svc-layout 0 · Anton/Roboto -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joe's Auto Repair — Manteca, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --acc:#d97706;
+  --bg:#1c1917;
+  --bg2:#292524;
+  --bg3:#3c3836;
+  --text:#e7e5e4;
+  --muted:#a8a29e;
+  --nav-h:64px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:'Roboto',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.6}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+.nav{
+  position:sticky;top:0;z-index:100;
+  height:var(--nav-h);
+  background:var(--bg);
+  border-bottom:2px solid var(--acc);
+  display:flex;align-items:center;
+  padding:0 1.5rem;
+  gap:1.5rem;
+}
+.nav-logo{font-family:'Anton',serif;font-size:1.35rem;letter-spacing:.05em;color:var(--acc);flex:1}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-family:'Roboto',sans-serif;font-weight:700;font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{
+  display:inline-block;
+  padding:.45rem 1.1rem;
+  background:var(--acc);
+  color:#1c1917;
+  font-family:'Roboto',sans-serif;
+  font-weight:700;
+  font-size:.8rem;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  transition:background .2s;
+}
+.nav-cta:hover{background:#f59e0b}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text)}
+.mobile-menu{display:none;flex-direction:column;gap:0;background:var(--bg);border-bottom:2px solid var(--acc)}
+.mobile-menu a{padding:.9rem 1.5rem;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);border-bottom:1px solid var(--bg3);transition:color .2s}
+.mobile-menu a:hover{color:var(--acc)}
+.mobile-menu.open{display:flex}
+
+/* ── HERO ── */
+.hero{
+  position:relative;
+  min-height:calc(100vh - var(--nav-h));
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+  background:var(--bg);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,.03) 39px,
+      rgba(255,255,255,.03) 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,.03) 39px,
+      rgba(255,255,255,.03) 40px
+    );
+}
+.hero-stripe{
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:8px;
+  background:repeating-linear-gradient(
+    90deg,
+    var(--acc) 0,var(--acc) 32px,
+    #1c1917 32px,#1c1917 40px
+  );
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:4rem 1.5rem;
+  max-width:900px;
+}
+.hero-eyebrow{
+  display:inline-block;
+  font-family:'Roboto',sans-serif;
+  font-weight:700;
+  font-size:.75rem;
+  text-transform:uppercase;
+  letter-spacing:.25em;
+  color:var(--acc);
+  border:1px solid var(--acc);
+  padding:.3rem .9rem;
+  margin-bottom:2rem;
+}
+.hero h1{
+  font-family:'Anton',serif;
+  font-size:clamp(3rem,12vw,8rem);
+  line-height:.95;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  color:#ffffff;
+  margin-bottom:1.5rem;
+}
+.hero h1 em{
+  font-style:normal;
+  color:var(--acc);
+  display:block;
+}
+.hero-sub{
+  font-size:1.05rem;
+  color:var(--muted);
+  max-width:540px;
+  margin:0 auto 2.5rem;
+  font-weight:400;
+}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{
+  display:inline-block;
+  padding:.85rem 2.2rem;
+  background:var(--acc);
+  color:#1c1917;
+  font-family:'Roboto',sans-serif;
+  font-weight:700;
+  font-size:.9rem;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  transition:background .2s,transform .1s;
+}
+.btn-primary:hover{background:#f59e0b;transform:translateY(-1px)}
+.btn-outline{
+  display:inline-block;
+  padding:.85rem 2.2rem;
+  border:2px solid var(--muted);
+  color:var(--text);
+  font-family:'Roboto',sans-serif;
+  font-weight:700;
+  font-size:.9rem;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  transition:border-color .2s,color .2s,transform .1s;
+}
+.btn-outline:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-1px)}
+
+/* ── STATS BAND ── */
+.stats{
+  background:var(--acc);
+  padding:1.5rem 1.5rem;
+  display:flex;
+  justify-content:center;
+  gap:3rem;
+  flex-wrap:wrap;
+}
+.stat{text-align:center}
+.stat-n{
+  font-family:'Anton',serif;
+  font-size:2.2rem;
+  color:#1c1917;
+  line-height:1;
+  display:block;
+}
+.stat-l{
+  font-family:'Roboto',sans-serif;
+  font-weight:700;
+  font-size:.7rem;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  color:#44403c;
+}
+
+/* ── SECTION BASE ── */
+section{padding:5rem 1.5rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{
+  display:inline-block;
+  font-family:'Roboto',sans-serif;
+  font-weight:700;
+  font-size:.7rem;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  color:var(--acc);
+  border-left:3px solid var(--acc);
+  padding-left:.6rem;
+  margin-bottom:1.2rem;
+}
+.section-title{
+  font-family:'Anton',serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  text-transform:uppercase;
+  line-height:1;
+  letter-spacing:.02em;
+  color:#fff;
+  margin-bottom:1rem;
+}
+
+/* ── ABOUT ── */
+.about{background:var(--bg2)}
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  align-items:start;
+}
+.about-text p{
+  color:var(--muted);
+  margin-bottom:1.2rem;
+  font-size:1rem;
+  line-height:1.75;
+}
+.about-text p strong{color:var(--text)}
+.about-panel{
+  background:var(--bg3);
+  padding:2.5rem;
+  border-top:4px solid var(--acc);
+}
+.about-panel-title{
+  font-family:'Anton',serif;
+  font-size:1.5rem;
+  text-transform:uppercase;
+  color:#fff;
+  margin-bottom:1.5rem;
+  letter-spacing:.04em;
+}
+.badge-row{display:flex;flex-direction:column;gap:.9rem}
+.badge{
+  display:flex;align-items:center;gap:.85rem;
+  font-size:.9rem;
+  font-weight:500;
+  color:var(--text);
+}
+.badge::before{
+  content:'';
+  display:block;
+  width:10px;height:10px;
+  background:var(--acc);
+  flex-shrink:0;
+  transform:rotate(45deg);
+}
+
+/* ── SERVICES ── */
+.services{background:var(--bg)}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1.5rem;
+  margin-top:3rem;
+}
+.svc-card{
+  background:var(--bg2);
+  border-top:3px solid var(--bg3);
+  padding:2rem 1.75rem;
+  transition:border-color .2s,transform .15s;
+  cursor:default;
+}
+.svc-card:hover{border-color:var(--acc);transform:translateY(-3px)}
+.svc-name{
+  font-family:'Anton',serif;
+  font-size:1.3rem;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  color:#fff;
+  margin-bottom:.6rem;
+}
+.svc-desc{font-size:.88rem;color:var(--muted);line-height:1.65}
+
+/* ── TESTIMONIES ── */
+.testimonies{background:var(--bg2)}
+.test-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:1.5rem;
+  margin-top:3rem;
+}
+.test-card{
+  background:var(--bg);
+  padding:2rem;
+  border-left:4px solid var(--acc);
+  position:relative;
+}
+.test-quote{
+  font-size:.95rem;
+  color:var(--text);
+  line-height:1.75;
+  font-style:italic;
+  margin-bottom:1.2rem;
+}
+.test-quote::before{
+  content:'\201C';
+  font-family:'Anton',serif;
+  font-size:3.5rem;
+  line-height:.6;
+  color:var(--acc);
+  display:block;
+  margin-bottom:.5rem;
+}
+.test-attr{
+  font-family:'Roboto',sans-serif;
+  font-weight:700;
+  font-size:.78rem;
+  text-transform:uppercase;
+  letter-spacing:.14em;
+  color:var(--acc);
+}
+
+/* ── HOURS & MAP ── */
+.location{background:var(--bg)}
+.location-grid{
+  display:grid;
+  grid-template-columns:1fr 1.6fr;
+  gap:3rem;
+  align-items:start;
+  margin-top:3rem;
+}
+.hours-table{width:100%;border-collapse:collapse}
+.hours-table tr{border-bottom:1px solid var(--bg3)}
+.hours-table td{padding:.65rem 0;font-size:.9rem;color:var(--muted)}
+.hours-table td:first-child{font-weight:700;color:var(--text);text-transform:uppercase;font-size:.8rem;letter-spacing:.06em}
+.hours-table tr.today td{color:var(--acc)}
+.hours-closed{color:var(--bg3) !important}
+.address-block{margin-top:2rem}
+.address-block p{color:var(--muted);font-size:.9rem;line-height:1.7}
+.map-wrap{
+  position:relative;
+  padding-bottom:62%;
+  height:0;
+  border:2px solid var(--bg3);
+}
+.map-wrap iframe{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  border:0;
+  filter:grayscale(1) invert(1) contrast(.85);
+}
+.map-caption{
+  margin-top:.6rem;
+  font-size:.78rem;
+  color:var(--muted);
+  text-align:right;
+}
+
+/* ── CTA BAND ── */
+.cta-band{
+  background:var(--acc);
+  padding:4rem 1.5rem;
+  text-align:center;
+}
+.cta-band h2{
+  font-family:'Anton',serif;
+  font-size:clamp(2rem,6vw,4rem);
+  text-transform:uppercase;
+  color:#1c1917;
+  line-height:1;
+  margin-bottom:1rem;
+}
+.cta-band p{
+  color:#44403c;
+  font-size:1rem;
+  margin-bottom:2rem;
+}
+.btn-dark{
+  display:inline-block;
+  padding:.85rem 2.4rem;
+  background:#1c1917;
+  color:var(--acc);
+  font-family:'Roboto',sans-serif;
+  font-weight:700;
+  font-size:.9rem;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  transition:background .2s;
+}
+.btn-dark:hover{background:#292524}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--bg2);
+  border-top:2px solid var(--bg3);
+  padding:3rem 1.5rem;
+}
+.footer-inner{
+  max-width:1100px;
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:2rem;
+  flex-wrap:wrap;
+}
+.footer-brand .brand{
+  font-size:1.6rem;
+  color:var(--acc);
+  display:block;
+  margin-bottom:.4rem;
+}
+.footer-brand p{font-size:.82rem;color:var(--muted)}
+.footer-links{display:flex;flex-direction:column;gap:.5rem}
+.footer-links a{font-size:.82rem;color:var(--muted);transition:color .2s}
+.footer-links a:hover{color:var(--acc)}
+.footer-credit{
+  width:100%;
+  border-top:1px solid var(--bg3);
+  margin-top:2rem;
+  padding-top:1.5rem;
+  font-size:.78rem;
+  color:var(--bg3);
+  text-align:center;
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .about-grid{grid-template-columns:1fr}
+  .location-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .stats{gap:1.5rem}
+  section{padding:3.5rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <span class="nav-logo brand">JOE'S AUTO</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Stories</a></li>
+      <li><a href="#location">Hours &amp; Location</a></li>
+    </ul>
+    <a class="nav-cta" href="tel:+12098242633">Call Now</a>
+    <div class="hamburger" id="ham" aria-label="Toggle menu" role="button" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#testimonies">Stories</a>
+    <a href="#location">Hours &amp; Location</a>
+    <a href="tel:+12098242633">Call (209) 824-2633</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Manteca, CA &nbsp;·&nbsp; Est. Family Shop &nbsp;·&nbsp; 30+ Years Experience</div>
+    <h1>
+      Straight Talk.
+      <em>Real Repair.</em>
+    </h1>
+    <p class="hero-sub">Father &amp; daughter owned. Honest estimates. Central Valley's most trusted independent mechanic — no upsell, no runaround.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="tel:+12098242633">Call (209) 824-2633</a>
+      <a class="btn-outline" href="#location">Find the Shop</a>
+    </div>
+  </div>
+  <div class="hero-stripe"></div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats" aria-hidden="true">
+  <div class="stat">
+    <span class="stat-n">30+</span>
+    <span class="stat-l">Years Experience</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">2</span>
+    <span class="stat-l">Generations</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">1</span>
+    <span class="stat-l">Honest Shop</span>
+  </div>
+  <div class="stat">
+    <span class="stat-n">M–F</span>
+    <span class="stat-l">9 AM – 5 PM</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="section-label">About the Shop</span>
+        <h2 class="section-title">Family Owned.<br>Community Trusted.</h2>
+        <p>Joe's Auto Repair is a <strong>small, family-run mechanic shop</strong> at 469 Moffat Blvd in Manteca. Joe and his daughter Cheyenne have been turning wrenches in the Central Valley for over three decades — with one rule: treat every car like it belongs to family.</p>
+        <p>Joe is known for being <strong>straight to the point</strong> — he explains exactly what needs to be done and why, without the pressure tactics or inflated invoices you'd get at a chain shop. Cheyenne brings the same ethic plus the flexibility to get customers back on the road <em>the same day</em> when it counts.</p>
+        <p>When you bring your car here, you get a real diagnosis from someone who cares, at a <strong>fair price</strong>. That's why customers drive across town — and sometimes across state lines — to come back.</p>
+      </div>
+      <div class="about-panel">
+        <p class="about-panel-title">Why Joe's</p>
+        <div class="badge-row">
+          <div class="badge">Father &amp; daughter team since day one</div>
+          <div class="badge">30+ years automotive expertise</div>
+          <div class="badge">Honest estimates — no hidden fees</div>
+          <div class="badge">Same-day service when possible</div>
+          <div class="badge">Polite, respectful with every customer</div>
+          <div class="badge">The only shop some customers ever need</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <span class="section-label">What We Do</span>
+    <h2 class="section-title">Services</h2>
+    <div class="services-grid">
+      <div class="svc-card">
+        <p class="svc-name">Oil Changes</p>
+        <p class="svc-desc">Conventional and synthetic oil changes with a multi-point inspection. Fast, no-upsell service done right the first time.</p>
+      </div>
+      <div class="svc-card">
+        <p class="svc-name">Brake Service</p>
+        <p class="svc-desc">Pads, rotors, calipers, and brake fluid flushes. Joe diagnoses the actual problem — not the most expensive one.</p>
+      </div>
+      <div class="svc-card">
+        <p class="svc-name">Engine Diagnostics</p>
+        <p class="svc-desc">Check-engine lights decoded and explained in plain language. No jargon, no guesswork — a clear plan before any work begins.</p>
+      </div>
+      <div class="svc-card">
+        <p class="svc-name">Tune-Ups</p>
+        <p class="svc-desc">Spark plugs, filters, belts, and timing — everything it takes to keep your engine running at peak efficiency.</p>
+      </div>
+      <div class="svc-card">
+        <p class="svc-name">Suspension &amp; Steering</p>
+        <p class="svc-desc">Shocks, struts, tie rods, and alignments. If your car pulls, bounces, or wanders, Joe will find it.</p>
+      </div>
+      <div class="svc-card">
+        <p class="svc-name">General Repair</p>
+        <p class="svc-desc">From cooling system work to electrical issues — if it's broke, this shop has likely fixed it before. Bring the hard stuff.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="testimonies" id="testimonies">
+  <div class="container">
+    <span class="section-label">Customer Testimonies</span>
+    <h2 class="section-title">In Their Words</h2>
+    <div class="test-grid">
+
+      <div class="test-card">
+        <p class="test-quote">Most trustworthy and skilled auto repair shop in the central valley. Small father/daughter owned mechanic shop with over 30 years of automotive experience. They will always do the best job they can.</p>
+        <span class="test-attr">Joey R.</span>
+      </div>
+
+      <div class="test-card">
+        <p class="test-quote">Cheyenne saved my cross country trip. She got me back on the road the same day. I would have been waiting days if she had not been so accommodating. Great family shop! Super fair price!</p>
+        <span class="test-attr">Bourque</span>
+      </div>
+
+      <div class="test-card">
+        <p class="test-quote">I moved out of town recently, and when I had car trouble got towed specifically to this place. It's a small, friendly and honest operation. They are always well mannered, and the job is done right. I never need to go to a second mechanic. 100% recommend!</p>
+        <span class="test-attr">Mapple M.</span>
+      </div>
+
+      <div class="test-card">
+        <p class="test-quote">Small family owned shop — very nice folks, father and daughter. JOE is great at his job, straight to the point explaining what needs to be done. Sent my wife in to do an oil change; he was polite and respectful. I'll be doing more business with him.</p>
+        <span class="test-attr">No Name 7.</span>
+      </div>
+
+      <div class="test-card">
+        <p class="test-quote">Joe is fair and honest. Only shop my dad would go. Getting hard to find good shops like this.</p>
+        <span class="test-attr">De L.</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="container">
+    <h2>Ready to Get Back on the Road?</h2>
+    <p>Call during business hours — Mon through Fri, 9 AM to 5 PM. No appointment needed for most services.</p>
+    <a class="btn-dark" href="tel:+12098242633">Call (209) 824-2633</a>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="container">
+    <span class="section-label">Hours &amp; Location</span>
+    <h2 class="section-title">Find the Shop</h2>
+    <div class="location-grid">
+      <div>
+        <table class="hours-table" aria-label="Business hours">
+          <tbody>
+            <tr><td>Monday</td><td>9:00 AM – 5:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>9:00 AM – 5:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>9:00 AM – 5:00 PM</td></tr>
+            <tr><td>Thursday</td><td>9:00 AM – 5:00 PM</td></tr>
+            <tr><td>Friday</td><td>9:00 AM – 5:00 PM</td></tr>
+            <tr><td>Saturday</td><td class="hours-closed">Closed</td></tr>
+            <tr><td>Sunday</td><td class="hours-closed">Closed</td></tr>
+          </tbody>
+        </table>
+        <div class="address-block">
+          <p><strong style="color:var(--text)">Joe's Auto Repair</strong></p>
+          <p>469 Moffat Blvd<br>Manteca, CA 95336</p>
+          <p style="margin-top:.8rem">
+            <a href="tel:+12098242633" style="color:var(--acc);font-weight:700">(209) 824-2633</a>
+          </p>
+          <p style="margin-top:1.2rem">
+            <a href="https://maps.google.com/?cid=2625349935746514413" target="_blank" rel="noopener" style="color:var(--muted);font-size:.82rem;text-decoration:underline">View on Google Maps ↗</a>
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=469+Moffat+Blvd,+Manteca,+CA+95336&z=15&output=embed"
+            loading="lazy"
+            allowfullscreen
+            aria-label="Map showing Joe's Auto Repair at 469 Moffat Blvd, Manteca CA"
+            title="Joe's Auto Repair location map">
+          </iframe>
+        </div>
+        <p class="map-caption">469 Moffat Blvd, Manteca CA 95336</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand">JOE'S AUTO REPAIR</span>
+      <p>469 Moffat Blvd · Manteca, CA 95336</p>
+      <p>(209) 824-2633 · Mon–Fri 9–5</p>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#testimonies">Customer Testimonies</a>
+      <a href="#location">Hours &amp; Location</a>
+      <a href="tel:+12098242633">Call Now</a>
+      <a href="https://maps.google.com/?cid=2625349935746514413" target="_blank" rel="noopener">Google Business ↗</a>
+    </div>
+  </div>
+  <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+</footer>
+
+<script>
+// Mobile menu toggle
+const ham = document.getElementById('ham');
+const menu = document.getElementById('mobileMenu');
+ham.addEventListener('click', () => menu.classList.toggle('open'));
+ham.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') menu.classList.toggle('open'); });
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+// Highlight today's hours row
+const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const today = days[new Date().getDay()];
+document.querySelectorAll('.hours-table tr').forEach(row => {
+  if(row.cells[0] && row.cells[0].textContent.trim() === today) row.classList.add('today');
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!-- bakery · bold-dark · hero-layout 2 · svc-layout 1 · Archivo Black/Inter -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cakebox — Custom Cakes & Desserts · Riverside, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --acc:#14b8a6;
+  --bg:#0b1f1d;
+  --bg2:#0f2926;
+  --bg3:#152f2c;
+  --text:#e8f5f3;
+  --muted:#7ab5ae;
+  --nav-h:64px;
+}
+html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.brand{font-family:'Archivo Black',serif;letter-spacing:-0.02em}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;height:var(--nav-h);background:rgba(11,31,29,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,184,166,.15);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.25rem,5vw,3rem)}
+.nav-logo{font-size:1.4rem;color:var(--acc);text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{background:var(--acc);color:#0b1f1d;font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:.5rem 1.2rem;border-radius:2px;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--text);transition:all .25s}
+.mobile-menu{display:none;flex-direction:column;gap:0;background:var(--bg2);border-bottom:1px solid rgba(20,184,166,.12)}
+.mobile-menu a{padding:1rem clamp(1.25rem,5vw,3rem);color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;border-top:1px solid rgba(255,255,255,.04);transition:color .2s}
+.mobile-menu a:hover{color:var(--acc)}
+@media(max-width:720px){.nav-links,.nav-cta{display:none}.hamburger{display:flex}.mobile-menu.open{display:flex}}
+
+/* ── HERO (full-bleed) ── */
+.hero{position:relative;min-height:95vh;display:grid;place-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.28) saturate(.7)}
+.hero-bg img:nth-child(2){filter:brightness(.35) saturate(.8)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,31,29,.82) 0%,rgba(11,31,29,.55) 60%,rgba(20,184,166,.08) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:clamp(2rem,8vw,5rem) clamp(1.5rem,6vw,4rem);max-width:860px}
+.hero-tag{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);border:1px solid rgba(20,184,166,.4);padding:.35rem .9rem;border-radius:2px;margin-bottom:1.75rem}
+.hero h1{font-size:clamp(3.2rem,10vw,7rem);line-height:.95;color:#fff;margin-bottom:1.5rem}
+.hero h1 em{font-style:normal;color:var(--acc)}
+.hero-sub{font-size:clamp(1rem,2.2vw,1.25rem);color:var(--muted);font-weight:300;max-width:520px;margin:0 auto 2.5rem;line-height:1.7}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--acc);color:#0b1f1d;font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;padding:.9rem 2.2rem;text-decoration:none;border-radius:2px;transition:opacity .2s,transform .15s}
+.btn-primary:hover{opacity:.88;transform:translateY(-1px)}
+.btn-ghost{border:1px solid rgba(20,184,166,.5);color:var(--acc);font-weight:600;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;padding:.88rem 2.2rem;text-decoration:none;border-radius:2px;transition:background .2s,color .2s}
+.btn-ghost:hover{background:rgba(20,184,166,.1)}
+
+/* ── SECTION SHARED ── */
+section{padding:clamp(4rem,10vw,7rem) clamp(1.25rem,5vw,3rem)}
+.section-label{font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);margin-bottom:.75rem}
+.section-title{font-size:clamp(1.9rem,5vw,3.2rem);line-height:1.1;margin-bottom:1.5rem}
+.section-title span{color:var(--acc)}
+.inner{max-width:1100px;margin:0 auto}
+
+/* ── ABOUT ── */
+.about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+.about-img-stack{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:10px}
+.about-img-stack img{width:100%;height:200px;object-fit:cover;border-radius:2px}
+.about-img-stack img:first-child{grid-column:1/-1;height:260px}
+.about-text p{color:var(--muted);font-weight:300;line-height:1.85;margin-bottom:1.25rem}
+.about-text p:last-child{margin-bottom:0}
+.stat-row{display:flex;gap:2.5rem;margin-top:2rem;padding-top:2rem;border-top:1px solid rgba(20,184,166,.15)}
+.stat{display:flex;flex-direction:column}
+.stat-num{font-family:'Archivo Black',serif;font-size:2.4rem;color:var(--acc);line-height:1}
+.stat-lbl{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.3rem}
+@media(max-width:800px){.about-grid{grid-template-columns:1fr}}
+
+/* ── OFFERINGS (2-col rows) ── */
+.offerings{background:var(--bg)}
+.offerings-list{margin-top:3rem;display:flex;flex-direction:column;gap:0}
+.offering-row{display:grid;grid-template-columns:1fr auto;align-items:center;padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,.06);gap:1.5rem}
+.offering-row:first-child{border-top:1px solid rgba(255,255,255,.06)}
+.offering-name{font-family:'Archivo Black',serif;font-size:1.15rem;color:#fff}
+.offering-desc{font-size:.88rem;color:var(--muted);margin-top:.35rem;font-weight:300;line-height:1.6;max-width:580px}
+.offering-tag{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);border:1px solid rgba(20,184,166,.35);padding:.3rem .75rem;border-radius:2px;white-space:nowrap;flex-shrink:0}
+@media(max-width:600px){.offering-row{grid-template-columns:1fr}.offering-tag{display:none}}
+
+/* ── GALLERY ── */
+.gallery{background:var(--bg3);overflow:hidden}
+.gallery-grid{display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:240px 200px;gap:6px;margin-top:3rem}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease,filter .4s ease;filter:saturate(.75)}
+.gallery-grid img:hover{transform:scale(1.04);filter:saturate(1.1)}
+.gallery-grid .g-wide{grid-column:span 3}
+.gallery-grid .g-tall{grid-row:span 2;height:100%}
+@media(max-width:900px){.gallery-grid{grid-template-columns:repeat(3,1fr);grid-template-rows:180px 180px}.gallery-grid .g-wide{grid-column:span 2}}
+@media(max-width:560px){.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.gallery-grid img{height:160px}.gallery-grid .g-wide,.gallery-grid .g-tall{grid-column:span 1;grid-row:span 1}}
+
+/* ── TESTIMONIES ── */
+.testimonies{background:var(--bg)}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:3rem}
+.test-card{background:var(--bg2);border:1px solid rgba(20,184,166,.1);padding:2rem;border-radius:2px;position:relative}
+.test-card::before{content:'\201C';font-family:'Archivo Black',serif;font-size:4rem;line-height:1;color:var(--acc);opacity:.25;position:absolute;top:.75rem;left:1.25rem;pointer-events:none}
+.test-body{font-size:.9rem;color:var(--muted);line-height:1.75;font-weight:300;padding-top:1.5rem}
+.test-attr{margin-top:1.25rem;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--acc)}
+
+/* ── HOURS & LOCATION ── */
+.location{background:var(--bg2)}
+.location-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start;margin-top:3rem}
+.hours-table{width:100%;border-collapse:collapse}
+.hours-table tr{border-bottom:1px solid rgba(255,255,255,.05)}
+.hours-table tr:last-child{border-bottom:none}
+.hours-table td{padding:.7rem 0;font-size:.9rem;vertical-align:top}
+.hours-table td:first-child{color:var(--muted);font-weight:400;width:40%}
+.hours-table td:last-child{color:#fff;font-weight:500;text-align:right}
+.hours-table tr.today td{color:var(--acc)}
+.map-wrap{border-radius:2px;overflow:hidden;height:320px;border:1px solid rgba(20,184,166,.12)}
+.map-wrap iframe{width:100%;height:100%;border:0;display:block;filter:invert(.85) hue-rotate(145deg) saturate(.7)}
+.address-block{margin-top:1.75rem}
+.address-block p{font-size:.9rem;color:var(--muted);line-height:1.8}
+.address-block a{color:var(--acc);text-decoration:none;font-weight:500}
+.address-block a:hover{text-decoration:underline}
+@media(max-width:760px){.location-grid{grid-template-columns:1fr}}
+
+/* ── CTA BAND ── */
+.cta-band{background:var(--acc);padding:clamp(3rem,7vw,5rem) clamp(1.25rem,5vw,3rem);text-align:center}
+.cta-band .section-title{color:#0b1f1d;margin-bottom:.75rem}
+.cta-band p{color:rgba(11,31,29,.7);font-size:1rem;margin-bottom:2rem;font-weight:400}
+.btn-dark{background:#0b1f1d;color:var(--acc);font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;padding:.9rem 2.2rem;text-decoration:none;border-radius:2px;display:inline-block;transition:opacity .2s,transform .15s}
+.btn-dark:hover{opacity:.88;transform:translateY(-1px)}
+
+/* ── FOOTER ── */
+footer{background:#07120f;padding:3rem clamp(1.25rem,5vw,3rem);border-top:1px solid rgba(20,184,166,.08)}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:1.5rem}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1.5rem}
+.footer-brand-name{font-size:1.6rem;color:var(--acc)}
+.footer-tagline{font-size:.82rem;color:var(--muted);margin-top:.3rem;font-weight:300}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links a{color:var(--muted);text-decoration:none;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;transition:color .2s}
+.footer-links a:hover{color:var(--acc)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:1.5rem;font-size:.75rem;color:rgba(122,181,174,.45);line-height:1.7}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#top" class="nav-logo brand">Cakebox</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#offerings">Offerings</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#location">Hours &amp; Location</a></li>
+  </ul>
+  <a href="tel:+19516604179" class="nav-cta">Call Now</a>
+  <button class="hamburger" aria-label="Toggle menu" onclick="this.closest('nav').nextElementSibling.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about" onclick="this.parentElement.classList.remove('open')">About</a>
+  <a href="#offerings" onclick="this.parentElement.classList.remove('open')">Offerings</a>
+  <a href="#gallery" onclick="this.parentElement.classList.remove('open')">Gallery</a>
+  <a href="#testimonies" onclick="this.parentElement.classList.remove('open')">Testimonies</a>
+  <a href="#location" onclick="this.parentElement.classList.remove('open')">Hours &amp; Location</a>
+  <a href="tel:+19516604179">Call Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="./photos/01.jpg" alt="">
+    <img src="./photos/02.jpg" alt="">
+    <img src="./photos/03.jpg" alt="">
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-content">
+    <span class="hero-tag">Riverside, CA · Custom Cakes &amp; Desserts</span>
+    <h1 class="brand">Every Cake<br><em>Tells</em> a Story</h1>
+    <p class="hero-sub">Custom cakes, cake pops, and cupcakes handcrafted with care for weddings, birthdays, and every sweet occasion.</p>
+    <div class="hero-actions">
+      <a href="tel:+19516604179" class="btn-primary">Call Now</a>
+      <a href="#offerings" class="btn-ghost">See What We Make</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="inner about-grid">
+    <div class="about-img-stack">
+      <img src="./photos/04.jpg" alt="Cakebox display">
+      <img src="./photos/05.jpg" alt="Cake detail">
+      <img src="./photos/06.jpg" alt="Inside Cakebox">
+    </div>
+    <div class="about-text">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title brand">Ten Years of<br><span>Sweet Craft</span></h2>
+      <p>Cakebox has been baking joy into Riverside for over a decade. Owner Jenny brings passion, precision, and genuine hospitality to every order — whether you walk in for a cupcake or commission a full wedding cake.</p>
+      <p>We believe every celebration deserves something extraordinary. From intricate fondant sculptures to light, fruit-topped cream cakes, our creations are designed to impress — and to taste even better than they look.</p>
+      <p>No order is too last-minute, no request too specific. We thrive on the challenge of bringing your vision to life.</p>
+      <div class="stat-row">
+        <div class="stat"><span class="stat-num brand">10+</span><span class="stat-lbl">Years Baking</span></div>
+        <div class="stat"><span class="stat-num brand">100%</span><span class="stat-lbl">Custom Orders</span></div>
+        <div class="stat"><span class="stat-num brand">∞</span><span class="stat-lbl">Sweet Moments</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERINGS -->
+<section class="offerings" id="offerings">
+  <div class="inner">
+    <p class="section-label">What We Make</p>
+    <h2 class="section-title brand">Crafted for<br><span>Every Occasion</span></h2>
+
+    <div class="offerings-list">
+
+      <div class="offering-row">
+        <div>
+          <div class="offering-name">Custom Celebration Cakes</div>
+          <div class="offering-desc">Birthdays, quinceañeras, anniversaries — fully designed to your vision. Flavors, tiers, and decoration all hand-selected with you.</div>
+        </div>
+        <span class="offering-tag">Made to Order</span>
+      </div>
+
+      <div class="offering-row">
+        <div>
+          <div class="offering-name">Wedding Cakes</div>
+          <div class="offering-desc">Elegant multi-tier cakes designed for the biggest day. We accommodate tight timelines — we've done it in 48 hours and delivered perfection.</div>
+        </div>
+        <span class="offering-tag">Custom</span>
+      </div>
+
+      <div class="offering-row">
+        <div>
+          <div class="offering-name">Cupcakes</div>
+          <div class="offering-desc">Moist, richly flavored, and finished with precision frosting. Perfect for parties, corporate events, or an everyday treat.</div>
+        </div>
+        <span class="offering-tag">Per Dozen</span>
+      </div>
+
+      <div class="offering-row">
+        <div>
+          <div class="offering-name">Cake Pops</div>
+          <div class="offering-desc">Our signature cake pops — a customer favorite. Colorful, creative, and impossible to eat just one. Great for favors or dessert tables.</div>
+        </div>
+        <span class="offering-tag">Fan Favorite</span>
+      </div>
+
+      <div class="offering-row">
+        <div>
+          <div class="offering-name">Specialty Desserts</div>
+          <div class="offering-desc">Beyond the cake: a rotating selection of desserts crafted from the same kitchen with the same attention to flavor and finish.</div>
+        </div>
+        <span class="offering-tag">Seasonal</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="inner">
+    <p class="section-label">The Work</p>
+    <h2 class="section-title brand">Every Piece<br><span>One of a Kind</span></h2>
+  </div>
+  <div class="gallery-grid">
+    <img src="./photos/01.jpg" alt="Custom cake" class="g-wide">
+    <img src="./photos/02.jpg" alt="Wedding cake" class="g-wide">
+    <img src="./photos/03.jpg" alt="Cake detail">
+    <img src="./photos/04.jpg" alt="Cupcakes">
+    <img src="./photos/05.jpg" alt="Cake pops" class="g-wide">
+    <img src="./photos/06.jpg" alt="Shop interior" class="g-wide">
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="testimonies" id="testimonies">
+  <div class="inner">
+    <p class="section-label">Customer Testimonies</p>
+    <h2 class="section-title brand">In Their<br><span>Own Words</span></h2>
+
+    <div class="test-grid">
+
+      <div class="test-card">
+        <p class="test-body">Order our wedding cake last minute with 2 days before the wedding date. Cakebox did an amazing job. Not only did they give us the design we wanted, their cake was also delicious. We truly appreciate that they did it with short notice. They also have great customer service and communication skills. I will be ordering from them again.</p>
+        <p class="test-attr">— Esthefany L.</p>
+      </div>
+
+      <div class="test-card">
+        <p class="test-body">From their exquisite cakes and plethora of desserts, to Jenny's outstanding customer service, Cakebox has truly mastered the art of cake making. Jenny was extremely knowledgeable and friendly — her passion for her craft was truly evident. It is no wonder they have been in business for 10 years! The cake was moist, rich, and had the perfect amount of sweetness. Cakebox is a must-visit for all cake enthusiasts!</p>
+        <p class="test-attr">— J C.</p>
+      </div>
+
+      <div class="test-card">
+        <p class="test-body">Adorable little shop!!! The customer service is SO GOOD and the cake is adorable 100/100.</p>
+        <p class="test-attr">— CyeRye R.</p>
+      </div>
+
+      <div class="test-card">
+        <p class="test-body">I came to Cakebox for the first time because of the positive reviews and was immediately greeted by Jenn. She was very hospitable and honest with her suggestions. Very knowledgeable and overall a great host! Will definitely return because of the great service.</p>
+        <p class="test-attr">— Miguel H.</p>
+      </div>
+
+      <div class="test-card">
+        <p class="test-body">Fantastic service, accommodated my last minute request perfectly, and the cupcakes were delicious! Thank you for everything!!</p>
+        <p class="test-attr">— Cora L.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section class="location" id="location">
+  <div class="inner">
+    <p class="section-label">Find Us</p>
+    <h2 class="section-title brand">Hours &amp;<br><span>Location</span></h2>
+    <div class="location-grid">
+      <div>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>Monday</td><td>10:00 AM – 6:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>10:00 AM – 6:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>10:00 AM – 6:00 PM</td></tr>
+            <tr><td>Thursday</td><td>10:00 AM – 4:00 PM</td></tr>
+            <tr><td>Friday</td><td>10:00 AM – 2:00 PM</td></tr>
+            <tr><td>Saturday</td><td>Closed</td></tr>
+            <tr><td>Sunday</td><td>Closed</td></tr>
+          </tbody>
+        </table>
+        <div class="address-block">
+          <p>3557 Main St A<br>Riverside, CA 92501</p>
+          <p style="margin-top:.75rem"><a href="tel:+19516604179">(951) 660-4179</a></p>
+          <p style="margin-top:.75rem">
+            <a href="https://maps.google.com/?cid=17676560260152622734" target="_blank" rel="noopener">View on Google Maps ↗</a>
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=3557+Main+St+A,+Riverside,+CA+92501&z=15&output=embed"
+            title="Cakebox location"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="inner">
+    <h2 class="section-title brand">Ready to Order<br>Your Custom Cake?</h2>
+    <p>Call or stop by. We'd love to hear what you're celebrating.</p>
+    <a href="tel:+19516604179" class="btn-dark">Call Now &mdash; (951) 660-4179</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="nav-logo brand footer-brand-name">Cakebox</div>
+        <div class="footer-tagline">Custom Cakes &amp; Desserts · Riverside, CA</div>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#offerings">Offerings</a>
+        <a href="#testimonies">Testimonies</a>
+        <a href="#location">Location</a>
+        <a href="https://maps.google.com/?cid=17676560260152622734" target="_blank" rel="noopener">Google Business ↗</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>3557 Main St A, Riverside, CA 92501 &nbsp;·&nbsp; <a href="tel:+19516604179" style="color:inherit">(951) 660-4179</a></p>
+      <p style="margin-top:.5rem">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

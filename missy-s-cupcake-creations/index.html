@@ -1,0 +1,608 @@
+<!-- bakery · crisp-utility · hero-layout 2 · svc-layout 0 · Oswald/Lato -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Missy's Cupcake Creations — Ventura, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --acc:#0e7490;
+      --bg:#ecfeff;
+      --acc-dark:#0c6380;
+      --acc-light:#cffafe;
+      --text:#1c2b2d;
+      --muted:#5a7070;
+      --white:#ffffff;
+      --nav-h:60px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-padding-top: var(--nav-h); }
+
+    body{font-family:'Lato',sans-serif; background:var(--bg); color:var(--text); line-height:1.6; font-size:16px;}
+
+    .brand{font-family:'Oswald',serif; letter-spacing:.04em;}
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--white);
+      border-bottom: 2px solid var(--acc);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+
+    .nav-logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--acc);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Oswald', serif;
+      font-size: .85rem;
+      font-weight: 400;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--acc); }
+
+    .nav-cta {
+      background: var(--acc);
+      color: var(--white) !important;
+      padding: .35rem .9rem;
+      transition: background .2s !important;
+    }
+
+    .nav-cta:hover { background: var(--acc-dark) !important; }
+
+    /* ── HERO (full-bleed) ── */
+    .hero {
+      position: relative;
+      height: 90vh;
+      min-height: 480px;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(14,116,144,.35) 0%, rgba(10,50,60,.72) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 2rem 3.5rem;
+      max-width: 860px;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Oswald', serif;
+      font-size: .8rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--acc-light);
+      margin-bottom: .5rem;
+    }
+
+    .hero h1 {
+      font-family: 'Oswald', serif;
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: clamp(.95rem, 2vw, 1.15rem);
+      font-weight: 300;
+      color: rgba(255,255,255,.88);
+      max-width: 520px;
+      margin-bottom: 1.8rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: var(--white);
+      font-family: 'Oswald', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .75rem 2rem;
+      text-decoration: none;
+      border: 2px solid var(--acc);
+      transition: background .2s, color .2s;
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--white);
+      border-color: var(--white);
+    }
+
+    /* ── SECTION COMMONS ── */
+    section { padding: 5rem 1.5rem; }
+
+    .container { max-width: 1060px; margin: 0 auto; }
+
+    .section-label {
+      font-family: 'Oswald', serif;
+      font-size: .75rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: .5rem;
+    }
+
+    .section-title {
+      font-family: 'Oswald', serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-body {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--muted);
+      max-width: 600px;
+      line-height: 1.75;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .about-imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+    }
+
+    .about-imgs img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    .about-imgs img:first-child {
+      grid-column: span 2;
+      aspect-ratio: 16/7;
+    }
+
+    /* ── MENU/OFFERINGS ── */
+    #menu { background: var(--bg); }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .menu-card {
+      background: var(--white);
+      border-top: 4px solid var(--acc);
+      padding: 1.5rem 1.5rem 1.75rem;
+    }
+
+    .menu-card h3 {
+      font-family: 'Oswald', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: .5rem;
+    }
+
+    .menu-card p {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies { background: var(--acc); }
+
+    #testimonies .section-label { color: var(--acc-light); }
+    #testimonies .section-title { color: var(--white); }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .testi-card {
+      background: rgba(255,255,255,.1);
+      border-left: 3px solid var(--acc-light);
+      padding: 1.5rem;
+    }
+
+    .testi-quote {
+      font-size: .95rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.9);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .testi-attr {
+      font-family: 'Oswald', serif;
+      font-size: .8rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--acc-light);
+    }
+
+    /* ── HOURS + MAP ── */
+    #visit { background: var(--white); }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 2.5rem;
+    }
+
+    .hours-block {}
+
+    .hours-title {
+      font-family: 'Oswald', serif;
+      font-size: 1rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 1rem;
+    }
+
+    .hours-table { width: 100%; border-collapse: collapse; }
+
+    .hours-table tr { border-bottom: 1px solid #e2eff0; }
+
+    .hours-table td {
+      padding: .5rem 0;
+      font-size: .9rem;
+      color: var(--text);
+    }
+
+    .hours-table td:last-child { text-align: right; color: var(--muted); }
+
+    .hours-table tr.closed td { color: #bbb; }
+
+    .address-block { margin-top: 1.75rem; }
+
+    .address-block p {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .address-block strong {
+      display: block;
+      font-family: 'Oswald', serif;
+      font-size: .85rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: .3rem;
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 360px;
+      border: 0;
+      display: block;
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      background: var(--bg);
+      border-top: 2px solid var(--acc-light);
+      border-bottom: 2px solid var(--acc-light);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .cta-strip p {
+      font-family: 'Oswald', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,.65);
+      padding: 2.5rem 1.5rem;
+      font-size: .85rem;
+    }
+
+    .footer-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-family: 'Oswald', serif;
+      font-size: 1.1rem;
+      color: var(--white);
+      letter-spacing: .04em;
+    }
+
+    .footer-social { display: flex; gap: 1rem; }
+
+    .footer-social a {
+      color: rgba(255,255,255,.55);
+      font-size: .82rem;
+      font-family: 'Oswald', serif;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .footer-social a:hover { color: var(--acc-light); }
+
+    .footer-credit {
+      width: 100%;
+      margin-top: .75rem;
+      padding-top: .75rem;
+      border-top: 1px solid rgba(255,255,255,.1);
+      font-size: .78rem;
+      color: rgba(255,255,255,.35);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 700px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: .9rem; }
+      .nav-links li.hide-sm { display: none; }
+
+      .hero-content { padding: 0 1.25rem 2.5rem; }
+
+      .about-grid { grid-template-columns: 1fr; }
+      .about-imgs { grid-template-columns: 1fr 1fr; }
+      .about-imgs img:first-child { grid-column: span 2; }
+
+      .visit-grid { grid-template-columns: 1fr; }
+      .map-wrap iframe { height: 260px; }
+    }
+
+    @media (max-width: 480px) {
+      .nav-links { display: none; }
+      .nav-logo { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo brand">Missy's Cupcake Creations</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li class="hide-sm"><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="tel:+18053824852" class="nav-cta">Call Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO (full-bleed layout 2) -->
+  <section class="hero" id="home">
+    <img class="hero-img" src="./photos/01.jpg" alt="Missy's Cupcake Creations display" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Ventura, CA — Handmade with Care</p>
+      <h1 class="brand">Small-Batch<br>Cupcakes &amp; Pastries</h1>
+      <p>Custom-made cupcakes, fresh donuts, and croissant sandwiches crafted daily in Ventura. Pre-orders welcome — every bite made to order.</p>
+      <a href="tel:+18053824852" class="btn-primary">Call to Order</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title">Baked Fresh,<br>Served with Heart</h2>
+          <p class="section-body">Missy's Cupcake Creations is a cozy, welcoming bakery in Ventura where everything is made from scratch. From beautifully decorated birthday cupcakes to flaky croissant sandwiches and fresh daily donuts — this is a neighborhood bakery that puts quality and care into every order. Pre-orders are accepted and ready on time, every time.</p>
+          <br />
+          <p class="section-body">Find us at the Johnson Drive location Tuesday through Saturday. Stop in, grab a coffee, and discover why locals keep coming back.</p>
+        </div>
+        <div class="about-imgs">
+          <img src="./photos/02.jpg" alt="Freshly made cupcakes" />
+          <img src="./photos/03.jpg" alt="Bakery treats" />
+          <img src="./photos/04.jpg" alt="Pastry selection" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU (cards layout 0) -->
+  <section id="menu">
+    <div class="container">
+      <p class="section-label">What We Make</p>
+      <h2 class="section-title">Fresh From the Kitchen</h2>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>Custom Cupcakes</h3>
+          <p>Beautifully decorated, homemade cupcakes for birthdays, celebrations, and everyday indulgence. Mini and standard sizes available. Pre-orders encouraged.</p>
+        </div>
+        <div class="menu-card">
+          <h3>Fresh Donuts</h3>
+          <p>Made daily in small batches — sweet, satisfying, and packed with flavor. Available while supplies last each morning.</p>
+        </div>
+        <div class="menu-card">
+          <h3>Croissant Sandwiches</h3>
+          <p>Flaky, buttery croissants filled with savory ingredients — a standout item that keeps customers raving. A must-try.</p>
+        </div>
+        <div class="menu-card">
+          <h3>Pre-Orders &amp; Special Events</h3>
+          <p>Planning a birthday or event? Missy takes pre-orders and ensures everything is ready on time at a fair price. Call to arrange.</p>
+        </div>
+        <div class="menu-card">
+          <h3>Coffee &amp; Beverages</h3>
+          <p>Pair your pastry with a fresh cup of coffee. A friendly, cozy experience every visit.</p>
+        </div>
+        <div class="menu-card">
+          <h3>Surprise Bags</h3>
+          <p>Available through 2g2g — a great-value mix of the day's baked goods. Grab one and discover what's fresh that morning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="container">
+      <p class="section-label">In Their Words</p>
+      <h2 class="section-title">Customer Testimonies</h2>
+      <div class="testi-grid">
+        <div class="testi-card">
+          <p class="testi-quote">"My son's birthday was made extra special thanks to these delicious cupcakes. Each one was carefully homemade, and you can truly taste the quality and care put into them. The decorations were also incredibly cute and beautifully done."</p>
+          <p class="testi-attr">— Akiko P.</p>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">"What really shines was the croissant sandwich — that was spectacular! The lady behind the counter was super nice and friendly, even gave me a cup of coffee to go!"</p>
+          <p class="testi-attr">— SJ</p>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">"The owner is delightful and the cupcake flavors are astounding. I ordered four mini cupcakes so I could try different flavors. I highly recommend."</p>
+          <p class="testi-attr">— P J.</p>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">"Missy's always has the most delicious donuts and cupcakes. She will take pre-orders, it's ready on time and reasonably priced. It's a nice, cozy place and is welcoming. We love Missy's Cupcake Creations!"</p>
+          <p class="testi-attr">— Karilyn S.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <div class="container">
+      <p>Ready to place a pre-order or just stop in?</p>
+      <a href="tel:+18053824852" class="btn-primary">Call (805) 382-4852</a>
+    </div>
+  </div>
+
+  <!-- HOURS + MAP -->
+  <section id="visit">
+    <div class="container">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Hours &amp; Location</h2>
+      <div class="visit-grid">
+        <div>
+          <p class="hours-title">Hours of Operation</p>
+          <table class="hours-table">
+            <tbody>
+              <tr class="closed"><td>Monday</td><td>Closed</td></tr>
+              <tr><td>Tuesday</td><td>6:30 AM – 5:30 PM</td></tr>
+              <tr><td>Wednesday</td><td>6:30 AM – 5:30 PM</td></tr>
+              <tr><td>Thursday</td><td>6:30 AM – 5:30 PM</td></tr>
+              <tr><td>Friday</td><td>7:00 AM – 3:00 PM</td></tr>
+              <tr><td>Saturday</td><td>7:00 AM – 3:00 PM</td></tr>
+              <tr class="closed"><td>Sunday</td><td>Closed</td></tr>
+            </tbody>
+          </table>
+          <div class="address-block">
+            <strong>Address</strong>
+            <p>2950 Johnson Dr #119<br>Ventura, CA 93003</p>
+          </div>
+          <div class="address-block" style="margin-top:1rem;">
+            <strong>Phone</strong>
+            <p><a href="tel:+18053824852" style="color:var(--acc);text-decoration:none;">(805) 382-4852</a></p>
+          </div>
+        </div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=2950+Johnson+Dr+%23119%2C+Ventura%2C+CA+93003&z=15&output=embed"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Missy's Cupcake Creations map">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY STRIP -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0;">
+    <img src="./photos/05.jpg" alt="Bakery photo" style="width:100%;height:220px;object-fit:cover;display:block;" />
+    <img src="./photos/06.jpg" alt="Bakery photo" style="width:100%;height:220px;object-fit:cover;display:block;" />
+    <img src="./photos/02.jpg" alt="Bakery photo" style="width:100%;height:220px;object-fit:cover;display:block;" />
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="footer-brand brand">Missy's Cupcake Creations</span>
+      <div class="footer-social">
+        <a href="https://maps.google.com/?cid=4059139915136324853&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+      </div>
+      <div class="footer-credit">
+        Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

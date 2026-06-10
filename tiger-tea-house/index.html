@@ -1,0 +1,391 @@
+<!--
+  Tiger Tea House — Hanford, CA
+  Flavor / archetype: serene tea-house (warm, hand-brewed, apothecary-jar calm — NOT a loud neon boba shop)
+  Hero layout id: right-aligned (copy stacked right, full-bleed product photo bleeds left)
+  Service layout id: price-table (menu rendered as tabbed leader-dot price lists, not service cards)
+  Palette: --acc #b91c1c (tiger red) on --bg #fff7f5 (warm porcelain)
+  Display: Yeseva One (serifed, editorial) / Body: Karla
+  Animation: none beyond hover states + a single sticky-nav backdrop transition
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tiger Tea House — Fresh-Brewed Fruit Tea &amp; True Blends · Hanford, CA</title>
+<meta name="description" content="Tiger Tea House in downtown Hanford — fresh-brewed fruit teas, milk teas, boba and loose-leaf blends. Open daily on N Irwin St." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Karla:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          acc: '#b91c1c',
+          accdark: '#7f1212',
+          bg: '#fff7f5',
+          ink: '#2b1d1a',
+          mute: '#7a6661',
+        },
+        fontFamily: {
+          display: ['"Yeseva One"', 'serif'],
+          body: ['Karla', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root {
+    --acc: #b91c1c;
+    --bg: #fff7f5;
+  }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body { background: var(--bg); color: #2b1d1a; font-family: 'Karla', system-ui, sans-serif; }
+  .font-display { font-family: 'Yeseva One', serif; }
+
+  /* hairline tiger-stripe rule used as a section divider */
+  .stripe-rule {
+    height: 6px;
+    background-image: repeating-linear-gradient(
+      90deg, var(--acc) 0 18px, transparent 18px 34px
+    );
+    opacity: .85;
+  }
+
+  /* leader-dot price row */
+  .price-row { display: grid; grid-template-columns: auto 1fr auto; align-items: baseline; gap: .5rem; }
+  .price-row .dots { border-bottom: 1px dotted #d8b9b2; transform: translateY(-4px); }
+  .price-row .name { font-weight: 700; }
+  .price-row .amt { font-variant-numeric: tabular-nums; color: var(--acc); font-weight: 700; }
+
+  /* tab buttons */
+  .menutab { position: relative; }
+  .menutab[aria-selected="true"] { color: var(--acc); }
+  .menutab[aria-selected="true"]::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -9px; height: 3px; background: var(--acc);
+  }
+
+  .link-underline { background-image: linear-gradient(var(--acc), var(--acc)); background-size: 0% 1.5px;
+    background-repeat: no-repeat; background-position: 0 100%; transition: background-size .25s ease; }
+  .link-underline:hover { background-size: 100% 1.5px; }
+
+  .nav-scrolled { background: rgba(255,247,245,.92); backdrop-filter: blur(8px); box-shadow: 0 1px 0 rgba(123,18,18,.10); }
+</style>
+</head>
+<body class="font-body antialiased">
+
+<!-- ============ NAV ============ -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300">
+  <nav class="max-w-6xl mx-auto px-5 h-[72px] flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-2.5 group">
+      <span class="font-display text-acc text-xl leading-none">Tiger Tea House</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-[15px] font-medium text-ink/80">
+      <a href="#menu" class="link-underline">Menu</a>
+      <a href="#story" class="link-underline">Our Tea</a>
+      <a href="#say" class="link-underline">What People Say</a>
+      <a href="#visit" class="link-underline">Visit</a>
+    </div>
+    <a href="tel:+15595309600"
+       class="hidden sm:inline-flex items-center gap-2 rounded-full bg-acc text-white text-sm font-bold px-5 py-2.5 hover:bg-accdark transition-colors">
+      Call to order
+    </a>
+  </nav>
+</header>
+
+<!-- ============ HERO (right-aligned) ============ -->
+<section id="top" class="relative overflow-hidden pt-[72px]">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-6 items-center min-h-[calc(100vh-72px)] py-14">
+
+      <!-- product photo bleeds left -->
+      <div class="lg:col-span-6 order-2 lg:order-1 relative">
+        <div class="relative">
+          <div class="absolute -inset-3 rounded-[2rem] bg-acc/10 -rotate-2"></div>
+          <img src="./photos/03.jpg" alt="Tiger Stripes milk tea with boba, served at Tiger Tea House"
+               class="relative w-full max-w-[440px] mx-auto rounded-[1.75rem] object-cover shadow-xl" loading="eager" />
+        </div>
+      </div>
+
+      <!-- copy stacked right -->
+      <div class="lg:col-span-6 order-1 lg:order-2 lg:text-right">
+        <p class="text-acc font-bold tracking-[0.22em] uppercase text-xs mb-5">Downtown Hanford · est. on N Irwin St</p>
+        <h1 class="font-display text-[2.6rem] leading-[1.05] sm:text-6xl text-ink mb-6">
+          Fresh-brewed<br />fruit tea<span class="text-acc">.</span><br />
+          <span class="text-acc">True</span> blends.
+        </h1>
+        <p class="text-lg text-mute leading-relaxed max-w-md lg:ml-auto mb-8">
+          A quiet little tea house where the boba is made fresh, the loose-leaf jars line the wall,
+          and the tiger murals watch over every cup. Order it your way.
+        </p>
+        <div class="flex flex-wrap gap-3 lg:justify-end">
+          <a href="tel:+15595309600"
+             class="inline-flex items-center gap-2 rounded-full bg-acc text-white font-bold px-7 py-3.5 hover:bg-accdark transition-colors">
+            Call to order — (559) 530-9600
+          </a>
+          <a href="#menu"
+             class="inline-flex items-center gap-2 rounded-full border border-acc/40 text-acc font-bold px-7 py-3.5 hover:bg-acc/5 transition-colors">
+            See the menu
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe-rule"></div>
+
+<!-- ============ STORY / OUR TEA ============ -->
+<section id="story" class="py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5 grid lg:grid-cols-2 gap-14 items-center">
+    <div>
+      <p class="text-acc font-bold tracking-[0.22em] uppercase text-xs mb-4">Our Tea</p>
+      <h2 class="font-display text-3xl sm:text-4xl text-ink leading-tight mb-6">
+        A wall of jars, brewed by the cup.
+      </h2>
+      <p class="text-mute text-lg leading-relaxed mb-5">
+        Step inside and the first thing you notice is the shelf — dozens of glass jars of loose-leaf tea,
+        hand-labeled, from red mountain blends to oolong. We brew fresh, shake to order, and let you
+        decide the sweetness and the boba.
+      </p>
+      <p class="text-mute text-lg leading-relaxed">
+        Regulars come for the Tiger Stripes milk tea, the strawberry cheesecake, and the Sunset.
+        Some bring drawings to leave on the counter. It’s that kind of place — clean, calm, and easy
+        to settle into for a while.
+      </p>
+      <div class="mt-9 grid grid-cols-3 gap-px bg-acc/15 rounded-xl overflow-hidden text-center">
+        <div class="bg-bg py-5 px-3">
+          <div class="font-display text-2xl text-acc">Daily</div>
+          <div class="text-xs text-mute mt-1 tracking-wide uppercase">Open 7 days</div>
+        </div>
+        <div class="bg-bg py-5 px-3">
+          <div class="font-display text-2xl text-acc">Fresh</div>
+          <div class="text-xs text-mute mt-1 tracking-wide uppercase">Brewed to order</div>
+        </div>
+        <div class="bg-bg py-5 px-3">
+          <div class="font-display text-2xl text-acc">Boba</div>
+          <div class="text-xs text-mute mt-1 tracking-wide uppercase">Made in-house</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- photo collage -->
+    <div class="grid grid-cols-2 gap-4">
+      <img src="./photos/01.jpg" alt="Wall of hand-labeled loose-leaf tea jars at Tiger Tea House"
+           class="col-span-2 w-full h-56 sm:h-72 object-cover rounded-2xl shadow-sm" loading="lazy" />
+      <img src="./photos/02.jpg" alt="Citrus and strawberry fruit tea"
+           class="w-full h-52 object-cover rounded-2xl shadow-sm" loading="lazy" />
+      <img src="./photos/04.jpg" alt="Mango fruit tea with boba beside a snack basket"
+           class="w-full h-52 object-cover rounded-2xl shadow-sm" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU (price-table, tabbed) ============ -->
+<section id="menu" class="py-20 sm:py-28 bg-[#fdeee9]">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="text-center mb-12">
+      <p class="text-acc font-bold tracking-[0.22em] uppercase text-xs mb-4">The Menu</p>
+      <h2 class="font-display text-3xl sm:text-5xl text-ink">Pick your pour</h2>
+      <p class="text-mute mt-4 max-w-xl mx-auto">
+        A taste of the board. Everything’s customizable — sweetness, ice, and your choice of boba or jellies.
+        Prices shown are a guide; ask in store for the full list.
+      </p>
+    </div>
+
+    <!-- tabs -->
+    <div role="tablist" aria-label="Menu categories"
+         class="flex flex-wrap justify-center gap-x-8 gap-y-3 border-b border-acc/15 pb-4 mb-10 font-display text-lg">
+      <button role="tab" data-panel="p-fruit"  aria-selected="true"  class="menutab transition-colors">Fruit Tea</button>
+      <button role="tab" data-panel="p-milk"   aria-selected="false" class="menutab text-ink/70 transition-colors">Milk &amp; Craft</button>
+      <button role="tab" data-panel="p-hot"    aria-selected="false" class="menutab text-ink/70 transition-colors">Hot Drinks</button>
+      <button role="tab" data-panel="p-lemon"  aria-selected="false" class="menutab text-ink/70 transition-colors">Lemonades</button>
+    </div>
+
+    <div class="grid md:grid-cols-2 md:gap-x-14 gap-y-6">
+      <!-- FRUIT TEA -->
+      <div id="p-fruit" class="menupanel contents" role="tabpanel">
+        <div class="price-row"><span class="name">Tiger Stripes</span><span class="dots"></span><span class="amt">$6.25</span></div>
+        <div class="price-row"><span class="name">Sunset</span><span class="dots"></span><span class="amt">$6.25</span></div>
+        <div class="price-row"><span class="name">Golden Grapefruit</span><span class="dots"></span><span class="amt">$6.25</span></div>
+        <div class="price-row"><span class="name">Mango Lover</span><span class="dots"></span><span class="amt">$6.25</span></div>
+        <div class="price-row"><span class="name">Super Passion</span><span class="dots"></span><span class="amt">$6.25</span></div>
+        <div class="price-row"><span class="name">Lavender Blue</span><span class="dots"></span><span class="amt">$6.25</span></div>
+        <div class="price-row"><span class="name">Classic Thai</span><span class="dots"></span><span class="amt">$5.75</span></div>
+        <div class="price-row"><span class="name">Sea Salt Crema</span><span class="dots"></span><span class="amt">$6.25</span></div>
+      </div>
+
+      <!-- MILK & CRAFT -->
+      <div id="p-milk" class="menupanel contents hidden" role="tabpanel">
+        <div class="price-row"><span class="name">Tiger Dark Roast</span><span class="dots"></span><span class="amt">$6.25</span></div>
+        <div class="price-row"><span class="name">Cloudy Milk Tea</span><span class="dots"></span><span class="amt">$5.95</span></div>
+        <div class="price-row"><span class="name">Strawberry Cheesecake</span><span class="dots"></span><span class="amt">$6.50</span></div>
+        <div class="price-row"><span class="name">Matcha Strawberry Freeze</span><span class="dots"></span><span class="amt">$6.50</span></div>
+        <div class="price-row"><span class="name">Taro Taro</span><span class="dots"></span><span class="amt">$6.25</span></div>
+        <div class="price-row"><span class="name">Honeycomb</span><span class="dots"></span><span class="amt">$6.25</span></div>
+        <div class="price-row"><span class="name">Piña Colada</span><span class="dots"></span><span class="amt">$6.25</span></div>
+        <div class="price-row"><span class="name">Dragon</span><span class="dots"></span><span class="amt">$6.50</span></div>
+      </div>
+
+      <!-- HOT DRINKS -->
+      <div id="p-hot" class="menupanel contents hidden" role="tabpanel">
+        <div class="price-row"><span class="name">Tiger Spice Chai</span><span class="dots"></span><span class="amt">$5.25</span></div>
+        <div class="price-row"><span class="name">Tiger Tea Latte</span><span class="dots"></span><span class="amt">$5.25</span></div>
+        <div class="price-row"><span class="name">Ginger Pomelo</span><span class="dots"></span><span class="amt">$5.25</span></div>
+        <div class="price-row"><span class="name">Taro Taro (hot)</span><span class="dots"></span><span class="amt">$5.25</span></div>
+        <div class="price-row"><span class="name">Honeycomb (hot)</span><span class="dots"></span><span class="amt">$5.25</span></div>
+      </div>
+
+      <!-- LEMONADES -->
+      <div id="p-lemon" class="menupanel contents hidden" role="tabpanel">
+        <div class="price-row"><span class="name">Lemon + Lime</span><span class="dots"></span><span class="amt">$5.50</span></div>
+        <div class="price-row"><span class="name">Lemon Berry</span><span class="dots"></span><span class="amt">$5.50</span></div>
+        <div class="price-row"><span class="name">Peach Lemon</span><span class="dots"></span><span class="amt">$5.50</span></div>
+        <div class="price-row"><span class="name">Pineapple Twist</span><span class="dots"></span><span class="amt">$5.50</span></div>
+        <div class="price-row"><span class="name">Mango Madness</span><span class="dots"></span><span class="amt">$5.50</span></div>
+      </div>
+    </div>
+
+    <p class="text-center text-sm text-mute mt-12">
+      Add boba, popping pearls, or jellies to any drink. See the full board in store —
+      <a href="./photos/05.jpg" target="_blank" rel="noopener" class="text-acc font-semibold link-underline">peek at it here</a>.
+    </p>
+  </div>
+</section>
+
+<div class="stripe-rule"></div>
+
+<!-- ============ WHAT PEOPLE SAY ============ -->
+<section id="say" class="py-20 sm:py-28">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="mb-12">
+      <p class="text-acc font-bold tracking-[0.22em] uppercase text-xs mb-4">What People Say</p>
+      <h2 class="font-display text-3xl sm:text-4xl text-ink max-w-xl leading-tight">In their own words, over a cup.</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-7">
+      <figure class="bg-white rounded-2xl p-8 shadow-sm border border-acc/10 md:col-span-2">
+        <blockquote class="font-display text-xl sm:text-2xl text-ink leading-snug">
+          “Our favorite place in downtown for a quick pick-me-up. The tiger murals on the wall are beautiful
+          and the place always smells amazing! My husband’s favorite is the Tiger Stripes milk tea, mine is
+          strawberry cheesecake, and my aunt’s go-to is the Sunset tea.”
+        </blockquote>
+        <figcaption class="mt-5 text-acc font-bold tracking-wide">Jasmine F.</figcaption>
+      </figure>
+
+      <figure class="bg-white rounded-2xl p-8 shadow-sm border border-acc/10">
+        <blockquote class="text-ink/90 text-lg leading-relaxed">
+          “Ordered 2 Thai iced teas and they were refreshing and tasty! A nice place to work remotely —
+          the service was quick and it was clean and quiet inside.”
+        </blockquote>
+        <figcaption class="mt-5 text-acc font-bold tracking-wide">Dana W.</figcaption>
+      </figure>
+
+      <figure class="bg-white rounded-2xl p-8 shadow-sm border border-acc/10">
+        <blockquote class="text-ink/90 text-lg leading-relaxed">
+          “They are always very nice to us — we always get Thai tea with boba. I even dropped off
+          a couple of drawings.”
+        </blockquote>
+        <figcaption class="mt-5 text-acc font-bold tracking-wide">The Celica Guy</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT (hours + map) ============ -->
+<section id="visit" class="py-20 sm:py-28 bg-ink text-bg">
+  <div class="max-w-6xl mx-auto px-5 grid lg:grid-cols-2 gap-12 items-stretch">
+
+    <div class="flex flex-col">
+      <p class="text-acc font-bold tracking-[0.22em] uppercase text-xs mb-4">Visit Us</p>
+      <h2 class="font-display text-3xl sm:text-4xl mb-8 leading-tight">Find us on N Irwin St.</h2>
+
+      <div class="space-y-6 text-bg/90">
+        <div>
+          <div class="text-xs uppercase tracking-[0.18em] text-acc font-bold mb-1.5">Address</div>
+          <p class="text-lg">225 N Irwin St, Hanford, CA 93230</p>
+          <a href="https://www.google.com/maps?q=Tiger+Tea+House,+225+N+Irwin+St,+Hanford,+CA+93230"
+             target="_blank" rel="noopener"
+             class="inline-block mt-2 text-acc font-semibold link-underline">Get directions →</a>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-[0.18em] text-acc font-bold mb-1.5">Phone</div>
+          <a href="tel:+15595309600" class="text-lg link-underline">(559) 530-9600</a>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-[0.18em] text-acc font-bold mb-2">Hours</div>
+          <table class="text-[15px] w-full max-w-xs">
+            <tbody class="divide-y divide-white/10">
+              <tr><td class="py-1.5 pr-4">Monday – Saturday</td><td class="py-1.5 text-right tabular-nums">10:00 AM – 9:00 PM</td></tr>
+              <tr><td class="py-1.5 pr-4">Sunday</td><td class="py-1.5 text-right tabular-nums">11:00 AM – 8:00 PM</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <a href="tel:+15595309600"
+         class="mt-9 inline-flex items-center gap-2 rounded-full bg-acc text-white font-bold px-7 py-3.5 hover:bg-accdark transition-colors self-start">
+        Call to order — (559) 530-9600
+      </a>
+    </div>
+
+    <!-- map + storefront -->
+    <div class="grid grid-rows-[1fr_auto] gap-4 min-h-[420px]">
+      <iframe
+        title="Map to Tiger Tea House"
+        src="https://www.google.com/maps?q=225%20N%20Irwin%20St%2C%20Hanford%2C%20CA%2093230&z=15&output=embed"
+        class="w-full h-full min-h-[260px] rounded-2xl border-0" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <img src="./photos/06.jpg" alt="Tiger Tea House storefront window with tiger logo"
+           class="w-full h-40 object-cover rounded-2xl" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-[#2b1d1a] text-bg/70 border-t border-white/10">
+  <div class="max-w-6xl mx-auto px-5 py-12">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+      <div>
+        <div class="font-display text-acc text-2xl">Tiger Tea House</div>
+        <p class="text-sm mt-1.5">225 N Irwin St, Hanford, CA 93230 · (559) 530-9600</p>
+      </div>
+      <div class="flex items-center gap-6 text-sm">
+        <a href="https://maps.google.com/?cid=15986952587979703165" target="_blank" rel="noopener"
+           class="link-underline">Google Business</a>
+        <a href="#menu" class="link-underline">Menu</a>
+        <a href="tel:+15595309600" class="link-underline">Call</a>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-white/10 text-xs text-bg/50">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+<script>
+  // sticky nav backdrop
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('nav-scrolled', window.scrollY > 24);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // menu tabs
+  const tabs = document.querySelectorAll('.menutab');
+  const panels = document.querySelectorAll('.menupanel');
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach((t) => {
+        const on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.classList.toggle('text-ink/70', !on);
+      });
+      panels.forEach((p) => p.classList.toggle('hidden', p.id !== tab.dataset.panel));
+    });
+  });
+</script>
+</body>
+</html>

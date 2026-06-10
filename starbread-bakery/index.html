@@ -1,0 +1,334 @@
+<!--
+  Starbread Bakery — Riverside, CA
+  Flavor/archetype: warm panaderia / bakeshop (Filipino, "Home of the Señorita Bread," since 1986)
+  hero-layout: bento-grid  (asymmetric tile mosaic — name tile + 3 photo tiles + tagline tile)
+  service-layout: sticker-cards  (peel-corner "label" cards, like the bakery's bread-bag stickers)
+  Palette: --acc #d97706 (warm amber), --bg #fffaf2 (cream); display font Fraunces, body Nunito Sans.
+  Animation: none — static, lets the bread photos carry it.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Starbread Bakery — Home of the Señorita Bread | Riverside, CA</title>
+<meta name="description" content="Starbread Bakery in Riverside, CA — home of the Señorita Bread since 1986. Pillowy, buttery sweet bread, malasadas, cupcakes, donuts & savory bites. Open daily 7am–7pm." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { acc: '#d97706', bg: '#fffaf2', ink: '#3a2a18', crust: '#b45309' },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          body: ['"Nunito Sans"', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root { --acc: #d97706; --bg: #fffaf2; --ink: #3a2a18; --crust: #b45309; }
+  html { scroll-behavior: smooth; scroll-padding-top: 74px; }
+  body { background: var(--bg); color: var(--ink); }
+  .font-display { font-family: 'Fraunces', serif; }
+
+  /* gentle paper grain so the cream bg isn't flat */
+  .grain { background-image:
+      radial-gradient(circle at 20% 12%, rgba(217,119,6,0.05) 0, transparent 42%),
+      radial-gradient(circle at 88% 70%, rgba(180,83,9,0.06) 0, transparent 46%); }
+
+  /* sticker / label card — peeling corner detail */
+  .sticker { position: relative; background:#fff; border:1px solid #f0e3d0;
+    box-shadow: 0 14px 30px -18px rgba(122,72,12,0.45); }
+  .sticker::after { content:""; position:absolute; top:0; right:0; width:30px; height:30px;
+    background: linear-gradient(225deg, #f7ead6 50%, transparent 50%);
+    border-bottom-left-radius: 6px; box-shadow: -3px 3px 5px -3px rgba(0,0,0,0.18); }
+
+  .underline-amber { background-image: linear-gradient(transparent 62%, rgba(217,119,6,0.28) 0); }
+
+  .star { color: var(--acc); }
+  .btn-acc { background: var(--acc); transition: transform .15s ease, box-shadow .15s ease, background .15s ease; }
+  .btn-acc:hover { background: var(--crust); transform: translateY(-2px); box-shadow: 0 12px 22px -10px rgba(180,83,9,0.6); }
+  .link-acc { transition: color .15s ease; }
+  .link-acc:hover { color: var(--crust); }
+
+  .bento-tile { border-radius: 18px; overflow: hidden; }
+</style>
+</head>
+<body class="font-body antialiased grain">
+
+  <!-- ===== NAV ===== -->
+  <header class="sticky top-0 z-50 bg-bg/90 backdrop-blur border-b border-[#f0e3d0]">
+    <nav class="max-w-6xl mx-auto px-5 h-[74px] flex items-center justify-between">
+      <a href="#top" class="flex items-baseline gap-2 group">
+        <span class="font-display text-2xl font-black tracking-tight text-ink">Starbread</span>
+        <span class="hidden sm:inline text-acc">★</span>
+        <span class="hidden md:inline text-[11px] uppercase tracking-[0.2em] text-crust/80 font-bold pt-1">Est. 1986</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-[15px] font-semibold">
+        <a href="#bread" class="link-acc">The Bread</a>
+        <a href="#menu" class="link-acc">Menu</a>
+        <a href="#say" class="link-acc">What People Say</a>
+        <a href="#visit" class="link-acc">Visit</a>
+      </div>
+      <a href="tel:+19517295289" class="btn-acc text-white font-bold text-sm rounded-full px-5 py-2.5 shadow">Call Now</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== HERO — BENTO GRID ===== -->
+    <section class="max-w-6xl mx-auto px-5 pt-8 md:pt-12 pb-14">
+      <div class="grid grid-cols-2 md:grid-cols-4 auto-rows-[150px] md:auto-rows-[180px] gap-3 md:gap-4">
+
+        <!-- Name / intro tile -->
+        <div class="bento-tile col-span-2 row-span-2 bg-white border border-[#f0e3d0] p-7 md:p-9 flex flex-col justify-between">
+          <div>
+            <p class="text-[12px] uppercase tracking-[0.28em] text-crust font-extrabold">Filipino Bakeshop · Riverside, CA</p>
+            <h1 class="font-display text-[2.7rem] leading-[0.95] md:text-6xl md:leading-[0.92] font-black text-ink mt-3">
+              Home of the<br /><span class="italic font-medium underline-amber">Señorita Bread</span>
+            </h1>
+            <p class="mt-4 text-ink/70 text-[15px] md:text-base max-w-sm">
+              Pillowy, buttery, sugar-dusted rolls baked fresh every morning since 1986. Pop in, grab a box, eat one in the parking lot — we won't judge.
+            </p>
+          </div>
+          <div class="flex flex-wrap items-center gap-3 pt-5">
+            <a href="#visit" class="btn-acc text-white font-bold rounded-full px-6 py-3 text-sm shadow">Get Directions</a>
+            <a href="tel:+19517295289" class="font-bold text-crust link-acc text-sm">or call (951) 729-5289 →</a>
+          </div>
+        </div>
+
+        <!-- Photo tile: señorita close-up (tall) -->
+        <div class="bento-tile col-span-2 row-span-2">
+          <img src="./photos/03.jpg" alt="Freshly baked golden Señorita bread rolls" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- Photo tile: flavors -->
+        <div class="bento-tile col-span-1 row-span-1">
+          <img src="./photos/02.jpg" alt="Bavarian Cream and Pineapple Señorita bread packaged" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- Accent tag tile -->
+        <div class="bento-tile col-span-1 row-span-1 bg-acc text-white p-5 flex flex-col justify-center">
+          <p class="font-display text-3xl md:text-4xl font-black leading-none">7–7</p>
+          <p class="text-[12px] uppercase tracking-[0.18em] font-bold mt-2 text-white/90">Open every<br/>day, 7am–7pm</p>
+        </div>
+
+        <!-- Photo tile: counter -->
+        <div class="bento-tile col-span-2 row-span-1">
+          <img src="./photos/05.jpg" alt="Starbread Bakery counter and display" class="w-full h-full object-cover" />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== STORY / ABOUT ===== -->
+    <section id="bread" class="bg-white border-y border-[#f0e3d0]">
+      <div class="max-w-6xl mx-auto px-5 py-16 md:py-20 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-[12px] uppercase tracking-[0.28em] text-crust font-extrabold">The bread that started it all</p>
+          <h2 class="font-display text-4xl md:text-5xl font-black mt-3 leading-tight">
+            One bite and you'll <span class="italic font-medium">get it.</span>
+          </h2>
+          <p class="mt-5 text-ink/75 text-[16px] leading-relaxed">
+            Señorita Bread — soft, sweet, buttery rolls rolled in fine sugar — is the reason
+            people drive across town and freeway-hop the 91 to get here. We've been baking it
+            since 1986, and we still bake it the same way: warm, pillowy, and impossible to eat
+            just one.
+          </p>
+          <p class="mt-4 text-ink/75 text-[16px] leading-relaxed">
+            Beyond the original, you'll find it in flavors like ube, pineapple and Bavarian cream —
+            plus malasadas, cupcakes, donuts and a couple of savory cheese bites. Boxes of 30 make
+            the kind of gift people actually remember.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-2">
+            <span class="sticker rounded-full px-4 py-1.5 text-sm font-bold text-crust">Since 1986</span>
+            <span class="sticker rounded-full px-4 py-1.5 text-sm font-bold text-crust">Baked fresh daily</span>
+            <span class="sticker rounded-full px-4 py-1.5 text-sm font-bold text-crust">“Kain tayo!”</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <img src="./photos/04.jpg" alt="Starbread box — Home of the Señorita Bread, since 1986" class="rounded-2xl w-full h-56 md:h-72 object-cover col-span-2 border border-[#f0e3d0]" />
+          <img src="./photos/06.jpg" alt="Chalkboard menu and shelves of fresh bread" class="rounded-2xl w-full h-44 md:h-52 object-cover border border-[#f0e3d0]" />
+          <img src="./photos/01.jpg" alt="Display case of malasadas and donuts" class="rounded-2xl w-full h-44 md:h-52 object-cover border border-[#f0e3d0]" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MENU — STICKER CARDS ===== -->
+    <section id="menu" class="max-w-6xl mx-auto px-5 py-16 md:py-20">
+      <div class="flex items-end justify-between flex-wrap gap-3">
+        <div>
+          <p class="text-[12px] uppercase tracking-[0.28em] text-crust font-extrabold">From the case</p>
+          <h2 class="font-display text-4xl md:text-5xl font-black mt-2">What we bake</h2>
+        </div>
+        <p class="text-ink/60 text-sm max-w-xs">A sampling from the counter — flavors and trays rotate, so there's always a reason to come back.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+
+        <div class="sticker rounded-2xl p-6">
+          <div class="flex items-baseline justify-between gap-3">
+            <h3 class="font-display text-2xl font-black">Original Señorita Bread</h3>
+            <span class="star text-lg">★</span>
+          </div>
+          <p class="text-ink/70 text-[15px] mt-2">The classic — soft, buttery, rolled in sugar. Sold by the piece or in boxes up to 30.</p>
+        </div>
+
+        <div class="sticker rounded-2xl p-6">
+          <h3 class="font-display text-2xl font-black">Señorita — Flavors</h3>
+          <p class="text-ink/70 text-[15px] mt-2">Ube, pineapple and Bavarian cream takes on the original. Same pillowy roll, new fillings.</p>
+        </div>
+
+        <div class="sticker rounded-2xl p-6">
+          <h3 class="font-display text-2xl font-black">Malasadas</h3>
+          <p class="text-ink/70 text-[15px] mt-2">Sugar-dusted fried dough, including a chocolate version. Best while still warm.</p>
+        </div>
+
+        <div class="sticker rounded-2xl p-6">
+          <h3 class="font-display text-2xl font-black">Cupcakes</h3>
+          <p class="text-ink/70 text-[15px] mt-2">All flavors. Single or by the half-dozen for whatever you're celebrating.</p>
+        </div>
+
+        <div class="sticker rounded-2xl p-6">
+          <h3 class="font-display text-2xl font-black">Donuts</h3>
+          <p class="text-ink/70 text-[15px] mt-2">Plain and assorted, available by the dozen — a fresh-baked everyday classic.</p>
+        </div>
+
+        <div class="sticker rounded-2xl p-6">
+          <h3 class="font-display text-2xl font-black">Savory &amp; Drinks</h3>
+          <p class="text-ink/70 text-[15px] mt-2">A couple of savory cheese and ham bites, plus refrigerated drinks for the road.</p>
+        </div>
+
+      </div>
+
+      <div class="mt-10 text-center">
+        <a href="tel:+19517295289" class="btn-acc inline-block text-white font-bold rounded-full px-8 py-3.5 shadow">Call to order a box</a>
+      </div>
+    </section>
+
+    <!-- ===== WHAT PEOPLE SAY ===== -->
+    <section id="say" class="bg-acc text-white">
+      <div class="max-w-6xl mx-auto px-5 py-16 md:py-20">
+        <p class="text-[12px] uppercase tracking-[0.28em] text-white/80 font-extrabold">In their words</p>
+        <h2 class="font-display text-4xl md:text-5xl font-black mt-2">What people say</h2>
+
+        <div class="grid md:grid-cols-3 gap-5 mt-10">
+          <figure class="bg-white text-ink rounded-2xl p-6 md:row-span-2 flex flex-col">
+            <blockquote class="font-display text-[19px] leading-snug italic">
+              “Piping hot, pillowy soft, buttery goodness… I couldn't resist and I had to eat one in the parking lot! Sooooo so good. These make such great hostess gifts.”
+            </blockquote>
+            <figcaption class="mt-5 text-sm font-bold text-crust">— Wendy L.</figcaption>
+          </figure>
+
+          <figure class="bg-white text-ink rounded-2xl p-6">
+            <blockquote class="text-[16px] leading-relaxed">
+              “The bread here is amazing and always great customer service. The guava bread is to die for.”
+            </blockquote>
+            <figcaption class="mt-4 text-sm font-bold text-crust">— J. A.</figcaption>
+          </figure>
+
+          <figure class="bg-white text-ink rounded-2xl p-6">
+            <blockquote class="text-[16px] leading-relaxed">
+              “So delicious I cannot just eat one — best treat to take to any gathering or parties.”
+            </blockquote>
+            <figcaption class="mt-4 text-sm font-bold text-crust">— Maritza R.</figcaption>
+          </figure>
+
+          <figure class="bg-white text-ink rounded-2xl p-6">
+            <blockquote class="text-[16px] leading-relaxed">
+              “I usually come here for the Señorita bread, but everything is delicious. The friendly people working here are always fabulous too. ‘Kain tayo!’”
+            </blockquote>
+            <figcaption class="mt-4 text-sm font-bold text-crust">— Jamar J.</figcaption>
+          </figure>
+
+          <figure class="bg-white text-ink rounded-2xl p-6">
+            <blockquote class="text-[16px] leading-relaxed">
+              “As a returning customer, I highly recommend the Señorita Bread.”
+            </blockquote>
+            <figcaption class="mt-4 text-sm font-bold text-crust">— Nathan R.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== VISIT / HOURS / MAP / CONTACT ===== -->
+    <section id="visit" class="max-w-6xl mx-auto px-5 py-16 md:py-20">
+      <div class="grid md:grid-cols-2 gap-10 md:gap-14 items-start">
+
+        <div>
+          <p class="text-[12px] uppercase tracking-[0.28em] text-crust font-extrabold">Come by</p>
+          <h2 class="font-display text-4xl md:text-5xl font-black mt-2 leading-tight">Find us on Magnolia</h2>
+          <p class="mt-4 text-ink/75 text-[16px] leading-relaxed">
+            First door on the left of the plaza, near Tyler St and just off the 91 freeway —
+            with plenty of parking. Stop in for a warm box on your way home.
+          </p>
+
+          <div class="mt-7 space-y-5">
+            <div>
+              <p class="text-[12px] uppercase tracking-[0.2em] text-crust font-extrabold">Address</p>
+              <p class="text-[17px] font-semibold mt-1">10193 Magnolia Ave, Riverside, CA 92503</p>
+            </div>
+            <div>
+              <p class="text-[12px] uppercase tracking-[0.2em] text-crust font-extrabold">Phone</p>
+              <a href="tel:+19517295289" class="text-[17px] font-semibold mt-1 inline-block link-acc">(951) 729-5289</a>
+            </div>
+            <div>
+              <p class="text-[12px] uppercase tracking-[0.2em] text-crust font-extrabold">Hours</p>
+              <div class="mt-2 sticker rounded-xl p-4 max-w-sm">
+                <div class="flex items-center justify-between text-[15px]">
+                  <span class="font-bold">Every day</span>
+                  <span class="font-semibold">7:00 AM – 7:00 PM</span>
+                </div>
+                <p class="text-ink/55 text-[13px] mt-1">Monday through Sunday — fresh from open.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="https://www.google.com/maps/place/10193+Magnolia+Ave,+Riverside,+CA+92503" target="_blank" rel="noopener" class="btn-acc text-white font-bold rounded-full px-6 py-3 text-sm shadow">Get Directions</a>
+            <a href="https://maps.google.com/?cid=16144974389473008087" target="_blank" rel="noopener" class="font-bold text-crust link-acc text-sm self-center">View on Google →</a>
+          </div>
+        </div>
+
+        <div class="rounded-2xl overflow-hidden border border-[#f0e3d0] shadow-sm">
+          <iframe
+            title="Map to Starbread Bakery, 10193 Magnolia Ave, Riverside, CA"
+            src="https://www.google.com/maps?q=10193%20Magnolia%20Ave%2C%20Riverside%2C%20CA%2092503&z=15&output=embed"
+            width="100%" height="430" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="bg-ink text-bg/90">
+      <div class="max-w-6xl mx-auto px-5 py-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div>
+            <div class="flex items-baseline gap-2">
+              <span class="font-display text-3xl font-black text-bg">Starbread Bakery</span>
+              <span class="text-acc text-xl">★</span>
+            </div>
+            <p class="text-bg/60 text-sm mt-2 max-w-xs">Home of the Señorita Bread. Baked fresh in Riverside since 1986.</p>
+          </div>
+          <div class="text-sm md:text-right space-y-1">
+            <p>10193 Magnolia Ave, Riverside, CA 92503</p>
+            <p><a href="tel:+19517295289" class="link-acc font-semibold">(951) 729-5289</a> · Open daily 7am–7pm</p>
+            <p><a href="https://maps.google.com/?cid=16144974389473008087" target="_blank" rel="noopener" class="link-acc font-semibold">Find us on Google →</a></p>
+          </div>
+        </div>
+        <hr class="border-bg/15 my-8" />
+        <p class="text-bg/45 text-[13px]">
+          Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+        </p>
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>

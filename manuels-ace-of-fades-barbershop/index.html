@@ -1,0 +1,889 @@
+<!-- barber · classic-editorial · hero-layout 1 · svc-layout 2 · Playfair Display/Source Sans 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manuel's Ace of Fades Barbershop — Los Banos, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --acc:#b91c1c;
+      --bg:#faf7f2;
+      --ink:#1a1a1a;
+      --muted:#6b6460;
+      --rule:#e0d9d1;
+      --nav-h:64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-padding-top: var(--nav-h);
+      scroll-behavior: smooth;
+    }
+
+    body{font-family:'Source Sans 3',sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    .brand{font-family:'Playfair Display',serif;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 5vw, 3rem);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-logo span {
+      color: var(--acc);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--acc); }
+
+    .nav-cta {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--acc);
+      text-decoration: none;
+      border: 1.5px solid var(--acc);
+      padding: 0.4rem 1rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--acc); color: #fff; }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .nav-mobile-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      transition: 0.2s;
+    }
+
+    /* ── HERO ── (left-image layout) */
+    #hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - var(--nav-h));
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.18) 0%, transparent 60%);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2rem, 8vw, 5rem) clamp(2rem, 6vw, 4rem);
+      background: var(--bg);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--acc);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1.1;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--acc);
+    }
+
+    .hero-lead {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 38ch;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.85rem 1.8rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: #991b1b; transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-block;
+      color: var(--ink);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.85rem 0;
+      text-decoration: none;
+      border-bottom: 1.5px solid var(--ink);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-ghost:hover { color: var(--acc); border-color: var(--acc); }
+
+    /* ── SECTION COMMONS ── */
+    section {
+      padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 5vw, 3rem);
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--acc);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+    }
+
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: #fff;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+      line-height: 1.75;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-img-stack {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .about-img-stack img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-img-stack img:first-child {
+      grid-row: span 2;
+      aspect-ratio: 2/3;
+    }
+
+    /* ── SERVICES (numbered/stacked list) ── */
+    #services {
+      background: var(--bg);
+    }
+
+    .services-header {
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1.5rem;
+    }
+
+    .services-list {
+      list-style: none;
+    }
+
+    .services-list li {
+      display: grid;
+      grid-template-columns: 3rem 1fr auto;
+      gap: 1rem 1.5rem;
+      align-items: baseline;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.15s;
+    }
+
+    .svc-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.72rem;
+      color: var(--acc);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      padding-top: 2px;
+    }
+
+    .svc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .svc-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      font-weight: 300;
+    }
+
+    .svc-price {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--acc);
+      white-space: nowrap;
+    }
+
+    /* ── GALLERY ── */
+    #gallery {
+      background: var(--ink);
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .gallery-label {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .gallery-title {
+      color: #fff;
+    }
+
+    .gallery-header {
+      padding: 0 clamp(1rem, 5vw, 3rem);
+      margin-bottom: 2rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.25s;
+    }
+
+    .gallery-grid img:hover { opacity: 0.85; }
+
+    /* ── TESTIMONIES ── */
+    #testimonies {
+      background: #fff;
+    }
+
+    .testimonies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .testimony-card {
+      border-left: 2px solid var(--acc);
+      padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+      background: var(--bg);
+    }
+
+    .testimony-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .testimony-quote::before { content: '\201C'; }
+    .testimony-quote::after  { content: '\201D'; }
+
+    .testimony-attr {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+
+    /* ── HOURS & LOCATION ── */
+    #location {
+      background: var(--bg);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 6vw, 5rem);
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hours-table td {
+      padding: 0.65rem 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .hours-table td:first-child {
+      font-weight: 600;
+      color: var(--ink);
+      width: 40%;
+    }
+
+    .map-wrap {
+      border-radius: 0;
+      overflow: hidden;
+      height: 320px;
+      margin-top: 1.5rem;
+      border: 1px solid var(--rule);
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .location-meta {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .location-meta a {
+      color: var(--acc);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: opacity 0.2s;
+    }
+
+    .location-meta a:hover { opacity: 0.75; }
+
+    .location-meta span {
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+
+    /* ── CONTACT CTA BAND ── */
+    #contact {
+      background: var(--acc);
+      padding: clamp(3rem, 6vw, 5rem) clamp(1rem, 5vw, 3rem);
+      text-align: center;
+    }
+
+    #contact .section-label { color: rgba(255,255,255,0.65); }
+
+    #contact .section-title { color: #fff; margin-bottom: 1rem; }
+
+    #contact p {
+      color: rgba(255,255,255,0.8);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
+    }
+
+    .btn-white {
+      display: inline-block;
+      background: #fff;
+      color: var(--acc);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.85rem 2.2rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-white:hover { background: var(--bg); transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.55);
+      padding: 2.5rem clamp(1rem, 5vw, 3rem);
+      font-size: 0.82rem;
+      font-weight: 300;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1.25rem;
+      list-style: none;
+    }
+
+    .footer-social a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+
+    .footer-social a:hover { color: #fff; }
+
+    .footer-rule {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-credit {
+      color: rgba(255,255,255,0.35);
+      font-size: 0.78rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      #hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-image {
+        height: 55vw;
+        min-height: 260px;
+      }
+
+      .hero-content {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-img-stack {
+        order: -1;
+      }
+
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-links, .nav-cta { display: none; }
+      .nav-mobile-toggle { display: flex; }
+    }
+
+    @media (max-width: 540px) {
+      .services-list li {
+        grid-template-columns: 2rem 1fr;
+        grid-template-rows: auto auto;
+      }
+
+      .svc-price {
+        grid-column: 2;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo brand">Ace <span>of</span> Fades</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Stories</a></li>
+      <li><a href="#location">Hours</a></li>
+    </ul>
+    <a href="tel:+12095927193" class="nav-cta">Call Now</a>
+    <button class="nav-mobile-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO — left image -->
+  <section id="hero">
+    <div class="hero-image">
+      <img src="./photos/01.jpg" alt="Barbershop interior at Manuel's Ace of Fades" />
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Los Banos, California</p>
+      <h1 class="hero-title brand">
+        Sharp cuts.<br />
+        <em>Earned</em> fades.
+      </h1>
+      <p class="hero-lead">
+        Manuel's Ace of Fades has been shaping up Los Banos, one precise cut at a time.
+        Walk in confident. Walk out looking right.
+      </p>
+      <div class="hero-actions">
+        <a href="tel:+12095927193" class="btn-primary">Call to Book</a>
+        <a href="#location" class="btn-ghost">Find Us</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="section-label">The Shop</p>
+          <h2 class="section-title">More than a <em>haircut</em></h2>
+          <p>
+            Tucked off Mercey Springs Road, Manuel's Ace of Fades is a neighborhood barbershop
+            that takes the craft seriously. Every fade is dialed in, every line is clean, and
+            every client leaves the chair looking their best.
+          </p>
+          <p>
+            Whether you're coming in for a classic taper, a skin fade, or a full beard shape-up,
+            the crew here brings the same level of attention and care to every chair. Open seven
+            days a week — because looking good doesn't wait.
+          </p>
+          <p>
+            Located at 1450 Mercey Springs Rd, Suite 101. Walk-ins welcome; call ahead for
+            guaranteed slots during busy periods.
+          </p>
+        </div>
+        <div class="about-img-stack">
+          <img src="./photos/02.jpg" alt="Barber at work" />
+          <img src="./photos/03.jpg" alt="Clean fade detail" />
+          <img src="./photos/04.jpg" alt="Barbershop chair" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- SERVICES — numbered/stacked list -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="services-header">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">The <em>full menu</em></h2>
+      </div>
+      <ul class="services-list">
+        <li>
+          <span class="svc-num">01</span>
+          <div>
+            <div class="svc-name">Haircut &amp; Fade</div>
+            <div class="svc-desc">Classic or modern cut with a clean taper or skin fade to match</div>
+          </div>
+          <span class="svc-price">From $20</span>
+        </li>
+        <li>
+          <span class="svc-num">02</span>
+          <div>
+            <div class="svc-name">Beard Trim &amp; Shape-Up</div>
+            <div class="svc-desc">Defined lines, tight edges, and a finished silhouette</div>
+          </div>
+          <span class="svc-price">From $10</span>
+        </li>
+        <li>
+          <span class="svc-num">03</span>
+          <div>
+            <div class="svc-name">Kids Cut</div>
+            <div class="svc-desc">Patient, careful cuts for young clients</div>
+          </div>
+          <span class="svc-price">From $15</span>
+        </li>
+        <li>
+          <span class="svc-num">04</span>
+          <div>
+            <div class="svc-name">Senior Cut</div>
+            <div class="svc-desc">Classic styling with the respect and care seniors deserve</div>
+          </div>
+          <span class="svc-price">From $15</span>
+        </li>
+        <li>
+          <span class="svc-num">05</span>
+          <div>
+            <div class="svc-name">Haircut + Beard Combo</div>
+            <div class="svc-desc">Full service — cut, fade, and beard all in one session</div>
+          </div>
+          <span class="svc-price">From $30</span>
+        </li>
+        <li>
+          <span class="svc-num">06</span>
+          <div>
+            <div class="svc-name">Hot Towel Shave</div>
+            <div class="svc-desc">Traditional straight-razor shave with hot-towel prep and finish</div>
+          </div>
+          <span class="svc-price">From $20</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="gallery-header section-inner">
+      <p class="section-label gallery-label">The Work</p>
+      <h2 class="section-title gallery-title">Precision <em>in every photo</em></h2>
+    </div>
+    <div class="gallery-grid">
+      <img src="./photos/01.jpg" alt="Barbershop interior" />
+      <img src="./photos/05.jpg" alt="Fade cut detail" />
+      <img src="./photos/06.jpg" alt="Finished haircut" />
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="section-inner">
+      <p class="section-label">Customer Testimonies</p>
+      <h2 class="section-title">In their <em>own words</em></h2>
+      <div class="testimonies-grid">
+        <div class="testimony-card">
+          <p class="testimony-quote">
+            Best barbershop in Los Banos, hands down. Manuel knows exactly what you want before you even finish describing it. My fade is always perfect.
+          </p>
+          <p class="testimony-attr">— Carlos M.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">
+            I've been coming here for over two years. Consistent, clean cuts every single time. The whole crew is professional and the vibe is great.
+          </p>
+          <p class="testimony-attr">— David R.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">
+            Took my son in for his first real barbershop cut. They were patient and friendly with him, and he walked out looking incredible. We'll be back.
+          </p>
+          <p class="testimony-attr">— Jessica T.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- HOURS & LOCATION -->
+  <section id="location">
+    <div class="section-inner">
+      <div class="location-grid">
+        <div>
+          <p class="section-label">Visit</p>
+          <h2 class="section-title">Hours &amp; <em>Location</em></h2>
+          <table class="hours-table">
+            <tbody>
+              <tr><td>Monday</td><td>9:00 AM – 6:30 PM</td></tr>
+              <tr><td>Tuesday</td><td>9:00 AM – 7:00 PM</td></tr>
+              <tr><td>Wednesday</td><td>9:00 AM – 7:00 PM</td></tr>
+              <tr><td>Thursday</td><td>9:00 AM – 7:00 PM</td></tr>
+              <tr><td>Friday</td><td>9:00 AM – 7:00 PM</td></tr>
+              <tr><td>Saturday</td><td>8:30 AM – 5:00 PM</td></tr>
+              <tr><td>Sunday</td><td>9:00 AM – 4:00 PM</td></tr>
+            </tbody>
+          </table>
+          <div class="location-meta">
+            <span>1450 Mercey Springs Rd, Suite 101<br />Los Banos, CA 93635</span>
+            <a href="tel:+12095927193">(209) 592-7193</a>
+            <a href="https://maps.google.com/?cid=5075068528687228663" target="_blank" rel="noopener">View on Google Maps →</a>
+          </div>
+        </div>
+        <div>
+          <p class="section-label">&nbsp;</p>
+          <h2 class="section-title" style="visibility:hidden;font-size:1rem">Map</h2>
+          <div class="map-wrap">
+            <iframe
+              src="https://www.google.com/maps?q=1450+Mercey+Springs+Rd+%23101+Los+Banos+CA+93635&z=15&output=embed"
+              title="Manuel's Ace of Fades Barbershop map"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA BAND -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Ready?</p>
+      <h2 class="section-title">Come get your <em>best look</em></h2>
+      <p>Walk-ins welcome seven days a week. Call ahead to lock in your spot.</p>
+      <a href="tel:+12095927193" class="btn-white">Call (209) 592-7193</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <span class="footer-brand brand">Manuel's Ace of Fades</span>
+        <ul class="footer-social">
+          <li>
+            <a href="https://maps.google.com/?cid=5075068528687228663" target="_blank" rel="noopener">Google Business</a>
+          </li>
+        </ul>
+      </div>
+      <hr class="footer-rule" />
+      <p>1450 Mercey Springs Rd, Suite 101 · Los Banos, CA 93635 · <a href="tel:+12095927193" style="color:rgba(255,255,255,0.55);text-decoration:none;">(209) 592-7193</a></p>
+      <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,756 @@
+<!-- coffee · warm-boutique · hero-layout 0 · svc-layout 0 · Fraunces/Nunito Sans -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Level UP Coffee Shop — Glendale, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Nunito+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --acc:#be123c;
+      --bg:#fff1f2;
+      --text:#1a1013;
+      --muted:#6b3a44;
+      --card:#fff8f8;
+      --radius:1.25rem;
+      --nav-h:64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-padding-top: var(--nav-h); scroll-behavior: smooth; }
+
+    body{font-family:'Nunito Sans',sans-serif; background: var(--bg); color: var(--text); font-size: 1rem; line-height: 1.65; -webkit-font-smoothing: antialiased;}
+
+    .brand{font-family:'Fraunces',serif; font-weight: 700; letter-spacing: -0.02em;}
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: rgba(255,241,242,0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(190,18,60,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+
+    .nav-logo {
+      font-size: 1.15rem;
+      color: var(--acc);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: color 0.2s;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover { color: var(--acc); }
+
+    .nav-cta {
+      background: var(--acc);
+      color: #fff !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 999px;
+      transition: background 0.2s, transform 0.15s !important;
+    }
+
+    .nav-cta:hover { background: #9f0f32 !important; transform: translateY(-1px); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--acc);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(90vh - var(--nav-h));
+      align-items: center;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    .hero-copy {
+      padding: 4rem 3rem 4rem 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--acc);
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 3.75rem);
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--acc);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 32rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: #fff;
+      padding: 0.75rem 1.75rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: #9f0f32; transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-block;
+      color: var(--acc);
+      padding: 0.75rem 1.75rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1.5px solid var(--acc);
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn-ghost:hover { background: var(--acc); color: #fff; transform: translateY(-2px); }
+
+    .hero-image {
+      position: relative;
+      height: 100%;
+      min-height: 520px;
+    }
+
+    .hero-image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(255,241,242,0.35), transparent);
+      pointer-events: none;
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 5rem 1.5rem; }
+
+    .container { max-width: 1120px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 38rem;
+      line-height: 1.75;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 0.75rem;
+    }
+
+    .about-photos img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--radius);
+    }
+
+    .about-photos img:first-child {
+      grid-column: 1 / -1;
+      height: 260px;
+    }
+
+    .about-copy { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .about-copy p { color: var(--muted); line-height: 1.8; }
+
+    .about-tag {
+      display: inline-block;
+      background: rgba(190,18,60,0.1);
+      color: var(--acc);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.3rem 0.85rem;
+      border-radius: 999px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── MENU / SERVICES ── */
+    #menu { background: #fff; }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .menu-card {
+      background: var(--card);
+      border: 1px solid rgba(190,18,60,0.08);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(190,18,60,0.12);
+    }
+
+    .menu-card-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .menu-card-body {
+      padding: 1.25rem 1.4rem 1.5rem;
+    }
+
+    .menu-card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .menu-card-title.brand { font-size: 1.2rem; color: var(--acc); }
+
+    .menu-card-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies { background: var(--bg); }
+
+    .testimony-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .testimony-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 2rem;
+      border-left: 3px solid var(--acc);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: box-shadow 0.2s;
+    }
+
+    .testimony-card:hover {
+      box-shadow: 0 8px 24px rgba(190,18,60,0.08);
+    }
+
+    .testimony-quote {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.75;
+      font-style: italic;
+      flex: 1;
+    }
+
+    .testimony-quote::before { content: '\201C'; }
+    .testimony-quote::after { content: '\201D'; }
+
+    .testimony-attr {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--acc);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── HOURS & LOCATION ── */
+    #visit { background: #fff; }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .hours-block { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .hours-table tr:not(:last-child) td {
+      border-bottom: 1px solid rgba(190,18,60,0.08);
+    }
+
+    .hours-table td {
+      padding: 0.65rem 0;
+      color: var(--muted);
+    }
+
+    .hours-table td:last-child {
+      text-align: right;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      font-size: 0.95rem;
+    }
+
+    .info-item strong {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acc);
+      font-weight: 700;
+    }
+
+    .info-item a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .info-item a:hover { color: var(--acc); }
+
+    .map-wrap {
+      border-radius: var(--radius);
+      overflow: hidden;
+      height: 380px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .directions-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: var(--acc);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .directions-link:hover { border-color: var(--acc); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.7);
+      padding: 3rem 1.5rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-brand-name {
+      color: #fff;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.5rem;
+      justify-content: flex-end;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: #fff; }
+
+    .footer-credit {
+      max-width: 1120px;
+      margin: 0 auto;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        background: rgba(255,241,242,0.97);
+        padding: 1rem 1.5rem 1.5rem;
+        gap: 1rem;
+        border-bottom: 1px solid rgba(190,18,60,0.1);
+      }
+      .hamburger { display: flex; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-image {
+        order: -1;
+        min-height: 280px;
+        height: 56vw;
+        position: relative;
+      }
+
+      .hero-copy {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .visit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links { justify-content: flex-start; }
+
+      section { padding: 3.5rem 1.25rem; }
+    }
+
+    @media (max-width: 480px) {
+      .testimony-list { grid-template-columns: 1fr; }
+      .menu-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#" class="nav-logo brand">Level UP Coffee</a>
+    <button class="hamburger" id="burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="https://maps.google.com/?cid=13453255057003536367" target="_blank" rel="noopener" class="nav-cta">Get Directions</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="hero" style="padding:0;">
+    <div class="hero-copy">
+      <span class="hero-eyebrow">Glendale, CA · N Brand Blvd</span>
+      <h1 class="hero-title brand">
+        Coffee worth<br /><em>leveling up</em><br />your morning for.
+      </h1>
+      <p class="hero-desc">
+        Specialty coffee, fresh-made sandwiches, vibrant juices, and a team that puts genuine care into every order. Start your day right on North Brand.
+      </p>
+      <div class="hero-actions">
+        <a href="https://maps.google.com/?cid=13453255057003536367" target="_blank" rel="noopener" class="btn-primary">Get Directions</a>
+        <a href="#menu" class="btn-ghost">See the Menu</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="./photos/01.jpg" alt="Level UP Coffee Shop interior" />
+      <div class="hero-image-overlay"></div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-photos">
+          <img src="./photos/02.jpg" alt="Coffee and food at Level UP" />
+          <img src="./photos/03.jpg" alt="Fresh food prepared at Level UP" />
+          <img src="./photos/04.jpg" alt="Level UP Coffee Shop ambiance" />
+        </div>
+        <div class="about-copy">
+          <span class="section-label">Our Story</span>
+          <h2 class="section-title brand">More than coffee —<br />a place that cares.</h2>
+          <p>Level UP Coffee Shop on North Brand Blvd in Glendale is where quality meets genuine hospitality. We craft specialty coffees, pile fresh ingredients into every sandwich, and make sure every order — whether it's a solo cup or a team catering spread — is beautifully packed and full of flavor.</p>
+          <p>Our outside tables catch the breeze on good weather days. Our team knows your order. And every detail, from the cut fruit cups to the fresh-baked cake, is made with care you can taste.</p>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.5rem;">
+            <span class="about-tag">Specialty Coffee</span>
+            <span class="about-tag">Fresh Food</span>
+            <span class="about-tag">Catering</span>
+            <span class="about-tag">Outdoor Seating</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MENU ── -->
+  <section id="menu">
+    <div class="container">
+      <p class="section-label">What We Serve</p>
+      <h2 class="section-title brand">Fresh, every single day.</h2>
+      <p class="section-lead">From your morning espresso to a full team lunch spread — everything is made with quality ingredients and packed with care.</p>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <img src="./photos/05.jpg" alt="Specialty coffee drinks" class="menu-card-img" />
+          <div class="menu-card-body">
+            <p class="menu-card-title brand">Specialty Coffee</p>
+            <p class="menu-card-desc">Espresso drinks, pour-overs, lattes, and seasonal specials — carefully crafted for coffee lovers.</p>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img src="./photos/06.jpg" alt="Fresh sandwiches" class="menu-card-img" />
+          <div class="menu-card-body">
+            <p class="menu-card-title brand">Sandwiches &amp; Breakfast</p>
+            <p class="menu-card-desc">Hearty breakfast sandwiches and fresh-made lunches that guests keep coming back for. The sandwiches are awesome.</p>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img src="./photos/02.jpg" alt="Fresh juices and drinks" class="menu-card-img" />
+          <div class="menu-card-body">
+            <p class="menu-card-title brand">Fresh Juices &amp; Drinks</p>
+            <p class="menu-card-desc">Cold-pressed and freshly squeezed — vibrant juices to complement your coffee or stand on their own.</p>
+          </div>
+        </div>
+        <div class="menu-card">
+          <img src="./photos/03.jpg" alt="Salads and catering" class="menu-card-img" />
+          <div class="menu-card-body">
+            <p class="menu-card-title brand">Catering &amp; Team Orders</p>
+            <p class="menu-card-desc">Fresh salads, sandwiches, fruit cups, and cake pieces — beautifully packed for your whole office or event team.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIES ── -->
+  <section id="testimonies">
+    <div class="container">
+      <p class="section-label">In Their Words</p>
+      <h2 class="section-title brand">Customer Testimonies</h2>
+      <p class="section-lead">Real words from real guests who've made Level UP part of their routine.</p>
+      <div class="testimony-list">
+        <div class="testimony-card">
+          <p class="testimony-quote">Level Up Coffee took great care of our team with an incredible spread — fresh salads, tasty sandwiches, cut fruit cups, fresh juices, and even delicious cake pieces! Everything was super fresh, beautifully packed, and full of flavor. You can tell they truly care about quality and customer experience.</p>
+          <span class="testimony-attr">ColArt P.</span>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">Amazing service and super fresh, high-quality food. Everything was perfect from start to finish. Friendly team, beautifully packed, and always a great experience. Highly recommend Level Up Coffee!</p>
+          <span class="testimony-attr">Kristina L.</span>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">Amazing service, everything was perfect from service to the freshness of the food. The staff are great, the sandwiches are awesome — you should definitely try their coffees while sitting at the outside tables in nice weather.</p>
+          <span class="testimony-attr">Edgar H.</span>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">I highly recommend this place for some good coffee and the breakfast sandwich was delicious. I highly recommend this place.</p>
+          <span class="testimony-attr">Ben L.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── VISIT ── -->
+  <section id="visit">
+    <div class="container">
+      <p class="section-label">Come See Us</p>
+      <h2 class="section-title brand">Hours &amp; Location</h2>
+      <div class="visit-grid">
+        <div class="hours-block">
+          <table class="hours-table">
+            <tbody>
+              <tr><td>Monday</td><td>7:00 AM – 5:00 PM</td></tr>
+              <tr><td>Tuesday</td><td>7:00 AM – 5:00 PM</td></tr>
+              <tr><td>Wednesday</td><td>7:00 AM – 5:00 PM</td></tr>
+              <tr><td>Thursday</td><td>7:00 AM – 5:00 PM</td></tr>
+              <tr><td>Friday</td><td>7:00 AM – 5:00 PM</td></tr>
+              <tr><td>Saturday</td><td>8:00 AM – 4:00 PM</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+            </tbody>
+          </table>
+          <div class="info-item">
+            <strong>Address</strong>
+            <span>450 N Brand Blvd, Glendale, CA 91203</span>
+          </div>
+          <div class="info-item">
+            <strong>Google Business</strong>
+            <a href="https://maps.google.com/?cid=13453255057003536367" target="_blank" rel="noopener">View on Google Maps</a>
+          </div>
+          <a href="https://www.google.com/maps?q=450+N+Brand+Blvd,+Glendale,+CA+91203&z=15" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;margin-top:0.75rem;text-align:center;">Get Directions</a>
+        </div>
+        <div>
+          <div class="map-wrap">
+            <iframe
+              src="https://www.google.com/maps?q=450+N+Brand+Blvd%2C+Glendale%2C+CA+91203&z=15&output=embed"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Level UP Coffee Shop location map">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <p class="footer-brand-name brand">Level UP Coffee Shop</p>
+        <p class="footer-tagline">450 N Brand Blvd · Glendale, CA 91203<br />Great coffee. Fresh food. A team that cares.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#testimonies">Testimonies</a>
+        <a href="#visit">Hours</a>
+        <a href="https://maps.google.com/?cid=13453255057003536367" target="_blank" rel="noopener">Google Business</a>
+      </nav>
+    </div>
+    <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const links = document.getElementById('nav-links');
+    burger.addEventListener('click', () => {
+      links.classList.toggle('open');
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+  </script>
+
+</body>
+</html>

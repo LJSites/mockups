@@ -1,0 +1,448 @@
+<!-- nails · classic-editorial · hero-layout 1 · svc-layout 2 · Playfair Display/Source Sans 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SalonOne — Hair Salon · Madera, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --acc:#b91c1c;
+  --bg:#faf7f2;
+  --ink:#1a1a18;
+  --muted:#6b6860;
+  --rule:#ddd8cf;
+  --off:#f2ede6;
+  --nav-h:64px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--ink);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+
+/* ── TYPOGRAPHY ── */
+.brand{font-family:'Playfair Display',serif; font-size:1.45rem;letter-spacing:.02em;color:var(--ink)}
+h1,h2,h3,.serif{font-family:'Playfair Display',serif}
+h1{font-size:clamp(2.4rem,6vw,4rem);line-height:1.12;font-weight:700}
+h2{font-size:clamp(1.7rem,3.5vw,2.4rem);line-height:1.2;font-weight:600}
+h3{font-size:1.15rem;font-weight:600;line-height:1.35}
+.overline{font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--acc)}
+.lead{font-size:1.1rem;color:var(--muted);line-height:1.75;font-weight:300}
+
+/* ── LAYOUT ── */
+.container{width:100%;max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+@media(min-width:768px){section{padding:100px 0}}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--rule);height:var(--nav-h)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:100%}
+.nav-links{display:none;gap:32px;font-size:.88rem;font-weight:500;letter-spacing:.04em}
+.nav-links a{color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--acc)}
+@media(min-width:680px){.nav-links{display:flex}}
+.nav-cta{display:inline-flex;align-items:center;gap:8px;padding:9px 22px;background:var(--acc);color:#fff;font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;transition:background .2s,opacity .2s}
+.nav-cta:hover{background:#991b1b}
+
+/* ── HERO (layout 1 — left image) ── */
+.hero{padding:0;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr;min-height:560px}
+@media(min-width:768px){.hero-grid{grid-template-columns:1fr 1fr;min-height:640px}}
+.hero-image-col{position:relative;min-height:360px;overflow:hidden}
+@media(min-width:768px){.hero-image-col{min-height:auto}}
+.hero-image-col img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.hero-image-col::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(250,247,242,.12),rgba(250,247,242,0))}
+.hero-content{display:flex;flex-direction:column;justify-content:center;padding:56px 36px 56px 32px;background:var(--bg)}
+@media(min-width:768px){.hero-content{padding:72px 64px 72px 56px}}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.hero-eyebrow span:first-child{display:inline-block;width:32px;height:1px;background:var(--acc)}
+.hero-h1{margin-bottom:20px}
+.hero-h1 em{font-style:italic;color:var(--acc)}
+.hero-sub{font-size:1.05rem;color:var(--muted);line-height:1.7;margin-bottom:36px;max-width:420px;font-weight:300}
+.hero-actions{display:flex;flex-direction:column;gap:12px}
+@media(min-width:480px){.hero-actions{flex-direction:row;gap:16px}}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;padding:13px 30px;background:var(--acc);color:#fff;font-weight:600;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase;transition:background .2s;white-space:nowrap}
+.btn-primary:hover{background:#991b1b}
+.btn-secondary{display:inline-flex;align-items:center;justify-content:center;padding:12px 28px;border:1.5px solid var(--ink);color:var(--ink);font-weight:600;font-size:.92rem;letter-spacing:.06em;text-transform:uppercase;transition:border-color .2s,color .2s;white-space:nowrap}
+.btn-secondary:hover{border-color:var(--acc);color:var(--acc)}
+
+/* ── ABOUT ── */
+#about{background:var(--off)}
+.about-grid{display:grid;gap:56px;align-items:center}
+@media(min-width:768px){.about-grid{grid-template-columns:5fr 4fr;gap:72px}}
+.about-text .overline{margin-bottom:16px}
+.about-text h2{margin-bottom:20px}
+.about-text p{color:var(--muted);margin-bottom:16px;font-weight:300}
+.about-text p:last-child{margin-bottom:0}
+.about-photo{position:relative}
+.about-photo img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.about-photo::before{content:'';position:absolute;top:-12px;left:-12px;right:12px;bottom:12px;border:1.5px solid var(--rule);z-index:0;pointer-events:none}
+.about-photo img{position:relative;z-index:1}
+
+/* ── SERVICES (layout 2 — numbered/stacked list) ── */
+#services{background:var(--bg)}
+.services-header{text-align:left;margin-bottom:56px}
+.services-header .overline{margin-bottom:12px}
+.services-header h2{margin-bottom:0}
+.services-rule{width:100%;height:1px;background:var(--rule);margin:32px 0}
+.service-item{display:grid;grid-template-columns:40px 1fr auto;gap:16px 24px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--rule)}
+.service-item:first-child{border-top:1px solid var(--rule)}
+.service-num{font-family:'Playfair Display',serif;font-size:1rem;font-weight:400;color:var(--rule);font-style:italic}
+.service-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600}
+.service-desc{font-size:.88rem;color:var(--muted);margin-top:4px;grid-column:2;font-weight:300}
+.service-price{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--acc);white-space:nowrap;font-style:italic}
+
+/* ── GALLERY ── */
+#gallery{background:var(--off);padding:80px 0}
+.gallery-header{margin-bottom:40px}
+.gallery-header .overline{margin-bottom:10px}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+@media(min-width:640px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.gallery-grid{grid-template-columns:repeat(3,1fr);gap:12px}}
+.gallery-cell{overflow:hidden;aspect-ratio:1}
+.gallery-cell img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+.gallery-cell:hover img{transform:scale(1.04)}
+.gallery-cell.tall{aspect-ratio:3/4}
+@media(min-width:640px){
+  .gallery-cell:nth-child(1){grid-row:span 2;aspect-ratio:auto}
+  .gallery-cell:nth-child(1) img{height:100%}
+}
+
+/* ── TESTIMONIES ── */
+#testimonies{background:var(--bg)}
+.test-header{margin-bottom:52px}
+.test-header .overline{margin-bottom:10px}
+.test-header h2{margin-bottom:0}
+.test-list{display:grid;gap:0}
+.test-item{display:grid;grid-template-columns:1fr;gap:16px;padding:36px 0;border-top:1px solid var(--rule)}
+@media(min-width:640px){.test-item{grid-template-columns:48px 1fr;gap:24px;align-items:start}}
+.test-item:last-child{border-bottom:1px solid var(--rule)}
+.test-mark{font-family:'Playfair Display',serif;font-size:3rem;line-height:1;color:var(--rule);display:none}
+@media(min-width:640px){.test-mark{display:block}}
+.test-body blockquote{font-family:'Playfair Display',serif;font-size:1.1rem;line-height:1.7;font-style:italic;color:var(--ink);margin-bottom:12px}
+.test-attr{font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+
+/* ── HOURS & LOCATION ── */
+#visit{background:var(--off)}
+.visit-grid{display:grid;gap:48px}
+@media(min-width:768px){.visit-grid{grid-template-columns:1fr 1fr;gap:64px}}
+.hours-table{width:100%;border-collapse:collapse;margin-top:24px}
+.hours-table tr td{padding:9px 0;font-size:.93rem;border-bottom:1px solid var(--rule)}
+.hours-table tr:last-child td{border-bottom:none}
+.hours-table .day{color:var(--muted);font-weight:400;width:50%}
+.hours-table .time{font-weight:500;color:var(--ink);text-align:right}
+.hours-table .closed{color:var(--rule)}
+.map-wrap{margin-top:24px;overflow:hidden}
+.map-wrap iframe{width:100%;height:280px;border:none;display:block}
+.visit-cta{margin-top:28px}
+
+/* ── CONTACT ── */
+#contact{background:var(--bg)}
+.contact-inner{display:grid;gap:48px;align-items:start}
+@media(min-width:768px){.contact-inner{grid-template-columns:1fr 1fr;gap:64px}}
+.contact-block .overline{margin-bottom:12px}
+.contact-block h2{margin-bottom:16px}
+.contact-block p{color:var(--muted);margin-bottom:28px;font-weight:300}
+.contact-detail{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.contact-row{font-size:.93rem}
+.contact-row strong{font-weight:600;color:var(--ink);display:inline-block;min-width:76px}
+.contact-row a:hover{color:var(--acc)}
+.social-links{display:flex;gap:20px;flex-wrap:wrap}
+.social-link{font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--rule);padding-bottom:2px;transition:color .2s,border-color .2s}
+.social-link:hover{color:var(--acc);border-color:var(--acc)}
+.contact-cta-col{display:flex;flex-direction:column;justify-content:center;padding:40px;background:var(--off);border-left:3px solid var(--acc)}
+.contact-cta-col .serif{font-size:1.4rem;font-weight:400;font-style:italic;margin-bottom:20px;line-height:1.4}
+.contact-cta-col .btn-primary{align-self:flex-start}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(255,255,255,.45);padding:32px 0}
+.footer-inner{display:flex;flex-direction:column;gap:12px}
+@media(min-width:640px){.footer-inner{flex-direction:row;justify-content:space-between;align-items:center}}
+.footer-brand{font-family:'Playfair Display',serif;font-size:1.1rem;color:#fff;font-style:italic}
+.footer-credit{font-size:.78rem}
+.footer-credit a{color:rgba(255,255,255,.6);border-bottom:1px solid rgba(255,255,255,.2);transition:color .2s}
+.footer-credit a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#top" class="brand">SalonOne</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#testimonies">Testimonies</a>
+        <a href="#visit">Visit</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <a href="tel:5596745884" class="nav-cta">Call Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <!-- layout 1: image on the LEFT -->
+    <div class="hero-image-col">
+      <img src="./photos/01.jpg" alt="SalonOne interior — styling chairs and warm lighting">
+    </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span></span>
+        <span class="overline">Madera, California</span>
+      </div>
+      <h1 class="hero-h1">Your hair,<br><em>elevated.</em></h1>
+      <p class="hero-sub">A full-service hair salon where skilled stylists take the time to listen — color, cuts, and care done right on Howard Road.</p>
+      <div class="hero-actions">
+        <a href="tel:5596745884" class="btn-primary">Call Now</a>
+        <a href="https://www.google.com/maps?q=1604+Howard+Rd,+Madera,+CA+93637" target="_blank" rel="noopener" class="btn-secondary">Get Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="overline">Who we are</p>
+        <h2>A salon built on listening — and results that last.</h2>
+        <p>At SalonOne, every appointment starts with a real conversation. Our stylists — Michelle, Amanda, Patty, and the rest of the team — take the time to understand what you want and deliver results you'll actually love.</p>
+        <p>From same-day color corrections to precision cuts and everything in between, we keep the salon clean, the atmosphere warm, and the standards high. Located on Howard Road in Madera, we've become a go-to for clients who want more than a quick trim.</p>
+        <p>Walk-ins and appointments both welcome. Call us to get on the books.</p>
+      </div>
+      <div class="about-photo">
+        <img src="./photos/02.jpg" alt="Stylist working on a client at SalonOne">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICES (layout 2: numbered/stacked list) ── -->
+<section id="services">
+  <div class="container">
+    <div class="services-header">
+      <p class="overline">What we offer</p>
+      <h2>Services</h2>
+    </div>
+
+    <div class="service-item">
+      <span class="service-num">01</span>
+      <div>
+        <div class="service-name">Haircut &amp; Style</div>
+        <div class="service-desc">Precision cut tailored to your face shape, finished and styled to go.</div>
+      </div>
+      <span class="service-price">From $35</span>
+    </div>
+
+    <div class="service-item">
+      <span class="service-num">02</span>
+      <div>
+        <div class="service-name">Color &amp; Highlights</div>
+        <div class="service-desc">Single-process color, balayage, ombré, and full highlight packages — same-day availability when possible.</div>
+      </div>
+      <span class="service-price">From $75</span>
+    </div>
+
+    <div class="service-item">
+      <span class="service-num">03</span>
+      <div>
+        <div class="service-name">Color Correction</div>
+        <div class="service-desc">Fixing uneven, faded, or mismatched color — done carefully and with patience.</div>
+      </div>
+      <span class="service-price">Consult</span>
+    </div>
+
+    <div class="service-item">
+      <span class="service-num">04</span>
+      <div>
+        <div class="service-name">Blowout &amp; Finish</div>
+        <div class="service-desc">Wash, blow-dry, and smooth — ready-to-walk-out styling.</div>
+      </div>
+      <span class="service-price">From $40</span>
+    </div>
+
+    <div class="service-item">
+      <span class="service-num">05</span>
+      <div>
+        <div class="service-name">Deep Conditioning Treatment</div>
+        <div class="service-desc">Restore moisture and shine with a professional-grade treatment add-on.</div>
+      </div>
+      <span class="service-price">From $20</span>
+    </div>
+
+    <div class="service-item">
+      <span class="service-num">06</span>
+      <div>
+        <div class="service-name">Waxing Services</div>
+        <div class="service-desc">Brow shaping, lip, and facial waxing available.</div>
+      </div>
+      <span class="service-price">From $12</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-header">
+      <p class="overline">The salon</p>
+      <h2>A look inside</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-cell">
+        <img src="./photos/03.jpg" alt="SalonOne salon view">
+      </div>
+      <div class="gallery-cell">
+        <img src="./photos/04.jpg" alt="Styling station at SalonOne">
+      </div>
+      <div class="gallery-cell">
+        <img src="./photos/05.jpg" alt="Hair color work at SalonOne">
+      </div>
+      <div class="gallery-cell">
+        <img src="./photos/06.jpg" alt="Client and stylist at SalonOne">
+      </div>
+      <div class="gallery-cell">
+        <img src="./photos/02.jpg" alt="SalonOne styling area">
+      </div>
+      <div class="gallery-cell">
+        <img src="./photos/01.jpg" alt="SalonOne warm interior">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIES ── -->
+<section id="testimonies">
+  <div class="container">
+    <div class="test-header">
+      <p class="overline">From our clients</p>
+      <h2>Customer Testimonies</h2>
+    </div>
+    <div class="test-list">
+
+      <div class="test-item">
+        <div class="test-mark">&ldquo;</div>
+        <div class="test-body">
+          <blockquote>"I needed my hair colored and cut so bad! Called here and Michelle got me in on the same day! She was so nice and very talkative — I liked that very much. I will see you again!"</blockquote>
+          <div class="test-attr">Jennifer A.</div>
+        </div>
+      </div>
+
+      <div class="test-item">
+        <div class="test-mark">&ldquo;</div>
+        <div class="test-body">
+          <blockquote>"Amanda was super friendly and really good. She took time to listen and did an AWESOME job on my hair! Salon was clean and took precautions to protect and sanitize."</blockquote>
+          <div class="test-attr">Maria S.</div>
+        </div>
+      </div>
+
+      <div class="test-item">
+        <div class="test-mark">&ldquo;</div>
+        <div class="test-body">
+          <blockquote>"Patty did an excellent job on my hair — I was so amazed of how she fixed it. I can literally say I found my hair stylist. I would totally recommend going to her. She absolutely did a great job, thank you so much Patty for leaving my hair so beautiful."</blockquote>
+          <div class="test-attr">Rosa V.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── HOURS & LOCATION ── -->
+<section id="visit">
+  <div class="container">
+    <div class="visit-grid">
+
+      <div>
+        <p class="overline">Hours</p>
+        <h2>When to visit</h2>
+        <table class="hours-table">
+          <tbody>
+            <tr><td class="day">Monday</td><td class="time">8:00 AM – 4:00 PM</td></tr>
+            <tr><td class="day">Tuesday</td><td class="time">8:00 AM – 7:00 PM</td></tr>
+            <tr><td class="day">Wednesday</td><td class="time">8:00 AM – 7:00 PM</td></tr>
+            <tr><td class="day">Thursday</td><td class="time">8:00 AM – 7:00 PM</td></tr>
+            <tr><td class="day">Friday</td><td class="time">8:00 AM – 7:00 PM</td></tr>
+            <tr><td class="day">Saturday</td><td class="time">8:00 AM – 4:00 PM</td></tr>
+            <tr><td class="day">Sunday</td><td class="time closed">Closed</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <p class="overline">Location</p>
+        <h2>Find us</h2>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=1604+Howard+Rd,+Madera,+CA+93637&z=15&output=embed"
+            title="SalonOne on Google Maps"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p style="font-size:.88rem;color:var(--muted);margin-top:12px;">1604 Howard Rd, Madera, CA 93637</p>
+        <div class="visit-cta">
+          <a href="https://www.google.com/maps?q=1604+Howard+Rd,+Madera,+CA+93637" target="_blank" rel="noopener" class="btn-secondary">Get Directions</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+
+      <div class="contact-block">
+        <p class="overline">Get in touch</p>
+        <h2>Ready for your next appointment?</h2>
+        <p>Give us a call to book or stop by on Howard Road. Walk-ins welcome based on availability.</p>
+
+        <div class="contact-detail">
+          <div class="contact-row"><strong>Phone</strong> <a href="tel:5596745884">(559) 674-5884</a></div>
+          <div class="contact-row"><strong>Address</strong> 1604 Howard Rd, Madera, CA 93637</div>
+        </div>
+
+        <div class="social-links">
+          <a href="https://maps.google.com/?cid=16005150381655605592&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="social-link">Google Business</a>
+        </div>
+      </div>
+
+      <div class="contact-cta-col">
+        <p class="serif">"She took time to listen and did an AWESOME job on my hair."</p>
+        <p style="font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:24px;">— Maria S.</p>
+        <a href="tel:5596745884" class="btn-primary">Call (559) 674-5884</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span class="footer-brand">SalonOne</span>
+      <span class="footer-credit">
+        Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

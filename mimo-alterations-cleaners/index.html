@@ -1,0 +1,814 @@
+<!-- laundry · fresh-natural · hero-layout 1 · svc-layout 1 · DM Serif Display/Work Sans -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mimo Alterations &amp; Cleaners — Fremont, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --acc:#15803d;
+      --bg:#f7fee7;
+      --acc-light:#dcfce7;
+      --acc-dark:#166534;
+      --text:#1c2b1e;
+      --text-muted:#4b5e50;
+      --border:#c6e8c9;
+      --nav-h:62px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+    }
+
+    body{font-family:'Work Sans',sans-serif}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+
+    .nav-logo {
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--acc); }
+
+    .nav-cta {
+      background: var(--acc);
+      color: #fff !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--acc-dark) !important; color: #fff; }
+
+    .hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: opacity 0.2s;
+    }
+
+    /* ── HERO (layout 1 = left image) ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(90vh - var(--nav-h));
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.8s ease;
+    }
+
+    .hero-image:hover img { transform: scale(1.03); }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 3.5rem;
+      background: var(--bg);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 36ch;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      border-radius: 4px;
+      transition: background 0.2s, transform 0.15s;
+      align-self: flex-start;
+    }
+
+    .btn-primary:hover {
+      background: var(--acc-dark);
+      transform: translateY(-2px);
+    }
+
+    .hero-details {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 2rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .hero-details strong { display: block; color: var(--text); font-weight: 600; font-size: 0.95rem; }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 5rem 1.5rem; }
+
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 52ch;
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: #fff; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .about-photos img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      border-radius: 3px;
+    }
+
+    .about-photos img:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/9;
+    }
+
+    .about-text { }
+
+    .about-text p {
+      color: var(--text-muted);
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p:last-of-type { margin-bottom: 1.75rem; }
+
+    /* ── SERVICES (layout 1 = 2-col rows) ── */
+    #services { background: var(--bg); }
+
+    .services-header { margin-bottom: 3rem; }
+
+    .services-rows {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .service-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.75rem 2rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .service-row:nth-child(odd) { border-right: 1px solid var(--border); }
+
+    /* last two rows — no bottom border */
+    .service-row:nth-last-child(-n+2) { border-bottom: none; }
+
+    /* if odd total, last item spans full */
+    .service-row.full-width {
+      grid-column: 1 / -1;
+      border-right: none;
+    }
+
+    .service-row:hover { background: var(--acc-light); }
+
+    .svc-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      color: var(--border);
+      line-height: 1;
+      min-width: 2rem;
+      margin-top: 2px;
+    }
+
+    .svc-body h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .svc-body p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies { background: var(--acc); }
+
+    #testimonies .section-label { color: var(--acc-light); }
+    #testimonies .section-heading { color: #fff; }
+
+    .testimonies-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .testimony {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 2rem;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    .testimony:hover { background: rgba(255,255,255,0.16); }
+
+    .testimony blockquote {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.9);
+      font-style: italic;
+      line-height: 1.75;
+      font-family: 'DM Serif Display', serif;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimony cite {
+      font-size: 0.8rem;
+      color: var(--acc-light);
+      font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── HOURS & LOCATION ── */
+    #visit { background: #fff; }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .hours-table { width: 100%; border-collapse: collapse; }
+
+    .hours-table td {
+      padding: 0.65rem 0;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .hours-table td:first-child { font-weight: 500; color: var(--text); }
+    .hours-table tr:last-child td { border-bottom: none; }
+
+    .today-highlight td { color: var(--acc) !important; font-weight: 600 !important; }
+
+    .map-wrap {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 380px;
+      border: none;
+      display: block;
+    }
+
+    .address-block {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .address-block strong { color: var(--text); }
+
+    .directions-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--acc);
+      transition: color 0.2s;
+    }
+
+    .directions-link:hover { color: var(--acc-dark); }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--bg); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .contact-photo {
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .contact-photo img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+
+    .contact-details { }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-item:last-of-type { border-bottom: none; }
+
+    .contact-item-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.35rem;
+    }
+
+    .contact-item-value {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .contact-item-value a {
+      color: var(--text);
+      transition: color 0.2s;
+    }
+
+    .contact-item-value a:hover { color: var(--acc); }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--acc);
+      border: 1px solid var(--acc);
+      padding: 0.35rem 0.85rem;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .social-link:hover {
+      background: var(--acc);
+      color: #fff;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.82rem;
+      line-height: 1.7;
+    }
+
+    footer .brand { color: #fff; }
+
+    footer a {
+      color: rgba(255,255,255,0.75);
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: #fff; }
+
+    footer .footer-credit {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      font-size: 0.78rem;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; gap: 1.25rem; position: absolute; top: var(--nav-h); left: 0; right: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 1.5rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-image { height: 55vw; min-height: 260px; }
+      .hero-content { padding: 2.5rem 1.5rem; }
+      .hero-details { flex-direction: column; gap: 1rem; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-photos { order: -1; }
+
+      .services-rows { grid-template-columns: 1fr; }
+      .service-row:nth-child(odd) { border-right: none; }
+      .service-row:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+      .service-row:last-child { border-bottom: none; }
+
+      .testimonies-grid { grid-template-columns: 1fr; }
+
+      .visit-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+      .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+
+      section { padding: 3.5rem 1.25rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+    }
+
+    .brand{font-family:'DM Serif Display',serif; font-weight: 400; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#top" class="nav-logo">
+      <span class="brand">Mimo</span> Alterations &amp; Cleaners
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#visit">Hours &amp; Location</a></li>
+      <li><a href="tel:+15107961963" class="nav-cta">Call Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO (layout 1 — image left, content right) -->
+  <section id="top" style="padding:0;">
+    <div class="hero">
+      <div class="hero-image">
+        <img src="./photos/01.jpg" alt="Inside Mimo Alterations &amp; Cleaners" />
+      </div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Fremont, CA · Est. in the Community</p>
+        <h1>Tailored Care.<br />Every Stitch.</h1>
+        <p class="hero-sub">Expert alterations and dry cleaning from Teresa and the Mimo team — where your clothes come back better than new, at prices that make sense.</p>
+        <a href="tel:+15107961963" class="btn-primary">Call Now &rarr;</a>
+        <div class="hero-details">
+          <div>
+            <strong>Mon–Fri</strong>
+            9:30 AM – 6:30 PM
+          </div>
+          <div>
+            <strong>Saturday</strong>
+            9:30 AM – 4:30 PM
+          </div>
+          <div>
+            <strong>Sunday</strong>
+            Closed
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-photos">
+          <img src="./photos/02.jpg" alt="Garments on the rack" />
+          <img src="./photos/03.jpg" alt="Detail of tailoring work" />
+          <img src="./photos/04.jpg" alt="Clean and pressed clothing" />
+        </div>
+        <div class="about-text">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-heading">A neighborhood spot you can trust with your best clothes.</h2>
+          <p>Mimo Alterations &amp; Cleaners has been a trusted part of the Fremont community, tucked right on Fremont Boulevard. Teresa runs a tight, friendly operation — small enough to know your name, experienced enough to handle anything from a simple hem to a full dry-cleaning run.</p>
+          <p>We believe great tailoring shouldn't cost a fortune. Whether you need pants shortened, a dress taken in, or your best suit dry cleaned before an important day, Mimo delivers quality work with care and speed you'll notice.</p>
+          <a href="tel:+15107961963" class="btn-primary">Call to Schedule</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES (layout 1 — 2-col rows) -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-heading">Alterations &amp; cleaning<br />done right, every time.</h2>
+        <p class="section-intro">From quick hems to professional dry cleaning, Mimo offers a full range of garment services at fair, transparent prices.</p>
+      </div>
+      <div class="services-rows">
+        <div class="service-row">
+          <span class="svc-num">01</span>
+          <div class="svc-body">
+            <h3>Hemming &amp; Length Alterations</h3>
+            <p>Pants, skirts, dresses — precise hemming so your clothes fit exactly the way they should. Clean finishes every time.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <span class="svc-num">02</span>
+          <div class="svc-body">
+            <h3>Dry Cleaning</h3>
+            <p>Professional dry cleaning for suits, dresses, and delicate fabrics. Prompt turnaround, excellent results.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <span class="svc-num">03</span>
+          <div class="svc-body">
+            <h3>Tailored Fits</h3>
+            <p>Waist-ins, side seams, taper — we reshape garments so they move with you, not against you.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <span class="svc-num">04</span>
+          <div class="svc-body">
+            <h3>Zipper &amp; Repair Work</h3>
+            <p>Broken zipper, split seam, loose buttons — fast, affordable repairs that extend the life of your favorite pieces.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <span class="svc-num">05</span>
+          <div class="svc-body">
+            <h3>Wedding &amp; Formal Wear</h3>
+            <p>Gowns, suits, bridesmaid dresses — careful handling and skilled alterations for your most important occasions.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <span class="svc-num">06</span>
+          <div class="svc-body">
+            <h3>Pressing &amp; Finishing</h3>
+            <p>Steam pressing and professional finishing so your clothes look freshly bought, every single time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="container">
+      <p class="section-label">Customer Testimonies</p>
+      <h2 class="section-heading" style="color:#fff;">What people say about Mimo.</h2>
+      <div class="testimonies-grid">
+        <div class="testimony">
+          <blockquote>"Teresa is SO amazing and gets things done in a timely manner. I had some pants hemmed, and they came out like I had just bought them from the store!! Very sweet lady. Very professional. Less than $16."</blockquote>
+          <cite>— Gemmy B.</cite>
+        </div>
+        <div class="testimony">
+          <blockquote>"Mimo's is the best cleaners in town. They're prompt, professional and their prices are excellent. I get all my dry cleaning done there. The alterations are spot on every time. You can trust the work."</blockquote>
+          <cite>— Miguel S.</cite>
+        </div>
+        <div class="testimony">
+          <blockquote>"This is my go-to place for dry cleaning and alterations. Small place and very friendly service."</blockquote>
+          <cite>— Tony W.</cite>
+        </div>
+        <div class="testimony">
+          <blockquote>"Better quality work, much better price and much friendlier customer service. So thankful I switched to this place. Mimo's is the real deal."</blockquote>
+          <cite>— Me G.</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section id="visit">
+    <div class="container">
+      <p class="section-label">Visit Us</p>
+      <h2 class="section-heading">Hours &amp; Location</h2>
+      <div class="visit-grid">
+        <div>
+          <table class="hours-table">
+            <tbody>
+              <tr><td>Monday</td><td>9:30 AM – 6:30 PM</td></tr>
+              <tr><td>Tuesday</td><td>9:30 AM – 6:30 PM</td></tr>
+              <tr><td>Wednesday</td><td>9:30 AM – 6:30 PM</td></tr>
+              <tr><td>Thursday</td><td>9:30 AM – 6:30 PM</td></tr>
+              <tr><td>Friday</td><td>9:30 AM – 6:30 PM</td></tr>
+              <tr><td>Saturday</td><td>9:30 AM – 4:30 PM</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+            </tbody>
+          </table>
+          <div class="address-block">
+            <strong>37678 Fremont Blvd</strong><br />
+            Fremont, CA 94536<br />
+            <a href="tel:+15107961963">(510) 796-1963</a>
+          </div>
+          <a class="directions-link" href="https://maps.google.com/?cid=13237675304143069389" target="_blank" rel="noopener">
+            ↗ Get Directions
+          </a>
+        </div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=37678+Fremont+Blvd,+Fremont,+CA+94536&z=15&output=embed"
+            title="Mimo Alterations &amp; Cleaners map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-photo">
+          <img src="./photos/05.jpg" alt="Mimo storefront on Fremont Blvd" />
+        </div>
+        <div class="contact-details">
+          <p class="section-label">Get in Touch</p>
+          <h2 class="section-heading">Ready when<br />you are.</h2>
+          <div class="contact-item">
+            <span class="contact-item-label">Phone</span>
+            <span class="contact-item-value"><a href="tel:+15107961963">(510) 796-1963</a></span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Address</span>
+            <span class="contact-item-value">37678 Fremont Blvd, Fremont, CA 94536</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-item-label">Find Us Online</span>
+            <div class="social-links">
+              <a class="social-link" href="https://maps.google.com/?cid=13237675304143069389&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+            </div>
+          </div>
+          <a href="tel:+15107961963" class="btn-primary" style="margin-top:0.5rem;">Call Now &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <span class="brand">Mimo Alterations &amp; Cleaners</span><br />
+      37678 Fremont Blvd, Fremont, CA 94536 &nbsp;·&nbsp;
+      <a href="tel:+15107961963">(510) 796-1963</a>
+    </div>
+    <div class="footer-credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    // Close nav on link click (mobile)
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Highlight today's hours row
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const today = days[new Date().getDay()];
+    document.querySelectorAll('.hours-table td:first-child').forEach(td => {
+      if (td.textContent.trim() === today) {
+        td.parentElement.classList.add('today-highlight');
+      }
+    });
+  </script>
+
+</body>
+</html>

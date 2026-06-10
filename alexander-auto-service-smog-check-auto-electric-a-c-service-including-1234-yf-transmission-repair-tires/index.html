@@ -1,0 +1,868 @@
+<!-- auto · classic-editorial · hero-layout 1 · svc-layout 2 · Playfair Display/Source Sans 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alexander Auto Service — Whittier, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --acc:#b91c1c;
+      --bg:#faf7f2;
+      --dark:#1a1a1a;
+      --mid:#4a4a4a;
+      --rule:#d9d2c5;
+      --nav-h:64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+    }
+
+    body{font-family:'Source Sans 3',sans-serif}
+
+    body {
+      background: var(--bg);
+      color: var(--dark);
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .brand{font-family:'Playfair Display',serif;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+    }
+
+    .nav-wordmark {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--dark);
+      text-decoration: none;
+      line-height: 1.2;
+    }
+
+    .nav-wordmark span {
+      display: block;
+      font-size: 0.65rem;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--acc);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--acc); }
+
+    .nav-cta {
+      display: inline-block;
+      padding: 0.5rem 1.25rem;
+      background: var(--acc);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .nav-cta:hover { background: #991616; transform: translateY(-1px); }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .nav-mobile-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--dark);
+      transition: 0.2s;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-mobile-toggle { display: flex; }
+    }
+
+    /* ── HERO ── left-image layout */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 78vh;
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(26,26,26,0.18) 0%, transparent 60%);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 8vw, 5rem) clamp(2rem, 6vw, 4rem);
+      background: var(--bg);
+      position: relative;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.12;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--acc);
+    }
+
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--mid);
+      margin: 1.25rem 0 2.25rem;
+      max-width: 38ch;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: var(--acc);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: #991616; transform: translateY(-2px); }
+
+    .btn-ghost {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      border: 1.5px solid var(--dark);
+      color: var(--dark);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--acc); color: var(--acc); }
+
+    .hero-badge {
+      margin-top: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      color: var(--mid);
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .hero-badge strong {
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-image {
+        height: 52vw;
+        min-height: 220px;
+      }
+
+      .hero-image::after { display: none; }
+    }
+
+    /* ── SHARED SECTION ── */
+    section {
+      padding: clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 6vw, 3rem);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    section.full-bleed {
+      max-width: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .section-rule {
+      width: 48px;
+      height: 2px;
+      background: var(--acc);
+      margin-bottom: 1rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.75rem, 4vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem 5rem;
+      align-items: start;
+    }
+
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 0.75rem;
+    }
+
+    .about-photos img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-photos img:first-child {
+      grid-column: 1 / -1;
+      height: 240px;
+    }
+
+    .about-body {
+      font-size: 1.05rem;
+      color: var(--mid);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-body + .about-body { margin-bottom: 0; }
+
+    @media (max-width: 768px) {
+      #about .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .about-photos { order: -1; }
+    }
+
+    /* ── SERVICES — numbered/stacked list ── */
+    #services {
+      background: #f3ede4;
+      max-width: none;
+      padding-left: clamp(1.25rem, 6vw, 3rem);
+      padding-right: clamp(1.25rem, 6vw, 3rem);
+    }
+
+    #services .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .services-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 4rem;
+      margin-top: 2.5rem;
+    }
+
+    .service-item {
+      display: flex;
+      gap: 1.25rem;
+      align-items: baseline;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .service-item:last-child { border-bottom: none; }
+
+    .service-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--acc);
+      flex-shrink: 0;
+      width: 2rem;
+      line-height: 1;
+      padding-top: 0.15rem;
+    }
+
+    .service-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.25rem;
+    }
+
+    .service-text p {
+      font-size: 0.88rem;
+      color: var(--mid);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 680px) {
+      .services-cols {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies {
+      border-top: 1px solid var(--rule);
+    }
+
+    .testimonies-intro {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .testimonies-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .testimony {
+      padding: 1.75rem 2rem;
+      background: #fff;
+      border-left: 3px solid var(--acc);
+      position: relative;
+    }
+
+    .testimony blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .testimony cite {
+      font-style: normal;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acc);
+    }
+
+    .testimonies-sidebar {
+      position: sticky;
+      top: calc(var(--nav-h) + 1.5rem);
+    }
+
+    .testimonies-sidebar .big-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      line-height: 0.8;
+      color: var(--acc);
+      opacity: 0.4;
+      margin-bottom: 0.5rem;
+    }
+
+    .testimonies-sidebar p {
+      font-size: 0.95rem;
+      color: var(--mid);
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 820px) {
+      .testimonies-intro {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonies-sidebar {
+        position: static;
+      }
+
+      .testimonies-sidebar .big-quote {
+        font-size: 3.5rem;
+      }
+    }
+
+    /* ── HOURS + LOCATION ── */
+    #location {
+      max-width: none;
+      background: var(--dark);
+      color: #fff;
+      padding-left: clamp(1.25rem, 6vw, 3rem);
+      padding-right: clamp(1.25rem, 6vw, 3rem);
+    }
+
+    #location .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    #location .section-label { color: #e6b3b3; }
+
+    #location .section-heading { color: #fff; }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+
+    .hours-table td {
+      padding: 0.55rem 0;
+      font-size: 0.93rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hours-table td:last-child {
+      text-align: right;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .hours-table tr:last-child td { border-bottom: none; }
+
+    .hours-cta {
+      margin-top: 2rem;
+    }
+
+    .hours-cta .btn-primary {
+      background: var(--acc);
+      font-size: 0.85rem;
+    }
+
+    .map-wrap {
+      position: relative;
+      padding-top: 2rem;
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 320px;
+      border: none;
+      display: block;
+    }
+
+    .address-line {
+      margin-top: 1rem;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+    }
+
+    @media (max-width: 768px) {
+      #location .inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    /* ── CONTACT + PHOTO STRIP ── */
+    .photo-strip {
+      display: flex;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .photo-strip img {
+      flex: 1;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: flex 0.4s ease;
+    }
+
+    .photo-strip img:hover { flex: 2.5; }
+
+    @media (max-width: 600px) {
+      .photo-strip { height: 140px; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: rgba(255,255,255,0.55);
+      padding: 2.5rem clamp(1.25rem, 6vw, 3rem);
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .footer-brand span {
+      display: block;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.4);
+      margin-top: 0.2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.85); }
+
+    .footer-credit {
+      width: 100%;
+      font-size: 0.75rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#top" class="nav-wordmark">
+      Alexander Auto Service
+      <span>Whittier, CA · Est. Family Shop</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Hours</a></li>
+    </ul>
+    <a href="tel:+15624640072" class="nav-cta">Call (562) 464-0072</a>
+    <button class="nav-mobile-toggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── HERO ── left-image -->
+  <div class="hero" id="top">
+    <div class="hero-image">
+      <img src="./photos/01.jpg" alt="Alexander Auto Service shop exterior and team" />
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Whittier, CA · Since Day One</p>
+      <h1 class="hero-h1">
+        <span class="brand">Alexander<br/>Auto Service</span>
+        <br/><em>Done right.</em>
+      </h1>
+      <p class="hero-tagline">
+        Full-service diagnostics, smog checks, A/C, electrical, transmission,
+        and tires — honest quotes, transparent receipts, and a team that goes
+        above and beyond.
+      </p>
+      <div class="hero-actions">
+        <a href="tel:+15624640072" class="btn-primary">Call Now</a>
+        <a href="https://maps.google.com/?cid=13677928130895762274&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="btn-ghost">Google Listing</a>
+      </div>
+      <div class="hero-badge">
+        <div>
+          <strong>Mon – Sat · 8 AM – 5 PM</strong><br/>
+          12357 Whittier Blvd C, Whittier CA 90602
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-photos">
+        <img src="./photos/02.jpg" alt="Inside the shop" />
+        <img src="./photos/03.jpg" alt="Auto technician at work" />
+        <img src="./photos/04.jpg" alt="Service bay detail" />
+      </div>
+      <div>
+        <p class="section-label">Our Story</p>
+        <div class="section-rule"></div>
+        <h2 class="section-heading">A shop you can<br/><em style="font-family:'Playfair Display',serif;font-style:italic;">trust with your keys.</em></h2>
+        <p class="about-body">
+          Alexander Auto Service has built its name on one thing: knowing your vehicle as well as
+          you do. From a first-visit smog check to a complex transmission rebuild, every job
+          comes with a detailed quote and a receipt that explains every part and every dollar.
+        </p>
+        <p class="about-body" style="margin-top:1rem;">
+          Our team has earned a reputation for catching what others miss — running thorough
+          diagnostics before recommending repairs — and for those small extras that remind you
+          a real family business is working on your car.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── numbered/stacked list -->
+  <section id="services">
+    <div class="inner">
+      <p class="section-label">What We Do</p>
+      <div class="section-rule"></div>
+      <h2 class="section-heading">Services</h2>
+      <div class="services-cols">
+        <div>
+          <div class="service-item">
+            <span class="service-num">01</span>
+            <div class="service-text">
+              <h3>Smog Check</h3>
+              <p>State-certified testing — quick, accurate, and paperwork-ready for DMV.</p>
+            </div>
+          </div>
+          <div class="service-item">
+            <span class="service-num">02</span>
+            <div class="service-text">
+              <h3>A/C Service · 1234-YF Refrigerant</h3>
+              <p>Full recharge and leak diagnosis with the latest-spec refrigerant for modern vehicles.</p>
+            </div>
+          </div>
+          <div class="service-item">
+            <span class="service-num">03</span>
+            <div class="service-text">
+              <h3>Auto Electric &amp; Diagnostics</h3>
+              <p>Check engine light, wiring, sensors, and complete electronic diagnosis.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="service-item">
+            <span class="service-num">04</span>
+            <div class="service-text">
+              <h3>Transmission Repair</h3>
+              <p>Fluid service to full rebuilds — every stage itemized so you know exactly what's done.</p>
+            </div>
+          </div>
+          <div class="service-item">
+            <span class="service-num">05</span>
+            <div class="service-text">
+              <h3>Tires &amp; Alignment</h3>
+              <p>Mid-range and performance options with professional wheel alignment.</p>
+            </div>
+          </div>
+          <div class="service-item">
+            <span class="service-num">06</span>
+            <div class="service-text">
+              <h3>Oil Change &amp; Preventive Maintenance</h3>
+              <p>Oil, brakes, belts, and the small extras that keep you off the shoulder.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIES ── -->
+  <section id="testimonies">
+    <div class="testimonies-intro">
+      <div class="testimonies-sidebar">
+        <div class="big-quote">"</div>
+        <p class="section-label">Customer Testimonies</p>
+        <div class="section-rule"></div>
+        <h2 class="section-heading" style="font-size:clamp(1.4rem,3vw,2rem);">In their<br/>own words.</h2>
+        <p>Five-star experiences, told by the people who trust us with their vehicles.</p>
+      </div>
+      <div class="testimonies-stack">
+        <div class="testimony">
+          <blockquote>"I do recommend anyone to come here. They are very knowledgeable and on point with the issues you may have with your vehicle. I will be coming back here if I ever have a problem with my vehicle again."</blockquote>
+          <cite>Adrian S.</cite>
+        </div>
+        <div class="testimony">
+          <blockquote>"Angie was super helpful and had such a friendly, welcoming vibe — it really made the experience better. I got a set of mid-range generic tires, an alignment, and AC service, all for around $1,000. They even knocked $40 off the original quote. Highly recommend and will definitely come back!"</blockquote>
+          <cite>Saul M.</cite>
+        </div>
+        <div class="testimony">
+          <blockquote>"The shop was so sweet and fixed my crooked plate and some latches from my bumper! Love a business that goes above and beyond — service was 10/10, friendly place, friendly prices!"</blockquote>
+          <cite>Karen M. N.</cite>
+        </div>
+        <div class="testimony">
+          <blockquote>"Alexander did a detailed check and gave me a quote about each part. I got my car fixed for all the issues with reasonable price and time. The receipt is clear, explaining every part — really transparent about the fee. Service is fast and reliable. Highly recommend."</blockquote>
+          <cite>Shujia C.</cite>
+        </div>
+        <div class="testimony">
+          <blockquote>"Great service. Reasonable prices. I trust them with all my vehicles."</blockquote>
+          <cite>Fernando R.</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PHOTO STRIP ── -->
+  <div class="photo-strip">
+    <img src="./photos/05.jpg" alt="Shop work in progress" />
+    <img src="./photos/06.jpg" alt="Vehicle being serviced" />
+    <img src="./photos/02.jpg" alt="Auto service bay" />
+    <img src="./photos/04.jpg" alt="Service technician" />
+  </div>
+
+  <!-- ── HOURS + LOCATION ── -->
+  <section id="location">
+    <div class="inner">
+      <div>
+        <p class="section-label">Find Us</p>
+        <div class="section-rule" style="background:#e6b3b3;"></div>
+        <h2 class="section-heading">Hours &amp;<br/>Location</h2>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>Monday</td><td>8:00 AM – 5:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>8:00 AM – 5:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>8:00 AM – 5:00 PM</td></tr>
+            <tr><td>Thursday</td><td>8:00 AM – 5:00 PM</td></tr>
+            <tr><td>Friday</td><td>8:00 AM – 5:00 PM</td></tr>
+            <tr><td>Saturday</td><td>8:00 AM – 5:00 PM</td></tr>
+            <tr><td>Sunday</td><td style="color:rgba(255,255,255,0.35);">Closed</td></tr>
+          </tbody>
+        </table>
+        <div class="hours-cta">
+          <a href="tel:+15624640072" class="btn-primary">Call (562) 464-0072</a>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=12357+Whittier+Blvd+C,+Whittier,+CA+90602&z=15&output=embed"
+          title="Alexander Auto Service location map"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+        <p class="address-line">12357 Whittier Blvd C · Whittier, CA 90602</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand" style="font-size:1rem;color:rgba(255,255,255,0.85);">Alexander Auto Service</span>
+        <span>12357 Whittier Blvd C · Whittier, CA 90602 · (562) 464-0072</span>
+      </div>
+      <ul class="footer-links">
+        <li><a href="https://maps.google.com/?cid=13677928130895762274&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a></li>
+        <li><a href="tel:+15624640072">Call Us</a></li>
+        <li><a href="#top">Back to Top</a></li>
+      </ul>
+      <p class="footer-credit">
+        Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

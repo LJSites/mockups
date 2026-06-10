@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ARCHETYPE: Heavy-Equipment Field Garage / Industrial Diesel Shop.
+  This is NOT just another neighborhood auto site — AA Auto Repair also services
+  HEAVY & INDUSTRIAL machinery (Caterpillar, John Deere, Bobcat) and trailers, so
+  the design leans rugged "spec-plate / equipment yard" rather than retail.
+
+  DISTINCT FROM SIBLING AUTO SITES IN work/:
+    - Display font: SAIRA CONDENSED (machine-shop condensed) — unused by siblings
+      (they use Anton / Oswald / Archivo Black / Teko / Barlow Condensed / Space Grotesk).
+    - Body font: Sora.
+    - Palette: asphalt graphite #1c1d1f + safety-orange #e2641a + steel/zinc neutrals.
+      Avoids hazard-yellow (j-s), the blues (hn/vitmar), reds (brawley/camara),
+      cyan (burbank-tech), navy (broadway).
+
+  KEY STRUCTURAL DECISIONS:
+    - Hero: dark equipment-yard photo, left-aligned oversized condensed headline,
+      a riveted "SPEC PLATE" data strip pinned at the bottom (hours/phone/established style).
+      No centered overlay, no pill button.
+    - Nav: sticky top bar, orange diagonal accent; scroll-padding-top reserved (72px)
+      so anchor jumps clear the bar.
+    - Capabilities: a TWO-COLUMN CAPABILITY LEDGER — "Passenger & Light Trucks" on the
+      left, "Heavy / Industrial & Trailer" on the right — rule-lined rows, no icon circles.
+    - Testimonies: full-width stacked stencil quotes, name + last initial only,
+      no stars / avatars / ratings.
+    - Cut-corner (clip-path) plates as the recurring industrial motif.
+    - Animation: none beyond hover states (deliberate).
+  HARD RULES OBSERVED: keyless maps embed; local ./photos only; footer verbatim.
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AA Auto Repair LLC — Auto, Diesel &amp; Heavy Equipment Repair · Tulare, CA</title>
+<meta name="description" content="AA Auto Repair LLC in Tulare, CA — honest, transparent auto repair plus heavy and industrial equipment service: Caterpillar, John Deere, Bobcat and trailer repair. Call (559) 870-0164.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #1c1d1f;   /* asphalt graphite */
+    --panel:     #232427;
+    --panel-2:   #2c2e31;
+    --line:      #3a3c40;
+    --ink:       #f1efea;   /* near-white */
+    --muted:     #a7a59e;   /* zinc */
+    --acc:       #e2641a;   /* safety orange */
+    --acc-deep:  #b94e10;
+    --steel:     #8d9197;
+    --nav-h:     72px;
+    --maxw:      1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth; scroll-padding-top:var(--nav-h);}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:'Sora',system-ui,sans-serif; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.cond{font-family:'Saira Condensed',system-ui,sans-serif; line-height:.95; letter-spacing:.01em;}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px;}
+  .cut{clip-path:polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50; height:var(--nav-h);
+    background:rgba(28,29,31,.94); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{height:100%; display:flex; align-items:center; justify-content:space-between; gap:18px;}
+  .brand{display:flex; align-items:center; gap:12px;}
+  .mark{
+    width:40px; height:40px; flex:none; background:var(--acc); color:#111;
+    font-family:'Saira Condensed'; font-weight:800; font-size:22px;
+    display:grid; place-items:center;
+    clip-path:polygon(0 0,100% 0,100% 72%,72% 100%,0 100%);
+  }
+  .brand b{font-family:'Saira Condensed'; font-weight:700; font-size:22px; letter-spacing:.02em; text-transform:uppercase;}
+  .brand span{display:block; font-size:10.5px; letter-spacing:.32em; color:var(--steel); text-transform:uppercase; font-family:'Sora';}
+  nav.links{display:flex; align-items:center; gap:26px;}
+  nav.links a{font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); transition:color .15s;}
+  nav.links a:hover{color:var(--ink)}
+  .callbtn{
+    font-family:'Saira Condensed'; font-weight:700; font-size:16px; letter-spacing:.04em;
+    text-transform:uppercase; background:var(--acc); color:#16110b;
+    padding:11px 20px; border:0; transition:background .15s, transform .05s;
+    clip-path:polygon(8px 0,100% 0,100% 100%,0 100%);
+  }
+  .callbtn:hover{background:#f4761f}
+  .callbtn:active{transform:translateY(1px)}
+  .navtoggle{display:none}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative; min-height:min(86vh,720px); display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden;}
+  .hero .bg{position:absolute; inset:0;}
+  .hero .bg img{width:100%; height:100%; object-fit:cover; filter:grayscale(.25) contrast(1.05) brightness(.62);}
+  .hero .bg::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(90deg, rgba(28,29,31,.95) 0%, rgba(28,29,31,.78) 38%, rgba(28,29,31,.35) 75%, rgba(28,29,31,.55) 100%);
+  }
+  .hero-inner{position:relative; z-index:2; padding:54px 0 0;}
+  .kicker{
+    display:inline-flex; align-items:center; gap:10px; margin-bottom:18px;
+    font-size:12px; letter-spacing:.34em; text-transform:uppercase; color:var(--acc); font-weight:600;
+  }
+  .kicker::before{content:""; width:34px; height:2px; background:var(--acc); display:inline-block;}
+  .hero h1{
+    font-weight:800; font-size:clamp(46px,9vw,108px); text-transform:uppercase;
+    max-width:14ch;
+  }
+  .hero h1 em{font-style:normal; color:var(--acc);}
+  .hero p.sub{
+    margin-top:20px; max-width:52ch; font-size:clamp(15px,2vw,19px); color:#d9d6cf;
+  }
+  .hero-cta{margin-top:30px; display:flex; flex-wrap:wrap; gap:14px;}
+  .btn-primary{
+    font-family:'Saira Condensed'; font-weight:700; font-size:19px; letter-spacing:.03em; text-transform:uppercase;
+    background:var(--acc); color:#16110b; padding:15px 30px; transition:background .15s, transform .05s;
+    clip-path:polygon(10px 0,100% 0,100% 100%,0 100%);
+  }
+  .btn-primary:hover{background:#f4761f}
+  .btn-primary:active{transform:translateY(1px)}
+  .btn-ghost{
+    font-family:'Saira Condensed'; font-weight:600; font-size:19px; letter-spacing:.03em; text-transform:uppercase;
+    color:var(--ink); padding:15px 26px; border:1.5px solid var(--line); transition:border-color .15s, color .15s;
+  }
+  .btn-ghost:hover{border-color:var(--acc); color:var(--acc)}
+
+  /* spec plate */
+  .specplate{
+    position:relative; z-index:2; margin-top:48px;
+    background:var(--panel); border-top:3px solid var(--acc);
+  }
+  .specplate .wrap{display:grid; grid-template-columns:repeat(4,1fr);}
+  .spec{padding:20px 22px; border-left:1px solid var(--line);}
+  .spec:first-child{border-left:0}
+  .spec .lab{font-size:10.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--steel);}
+  .spec .val{font-family:'Saira Condensed'; font-weight:700; font-size:21px; margin-top:6px; text-transform:uppercase; letter-spacing:.01em;}
+  .spec .val a:hover{color:var(--acc)}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:84px 0;}
+  .eyebrow{font-size:12px; letter-spacing:.32em; text-transform:uppercase; color:var(--acc); font-weight:600; margin-bottom:14px;}
+  .h2{font-weight:800; font-size:clamp(34px,5.4vw,58px); text-transform:uppercase;}
+  .lede{color:var(--muted); max-width:60ch; margin-top:16px; font-size:16px;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--bg);}
+  .about-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:48px; align-items:center;}
+  .about-copy p{color:#cfccc4; margin-top:18px; font-size:16.5px;}
+  .about-copy p:first-of-type{margin-top:24px;}
+  .pull{
+    margin-top:28px; border-left:3px solid var(--acc); padding:6px 0 6px 20px;
+    font-family:'Saira Condensed'; font-weight:600; font-size:23px; line-height:1.12; text-transform:uppercase; color:var(--ink);
+  }
+  .about-photo{position:relative;}
+  .about-photo img{width:100%; aspect-ratio:4/5; object-fit:cover; filter:grayscale(.15) contrast(1.04);}
+  .about-photo .tag{
+    position:absolute; left:0; bottom:18px; background:var(--acc); color:#16110b;
+    font-family:'Saira Condensed'; font-weight:700; font-size:15px; letter-spacing:.05em; text-transform:uppercase;
+    padding:9px 18px; clip-path:polygon(0 0,100% 0,100% 100%,12px 100%);
+  }
+
+  /* ---------- CAPABILITY LEDGER ---------- */
+  .caps{background:var(--panel);}
+  .cap-head{margin-bottom:46px;}
+  .ledger{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); background:var(--bg);}
+  .col{padding:34px 32px;}
+  .col + .col{border-left:1px solid var(--line);}
+  .col-tag{display:flex; align-items:baseline; gap:14px; margin-bottom:8px;}
+  .col-tag .num{font-family:'Saira Condensed'; font-weight:700; color:var(--acc); font-size:16px;}
+  .col h3{font-weight:700; font-size:clamp(24px,3vw,32px); text-transform:uppercase;}
+  .col .ctx{color:var(--steel); font-size:13.5px; margin:8px 0 18px;}
+  .row{
+    display:flex; justify-content:space-between; align-items:baseline; gap:14px;
+    padding:15px 0; border-top:1px solid var(--line);
+  }
+  .row .name{font-family:'Saira Condensed'; font-weight:600; font-size:19px; letter-spacing:.01em; text-transform:uppercase;}
+  .row .note{color:var(--muted); font-size:13px; text-align:right; max-width:20ch;}
+  .col.heavy{background:linear-gradient(180deg, rgba(226,100,26,.07), rgba(226,100,26,0) 60%);}
+  .brands{margin-top:22px; display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    font-family:'Saira Condensed'; font-weight:600; font-size:14px; letter-spacing:.04em; text-transform:uppercase;
+    border:1px solid var(--acc); color:var(--acc); padding:5px 12px;
+  }
+  .caps-foot{margin-top:22px; color:var(--steel); font-size:13.5px;}
+
+  /* ---------- GALLERY ---------- */
+  .gallery{background:var(--bg);}
+  .grid-shots{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:36px;}
+  .grid-shots a{overflow:hidden; display:block; position:relative; background:#000;}
+  .grid-shots img{width:100%; height:100%; aspect-ratio:4/3; object-fit:cover; filter:grayscale(.12) contrast(1.03); transition:transform .4s ease, filter .3s;}
+  .grid-shots a:hover img{transform:scale(1.05); filter:grayscale(0) contrast(1.06);}
+  .grid-shots a.tall{grid-row:span 2;}
+  .grid-shots a.tall img{aspect-ratio:auto; height:100%;}
+
+  /* ---------- TESTIMONIES ---------- */
+  .says{background:var(--panel);}
+  .quotes{margin-top:40px;}
+  .q{
+    padding:30px 0; border-top:1px solid var(--line); display:grid;
+    grid-template-columns:88px 1fr; gap:24px; align-items:start;
+  }
+  .q:last-child{border-bottom:1px solid var(--line);}
+  .q .mk{font-family:'Saira Condensed'; font-weight:800; font-size:64px; color:var(--acc); line-height:.7;}
+  .q blockquote{font-size:clamp(17px,2.2vw,21px); color:var(--ink); line-height:1.5;}
+  .q .who{margin-top:14px; font-family:'Saira Condensed'; font-weight:600; font-size:16px; letter-spacing:.08em; text-transform:uppercase; color:var(--steel);}
+  .q .who::before{content:"— "; color:var(--acc);}
+
+  /* ---------- HOURS / MAP / CONTACT ---------- */
+  .visit{background:var(--bg);}
+  .visit-grid{display:grid; grid-template-columns:1fr 1.15fr; gap:0; border:1px solid var(--line);}
+  .hours-panel{padding:38px 34px; background:var(--panel-2);}
+  .hours-panel h3{font-weight:700; font-size:30px; text-transform:uppercase; margin-bottom:6px;}
+  .addr{color:var(--muted); font-size:14.5px; margin:6px 0 22px;}
+  .hrow{display:flex; justify-content:space-between; padding:11px 0; border-top:1px solid var(--line); font-size:15px;}
+  .hrow .d{font-family:'Saira Condensed'; font-weight:600; font-size:17px; letter-spacing:.04em; text-transform:uppercase;}
+  .hrow.today{color:var(--acc);}
+  .hrow.today .t{font-weight:700;}
+  .hrow .closed{color:var(--steel);}
+  .contact-line{margin-top:24px; display:flex; flex-direction:column; gap:10px;}
+  .contact-line a{font-family:'Saira Condensed'; font-weight:600; font-size:18px; letter-spacing:.02em; text-transform:uppercase; transition:color .15s;}
+  .contact-line a:hover{color:var(--acc)}
+  .contact-line .small{font-family:'Sora'; font-size:11px; letter-spacing:.24em; color:var(--steel); text-transform:uppercase; margin-bottom:-4px;}
+  .findus{margin-top:24px; padding-top:18px; border-top:1px solid var(--line);}
+  .findus span{font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:var(--steel);}
+  .findus a{display:inline-block; margin-top:10px; font-family:'Saira Condensed'; font-weight:600; letter-spacing:.04em; text-transform:uppercase; border:1px solid var(--line); padding:8px 16px; transition:border-color .15s,color .15s;}
+  .findus a:hover{border-color:var(--acc); color:var(--acc)}
+  .map-panel{min-height:380px; position:relative;}
+  .map-panel iframe{position:absolute; inset:0; width:100%; height:100%; border:0; filter:grayscale(.4) contrast(1.05) brightness(.9);}
+
+  /* ---------- CLOSE CTA ---------- */
+  .close{background:var(--acc); color:#16110b;}
+  .close .wrap{display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;}
+  .close h2{font-weight:800; font-size:clamp(30px,5vw,52px); text-transform:uppercase; color:#16110b; max-width:18ch;}
+  .close .sub{color:#3a2509; margin-top:8px; font-weight:500; font-size:15px;}
+  .btn-dark{
+    font-family:'Saira Condensed'; font-weight:700; font-size:21px; letter-spacing:.03em; text-transform:uppercase;
+    background:#1c1d1f; color:var(--ink); padding:17px 34px; transition:background .15s, transform .05s;
+    clip-path:polygon(12px 0,100% 0,100% 100%,0 100%);
+  }
+  .btn-dark:hover{background:#000}
+  .btn-dark:active{transform:translateY(1px)}
+
+  /* ---------- FOOTER ---------- */
+  footer.foot{background:var(--bg); border-top:1px solid var(--line); padding:40px 0 30px;}
+  .foot-top{display:flex; justify-content:space-between; align-items:flex-start; gap:24px; flex-wrap:wrap;}
+  .foot .brand b{font-size:20px}
+  .foot-links{display:flex; gap:20px; flex-wrap:wrap;}
+  .foot-links a{font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); transition:color .15s;}
+  .foot-links a:hover{color:var(--acc)}
+  .credit{margin-top:30px; padding-top:20px; border-top:1px solid var(--line); font-size:13px; color:var(--steel);}
+  .credit a{color:var(--acc)}
+  .credit .legal{display:block; margin-top:8px; color:#6f6e69; font-size:12px;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:880px){
+    nav.links{display:none}
+    .navtoggle{display:inline-flex}
+    .specplate .wrap{grid-template-columns:1fr 1fr;}
+    .spec:nth-child(3){border-left:0}
+    .spec{border-top:1px solid var(--line)}
+    .spec:nth-child(1),.spec:nth-child(2){border-top:0}
+    .about-grid{grid-template-columns:1fr; gap:34px;}
+    .ledger{grid-template-columns:1fr;}
+    .col + .col{border-left:0; border-top:1px solid var(--line);}
+    .visit-grid{grid-template-columns:1fr;}
+    .grid-shots{grid-template-columns:repeat(2,1fr);}
+    .grid-shots a.tall{grid-row:auto}
+    .grid-shots a.tall img{aspect-ratio:4/3}
+  }
+  @media (max-width:520px){
+    section{padding:62px 0}
+    .specplate .wrap{grid-template-columns:1fr;}
+    .spec{border-left:0; border-top:1px solid var(--line)}
+    .spec:first-child{border-top:0}
+    .q{grid-template-columns:1fr; gap:10px}
+    .q .mk{font-size:48px}
+    .grid-shots{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="AA Auto Repair LLC home">
+      <span class="mark">AA</span>
+      <span>
+        <b>AA Auto Repair</b>
+        <span>Auto · Diesel · Heavy Equipment</span>
+      </span>
+    </a>
+    <nav class="links">
+      <a href="#about">Shop</a>
+      <a href="#caps">Capabilities</a>
+      <a href="#gallery">Work</a>
+      <a href="#says">Testimonies</a>
+      <a href="#visit">Hours &amp; Location</a>
+    </nav>
+    <a class="callbtn" href="tel:+15598700164">Call (559) 870-0164</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="bg"><img src="./photos/01.jpg" alt="AA Auto Repair shop in Tulare, CA" loading="eager"></div>
+  <div class="hero-inner">
+    <div class="wrap">
+      <span class="kicker">Tulare, California</span>
+      <h1>Cars, Diesel &amp; <em>Heavy Iron</em> — One Honest Shop.</h1>
+      <p class="sub">From your daily driver to Caterpillar, John Deere and Bobcat equipment — and the trailers behind them — Daniel diagnoses it straight, explains every repair, and gets you back on the road.</p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="tel:+15598700164">Call the Shop</a>
+        <a class="btn-ghost" href="#caps">What We Service</a>
+      </div>
+    </div>
+  </div>
+  <!-- SPEC PLATE -->
+  <div class="specplate cut">
+    <div class="wrap">
+      <div class="spec">
+        <div class="lab">Direct Line</div>
+        <div class="val"><a href="tel:+15598700164">(559) 870-0164</a></div>
+      </div>
+      <div class="spec">
+        <div class="lab">Location</div>
+        <div class="val">1329 S J St · Tulare</div>
+      </div>
+      <div class="spec">
+        <div class="lab">Mon–Fri</div>
+        <div class="val">8:00 – 5:30</div>
+      </div>
+      <div class="spec">
+        <div class="lab">We Service</div>
+        <div class="val">Light &amp; Heavy Equipment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <p class="eyebrow">The Shop</p>
+      <h2 class="h2">Diagnosed Straight.<br>Fixed Right.</h2>
+      <p>AA Auto Repair is a Tulare shop where the work gets explained before it gets done. Bring in a car with a check-engine light or a stubborn transmission, and Daniel walks you through what's wrong, what it'll take, and what it'll cost — often with photos sent straight to your phone — before any wrench turns.</p>
+      <p>What sets the shop apart in the valley: it doesn't stop at passenger vehicles. Daniel and the crew handle diesel work, heavy and industrial equipment — Caterpillar, John Deere, Bobcat — and the trailers that haul it all. One yard, one mechanic you can trust, whether it's a sedan or a skid steer.</p>
+      <div class="pull">Transparent pricing. No guesswork. Equipment that leaves running like new.</div>
+    </div>
+    <div class="about-photo cut">
+      <img src="./photos/02.jpg" alt="Work underway at AA Auto Repair">
+      <span class="tag">Owner-Operated</span>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITY LEDGER -->
+<section class="caps" id="caps">
+  <div class="wrap">
+    <div class="cap-head">
+      <p class="eyebrow">Capabilities</p>
+      <h2 class="h2">Two Lanes. One Shop.</h2>
+      <p class="lede">Most shops in town can turn a wrench on a car. Few can also pull a hydraulic line off a Bobcat or get a Cat engine breathing again. AA does both.</p>
+    </div>
+
+    <div class="ledger">
+      <!-- Passenger / light -->
+      <div class="col">
+        <div class="col-tag"><span class="num">01 /</span></div>
+        <h3>Passenger &amp; Light Trucks</h3>
+        <p class="ctx">Cars, pickups and SUVs — the everyday repairs done honestly.</p>
+        <div class="row"><span class="name">Engine Diagnostics</span><span class="note">Check-engine &amp; warning lights</span></div>
+        <div class="row"><span class="name">Transmission Repair</span><span class="note">Service &amp; full replacement</span></div>
+        <div class="row"><span class="name">Brakes &amp; Suspension</span><span class="note">Pads, rotors, front-end</span></div>
+        <div class="row"><span class="name">A/C Service</span><span class="note">Inspect · vacuum · recharge</span></div>
+        <div class="row"><span class="name">General Maintenance</span><span class="note">Fluids, tune-ups, upkeep</span></div>
+      </div>
+
+      <!-- Heavy / industrial -->
+      <div class="col heavy">
+        <div class="col-tag"><span class="num">02 /</span></div>
+        <h3>Heavy, Industrial &amp; Trailer</h3>
+        <p class="ctx">The work most local shops turn away — diesel and machinery.</p>
+        <div class="row"><span class="name">Diesel Engine Repair</span><span class="note">Heavy-duty powerplants</span></div>
+        <div class="row"><span class="name">Heavy Equipment Service</span><span class="note">Field &amp; in-shop machinery</span></div>
+        <div class="row"><span class="name">Hydraulics &amp; Drivetrain</span><span class="note">Lines, pumps, undercarriage</span></div>
+        <div class="row"><span class="name">Trailer Repair</span><span class="note">Brakes, lights, axles, frames</span></div>
+        <div class="row"><span class="name">Preventive Inspections</span><span class="note">Keep the fleet running</span></div>
+        <div class="brands" aria-label="Equipment brands serviced">
+          <span class="chip">Caterpillar</span>
+          <span class="chip">John Deere</span>
+          <span class="chip">Bobcat</span>
+        </div>
+      </div>
+    </div>
+    <p class="caps-foot">Not sure if we work on what you've got? Call and ask — <a href="tel:+15598700164" style="color:var(--acc)">(559) 870-0164</a>.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <p class="eyebrow">In the Yard</p>
+    <h2 class="h2">The Work</h2>
+    <div class="grid-shots">
+      <a class="tall" href="./photos/03.jpg" target="_blank" rel="noopener"><img src="./photos/03.jpg" alt="AA Auto Repair — shop work"></a>
+      <a href="./photos/04.jpg" target="_blank" rel="noopener"><img src="./photos/04.jpg" alt="AA Auto Repair — equipment service"></a>
+      <a href="./photos/05.jpg" target="_blank" rel="noopener"><img src="./photos/05.jpg" alt="AA Auto Repair — repair underway"></a>
+      <a href="./photos/06.jpg" target="_blank" rel="noopener"><img src="./photos/06.jpg" alt="AA Auto Repair — Tulare shop"></a>
+      <a href="./photos/02.jpg" target="_blank" rel="noopener"><img src="./photos/02.jpg" alt="AA Auto Repair — detail"></a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="says" id="says">
+  <div class="wrap">
+    <p class="eyebrow">In Their Words</p>
+    <h2 class="h2">What People Say</h2>
+    <div class="quotes">
+      <div class="q">
+        <div class="mk">&ldquo;</div>
+        <div>
+          <blockquote>I live out of town but my brother highly recommended Daniel. Another shop kept my car a week and did nothing — Daniel immediately ordered the transmission and got the work done within two days, with transparency in explaining every repair. His prices were excellent. If you want trustworthy, honest, peace-of-mind service, go see Daniel.</blockquote>
+          <div class="who">Maria R.</div>
+        </div>
+      </div>
+      <div class="q">
+        <div class="mk">&ldquo;</div>
+        <div>
+          <blockquote>I've brought several of my cars here with several different issues — big or small, they fixed every one and always explained why. I refer family and friends here because I truly believe it's the best mechanic shop in Tulare. Never had an issue with the shop or the quality of the work, and the prices are very reasonable.</blockquote>
+          <div class="who">TheMist06</div>
+        </div>
+      </div>
+      <div class="q">
+        <div class="mk">&ldquo;</div>
+        <div>
+          <blockquote>Great experience! The owner was professional, honest and informative — he provided detailed information and fixed the issue with my vehicle, and booked me right away. Highly recommend AA Auto Repair.</blockquote>
+          <div class="who">Aime F.</div>
+        </div>
+      </div>
+      <div class="q">
+        <div class="mk">&ldquo;</div>
+        <div>
+          <blockquote>Daniel is a very knowledgeable mechanic — willing to explain and send photos of your vehicle and its issues. Does a nice, thorough job. Very happy with his work, and a good price as well.</blockquote>
+          <div class="who">Sukhi K.</div>
+        </div>
+      </div>
+      <div class="q">
+        <div class="mk">&ldquo;</div>
+        <div>
+          <blockquote>Best price in town for the repair I needed. Came in for an A/C inspection, vacuum and refrigerant refill. Highly recommend them — very respectful and honest. Thank you for doing what you do.</blockquote>
+          <div class="who">Diego P.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS / MAP / CONTACT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <p class="eyebrow">Find the Shop</p>
+    <h2 class="h2" style="margin-bottom:36px;">Hours &amp; Location</h2>
+    <div class="visit-grid">
+      <div class="hours-panel">
+        <h3>Hours</h3>
+        <p class="addr">1329 S J St, Tulare, CA 93274</p>
+        <div class="hrow" id="d1"><span class="d">Mon</span><span class="t">8:00 AM – 5:30 PM</span></div>
+        <div class="hrow" id="d2"><span class="d">Tue</span><span class="t">8:00 AM – 5:30 PM</span></div>
+        <div class="hrow" id="d3"><span class="d">Wed</span><span class="t">8:00 AM – 5:30 PM</span></div>
+        <div class="hrow" id="d4"><span class="d">Thu</span><span class="t">8:00 AM – 5:30 PM</span></div>
+        <div class="hrow" id="d5"><span class="d">Fri</span><span class="t">8:00 AM – 5:30 PM</span></div>
+        <div class="hrow" id="d6"><span class="d">Sat</span><span class="t">8:00 AM – 3:00 PM</span></div>
+        <div class="hrow" id="d0"><span class="d">Sun</span><span class="t closed">Closed</span></div>
+
+        <div class="contact-line">
+          <div>
+            <div class="small">Call or Text</div>
+            <a href="tel:+15598700164">(559) 870-0164</a>
+          </div>
+          <a class="btn-primary" style="margin-top:6px; text-align:center;" href="https://www.google.com/maps?q=1329+S+J+St,+Tulare,+CA+93274" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+
+        <div class="findus">
+          <span>Find Us On</span><br>
+          <a href="https://maps.google.com/?cid=14967240399056685320" target="_blank" rel="noopener">Google Business</a>
+        </div>
+      </div>
+      <div class="map-panel">
+        <iframe
+          title="Map to AA Auto Repair LLC, Tulare CA"
+          src="https://www.google.com/maps?q=1329+S+J+St,+Tulare,+CA+93274&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE CTA -->
+<section class="close">
+  <div class="wrap">
+    <div>
+      <h2>Got Something Broken? Let's Take a Look.</h2>
+      <p class="sub">Cars, diesel rigs, heavy equipment, trailers — straight answers and fair prices.</p>
+    </div>
+    <a class="btn-dark" href="tel:+15598700164">Call (559) 870-0164</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="brand" href="#top">
+        <span class="mark">AA</span>
+        <span>
+          <b>AA Auto Repair LLC</b>
+          <span>Tulare, California</span>
+        </span>
+      </a>
+      <nav class="foot-links">
+        <a href="#about">Shop</a>
+        <a href="#caps">Capabilities</a>
+        <a href="#gallery">Work</a>
+        <a href="#says">Testimonies</a>
+        <a href="#visit">Hours &amp; Location</a>
+        <a href="https://maps.google.com/?cid=14967240399056685320" target="_blank" rel="noopener">Google Business</a>
+      </nav>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+      <span class="legal">AA Auto Repair LLC · 1329 S J St, Tulare, CA 93274 · (559) 870-0164</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Highlight today's row in the hours table (no animation, just an honest "open now" cue).
+  (function(){
+    var day = new Date().getDay(); // 0=Sun
+    var el = document.getElementById('d' + day);
+    if(el){ el.classList.add('today'); }
+  })();
+</script>
+</body>
+</html>

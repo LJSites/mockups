@@ -1,0 +1,728 @@
+<!-- auto · fresh-natural · hero-layout 1 · svc-layout 1 · DM Serif Display/Work Sans -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taylor Automotive — Honest Auto Repair in Stockton, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --acc:#15803d;
+      --bg:#f7fee7;
+      --acc-dark:#0f5c2c;
+      --acc-light:#dcfce7;
+      --text:#1a1a1a;
+      --muted:#4b5563;
+      --border:#d1fae5;
+      --nav-h:64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-padding-top: var(--nav-h); }
+
+    body{font-family:'Work Sans',sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 16px; }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+      gap: 2rem;
+    }
+    .nav-logo {
+      flex: 0 0 auto;
+      font-size: 1.1rem;
+      letter-spacing: 0.02em;
+      color: var(--acc);
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      margin-left: auto;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--acc); }
+    .nav-cta {
+      flex: 0 0 auto;
+      margin-left: 1.5rem;
+      background: var(--acc);
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 3px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--acc-dark); }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      margin-left: auto;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--acc);
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+
+    /* HERO — left image layout */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - var(--nav-h));
+      max-height: 780px;
+    }
+    .hero-image {
+      order: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(21,128,61,0.18) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-content {
+      order: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+      background: var(--bg);
+    }
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 1.25rem;
+    }
+    .hero-content h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+    .hero-content h1 em {
+      font-style: italic;
+      color: var(--acc);
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 42ch;
+      margin-bottom: 2.25rem;
+      line-height: 1.75;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: #fff;
+      padding: 0.75rem 1.75rem;
+      border-radius: 3px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--acc-dark); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-block;
+      color: var(--acc);
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-bottom: 2px solid var(--acc-light);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--acc); }
+    .hero-note {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    /* TRUST STRIP */
+    .trust-strip {
+      background: var(--acc);
+      color: #fff;
+      padding: 1rem clamp(1.25rem, 5vw, 3rem);
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    .trust-item svg { flex: 0 0 auto; opacity: 0.85; }
+
+    /* SECTION LAYOUT */
+    section { padding: clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 5vw, 3rem); }
+    .section-inner { max-width: 1080px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 55ch;
+      margin-bottom: 3rem;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    /* ABOUT */
+    #about { background: #fff; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .about-copy p {
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .about-copy strong { color: var(--text); font-weight: 600; }
+    .about-callout {
+      background: var(--bg);
+      border-left: 4px solid var(--acc);
+      padding: 1.5rem 1.75rem;
+      border-radius: 0 6px 6px 0;
+    }
+    .about-callout p {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      line-height: 1.45;
+      color: var(--text);
+      font-style: italic;
+    }
+
+    /* SERVICES — 2-col rows */
+    #services { background: var(--bg); }
+    .services-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+    .service-row {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 2rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+      transition: background 0.2s;
+    }
+    .service-row:hover { background: rgba(21,128,61,0.04); }
+    .service-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: var(--text);
+      padding-right: 1rem;
+    }
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* TESTIMONIES */
+    #testimonies { background: #fff; }
+    .testimonies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.75rem;
+    }
+    .testimony-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: box-shadow 0.2s;
+    }
+    .testimony-card:hover { box-shadow: 0 4px 20px rgba(21,128,61,0.1); }
+    .testimony-quote {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--muted);
+      flex: 1;
+    }
+    .testimony-quote::before {
+      content: '\201C';
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.5rem;
+      line-height: 0;
+      color: var(--acc);
+      opacity: 0.4;
+      vertical-align: -0.5rem;
+      margin-right: 0.2rem;
+    }
+    .testimony-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--acc);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* HOURS & LOCATION */
+    #location { background: var(--bg); }
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .hours-block h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .hours-table tr { border-bottom: 1px solid var(--border); }
+    .hours-table tr:last-child { border-bottom: none; }
+    .hours-table td { padding: 0.65rem 0; }
+    .hours-table td:first-child { color: var(--muted); font-weight: 500; width: 45%; }
+    .hours-table td:last-child { color: var(--text); font-weight: 400; }
+    .hours-table .closed { color: #9ca3af; font-style: italic; }
+    .contact-details {
+      margin-top: 2rem;
+    }
+    .contact-details h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+    .contact-line {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .contact-line svg { margin-top: 3px; flex: 0 0 auto; color: var(--acc); }
+    .contact-line a { color: var(--acc); font-weight: 500; transition: opacity 0.2s; }
+    .contact-line a:hover { opacity: 0.75; }
+    .map-wrap {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .map-wrap iframe {
+      width: 100%;
+      height: 360px;
+      border: none;
+      display: block;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.7);
+      padding: 2.5rem clamp(1.25rem, 5vw, 3rem);
+    }
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer-brand .brand {
+      color: #fff;
+      font-size: 1.15rem;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .footer-brand p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 1.25rem;
+      font-size: 0.8rem;
+      line-height: 1.7;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; max-height: none; min-height: auto; }
+      .hero-image { height: 55vw; max-height: 380px; order: 0; }
+      .hero-content { order: 1; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .location-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 700px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 1.5rem 1.75rem;
+        gap: 1.25rem;
+        z-index: 99;
+      }
+      .nav-links.open a { font-size: 1rem; }
+      .service-row { grid-template-columns: 1fr; gap: 0.5rem; }
+      .testimonies-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .trust-strip { flex-direction: column; align-items: center; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+    }
+
+    .brand{font-family:'DM Serif Display',serif; font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="top">
+    <span class="nav-logo"><span class="brand">Taylor Automotive</span></span>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Hours &amp; Location</a></li>
+    </ul>
+    <a href="tel:+12099316007" class="nav-cta">Call Us</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO — left image -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-image">
+      <img src="./photos/01.jpg" alt="Taylor Automotive shop" loading="eager" />
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Stockton, CA · Since Day One</p>
+      <h1>Auto Repair Done<br /><em>the Right Way</em></h1>
+      <p class="hero-desc">
+        Bob and his team at Taylor Automotive bring honest pricing, clean work, and straight talk to every job — no upsells, no runaround, just your car fixed right.
+      </p>
+      <div class="hero-actions">
+        <a href="tel:+12099316007" class="btn-primary">Call (209) 931-6007</a>
+        <a href="https://www.google.com/maps?q=3932+E+Fremont+St,+Stockton,+CA+95215&z=15" target="_blank" rel="noopener" class="btn-secondary">Get Directions →</a>
+      </div>
+      <p class="hero-note">Mon – Fri &nbsp;8:00 AM – 5:00 PM &nbsp;·&nbsp; Appointment Recommended</p>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="trust-item">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      Fair, Transparent Pricing
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      Family-Owned &amp; Operated
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      No Job Too Tough
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      Trusted by Stockton Families for Years
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div>
+          <p class="section-label">Who We Are</p>
+          <h2 class="section-title">The Shop That Tells You the Truth</h2>
+          <div class="about-copy">
+            <p>
+              Taylor Automotive has been a fixture on East Fremont Street because Bob runs it the way a shop <strong>ought</strong> to be run: you get an honest diagnosis, a fair price, and a real explanation — not a runaround.
+            </p>
+            <p>
+              The team handles everything from routine maintenance to the kind of stubborn, multi-shop diagnostics that other garages give up on. If you've been burned before, this is where you come to start over.
+            </p>
+            <p>
+              Appointments are recommended — the word spreads fast when a shop earns its reputation one car at a time.
+            </p>
+          </div>
+        </div>
+        <div class="about-callout">
+          <p>"Bob will tell you how it is with unbridled honesty. That kind of transparency and mutual respect is rare in this industry — year after year, they've delivered."</p>
+          <p style="margin-top:1.25rem; font-family:'Work Sans',sans-serif; font-style:normal; font-size:0.85rem; color:var(--acc); font-weight:600; letter-spacing:0.05em; text-transform:uppercase;">— Ramiz H., loyal customer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Full-Service Auto Repair</h2>
+      <p class="section-subtitle">From the straightforward to the head-scratchers other shops pass on — Taylor Automotive handles it.</p>
+      <div class="services-rows">
+        <div class="service-row">
+          <div class="service-name">Engine Diagnostics &amp; Repair</div>
+          <div class="service-desc">Check-engine lights, hard-to-diagnose running issues, multi-shop problems that finally get solved here. Bob's team digs until they find the root cause.</div>
+        </div>
+        <div class="service-row">
+          <div class="service-name">Oil Changes &amp; Fluid Service</div>
+          <div class="service-desc">Conventional and synthetic oil changes, coolant flushes, transmission fluid, and all routine fluid maintenance to keep your car running like it should.</div>
+        </div>
+        <div class="service-row">
+          <div class="service-name">Brake Inspection &amp; Repair</div>
+          <div class="service-desc">Pads, rotors, calipers, and brake fluid — inspected and replaced with quality parts. You'll know exactly what's needed before anything gets done.</div>
+        </div>
+        <div class="service-row">
+          <div class="service-name">Suspension &amp; Steering</div>
+          <div class="service-desc">Shocks, struts, tie rods, wheel bearings — if something feels off in how your vehicle handles, we'll find it and fix it right.</div>
+        </div>
+        <div class="service-row">
+          <div class="service-name">Electrical System</div>
+          <div class="service-desc">Batteries, alternators, starters, and wiring issues. Modern vehicles are wired for complexity — we have the tools and experience to work through it.</div>
+        </div>
+        <div class="service-row">
+          <div class="service-name">Pre-Purchase Inspections</div>
+          <div class="service-desc">Thinking about buying a used vehicle? Bring it in. We'll give you a full, unbiased assessment of what you're actually getting into.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="section-inner">
+      <p class="section-label">Customer Testimonies</p>
+      <h2 class="section-title">In Their Words</h2>
+      <p class="section-subtitle">A few of the people who trusted us with their vehicles — and kept coming back.</p>
+      <div class="testimonies-grid">
+
+        <div class="testimony-card">
+          <p class="testimony-quote">There's no words I can describe how excited I am to have my dad's old truck back on the road. After a few other shops who couldn't fix the problem, Bob and his mechanics made it happen and the price was right. I will definitely recommend anyone looking for a shop they can trust.</p>
+          <p class="testimony-name">Enrique C.</p>
+        </div>
+
+        <div class="testimony-card">
+          <p class="testimony-quote">Taylor Automotive's prices are always fair and reasonable, their work is done quickly without cutting corners, and they treat you like a person. Bob took the time to explain what was going on and showed me exactly what they were doing. That kind of transparency is rare in this industry.</p>
+          <p class="testimony-name">Ramiz H.</p>
+        </div>
+
+        <div class="testimony-card">
+          <p class="testimony-quote">Really professional. Was recommended to go here by another shop I trust and I feel it was worth the drive across town. Make an appointment ahead of time — it took about 1.5 weeks to get my car inspected.</p>
+          <p class="testimony-name">Andrew R.</p>
+        </div>
+
+        <div class="testimony-card">
+          <p class="testimony-quote">Taylor's always does a great job. Professional, fast, and reasonable. Highly recommend.</p>
+          <p class="testimony-name">Bert S.</p>
+        </div>
+
+        <div class="testimony-card">
+          <p class="testimony-quote">First time here and service was great. Customer service was amazing. Thank you guys for getting my Jeep fixed right away and being honest.</p>
+          <p class="testimony-name">A. Garcia</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section id="location">
+    <div class="section-inner">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Hours &amp; Location</h2>
+      <div class="location-grid">
+        <div>
+          <div class="hours-block">
+            <h3>Shop Hours</h3>
+            <table class="hours-table">
+              <tbody>
+                <tr><td>Monday</td><td>8:00 AM – 5:00 PM</td></tr>
+                <tr><td>Tuesday</td><td>8:00 AM – 5:00 PM</td></tr>
+                <tr><td>Wednesday</td><td>8:00 AM – 5:00 PM</td></tr>
+                <tr><td>Thursday</td><td>8:00 AM – 5:00 PM</td></tr>
+                <tr><td>Friday</td><td>8:00 AM – 5:00 PM</td></tr>
+                <tr><td>Saturday</td><td class="closed">Closed</td></tr>
+                <tr><td>Sunday</td><td class="closed">Closed</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="contact-details">
+            <h3>Contact</h3>
+            <div class="contact-line">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+              <span><a href="tel:+12099316007">(209) 931-6007</a></span>
+            </div>
+            <div class="contact-line">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>3932 E Fremont St<br />Stockton, CA 95215</span>
+            </div>
+            <div class="contact-line" style="margin-top:1.25rem;">
+              <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              <span>Appointments recommended<br /><em style="font-style:italic;font-size:0.85em;">Call ahead for same-week availability</em></span>
+            </div>
+            <div style="margin-top:1.5rem;">
+              <a href="https://maps.google.com/?cid=16475306606724093887" target="_blank" rel="noopener" style="font-size:0.85rem; color:var(--acc); font-weight:600; border-bottom:1px solid var(--acc-light); padding-bottom:2px;">View on Google Maps →</a>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="map-wrap">
+            <iframe
+              src="https://www.google.com/maps?q=3932+E+Fremont+St,+Stockton,+CA+95215&z=15&output=embed"
+              loading="lazy"
+              allowfullscreen
+              title="Taylor Automotive location map"
+            ></iframe>
+          </div>
+          <div style="margin-top:1.5rem; text-align:center;">
+            <a href="tel:+12099316007" class="btn-primary" style="display:inline-block;">Call to Schedule: (209) 931-6007</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <span class="brand">Taylor Automotive</span>
+          <p>Honest auto repair on East Fremont Street.<br />Stockton, CA 95215</p>
+        </div>
+        <div class="footer-links">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#testimonies">Testimonies</a>
+          <a href="#location">Hours &amp; Location</a>
+          <a href="https://maps.google.com/?cid=16475306606724093887" target="_blank" rel="noopener">Google Business Listing</a>
+        </div>
+        <div class="footer-links">
+          <a href="tel:+12099316007">(209) 931-6007</a>
+          <a href="https://www.google.com/maps?q=3932+E+Fremont+St,+Stockton,+CA+95215" target="_blank" rel="noopener">3932 E Fremont St</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Taylor Automotive · All rights reserved</p>
+        <p style="margin-top:0.4rem;">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+  </script>
+
+</body>
+</html>

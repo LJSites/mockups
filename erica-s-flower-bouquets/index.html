@@ -1,0 +1,636 @@
+<!-- florist · industrial-poster · hero-layout 2 · svc-layout 0 · Anton/Roboto -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Erica's Flower Bouquets — Tulare, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --acc:#d97706;
+  --bg:#1c1917;
+  --bg2:#292524;
+  --bg3:#3c3735;
+  --text:#f5f0eb;
+  --muted:#a8a29e;
+  --nav-h:64px;
+}
+html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+body{font-family:'Roboto',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.brand{font-family:'Anton',serif;letter-spacing:.03em;text-transform:uppercase}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--bg);
+  border-bottom:2px solid var(--acc);
+  height:var(--nav-h);
+  display:flex;align-items:center;
+  padding:0 1.5rem;
+  gap:2rem;
+}
+.nav-brand{
+  font-family:'Anton',serif;
+  font-size:1.4rem;
+  color:var(--acc);
+  text-decoration:none;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.nav-links{
+  display:flex;gap:1.5rem;list-style:none;margin-left:auto;
+}
+.nav-links a{
+  font-family:'Roboto',sans-serif;
+  font-size:.78rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  text-decoration:none;
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{
+  display:inline-block;
+  margin-left:.5rem;
+  background:var(--acc);
+  color:#1c1917!important;
+  padding:.35rem .9rem;
+  font-weight:700!important;
+  transition:background .2s, color .2s!important;
+}
+.nav-cta:hover{background:#f59e0b!important}
+
+/* HERO full-bleed */
+.hero{
+  position:relative;
+  min-height:90vh;
+  display:flex;align-items:flex-end;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('./photos/01.jpg') center/cover no-repeat;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(28,25,23,.97) 0%,
+    rgba(28,25,23,.7) 45%,
+    rgba(28,25,23,.2) 100%
+  );
+}
+.hero-content{
+  position:relative;z-index:1;
+  padding:4rem 2rem 4rem;
+  max-width:760px;
+}
+.hero-eyebrow{
+  font-family:'Anton',serif;
+  font-size:.85rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--acc);
+  margin-bottom:1rem;
+  display:block;
+}
+.hero h1{
+  font-family:'Anton',serif;
+  font-size:clamp(3rem,10vw,7rem);
+  line-height:.95;
+  text-transform:uppercase;
+  letter-spacing:.02em;
+  color:var(--text);
+  margin-bottom:1.5rem;
+}
+.hero h1 span{color:var(--acc)}
+.hero-sub{
+  font-size:1.05rem;
+  color:#d6cfc9;
+  max-width:480px;
+  margin-bottom:2rem;
+  line-height:1.65;
+}
+.btn-primary{
+  display:inline-block;
+  background:var(--acc);
+  color:#1c1917;
+  font-family:'Anton',serif;
+  font-size:1.1rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:.75rem 2rem;
+  transition:background .2s, transform .15s;
+}
+.btn-primary:hover{background:#f59e0b;transform:translateY(-2px)}
+.btn-ghost{
+  display:inline-block;
+  border:2px solid var(--acc);
+  color:var(--acc);
+  font-family:'Anton',serif;
+  font-size:1.1rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:.7rem 2rem;
+  margin-left:1rem;
+  transition:background .2s, color .2s, transform .15s;
+}
+.btn-ghost:hover{background:var(--acc);color:#1c1917;transform:translateY(-2px)}
+
+/* BAND */
+.band{
+  background:var(--acc);
+  padding:.6rem 1.5rem;
+  display:flex;align-items:center;justify-content:center;gap:3rem;
+  flex-wrap:wrap;
+}
+.band-item{
+  font-family:'Anton',serif;
+  font-size:.8rem;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#1c1917;
+}
+
+/* SECTIONS */
+section{padding:5rem 1.5rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{
+  font-family:'Anton',serif;
+  font-size:.75rem;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--acc);
+  display:block;
+  margin-bottom:.75rem;
+}
+.section-title{
+  font-family:'Anton',serif;
+  font-size:clamp(2rem,5vw,3.5rem);
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  line-height:1;
+  color:var(--text);
+  margin-bottom:1.5rem;
+}
+
+/* ABOUT */
+#about{background:var(--bg2)}
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3rem;
+  align-items:center;
+}
+.about-img-stack{
+  position:relative;
+}
+.about-img-main{
+  width:100%;
+  aspect-ratio:4/5;
+  object-fit:cover;
+  display:block;
+}
+.about-img-accent{
+  position:absolute;
+  bottom:-2rem;right:-1.5rem;
+  width:55%;
+  aspect-ratio:1;
+  object-fit:cover;
+  border:4px solid var(--bg2);
+}
+.about-text p{
+  color:#ccc4bc;
+  margin-bottom:1.2rem;
+  font-size:1rem;
+}
+.about-text .stat-row{
+  display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap;
+}
+.stat{border-left:3px solid var(--acc);padding-left:1rem}
+.stat-num{
+  font-family:'Anton',serif;
+  font-size:2rem;
+  color:var(--acc);
+  line-height:1;
+}
+.stat-desc{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.2rem}
+
+/* SERVICES / CARDS */
+#services{background:var(--bg)}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1.5rem;
+  margin-top:2.5rem;
+}
+.svc-card{
+  background:var(--bg2);
+  padding:2rem 1.75rem;
+  border-top:3px solid transparent;
+  transition:border-color .2s, transform .2s;
+}
+.svc-card:hover{border-color:var(--acc);transform:translateY(-4px)}
+.svc-card h3{
+  font-family:'Anton',serif;
+  font-size:1.4rem;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  color:var(--text);
+  margin-bottom:.6rem;
+}
+.svc-card p{color:var(--muted);font-size:.9rem;line-height:1.65}
+
+/* GALLERY */
+#gallery{background:var(--bg3)}
+.gallery-header{margin-bottom:2rem}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:.75rem;
+}
+.gallery-grid img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  transition:opacity .25s;
+}
+.gallery-grid img:hover{opacity:.85}
+.g-large{grid-row:1/3}
+
+/* TESTIMONIES */
+#testimonies{background:var(--bg2)}
+.testi-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:1.5rem;
+  margin-top:2.5rem;
+}
+.testi-card{
+  background:var(--bg);
+  padding:2rem;
+  border-left:3px solid var(--acc);
+  position:relative;
+}
+.testi-mark{
+  font-family:'Anton',serif;
+  font-size:5rem;
+  line-height:.7;
+  color:var(--acc);
+  opacity:.18;
+  position:absolute;
+  top:1.2rem;right:1.4rem;
+}
+.testi-text{
+  font-size:.93rem;
+  color:#ccc4bc;
+  line-height:1.7;
+  margin-bottom:1.25rem;
+  position:relative;
+  z-index:1;
+}
+.testi-author{
+  font-family:'Anton',serif;
+  font-size:.85rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--acc);
+}
+
+/* HOURS & MAP */
+#visit{background:var(--bg)}
+.visit-grid{
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  gap:3rem;
+  align-items:start;
+}
+.hours-block h3{
+  font-family:'Anton',serif;
+  font-size:1.6rem;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  margin-bottom:1.25rem;
+}
+.hours-table{width:100%;border-collapse:collapse}
+.hours-table tr{border-bottom:1px solid var(--bg3)}
+.hours-table td{padding:.55rem 0;font-size:.9rem;color:var(--muted)}
+.hours-table td:first-child{color:var(--text);font-weight:500;width:50%}
+.hours-table .today td{color:var(--acc)}
+.hours-table .today td:first-child{color:var(--acc)}
+.cta-visit{margin-top:2rem}
+.map-wrap{
+  border:2px solid var(--bg3);
+  overflow:hidden;
+}
+.map-wrap iframe{
+  width:100%;height:360px;
+  display:block;filter:grayscale(70%) contrast(1.1);border:none;
+}
+
+/* CONTACT STRIP */
+#contact{background:var(--acc);padding:4rem 1.5rem}
+.contact-inner{
+  max-width:900px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:2rem;
+}
+.contact-left .contact-label{
+  font-family:'Anton',serif;
+  font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;
+  color:#1c1917;opacity:.7;margin-bottom:.4rem;
+}
+.contact-left h2{
+  font-family:'Anton',serif;
+  font-size:clamp(1.8rem,4vw,3rem);
+  text-transform:uppercase;
+  letter-spacing:.03em;
+  color:#1c1917;
+  line-height:1;
+}
+.contact-links{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-dark{
+  display:inline-block;
+  background:#1c1917;
+  color:var(--acc);
+  font-family:'Anton',serif;
+  font-size:1rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  text-decoration:none;
+  padding:.7rem 1.6rem;
+  transition:background .2s;
+}
+.btn-dark:hover{background:#292524}
+
+/* FOOTER */
+footer{
+  background:var(--bg);
+  border-top:2px solid var(--bg3);
+  padding:2.5rem 1.5rem;
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:1rem;
+}
+.footer-brand{
+  font-family:'Anton',serif;
+  font-size:1.2rem;color:var(--acc);
+  text-transform:uppercase;letter-spacing:.08em;
+}
+.footer-links{display:flex;gap:1.5rem;list-style:none}
+.footer-links a{
+  font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s;
+}
+.footer-links a:hover{color:var(--acc)}
+.footer-credit{
+  width:100%;
+  font-size:.75rem;
+  color:var(--bg3);
+  text-align:center;
+  margin-top:1rem;
+  border-top:1px solid var(--bg3);
+  padding-top:1rem;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .about-grid{grid-template-columns:1fr}
+  .about-img-accent{bottom:-1.5rem;right:-1rem}
+  .visit-grid{grid-template-columns:1fr}
+  .gallery-grid{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto;
+  }
+  .g-large{grid-row:auto}
+  nav .nav-links li:not(:last-child){display:none}
+  .btn-ghost{display:none}
+}
+@media(max-width:480px){
+  .hero h1{font-size:clamp(2.5rem,13vw,4rem)}
+  .gallery-grid{grid-template-columns:1fr}
+  .contact-inner{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand brand">Erica's</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="tel:+15596863391" class="nav-cta">Call Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO full-bleed -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Tulare, CA · Est. Local Florist</span>
+    <h1>Erica's<br><span>Flower</span><br>Bouquets</h1>
+    <p class="hero-sub">Fresh flowers, hand-selected weekly from the LA flower market. Custom arrangements made with commitment — for every occasion that matters.</p>
+    <a href="tel:+15596863391" class="btn-primary">Call Now</a>
+    <a href="https://www.google.com/maps?q=201+S+K+St,+Tulare,+CA+93274&z=15" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+  </div>
+</section>
+
+<!-- BAND -->
+<div class="band">
+  <span class="band-item">Fresh weekly from LA flower market</span>
+  <span class="band-item">Same-day delivery available</span>
+  <span class="band-item">Custom orders welcome</span>
+  <span class="band-item">Spanish spoken</span>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-stack">
+        <img src="./photos/02.jpg" alt="Erica's flower arrangements" class="about-img-main">
+        <img src="./photos/03.jpg" alt="Fresh bouquet detail" class="about-img-accent">
+      </div>
+      <div class="about-text">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-title">Flowers<br>Worth the<br>Early Rise</h2>
+        <p>Every week, Erica is up at 2AM to make the drive to the Los Angeles flower market — hand-picking the freshest blooms so her clients never settle for anything less than exceptional.</p>
+        <p>Based in Tulare, we bring big-city flower quality to the Central Valley. Whether it's a birthday bouquet, a wedding crown, a sympathy arrangement, or a same-day delivery surprise — our shop delivers with care, speed, and a personal touch.</p>
+        <p>We speak Spanish and serve every community in our region. Walk in, call ahead, or ask about delivery. There's a bouquet here for every story.</p>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-num">2AM</div>
+            <div class="stat-desc">weekly LA market runs</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">1hr</div>
+            <div class="stat-desc">rush turnaround available</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Same</div>
+            <div class="stat-desc">day delivery</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <span class="section-label">What We Offer</span>
+    <h2 class="section-title">Every Occasion,<br>One Shop</h2>
+    <div class="services-grid">
+      <div class="svc-card">
+        <h3>Custom Bouquets</h3>
+        <p>Hand-arranged fresh flowers tailored to your vision, occasion, and budget. No two bouquets are identical — each one is made for you.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Balloon Bouquets</h3>
+        <p>Vibrant balloon arrangements perfect for birthdays, celebrations, and surprises — delivered with the same care as our floral designs.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Flower Crowns</h3>
+        <p>Wearable floral art for weddings, quinceañeras, funerals, and photo shoots. Rush orders accommodated — our team can deliver in as little as one hour.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Sympathy &amp; Funeral</h3>
+        <p>Dignified, beautiful arrangements to honor loved ones. We work quickly and respectfully when time is of the essence.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Delivery</h3>
+        <p>We deliver locally throughout Tulare. Professional, timely, and handled with care — even for orders placed by phone from out of town.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Phone &amp; Walk-In Orders</h3>
+        <p>Order from anywhere — we're happy to help you choose the perfect arrangement over the phone. Walk-ins always welcome during shop hours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <span class="section-label">Fresh &amp; In Season</span>
+    <h2 class="section-title gallery-header">From the<br>Market to You</h2>
+    <div class="gallery-grid">
+      <img src="./photos/04.jpg" alt="Large floral display" class="g-large">
+      <img src="./photos/05.jpg" alt="Colorful bouquet">
+      <img src="./photos/06.jpg" alt="Arrangement close-up">
+      <img src="./photos/01.jpg" alt="Shop flowers">
+      <img src="./photos/02.jpg" alt="Fresh weekly flowers">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="container">
+    <span class="section-label">Customer Testimonies</span>
+    <h2 class="section-title">In Their<br>Words</h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-mark">"</div>
+        <p class="testi-text">Erica was extremely helpful. She had just returned from buying flowers at the flower market in LA. She told me that once a week, she rises at 2AM to go to LA. She wants to pick out fresh flowers for her clients. I was given customized service at a reasonable price. I highly recommend this florist.</p>
+        <div class="testi-author">Rick L.</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-mark">"</div>
+        <p class="testi-text">I ordered some flowers over the phone because I live in another county hours away. The person on the phone was great! She helped me pick the perfect thing. I ordered a balloon bouquet and a flower bouquet. It was delivered the same day. The flowers were so beautiful my sister wanted to frame them so she can keep them forever!</p>
+        <div class="testi-author">Cavie C.</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-mark">"</div>
+        <p class="testi-text">I needed a flower crown last minute for my grandfather's funeral and in 1 hour they had it done — and it was beautiful. The ladies were nice and willing, as well as the delivery men. Also spoke Spanish for those that need it! Overall appreciated everything they did.</p>
+        <div class="testi-author">Amayrani R.</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-mark">"</div>
+        <p class="testi-text">I've always ordered flowers from this shop anytime I needed to. The employees have always been kind and have always had my order ready within hours or 24 hrs. The flowers are always beautiful and the price is also great.</p>
+        <div class="testi-author">Samantha D.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & MAP -->
+<section id="visit">
+  <div class="container">
+    <span class="section-label">Find Us</span>
+    <h2 class="section-title">Hours &amp;<br>Location</h2>
+    <div class="visit-grid">
+      <div class="hours-block">
+        <h3>Shop Hours</h3>
+        <table class="hours-table">
+          <tr><td>Monday</td><td>9:00 AM – 5:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>9:00 AM – 5:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>9:00 AM – 5:00 PM</td></tr>
+          <tr><td>Thursday</td><td>9:00 AM – 5:00 PM</td></tr>
+          <tr><td>Friday</td><td>9:00 AM – 5:00 PM</td></tr>
+          <tr><td>Saturday</td><td>9:00 AM – 12:00 PM</td></tr>
+          <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+        <div class="cta-visit">
+          <p style="color:var(--muted);font-size:.9rem;margin-bottom:1rem">201 S K St, Tulare, CA 93274<br>(559) 686-3391</p>
+          <a href="tel:+15596863391" class="btn-primary">Call Now</a>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps?q=201+S+K+St,+Tulare,+CA+93274&z=15&output=embed" loading="lazy" title="Erica's Flower Bouquets map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-left">
+      <div class="contact-label">Ready to order?</div>
+      <h2>Let's Make<br>Something<br>Beautiful</h2>
+    </div>
+    <div class="contact-links">
+      <a href="tel:+15596863391" class="btn-dark">Call (559) 686-3391</a>
+      <a href="https://www.google.com/maps?q=201+S+K+St,+Tulare,+CA+93274&z=15" target="_blank" rel="noopener" class="btn-dark">Get Directions</a>
+      <a href="https://maps.google.com/?cid=8367119952301739058" target="_blank" rel="noopener" class="btn-dark">Google Business</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand brand">Erica's Flower Bouquets</div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="https://maps.google.com/?cid=8367119952301739058" target="_blank" rel="noopener">Google Business</a></li>
+    </ul>
+  </div>
+  <div class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,1157 @@
+<!-- laundry · technical-clean · hero-layout 0 · svc-layout 1 · Space Grotesk/IBM Plex Sans -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linda's Laundromat — Salinas, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --acc:#2563eb;
+    --bg:#f8fafc;
+    --dark:#0f172a;
+    --mid:#334155;
+    --light:#e2e8f0;
+    --accent-dark:#1d4ed8;
+    --accent-subtle:#dbeafe;
+    --nav-h:60px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-h);
+    font-size: 16px;
+  }
+
+  body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--dark);line-height:1.6;-webkit-font-smoothing:antialiased;}
+
+  .brand{font-family:'Space Grotesk',serif;font-weight:700;letter-spacing:-0.02em;}
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    background: var(--bg);
+    border-bottom: 1px solid var(--light);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+  }
+
+  .nav-inner {
+    max-width: 1140px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+    color: var(--dark);
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .nav-logo span {
+    color: var(--acc);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--mid);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--acc); }
+
+  .nav-cta {
+    display: inline-block;
+    padding: 0.45rem 1.1rem;
+    background: var(--acc);
+    color: #fff !important;
+    border-radius: 4px;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .nav-cta:hover { background: var(--accent-dark) !important; color: #fff !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--dark);
+    border-radius: 2px;
+    transition: 0.2s;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 3.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero-text { max-width: 520px; }
+
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--acc);
+    border: 1px solid var(--acc);
+    border-radius: 2px;
+    padding: 0.2rem 0.55rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--dark);
+    margin-bottom: 1.1rem;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--acc);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--mid);
+    font-weight: 400;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 440px;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    background: var(--acc);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    transition: background 0.15s, transform 0.1s;
+  }
+
+  .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    background: transparent;
+    color: var(--acc);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1.5px solid var(--acc);
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .btn-secondary:hover { background: var(--accent-subtle); }
+
+  .hero-image {
+    position: relative;
+  }
+
+  .hero-img-wrap {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+
+  .hero-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-stat-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--light);
+    border: 1px solid var(--light);
+    border-radius: 4px;
+    margin-top: 1.25rem;
+    overflow: hidden;
+  }
+
+  .stat-item {
+    background: var(--bg);
+    padding: 0.9rem 1rem;
+    text-align: center;
+  }
+
+  .stat-val {
+    font-family: 'Space Grotesk', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--dark);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-top: 0.25rem;
+  }
+
+  /* ── STRIP ── */
+  .strip {
+    background: var(--acc);
+    padding: 0.9rem 1.5rem;
+  }
+
+  .strip-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .strip-item {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .strip-item::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background: rgba(255,255,255,0.6);
+    border-radius: 50%;
+  }
+
+  /* ── SECTIONS SHARED ── */
+  section {
+    padding: 4.5rem 1.5rem;
+  }
+
+  .section-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', serif;
+    font-size: clamp(1.6rem, 3vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--dark);
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--mid);
+    max-width: 540px;
+    line-height: 1.7;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: #fff;
+    border-top: 1px solid var(--light);
+    border-bottom: 1px solid var(--light);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+  }
+
+  .about-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.75rem;
+  }
+
+  .about-photo {
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+
+  .about-photo.tall {
+    grid-row: span 2;
+    aspect-ratio: auto;
+  }
+
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .about-photo:hover img { transform: scale(1.03); }
+
+  .about-text p {
+    color: var(--mid);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+    font-size: 0.975rem;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  /* ── SERVICES ── */
+  #services {
+    background: var(--bg);
+  }
+
+  .services-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .svc-rows {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--light);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .svc-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--light);
+    transition: background 0.15s;
+  }
+
+  .svc-row:last-child { border-bottom: none; }
+
+  .svc-row:hover { background: var(--accent-subtle); }
+
+  .svc-cell {
+    padding: 1.1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid var(--light);
+  }
+
+  .svc-cell:last-child { border-right: none; }
+
+  .svc-name {
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 0.95rem;
+  }
+
+  .svc-desc {
+    font-size: 0.82rem;
+    color: var(--mid);
+    margin-top: 0.15rem;
+    font-weight: 400;
+  }
+
+  .svc-price {
+    font-family: 'Space Grotesk', serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--acc);
+  }
+
+  .svc-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: 2px;
+    background: var(--accent-subtle);
+    color: var(--acc);
+  }
+
+  .svc-table-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    background: var(--dark);
+    padding: 0;
+  }
+
+  .svc-th {
+    padding: 0.65rem 1.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .svc-th:last-child { border-right: none; }
+
+  .svc-note {
+    margin-top: 1.25rem;
+    font-size: 0.83rem;
+    color: var(--mid);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .svc-note::before {
+    content: '→';
+    color: var(--acc);
+    flex-shrink: 0;
+    margin-top: 0.05em;
+  }
+
+  /* ── TESTIMONIES ── */
+  #testimonies {
+    background: var(--dark);
+  }
+
+  #testimonies .section-label { color: #93c5fd; }
+  #testimonies .section-title { color: #f8fafc; }
+
+  .testimonies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .testimony {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .testimony:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(37,99,235,0.4);
+  }
+
+  .testimony-quote {
+    font-size: 0.93rem;
+    line-height: 1.75;
+    color: rgba(248,250,252,0.8);
+    font-style: italic;
+    flex: 1;
+  }
+
+  .testimony-quote::before { content: '\201C'; color: var(--acc); font-size: 1.5rem; font-style: normal; line-height: 0; vertical-align: -0.3em; margin-right: 0.1em; }
+
+  .testimony-attr {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #93c5fd;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 1rem;
+  }
+
+  /* ── HOURS & LOCATION ── */
+  #location {
+    background: #fff;
+    border-top: 1px solid var(--light);
+    border-bottom: 1px solid var(--light);
+  }
+
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+  }
+
+  .hours-table tr {
+    border-bottom: 1px solid var(--light);
+  }
+
+  .hours-table tr:last-child { border-bottom: none; }
+
+  .hours-table td {
+    padding: 0.65rem 0;
+    font-size: 0.9rem;
+    vertical-align: middle;
+  }
+
+  .hours-table td:first-child {
+    color: var(--mid);
+    width: 45%;
+    font-weight: 500;
+  }
+
+  .hours-table td:last-child {
+    color: var(--dark);
+    font-weight: 600;
+    font-family: 'Space Grotesk', serif;
+    font-size: 0.88rem;
+  }
+
+  .today-row td {
+    color: var(--acc) !important;
+  }
+
+  .location-address {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+    background: var(--bg);
+    border-radius: 4px;
+    border: 1px solid var(--light);
+  }
+
+  .location-address p {
+    font-size: 0.9rem;
+    color: var(--mid);
+    line-height: 1.65;
+  }
+
+  .location-address strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--dark);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+
+  .location-address .phone-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-size: 1.05rem;
+    font-family: 'Space Grotesk', serif;
+    font-weight: 700;
+    color: var(--acc);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: color 0.15s;
+  }
+
+  .location-address .phone-link:hover { color: var(--accent-dark); }
+
+  .map-wrap {
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--light);
+    height: 340px;
+  }
+
+  .map-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  /* ── PHOTO GRID ── */
+  #gallery {
+    background: var(--bg);
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .photo-grid-item {
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: var(--light);
+  }
+
+  .photo-grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease;
+  }
+
+  .photo-grid-item:hover img { transform: scale(1.04); }
+
+  /* ── CONTACT CTA ── */
+  #contact {
+    background: var(--acc);
+    padding: 4rem 1.5rem;
+  }
+
+  .contact-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact-inner .section-label { color: rgba(255,255,255,0.65); }
+
+  .contact-inner h2 {
+    font-family: 'Space Grotesk', serif;
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+
+  .contact-inner p {
+    color: rgba(255,255,255,0.8);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .btn-white {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    background: #fff;
+    color: var(--acc);
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    transition: background 0.15s, transform 0.1s;
+  }
+
+  .btn-white:hover { background: var(--accent-subtle); transform: translateY(-1px); }
+
+  .btn-ghost-white {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    background: transparent;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1.5px solid rgba(255,255,255,0.55);
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'IBM Plex Sans', sans-serif;
+    transition: background 0.15s, border-color 0.15s;
+  }
+
+  .btn-ghost-white:hover { background: rgba(255,255,255,0.1); border-color: #fff; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    padding: 2.5rem 1.5rem;
+  }
+
+  .footer-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-size: 1rem;
+    color: rgba(248,250,252,0.9);
+    text-decoration: none;
+  }
+
+  .footer-brand span { color: #60a5fa; }
+
+  .footer-links {
+    display: flex;
+    gap: 1.25rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 0.83rem;
+    color: rgba(248,250,252,0.5);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: rgba(248,250,252,0.85); }
+
+  .footer-credit {
+    font-size: 0.78rem;
+    color: rgba(248,250,252,0.35);
+    margin-top: 1.25rem;
+    text-align: center;
+  }
+
+  .footer-credit a {
+    color: rgba(248,250,252,0.5);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-credit a:hover { color: rgba(248,250,252,0.75); }
+
+  .footer-bottom {
+    max-width: 1140px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+      padding: 2.5rem 1.25rem 2rem;
+      gap: 2rem;
+    }
+
+    .hero-image { order: -1; }
+
+    .hero-text { max-width: 100%; }
+
+    .hero h1 { font-size: 2rem; }
+
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .about-photos {
+      order: -1;
+    }
+
+    .testimonies-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .location-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .photo-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .svc-row, .svc-table-header {
+      grid-template-columns: 1fr;
+    }
+
+    .svc-cell { border-right: none; border-bottom: 1px solid var(--light); }
+    .svc-cell:last-child { border-bottom: none; }
+
+    .svc-th { display: none; }
+
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: var(--nav-h);
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--light);
+      padding: 1rem 1.5rem;
+      gap: 0.75rem;
+    }
+
+    .hero-stat-bar { grid-template-columns: repeat(3, 1fr); }
+
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { justify-content: center; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-stat-bar { grid-template-columns: 1fr 1fr; }
+    .photo-grid { grid-template-columns: 1fr; }
+    section { padding: 3rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo brand">Linda's <span>Laundromat</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Hours &amp; Location</a></li>
+      <li><a href="tel:+18319987875" class="nav-cta">Call Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="hero-text">
+    <span class="hero-eyebrow">Salinas, CA · Est. Locally Owned</span>
+    <h1 class="brand">The <em>clean standard</em> for Salinas laundry.</h1>
+    <p class="hero-sub">State-of-the-art machines, spotless facilities, and a card-based payment system — no loose change required. Drop in, get it done, get on with your day.</p>
+    <div class="hero-actions">
+      <a href="tel:+18319987875" class="btn-primary">Call Now</a>
+      <a href="https://www.google.com/maps?q=1942+N+Main+St,+Salinas,+CA+93906" target="_blank" rel="noopener" class="btn-secondary">Get Directions</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-img-wrap">
+      <img src="./photos/01.jpg" alt="Linda's Laundromat interior" loading="eager">
+    </div>
+    <div class="hero-stat-bar">
+      <div class="stat-item">
+        <div class="stat-val brand">Open</div>
+        <div class="stat-label">6 Days / Wk</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val brand">$2.50</div>
+        <div class="stat-label">Starts At</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-val brand">XL+</div>
+        <div class="stat-label">Machine Sizes</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <span class="strip-item">All new machines</span>
+    <span class="strip-item">Super-large capacity available</span>
+    <span class="strip-item">Laundry card — cash &amp; credit accepted</span>
+    <span class="strip-item">Extra rinse options on every washer</span>
+    <span class="strip-item">Open early mornings</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-photos">
+        <div class="about-photo tall">
+          <img src="./photos/02.jpg" alt="Washers at Linda's Laundromat">
+        </div>
+        <div class="about-photo">
+          <img src="./photos/03.jpg" alt="Linda's Laundromat machines">
+        </div>
+        <div class="about-photo">
+          <img src="./photos/04.jpg" alt="Clean laundry facility">
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="section-label">About Us</span>
+        <h2 class="section-title">Where clean is more than a word.</h2>
+        <p>Linda's Laundromat has served the Salinas community at 1942 N Main Street with a simple promise: a facility you'd actually want to spend time in. Floors scrubbed, machines wiped down, surfaces that look like they were cleaned this morning — because they were.</p>
+        <p>We've invested in a full lineup of modern machines — small, medium, large, and super-large — all equipped with extra rinse cycles so allergens and detergent residue get left behind, not on your clothes.</p>
+        <p>Our laundry card system takes cash and credit cards, so you're never scrambling for quarters. Just load up and go.</p>
+        <a href="#location" class="btn-primary" style="margin-top:0.5rem;">View Hours</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-header">
+      <span class="section-label">Services &amp; Pricing</span>
+      <h2 class="section-title">Everything you need, nothing you don't.</h2>
+      <p class="section-sub">Transparent pricing with a card system — swipe, load, and let the machines do the work.</p>
+    </div>
+
+    <div class="svc-rows">
+      <div class="svc-table-header">
+        <div class="svc-th">Service</div>
+        <div class="svc-th">Price</div>
+        <div class="svc-th">Note</div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-cell">
+          <div>
+            <div class="svc-name">Standard Wash</div>
+            <div class="svc-desc">Regular-load front-loader · extra rinse available</div>
+          </div>
+        </div>
+        <div class="svc-cell"><span class="svc-price">From $2.50</span></div>
+        <div class="svc-cell"><span class="svc-tag">Most Popular</span></div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-cell">
+          <div>
+            <div class="svc-name">Large Capacity Wash</div>
+            <div class="svc-desc">Oversized loads, comforters, blankets</div>
+          </div>
+        </div>
+        <div class="svc-cell"><span class="svc-price">Mid-range</span></div>
+        <div class="svc-cell"><span class="svc-tag">Great Value</span></div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-cell">
+          <div>
+            <div class="svc-name">Super-Large Wash</div>
+            <div class="svc-desc">Bulky items, sleeping bags, rugs</div>
+          </div>
+        </div>
+        <div class="svc-cell"><span class="svc-price">Up to $9.00</span></div>
+        <div class="svc-cell"><span class="svc-tag">Max Capacity</span></div>
+      </div>
+
+      <div class="svc-row">
+        <div class="svc-cell">
+          <div>
+            <div class="svc-name">Dryer</div>
+            <div class="svc-desc">High-efficiency dryers in multiple sizes</div>
+          </div>
+        </div>
+        <div class="svc-cell"><span class="svc-price">Per cycle</span></div>
+        <div class="svc-cell"><span class="svc-tag">Fast Dry</span></div>
+      </div>
+    </div>
+
+    <p class="svc-note">Laundry card accepts cash and credit — load it at the in-store kiosk, no coins needed.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="section-inner">
+    <span class="section-label">Customer Testimonies</span>
+    <h2 class="section-title">What people are saying.</h2>
+    <div class="testimonies-grid">
+      <div class="testimony">
+        <p class="testimony-quote">Very clean, all new and large variety of sizes of machines up to super large machines, all with extra rinse options. Laundry card with cash and credit cards instead of messing with change. Prices vary from $2.50 to $9 per wash. This place makes doing laundry not so bad.</p>
+        <div class="testimony-attr">Pam G.</div>
+      </div>
+      <div class="testimony">
+        <p class="testimony-quote">By far the best place in town. Amazingly clean. Very kind help whenever I needed it. Always accurate payment and usage. I actually get depressed if I have to go to another laundry. Fabulous place!</p>
+        <div class="testimony-attr">George B.</div>
+      </div>
+      <div class="testimony">
+        <p class="testimony-quote">You need to believe me — this laundromat is the cleanest and friendliest place in the area. The machines and the floors and tables are always super clean. I highly recommend it.</p>
+        <div class="testimony-attr">Vero B.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <span class="section-label">Inside Linda's</span>
+    <h2 class="section-title">See the facility.</h2>
+    <div class="photo-grid">
+      <div class="photo-grid-item">
+        <img src="./photos/04.jpg" alt="Laundromat machines row" loading="lazy">
+      </div>
+      <div class="photo-grid-item">
+        <img src="./photos/05.jpg" alt="Clean laundromat interior" loading="lazy">
+      </div>
+      <div class="photo-grid-item">
+        <img src="./photos/06.jpg" alt="Linda's Laundromat exterior" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section id="location">
+  <div class="section-inner">
+    <div class="location-grid">
+      <div>
+        <span class="section-label">Hours &amp; Contact</span>
+        <h2 class="section-title">Find us on N Main St.</h2>
+
+        <table class="hours-table">
+          <tbody>
+            <tr>
+              <td>Monday – Friday</td>
+              <td>6:30 AM – 5:00 PM</td>
+            </tr>
+            <tr>
+              <td>Saturday</td>
+              <td>5:30 AM – 5:00 PM</td>
+            </tr>
+            <tr>
+              <td>Sunday</td>
+              <td>7:00 AM – 5:00 PM</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="location-address">
+          <strong>Linda's Laundromat</strong>
+          <p>1942 N Main St<br>Salinas, CA 93906</p>
+          <a href="tel:+18319987875" class="phone-link brand">(831) 998-7875</a>
+        </div>
+
+        <div style="margin-top:1.25rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <a href="tel:+18319987875" class="btn-primary">Call Now</a>
+          <a href="https://maps.google.com/?cid=6412033659044898656" target="_blank" rel="noopener" class="btn-secondary">Google Business</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="map-wrap">
+          <iframe src="https://www.google.com/maps?q=1942+N+Main+St,+Salinas,+CA+93906&z=15&output=embed" title="Linda's Laundromat location" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section id="contact">
+  <div class="contact-inner">
+    <span class="section-label">Come In Today</span>
+    <h2>Ready for a better laundry day?</h2>
+    <p>Open early mornings through the afternoon, seven days a week. Walk in — no appointment, no hassle. Machines are clean, payment is easy, and staff are always ready to help.</p>
+    <div class="contact-actions">
+      <a href="tel:+18319987875" class="btn-white">Call (831) 998-7875</a>
+      <a href="https://www.google.com/maps?q=1942+N+Main+St,+Salinas,+CA+93906" target="_blank" rel="noopener" class="btn-ghost-white">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#home" class="footer-brand brand">Linda's <span>Laundromat</span></a>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Hours</a></li>
+      <li><a href="https://maps.google.com/?cid=6412033659044898656" target="_blank" rel="noopener">Google Business</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-credit">1942 N Main St, Salinas, CA 93906 · <a href="tel:+18319987875">(831) 998-7875</a></p>
+    <p class="footer-credit" style="margin-top:0.5rem;">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  // Close nav on link click
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>

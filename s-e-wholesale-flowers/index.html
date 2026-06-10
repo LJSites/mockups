@@ -1,0 +1,436 @@
+<!--
+  S&E Wholesale Flowers — single-page mockup
+  Flavor/archetype: modern-wholesale flower market (NOT a retail bouquet boutique —
+    designed as a supplier/market: bulk, by-the-stem, fresh-cut, special orders)
+  Hero layout id: typographic-noPhoto (oversized Syne wordmark, no photo behind it)
+  Service layout id: numbered-stack (01–05 vertical numbered rows, no icons/cards)
+  Palette: --acc violet #7c3aed on near-white --bg #faf7ff
+  Display font: Syne (700/800). Body: Inter.
+  Animation: none beyond CSS hover transitions (deliberate, per quality bar).
+  Map: keyless google.com/maps?q=...&output=embed. Footer credit exact. Testimonies static, "First L."
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>S&amp;E Wholesale Flowers — San Bernardino Flower Market</title>
+<meta name="description" content="S&E Wholesale Flowers — wholesale & retail fresh-cut flowers, bulk stems, custom arrangements and event work in San Bernardino, CA. Open 7 days." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --acc: #7c3aed;
+    --bg: #faf7ff;
+    --ink: #1c1430;
+    --muted: #6b6480;
+    --line: #e7e0f4;
+    --card: #ffffff;
+    --nav-h: 68px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+  body {
+    font-family: "Inter", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  .wrap { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  .syne { font-family: "Syne", sans-serif; letter-spacing: -0.02em; }
+  .eyebrow {
+    font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.72rem;
+    letter-spacing: 0.28em; text-transform: uppercase; color: var(--acc);
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 50; height: var(--nav-h);
+    background: rgba(250,247,255,0.86); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    display: flex; align-items: center;
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; }
+  .brand { font-family: "Syne", sans-serif; font-weight: 800; font-size: 1.15rem; letter-spacing: -0.01em; }
+  .brand b { color: var(--acc); }
+  .nav-links { display: flex; gap: 30px; align-items: center; }
+  .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--muted); transition: color .18s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.82rem;
+    background: var(--acc); color: #fff !important; padding: 9px 18px; border-radius: 999px;
+    transition: background .18s, transform .18s;
+  }
+  .nav-cta:hover { background: #6826d6; transform: translateY(-1px); }
+  @media (max-width: 760px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+  /* HERO — typographic, no photo */
+  .hero { padding: 80px 0 64px; position: relative; overflow: hidden; }
+  .hero::after {
+    content: ""; position: absolute; right: -180px; top: -120px; width: 520px; height: 520px;
+    background: radial-gradient(circle at center, rgba(124,58,237,0.16), transparent 68%);
+    pointer-events: none;
+  }
+  .hero .tag {
+    display: inline-flex; align-items: center; gap: 9px;
+    border: 1px solid var(--line); background: #fff; border-radius: 999px;
+    padding: 6px 14px 6px 12px; font-size: 0.78rem; font-weight: 600; color: var(--muted);
+    margin-bottom: 26px;
+  }
+  .hero .tag .dot { width: 7px; height: 7px; border-radius: 50%; background: #16a34a; box-shadow: 0 0 0 4px rgba(22,163,74,.15); }
+  .hero h1 {
+    font-family: "Syne", sans-serif; font-weight: 800;
+    font-size: clamp(2.9rem, 9.2vw, 6.4rem); line-height: 0.95; letter-spacing: -0.035em;
+    max-width: 14ch;
+  }
+  .hero h1 .em { color: var(--acc); font-style: normal; }
+  .hero .lede {
+    margin-top: 26px; max-width: 56ch; font-size: clamp(1.02rem, 1.6vw, 1.18rem); color: var(--muted);
+  }
+  .hero .actions { margin-top: 38px; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.95rem;
+    padding: 14px 26px; border-radius: 999px; transition: transform .18s, background .18s, box-shadow .18s;
+  }
+  .btn-primary { background: var(--acc); color: #fff; box-shadow: 0 10px 26px -12px rgba(124,58,237,.7); }
+  .btn-primary:hover { background: #6826d6; transform: translateY(-2px); }
+  .btn-ghost { color: var(--ink); border: 1px solid var(--line); background: #fff; }
+  .btn-ghost:hover { border-color: var(--acc); color: var(--acc); }
+  .hero .meta-row {
+    margin-top: 46px; display: flex; flex-wrap: wrap; gap: 36px;
+    border-top: 1px solid var(--line); padding-top: 26px;
+  }
+  .meta-row .item .k { font-family: "Syne", sans-serif; font-weight: 800; font-size: 1.5rem; }
+  .meta-row .item .v { font-size: 0.82rem; color: var(--muted); letter-spacing: .02em; }
+
+  /* PHOTO STRIP */
+  .strip { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 12px; padding-bottom: 18px; }
+  .strip figure { border-radius: 14px; overflow: hidden; background: #efe9fb; }
+  .strip img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; transition: transform .5s ease; }
+  .strip figure:hover img { transform: scale(1.045); }
+  .strip figure:first-child img { aspect-ratio: 16/12; }
+  @media (max-width: 760px) { .strip { grid-template-columns: 1fr 1fr; } .strip figure:first-child { grid-column: 1 / -1; } }
+
+  /* SECTION SHELL */
+  section { padding: 78px 0; }
+  .sec-head { max-width: 60ch; margin-bottom: 44px; }
+  .sec-head h2 {
+    font-family: "Syne", sans-serif; font-weight: 800; font-size: clamp(1.9rem, 4vw, 2.9rem);
+    line-height: 1.04; letter-spacing: -0.03em; margin-top: 14px;
+  }
+  .sec-head p { margin-top: 16px; color: var(--muted); font-size: 1.04rem; }
+
+  /* ABOUT */
+  .about { background: #fff; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+  .about-grid .copy p + p { margin-top: 18px; }
+  .about-grid .copy p { color: #463c5e; }
+  .about-grid figure { border-radius: 18px; overflow: hidden; box-shadow: 0 30px 60px -34px rgba(28,20,48,.5); }
+  .about-grid figure img { width: 100%; aspect-ratio: 3/4; object-fit: cover; }
+  @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 34px; } .about-grid figure img { aspect-ratio: 16/11; } }
+
+  /* SERVICES — numbered stack */
+  .stack { border-top: 1px solid var(--line); }
+  .stack .row {
+    display: grid; grid-template-columns: 88px 1fr auto; gap: 28px; align-items: start;
+    padding: 30px 0; border-bottom: 1px solid var(--line);
+    transition: background .2s; position: relative;
+  }
+  .stack .row:hover { background: #fff; }
+  .stack .num { font-family: "Syne", sans-serif; font-weight: 800; font-size: 1.6rem; color: var(--acc); opacity: .85; }
+  .stack .row h3 { font-family: "Syne", sans-serif; font-weight: 700; font-size: 1.32rem; letter-spacing: -.02em; }
+  .stack .row p { margin-top: 7px; color: var(--muted); max-width: 60ch; }
+  .stack .tagn { font-size: 0.74rem; font-weight: 600; color: var(--acc); border: 1px solid var(--line); border-radius: 999px; padding: 5px 12px; white-space: nowrap; }
+  @media (max-width: 680px) {
+    .stack .row { grid-template-columns: 54px 1fr; }
+    .stack .num { font-size: 1.25rem; }
+    .stack .tagn { display: none; }
+  }
+
+  /* TESTIMONIES */
+  .says { background: linear-gradient(180deg, #fff, #f6f1ff); border-top: 1px solid var(--line); }
+  .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .quote {
+    background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 30px 30px 26px;
+    position: relative;
+  }
+  .quote .mark { font-family: "Syne", sans-serif; font-weight: 800; font-size: 3rem; line-height: .6; color: var(--acc); opacity: .25; }
+  .quote p { margin-top: 14px; font-size: 1.02rem; color: #2e2545; }
+  .quote .who { margin-top: 18px; font-family: "Syne", sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: .01em; }
+  @media (max-width: 760px) { .quotes { grid-template-columns: 1fr; } }
+
+  /* VISIT */
+  .visit-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; }
+  .hours { list-style: none; }
+  .hours li { display: flex; justify-content: space-between; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 0.98rem; }
+  .hours li .d { color: var(--muted); }
+  .hours li.today { color: var(--acc); font-weight: 600; }
+  .hours li.today .d { color: var(--acc); }
+  .addr-block { margin-top: 26px; }
+  .addr-block .l { font-family: "Syne", sans-serif; font-weight: 700; font-size: 1.05rem; }
+  .addr-block a.phone { color: var(--acc); font-weight: 600; }
+  .map { border-radius: 18px; overflow: hidden; border: 1px solid var(--line); min-height: 340px; box-shadow: 0 30px 60px -38px rgba(28,20,48,.5); }
+  .map iframe { width: 100%; height: 100%; min-height: 340px; border: 0; display: block; }
+  @media (max-width: 860px) { .visit-grid { grid-template-columns: 1fr; gap: 30px; } }
+
+  /* CLOSER */
+  .closer { background: var(--acc); color: #fff; text-align: center; }
+  .closer h2 { font-family: "Syne", sans-serif; font-weight: 800; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.02; letter-spacing: -.03em; }
+  .closer p { margin: 18px auto 0; max-width: 50ch; color: #ede6ff; }
+  .closer .btn-light { background: #fff; color: var(--acc); margin-top: 34px; box-shadow: 0 14px 30px -14px rgba(0,0,0,.5); }
+  .closer .btn-light:hover { background: #f4eeff; transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer { background: #15102a; color: #cabfe6; padding: 56px 0 40px; }
+  .foot-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px; align-items: flex-start; }
+  footer .fbrand { font-family: "Syne", sans-serif; font-weight: 800; font-size: 1.3rem; color: #fff; }
+  footer .fbrand b { color: #b794f6; }
+  footer .fmeta { font-size: 0.92rem; line-height: 1.9; }
+  footer .fmeta a:hover { color: #fff; }
+  footer .links { display: flex; gap: 22px; font-size: 0.9rem; flex-wrap: wrap; }
+  footer .links a { color: #cabfe6; transition: color .18s; }
+  footer .links a:hover { color: #fff; }
+  .credit { margin-top: 40px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.12); font-size: 0.82rem; color: #8d83ad; }
+  .credit a { color: #b794f6; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">S<b>&amp;</b>E <span style="font-weight:700;">Wholesale Flowers</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">What We Carry</a>
+      <a href="#says">What People Say</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:+19093860141" class="nav-cta">Call (909) 386-0141</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="tag"><span class="dot"></span> San Bernardino, CA · Open 7 days</span>
+    <h1 class="syne">Fresh stems by the <span class="em">bunch.</span> Built into anything.</h1>
+    <p class="lede">
+      S&amp;E Wholesale Flowers is San Bernardino&rsquo;s flower market &mdash; rows of fresh-cut
+      blooms, bulk bunches at honest prices, and custom arrangements whipped together while you wait.
+      Florists, small businesses, and last-minute &ldquo;I need a bright bouquet&rdquo; runs all start here.
+    </p>
+    <div class="actions">
+      <a href="tel:+19093860141" class="btn btn-primary">Call (909) 386-0141</a>
+      <a href="#services" class="btn btn-ghost">See what we carry</a>
+    </div>
+    <div class="meta-row">
+      <div class="item"><div class="k syne">Wholesale</div><div class="v">&amp; retail welcome</div></div>
+      <div class="item"><div class="k syne">~10 min</div><div class="v">walk-up bouquets</div></div>
+      <div class="item"><div class="k syne">Delivery</div><div class="v">available locally</div></div>
+      <div class="item"><div class="k syne">7&nbsp;days</div><div class="v">a week, year-round</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="strip">
+    <figure><img src="./photos/03.jpg" alt="Fresh-cut flowers, pampas and buckets at the S&amp;E covered market" loading="lazy" /></figure>
+    <figure><img src="./photos/05.jpg" alt="Walk-in cooler stocked with arrangements at S&amp;E Wholesale Flowers" loading="lazy" /></figure>
+    <figure><img src="./photos/04.jpg" alt="A bright mixed bouquet of roses, snapdragons and stock" loading="lazy" /></figure>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="copy">
+      <span class="eyebrow">Who we are</span>
+      <h2 class="syne">A working flower market &mdash; not a fussy storefront.</h2>
+      <p>
+        We&rsquo;re a wholesale flower supplier on E Central Ave, just off the freeway in San Bernardino.
+        That means depth: coolers full of roses, carnations, snapdragons, stock, pampas and seasonal
+        stems &mdash; sold by the bunch at prices that make sense whether you&rsquo;re reselling, decorating
+        an event, or grabbing flowers on the way home.
+      </p>
+      <p>
+        Need it built? Tell the crew &ldquo;a bright bouquet&rdquo; and they&rsquo;ll put it together in about ten
+        minutes &mdash; or call ahead and have it ready. From single bunches to wedding-scale ring
+        arrangements and event work, S&amp;E handles the small order and the big one the same way: with
+        a smile, fair pricing, and flowers that actually last.
+      </p>
+    </div>
+    <figure>
+      <img src="./photos/02.jpg" alt="Large pink and white rose ring arrangement made at S&amp;E" loading="lazy" />
+    </figure>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What we carry</span>
+      <h2 class="syne">From a single bunch to the whole event.</h2>
+      <p>One stop for fresh-cut flowers in the Inland Empire. Walk in, call it in, or order ahead.</p>
+    </div>
+    <div class="stack">
+      <div class="row">
+        <div class="num syne">01</div>
+        <div><h3 class="syne">Wholesale Fresh-Cut, by the Bunch</h3>
+          <p>Roses, carnations, snapdragons, stock, pampas and seasonal stems sold in bulk at wholesale
+            pricing &mdash; the everyday backbone of the market.</p></div>
+        <span class="tagn">Best prices around</span>
+      </div>
+      <div class="row">
+        <div class="num syne">02</div>
+        <div><h3 class="syne">Custom Bouquets &amp; Arrangements</h3>
+          <p>&ldquo;I need a bouquet of bright flowers&rdquo; &mdash; and the crew whips it together while you
+            wait, usually in about ten minutes. Any flower you can imagine.</p></div>
+        <span class="tagn">~10 min, made fresh</span>
+      </div>
+      <div class="row">
+        <div class="num syne">03</div>
+        <div><h3 class="syne">Weddings &amp; Event Florals</h3>
+          <p>Ring arrangements, bridal and bridesmaid bouquets, and large-scale floral pieces for
+            weddings, quinceañeras and celebrations. Bring your inspiration in.</p></div>
+        <span class="tagn">By appointment</span>
+      </div>
+      <div class="row">
+        <div class="num syne">04</div>
+        <div><h3 class="syne">Call-Ahead &amp; Local Delivery</h3>
+          <p>Phone your order in and have it ready when you arrive &mdash; or have it delivered locally.
+            Easy for busy mornings and last-minute occasions.</p></div>
+        <span class="tagn">Delivery available</span>
+      </div>
+      <div class="row">
+        <div class="num syne">05</div>
+        <div><h3 class="syne">Small-Business &amp; Reseller Friendly</h3>
+          <p>Florists, shops and pop-up sellers source here. The team is genuinely encouraging of small
+            businesses &mdash; consistent stock and quality you can build on.</p></div>
+        <span class="tagn">Volume welcome</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">In their words</span>
+      <h2 class="syne">What People Say</h2>
+    </div>
+    <div class="quotes">
+      <div class="quote">
+        <div class="mark">&ldquo;</div>
+        <p>Best flowers and best prices around. I don&rsquo;t buy my flowers anywhere else. All I say is I
+          need a bouquet of bright flowers and they whip it together in 10 min &mdash; best customer
+          service, very professional, any flower you can imagine.</p>
+        <div class="who">&mdash; J G.</div>
+      </div>
+      <div class="quote">
+        <div class="mark">&ldquo;</div>
+        <p>S &amp; E is awesome! Every time I visit, I am welcomed with a smile and the flowers are always
+          so beautiful. The cashiers are very polite and encouraging for my small business. I left feeling
+          blessed by the unexpected kindness.</p>
+        <div class="who">&mdash; Crystal F.</div>
+      </div>
+      <div class="quote">
+        <div class="mark">&ldquo;</div>
+        <p>Definitely recommend! I&rsquo;ve gotten flowers from here on multiple occasions and they are
+          always so beautiful. They are great quality and always last so long. The owners are really nice
+          and have great customer service!</p>
+        <div class="who">&mdash; Kimberly G.</div>
+      </div>
+      <div class="quote">
+        <div class="mark">&ldquo;</div>
+        <p>The flower arrangement I asked for was beautiful. Yari was so nice and attentive even though she
+          was the only worker and busy &mdash; she had the patience and the best attitude.</p>
+        <div class="who">&mdash; Claudia A.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Hours &amp; location</span>
+      <h2 class="syne">Come by the market.</h2>
+      <p>Right on E Central Ave in San Bernardino. Open every day &mdash; later on Thursdays and Fridays.</p>
+    </div>
+    <div class="visit-grid">
+      <div>
+        <ul class="hours" id="hours">
+          <li data-day="1"><span class="d">Monday</span><span>8:00 AM – 5:00 PM</span></li>
+          <li data-day="2"><span class="d">Tuesday</span><span>8:00 AM – 5:00 PM</span></li>
+          <li data-day="3"><span class="d">Wednesday</span><span>8:00 AM – 5:00 PM</span></li>
+          <li data-day="4"><span class="d">Thursday</span><span>8:00 AM – 7:30 PM</span></li>
+          <li data-day="5"><span class="d">Friday</span><span>8:00 AM – 7:30 PM</span></li>
+          <li data-day="6"><span class="d">Saturday</span><span>7:00 AM – 3:00 PM</span></li>
+          <li data-day="0"><span class="d">Sunday</span><span>8:00 AM – 1:00 PM</span></li>
+        </ul>
+        <div class="addr-block">
+          <div class="l">S&amp;E Wholesale Flowers</div>
+          <div style="color:var(--muted)">194 E Central Ave, San Bernardino, CA 92408</div>
+          <div style="margin-top:10px;"><a class="phone" href="tel:+19093860141">(909) 386-0141</a></div>
+          <div style="margin-top:18px; display:flex; gap:14px; flex-wrap:wrap;">
+            <a class="btn btn-primary" style="padding:12px 22px;" href="https://www.google.com/maps/dir/?api=1&destination=194+E+Central+Ave,+San+Bernardino,+CA+92408" target="_blank" rel="noopener">Get Directions</a>
+            <a class="btn btn-ghost" style="padding:12px 22px;" href="https://maps.google.com/?cid=10333061013615774308" target="_blank" rel="noopener">View on Google</a>
+          </div>
+        </div>
+      </div>
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps?q=194%20E%20Central%20Ave%2C%20San%20Bernardino%2C%20CA%2092408&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to S&amp;E Wholesale Flowers"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closer">
+  <div class="wrap">
+    <h2 class="syne">Bright flowers, made in about ten minutes.</h2>
+    <p>Call ahead and we&rsquo;ll have it ready &mdash; or just walk in. Wholesale or a single bunch, S&amp;E has it.</p>
+    <a href="tel:+19093860141" class="btn btn-light">Call (909) 386-0141</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="fbrand">S<b>&amp;</b>E Wholesale Flowers</div>
+        <div class="fmeta" style="margin-top:10px;">
+          194 E Central Ave, San Bernardino, CA 92408<br />
+          <a href="tel:+19093860141">(909) 386-0141</a> · Open 7 days
+        </div>
+      </div>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#services">What We Carry</a>
+        <a href="#says">What People Say</a>
+        <a href="#visit">Visit</a>
+        <a href="https://maps.google.com/?cid=10333061013615774308" target="_blank" rel="noopener">Google Business</a>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Highlight today's hours row — purely cosmetic, no live data feed.
+  (function () {
+    var today = new Date().getDay();
+    var li = document.querySelector('#hours li[data-day="' + today + '"]');
+    if (li) li.classList.add('today');
+  })();
+</script>
+
+</body>
+</html>

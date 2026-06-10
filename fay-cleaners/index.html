@@ -1,0 +1,464 @@
+<!-- laundry · industrial-poster · hero-layout 2 · svc-layout 0 · Anton/Roboto -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fay Cleaners — Long Beach, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --acc:#d97706;
+  --bg:#1c1917;
+  --fg:#f5f5f4;
+  --muted:#a8a29e;
+  --card:#292524;
+  --nav-h:64px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:'Roboto',sans-serif;background:var(--bg);color:var(--fg);line-height:1.6}
+.brand{font-family:'Anton',serif;letter-spacing:.03em}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  height:var(--nav-h);
+  background:rgba(28,25,23,.96);
+  backdrop-filter:blur(8px);
+  border-bottom:2px solid var(--acc);
+  display:flex;align-items:center;
+  padding:0 1.5rem;
+  gap:2rem;
+}
+.nav-logo{font-size:1.4rem;color:var(--acc);text-decoration:none;white-space:nowrap}
+.nav-links{display:flex;gap:1.5rem;list-style:none;margin-left:auto}
+.nav-links a{color:var(--fg);text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{
+  margin-left:1rem;
+  background:var(--acc);color:#000;
+  font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.55rem 1.2rem;text-decoration:none;
+  transition:background .2s;white-space:nowrap;
+}
+.nav-cta:hover{background:#b45309}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.nav-burger span{display:block;width:24px;height:2px;background:var(--fg);transition:.2s}
+
+@media(max-width:700px){
+  .nav-links,.nav-cta{display:none}
+  .nav-burger{display:flex}
+  nav.open .nav-links{display:flex;flex-direction:column;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--bg);padding:1.5rem;gap:1rem;border-bottom:2px solid var(--acc)}
+  nav.open .nav-cta{display:block;margin:0 1.5rem 1.5rem;position:absolute;top:calc(var(--nav-h) + 13rem);left:0;right:0;text-align:center}
+}
+
+/* HERO — full bleed */
+.hero{
+  position:relative;
+  min-height:92vh;
+  display:flex;align-items:flex-end;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to top, rgba(28,25,23,1) 0%, rgba(28,25,23,.5) 50%, rgba(28,25,23,.2) 100%),
+    url('./photos/01.jpg') center/cover no-repeat;
+}
+.hero-content{
+  position:relative;z-index:1;
+  padding:3rem 2rem 4rem;
+  max-width:860px;
+}
+.hero-eyebrow{
+  display:inline-block;
+  background:var(--acc);color:#000;
+  font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  padding:.3rem .8rem;margin-bottom:1.2rem;
+}
+.hero h1{
+  font-size:clamp(3.2rem,10vw,7rem);
+  line-height:.95;
+  text-transform:uppercase;
+  color:var(--fg);
+  margin-bottom:1.4rem;
+}
+.hero p{
+  font-size:1.1rem;color:#d6d3d1;
+  max-width:560px;margin-bottom:2rem;line-height:1.7;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  background:var(--acc);color:#000;
+  font-weight:700;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.9rem 2rem;text-decoration:none;
+  transition:background .2s,transform .15s;
+  display:inline-block;
+}
+.btn-primary:hover{background:#b45309;transform:translateY(-2px)}
+.btn-ghost{
+  border:2px solid var(--fg);color:var(--fg);
+  font-weight:700;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.9rem 2rem;text-decoration:none;
+  transition:border-color .2s,color .2s,transform .15s;
+  display:inline-block;
+}
+.btn-ghost:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px)}
+
+/* TICKER STRIP */
+.ticker{
+  background:var(--acc);color:#000;
+  padding:.6rem 0;overflow:hidden;
+}
+.ticker-inner{
+  display:flex;gap:3rem;white-space:nowrap;
+  font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  animation:ticker 18s linear infinite;
+}
+.ticker-inner span{flex-shrink:0}
+.ticker-inner span::before{content:'▶  ';opacity:.5}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION WRAPPER */
+section{padding:5rem 1.5rem}
+.section-inner{max-width:1080px;margin:0 auto}
+.overline{
+  font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:.7rem;display:block;
+}
+.section-title{
+  font-size:clamp(2rem,6vw,3.4rem);
+  text-transform:uppercase;line-height:1;
+  margin-bottom:2.5rem;
+}
+
+/* ABOUT */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
+}
+.about-img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.about-text p{color:#d6d3d1;margin-bottom:1.2rem}
+.about-stat{
+  display:flex;flex-direction:column;gap:.5rem;
+  border-left:3px solid var(--acc);
+  padding-left:1.2rem;margin-top:2rem;
+}
+.about-stat strong{font-size:2.2rem;font-family:'Anton',serif;color:var(--acc);line-height:1}
+.about-stat span{font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+@media(max-width:700px){.about-grid{grid-template-columns:1fr}}
+
+/* SERVICES — cards layout 0 */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:1.5rem;
+}
+.svc-card{
+  background:var(--card);
+  border-top:3px solid var(--acc);
+  padding:1.8rem 1.5rem;
+  transition:transform .2s;
+}
+.svc-card:hover{transform:translateY(-4px)}
+.svc-card h3{
+  font-family:'Anton',serif;
+  font-size:1.4rem;text-transform:uppercase;
+  color:var(--fg);margin-bottom:.6rem;
+}
+.svc-card p{color:var(--muted);font-size:.92rem;line-height:1.65}
+
+/* GALLERY STRIP */
+.gallery-strip{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:.5rem;
+}
+.gallery-strip img{width:100%;aspect-ratio:1;object-fit:cover;display:block;filter:grayscale(20%);transition:filter .3s,transform .3s}
+.gallery-strip img:hover{filter:grayscale(0%);transform:scale(1.02)}
+@media(max-width:600px){.gallery-strip{grid-template-columns:1fr 1fr}}
+
+/* TESTIMONIES */
+#testimonies{background:var(--card)}
+.testimony-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.testimony{
+  border-left:4px solid var(--acc);
+  padding:1.6rem 1.5rem;
+  background:var(--bg);
+}
+.testimony blockquote{
+  font-size:.97rem;color:#d6d3d1;line-height:1.75;
+  font-style:italic;margin-bottom:1rem;
+}
+.testimony cite{
+  font-style:normal;font-weight:700;font-size:.78rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--acc);
+}
+
+/* HOURS & LOCATION */
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.hours-table{width:100%;border-collapse:collapse}
+.hours-table tr{border-bottom:1px solid rgba(255,255,255,.06)}
+.hours-table td{padding:.5rem 0;font-size:.93rem}
+.hours-table td:first-child{color:var(--muted);text-transform:uppercase;font-size:.78rem;font-weight:700;letter-spacing:.08em;padding-right:1.5rem}
+.hours-table td:last-child{color:var(--fg)}
+.closed{color:var(--muted)!important}
+.map-wrap{border:2px solid rgba(217,119,6,.25);overflow:hidden}
+.map-wrap iframe{display:block;width:100%;height:320px;border:none;filter:grayscale(40%)}
+@media(max-width:700px){.info-grid{grid-template-columns:1fr}}
+
+/* CONTACT STRIP */
+.contact-strip{
+  background:var(--acc);color:#000;
+  padding:3rem 1.5rem;text-align:center;
+}
+.contact-strip h2{
+  font-size:clamp(1.8rem,5vw,3rem);
+  text-transform:uppercase;margin-bottom:.5rem;
+}
+.contact-strip p{font-size:1rem;font-weight:500;margin-bottom:1.8rem;opacity:.8}
+.contact-strip .btn-dark{
+  background:#000;color:var(--acc);
+  font-weight:700;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:.9rem 2rem;text-decoration:none;
+  transition:background .2s,color .2s;
+  display:inline-block;
+}
+.contact-strip .btn-dark:hover{background:#1c1917;color:var(--fg)}
+.phone-big{
+  display:block;font-family:'Anton',serif;
+  font-size:clamp(2rem,7vw,4rem);letter-spacing:.02em;
+  text-decoration:none;color:#000;margin-bottom:1.5rem;
+  transition:opacity .2s;
+}
+.phone-big:hover{opacity:.7}
+
+/* FOOTER */
+footer{
+  background:#111110;
+  padding:2.5rem 1.5rem;
+  border-top:2px solid rgba(217,119,6,.2);
+}
+.footer-inner{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;gap:1.2rem;align-items:center;text-align:center}
+.footer-social{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+.footer-social a{
+  color:var(--muted);font-size:.78rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+  transition:color .2s;
+}
+.footer-social a:hover{color:var(--acc)}
+.footer-credit{color:var(--muted);font-size:.78rem}
+.footer-credit a{color:var(--acc);text-decoration:none}
+.footer-credit a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo brand">FAY CLEANERS</a>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#location">Hours & Location</a></li>
+  </ul>
+  <a class="nav-cta" href="tel:5624223061">Call Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Long Beach, CA · Est. Family-Owned</span>
+    <h1 class="brand">Clean<br>Done<br>Right.</h1>
+    <p>Dry cleaning, laundry, and pressing with decades of care behind every garment. Trusted by Long Beach families who expect more.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="tel:5624223061">Call (562) 422-3061</a>
+      <a class="btn-ghost" href="#location">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span>Dry Cleaning</span>
+    <span>Wash & Fold</span>
+    <span>Expert Pressing</span>
+    <span>Wedding Garments</span>
+    <span>Emergency Turnaround</span>
+    <span>Stain Removal</span>
+    <span>Family-Owned</span>
+    <span>10+ Year Customers</span>
+    <span>Dry Cleaning</span>
+    <span>Wash & Fold</span>
+    <span>Expert Pressing</span>
+    <span>Wedding Garments</span>
+    <span>Emergency Turnaround</span>
+    <span>Stain Removal</span>
+    <span>Family-Owned</span>
+    <span>10+ Year Customers</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner about-grid">
+    <div>
+      <img src="./photos/02.jpg" alt="Inside Fay Cleaners" class="about-img">
+    </div>
+    <div class="about-text">
+      <span class="overline">About Us</span>
+      <h2 class="section-title brand">A Family<br>Business<br>Built to Last</h2>
+      <p>Fay Cleaners has been a trusted fixture in the Long Beach community for years — a family-owned shop where hard work, integrity, and genuine care for every customer define everything we do.</p>
+      <p>We keep prices honest even as costs rise, because that's what you deserve. Whether it's a suit you wear to every interview or a jersey you thought was ruined, we treat every piece like it's our own.</p>
+      <div class="about-stat">
+        <strong>10+</strong>
+        <span>Years of loyal customers</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--card)">
+  <div class="section-inner">
+    <span class="overline">What We Do</span>
+    <h2 class="section-title brand">Services</h2>
+    <div class="services-grid">
+      <div class="svc-card">
+        <h3>Dry Cleaning</h3>
+        <p>Garments cleaned and finished with professional-grade solvents and hand-inspected before return. Suits, dresses, coats — done right.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Wash & Fold</h3>
+        <p>Drop off your everyday laundry and pick it up fresh, folded, and smelling clean. Prices that stay reasonable.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Expert Pressing</h3>
+        <p>Shirts, slacks, jackets — pressed crisp and crease-free. The kind of result you notice the moment you put it on.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Wedding & Formal</h3>
+        <p>Tuxedos, bridal garments, and formalwear handled with extra care. We've dressed couples, guests, and entire wedding parties.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Stain Removal</h3>
+        <p>That stain you've made peace with? We may be able to take it out. Bring it in and we'll give you an honest assessment.</p>
+      </div>
+      <div class="svc-card">
+        <h3>Emergency Turnaround</h3>
+        <p>Need it for tonight or tomorrow? Ask about our emergency service — we'll do our best to make it happen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section style="padding:0">
+  <div class="gallery-strip">
+    <img src="./photos/03.jpg" alt="Fay Cleaners — garments on rack">
+    <img src="./photos/04.jpg" alt="Fay Cleaners — pressing station">
+    <img src="./photos/05.jpg" alt="Fay Cleaners — storefront">
+    <img src="./photos/06.jpg" alt="Fay Cleaners — clean laundry">
+    <img src="./photos/01.jpg" alt="Fay Cleaners — shop interior">
+    <img src="./photos/02.jpg" alt="Fay Cleaners — customer service">
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="section-inner">
+    <span class="overline">Customer Testimonies</span>
+    <h2 class="section-title brand">In Their<br>Words</h2>
+    <div class="testimony-list">
+      <div class="testimony">
+        <blockquote>"A family-owned and operated business that's been serving locals for years with care and consistency. They've never compromised on integrity or customer care. If you're looking for a place that treats you like family and delivers reliable results, this is it!"</blockquote>
+        <cite>Larry P.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"I was ready to just make peace with the stain. I just picked up that same jersey and I was blown away. It looks like new. The stains are non existent. Thank you so much!"</blockquote>
+        <cite>Luis B.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"They pressed the jacket, pants & white shirt perfectly. A couple weeks later they did an emergency job for me for a family party out of town — and once again, it was perfect. I highly recommend this place!!"</blockquote>
+        <cite>Irwin A.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"This place is always open and available. The prices are reasonable compared to other dry cleaners. When I've taken my clothes to other places my clothes don't feel as fresh as when I bring it here."</blockquote>
+        <cite>K C.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"I've been coming here for 10 plus years and still take clothes even though I no longer live in the area. They are the best!"</blockquote>
+        <cite>Norm S.</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section id="location">
+  <div class="section-inner">
+    <span class="overline">Find Us</span>
+    <h2 class="section-title brand">Hours &<br>Location</h2>
+    <div class="info-grid">
+      <div>
+        <table class="hours-table">
+          <tr><td>Monday</td><td>7:30 AM – 7:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>7:30 AM – 7:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>7:30 AM – 7:00 PM</td></tr>
+          <tr><td>Thursday</td><td>7:30 AM – 7:00 PM</td></tr>
+          <tr><td>Friday</td><td>7:30 AM – 7:00 PM</td></tr>
+          <tr><td>Saturday</td><td>7:30 AM – 7:00 PM</td></tr>
+          <tr><td>Sunday</td><td class="closed">Closed</td></tr>
+        </table>
+        <p style="margin-top:1.5rem;color:var(--muted);font-size:.9rem">1168 E Artesia Blvd #1555<br>Long Beach, CA 90805</p>
+      </div>
+      <div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=1168+E+Artesia+Blvd+%231555%2C+Long+Beach%2C+CA+90805&z=15&output=embed"
+            loading="lazy"
+            allowfullscreen
+            title="Fay Cleaners location map">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip" id="contact">
+  <h2 class="brand">Ready for Fresh?</h2>
+  <p>Drop off Monday–Saturday, 7:30 AM to 7:00 PM.</p>
+  <a class="phone-big brand" href="tel:5624223061">(562) 422-3061</a>
+  <a class="btn-dark" href="https://www.google.com/maps?q=1168+E+Artesia+Blvd+%231555%2C+Long+Beach%2C+CA+90805" target="_blank" rel="noopener">Get Directions</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p class="brand" style="font-size:1.4rem;color:var(--acc)">FAY CLEANERS</p>
+    <p style="color:var(--muted);font-size:.85rem">1168 E Artesia Blvd #1555 · Long Beach, CA 90805 · <a href="tel:5624223061" style="color:var(--muted)">(562) 422-3061</a></p>
+    <div class="footer-social">
+      <a href="https://maps.google.com/?cid=13705395760680790297" target="_blank" rel="noopener">Google Business</a>
+    </div>
+    <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </div>
+</footer>
+
+<script>
+const burger = document.getElementById('burger');
+const nav = document.getElementById('nav');
+burger.addEventListener('click', () => nav.classList.toggle('open'));
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+</script>
+</body>
+</html>

@@ -1,0 +1,541 @@
+<!-- nails · industrial-poster · hero-layout 2 · svc-layout 0 · Anton/Roboto -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diamond Nails And Lashes — Bakersfield, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+.brand{font-family:'Anton',serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --acc:#d97706;
+  --bg:#1c1917;
+  --bg2:#292524;
+  --bg3:#3c3532;
+  --text:#f5f0eb;
+  --muted:#a8a29e;
+  --nav-h:64px;
+}
+html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+body{font-family:'Roboto',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  height:var(--nav-h);
+  background:rgba(28,25,23,0.96);
+  backdrop-filter:blur(8px);
+  border-bottom:2px solid var(--acc);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 1.25rem;
+}
+.nav-brand{font-family:'Anton',serif;font-size:1.15rem;letter-spacing:.06em;color:var(--acc);text-transform:uppercase}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{
+  display:inline-block;
+  background:var(--acc);color:#1c1917;
+  font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.45rem 1rem;
+  transition:background .2s;
+}
+.nav-cta:hover{background:#b45309}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text)}
+@media(max-width:680px){
+  .nav-links{display:none;flex-direction:column;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--bg);border-bottom:2px solid var(--acc);padding:1rem 1.25rem;gap:.75rem}
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .nav-cta-desktop{display:none}
+}
+
+/* HERO — full bleed */
+.hero{
+  position:relative;min-height:92vh;
+  display:flex;align-items:flex-end;
+  overflow:hidden;
+}
+.hero-img{
+  position:absolute;inset:0;
+  background:url('./photos/01.jpg') center/cover no-repeat;
+}
+.hero-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(28,25,23,1) 0%, rgba(28,25,23,.55) 45%, rgba(28,25,23,.2) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  padding:3rem 1.5rem 4rem;
+  max-width:860px;
+}
+.hero-eyebrow{
+  font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:.75rem;
+}
+.hero h1{
+  font-family:'Anton',serif;
+  font-size:clamp(2.8rem,10vw,6rem);
+  line-height:.95;letter-spacing:.02em;text-transform:uppercase;
+  color:var(--text);
+  margin-bottom:1.25rem;
+}
+.hero h1 em{color:var(--acc);font-style:normal}
+.hero-sub{
+  max-width:520px;
+  font-size:1.05rem;color:rgba(245,240,235,.8);
+  margin-bottom:2rem;
+}
+.btn-primary{
+  display:inline-block;
+  background:var(--acc);color:#1c1917;
+  font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.85rem 2rem;
+  transition:background .2s,transform .15s;
+}
+.btn-primary:hover{background:#b45309;transform:translateY(-2px)}
+.btn-ghost{
+  display:inline-block;
+  border:2px solid var(--text);color:var(--text);
+  font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
+  padding:.8rem 2rem;
+  transition:border-color .2s,color .2s,transform .15s;
+  margin-left:.75rem;
+}
+.btn-ghost:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px)}
+
+/* TICKER STRIP */
+.ticker{
+  background:var(--acc);
+  overflow:hidden;white-space:nowrap;
+  padding:.55rem 0;
+}
+.ticker-inner{
+  display:inline-block;
+  animation:ticker 22s linear infinite;
+  font-family:'Anton',serif;font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;
+  color:#1c1917;
+}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SECTION WRAPPER */
+section{padding:5rem 1.25rem}
+.section-inner{max-width:1080px;margin:0 auto}
+.section-label{
+  font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:.5rem;
+}
+.section-title{
+  font-family:'Anton',serif;
+  font-size:clamp(2rem,5vw,3.2rem);
+  letter-spacing:.03em;text-transform:uppercase;
+  line-height:1;color:var(--text);
+  margin-bottom:2.5rem;
+}
+
+/* ABOUT */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:3rem;
+}
+@media(min-width:720px){
+  .about-grid{grid-template-columns:1fr 1fr;align-items:center}
+}
+.about-img-stack{
+  position:relative;
+}
+.about-img-main{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+}
+.about-img-thumb{
+  position:absolute;bottom:-1.25rem;right:-1.25rem;
+  width:42%;aspect-ratio:1;object-fit:cover;
+  border:4px solid var(--bg);
+}
+.about-text p{font-size:1rem;color:rgba(245,240,235,.85);margin-bottom:1rem}
+.about-text p:last-child{margin-bottom:0}
+.about-divider{
+  width:48px;height:3px;background:var(--acc);margin-bottom:1.5rem;
+}
+
+/* SERVICES — cards */
+#services{background:var(--bg2)}
+.svc-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:1.25rem;
+}
+.svc-card{
+  background:var(--bg3);
+  padding:2rem 1.5rem;
+  border-top:3px solid var(--acc);
+  transition:transform .2s,background .2s;
+}
+.svc-card:hover{transform:translateY(-4px);background:#4a4340}
+.svc-card-name{
+  font-family:'Anton',serif;
+  font-size:1.3rem;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--text);margin-bottom:.5rem;
+}
+.svc-card-desc{font-size:.88rem;color:var(--muted);line-height:1.5}
+.svc-card-price{
+  margin-top:1rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--acc);
+}
+
+/* GALLERY */
+#gallery{background:var(--bg)}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:.5rem;
+}
+@media(min-width:600px){
+  .gallery-grid{grid-template-columns:repeat(3,1fr)}
+}
+.gallery-cell{overflow:hidden;aspect-ratio:1}
+.gallery-cell img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .4s ease;
+}
+.gallery-cell:hover img{transform:scale(1.06)}
+
+/* TESTIMONIES */
+#testimonies{background:var(--bg2)}
+.testi-list{display:flex;flex-direction:column;gap:2rem}
+.testi-card{
+  background:var(--bg3);
+  padding:2rem;
+  border-left:4px solid var(--acc);
+}
+.testi-quote{
+  font-size:1rem;font-style:italic;
+  color:rgba(245,240,235,.9);
+  line-height:1.7;
+  margin-bottom:1rem;
+}
+.testi-attr{
+  font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--acc);
+}
+@media(min-width:720px){
+  .testi-list{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+}
+
+/* HOURS & LOCATION */
+#location{background:var(--bg)}
+.loc-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:3rem;
+}
+@media(min-width:720px){
+  .loc-grid{grid-template-columns:1fr 1fr;gap:2rem}
+}
+.hours-table{width:100%;border-collapse:collapse}
+.hours-table tr{border-bottom:1px solid var(--bg3)}
+.hours-table td{padding:.6rem 0;font-size:.9rem}
+.hours-table td:first-child{color:var(--muted);font-weight:700;text-transform:uppercase;font-size:.72rem;letter-spacing:.1em}
+.hours-table td:last-child{text-align:right}
+.hours-today{color:var(--acc);font-weight:700}
+.map-wrap{border:2px solid var(--bg3);overflow:hidden}
+.map-wrap iframe{display:block;width:100%;height:320px;border:0}
+
+/* CONTACT / CTA */
+#contact{background:var(--bg2)}
+.contact-inner{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:3rem;
+}
+@media(min-width:720px){
+  .contact-inner{grid-template-columns:1fr 1fr;align-items:start}
+}
+.contact-block p{font-size:.95rem;color:var(--muted);margin-bottom:.75rem}
+.contact-block a{color:var(--text);font-weight:700;transition:color .2s}
+.contact-block a:hover{color:var(--acc)}
+.contact-cta-group{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem}
+@media(min-width:400px){.contact-cta-group{flex-direction:row;flex-wrap:wrap}}
+
+/* FOOTER */
+footer{
+  background:#111;
+  border-top:2px solid var(--bg3);
+  padding:2rem 1.25rem;
+  text-align:center;
+}
+.footer-inner{max-width:1080px;margin:0 auto}
+.footer-brand{
+  font-family:'Anton',serif;
+  font-size:1.2rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:.75rem;
+}
+.footer-links{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem 1.5rem;
+  margin-bottom:1rem;
+}
+.footer-links a{
+  font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);transition:color .2s;
+}
+.footer-links a:hover{color:var(--acc)}
+.footer-credit{font-size:.75rem;color:var(--muted);margin-top:.75rem}
+.footer-credit a{color:var(--muted);text-decoration:underline}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand brand" style="font-family:'Anton',serif;">Diamond Nails &amp; Lashes</span>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#location">Hours</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:+16618295061" class="nav-cta nav-cta-desktop">Call Now</a>
+  <div class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO — full bleed -->
+<section class="hero" id="home">
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Bakersfield, CA — 16123 Stockdale Hwy</p>
+    <h1>NAILS.<br><em>LASHES.</em><br>DONE RIGHT.</h1>
+    <p class="hero-sub">Full-service nail salon + lash studio. Acrylics, gel, jelly pedicures, lash extensions, and more — by a team that actually listens.</p>
+    <a href="tel:+16618295061" class="btn-primary">Call Now</a>
+    <a href="https://www.google.com/maps?q=16123+Stockdale+Hwy+Unit+130+Bakersfield+CA+93314&z=15" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <span class="ticker-inner">
+    Nails &nbsp;·&nbsp; Lashes &nbsp;·&nbsp; Pedicures &nbsp;·&nbsp; Acrylics &nbsp;·&nbsp; Gel Sets &nbsp;·&nbsp; Jelly Pedi &nbsp;·&nbsp; Eyebrows &nbsp;·&nbsp; Fills &nbsp;·&nbsp; Bakersfield CA &nbsp;·&nbsp; Open 7 Days &nbsp;·&nbsp;
+    Nails &nbsp;·&nbsp; Lashes &nbsp;·&nbsp; Pedicures &nbsp;·&nbsp; Acrylics &nbsp;·&nbsp; Gel Sets &nbsp;·&nbsp; Jelly Pedi &nbsp;·&nbsp; Eyebrows &nbsp;·&nbsp; Fills &nbsp;·&nbsp; Bakersfield CA &nbsp;·&nbsp; Open 7 Days &nbsp;·&nbsp;
+  </span>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-img-stack">
+        <img src="./photos/02.jpg" alt="Diamond Nails and Lashes interior" class="about-img-main">
+        <img src="./photos/03.jpg" alt="Nail work detail" class="about-img-thumb">
+      </div>
+      <div class="about-text">
+        <p class="section-label">About Us</p>
+        <div class="section-title" style="font-family:'Anton',serif;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:.03em;text-transform:uppercase;line-height:1;color:var(--text);margin-bottom:1.5rem;">YOUR FULL-SERVICE BEAUTY DESTINATION</div>
+        <div class="about-divider"></div>
+        <p>Diamond Nails &amp; Lashes is Bakersfield's go-to nail and lash studio — a full-service salon where skilled technicians take time to listen, so every set reflects exactly what you envisioned.</p>
+        <p>From next-level massage chairs and jelly pedicures to precision acrylic fills and lash extensions, every service is delivered with care, patience, and real technique. Walk-ins welcome; appointments appreciated.</p>
+        <p>We're open seven days a week on Stockdale Hwy. Cash is preferred — an ATM is on-site — but we also accept card, Apple Pay, and tap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label">What We Do</p>
+    <div class="section-title">Services</div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-card-name">Full Acrylic Set</div>
+        <div class="svc-card-desc">New sets built to shape with your choice of length, color, and finish. We reference your inspo pic, step by step.</div>
+        <div class="svc-card-price">Starting price: ask staff</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-name">Acrylic Fill</div>
+        <div class="svc-card-desc">Maintain your set with a professional fill. Technicians check shape, thickness, and color at every step.</div>
+        <div class="svc-card-price">Starting price: ask staff</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-name">Gel Manicure</div>
+        <div class="svc-card-desc">Long-lasting gel color with a natural nail prep that keeps your nails healthy underneath.</div>
+        <div class="svc-card-price">Starting price: ask staff</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-name">Jelly Pedicure</div>
+        <div class="svc-card-desc">A unique, ultra-soothing pedi experience in a jelly soak. Worth every penny — try it once.</div>
+        <div class="svc-card-price">Starting price: ask staff</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-name">Classic Pedicure</div>
+        <div class="svc-card-desc">Foot soak, shape, cuticle care, massage, and polish in a next-level massage chair that works your arms too.</div>
+        <div class="svc-card-price">Starting price: ask staff</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-name">Lash Extensions</div>
+        <div class="svc-card-desc">Full-set lash extensions applied by Kim and team. Classic to volume — we help you choose the look that suits you.</div>
+        <div class="svc-card-price">Starting price: ask staff</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-name">Eyebrow Services</div>
+        <div class="svc-card-desc">Waxing and shaping to clean up your brows and frame your face. Pair with lashes for the full effect.</div>
+        <div class="svc-card-price">Starting price: ask staff</div>
+      </div>
+      <div class="svc-card">
+        <div class="svc-card-name">Mani + Pedi Combo</div>
+        <div class="svc-card-desc">Book both at once and settle in — the massage chairs make it the most relaxing hour of your week.</div>
+        <div class="svc-card-price">Starting price: ask staff</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <p class="section-label">The Work</p>
+    <div class="section-title">Gallery</div>
+    <div class="gallery-grid">
+      <div class="gallery-cell"><img src="./photos/01.jpg" alt="Salon photo 1" loading="lazy"></div>
+      <div class="gallery-cell"><img src="./photos/04.jpg" alt="Salon photo 2" loading="lazy"></div>
+      <div class="gallery-cell"><img src="./photos/05.jpg" alt="Salon photo 3" loading="lazy"></div>
+      <div class="gallery-cell"><img src="./photos/06.jpg" alt="Salon photo 4" loading="lazy"></div>
+      <div class="gallery-cell"><img src="./photos/02.jpg" alt="Salon photo 5" loading="lazy"></div>
+      <div class="gallery-cell"><img src="./photos/03.jpg" alt="Salon photo 6" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="section-inner">
+    <p class="section-label">In Their Words</p>
+    <div class="section-title">Customer Testimonies</div>
+    <div class="testi-list">
+      <div class="testi-card">
+        <p class="testi-quote">"The staff was super super kind and accommodating! Prices are reasonable! The massage chairs are next level! They massage your arms too! Went in for a full set &amp; the jelly pedi and it was a great experience! The jelly pedi itself was a cool experience! I recommend trying it at least once! It's self care, splurge a little."</p>
+        <span class="testi-attr">— Des L.</span>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"Nick did my acrylics. I explained I hadn't done them in awhile and showed him a picture of what I'd like. He was great and my nails turned out just like I wanted! Kim did my lashes and eyebrows... Kim helped me decide what look I wanted and went to work. The result is amazing! I feel great and look great too."</p>
+        <span class="testi-attr">— Jessica L.</span>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"Relaxing and amazing services. It was our first time here, they definitely got a new regular customer. We were sat in a massage chair within a few minutes of arrival for the pedicure, and oh my goodness, that was great. The care and thoroughness of the mani pedi were good. Even got my ingrown toe nails right."</p>
+        <span class="testi-attr">— Cassidy A.</span>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"Lupe did a great job with my acrylic fill! I appreciated how she asked my opinion at each step to ensure I was happy with the shape, thickness, color, etc. She was friendly, communicative, fast, and most importantly had great technique. I'll definitely be returning to request her, specifically."</p>
+        <span class="testi-attr">— Tori F.</span>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">"They did an amazing job with my nails. My only complaint is I arrive on time for my appointment, but there was no nail tech available at the scheduled time. Other than that, they did a fabulous job. Will be returning for a fill."</p>
+        <span class="testi-attr">— Michaela L.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section id="location">
+  <div class="section-inner">
+    <p class="section-label">Find Us</p>
+    <div class="section-title">Hours &amp; Location</div>
+    <div class="loc-grid">
+      <div>
+        <table class="hours-table">
+          <tr><td>Monday</td><td>9:00 AM – 7:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>9:00 AM – 7:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>9:00 AM – 7:00 PM</td></tr>
+          <tr><td>Thursday</td><td>9:00 AM – 7:00 PM</td></tr>
+          <tr><td>Friday</td><td>9:00 AM – 7:00 PM</td></tr>
+          <tr><td>Saturday</td><td>9:00 AM – 7:00 PM</td></tr>
+          <tr><td>Sunday</td><td>10:00 AM – 6:00 PM</td></tr>
+        </table>
+        <div style="margin-top:2rem">
+          <p style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:.35rem">Address</p>
+          <p style="font-size:.95rem;color:var(--text)">16123 Stockdale Hwy, Unit 130<br>Bakersfield, CA 93314</p>
+          <p style="margin-top:.75rem;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:.35rem">Phone</p>
+          <p style="font-size:.95rem"><a href="tel:+16618295061" style="color:var(--text);transition:color .2s" onmouseover="this.style.color='var(--acc)'" onmouseout="this.style.color='var(--text)'">(661) 829-5061</a></p>
+          <p style="margin-top:.75rem;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:.35rem">Payment</p>
+          <p style="font-size:.88rem;color:var(--muted)">Cash preferred · Card / Apple Pay / Tap accepted (fees apply) · ATM on-site</p>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps?q=16123+Stockdale+Hwy+Unit+130+Bakersfield+CA+93314&z=15&output=embed" title="Diamond Nails And Lashes location" loading="lazy" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / CTA -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="contact-block">
+        <p class="section-label">Get In Touch</p>
+        <div style="font-family:'Anton',serif;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:.03em;text-transform:uppercase;line-height:1;color:var(--text);margin-bottom:1.25rem;">READY TO BOOK?</div>
+        <p>Give us a call or stop in — walk-ins are always welcome. For larger groups or special occasions, calling ahead is the smart move.</p>
+        <p>We're open Monday–Saturday 9–7 and Sunday 10–6.</p>
+        <div class="contact-cta-group">
+          <a href="tel:+16618295061" class="btn-primary">Call (661) 829-5061</a>
+          <a href="https://www.google.com/maps?q=16123+Stockdale+Hwy+Unit+130+Bakersfield+CA+93314&z=15" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+        </div>
+      </div>
+      <div>
+        <p class="section-label">Also Find Us</p>
+        <div style="font-family:'Anton',serif;font-size:1.1rem;letter-spacing:.04em;text-transform:uppercase;color:var(--text);margin-bottom:1rem;">Our Listings</div>
+        <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Check out our Google Business listing for more photos, current info, and to leave your own feedback.</p>
+        <a href="https://maps.google.com/?cid=2890953481892286947" target="_blank" rel="noopener" style="display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);border-bottom:1px solid var(--acc);padding-bottom:2px;transition:color .2s,border-color .2s" onmouseover="this.style.color='var(--text)';this.style.borderColor='var(--text)'" onmouseout="this.style.color='var(--acc)';this.style.borderColor='var(--acc)'">Google Business Profile →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand brand" style="font-family:'Anton',serif;">Diamond Nails &amp; Lashes</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#testimonies">Testimonies</a>
+      <a href="#location">Hours</a>
+      <a href="#contact">Contact</a>
+      <a href="https://maps.google.com/?cid=2890953481892286947" target="_blank" rel="noopener">Google Business</a>
+    </div>
+    <p style="font-size:.8rem;color:var(--muted)">16123 Stockdale Hwy, Unit 130, Bakersfield, CA 93314 &nbsp;·&nbsp; <a href="tel:+16618295061" style="color:var(--muted)">(661) 829-5061</a></p>
+    <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </div>
+</footer>
+
+<script>
+// Hamburger toggle
+const ham = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+ham.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// Highlight today's hours
+const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const today = days[new Date().getDay()];
+document.querySelectorAll('.hours-table tr').forEach(row => {
+  const cell = row.querySelector('td');
+  if (cell && cell.textContent.trim() === today) {
+    row.querySelectorAll('td').forEach(td => td.classList.add('hours-today'));
+  }
+});
+</script>
+</body>
+</html>

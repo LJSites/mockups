@@ -1,0 +1,756 @@
+<!-- nails · bold-dark · hero-layout 2 · svc-layout 1 · Archivo Black/Inter -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crystal's Nails — El Centro, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --acc:#14b8a6;
+      --bg:#0b1f1d;
+      --bg2:#0f2927;
+      --bg3:#163330;
+      --text:#e8f5f4;
+      --muted:#8ab5b1;
+      --nav-h:64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-padding-top: var(--nav-h); }
+
+    body{font-family:'Inter',sans-serif}
+    body { background: var(--bg); color: var(--text); line-height: 1.6; font-size: 16px; }
+
+    .brand{font-family:'Archivo Black',serif; letter-spacing: -0.02em; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: rgba(11, 31, 29, 0.93);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(20, 184, 166, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 4vw, 3rem);
+    }
+
+    .nav-logo {
+      font-size: 1.15rem;
+      color: var(--acc);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--acc); }
+
+    .nav-cta {
+      background: var(--acc);
+      color: var(--bg) !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 2px;
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover { background: #0d9488; color: var(--bg) !important; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: 0.2s;
+    }
+
+    /* ── HERO (full-bleed, layout 2) ── */
+    .hero {
+      position: relative;
+      height: min(90vh, 700px);
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.45) saturate(0.8);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(11, 31, 29, 0.95) 0%,
+        rgba(11, 31, 29, 0.55) 45%,
+        rgba(11, 31, 29, 0.1) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 5vw, 4rem);
+      max-width: 780px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 1rem;
+      border-left: 3px solid var(--acc);
+      padding-left: 0.75rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      line-height: 1.0;
+      color: #fff;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: var(--bg);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: #0d9488; transform: translateY(-2px); }
+
+    /* ── SECTION SHARED ── */
+    section { padding: clamp(3.5rem, 7vw, 6rem) clamp(1.25rem, 5vw, 4rem); }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-body {
+      color: var(--muted);
+      max-width: 640px;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--bg2);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+    }
+
+    .about-photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .about-photo-grid img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 2px;
+      filter: saturate(0.85);
+      transition: filter 0.3s;
+    }
+
+    .about-photo-grid img:hover { filter: saturate(1.1); }
+
+    .about-photo-grid img:first-child {
+      grid-column: span 2;
+      aspect-ratio: 16/9;
+    }
+
+    /* ── SERVICES (2-col rows, layout 1) ── */
+    .services { background: var(--bg); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: rgba(20, 184, 166, 0.12);
+      border: 1px solid rgba(20, 184, 166, 0.12);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 2.5rem;
+    }
+
+    .service-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 1.75rem;
+      background: var(--bg2);
+      gap: 1rem;
+      transition: background 0.2s;
+    }
+
+    .service-row:hover { background: var(--bg3); }
+
+    .service-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .service-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .service-price {
+      font-family: 'Archivo Black', serif;
+      font-size: 1.05rem;
+      color: var(--acc);
+      white-space: nowrap;
+    }
+
+    /* ── GALLERY ── */
+    .gallery { background: var(--bg2); }
+
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-top: 2rem;
+    }
+
+    .gallery-strip img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 2px;
+      filter: saturate(0.8);
+      transition: filter 0.3s, transform 0.3s;
+    }
+
+    .gallery-strip img:hover {
+      filter: saturate(1.2);
+      transform: scale(1.02);
+    }
+
+    /* ── TESTIMONIES ── */
+    .testimonies { background: var(--bg); }
+
+    .testimony-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .testimony-card {
+      background: var(--bg2);
+      border-left: 3px solid var(--acc);
+      padding: 1.75rem;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .testimony-quote {
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimony-attr {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--acc);
+    }
+
+    /* ── HOURS & LOCATION ── */
+    .info { background: var(--bg2); }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      margin-top: 2.5rem;
+      align-items: start;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid rgba(20, 184, 166, 0.1);
+    }
+
+    .hours-table td {
+      padding: 0.65rem 0;
+      font-size: 0.9rem;
+    }
+
+    .hours-table td:first-child {
+      color: var(--muted);
+      width: 45%;
+    }
+
+    .hours-table td:last-child {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .map-wrap {
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(20, 184, 166, 0.2);
+    }
+
+    .map-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 300px;
+      border: none;
+      filter: invert(0.9) hue-rotate(155deg) saturate(0.7);
+    }
+
+    .address-block {
+      margin-top: 1.25rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .address-block strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band {
+      background: var(--acc);
+      text-align: center;
+      padding: 3.5rem clamp(1.25rem, 5vw, 4rem);
+    }
+
+    .cta-band .brand {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      color: var(--bg);
+      display: block;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-band p {
+      color: rgba(11, 31, 29, 0.75);
+      font-size: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .btn-dark {
+      display: inline-block;
+      background: var(--bg);
+      color: var(--acc);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-dark:hover { background: var(--bg2); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid rgba(20, 184, 166, 0.1);
+      padding: 2.5rem clamp(1.25rem, 5vw, 4rem);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .footer-left .brand { font-size: 1.1rem; color: var(--acc); }
+
+    .footer-left p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--acc); }
+
+    .footer-credit {
+      width: 100%;
+      border-top: 1px solid rgba(20, 184, 166, 0.08);
+      padding-top: 1.25rem;
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: rgba(138, 181, 177, 0.5);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        background: rgba(11, 31, 29, 0.97);
+        border-bottom: 1px solid rgba(20, 184, 166, 0.15);
+        padding: 1.5rem 2rem;
+        gap: 1.25rem;
+      }
+      .nav-toggle { display: flex; }
+
+      .hero-bg { grid-template-columns: 1fr 1fr; }
+      .hero-bg img:last-child { display: none; }
+
+      .about { grid-template-columns: 1fr; }
+      .about-photo-grid { order: -1; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+      .gallery-strip img:last-child { display: none; }
+
+      .info-grid { grid-template-columns: 1fr; }
+
+      footer { flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-bg { grid-template-columns: 1fr; }
+      .hero-bg img:not(:first-child) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="top">
+    <a href="#top" class="nav-logo brand">Crystal's Nails</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="this.nextElementSibling.classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#info">Hours</a></li>
+      <li><a href="tel:+17603527949" class="nav-cta">Call Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO (full-bleed, layout 2) -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <img src="./photos/01.jpg" alt="" />
+      <img src="./photos/02.jpg" alt="" />
+      <img src="./photos/03.jpg" alt="" />
+    </div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">El Centro, California</span>
+      <h1 class="brand">Nails done<br>right. Every<br>time.</h1>
+      <p class="hero-sub">Crystal's Nails has been El Centro's go-to spot for precision nail art, pedicures, and beautiful detail work — where every client walks out confident.</p>
+      <a href="tel:+17603527949" class="btn-primary">Call to Book — (760) 352-7949</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div>
+      <p class="section-label">About Us</p>
+      <h2 class="section-title brand">More than a<br>nail salon.</h2>
+      <p class="section-body">
+        Crystal's Nails in El Centro is a place where every customer — from first-timers to 90-year-old regulars — is treated with patience and care. Our team of talented technicians, including Kim, Carmen, and Suki, brings genuine attention to every set, every pedicure, every detail. Clean space. Relaxed atmosphere. Real results.
+      </p>
+      <br />
+      <a href="tel:+17603527949" class="btn-primary" style="margin-top:1rem;">Call Now — (760) 352-7949</a>
+    </div>
+    <div class="about-photo-grid">
+      <img src="./photos/04.jpg" alt="Nail artistry at Crystal's Nails" />
+      <img src="./photos/05.jpg" alt="Salon interior" />
+      <img src="./photos/06.jpg" alt="Nail detail work" />
+    </div>
+  </section>
+
+  <!-- SERVICES (2-col rows, layout 1) -->
+  <section class="services" id="services">
+    <p class="section-label">What We Offer</p>
+    <h2 class="section-title brand">Services</h2>
+    <div class="services-grid">
+
+      <div class="service-row">
+        <div>
+          <div class="service-name">Acrylic Full Set</div>
+          <div class="service-desc">Sculpted, shaped & polished to perfection</div>
+        </div>
+        <div class="service-price">From $35</div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <div class="service-name">Acrylic Fill</div>
+          <div class="service-desc">Maintain your existing set</div>
+        </div>
+        <div class="service-price">From $25</div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <div class="service-name">Gel Manicure</div>
+          <div class="service-desc">Long-lasting gel color with a flawless finish</div>
+        </div>
+        <div class="service-price">From $30</div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <div class="service-name">Classic Manicure</div>
+          <div class="service-desc">Shape, buff, and a fresh coat of polish</div>
+        </div>
+        <div class="service-price">From $15</div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <div class="service-name">Spa Pedicure</div>
+          <div class="service-desc">Soak, scrub, and pamper — Suki's specialty</div>
+        </div>
+        <div class="service-price">From $35</div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <div class="service-name">Classic Pedicure</div>
+          <div class="service-desc">Shape, clean, and polish</div>
+        </div>
+        <div class="service-price">From $25</div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <div class="service-name">Nail Art & Design</div>
+          <div class="service-desc">Custom designs, intricate detail work</div>
+        </div>
+        <div class="service-price">Ask us</div>
+      </div>
+
+      <div class="service-row">
+        <div>
+          <div class="service-name">Dip Powder</div>
+          <div class="service-desc">Durable, lightweight color system</div>
+        </div>
+        <div class="service-price">From $40</div>
+      </div>
+
+    </div>
+    <p style="margin-top:1.25rem; font-size:0.82rem; color:var(--muted);">Prices are estimates — call for exact quotes on your service.</p>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <p class="section-label">Our Work</p>
+    <h2 class="section-title brand">The Details</h2>
+    <div class="gallery-strip">
+      <img src="./photos/01.jpg" alt="Nail work sample 1" />
+      <img src="./photos/02.jpg" alt="Nail work sample 2" />
+      <img src="./photos/03.jpg" alt="Nail work sample 3" />
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section class="testimonies" id="testimonies">
+    <p class="section-label">In Their Words</p>
+    <h2 class="section-title brand">Customer<br>Testimonies</h2>
+    <div class="testimony-list">
+
+      <div class="testimony-card">
+        <p class="testimony-quote">"Worth the wait! Kim did a great job on my nails. She was very sweet and detailed and precise with my nails. Especially the Friday before Valentine's. I also got my pedicure with Suki and she was awesome."</p>
+        <p class="testimony-attr">Amanda A.</p>
+      </div>
+
+      <div class="testimony-card">
+        <p class="testimony-quote">"Crystal's Nails in El Centro is absolutely amazing! The staff is friendly, professional, and always makes you feel welcome. The salon is clean, relaxing, and they truly take their time to make sure your nails come out perfect. Best nail salon in El Centro California!!"</p>
+        <p class="testimony-attr">Diana C.</p>
+      </div>
+
+      <div class="testimony-card">
+        <p class="testimony-quote">"My 90 year old grandmother comes here every other week — they have always treated her so gently and kindly. She's always so happy to come here. Highly recommend to anyone who needs a manicure and pedicure!"</p>
+        <p class="testimony-attr">Julianna L.</p>
+      </div>
+
+      <div class="testimony-card">
+        <p class="testimony-quote">"She took her time, didn't rush anything, and really paid attention to every little detail of my design. My set came out even better than the picture I showed her. Super patient, super sweet, and really talented. Definitely my new go-to spot."</p>
+        <p class="testimony-attr">Alien M.</p>
+      </div>
+
+      <div class="testimony-card">
+        <p class="testimony-quote">"This was actually my first pedicure, and the staff was incredibly patient and kind with me. They guided me through step-by-step so I felt comfortable. They never rushed and really took their time. I left feeling refreshed and very happy with the service."</p>
+        <p class="testimony-attr">Eric M.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section class="info" id="info">
+    <p class="section-label">Find Us</p>
+    <h2 class="section-title brand">Hours &amp;<br>Location</h2>
+    <div class="info-grid">
+      <div>
+        <table class="hours-table">
+          <tr><td>Monday</td><td>9:00 AM – 7:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>9:00 AM – 7:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>9:00 AM – 7:00 PM</td></tr>
+          <tr><td>Thursday</td><td>9:00 AM – 7:00 PM</td></tr>
+          <tr><td>Friday</td><td>9:00 AM – 7:00 PM</td></tr>
+          <tr><td>Saturday</td><td>9:00 AM – 7:00 PM</td></tr>
+          <tr><td>Sunday</td><td>10:00 AM – 5:00 PM</td></tr>
+        </table>
+        <div class="address-block">
+          <strong>Crystal's Nails</strong>
+          1950 S 4th St #4C<br>
+          El Centro, CA 92243<br>
+          <a href="tel:+17603527949" style="color:var(--acc); text-decoration:none;">(760) 352-7949</a>
+        </div>
+      </div>
+      <div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=1950+S+4th+St+%234C%2C+El+Centro%2C+CA+92243&z=15&output=embed"
+            title="Crystal's Nails location map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="address-block" style="margin-top:1rem;">
+          <a href="https://maps.google.com/?cid=15670327312649043087" target="_blank" rel="noopener" style="color:var(--acc); font-size:0.85rem; font-weight:600; text-decoration:none; letter-spacing:0.04em;">
+            ↗ Open in Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <span class="brand">Ready for nails you'll love?</span>
+    <p>Walk-ins welcome — or give us a call to plan your visit.</p>
+    <a href="tel:+17603527949" class="btn-dark">Call (760) 352-7949</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      <span class="brand">Crystal's Nails</span>
+      <p>1950 S 4th St #4C, El Centro, CA 92243</p>
+      <p>(760) 352-7949</p>
+    </div>
+    <div class="footer-links">
+      <a href="https://maps.google.com/?cid=15670327312649043087" target="_blank" rel="noopener">Google Business</a>
+      <a href="tel:+17603527949">Call Us</a>
+      <a href="#top">Back to Top</a>
+    </div>
+    <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </footer>
+
+</body>
+</html>

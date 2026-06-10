@@ -1,0 +1,357 @@
+<!-- auto · industrial-poster · hero-layout 2 · svc-layout 0 · Anton/Roboto -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaas Auto Services — Stockton, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{--acc:#d97706;--bg:#1c1917;--bg2:#292524;--bg3:#3a3330;--txt:#e7e5e4;--txt2:#a8a29e;--nav-h:64px}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{font-family:'Roboto',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;font-size:16px}
+  .brand{font-family:'Anton',serif;letter-spacing:.02em;text-transform:uppercase}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+
+  /* ── NAV ── */
+  nav{position:sticky;top:0;z-index:100;height:var(--nav-h);background:var(--bg);border-bottom:2px solid var(--acc);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem}
+  .nav-logo{font-family:'Anton',serif;font-size:1.4rem;letter-spacing:.05em;color:var(--acc);text-transform:uppercase}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--txt2);transition:color .2s}
+  .nav-links a:hover{color:var(--acc)}
+  .nav-cta{display:inline-block;background:var(--acc);color:#1c1917;font-family:'Anton',serif;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;padding:.45rem 1.2rem;transition:background .2s}
+  .nav-cta:hover{background:#b45309}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:.25rem}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--txt)}
+
+  /* ── HERO (full-bleed layout 2) ── */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background-image:url('./photos/01.jpg');background-size:cover;background-position:center top}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,25,23,.97) 0%,rgba(28,25,23,.6) 50%,rgba(28,25,23,.2) 100%)}
+  .hero-content{position:relative;z-index:2;padding:4rem 1.5rem 4rem;max-width:800px}
+  .hero-eyebrow{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);border-left:3px solid var(--acc);padding-left:.75rem;margin-bottom:1.25rem}
+  .hero h1{font-family:'Anton',serif;font-size:clamp(3rem,9vw,6.5rem);line-height:.95;text-transform:uppercase;letter-spacing:.01em;color:#fff;margin-bottom:1rem}
+  .hero h1 em{font-style:normal;color:var(--acc)}
+  .hero-sub{font-size:1.05rem;color:var(--txt2);max-width:460px;margin-bottom:2rem;font-weight:400}
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+  .btn-primary{font-family:'Anton',serif;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;background:var(--acc);color:#1c1917;padding:.8rem 2rem;display:inline-block;transition:background .2s,transform .15s}
+  .btn-primary:hover{background:#b45309;transform:translateY(-2px)}
+  .btn-outline{font-family:'Anton',serif;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;border:2px solid var(--txt2);color:var(--txt);padding:.78rem 1.8rem;display:inline-block;transition:border-color .2s,color .2s}
+  .btn-outline:hover{border-color:var(--acc);color:var(--acc)}
+  .hero-badge{position:absolute;right:2rem;bottom:2rem;z-index:3;text-align:center;background:var(--acc);padding:1rem 1.25rem}
+  .hero-badge strong{font-family:'Anton',serif;font-size:2rem;display:block;color:#1c1917;line-height:1}
+  .hero-badge span{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#1c1917}
+
+  /* ── TICKER ── */
+  .ticker{background:var(--acc);overflow:hidden;white-space:nowrap;padding:.55rem 0}
+  .ticker-track{display:inline-block;animation:ticker 22s linear infinite}
+  .ticker-track span{font-family:'Anton',serif;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:#1c1917;padding:0 2.5rem}
+  .ticker-track span::after{content:'·';margin-left:2.5rem;opacity:.5}
+  @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ── SECTION SHARED ── */
+  section{padding:5rem 1.5rem}
+  .section-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);margin-bottom:.75rem}
+  .section-title{font-family:'Anton',serif;font-size:clamp(2rem,5vw,3.5rem);text-transform:uppercase;line-height:1;margin-bottom:1.5rem}
+  .inner{max-width:1100px;margin:0 auto}
+
+  /* ── ABOUT ── */
+  #about{background:var(--bg2)}
+  .about-grid{display:grid;grid-template-columns:1fr;gap:3rem}
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+  .about-photos img{height:220px;width:100%;object-fit:cover}
+  .about-photos img:first-child{grid-column:1/-1;height:280px}
+  .about-body p{color:var(--txt2);margin-bottom:1rem;font-size:1rem}
+  .about-body p strong{color:var(--txt)}
+  .stats{display:flex;gap:2rem;flex-wrap:wrap;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--bg3)}
+  .stat strong{font-family:'Anton',serif;font-size:2.2rem;color:var(--acc);display:block;line-height:1}
+  .stat span{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--txt2)}
+
+  /* ── SERVICES (card layout 0) ── */
+  #services{background:var(--bg)}
+  .services-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem}
+  .svc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1px;background:var(--bg3)}
+  .svc-card{background:var(--bg);padding:2rem 1.75rem;position:relative;overflow:hidden;transition:background .25s}
+  .svc-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--acc);transform:scaleY(0);transform-origin:bottom;transition:transform .3s}
+  .svc-card:hover{background:var(--bg2)}
+  .svc-card:hover::before{transform:scaleY(1)}
+  .svc-num{font-family:'Anton',serif;font-size:3rem;color:var(--bg3);line-height:1;margin-bottom:.75rem;transition:color .25s}
+  .svc-card:hover .svc-num{color:var(--bg3)}
+  .svc-name{font-family:'Anton',serif;font-size:1.3rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.5rem;color:#fff}
+  .svc-desc{font-size:.875rem;color:var(--txt2);line-height:1.55}
+
+  /* ── PHOTO STRIP ── */
+  .photo-strip{display:grid;grid-template-columns:repeat(3,1fr);height:260px}
+  .photo-strip img{width:100%;height:100%;object-fit:cover;filter:grayscale(40%);transition:filter .3s}
+  .photo-strip img:hover{filter:grayscale(0)}
+
+  /* ── TESTIMONIES ── */
+  #testimonies{background:var(--bg2)}
+  .testimony-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;margin-top:2.5rem}
+  .testimony{border-left:3px solid var(--acc);padding:1.5rem 1.75rem;background:var(--bg);position:relative}
+  .testimony blockquote{font-size:.975rem;color:var(--txt2);line-height:1.7;font-style:italic;margin-bottom:1rem}
+  .testimony cite{font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);font-style:normal}
+
+  /* ── HOURS & LOCATION ── */
+  #location{background:var(--bg)}
+  .location-grid{display:grid;grid-template-columns:1fr;gap:3rem}
+  .hours-table{width:100%;border-collapse:collapse;margin-top:1rem}
+  .hours-table tr{border-bottom:1px solid var(--bg3)}
+  .hours-table td{padding:.65rem .25rem;font-size:.9rem;color:var(--txt2)}
+  .hours-table td:first-child{font-weight:700;color:var(--txt);text-transform:uppercase;font-size:.8rem;letter-spacing:.07em;width:110px}
+  .hours-table tr.today td{color:var(--acc)}
+  .map-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;filter:grayscale(60%) contrast(1.1)}
+  .map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+  .contact-block{margin-top:2rem}
+  .contact-block a{display:block;font-family:'Anton',serif;font-size:1.5rem;letter-spacing:.04em;text-transform:uppercase;color:var(--acc);margin-bottom:.5rem;transition:color .2s}
+  .contact-block a:hover{color:#b45309}
+  .contact-block p{font-size:.875rem;color:var(--txt2)}
+
+  /* ── FOOTER ── */
+  footer{background:#111110;padding:2.5rem 1.5rem;border-top:2px solid var(--bg3)}
+  .footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:1.5rem}
+  .footer-brand{font-family:'Anton',serif;font-size:1.6rem;color:var(--acc);letter-spacing:.04em;text-transform:uppercase}
+  .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+  .footer-links a{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--txt2);transition:color .2s}
+  .footer-links a:hover{color:var(--acc)}
+  .footer-divider{border:none;border-top:1px solid var(--bg3)}
+  .footer-credit{font-size:.8rem;color:var(--txt2);line-height:1.6}
+  .footer-credit a{color:var(--txt2);text-decoration:underline;transition:color .2s}
+  .footer-credit a:hover{color:var(--acc)}
+
+  /* ── MOBILE NAV ── */
+  @media(max-width:680px){
+    .hamburger{display:flex}
+    .nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;background:var(--bg);border-bottom:2px solid var(--acc);flex-direction:column;padding:1.5rem;gap:1.25rem}
+    .nav-links.open{display:flex}
+    .nav-cta-wrap{display:none}
+  }
+
+  /* ── RESPONSIVE UPGRADES ── */
+  @media(min-width:681px){
+    .about-grid{grid-template-columns:1fr 1fr}
+    .testimony-grid{grid-template-columns:1fr 1fr}
+    .location-grid{grid-template-columns:1fr 1fr}
+    .footer-inner{flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:wrap}
+  }
+  @media(min-width:900px){
+    .about-grid{grid-template-columns:3fr 2fr}
+    .testimony-grid{grid-template-columns:repeat(2,1fr)}
+    section{padding:6rem 2.5rem}
+    nav{padding:0 2.5rem}
+    .hero-content{padding:4rem 2.5rem 5rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="top">
+  <span class="nav-logo brand">Jaas Auto</span>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#location">Hours &amp; Location</a></li>
+  </ul>
+  <div class="nav-cta-wrap">
+    <a class="nav-cta" href="tel:+12095460628">Call (209) 546-0628</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Stockton, CA · Charter Way</p>
+    <h1 class="brand"><em>Jaas</em><br>Auto<br>Services</h1>
+    <p class="hero-sub">Fast, honest repairs and maintenance — in and out in 35 minutes, at a price that makes sense.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="tel:+12095460628">Call Now</a>
+      <a class="btn-outline" href="https://www.google.com/maps?q=414+W+Charter+Way,+Stockton,+CA+95206&z=15&output=embed" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+  </div>
+  <div class="hero-badge">
+    <strong>7</strong>
+    <span>Days<br>a Week</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Oil Changes</span><span>AC Recharge</span><span>Brake Service</span><span>Engine Diagnostics</span><span>Transmission</span><span>Fast Turnaround</span><span>Fair Prices</span><span>Stockton's Trusted Shop</span>
+    <span>Oil Changes</span><span>AC Recharge</span><span>Brake Service</span><span>Engine Diagnostics</span><span>Transmission</span><span>Fast Turnaround</span><span>Fair Prices</span><span>Stockton's Trusted Shop</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="inner about-grid">
+    <div class="about-body">
+      <p class="section-label">Who We Are</p>
+      <h2 class="section-title">Built on<br>Trust &amp;<br>Speed</h2>
+      <p>Jaas Auto Services has been the go-to shop for Stockton drivers who want the job done right the first time — without the runaround. Located on W. Charter Way, we handle everything from quick oil changes to full mechanical repairs.</p>
+      <p>Our team speaks your language. Tell us what's wrong and we'll give you a straight answer, a fair price, and a fast turnaround. <strong>No upsells. No surprises.</strong></p>
+      <p>Open every day of the week — because car trouble doesn't follow a Monday-to-Friday schedule.</p>
+      <div class="stats">
+        <div class="stat"><strong>35<span style="font-size:1.2rem">min</span></strong><span>Oil Change Avg.</span></div>
+        <div class="stat"><strong>7</strong><span>Days Open</span></div>
+        <div class="stat"><strong>100%</strong><span>Family Referred</span></div>
+      </div>
+    </div>
+    <div class="about-photos">
+      <img src="./photos/02.jpg" alt="Jaas Auto Services shop front">
+      <img src="./photos/03.jpg" alt="Auto repair work in progress">
+      <img src="./photos/04.jpg" alt="Mechanic at work">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="inner">
+    <div class="services-header">
+      <div>
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">Our Services</h2>
+      </div>
+      <a class="btn-primary" href="tel:+12095460628">Call for a Quote</a>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <div class="svc-name">Oil Change</div>
+        <p class="svc-desc">Conventional or synthetic — in and out in under 35 minutes. Includes a multi-point check so you leave knowing your car is solid.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <div class="svc-name">AC Recharge</div>
+        <p class="svc-desc">Restore cold air fast. We check for leaks, recharge your refrigerant, and get you cool before summer hits full force.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <div class="svc-name">Brake Service</div>
+        <p class="svc-desc">Pads, rotors, fluid flush — we inspect the full system and only recommend what you actually need. Safety at a fair price.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <div class="svc-name">Engine Diagnostics</div>
+        <p class="svc-desc">Check engine light on? We hook up the scanner, read the codes, and explain what it means in plain English before we touch anything.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">05</div>
+        <div class="svc-name">Transmission &amp; Drivetrain</div>
+        <p class="svc-desc">Fluid changes, filter swaps, and full transmission diagnostics. We know these systems and we fix them right.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-num">06</div>
+        <div class="svc-name">General Mechanical</div>
+        <p class="svc-desc">Belts, hoses, starters, alternators, cooling systems — if your car needs it, we've done it. One shop for all your mechanical needs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip" aria-hidden="true">
+  <img src="./photos/05.jpg" alt="Shop detail">
+  <img src="./photos/01.jpg" alt="Service bay">
+  <img src="./photos/02.jpg" alt="Jaas team">
+</div>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="inner">
+    <p class="section-label">Straight From the Customers</p>
+    <h2 class="section-title">Customer<br>Testimonies</h2>
+    <div class="testimony-grid">
+      <div class="testimony">
+        <blockquote>"Great place to get your car's maintenance done. They get the oil change done very fast — in and out within 35 minutes. Great prices too."</blockquote>
+        <cite>Alfredo R.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"Great place, great service, great people! They know what they're talking about when you tell them the problem you're having. So glad my Dad and family referred me here — never have to look for a mechanic again!"</blockquote>
+        <cite>Alice M.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"Excellent service at an affordable price."</blockquote>
+        <cite>Elsa C.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"Great shop for all mechanic work. I highly recommend. Change oil in and out quick. Reasonable prices."</blockquote>
+        <cite>Chanveasna M.</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section id="location">
+  <div class="inner location-grid">
+    <div>
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Hours &amp;<br>Location</h2>
+      <table class="hours-table">
+        <tr><td>Mon</td><td>8:00 AM – 5:04 PM</td></tr>
+        <tr><td>Tue</td><td>8:00 AM – 5:04 PM</td></tr>
+        <tr><td>Wed</td><td>8:00 AM – 5:04 PM</td></tr>
+        <tr><td>Thu</td><td>8:00 AM – 5:04 PM</td></tr>
+        <tr><td>Fri</td><td>8:00 AM – 5:04 PM</td></tr>
+        <tr><td>Sat</td><td>8:00 AM – 5:04 PM</td></tr>
+        <tr><td>Sun</td><td>8:00 AM – 5:04 PM</td></tr>
+      </table>
+      <div class="contact-block">
+        <a href="tel:+12095460628">(209) 546-0628</a>
+        <p>414 W Charter Way<br>Stockton, CA 95206</p>
+        <div style="margin-top:1.25rem;display:flex;gap:1rem;flex-wrap:wrap">
+          <a class="btn-primary" href="tel:+12095460628">Call Now</a>
+          <a class="btn-outline" href="https://maps.google.com/?cid=2735683409984741369" target="_blank" rel="noopener">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps?q=414+W+Charter+Way,+Stockton,+CA+95206&z=15&output=embed" loading="lazy" title="Jaas Auto Services location"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand brand">Jaas Auto Services</div>
+      <p style="font-size:.8rem;color:var(--txt2);margin-top:.35rem">414 W Charter Way · Stockton, CA 95206</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#testimonies">Testimonies</a>
+      <a href="#location">Hours</a>
+      <a href="https://maps.google.com/?cid=2735683409984741369" target="_blank" rel="noopener">Google Business</a>
+    </nav>
+  </div>
+  <hr class="footer-divider" style="margin:1.5rem 0">
+  <div style="max-width:1100px;margin:0 auto">
+    <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+</body>
+</html>

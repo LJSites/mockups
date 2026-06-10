@@ -1,0 +1,529 @@
+<!-- barber · bold-dark · hero-layout 2 · svc-layout 1 · Archivo Black/Inter -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Love Cutz Barbershop 2 — Indio, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --acc:#14b8a6;
+  --bg:#0b1f1d;
+  --bg2:#0f2825;
+  --bg3:#162e2b;
+  --txt:#e8f0ef;
+  --txt2:#8fafab;
+  --nav-h:64px;
+}
+html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased}
+.brand{font-family:'Archivo Black',serif;letter-spacing:-0.02em}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  height:var(--nav-h);
+  background:rgba(11,31,29,0.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(20,184,166,0.15);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(1.25rem,4vw,3rem);
+}
+.nav-logo{font-size:1.1rem;color:var(--acc);text-decoration:none}
+.nav-logo span{color:var(--txt)}
+.nav-links{display:flex;gap:clamp(1rem,2.5vw,2rem);list-style:none}
+.nav-links a{color:var(--txt2);text-decoration:none;font-size:0.875rem;font-weight:500;letter-spacing:0.03em;transition:color 0.2s}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{
+  background:var(--acc);color:#0b1f1d;
+  padding:0.45rem 1.1rem;border-radius:3px;
+  font-weight:600;font-size:0.875rem;text-decoration:none;
+  transition:background 0.2s,transform 0.15s;
+  white-space:nowrap;
+}
+.nav-cta:hover{background:#0d9488;transform:translateY(-1px)}
+.nav-mobile-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.nav-mobile-toggle span{display:block;width:22px;height:2px;background:var(--txt2);transition:all 0.3s}
+@media(max-width:680px){
+  .nav-links,.nav-cta{display:none}
+  .nav-mobile-toggle{display:flex}
+  nav.open .nav-links{
+    display:flex;flex-direction:column;
+    position:absolute;top:var(--nav-h);left:0;right:0;
+    background:var(--bg2);border-bottom:1px solid rgba(20,184,166,0.15);
+    padding:1.25rem clamp(1.25rem,4vw,3rem) 1.5rem;
+    gap:1.25rem;
+  }
+  nav.open .nav-cta{
+    display:inline-block;
+    margin:0 clamp(1.25rem,4vw,3rem) 1.5rem;
+    text-align:center;
+  }
+}
+
+/* HERO — full bleed */
+.hero{
+  position:relative;min-height:min(92vh,860px);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('./photos/01.jpg');
+  background-size:cover;background-position:center 30%;
+  transform:scale(1.03);
+  transition:transform 8s ease;
+}
+.hero:hover .hero-bg{transform:scale(1)}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(
+    to top,
+    rgba(11,31,29,0.97) 0%,
+    rgba(11,31,29,0.6) 45%,
+    rgba(11,31,29,0.25) 100%
+  );
+}
+.hero-content{
+  position:relative;z-index:1;
+  padding:clamp(3rem,6vw,6rem) clamp(1.25rem,6vw,5rem);
+  max-width:820px;
+}
+.hero-label{
+  display:inline-block;
+  font-size:0.75rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:1rem;
+}
+.hero h1{
+  font-size:clamp(2.6rem,8vw,6rem);
+  line-height:1.02;color:#fff;margin-bottom:1.25rem;
+}
+.hero h1 em{color:var(--acc);font-style:normal}
+.hero-sub{
+  font-size:clamp(1rem,2.5vw,1.2rem);color:var(--txt2);
+  max-width:520px;margin-bottom:2rem;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:0.875rem;align-items:center}
+.btn-primary{
+  background:var(--acc);color:#0b1f1d;
+  padding:0.8rem 2rem;border-radius:3px;
+  font-weight:700;font-size:1rem;text-decoration:none;letter-spacing:0.01em;
+  transition:background 0.2s,transform 0.15s,box-shadow 0.2s;
+  box-shadow:0 4px 20px rgba(20,184,166,0.3);
+}
+.btn-primary:hover{background:#0d9488;transform:translateY(-2px);box-shadow:0 6px 28px rgba(20,184,166,0.4)}
+.btn-ghost{
+  color:var(--txt);border:1.5px solid rgba(255,255,255,0.25);
+  padding:0.78rem 1.75rem;border-radius:3px;
+  font-weight:600;font-size:1rem;text-decoration:none;
+  transition:border-color 0.2s,color 0.2s;
+}
+.btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+
+/* STRIP */
+.strip{
+  background:var(--acc);color:#0b1f1d;
+  padding:0.7rem clamp(1.25rem,4vw,3rem);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.5rem 3rem;
+  font-size:0.85rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;
+}
+.strip-item::before{content:'✦ ';font-size:0.7rem}
+
+/* SECTIONS */
+section{padding:clamp(3.5rem,7vw,6rem) clamp(1.25rem,6vw,5rem)}
+.section-label{
+  font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--acc);display:block;margin-bottom:0.6rem;
+}
+.section-title{
+  font-size:clamp(1.8rem,5vw,3rem);line-height:1.1;margin-bottom:1.5rem;
+}
+.section-title em{color:var(--acc);font-style:normal}
+
+/* ABOUT */
+.about{background:var(--bg2)}
+.about-inner{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:center;
+  max-width:1200px;margin:0 auto;
+}
+.about-imgs{
+  display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;
+}
+.about-imgs img{
+  width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:4px;
+  filter:brightness(0.9) contrast(1.05);
+  transition:filter 0.3s,transform 0.3s;
+}
+.about-imgs img:first-child{margin-top:2rem}
+.about-imgs img:hover{filter:brightness(1);transform:scale(1.02)}
+.about p{color:var(--txt2);font-size:1.05rem;margin-bottom:1rem}
+.about p:last-child{margin-bottom:0}
+@media(max-width:720px){
+  .about-inner{grid-template-columns:1fr}
+  .about-imgs{max-width:480px}
+}
+
+/* SERVICES */
+.services{background:var(--bg)}
+.services-inner{max-width:1200px;margin:0 auto}
+.svc-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;border:1px solid rgba(20,184,166,0.12);border-radius:6px;overflow:hidden;
+}
+.svc-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.25rem 1.75rem;
+  border-bottom:1px solid rgba(20,184,166,0.1);
+  transition:background 0.2s;
+}
+.svc-row:last-child,.svc-row:nth-last-child(2):nth-child(odd){border-bottom:none}
+.svc-row:hover{background:rgba(20,184,166,0.06)}
+.svc-name{font-weight:600;font-size:0.975rem}
+.svc-desc{font-size:0.8rem;color:var(--txt2);margin-top:0.15rem}
+.svc-price{
+  font-family:'Archivo Black',serif;font-size:1.1rem;
+  color:var(--acc);white-space:nowrap;margin-left:1rem;
+}
+.services-note{
+  margin-top:1.75rem;font-size:0.85rem;color:var(--txt2);text-align:center;
+}
+@media(max-width:680px){
+  .svc-grid{grid-template-columns:1fr}
+  .svc-row:last-child{border-bottom:none}
+  .svc-row:nth-last-child(2):nth-child(odd){border-bottom:1px solid rgba(20,184,166,0.1)}
+}
+
+/* GALLERY */
+.gallery{background:var(--bg3)}
+.gallery-inner{max-width:1400px;margin:0 auto}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:auto auto;
+  gap:0.6rem;margin-top:2rem;
+}
+.gallery-grid img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  border-radius:3px;
+  filter:brightness(0.88) contrast(1.05) saturate(0.9);
+  transition:filter 0.35s,transform 0.35s;
+}
+.gallery-grid img:nth-child(1){
+  grid-column:1/3;aspect-ratio:16/9;
+}
+.gallery-grid img:hover{filter:brightness(1) contrast(1.05) saturate(1.1);transform:scale(1.015)}
+@media(max-width:680px){
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid img:nth-child(1){grid-column:1/3;aspect-ratio:16/9}
+}
+
+/* TESTIMONIES */
+.testimonies{background:var(--bg2)}
+.testimonies-inner{max-width:900px;margin:0 auto}
+.testi-list{display:flex;flex-direction:column;gap:1px;margin-top:2rem}
+.testi-item{
+  padding:2rem 2.25rem;
+  background:var(--bg3);
+  border-left:3px solid var(--acc);
+  transition:background 0.2s;
+}
+.testi-item:hover{background:rgba(20,184,166,0.05)}
+.testi-quote{
+  font-size:clamp(1rem,2.5vw,1.2rem);
+  line-height:1.6;color:var(--txt);
+  font-style:italic;margin-bottom:1rem;
+}
+.testi-attr{
+  font-size:0.8rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--acc);
+}
+
+/* HOURS + MAP */
+.info{background:var(--bg)}
+.info-inner{
+  display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(2rem,5vw,5rem);align-items:start;
+  max-width:1200px;margin:0 auto;
+}
+.hours-table{width:100%;border-collapse:collapse;margin-top:1.25rem}
+.hours-table tr{border-bottom:1px solid rgba(20,184,166,0.08)}
+.hours-table tr:last-child{border-bottom:none}
+.hours-table td{padding:0.65rem 0;font-size:0.925rem}
+.hours-table td:last-child{text-align:right;color:var(--acc);font-weight:600}
+.hours-table .today td{color:#fff}
+.hours-table .today td:first-child::after{
+  content:' ·';color:var(--acc);
+}
+.contact-links{margin-top:1.5rem;display:flex;flex-direction:column;gap:0.6rem}
+.contact-links a{
+  color:var(--txt2);text-decoration:none;font-size:0.925rem;
+  display:flex;align-items:center;gap:0.5rem;
+  transition:color 0.2s;
+}
+.contact-links a:hover{color:var(--acc)}
+.contact-links a .icon{font-size:0.85rem;color:var(--acc);width:1.2rem}
+.map-wrap{
+  border-radius:6px;overflow:hidden;
+  border:1px solid rgba(20,184,166,0.15);
+  height:min(380px,55vw);
+  min-height:260px;
+}
+.map-wrap iframe{display:block;width:100%;height:100%;border:none;filter:grayscale(20%) contrast(1.05)}
+@media(max-width:720px){
+  .info-inner{grid-template-columns:1fr}
+  .map-wrap{height:260px}
+}
+
+/* CTA BANNER */
+.cta-banner{
+  background:var(--acc);
+  padding:clamp(2.5rem,5vw,4rem) clamp(1.25rem,6vw,5rem);
+  text-align:center;
+}
+.cta-banner h2{
+  font-size:clamp(1.6rem,5vw,2.8rem);
+  color:#0b1f1d;margin-bottom:0.5rem;
+}
+.cta-banner p{color:rgba(11,31,29,0.7);font-size:1rem;margin-bottom:1.75rem}
+.btn-dark{
+  background:#0b1f1d;color:var(--acc);
+  padding:0.85rem 2.25rem;border-radius:3px;
+  font-weight:700;font-size:1rem;text-decoration:none;
+  transition:background 0.2s,transform 0.15s;
+  display:inline-block;
+}
+.btn-dark:hover{background:#0f2825;transform:translateY(-2px)}
+
+/* FOOTER */
+footer{
+  background:#070f0e;
+  padding:clamp(2rem,4vw,3rem) clamp(1.25rem,4vw,3rem);
+  border-top:1px solid rgba(20,184,166,0.1);
+}
+.footer-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;justify-content:space-between;
+}
+.footer-brand .brand{font-size:1rem;color:var(--acc)}
+.footer-brand p{font-size:0.8rem;color:var(--txt2);margin-top:0.3rem}
+.footer-social{display:flex;gap:1rem}
+.footer-social a{
+  color:var(--txt2);text-decoration:none;font-size:0.82rem;font-weight:600;
+  letter-spacing:0.04em;text-transform:uppercase;
+  transition:color 0.2s;
+}
+.footer-social a:hover{color:var(--acc)}
+.footer-credit{
+  width:100%;
+  font-size:0.77rem;color:rgba(143,175,171,0.5);
+  padding-top:1.25rem;border-top:1px solid rgba(20,184,166,0.06);
+  text-align:center;
+}
+.footer-credit a{color:rgba(143,175,171,0.6);text-decoration:none}
+.footer-credit a:hover{color:var(--acc)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="top">
+  <a href="#top" class="nav-logo brand"><em>One Love</em> <span>Cutz</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#info">Hours &amp; Location</a></li>
+  </ul>
+  <a href="tel:7602890735" class="nav-cta">Call Now</a>
+  <button class="nav-mobile-toggle" aria-label="Menu" onclick="this.closest('nav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="section-label">Indio, CA · CA-111</span>
+    <h1 class="brand">Fresh Cuts.<br><em>One Love.</em></h1>
+    <p class="hero-sub">Professional barbershop serving Indio with skilled barbers, a welcoming vibe, and the clean fade you've been looking for.</p>
+    <div class="hero-actions">
+      <a href="tel:7602890735" class="btn-primary">Call Now — (760) 289-0735</a>
+      <a href="https://www.google.com/maps?q=82011+CA-111,+Indio,+CA+92201" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<div class="strip">
+  <span class="strip-item">Open 7 Days a Week</span>
+  <span class="strip-item">9 AM – 8 PM Daily</span>
+  <span class="strip-item">Walk-ins Welcome</span>
+  <span class="strip-item">Indio, CA</span>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-imgs">
+      <img src="./photos/02.jpg" alt="Inside One Love Cutz Barbershop">
+      <img src="./photos/03.jpg" alt="Barber at work">
+    </div>
+    <div class="about-text">
+      <span class="section-label">About Us</span>
+      <h2 class="section-title brand">Your <em>neighborhood</em> barbershop on the 111</h2>
+      <p>One Love Cutz Barbershop 2 is where great cuts meet an even better atmosphere. Our barbers bring professionalism, precision, and good energy to every chair — whether you're after a tight fade, a classic taper, or a lineup that has you looking sharp.</p>
+      <p>We've built a reputation in Indio for being the kind of shop where you leave better than when you walked in — not just your hair, but your whole mood. Come through, relax, and let us do the rest.</p>
+      <p style="margin-top:1.5rem">
+        <a href="tel:7602890735" class="btn-primary" style="font-size:0.95rem;padding:0.7rem 1.6rem">Book by Phone</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <span class="section-label">What We Offer</span>
+    <h2 class="section-title brand">Services &amp; <em>Pricing</em></h2>
+    <div class="svc-grid">
+      <div class="svc-row">
+        <div>
+          <div class="svc-name">Haircut</div>
+          <div class="svc-desc">Classic cut, tapered and finished clean</div>
+        </div>
+        <div class="svc-price">$20+</div>
+      </div>
+      <div class="svc-row">
+        <div>
+          <div class="svc-name">Fade</div>
+          <div class="svc-desc">Low, mid, or high — your call</div>
+        </div>
+        <div class="svc-price">$25+</div>
+      </div>
+      <div class="svc-row">
+        <div>
+          <div class="svc-name">Lineup / Edge-Up</div>
+          <div class="svc-desc">Sharp lines, clean temples</div>
+        </div>
+        <div class="svc-price">$10+</div>
+      </div>
+      <div class="svc-row">
+        <div>
+          <div class="svc-name">Beard Trim</div>
+          <div class="svc-desc">Shape and define with a straight razor finish</div>
+        </div>
+        <div class="svc-price">$15+</div>
+      </div>
+      <div class="svc-row">
+        <div>
+          <div class="svc-name">Kids Cut</div>
+          <div class="svc-desc">12 &amp; under, patient and friendly</div>
+        </div>
+        <div class="svc-price">$18+</div>
+      </div>
+      <div class="svc-row">
+        <div>
+          <div class="svc-name">Cut + Beard Combo</div>
+          <div class="svc-desc">Full service — look good from every angle</div>
+        </div>
+        <div class="svc-price">$35+</div>
+      </div>
+    </div>
+    <p class="services-note">Prices may vary. Call us at <a href="tel:7602890735" style="color:var(--acc)">(760) 289-0735</a> for more info.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-inner">
+    <span class="section-label">Inside the Shop</span>
+    <h2 class="section-title brand">See <em>the space</em></h2>
+    <div class="gallery-grid">
+      <img src="./photos/04.jpg" alt="Barbershop interior">
+      <img src="./photos/05.jpg" alt="Barber chair and station">
+      <img src="./photos/06.jpg" alt="Shop details">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="testimonies" id="testimonies">
+  <div class="testimonies-inner">
+    <span class="section-label">Customer Testimonies</span>
+    <h2 class="section-title brand">What People <em>Say</em></h2>
+    <div class="testi-list">
+      <div class="testi-item">
+        <p class="testi-quote">"Great place to come for a haircut! Very professional barbers!"</p>
+        <div class="testi-attr">— David S.</div>
+      </div>
+      <div class="testi-item">
+        <p class="testi-quote">"Barbershop looks great, barbers were very friendly and funny."</p>
+        <div class="testi-attr">— Damian P.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS + MAP -->
+<section class="info" id="info">
+  <div class="info-inner">
+    <div>
+      <span class="section-label">Find Us</span>
+      <h2 class="section-title brand">Hours &amp; <em>Location</em></h2>
+      <table class="hours-table">
+        <tr><td>Monday</td><td>9:00 AM – 8:00 PM</td></tr>
+        <tr><td>Tuesday</td><td>9:00 AM – 8:00 PM</td></tr>
+        <tr><td>Wednesday</td><td>9:00 AM – 8:00 PM</td></tr>
+        <tr><td>Thursday</td><td>9:00 AM – 8:00 PM</td></tr>
+        <tr><td>Friday</td><td>9:00 AM – 8:00 PM</td></tr>
+        <tr><td>Saturday</td><td>9:00 AM – 8:00 PM</td></tr>
+        <tr><td>Sunday</td><td>9:00 AM – 8:00 PM</td></tr>
+      </table>
+      <div class="contact-links">
+        <a href="tel:7602890735"><span class="icon">☎</span> (760) 289-0735</a>
+        <a href="https://www.google.com/maps?q=82011+CA-111,+Indio,+CA+92201" target="_blank" rel="noopener"><span class="icon">⊙</span> 82011 CA-111, Indio, CA 92201</a>
+        <a href="https://maps.google.com/?cid=6697772147739071484" target="_blank" rel="noopener"><span class="icon">★</span> View on Google Maps</a>
+      </div>
+    </div>
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps?q=82011+CA-111,+Indio,+CA+92201&z=15&output=embed"
+        title="One Love Cutz Barbershop 2 location map"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2 class="brand">Ready for your next cut?</h2>
+  <p>Walk in any day, 9 AM to 8 PM — we're here for you.</p>
+  <a href="tel:7602890735" class="btn-dark brand">Call (760) 289-0735</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand" style="color:var(--acc);font-size:1rem">One Love Cutz Barbershop 2</div>
+      <p>82011 CA-111 · Indio, CA 92201</p>
+    </div>
+    <div class="footer-social">
+      <a href="https://maps.google.com/?cid=6697772147739071484" target="_blank" rel="noopener">Google</a>
+    </div>
+  </div>
+  <div class="footer-credit">
+    Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!--
+  A Martinez Flowers — single-page mockup
+  Flavor/archetype: vivid-market florist (abundant San Bernardino flower-market stall;
+    bold orange + cream, big serif display, market-stall energy, value-forward)
+  Hero layout id: full-bleed (full-bleed photo, headline over a warm scrim, no centered-pill cliche)
+  Service layout id: sticker-cards (asymmetric pinned "sticker" cards with rotation + price tags)
+  Palette: --acc #ea580c (market orange) on --bg #fff8f3 (warm cream)
+  Display font: DM Serif Display; body: Inter
+  Animation: none (static; market vibrancy carried by photos + color, not motion)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Martinez Flowers — Fresh Flowers & Custom Arrangements | San Bernardino</title>
+<meta name="description" content="A Martinez Flowers — a San Bernardino flower market with the best prices in town. Fresh bouquets, custom wedding & event arrangements, and same-day delivery. Open 7 days, 7am–7pm.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          acc: '#ea580c',
+          bg: '#fff8f3',
+          ink: '#2a1a12',
+          leaf: '#3f6f3f',
+        },
+        fontFamily: {
+          serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+          sans: ['Inter', 'system-ui', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root {
+    --acc: #ea580c;
+    --bg: #fff8f3;
+  }
+  /* fixed header = 76px nav + ticker tape (taller when the tape wraps on small screens) */
+  html { scroll-padding-top: 120px; scroll-behavior: smooth; }
+  @media (min-width: 640px){ html { scroll-padding-top: 110px; } }
+  body { background: var(--bg); color: #2a1a12; font-family: Inter, system-ui, sans-serif; }
+  .font-display { font-family: "DM Serif Display", Georgia, serif; }
+
+  /* market-stall ticker tape under the nav */
+  .tape {
+    background: var(--acc);
+    color: #fff8f3;
+  }
+
+  /* sticker cards: pinned + slightly rotated for that hand-arranged market feel */
+  .sticker {
+    background: #ffffff;
+    border: 1px solid #f1d8c8;
+    box-shadow: 0 14px 34px -20px rgba(234,88,12,.45);
+    position: relative;
+  }
+  .sticker:nth-child(odd)  { transform: rotate(-1.1deg); }
+  .sticker:nth-child(even) { transform: rotate(1.1deg); }
+  .sticker:hover { transform: rotate(0deg) translateY(-4px); transition: transform .25s ease; }
+  .pin {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    width: 26px; height: 26px; border-radius: 999px;
+    background: var(--acc); border: 4px solid #fff8f3;
+    box-shadow: 0 4px 8px -2px rgba(0,0,0,.3);
+  }
+  .price-tag {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: #fff1e9; color: var(--acc);
+    border: 1px dashed #f5a97a;
+    font-weight: 700; letter-spacing: .02em;
+  }
+
+  .btn-acc {
+    background: var(--acc); color: #fff;
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+    box-shadow: 0 10px 22px -10px rgba(234,88,12,.7);
+  }
+  .btn-acc:hover { background: #c2410c; transform: translateY(-2px); box-shadow: 0 16px 30px -12px rgba(234,88,12,.8); }
+
+  .btn-ghost {
+    border: 2px solid var(--acc); color: var(--acc); background: transparent;
+    transition: background .15s ease, color .15s ease;
+  }
+  .btn-ghost:hover { background: var(--acc); color: #fff; }
+
+  .hero-scrim {
+    background: linear-gradient(100deg, rgba(42,26,18,.82) 0%, rgba(42,26,18,.55) 45%, rgba(42,26,18,.12) 100%);
+  }
+
+  .underline-acc { box-shadow: inset 0 -.42em 0 rgba(234,88,12,.16); }
+
+  .gallery-tall { grid-row: span 2; }
+
+  .quote-card { background:#fff; border:1px solid #f1d8c8; }
+  .quote-mark { font-family:"DM Serif Display",serif; color:var(--acc); line-height:0; }
+
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content:""; position:absolute; left:0; bottom:-4px; height:2px; width:0; background:var(--acc);
+    transition: width .2s ease;
+  }
+  .nav-link:hover::after { width:100%; }
+
+  @media (max-width: 640px){
+    .sticker:nth-child(odd), .sticker:nth-child(even){ transform:none; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<header class="fixed top-0 inset-x-0 z-50">
+  <nav class="bg-bg/95 backdrop-blur border-b border-orange-100" style="height:76px">
+    <div class="max-w-6xl mx-auto h-full px-5 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2.5">
+        <span class="inline-grid place-items-center w-9 h-9 rounded-full bg-acc text-white font-display text-lg leading-none">A</span>
+        <span class="font-display text-xl sm:text-2xl text-ink leading-none">Martinez Flowers</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-[15px] font-medium text-ink/80">
+        <a href="#shop" class="nav-link">Shop</a>
+        <a href="#about" class="nav-link">Our Stand</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#say" class="nav-link">What People Say</a>
+        <a href="#visit" class="nav-link">Visit</a>
+      </div>
+      <a href="tel:+19093522011" class="btn-acc rounded-full px-4 sm:px-5 py-2 text-sm font-semibold">Call (909) 352-2011</a>
+    </div>
+  </nav>
+  <div class="tape text-xs sm:text-sm font-semibold tracking-wide">
+    <div class="max-w-6xl mx-auto px-5 py-1.5 flex flex-wrap items-center justify-center gap-x-6 gap-y-0.5 text-center">
+      <span>Open 7 days · 7AM – 7PM</span>
+      <span class="hidden sm:inline opacity-60">•</span>
+      <span>Best prices in San Bernardino</span>
+      <span class="hidden sm:inline opacity-60">•</span>
+      <span>Same-day & event delivery</span>
+    </div>
+  </div>
+</header>
+
+<!-- HERO — full-bleed -->
+<section id="top" class="relative min-h-[92vh] flex items-end overflow-hidden">
+  <img src="./photos/02.jpg" alt="A vivid hand-tied bouquet of blue, yellow and pink roses from A Martinez Flowers" class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0 hero-scrim"></div>
+  <div class="relative w-full max-w-6xl mx-auto px-5 pb-16 pt-40 sm:pb-24">
+    <p class="text-[#ffd9c2] font-semibold tracking-[.22em] uppercase text-xs sm:text-sm mb-4">San Bernardino · Flower Market</p>
+    <h1 class="font-display text-white text-[2.7rem] leading-[1.04] sm:text-6xl md:text-7xl max-w-3xl">
+      Rooms full of fresh flowers,<br><span class="italic">priced for everyone.</span>
+    </h1>
+    <p class="mt-6 text-white/90 text-lg sm:text-xl max-w-xl">
+      Custom bouquets, weddings, quinceañeras, funerals and just-because blooms — built by hand at our Waterman Ave stand and delivered across the Inland Empire.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3.5">
+      <a href="tel:+19093522011" class="btn-acc rounded-full px-7 py-3.5 text-base font-semibold">Call to Order</a>
+      <a href="#shop" class="rounded-full px-7 py-3.5 text-base font-semibold bg-white/95 text-ink hover:bg-white transition">See What's in Stock</a>
+    </div>
+  </div>
+</section>
+
+<!-- TIER STRIP (real $10/$20/$30 price ladder from the cooler photo) -->
+<section class="bg-ink text-bg">
+  <div class="max-w-6xl mx-auto px-5 py-8 grid grid-cols-3 gap-4 text-center">
+    <div>
+      <p class="font-display text-3xl sm:text-5xl text-acc">$10</p>
+      <p class="mt-1 text-xs sm:text-sm text-bg/70 uppercase tracking-wide">Ready-made bouquets</p>
+    </div>
+    <div class="border-x border-white/15">
+      <p class="font-display text-3xl sm:text-5xl text-acc">$20</p>
+      <p class="mt-1 text-xs sm:text-sm text-bg/70 uppercase tracking-wide">Mixed arrangements</p>
+    </div>
+    <div>
+      <p class="font-display text-3xl sm:text-5xl text-acc">$30</p>
+      <p class="mt-1 text-xs sm:text-sm text-bg/70 uppercase tracking-wide">Premium &amp; specialty</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / OUR STAND -->
+<section id="about" class="max-w-6xl mx-auto px-5 py-20 sm:py-28">
+  <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+    <div>
+      <p class="text-acc font-semibold tracking-[.2em] uppercase text-xs mb-4">Our Stand</p>
+      <h2 class="font-display text-4xl sm:text-5xl leading-tight text-ink">
+        A real flower market<span class="underline-acc">, not a webpage that ships from a warehouse.</span>
+      </h2>
+      <p class="mt-6 text-ink/75 text-lg leading-relaxed">
+        Walk into A Martinez Flowers and you'll find buckets of fresh-cut stems, walls of ready-made bouquets, and a tented stand out front stacked with roses by the case. We've grown into one of the friendliest flower stops in San Bernardino by doing one thing well: beautiful flowers at prices people can actually afford.
+      </p>
+      <p class="mt-4 text-ink/75 text-lg leading-relaxed">
+        Tell Luis, Claudia or the team your budget and your occasion — they'll build something better than you pictured, often while you wait.
+      </p>
+      <a href="#shop" class="inline-block mt-7 btn-ghost rounded-full px-6 py-3 font-semibold text-sm">What we make</a>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <img src="./photos/05.jpg" alt="Buckets of fresh-cut flowers and sunflowers under the outdoor tent" class="rounded-2xl object-cover w-full h-full aspect-[3/4] gallery-tall">
+      <img src="./photos/01.jpg" alt="Inside A Martinez Flowers — shelves of gift goods and a flower cooler" class="rounded-2xl object-cover w-full aspect-square">
+      <img src="./photos/06.jpg" alt="Cases of fresh roses laid out at the market stand" class="rounded-2xl object-cover w-full aspect-square">
+    </div>
+  </div>
+</section>
+
+<!-- SHOP / SERVICES — sticker-cards -->
+<section id="shop" class="bg-[#fff1e8] border-y border-orange-100">
+  <div class="max-w-6xl mx-auto px-5 py-20 sm:py-28">
+    <div class="max-w-2xl">
+      <p class="text-acc font-semibold tracking-[.2em] uppercase text-xs mb-4">What We Make</p>
+      <h2 class="font-display text-4xl sm:text-5xl text-ink leading-tight">From a $10 bunch to a full wedding</h2>
+      <p class="mt-4 text-ink/70 text-lg">Everything is built fresh and customized to your budget. Pricing below is a starting point — call us and we'll tailor it.</p>
+    </div>
+
+    <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-7 gap-y-12">
+      <!-- card -->
+      <article class="sticker rounded-2xl p-7">
+        <span class="pin"></span>
+        <h3 class="font-display text-2xl text-ink">Ready-Made Bouquets</h3>
+        <p class="mt-3 text-ink/70 leading-relaxed">Grab-and-go bunches refreshed daily — roses, mixed seasonals, sunflowers and more, wrapped and ready.</p>
+        <span class="price-tag mt-5 rounded-full px-3 py-1 text-sm">from $10</span>
+      </article>
+
+      <article class="sticker rounded-2xl p-7">
+        <span class="pin"></span>
+        <h3 class="font-display text-2xl text-ink">Custom Arrangements</h3>
+        <p class="mt-3 text-ink/70 leading-relaxed">Tell us the occasion and the budget. Birthdays, anniversaries, get-wells — designed by hand, often the same hour you walk in.</p>
+        <span class="price-tag mt-5 rounded-full px-3 py-1 text-sm">from $20</span>
+      </article>
+
+      <article class="sticker rounded-2xl p-7">
+        <span class="pin"></span>
+        <h3 class="font-display text-2xl text-ink">Weddings &amp; Quinceañeras</h3>
+        <p class="mt-3 text-ink/70 leading-relaxed">Full packages — centerpieces, sweetheart table, bridal &amp; bridesmaid bouquets, boutonnières and corsages — delivered on time.</p>
+        <span class="price-tag mt-5 rounded-full px-3 py-1 text-sm">custom quote</span>
+      </article>
+
+      <article class="sticker rounded-2xl p-7">
+        <span class="pin"></span>
+        <h3 class="font-display text-2xl text-ink">Sympathy &amp; Funeral</h3>
+        <p class="mt-3 text-ink/70 leading-relaxed">Standing sprays, wreaths and arrangements handled with care and quick turnaround when timing is tight.</p>
+        <span class="price-tag mt-5 rounded-full px-3 py-1 text-sm">custom quote</span>
+      </article>
+
+      <article class="sticker rounded-2xl p-7">
+        <span class="pin"></span>
+        <h3 class="font-display text-2xl text-ink">Specialty &amp; Premium</h3>
+        <p class="mt-3 text-ink/70 leading-relaxed">Premium rose bouquets, butterfly &amp; mixed-color builds, balloons and gift extras for the moments that call for more.</p>
+        <span class="price-tag mt-5 rounded-full px-3 py-1 text-sm">from $30</span>
+      </article>
+
+      <article class="sticker rounded-2xl p-7">
+        <span class="pin"></span>
+        <h3 class="font-display text-2xl text-ink">Local Delivery</h3>
+        <p class="mt-3 text-ink/70 leading-relaxed">Same-day and short-turnaround delivery across San Bernardino and the Inland Empire — just ask when you order.</p>
+        <span class="price-tag mt-5 rounded-full px-3 py-1 text-sm">ask us</span>
+      </article>
+    </div>
+
+    <div class="mt-14 text-center">
+      <a href="tel:+19093522011" class="btn-acc rounded-full px-8 py-4 text-base font-semibold">Call to Order — (909) 352-2011</a>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="max-w-6xl mx-auto px-5 py-20 sm:py-28">
+  <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
+    <div>
+      <p class="text-acc font-semibold tracking-[.2em] uppercase text-xs mb-3">From the Stand</p>
+      <h2 class="font-display text-4xl sm:text-5xl text-ink">Fresh today</h2>
+    </div>
+    <p class="text-ink/60 max-w-sm text-sm sm:text-base">Photos from our shop and stand on Waterman Ave — what's blooming changes daily.</p>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+    <img src="./photos/04.jpg" alt="Overhead view of dozens of colorful flower arrangements" class="rounded-xl object-cover w-full h-full aspect-[3/4] gallery-tall">
+    <img src="./photos/03.jpg" alt="Flower cooler with bouquets priced at ten, twenty and thirty dollars" class="rounded-xl object-cover w-full aspect-square">
+    <img src="./photos/06.jpg" alt="Cases of fresh roses by the dozen" class="rounded-xl object-cover w-full aspect-square">
+    <img src="./photos/05.jpg" alt="Outdoor tent stand with buckets of cut flowers" class="rounded-xl object-cover w-full aspect-square">
+    <img src="./photos/01.jpg" alt="Interior of A Martinez Flowers with heart gift boxes" class="rounded-xl object-cover w-full aspect-square">
+    <img src="./photos/02.jpg" alt="A bright blue, yellow and pink rose bouquet" class="rounded-xl object-cover w-full aspect-square col-span-2 md:col-span-1">
+  </div>
+</section>
+
+<!-- WHAT PEOPLE SAY -->
+<section id="say" class="bg-ink text-bg">
+  <div class="max-w-6xl mx-auto px-5 py-20 sm:py-28">
+    <p class="text-[#ffd9c2] font-semibold tracking-[.2em] uppercase text-xs mb-3">What People Say</p>
+    <h2 class="font-display text-4xl sm:text-5xl mb-12">Built better than they pictured</h2>
+
+    <div class="columns-1 md:columns-2 gap-6 [&>*]:mb-6">
+      <figure class="quote-card text-ink rounded-2xl p-7 break-inside-avoid">
+        <span class="quote-mark text-5xl">“</span>
+        <blockquote class="-mt-2 text-lg leading-relaxed">Luis was so good!! My wedding flowers came out beautiful — center pieces, sweetheart table, bridal &amp; bridesmaid bouquets, boutonnières and corsages. Everything delivered on time. He made my vision better than what I wanted without breaking the bank!</blockquote>
+        <figcaption class="mt-4 font-semibold text-acc">Mill M.</figcaption>
+      </figure>
+
+      <figure class="quote-card text-ink rounded-2xl p-7 break-inside-avoid">
+        <span class="quote-mark text-5xl">“</span>
+        <blockquote class="-mt-2 text-lg leading-relaxed">I received the best service from Claudia. She welcomed me warmly, asked the right questions, and made suggestions. When she learned I was a DIY customer, she offered a hand. Thank you for such a high level of service — you are the best!!!</blockquote>
+        <figcaption class="mt-4 font-semibold text-acc">Jeanette J.</figcaption>
+      </figure>
+
+      <figure class="quote-card text-ink rounded-2xl p-7 break-inside-avoid">
+        <span class="quote-mark text-5xl">“</span>
+        <blockquote class="-mt-2 text-lg leading-relaxed">Great customer service! This place had the best prices in San Bernardino plus delivery, and accommodated a short turnaround time. My family can't thank them enough for the beautiful arrangements for my grandmother's service.</blockquote>
+        <figcaption class="mt-4 font-semibold text-acc">A. Cruz</figcaption>
+      </figure>
+
+      <figure class="quote-card text-ink rounded-2xl p-7 break-inside-avoid">
+        <span class="quote-mark text-5xl">“</span>
+        <blockquote class="-mt-2 text-lg leading-relaxed">Claudia helped me through my arrangement — I walked in late and still got it done within an hour, better than I expected, with her own touches added! I absolutely loved how it came out, and the birthday girl fell in love as well.</blockquote>
+        <figcaption class="mt-4 font-semibold text-acc">Jenna M.</figcaption>
+      </figure>
+
+      <figure class="quote-card text-ink rounded-2xl p-7 break-inside-avoid">
+        <span class="quote-mark text-5xl">“</span>
+        <blockquote class="-mt-2 text-lg leading-relaxed">They did such a great job. Thank you!</blockquote>
+        <figcaption class="mt-4 font-semibold text-acc">Frances M.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT / HOURS / MAP / CONTACT -->
+<section id="visit" class="max-w-6xl mx-auto px-5 py-20 sm:py-28">
+  <div class="grid md:grid-cols-2 gap-12 md:gap-14">
+    <div>
+      <p class="text-acc font-semibold tracking-[.2em] uppercase text-xs mb-4">Visit the Stand</p>
+      <h2 class="font-display text-4xl sm:text-5xl text-ink leading-tight">Come pick your flowers in person</h2>
+
+      <div class="mt-8 space-y-7">
+        <div>
+          <h3 class="text-xs uppercase tracking-[.18em] text-ink/50 font-semibold mb-1.5">Where</h3>
+          <p class="text-lg text-ink">2724 N Waterman Ave, Unit K<br>San Bernardino, CA 92404</p>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=2724+N+Waterman+Ave+K+San+Bernardino+CA+92404" target="_blank" rel="noopener" class="inline-block mt-2 text-acc font-semibold hover:underline">Get directions →</a>
+        </div>
+
+        <div>
+          <h3 class="text-xs uppercase tracking-[.18em] text-ink/50 font-semibold mb-1.5">Call / Text</h3>
+          <a href="tel:+19093522011" class="text-lg text-ink hover:text-acc transition">(909) 352-2011</a>
+        </div>
+
+        <div>
+          <h3 class="text-xs uppercase tracking-[.18em] text-ink/50 font-semibold mb-2">Hours</h3>
+          <div class="flex items-center gap-3">
+            <span class="font-display text-2xl text-ink">Open every day</span>
+            <span class="price-tag rounded-full px-3 py-1 text-sm">7 AM – 7 PM</span>
+          </div>
+          <p class="mt-2 text-ink/60 text-sm">Monday through Sunday, no day off.</p>
+        </div>
+
+        <div>
+          <h3 class="text-xs uppercase tracking-[.18em] text-ink/50 font-semibold mb-2">Find us on</h3>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://www.instagram.com/amartinezflowerswholesale/" target="_blank" rel="noopener" class="btn-ghost rounded-full px-5 py-2 text-sm font-semibold">Instagram</a>
+            <a href="https://maps.google.com/?cid=2187505767674057812" target="_blank" rel="noopener" class="btn-ghost rounded-full px-5 py-2 text-sm font-semibold">Google Business</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="tel:+19093522011" class="inline-block mt-9 btn-acc rounded-full px-8 py-4 text-base font-semibold">Call to Order</a>
+    </div>
+
+    <div class="rounded-2xl overflow-hidden border border-orange-100 shadow-sm min-h-[360px] md:min-h-full">
+      <iframe
+        title="Map to A Martinez Flowers, 2724 N Waterman Ave K, San Bernardino, CA 92404"
+        src="https://www.google.com/maps?q=2724%20N%20Waterman%20Ave%20K%2C%20San%20Bernardino%2C%20CA%2092404&z=15&output=embed"
+        class="w-full h-full min-h-[360px]" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-bg/80">
+  <div class="max-w-6xl mx-auto px-5 py-14">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-8">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <span class="inline-grid place-items-center w-10 h-10 rounded-full bg-acc text-white font-display text-xl leading-none">A</span>
+          <span class="font-display text-2xl text-bg">A Martinez Flowers</span>
+        </div>
+        <p class="max-w-sm text-sm leading-relaxed text-bg/60">Fresh flowers &amp; custom arrangements at the best prices in San Bernardino. Open 7 days a week, 7 AM – 7 PM.</p>
+      </div>
+      <div class="text-sm space-y-1.5">
+        <p><a href="tel:+19093522011" class="hover:text-acc transition">(909) 352-2011</a></p>
+        <p class="text-bg/60">2724 N Waterman Ave K, San Bernardino, CA 92404</p>
+        <div class="flex gap-4 pt-1">
+          <a href="https://www.instagram.com/amartinezflowerswholesale/" target="_blank" rel="noopener" class="hover:text-acc transition">Instagram</a>
+          <a href="https://maps.google.com/?cid=2187505767674057812" target="_blank" rel="noopener" class="hover:text-acc transition">Google</a>
+        </div>
+      </div>
+    </div>
+    <hr class="my-9 border-white/10">
+    <p class="text-xs text-bg/45">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

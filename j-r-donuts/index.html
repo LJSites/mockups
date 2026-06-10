@@ -1,0 +1,543 @@
+<!-- bakery · classic-editorial · hero-layout 1 · svc-layout 2 · Playfair Display/Source Sans 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>J-R Donuts — Atwater, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --acc:#b91c1c;
+  --bg:#faf7f2;
+  --ink:#1a1410;
+  --muted:#6b5f55;
+  --rule:#d9cfc4;
+  --nav-h:64px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+
+body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:17px}
+
+img{display:block;max-width:100%;height:auto}
+
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--bg);
+  border-bottom:1px solid var(--rule);
+  height:var(--nav-h);
+  display:flex;align-items:center;
+}
+.nav-inner{
+  max-width:1160px;width:100%;margin:0 auto;
+  padding:0 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav .brand{font-family:'Playfair Display',serif; font-size:1.25rem;font-weight:700;letter-spacing:.01em;color:var(--acc)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.875rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{
+  display:inline-block;padding:.45rem 1.25rem;
+  border:1.5px solid var(--acc);color:var(--acc);
+  font-size:.8125rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  transition:background .2s,color .2s;
+}
+.nav-cta:hover{background:var(--acc);color:#fff}
+.nav-menu-btn{display:none;background:none;border:none;cursor:pointer;padding:.25rem;color:var(--ink)}
+
+/* ── HERO ── */
+.hero{
+  max-width:1160px;margin:0 auto;
+  padding:4rem 1.5rem 3rem;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3rem;
+  align-items:center;
+}
+/* hero-layout 1 = left image */
+.hero-image{order:-1}
+.hero-image figure{
+  position:relative;
+  aspect-ratio:4/5;
+  overflow:hidden;
+}
+.hero-image img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s ease;
+}
+.hero-image figure:hover img{transform:scale(1.03)}
+.hero-image figcaption{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:.6rem 1rem;
+  background:rgba(26,20,16,.55);
+  color:#ede8e0;font-size:.8125rem;letter-spacing:.04em;
+}
+
+.hero-text{}
+.hero-kicker{
+  font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:.75rem;
+}
+.hero-text h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,5.5vw,3.75rem);
+  font-weight:700;line-height:1.12;
+  color:var(--ink);margin-bottom:1.25rem;
+}
+.hero-text h1 em{font-style:italic;color:var(--acc)}
+.hero-text p{
+  font-size:1.0625rem;color:var(--muted);
+  max-width:38ch;margin-bottom:2rem;line-height:1.7;
+}
+.hero-cta{
+  display:inline-block;padding:.75rem 2rem;
+  background:var(--acc);color:#fff;
+  font-size:.875rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  transition:background .2s,transform .15s;
+}
+.hero-cta:hover{background:#991818;transform:translateY(-1px)}
+.hero-hours{margin-top:1.5rem;font-size:.875rem;color:var(--muted);display:flex;gap:.5rem;align-items:center}
+.hero-hours strong{color:var(--ink)}
+
+/* ── RULE DIVIDER ── */
+.rule{border:none;border-top:1px solid var(--rule);margin:0}
+
+/* ── SECTION COMMON ── */
+.section{padding:4rem 1.5rem}
+.section-inner{max-width:1160px;margin:0 auto}
+.section-label{
+  font-size:.75rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:.6rem;
+}
+.section-heading{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,3.5vw,2.25rem);
+  font-weight:700;line-height:1.2;
+  color:var(--ink);margin-bottom:1.25rem;
+}
+.section-body{font-size:1rem;color:var(--muted);max-width:56ch;line-height:1.75}
+
+/* ── ABOUT ── */
+.about{background:#fff}
+.about .section-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3.5rem;align-items:center;
+}
+.about-photos{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:.75rem;
+}
+.about-photos img{width:100%;height:180px;object-fit:cover}
+.about-photos img:first-child{grid-column:1/-1;height:240px}
+
+/* ── MENU / SPECIALTIES — svc-layout 2 = numbered/stacked list ── */
+.menu{background:var(--bg)}
+.menu .section-inner{max-width:1160px}
+.menu-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0;
+  margin-top:2.5rem;
+  border-top:1px solid var(--rule);
+}
+.menu-item{
+  padding:1.5rem 0;
+  border-bottom:1px solid var(--rule);
+  display:grid;
+  grid-template-columns:3rem 1fr;
+  gap:1rem;
+  align-items:start;
+  padding-right:3rem;
+}
+.menu-item:nth-child(even){padding-right:0;padding-left:3rem;border-left:1px solid var(--rule)}
+.menu-num{
+  font-family:'Playfair Display',serif;
+  font-size:1.625rem;font-weight:700;
+  color:var(--acc);line-height:1;
+  margin-top:.125rem;
+}
+.menu-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.0625rem;font-weight:600;
+  color:var(--ink);margin-bottom:.25rem;
+}
+.menu-desc{font-size:.9rem;color:var(--muted);line-height:1.6}
+
+/* ── TESTIMONIES ── */
+.testimonies{background:#fff}
+.testimonies .section-inner{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:start}
+.testimonies-intro{}
+.testimonies-intro .section-heading{margin-bottom:.75rem}
+.testimonies-list{display:flex;flex-direction:column;gap:0}
+.testimony{
+  padding:2rem 0;
+  border-bottom:1px solid var(--rule);
+}
+.testimony:first-child{border-top:1px solid var(--rule)}
+.testimony blockquote{
+  font-family:'Playfair Display',serif;
+  font-size:1.125rem;
+  font-style:italic;
+  color:var(--ink);
+  line-height:1.7;
+  position:relative;
+  padding-left:1.5rem;
+}
+.testimony blockquote::before{
+  content:'\201C';
+  position:absolute;left:0;top:-.2rem;
+  font-size:2.5rem;line-height:1;
+  color:var(--acc);
+  font-family:'Playfair Display',serif;
+}
+.testimony cite{
+  display:block;margin-top:.75rem;
+  font-style:normal;font-size:.8125rem;
+  font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* ── PHOTO STRIP ── */
+.photo-strip{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+}
+.photo-strip img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  filter:saturate(.9);
+  transition:filter .3s,transform .3s;
+}
+.photo-strip img:hover{filter:saturate(1.1);transform:scale(1.01);z-index:1;position:relative}
+
+/* ── VISIT / HOURS + MAP ── */
+.visit{background:var(--bg)}
+.visit .section-inner{
+  display:grid;grid-template-columns:1fr 1.4fr;
+  gap:3rem;align-items:start;
+}
+.hours-table{width:100%;border-collapse:collapse;margin-top:1.25rem}
+.hours-table tr{border-bottom:1px solid var(--rule)}
+.hours-table td{padding:.6rem 0;font-size:.9375rem}
+.hours-table td:first-child{color:var(--muted);font-weight:600;letter-spacing:.04em;width:6rem}
+.hours-table td:last-child{color:var(--ink)}
+.map-wrap iframe{
+  width:100%;
+  height:340px;
+  border:none;
+  display:block;
+  filter:grayscale(.3);
+}
+.address-line{margin-top:1.25rem;font-size:.9375rem;color:var(--muted)}
+.address-line strong{color:var(--ink)}
+.visit-cta{
+  display:inline-block;margin-top:1.5rem;
+  padding:.65rem 1.75rem;
+  background:transparent;border:1.5px solid var(--acc);color:var(--acc);
+  font-size:.8125rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  transition:background .2s,color .2s;
+}
+.visit-cta:hover{background:var(--acc);color:#fff}
+
+/* ── FOOTER ── */
+.footer{
+  background:var(--ink);color:#c9bfb5;
+  padding:3rem 1.5rem 2rem;
+}
+.footer-inner{
+  max-width:1160px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:2rem;
+}
+.footer-brand .brand{font-family:'Playfair Display',serif; font-size:1.5rem;font-weight:700;color:#fff}
+.footer-brand p{margin-top:.5rem;font-size:.875rem;color:#9c8f84;max-width:26ch;line-height:1.6}
+.footer-col h4{
+  font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:#9c8f84;margin-bottom:.75rem;
+}
+.footer-col ul{list-style:none}
+.footer-col ul li{font-size:.9rem;margin-bottom:.4rem}
+.footer-col ul a{color:#c9bfb5;transition:color .2s}
+.footer-col ul a:hover{color:#fff}
+.footer-bottom{
+  max-width:1160px;margin:2rem auto 0;
+  padding-top:1.5rem;
+  border-top:1px solid #2e2620;
+  font-size:.8125rem;color:#6b5f55;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;
+}
+.footer-credit{font-size:.8rem;color:#5a4e46}
+
+/* ── MOBILE NAV ── */
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .nav-menu-btn{display:flex;flex-direction:column;gap:5px}
+  .nav-menu-btn span{display:block;width:22px;height:2px;background:var(--ink);transition:transform .2s}
+  .nav.open .nav-links{
+    display:flex;flex-direction:column;
+    position:absolute;top:var(--nav-h);left:0;right:0;
+    background:var(--bg);
+    border-bottom:1px solid var(--rule);
+    padding:1rem 1.5rem 1.5rem;
+    gap:1.25rem;
+  }
+  .nav.open .nav-cta{display:block;margin-top:.5rem;text-align:center}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:2.5rem}
+  .hero-image{order:0}
+  .hero-image figure{aspect-ratio:16/9}
+  .about .section-inner{grid-template-columns:1fr}
+  .testimonies .section-inner{grid-template-columns:1fr}
+  .visit .section-inner{grid-template-columns:1fr}
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .menu-grid{grid-template-columns:1fr}
+  .menu-item:nth-child(even){padding-left:0;padding-right:0;border-left:none}
+}
+@media(max-width:600px){
+  .about-photos img{height:140px}
+  .about-photos img:first-child{height:180px}
+  .photo-strip{grid-template-columns:1fr 1fr}
+  .photo-strip img:last-child{display:none}
+  .footer-inner{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;align-items:flex-start}
+  .menu-item{grid-template-columns:2.5rem 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="top">
+  <div class="nav-inner">
+    <a href="#top" class="brand">J-R Donuts</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#menu">Specialties</a></li>
+        <li><a href="#testimonies">Testimonies</a></li>
+        <li><a href="#visit">Visit Us</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="tel:+12093572318">Call Now</a>
+    <button class="nav-menu-btn" aria-label="Open menu" onclick="document.querySelector('.nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-image">
+    <figure>
+      <img src="./photos/01.jpg" alt="Fresh donuts at J-R Donuts, Atwater CA">
+      <figcaption>Fresh daily — 1838 Bellevue Rd, Atwater</figcaption>
+    </figure>
+  </div>
+  <div class="hero-text">
+    <p class="hero-kicker">Atwater, CA &mdash; Est. in the neighborhood</p>
+    <h1>The <em>freshest</em> donuts in the Central Valley</h1>
+    <p>J-R Donuts opens its doors at 5 AM every morning so Atwater starts right. Hand-crafted, sold-out-by-noon fresh — worth the early alarm.</p>
+    <a class="hero-cta" href="tel:+12093572318">Call Now &rarr;</a>
+    <p class="hero-hours">Open <strong>Daily 5:00 AM – 2:00 PM</strong> &mdash; or until we sell out</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="section-inner">
+    <div class="about-text">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-heading">A neighborhood staple since day one</h2>
+      <p class="section-body">
+        J-R Donuts has been the quiet pride of Bellevue Road for years. No frills, no fuss — just a wide, rotating variety of donuts made fresh every morning before the sun comes up. Regulars know to get here early; the glazed sell out first, and everything else follows by noon.
+      </p>
+      <p class="section-body" style="margin-top:1rem">
+        This is the kind of place where the owner knows your order and the coffee is always hot. A true Central Valley classic.
+      </p>
+    </div>
+    <div class="about-photos">
+      <img src="./photos/02.jpg" alt="Inside J-R Donuts shop">
+      <img src="./photos/03.jpg" alt="Donut variety on display">
+      <img src="./photos/04.jpg" alt="Freshly made pastries">
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <img src="./photos/05.jpg" alt="J-R Donuts display case">
+  <img src="./photos/06.jpg" alt="J-R Donuts selection">
+  <img src="./photos/01.jpg" alt="Early morning at J-R Donuts">
+</div>
+
+<!-- MENU / SPECIALTIES -->
+<section class="section menu" id="menu">
+  <div class="section-inner">
+    <p class="section-label">What We Make</p>
+    <h2 class="section-heading">Daily Specialties</h2>
+    <p class="section-body">Everything is made fresh before 5 AM. Variety changes daily — come early, come often.</p>
+
+    <div class="menu-grid">
+      <div class="menu-item">
+        <span class="menu-num">01</span>
+        <div>
+          <p class="menu-name">Classic Glazed</p>
+          <p class="menu-desc">Light, airy rings dipped in a signature glaze. The first to sell out — every single morning.</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-num">02</span>
+        <div>
+          <p class="menu-name">Cake Donuts</p>
+          <p class="menu-desc">Dense, satisfying, and available plain or dipped. A longtime customer favorite.</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-num">03</span>
+        <div>
+          <p class="menu-name">Filled Donuts</p>
+          <p class="menu-desc">Plump and generously filled — bavarian cream, jelly, and seasonal flavors when available.</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-num">04</span>
+        <div>
+          <p class="menu-name">Raised &amp; Frosted</p>
+          <p class="menu-desc">Fluffy yeast-raised shells topped with chocolate, strawberry, maple, or vanilla frosting.</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-num">05</span>
+        <div>
+          <p class="menu-name">Apple Fritters</p>
+          <p class="menu-desc">Hand-shaped, generously sized, irregular and perfect — the way a real fritter should be.</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <span class="menu-num">06</span>
+        <div>
+          <p class="menu-name">Donut Holes &amp; Twists</p>
+          <p class="menu-desc">Bite-sized glazed holes and cinnamon twists — great by the bag, gone even faster.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- TESTIMONIES -->
+<section class="section testimonies" id="testimonies">
+  <div class="section-inner">
+    <div class="testimonies-intro">
+      <p class="section-label">In Their Words</p>
+      <h2 class="section-heading">Customer Testimonies</h2>
+      <p class="section-body" style="font-size:.9375rem">The people of Atwater have been coming back since before you can remember.</p>
+    </div>
+    <div class="testimonies-list">
+      <div class="testimony">
+        <blockquote>Love Jim's donuts — they always have a good variety.</blockquote>
+        <cite>Kim K.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>Best donuts ever! Can't compare to any other donut place you've been to with freshness. One piece of advice is to go in early because they sell out super fast!</blockquote>
+        <cite>Luis C.</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- VISIT / HOURS + MAP -->
+<section class="section visit" id="visit">
+  <div class="section-inner">
+    <div class="visit-info">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-heading">Hours &amp; Location</h2>
+
+      <table class="hours-table">
+        <tbody>
+          <tr><td>Mon – Fri</td><td>5:00 AM – 2:00 PM</td></tr>
+          <tr><td>Saturday</td><td>5:00 AM – 2:00 PM</td></tr>
+          <tr><td>Sunday</td><td>5:00 AM – 2:00 PM</td></tr>
+        </tbody>
+      </table>
+
+      <p class="address-line">
+        <strong>1838 Bellevue Rd</strong><br>
+        City of Atwater, CA 95301
+      </p>
+      <p class="address-line" style="margin-top:.5rem">
+        <a href="tel:+12093572318" style="color:var(--acc);font-weight:600">(209) 357-2318</a>
+      </p>
+      <a class="visit-cta" href="https://maps.google.com/?q=1838+Bellevue+Rd,+Atwater,+CA+95301" target="_blank" rel="noopener">Get Directions &rarr;</a>
+    </div>
+
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps?q=1838+Bellevue+Rd,+Atwater,+CA+95301&z=15&output=embed"
+        width="100%"
+        height="340"
+        loading="lazy"
+        title="J-R Donuts location map"
+        allowfullscreen>
+      </iframe>
+      <p class="address-line" style="margin-top:.75rem;font-size:.8125rem">
+        Also find us on
+        <a href="https://maps.google.com/?cid=3107178168951797747&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" style="color:var(--acc);font-weight:600">Google Business</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand">J-R Donuts</span>
+      <p>Fresh every morning. Gone by noon. Worth the early alarm.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Hours</h4>
+      <ul>
+        <li>Daily 5:00 AM – 2:00 PM</li>
+        <li style="margin-top:.5rem;font-size:.8125rem;color:#6b5f55">Or until sold out</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+12093572318">(209) 357-2318</a></li>
+        <li>1838 Bellevue Rd</li>
+        <li>Atwater, CA 95301</li>
+        <li style="margin-top:.5rem"><a href="https://maps.google.com/?cid=3107178168951797747&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business &rarr;</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2026 J-R Donuts &mdash; Atwater, CA</span>
+    <span class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</span>
+  </div>
+</footer>
+
+</body>
+</html>

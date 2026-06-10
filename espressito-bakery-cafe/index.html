@@ -1,0 +1,442 @@
+<!-- coffee · classic-editorial · hero-layout 1 · svc-layout 2 · Playfair Display/Source Sans 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espressito | Bakery & Cafe — Waterford, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── tokens ── */
+    :root {
+      --acc:#b91c1c;
+      --bg:#faf7f2;
+      --ink:#1a1209;
+      --muted:#6b5e4e;
+      --rule:#e0d5c5;
+      --nav-h:64px;
+    }
+
+    /* ── reset / base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-padding-top: var(--nav-h); scroll-behavior: smooth; }
+    body{font-family:'Source Sans 3',sans-serif; background: var(--bg); color: var(--ink); font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── brand / display ── */
+    .brand{font-family:'Playfair Display',serif; font-weight: 700; letter-spacing: -.01em; }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 600; line-height: 1.2; }
+    h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; }
+    .eyebrow { font-family: 'Source Sans 3', sans-serif; font-size: .75rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--acc); }
+
+    /* ── layout helpers ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.25rem; }
+    section { padding: 5rem 0; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg); border-bottom: 1px solid var(--rule);
+      height: var(--nav-h); display: flex; align-items: center;
+    }
+    .nav-inner { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 1.25rem;
+      display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 1.1rem; line-height: 1.1; }
+    .nav-logo span { display: block; font-family: 'Source Sans 3', sans-serif; font-size: .65rem; font-weight: 300; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); margin-top: 1px; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: .85rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: var(--acc); }
+    .nav-cta { font-size: .85rem; font-weight: 600; letter-spacing: .04em; background: var(--acc); color: #fff; padding: .45rem 1.1rem; border-radius: 2px; transition: background .2s; }
+    .nav-cta:hover { background: #991b1b; }
+
+    /* ── HERO (layout 1 — left image, right text) ── */
+    #hero { padding: 0; min-height: calc(100vh - var(--nav-h)); display: flex; align-items: stretch; }
+    .hero-inner { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+    .hero-image { position: relative; overflow: hidden; min-height: 520px; }
+    .hero-image img { height: 100%; width: 100%; object-fit: cover; }
+    .hero-text {
+      padding: 5rem 3.5rem 5rem 4rem;
+      display: flex; flex-direction: column; justify-content: center;
+      border-left: none;
+    }
+    .hero-eyebrow { margin-bottom: 1.25rem; }
+    .hero-heading { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.75rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero-heading em { font-style: italic; color: var(--acc); }
+    .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 38ch; margin-bottom: 2.5rem; line-height: 1.7; }
+    .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { display: inline-block; background: var(--acc); color: #fff; padding: .75rem 1.75rem; font-weight: 600; font-size: .95rem; border-radius: 2px; letter-spacing: .03em; transition: background .2s, transform .15s; }
+    .btn-primary:hover { background: #991b1b; transform: translateY(-1px); }
+    .btn-ghost { display: inline-block; border: 1.5px solid var(--rule); color: var(--muted); padding: .75rem 1.75rem; font-weight: 600; font-size: .95rem; border-radius: 2px; letter-spacing: .03em; transition: border-color .2s, color .2s; }
+    .btn-ghost:hover { border-color: var(--acc); color: var(--acc); }
+
+    /* ── ABOUT ── */
+    #about { background: #fff; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-images { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 220px 160px; gap: .75rem; }
+    .about-images .img-tall { grid-row: 1 / 3; height: 100%; }
+    .about-images img { height: 100%; object-fit: cover; }
+    .about-copy { }
+    .about-copy h2 { margin: .75rem 0 1.25rem; }
+    .about-copy p { color: var(--muted); margin-bottom: 1rem; }
+    .about-copy p:last-of-type { margin-bottom: 0; }
+
+    /* ── MENU (svc-layout 2 — numbered/stacked list) ── */
+    #menu { background: var(--bg); }
+    .menu-header { text-align: center; max-width: 52ch; margin: 0 auto 3.5rem; }
+    .menu-header h2 { margin: .75rem 0 1rem; }
+    .menu-header p { color: var(--muted); }
+    .menu-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; counter-reset: menu-counter; }
+    .menu-item { counter-increment: menu-counter; display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.75rem 2rem; border-top: 1px solid var(--rule); }
+    .menu-item:last-child { border-bottom: 1px solid var(--rule); }
+    .menu-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--rule); line-height: 1; flex-shrink: 0; width: 2.5rem; text-align: right; margin-top: .1rem; }
+    .menu-body h3 { font-size: 1.05rem; margin-bottom: .35rem; }
+    .menu-body p { font-size: .9rem; color: var(--muted); line-height: 1.5; }
+
+    /* ── GALLERY STRIP ── */
+    #gallery { padding: 2rem 0; overflow: hidden; }
+    .gallery-strip { display: flex; gap: .5rem; overflow-x: auto; scrollbar-width: none; }
+    .gallery-strip::-webkit-scrollbar { display: none; }
+    .gallery-strip img { height: 280px; width: auto; flex-shrink: 0; object-fit: cover; }
+
+    /* ── TESTIMONIES ── */
+    #testimonies { background: #fff; }
+    .test-header { max-width: 52ch; margin: 0 auto 3.5rem; text-align: center; }
+    .test-header h2 { margin: .75rem 0; }
+    .test-header p { color: var(--muted); }
+    .test-list { display: flex; flex-direction: column; gap: 0; max-width: 780px; margin: 0 auto; }
+    .test-item { padding: 2.25rem 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 3rem 1fr; gap: 1.5rem; align-items: start; }
+    .test-item:first-child { border-top: 1px solid var(--rule); }
+    .test-mark { font-family: 'Playfair Display', serif; font-size: 3.5rem; line-height: .9; color: var(--acc); font-weight: 700; }
+    .test-body blockquote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; line-height: 1.65; color: var(--ink); margin-bottom: .6rem; }
+    .test-body cite { font-style: normal; font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── HOURS & LOCATION ── */
+    #hours { background: var(--bg); }
+    .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .hours-block h2 { margin: .75rem 0 2rem; }
+    .hours-table { width: 100%; border-collapse: collapse; }
+    .hours-table tr { border-bottom: 1px solid var(--rule); }
+    .hours-table td { padding: .6rem 0; font-size: .95rem; }
+    .hours-table td:first-child { color: var(--muted); width: 50%; }
+    .hours-table td:last-child { font-weight: 600; text-align: right; }
+    .hours-table tr.today td { color: var(--acc); }
+    .map-block { display: flex; flex-direction: column; }
+    .map-block h2 { margin: .75rem 0 1.5rem; }
+    .map-frame { border-radius: 3px; overflow: hidden; border: 1px solid var(--rule); }
+    .map-frame iframe { display: block; width: 100%; height: 320px; border: none; }
+    .addr-line { margin-top: 1rem; font-size: .9rem; color: var(--muted); line-height: 1.5; }
+    .addr-line strong { display: block; color: var(--ink); font-weight: 600; }
+
+    /* ── CONTACT / CTA STRIP ── */
+    #contact { background: var(--acc); color: #fff; padding: 4rem 0; }
+    .contact-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+    .contact-copy h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 600; color: #fff; margin-bottom: .5rem; }
+    .contact-copy p { color: rgba(255,255,255,.8); max-width: 48ch; }
+    .contact-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-white { display: inline-block; background: #fff; color: var(--acc); padding: .75rem 1.75rem; font-weight: 600; font-size: .95rem; border-radius: 2px; transition: background .2s; }
+    .btn-white:hover { background: #f5f5f5; }
+    .btn-outline-white { display: inline-block; border: 1.5px solid rgba(255,255,255,.6); color: #fff; padding: .75rem 1.75rem; font-weight: 600; font-size: .95rem; border-radius: 2px; transition: border-color .2s; }
+    .btn-outline-white:hover { border-color: #fff; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--ink); color: rgba(255,255,255,.55); padding: 3rem 0 2rem; }
+    .footer-inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.25rem; }
+    .footer-brand { color: #fff; font-size: 1.35rem; }
+    .footer-brand span { display: block; font-family: 'Source Sans 3', sans-serif; font-size: .65rem; font-weight: 300; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-top: 3px; }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; font-size: .82rem; }
+    .footer-links a { transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-sep { width: 40px; height: 1px; background: rgba(255,255,255,.15); }
+    .footer-credit { font-size: .78rem; text-align: center; line-height: 1.6; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-image { min-height: 320px; }
+      .hero-text { padding: 3rem 1.5rem; border-left: none; border-top: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-images { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 140px; }
+      .hours-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .contact-inner { flex-direction: column; align-items: flex-start; }
+      .test-item { grid-template-columns: 2rem 1fr; gap: 1rem; }
+      .test-mark { font-size: 2.5rem; }
+      section { padding: 3.5rem 0; }
+    }
+
+    @media (max-width: 480px) {
+      .menu-item { padding: 1.5rem 1rem; }
+      .nav-cta { padding: .4rem .85rem; font-size: .8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#hero" class="brand nav-logo" aria-label="Espressito home">
+        Espressito
+        <span>Bakery &amp; Cafe · Waterford, CA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#testimonies">Stories</a></li>
+        <li><a href="#hours">Hours</a></li>
+      </ul>
+      <a href="tel:+12093012051" class="nav-cta">Call Now</a>
+    </div>
+  </nav>
+
+  <!-- HERO — layout 1: left image / right text -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-image">
+        <img src="./photos/01.jpg" alt="Inside Espressito Bakery & Cafe" />
+      </div>
+      <div class="hero-text">
+        <p class="eyebrow hero-eyebrow">Bakery &amp; Cafe · Waterford, CA</p>
+        <h1 class="brand hero-heading">
+          Fresh Pan Dulce.<br />
+          <em>Real Espresso.</em><br />
+          Come as You Are.
+        </h1>
+        <p class="hero-sub">
+          A cozy neighborhood cafe baking Mexican pastries with unexpected twists — horchata-filled conchas, Biscoff creations, and espresso crafted to order. Worth every mile.
+        </p>
+        <div class="cta-row">
+          <a href="tel:+12093012051" class="btn-primary">Call Now</a>
+          <a href="https://www.google.com/maps?q=304+F+St+Ste+C,+Waterford,+CA+95386" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-images">
+          <img class="img-tall" src="./photos/02.jpg" alt="Espressito cafe interior" />
+          <img src="./photos/03.jpg" alt="Pastries at Espressito" />
+          <img src="./photos/04.jpg" alt="Coffee drinks at Espressito" />
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow">Our Story</p>
+          <h2>Where the Panadería Meets the Espresso Bar</h2>
+          <p>
+            Espressito is Waterford's own little jewel — a family-driven cafe that fuses the warmth of a Mexican bakery with the precision of a proper espresso bar. Every morning, pan dulce comes out of the oven with flavors you won't find anywhere else.
+          </p>
+          <p>
+            The space is airy, unhurried, and decorated with a vibrant mural that tells the story of the community. Whether you're stopping in before work or settling in for a slow Saturday, this is a place built for lingering.
+          </p>
+          <p>
+            The owners are the ones behind the counter — they'll walk you through every pastry, pull your shot perfectly, and send you off with something you'll think about all week.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU — svc-layout 2: numbered stacked list -->
+  <section id="menu">
+    <div class="container">
+      <div class="menu-header">
+        <p class="eyebrow">What We Make</p>
+        <h2>The Menu</h2>
+        <p>Everything crafted in-house. Flavors rotate with the season — but a few staples never leave the case.</p>
+      </div>
+      <div class="menu-list">
+        <div class="menu-item">
+          <div class="menu-num">01</div>
+          <div class="menu-body">
+            <h3>Espresso &amp; Drip Coffee</h3>
+            <p>Single-origin shots, lattes, cortados, and drip — dialed in for clarity, not just heat. The straight espresso is the move.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-num">02</div>
+          <div class="menu-body">
+            <h3>Specialty Lattes</h3>
+            <p>Horchata latte (creamy, cinnamon-forward), seasonal spiced drinks, and house originals. Ask about the sweetness level — they'll adjust.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-num">03</div>
+          <div class="menu-body">
+            <h3>Matcha &amp; Non-Coffee Drinks</h3>
+            <p>A rotating lineup of matcha preparations and refreshers — clean, balanced flavors made for those skipping espresso today.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-num">04</div>
+          <div class="menu-body">
+            <h3>Pan Dulce &amp; Conchas</h3>
+            <p>Baked fresh each morning in flavors like horchata, pumpkin spice, and Biscoff. Pillowy, distinct, and a reason to come early before they sell out.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-num">05</div>
+          <div class="menu-body">
+            <h3>Breakfast Sandwiches</h3>
+            <p>Egg and cheese on fresh bread — simple, well-executed, satisfying. A perfect companion to your morning espresso.</p>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-num">06</div>
+          <div class="menu-body">
+            <h3>Seasonal Specials</h3>
+            <p>The owners regularly introduce limited-run pastries and drinks tied to the season. Follow them or just come in and ask what's new today.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY STRIP -->
+  <section id="gallery">
+    <div class="gallery-strip">
+      <img src="./photos/05.jpg" alt="Espressito cafe scene" />
+      <img src="./photos/06.jpg" alt="Espressito pastries and drinks" />
+      <img src="./photos/02.jpg" alt="Espressito interior" />
+      <img src="./photos/03.jpg" alt="Espressito baked goods" />
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="container">
+      <div class="test-header">
+        <p class="eyebrow">In Their Words</p>
+        <h2>Customer Testimonies</h2>
+        <p>What guests say after the first visit — and why they come back.</p>
+      </div>
+      <div class="test-list">
+
+        <div class="test-item">
+          <div class="test-mark">&ldquo;</div>
+          <div class="test-body">
+            <blockquote>Worth the drive to Waterford. Our drinks were delicious and the pastries were phenomenal. The owners were super friendly and helpful. With so many eye-catching options it's hard to narrow it down to one or two pastries, and the owner was nice enough to educate us on some of the pastries like the W filled with Biscoff.</blockquote>
+            <cite>Mrs. F.</cite>
+          </div>
+        </div>
+
+        <div class="test-item">
+          <div class="test-mark">&ldquo;</div>
+          <div class="test-body">
+            <blockquote>They bake fresh pan dulce with unique flavors and add their own spin to the traditional breads — it is really good. My mother enjoyed the ones she tried out and although we live far I think we'd make the trip out here again to enjoy the food and the cute vibes of the cafe.</blockquote>
+            <cite>L. J.</cite>
+          </div>
+        </div>
+
+        <div class="test-item">
+          <div class="test-mark">&ldquo;</div>
+          <div class="test-body">
+            <blockquote>The location is beautifully designed and is very inviting. Not packed with lots of stuff. Options are plenty and the staff were great. The sandwiches were egg and cheese — they were on point!!</blockquote>
+            <cite>Joseph S.</cite>
+          </div>
+        </div>
+
+        <div class="test-item">
+          <div class="test-mark">&ldquo;</div>
+          <div class="test-body">
+            <blockquote>A colorful mural is along the main wall. The staff seemed to be the owners as they were focused on customer service and getting orders out quickly. The baked items were freshly baked. Glad I stopped in for coffee and a bite as I was passing through the town.</blockquote>
+            <cite>Fish H.</cite>
+          </div>
+        </div>
+
+        <div class="test-item">
+          <div class="test-mark">&ldquo;</div>
+          <div class="test-body">
+            <blockquote>Great place and customer service was excellent — very inviting and welcoming. I believe they were going for creating an environment to hang out, and they accomplished exactly that.</blockquote>
+            <cite>Maria L.</cite>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section id="hours">
+    <div class="container">
+      <div class="hours-grid">
+        <div class="hours-block">
+          <p class="eyebrow">When We're Open</p>
+          <h2>Hours</h2>
+          <table class="hours-table">
+            <tbody>
+              <tr><td>Monday</td><td>6:00 AM – 4:00 PM</td></tr>
+              <tr><td>Tuesday</td><td>6:00 AM – 4:00 PM</td></tr>
+              <tr><td>Wednesday</td><td>6:00 AM – 4:00 PM</td></tr>
+              <tr><td>Thursday</td><td>6:00 AM – 4:00 PM</td></tr>
+              <tr><td>Friday</td><td>6:00 AM – 4:00 PM</td></tr>
+              <tr><td>Saturday</td><td>7:00 AM – 4:00 PM</td></tr>
+              <tr><td>Sunday</td><td>7:00 AM – 4:00 PM</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:1.5rem; font-size:.88rem; color:var(--muted);">Pan dulce sells out early — we recommend arriving before noon on weekends.</p>
+        </div>
+        <div class="map-block">
+          <p class="eyebrow">Find Us</p>
+          <h2>Location</h2>
+          <div class="map-frame">
+            <iframe
+              src="https://www.google.com/maps?q=304+F+St+Ste+C,+Waterford,+CA+95386&z=15&output=embed"
+              loading="lazy"
+              allowfullscreen
+              title="Espressito Bakery & Cafe map"
+            ></iframe>
+          </div>
+          <p class="addr-line">
+            <strong>304 F St, Suite C · Waterford, CA 95386</strong>
+            <a href="tel:+12093012051" style="color:var(--acc); font-weight:600;">(209) 301-2051</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT STRIP -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div class="contact-copy">
+          <h2>Ready for a great cup and a warm pastry?</h2>
+          <p>Stop by 304 F St, Waterford — or give us a call to ask about today's pan dulce flavors. We'd love to see you.</p>
+        </div>
+        <div class="contact-actions">
+          <a href="tel:+12093012051" class="btn-white">Call (209) 301-2051</a>
+          <a href="https://www.google.com/maps?q=304+F+St+Ste+C,+Waterford,+CA+95386" target="_blank" rel="noopener" class="btn-outline-white">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <a href="#hero" class="brand footer-brand">
+          Espressito
+          <span>Bakery &amp; Cafe · Waterford, CA</span>
+        </a>
+        <div class="footer-links">
+          <a href="https://maps.google.com/?cid=18121980090516508800" target="_blank" rel="noopener">Google Business</a>
+          <a href="tel:+12093012051">(209) 301-2051</a>
+          <a href="https://www.google.com/maps?q=304+F+St+Ste+C,+Waterford,+CA+95386" target="_blank" rel="noopener">Directions</a>
+        </div>
+        <div class="footer-sep"></div>
+        <p class="footer-credit">
+          Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+        </p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

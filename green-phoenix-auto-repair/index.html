@@ -1,0 +1,364 @@
+<!--
+  ARCHETYPE: Eco-Modern Clean Garage — a bright, fresh, "renewal" take on an auto shop.
+  Reads the name "Green Phoenix" literally: emerald + warm ember accent, a rising / rebirth motif,
+  honest & calm (the reviews praise HONESTY, not horsepower). Deliberately NOT the dark/industrial
+  / condensed-poster look used by the other auto shops in work/, nor their red / cyan / blue / orange.
+
+  PALETTE: deep emerald (#0f5f43) + bright leaf (#2fae72) + warm ember (#e8703a) on a bone canvas (#f6f4ee).
+  TYPE: Sora (geometric display) + Epilogue (humanist body) — both unused by other auto sites.
+
+  LAYOUT decisions (distinct from the split-hero crowd):
+   - Hero: stacked typographic statement on bone, with an OFFSET three-photo collage band beneath
+     (not a single full-bleed photo, no dark overlay, no centered pill).
+   - Services: two-column "checklist" with leaf-tick markers + thin rules (not cards, no icon circles).
+   - A horizontal hours+location band with the map at the right.
+   - Testimonies: a stacked, offset quote stream (large numerals), no cards/avatars/stars.
+   - CTA "Call Now" (tel:) repeated twice. One subtle animation only: a slow phoenix-glow on the rule under the wordmark.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green Phoenix Auto Repair — Honest car care in Salinas, CA</title>
+<meta name="description" content="Green Phoenix Auto Repair on S Main St in Salinas — honest, dependable car repair and maintenance. Mon–Sat 7:30am–6pm. Call (831) 758-8326.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Epilogue:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #f6f4ee;  /* bone */
+    --bg2:       #efece3;  /* warmer panel */
+    --ink:       #16241d;  /* near-black green */
+    --muted:     #5c6b62;
+    --acc:       #0f5f43;  /* deep emerald */
+    --leaf:      #2fae72;  /* bright leaf */
+    --ember:     #e8703a;  /* warm phoenix ember */
+    --line:      #d9d4c6;
+    --nav-h:     68px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:var(--nav-h);}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Epilogue',system-ui,sans-serif; font-size:17px; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.disp{font-family:'Sora',system-ui,sans-serif; line-height:1.04; letter-spacing:-.02em; margin:0;}
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  .wrap{width:min(1140px,92vw); margin:0 auto;}
+  .eyebrow{
+    font-family:'Sora',sans-serif; font-weight:600; font-size:.72rem;
+    letter-spacing:.28em; text-transform:uppercase; color:var(--acc);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50; height:var(--nav-h);
+    background:rgba(246,244,238,.86); backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{height:100%; display:flex; align-items:center; justify-content:space-between;}
+  .brand{display:flex; align-items:center; gap:.6rem; font-family:'Sora',sans-serif; font-weight:700; letter-spacing:-.01em; font-size:1.05rem;}
+  .mark{
+    width:26px; height:26px; flex:none; border-radius:50%;
+    background:
+      radial-gradient(circle at 50% 120%, var(--ember) 0 22%, transparent 23%),
+      conic-gradient(from 200deg, var(--acc), var(--leaf), var(--acc));
+    box-shadow:inset 0 0 0 2px var(--bg);
+  }
+  .nav-links{display:flex; gap:1.8rem; align-items:center;}
+  .nav-links a{font-size:.9rem; font-weight:500; color:var(--muted);}
+  .nav-links a:hover{color:var(--acc);}
+  .nav-call{
+    font-family:'Sora',sans-serif; font-weight:600; font-size:.9rem;
+    color:var(--acc); border:1.5px solid var(--acc); padding:.42rem 1rem; border-radius:2px;
+    transition:background .18s,color .18s;
+  }
+  .nav-call:hover{background:var(--acc); color:var(--bg);}
+  @media(max-width:760px){ .nav-links a:not(.nav-call){display:none;} }
+
+  /* ---------- HERO ---------- */
+  header{padding:clamp(3rem,8vw,6rem) 0 0;}
+  .hero-top{max-width:880px;}
+  .hero-top h1{
+    font-weight:800; font-size:clamp(2.6rem,8vw,5.4rem); margin:1.2rem 0 0;
+  }
+  .hero-top h1 .ember{color:var(--ember);}
+  .glow{
+    height:5px; width:128px; margin:1.6rem 0 1.4rem; border-radius:3px;
+    background:linear-gradient(90deg,var(--acc),var(--leaf),var(--ember));
+    background-size:220% 100%; animation:rise 6s ease-in-out infinite;
+  }
+  @keyframes rise{0%,100%{background-position:0% 50%;}50%{background-position:100% 50%;}}
+  .lede{max-width:600px; font-size:1.16rem; color:var(--muted);}
+  .lede b{color:var(--ink); font-weight:600;}
+  .hero-cta{display:flex; flex-wrap:wrap; gap:.9rem; margin-top:1.9rem; align-items:center;}
+  .btn{
+    font-family:'Sora',sans-serif; font-weight:600; font-size:1rem;
+    display:inline-flex; align-items:center; gap:.55rem; padding:.85rem 1.5rem; border-radius:3px;
+    transition:transform .15s, box-shadow .18s, background .18s;
+  }
+  .btn-primary{background:var(--acc); color:var(--bg); box-shadow:0 8px 22px -10px rgba(15,95,67,.7);}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 14px 30px -12px rgba(15,95,67,.8);}
+  .btn-ghost{color:var(--acc);}
+  .btn-ghost:hover{color:var(--ember);}
+  .hours-flash{font-size:.92rem; color:var(--muted);}
+  .hours-flash .dot{display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--leaf); margin-right:.45rem; vertical-align:middle;}
+
+  /* photo collage band */
+  .collage{
+    margin-top:clamp(2.4rem,6vw,4rem); display:grid; gap:14px;
+    grid-template-columns:1.5fr 1fr 1fr; grid-template-rows:repeat(2,1fr);
+  }
+  .collage figure{margin:0; overflow:hidden; border-radius:4px; background:var(--bg2);}
+  .collage img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .collage figure:hover img{transform:scale(1.05);}
+  .collage .big{grid-row:span 2; min-height:340px;}
+  .collage .sm{min-height:163px;}
+  @media(max-width:760px){
+    .collage{grid-template-columns:1fr 1fr; grid-template-rows:auto;}
+    .collage .big{grid-row:span 2; min-height:300px;}
+    .collage .sm{min-height:135px;}
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:clamp(3.5rem,8vw,6rem) 0;}
+  .sec-head{display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap; margin-bottom:2.4rem;}
+  .sec-head h2{font-weight:700; font-size:clamp(1.9rem,4.5vw,2.9rem);}
+  .sec-head .num{font-family:'Sora',sans-serif; font-weight:700; color:var(--leaf); font-size:1.1rem;}
+
+  /* About */
+  .about{background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .about-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(2rem,5vw,4rem); align-items:start;}
+  .about-grid p{margin:0 0 1.1rem; color:#33433a;}
+  .about-grid p:last-child{margin-bottom:0;}
+  .about-side{border-left:3px solid var(--leaf); padding-left:1.5rem;}
+  .about-side dt{font-family:'Sora',sans-serif; font-weight:600; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; color:var(--acc); margin-top:1.3rem;}
+  .about-side dt:first-child{margin-top:0;}
+  .about-side dd{margin:.25rem 0 0; font-size:1.02rem;}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;} .about-side{border-left:0; border-top:3px solid var(--leaf); padding:1.5rem 0 0;}}
+
+  /* Services checklist */
+  .svc-list{display:grid; grid-template-columns:1fr 1fr; gap:0 clamp(2rem,5vw,4.5rem);}
+  .svc-item{display:flex; gap:.95rem; padding:1.15rem 0; border-bottom:1px solid var(--line);}
+  .svc-item .tick{
+    flex:none; width:26px; height:26px; margin-top:2px; border-radius:50%;
+    background:var(--acc); color:var(--bg); display:grid; place-items:center; font-size:.8rem; font-weight:700;
+  }
+  .svc-item h3{font-family:'Sora',sans-serif; font-weight:600; font-size:1.08rem; margin:0 0 .15rem;}
+  .svc-item p{margin:0; font-size:.96rem; color:var(--muted);}
+  @media(max-width:760px){.svc-list{grid-template-columns:1fr;}}
+
+  /* Hours + location band */
+  .visit{background:var(--acc); color:#eaf3ee;}
+  .visit .eyebrow{color:var(--leaf);}
+  .visit h2{color:#fff;}
+  .visit-grid{display:grid; grid-template-columns:1fr 1.15fr; gap:clamp(2rem,5vw,3.5rem); align-items:stretch;}
+  .hours-tbl{width:100%; border-collapse:collapse; font-size:1.02rem;}
+  .hours-tbl td{padding:.6rem 0; border-bottom:1px solid rgba(255,255,255,.16);}
+  .hours-tbl td:last-child{text-align:right; font-variant-numeric:tabular-nums; color:#cfe6da;}
+  .hours-tbl tr.today td{color:#fff; font-weight:600;}
+  .hours-tbl tr.today td:last-child{color:var(--ember);}
+  .hours-tbl tr.closed td:last-child{color:#9fc2b0;}
+  .visit-addr{margin-top:1.6rem; font-size:1.02rem; line-height:1.7; color:#d7e9df;}
+  .visit-addr a{color:#fff; border-bottom:1px solid rgba(255,255,255,.4);}
+  .map-frame{border-radius:4px; overflow:hidden; min-height:340px; border:1px solid rgba(255,255,255,.18);}
+  .map-frame iframe{width:100%; height:100%; min-height:340px; border:0; filter:grayscale(.15) saturate(1.05);}
+  @media(max-width:760px){.visit-grid{grid-template-columns:1fr;}}
+
+  /* Testimonies stream */
+  .quotes{display:flex; flex-direction:column; gap:0;}
+  .quote{display:grid; grid-template-columns:auto 1fr; gap:clamp(1.2rem,4vw,3rem); padding:2.2rem 0; border-top:1px solid var(--line);}
+  .quote:last-child{border-bottom:1px solid var(--line);}
+  .quote:nth-child(even){padding-left:clamp(0px,8vw,7rem);}
+  .quote .qn{font-family:'Sora',sans-serif; font-weight:700; font-size:clamp(2rem,6vw,3.4rem); color:var(--leaf); line-height:1;}
+  .quote blockquote{margin:0; font-size:clamp(1.05rem,2.4vw,1.32rem); line-height:1.5; color:var(--ink);}
+  .quote cite{display:block; margin-top:.9rem; font-style:normal; font-family:'Sora',sans-serif; font-weight:600; font-size:.9rem; color:var(--acc); letter-spacing:.02em;}
+
+  /* Contact / CTA close */
+  .close{background:var(--bg2); border-top:1px solid var(--line); text-align:center;}
+  .close h2{font-weight:800; font-size:clamp(2rem,6vw,3.4rem); max-width:18ch; margin:0 auto 1.2rem;}
+  .close p{color:var(--muted); max-width:48ch; margin:0 auto 2rem;}
+  .close .btn-primary{font-size:1.1rem; padding:1rem 2rem;}
+  .close .phone{display:block; margin-top:1.4rem; font-family:'Sora',sans-serif; font-weight:500; color:var(--muted); font-size:.95rem;}
+
+  /* Footer */
+  footer{background:var(--ink); color:#aeb9b2; padding:3rem 0 2.4rem; font-size:.92rem;}
+  .foot-grid{display:flex; justify-content:space-between; gap:1.5rem; flex-wrap:wrap; align-items:flex-start;}
+  .foot-brand{display:flex; align-items:center; gap:.6rem; font-family:'Sora',sans-serif; font-weight:700; color:#fff; font-size:1.05rem;}
+  .foot-links{display:flex; flex-direction:column; gap:.5rem;}
+  .foot-links a:hover{color:var(--leaf);}
+  .credit{margin-top:2.4rem; padding-top:1.6rem; border-top:1px solid rgba(255,255,255,.12); font-size:.84rem; color:#7d8a82;}
+  .credit a{color:var(--leaf);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true"></span> Green Phoenix Auto</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#visit">Hours &amp; Location</a>
+      <a href="#say">In Their Words</a>
+      <a class="nav-call" href="tel:+18317588326">(831) 758-8326</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <div class="hero-top">
+      <span class="eyebrow">Auto repair &amp; maintenance · Salinas, CA</span>
+      <h1>Honest car care,<br>done right the <span class="ember">first time.</span></h1>
+      <div class="glow" aria-hidden="true"></div>
+      <p class="lede">Green Phoenix Auto Repair on South Main Street has earned a name for one thing above all — <b>straight answers and fair work</b>. We diagnose carefully, quote honestly, and only fix what actually needs fixing.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="tel:+18317588326">Call Now · (831) 758-8326</a>
+        <a class="btn btn-ghost" href="#visit">Get directions →</a>
+        <span class="hours-flash"><span class="dot" aria-hidden="true"></span>Open Mon–Sat, 7:30am – 6:00pm</span>
+      </div>
+    </div>
+
+    <div class="collage">
+      <figure class="big"><img src="./photos/01.jpg" alt="Green Phoenix Auto Repair in Salinas" loading="eager"></figure>
+      <figure class="sm"><img src="./photos/02.jpg" alt="Inside the Green Phoenix service bay" loading="lazy"></figure>
+      <figure class="sm"><img src="./photos/03.jpg" alt="A vehicle on the lift at Green Phoenix" loading="lazy"></figure>
+      <figure class="sm"><img src="./photos/04.jpg" alt="Green Phoenix Auto Repair shop detail" loading="lazy"></figure>
+      <figure class="sm"><img src="./photos/05.jpg" alt="Service work underway at Green Phoenix" loading="lazy"></figure>
+    </div>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">01</span><h2>A shop you can actually trust</h2></div>
+    <div class="about-grid">
+      <div>
+        <p>Owned and run by Amit, Green Phoenix is the kind of neighborhood shop people drive across town for. The reason shows up again and again in what customers tell their friends: the team here would rather lose a job than sell you one you don't need.</p>
+        <p>That means real diagnostics before any wrench turns. One customer was told by a dealership they needed a $3,500 oil-pan replacement — Green Phoenix ordered the part, put the car on the lift, found only minor scrapes, and sent them home needing no repair at all. That's the standard.</p>
+        <p>From the front counter to the service bay, you're dealing with people who explain what's going on in plain language and back it with careful, professional work.</p>
+      </div>
+      <dl class="about-side">
+        <dt>Where</dt>
+        <dd>1107 S Main St<br>Salinas, CA 93901</dd>
+        <dt>Hours</dt>
+        <dd>Mon – Sat · 7:30am – 6:00pm<br>Sunday · Closed</dd>
+        <dt>Known for</dt>
+        <dd>Honest diagnostics, fair quotes, friendly front office</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">02</span><h2>What we take care of</h2></div>
+    <div class="svc-list">
+      <div class="svc-item"><span class="tick" aria-hidden="true">✓</span><div><h3>Diagnostics &amp; check-engine</h3><p>We track down the real cause — including evap and emissions faults — before recommending any work.</p></div></div>
+      <div class="svc-item"><span class="tick" aria-hidden="true">✓</span><div><h3>Brakes &amp; suspension</h3><p>Pads, rotors, and the steering and suspension parts that keep your ride safe and steady.</p></div></div>
+      <div class="svc-item"><span class="tick" aria-hidden="true">✓</span><div><h3>Oil &amp; routine maintenance</h3><p>Oil changes, fluids, filters, and the scheduled service that keeps small problems small.</p></div></div>
+      <div class="svc-item"><span class="tick" aria-hidden="true">✓</span><div><h3>Engine &amp; drivetrain repair</h3><p>From odd noises to major repairs — diagnosed first, fixed properly, quoted up front.</p></div></div>
+      <div class="svc-item"><span class="tick" aria-hidden="true">✓</span><div><h3>A/C, electrical &amp; sensors</h3><p>Climate, battery, charging, and the electronics that modern cars increasingly run on.</p></div></div>
+      <div class="svc-item"><span class="tick" aria-hidden="true">✓</span><div><h3>Pre-purchase &amp; second opinions</h3><p>Got a quote that feels off? Bring it in — we'll tell you straight what's actually needed.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Find us</span></div>
+    <div class="visit-grid">
+      <div>
+        <h2 style="margin-bottom:1.6rem;">Hours &amp; location</h2>
+        <table class="hours-tbl" aria-label="Opening hours">
+          <tr id="d1"><td>Monday</td><td>7:30am – 6:00pm</td></tr>
+          <tr id="d2"><td>Tuesday</td><td>7:30am – 6:00pm</td></tr>
+          <tr id="d3"><td>Wednesday</td><td>7:30am – 6:00pm</td></tr>
+          <tr id="d4"><td>Thursday</td><td>7:30am – 6:00pm</td></tr>
+          <tr id="d5"><td>Friday</td><td>7:30am – 6:00pm</td></tr>
+          <tr id="d6"><td>Saturday</td><td>7:30am – 6:00pm</td></tr>
+          <tr id="d0" class="closed"><td>Sunday</td><td>Closed</td></tr>
+        </table>
+        <p class="visit-addr">
+          1107 S Main St, Salinas, CA 93901<br>
+          <a href="tel:+18317588326">(831) 758-8326</a> ·
+          <a href="https://maps.google.com/?cid=15079960750542716170" target="_blank" rel="noopener">View on Google</a>
+        </p>
+        <a class="btn btn-primary" style="margin-top:1.4rem;background:var(--ember);box-shadow:0 8px 22px -10px rgba(232,112,58,.7)" href="tel:+18317588326">Call Now · (831) 758-8326</a>
+      </div>
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps?q=1107%20S%20Main%20St%2C%20Salinas%2C%20CA%2093901&z=15&output=embed" title="Map to Green Phoenix Auto Repair" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="say">
+  <div class="wrap">
+    <div class="sec-head"><span class="num">03</span><h2>In their words</h2></div>
+    <div class="quotes">
+      <div class="quote">
+        <span class="qn">01</span>
+        <div>
+          <blockquote>"I hit a speed bump and scraped the bottom of my car. My dealership said I needed a new oil pan — $3,500. Green Phoenix quoted a thousand less, ordered the part, put the car on the lift, and found it only had minor scrapes and needed no repairs. Needless to say, all of my auto repairs will be done here. Extremely honest."</blockquote>
+          <cite>Tony L.</cite>
+        </div>
+      </div>
+      <div class="quote">
+        <span class="qn">02</span>
+        <div>
+          <blockquote>"Always a pleasure and excellent service at Green Phoenix. I recommend them to everyone. Amit is a trustworthy and honest man — and talk to Maria at the front counter, an excellent person."</blockquote>
+          <cite>Californeo C.</cite>
+        </div>
+      </div>
+      <div class="quote">
+        <span class="qn">03</span>
+        <div>
+          <blockquote>"They have great mechanics on staff and very professional women in the front office. One mechanic was thinking on his feet to come up with a solution to an evap leak — it didn't fully work, but he gets a 'B' for effort. I liked that they keep at it."</blockquote>
+          <cite>Anthony A.</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="close" id="contact">
+  <div class="wrap">
+    <h2>Bring it in for an honest look.</h2>
+    <p>Whether it's routine maintenance or a quote you're not sure about, give us a call. We'll tell you straight what your car actually needs.</p>
+    <a class="btn btn-primary" href="tel:+18317588326">Call Now · (831) 758-8326</a>
+    <span class="phone">1107 S Main St, Salinas, CA 93901 · Mon–Sat 7:30am–6:00pm</span>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><span class="mark" aria-hidden="true"></span> Green Phoenix Auto Repair</div>
+        <p style="margin:.8rem 0 0;max-width:34ch;">Honest, dependable car repair and maintenance on South Main Street in Salinas.</p>
+      </div>
+      <div class="foot-links">
+        <a href="tel:+18317588326">(831) 758-8326</a>
+        <a href="https://www.google.com/maps?q=1107%20S%20Main%20St%2C%20Salinas%2C%20CA%2093901&output=embed" target="_blank" rel="noopener">1107 S Main St, Salinas, CA 93901</a>
+        <a href="https://maps.google.com/?cid=15079960750542716170" target="_blank" rel="noopener">Find us on Google</a>
+      </div>
+    </div>
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </div>
+</footer>
+
+<script>
+  // Highlight today's row in the hours table (no external deps).
+  (function(){
+    var d = new Date().getDay(); // 0 Sun … 6 Sat
+    var row = document.getElementById('d'+d);
+    if(row) row.classList.add('today');
+  })();
+</script>
+</body>
+</html>

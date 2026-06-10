@@ -1,0 +1,856 @@
+<!-- laundry · energetic · hero-layout 1 · svc-layout 2 · Bebas Neue/Barlow -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payless Dry Cleaners-Laundry | Salinas, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --acc:#ea580c;
+    --bg:#fffbeb;
+    --dark:#1a1a1a;
+    --mid:#3d3d3d;
+    --light:#f5f0e0;
+    --nav-h:64px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+
+  body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--dark);line-height:1.6;overflow-x:hidden}
+
+  .brand{font-family:'Bebas Neue',serif;letter-spacing:.04em}
+
+  /* ── NAV ── */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    height:var(--nav-h);
+    background:var(--dark);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 clamp(1rem,5vw,3rem);
+    border-bottom:3px solid var(--acc);
+  }
+
+  .nav-logo{
+    font-family:'Bebas Neue',serif;
+    font-size:1.7rem;
+    color:#fff;
+    letter-spacing:.06em;
+    text-decoration:none;
+    line-height:1;
+  }
+  .nav-logo span{color:var(--acc)}
+
+  .nav-links{
+    display:flex;
+    gap:2rem;
+    list-style:none;
+  }
+  .nav-links a{
+    color:#ccc;
+    text-decoration:none;
+    font-size:.85rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--acc)}
+
+  .nav-cta{
+    background:var(--acc);
+    color:#fff !important;
+    padding:.35rem 1rem;
+    transition:background .2s !important;
+  }
+  .nav-cta:hover{background:#c2410c !important;color:#fff !important}
+
+  .nav-toggle{
+    display:none;
+    background:none;
+    border:none;
+    cursor:pointer;
+    flex-direction:column;
+    gap:5px;
+    padding:4px;
+  }
+  .nav-toggle span{display:block;width:24px;height:2px;background:#fff;transition:transform .3s,opacity .3s}
+
+  /* ── HERO (layout 1 = left image) ── */
+  .hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:calc(100vh - var(--nav-h));
+    background:var(--dark);
+  }
+
+  .hero-image{
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    filter:brightness(.85);
+    transition:transform .6s ease;
+  }
+  .hero-image:hover img{transform:scale(1.03)}
+
+  .hero-accent-bar{
+    position:absolute;
+    top:0;
+    right:0;
+    width:6px;
+    height:100%;
+    background:var(--acc);
+  }
+
+  .hero-content{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:clamp(2rem,6vw,5rem) clamp(2rem,5vw,4rem);
+  }
+
+  .hero-eyebrow{
+    font-family:'Bebas Neue',serif;
+    font-size:clamp(.85rem,1.5vw,1rem);
+    letter-spacing:.25em;
+    color:var(--acc);
+    margin-bottom:.75rem;
+    text-transform:uppercase;
+  }
+
+  .hero-h1{
+    font-family:'Bebas Neue',serif;
+    font-size:clamp(3rem,7vw,6rem);
+    line-height:.95;
+    color:#fff;
+    margin-bottom:1.25rem;
+    text-transform:uppercase;
+  }
+  .hero-h1 em{
+    font-style:normal;
+    color:var(--acc);
+    display:block;
+  }
+
+  .hero-sub{
+    font-size:clamp(1rem,1.5vw,1.15rem);
+    color:#aaa;
+    max-width:38ch;
+    margin-bottom:2.5rem;
+    line-height:1.7;
+  }
+
+  .hero-actions{
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+
+  .btn-primary{
+    background:var(--acc);
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    font-size:.95rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    padding:.85rem 2rem;
+    display:inline-block;
+    transition:background .2s,transform .15s;
+  }
+  .btn-primary:hover{background:#c2410c;transform:translateY(-2px)}
+
+  .btn-ghost{
+    border:2px solid #555;
+    color:#ccc;
+    text-decoration:none;
+    font-weight:600;
+    font-size:.95rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    padding:.85rem 2rem;
+    display:inline-block;
+    transition:border-color .2s,color .2s;
+  }
+  .btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+
+  .hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    background:rgba(234,88,12,.12);
+    border:1px solid rgba(234,88,12,.3);
+    color:var(--acc);
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    padding:.4rem .85rem;
+    margin-bottom:1.5rem;
+    width:fit-content;
+  }
+
+  /* ── STRIP ── */
+  .strip{
+    background:var(--acc);
+    padding:.65rem clamp(1rem,5vw,3rem);
+    display:flex;
+    gap:2.5rem;
+    justify-content:center;
+    flex-wrap:wrap;
+    overflow:hidden;
+  }
+  .strip-item{
+    font-family:'Bebas Neue',serif;
+    font-size:1.05rem;
+    color:#fff;
+    letter-spacing:.1em;
+    white-space:nowrap;
+  }
+  .strip-item::before{content:'✦ ';opacity:.7}
+
+  /* ── SECTIONS ── */
+  section{padding:clamp(3rem,7vw,6rem) clamp(1.25rem,6vw,5rem)}
+
+  .section-label{
+    font-family:'Bebas Neue',serif;
+    font-size:.9rem;
+    letter-spacing:.25em;
+    color:var(--acc);
+    text-transform:uppercase;
+    margin-bottom:.5rem;
+    display:block;
+  }
+
+  .section-title{
+    font-family:'Bebas Neue',serif;
+    font-size:clamp(2.5rem,5vw,4rem);
+    line-height:1;
+    margin-bottom:1.5rem;
+    text-transform:uppercase;
+  }
+
+  /* ── ABOUT ── */
+  .about{
+    background:#fff;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(2rem,5vw,5rem);
+    align-items:center;
+  }
+
+  .about-photos{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto auto;
+    gap:.75rem;
+  }
+
+  .about-photos img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    display:block;
+    transition:filter .3s;
+  }
+  .about-photos img:hover{filter:brightness(1.1)}
+  .about-photos img:first-child{
+    grid-column:1/-1;
+    height:280px;
+  }
+
+  .about-body p{
+    font-size:1.05rem;
+    color:var(--mid);
+    line-height:1.8;
+    margin-bottom:1.25rem;
+  }
+
+  .pickup-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    background:var(--light);
+    border-left:4px solid var(--acc);
+    padding:.75rem 1.25rem;
+    font-weight:600;
+    font-size:.95rem;
+    color:var(--dark);
+    margin-top:.5rem;
+  }
+
+  /* ── SERVICES (layout 2 = numbered/stacked) ── */
+  .services{
+    background:var(--dark);
+    color:#fff;
+  }
+
+  .services .section-title{color:#fff}
+
+  .svc-list{
+    margin-top:2.5rem;
+    counter-reset:svc;
+  }
+
+  .svc-item{
+    counter-increment:svc;
+    display:grid;
+    grid-template-columns:4rem 1fr auto;
+    align-items:start;
+    gap:1.25rem 1.5rem;
+    padding:1.75rem 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    transition:background .2s;
+  }
+  .svc-item:last-child{border-bottom:none}
+  .svc-item:hover{padding-left:.5rem}
+
+  .svc-num{
+    font-family:'Bebas Neue',serif;
+    font-size:2.5rem;
+    color:var(--acc);
+    line-height:1;
+    opacity:.8;
+  }
+  .svc-num::before{content:counter(svc,decimal-leading-zero)}
+
+  .svc-name{
+    font-family:'Bebas Neue',serif;
+    font-size:1.6rem;
+    letter-spacing:.04em;
+    line-height:1.1;
+    margin-bottom:.35rem;
+    text-transform:uppercase;
+  }
+
+  .svc-desc{
+    font-size:.92rem;
+    color:#aaa;
+    line-height:1.6;
+  }
+
+  .svc-tag{
+    font-family:'Bebas Neue',serif;
+    font-size:.85rem;
+    letter-spacing:.12em;
+    color:var(--acc);
+    white-space:nowrap;
+    padding-top:.25rem;
+    text-transform:uppercase;
+  }
+
+  /* ── PHOTOS ── */
+  .gallery{
+    background:var(--light);
+    padding-top:0;
+    padding-bottom:0;
+  }
+
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:.5rem;
+  }
+
+  .gallery-grid img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    display:block;
+    transition:transform .4s ease,filter .3s;
+  }
+  .gallery-grid img:hover{transform:scale(1.04);filter:brightness(1.08);z-index:2;position:relative}
+
+  /* ── TESTIMONIES ── */
+  .testimonies{
+    background:#fff;
+  }
+
+  .t-intro{
+    max-width:50ch;
+    margin-bottom:3rem;
+  }
+  .t-intro p{
+    color:var(--mid);
+    font-size:1.05rem;
+  }
+
+  .t-stack{
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+    max-width:800px;
+  }
+
+  .t-card{
+    border-left:4px solid var(--acc);
+    padding:1.5rem 1.75rem;
+    background:var(--bg);
+    position:relative;
+    transition:border-left-width .2s;
+  }
+  .t-card:hover{border-left-width:8px}
+
+  .t-quote{
+    font-size:1.05rem;
+    color:var(--mid);
+    line-height:1.75;
+    font-style:italic;
+    margin-bottom:1rem;
+  }
+  .t-quote::before{content:'\201C';font-size:2rem;color:var(--acc);line-height:0;vertical-align:-.4em;margin-right:.15em;font-style:normal}
+  .t-quote::after{content:'\201D';font-size:2rem;color:var(--acc);line-height:0;vertical-align:-.4em;margin-left:.15em;font-style:normal}
+
+  .t-author{
+    font-weight:700;
+    font-size:.9rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    color:var(--dark);
+  }
+
+  /* ── HOURS + MAP ── */
+  .info{
+    background:var(--dark);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+  }
+
+  .info-hours{
+    padding:clamp(3rem,6vw,5rem) clamp(2rem,5vw,4rem);
+    color:#fff;
+  }
+
+  .info-hours .section-title{color:#fff}
+
+  .hours-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:1.5rem;
+  }
+  .hours-table tr{
+    border-bottom:1px solid rgba(255,255,255,.07);
+  }
+  .hours-table tr:last-child{border-bottom:none}
+  .hours-table td{
+    padding:.65rem 0;
+    font-size:.95rem;
+    color:#ccc;
+  }
+  .hours-table td:first-child{
+    font-weight:700;
+    color:#fff;
+    width:40%;
+  }
+  .hours-table tr.today td{color:var(--acc)}
+  .hours-table tr.today td:first-child{color:var(--acc)}
+  .closed-row td{color:#666 !important}
+
+  .contact-block{
+    margin-top:2rem;
+    display:flex;
+    flex-direction:column;
+    gap:.75rem;
+  }
+
+  .contact-line{
+    display:flex;
+    align-items:center;
+    gap:.75rem;
+    font-size:1rem;
+    color:#ccc;
+  }
+  .contact-line a{color:#ccc;text-decoration:none;transition:color .2s}
+  .contact-line a:hover{color:var(--acc)}
+  .contact-dot{width:8px;height:8px;background:var(--acc);flex-shrink:0}
+
+  .map-wrap{
+    position:relative;
+  }
+  .map-wrap iframe{
+    width:100%;
+    height:100%;
+    min-height:420px;
+    border:none;
+    display:block;
+    filter:grayscale(.3) contrast(1.05);
+  }
+
+  /* ── CTA BANNER ── */
+  .cta-banner{
+    background:var(--acc);
+    padding:clamp(2.5rem,5vw,4rem) clamp(1.25rem,6vw,5rem);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:2rem;
+    flex-wrap:wrap;
+  }
+
+  .cta-copy .cta-title{
+    font-family:'Bebas Neue',serif;
+    font-size:clamp(2rem,4vw,3.25rem);
+    color:#fff;
+    line-height:1;
+    text-transform:uppercase;
+  }
+  .cta-copy p{
+    color:rgba(255,255,255,.8);
+    font-size:1rem;
+    margin-top:.4rem;
+  }
+
+  .btn-white{
+    background:#fff;
+    color:var(--acc);
+    text-decoration:none;
+    font-weight:800;
+    font-size:.95rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    padding:.9rem 2.25rem;
+    display:inline-block;
+    white-space:nowrap;
+    transition:background .2s,transform .15s;
+  }
+  .btn-white:hover{background:#fef3c7;transform:translateY(-2px)}
+
+  /* ── FOOTER ── */
+  footer{
+    background:#111;
+    padding:clamp(2rem,4vw,3rem) clamp(1.25rem,6vw,5rem);
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:start;
+    gap:2rem;
+    border-top:3px solid var(--acc);
+  }
+
+  .footer-brand-name{
+    font-family:'Bebas Neue',serif;
+    font-size:1.6rem;
+    color:#fff;
+    letter-spacing:.06em;
+    margin-bottom:.4rem;
+  }
+  .footer-brand-name span{color:var(--acc)}
+
+  .footer-tagline{
+    font-size:.85rem;
+    color:#666;
+    margin-bottom:1rem;
+  }
+
+  .footer-links{
+    display:flex;
+    gap:1.25rem;
+    flex-wrap:wrap;
+  }
+  .footer-links a{
+    color:#888;
+    text-decoration:none;
+    font-size:.85rem;
+    font-weight:500;
+    transition:color .2s;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+  }
+  .footer-links a:hover{color:var(--acc)}
+
+  .footer-credit{
+    font-size:.78rem;
+    color:#444;
+    text-align:right;
+    line-height:1.8;
+  }
+  .footer-credit a{color:#555;text-decoration:none;transition:color .2s}
+  .footer-credit a:hover{color:var(--acc)}
+
+  /* ── MOBILE ── */
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr}
+    .hero-image{height:55vw;min-height:260px}
+    .hero-image img{height:100%}
+    .hero-content{padding:2.5rem 1.5rem}
+
+    .about{grid-template-columns:1fr}
+
+    .info{grid-template-columns:1fr}
+    .map-wrap iframe{min-height:320px}
+
+    footer{grid-template-columns:1fr}
+    .footer-credit{text-align:left}
+
+    .gallery-grid{grid-template-columns:1fr 1fr}
+
+    .svc-item{grid-template-columns:3rem 1fr}
+    .svc-tag{display:none}
+  }
+
+  @media(max-width:640px){
+    .nav-links{display:none}
+    .nav-toggle{display:flex}
+
+    .nav-links.open{
+      display:flex;
+      flex-direction:column;
+      gap:0;
+      position:fixed;
+      top:var(--nav-h);
+      left:0;right:0;
+      background:var(--dark);
+      padding:1rem 0 2rem;
+      border-bottom:3px solid var(--acc);
+    }
+    .nav-links.open a{
+      padding:.75rem 1.5rem;
+      display:block;
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+
+    .gallery-grid{grid-template-columns:1fr}
+    .gallery-grid img{height:220px}
+
+    .cta-banner{flex-direction:column;text-align:center}
+
+    .strip{gap:1.25rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#top"><span>PAYLESS</span> CLEANERS</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonies">What People Say</a></li>
+    <li><a href="#hours">Hours</a></li>
+    <li><a href="tel:+18314222174" class="nav-cta">Call Now</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO (layout 1 — image LEFT, content RIGHT) -->
+<section id="top" class="hero">
+  <div class="hero-image">
+    <img src="./photos/01.jpg" alt="Payless Dry Cleaners — inside the shop">
+    <div class="hero-accent-bar"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">Salinas, CA · Est. Local Favorite</div>
+    <p class="hero-eyebrow">Dry Cleaning &amp; Laundry Services</p>
+    <h1 class="hero-h1 brand">CLEAN<em>DELIVERED.</em></h1>
+    <p class="hero-sub">Payless Dry Cleaners-Laundry keeps Salinas looking sharp — professional cleaning, friendly owners, and free pick-up &amp; drop-off right to your door.</p>
+    <div class="hero-actions">
+      <a href="tel:+18314222174" class="btn-primary">Call Now</a>
+      <a href="https://maps.google.com/?cid=6502186834673473519&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <span class="strip-item">Professional Dry Cleaning</span>
+  <span class="strip-item">Free Pick-Up &amp; Drop-Off</span>
+  <span class="strip-item">Locally Owned &amp; Operated</span>
+  <span class="strip-item">Mon–Sat Service</span>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="about-photos">
+    <img src="./photos/02.jpg" alt="Clean garments ready for pick-up">
+    <img src="./photos/03.jpg" alt="Dry cleaning equipment">
+    <img src="./photos/04.jpg" alt="Interior of Payless Dry Cleaners">
+  </div>
+  <div class="about-body">
+    <span class="section-label">Who We Are</span>
+    <h2 class="section-title">FAMILY-RUN. COMMUNITY TRUSTED.</h2>
+    <p>Payless Dry Cleaners-Laundry has been serving the Salinas community at 122 E Laurel Dr for years. The owners are hands-on, respectful, and genuinely care about every garment that comes through the door.</p>
+    <p>We handle everything from everyday laundry to delicate dry-clean-only pieces — and if you can't make it in, we'll come to you. Our free pick-up and delivery service means clean clothes with zero hassle.</p>
+    <div class="pickup-badge">
+      Free Pick-Up &amp; Drop-Off Available — Just Call
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES (layout 2 — numbered stacked list) -->
+<section id="services" class="services">
+  <span class="section-label">What We Do</span>
+  <h2 class="section-title">OUR SERVICES</h2>
+  <div class="svc-list">
+    <div class="svc-item">
+      <div class="svc-num"></div>
+      <div>
+        <div class="svc-name brand">Dry Cleaning</div>
+        <p class="svc-desc">Professional solvent-based cleaning for suits, dresses, blazers, and all dry-clean-only garments. Pressed and ready to wear.</p>
+      </div>
+      <div class="svc-tag">Full Service</div>
+    </div>
+    <div class="svc-item">
+      <div class="svc-num"></div>
+      <div>
+        <div class="svc-name brand">Wash &amp; Fold Laundry</div>
+        <p class="svc-desc">Drop off your everyday laundry — shirts, pants, linens — and pick up fresh, folded, and ready to go. Bulk loads welcome.</p>
+      </div>
+      <div class="svc-tag">Per Pound</div>
+    </div>
+    <div class="svc-item">
+      <div class="svc-num"></div>
+      <div>
+        <div class="svc-name brand">Shirt Cleaning &amp; Press</div>
+        <p class="svc-desc">Crisp, wrinkle-free dress shirts returned on hangers. Perfect for professionals and anyone who wants to look sharp.</p>
+      </div>
+      <div class="svc-tag">Quick Turnaround</div>
+    </div>
+    <div class="svc-item">
+      <div class="svc-num"></div>
+      <div>
+        <div class="svc-name brand">Free Pick-Up &amp; Delivery</div>
+        <p class="svc-desc">Can't make it in? The owners will come to you. Call to schedule a pickup from your home or office — no extra charge.</p>
+      </div>
+      <div class="svc-tag">Complimentary</div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="gallery-grid">
+    <img src="./photos/05.jpg" alt="Garments on the rack">
+    <img src="./photos/06.jpg" alt="Inside Payless Dry Cleaners">
+    <img src="./photos/02.jpg" alt="Clean pressed clothing">
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies" class="testimonies">
+  <span class="section-label">Customer Testimonies</span>
+  <h2 class="section-title">WHAT PEOPLE SAY</h2>
+  <div class="t-intro">
+    <p>Real words from real Salinas customers who trust us with their clothes.</p>
+  </div>
+  <div class="t-stack">
+    <div class="t-card">
+      <p class="t-quote">I couldn't go pick up my order because I was covid positive and I explained my situation to the owner and they brought it to my house free of charge! Amazing service by the owners — only thing is I'm guessing during delivery the packaging plastic of the clothing got a little torn but overall an amazing place and service.</p>
+      <div class="t-author">Angie F.</div>
+    </div>
+    <div class="t-card">
+      <p class="t-quote">Took a bunch of shirts for my husband to get cleaned — they came out great! Thanks.</p>
+      <div class="t-author">Miranda G.</div>
+    </div>
+    <div class="t-card">
+      <p class="t-quote">Nice dry cleaner, owners are very nice and respectful. They do pick up and drop off.</p>
+      <div class="t-author">Rafael G.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-copy">
+    <div class="cta-title brand">READY FOR CLEAN CLOTHES?</div>
+    <p>Call us or swing by 122 E Laurel Dr, Salinas — Mon through Sat.</p>
+  </div>
+  <a href="tel:+18314222174" class="btn-white">(831) 422-2174</a>
+</div>
+
+<!-- HOURS + MAP -->
+<section id="hours" class="info">
+  <div class="info-hours">
+    <span class="section-label">Find Us</span>
+    <h2 class="section-title">HOURS &amp; LOCATION</h2>
+    <table class="hours-table">
+      <tbody>
+        <tr><td>Monday</td><td>7:30 AM – 6:00 PM</td></tr>
+        <tr><td>Tuesday</td><td>7:30 AM – 6:00 PM</td></tr>
+        <tr><td>Wednesday</td><td>7:30 AM – 6:00 PM</td></tr>
+        <tr><td>Thursday</td><td>7:30 AM – 6:00 PM</td></tr>
+        <tr><td>Friday</td><td>7:30 AM – 6:00 PM</td></tr>
+        <tr><td>Saturday</td><td>9:00 AM – 4:00 PM</td></tr>
+        <tr class="closed-row"><td>Sunday</td><td>Closed</td></tr>
+      </tbody>
+    </table>
+    <div class="contact-block">
+      <div class="contact-line">
+        <div class="contact-dot"></div>
+        <span>122 E Laurel Dr, Salinas, CA 93906</span>
+      </div>
+      <div class="contact-line">
+        <div class="contact-dot"></div>
+        <a href="tel:+18314222174">(831) 422-2174</a>
+      </div>
+      <div class="contact-line">
+        <div class="contact-dot"></div>
+        <a href="https://maps.google.com/?cid=6502186834673473519&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">View on Google Maps</a>
+      </div>
+    </div>
+  </div>
+  <div class="map-wrap">
+    <iframe
+      src="https://www.google.com/maps?q=122+E+Laurel+Dr,+Salinas,+CA+93906&z=15&output=embed"
+      title="Payless Dry Cleaners-Laundry location"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand-name brand"><span>PAYLESS</span> DRY CLEANERS-LAUNDRY</div>
+    <div class="footer-tagline">122 E Laurel Dr, Salinas, CA 93906 · (831) 422-2174</div>
+    <div class="footer-links">
+      <a href="https://maps.google.com/?cid=6502186834673473519&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+      <a href="tel:+18314222174">Call Us</a>
+      <a href="#hours">Hours</a>
+    </div>
+  </div>
+  <div class="footer-credit">
+    Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const links  = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => links.classList.remove('open'));
+  });
+
+  // Highlight today's row
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const today = days[new Date().getDay()];
+  document.querySelectorAll('.hours-table td:first-child').forEach(td => {
+    if(td.textContent.trim() === today){
+      td.closest('tr').classList.add('today');
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,603 @@
+<!-- bakery · bold-dark · hero-layout 2 · svc-layout 1 · Archivo Black/Inter -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cristal Bakery &amp; Restaurant — Sanger, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --acc:#14b8a6;
+  --bg:#0b1f1d;
+  --bg2:#0f2926;
+  --bg3:#132e2b;
+  --text:#e8f5f3;
+  --muted:#7fb3ad;
+  --nav-h:64px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.brand{font-family:'Archivo Black',serif;letter-spacing:-0.02em}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  height:var(--nav-h);
+  background:rgba(11,31,29,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(20,184,166,.15);
+  display:flex;align-items:center;
+  padding:0 clamp(1rem,4vw,2.5rem);
+  gap:2rem;
+}
+.nav-logo{font-size:1.1rem;line-height:1.2}
+.nav-logo span{display:block;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:300}
+.nav-links{display:flex;gap:clamp(.75rem,2.5vw,1.75rem);margin-left:auto;list-style:none}
+.nav-links a{font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{
+  margin-left:clamp(.5rem,1.5vw,1rem);
+  background:var(--acc);color:#0b1f1d;
+  font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  padding:.45rem 1rem;border-radius:2px;
+  transition:background .2s,transform .15s;
+  white-space:nowrap;
+}
+.nav-cta:hover{background:#0d9e8e;transform:translateY(-1px)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:.4rem;color:var(--text)}
+.hamburger span{display:block;width:22px;height:2px;background:currentColor;margin:5px 0;transition:transform .25s,opacity .25s}
+@media(max-width:680px){
+  .nav-links{
+    display:none;flex-direction:column;gap:0;
+    position:absolute;top:var(--nav-h);left:0;right:0;
+    background:rgba(11,31,29,.97);border-bottom:1px solid rgba(20,184,166,.2);
+    padding:.5rem 0;
+  }
+  .nav-links.open{display:flex}
+  .nav-links li a{display:block;padding:.7rem clamp(1rem,4vw,2.5rem)}
+  .nav-cta{display:none}
+  .hamburger{display:block}
+}
+
+/* ── HERO (full-bleed, layout 2) ── */
+.hero{
+  position:relative;height:min(92vh,820px);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url(./photos/01.jpg);
+  background-size:cover;background-position:center 30%;
+  transform:scale(1.04);
+  transition:transform 8s ease-out;
+}
+.hero-bg.loaded{transform:scale(1)}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(11,31,29,.97) 0%,rgba(11,31,29,.55) 50%,rgba(11,31,29,.15) 100%);
+}
+.hero-content{
+  position:relative;z-index:1;
+  padding:clamp(2rem,6vw,4rem) clamp(1rem,6vw,4rem);
+  max-width:860px;
+}
+.hero-eyebrow{
+  display:inline-block;
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--acc);font-weight:600;margin-bottom:1rem;
+}
+.hero h1{
+  font-size:clamp(2.6rem,7vw,5.2rem);
+  line-height:1.05;letter-spacing:-0.03em;
+  margin-bottom:1.25rem;
+}
+.hero h1 em{color:var(--acc);font-style:normal}
+.hero-sub{
+  font-size:clamp(.95rem,2.5vw,1.15rem);
+  color:var(--muted);max-width:520px;font-weight:300;
+  margin-bottom:2rem;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  background:var(--acc);color:#0b1f1d;
+  font-weight:700;font-size:.9rem;letter-spacing:.04em;text-transform:uppercase;
+  padding:.85rem 2rem;border-radius:2px;
+  transition:background .2s,transform .15s;
+  border:none;cursor:pointer;
+}
+.btn-primary:hover{background:#0d9e8e;transform:translateY(-2px)}
+.btn-ghost{
+  border:1.5px solid rgba(20,184,166,.45);color:var(--text);
+  font-weight:500;font-size:.9rem;letter-spacing:.04em;text-transform:uppercase;
+  padding:.85rem 2rem;border-radius:2px;
+  transition:border-color .2s,color .2s;
+}
+.btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+
+/* ── STRIP ── */
+.strip{
+  background:var(--acc);color:#0b1f1d;
+  padding:.7rem clamp(1rem,4vw,2.5rem);
+  display:flex;gap:clamp(1rem,4vw,3rem);flex-wrap:wrap;align-items:center;
+}
+.strip-item{font-size:.82rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.strip-item::before{content:'—';margin-right:.5rem;opacity:.5}
+
+/* ── SECTION WRAPPER ── */
+section{padding:clamp(4rem,8vw,7rem) clamp(1rem,6vw,4rem)}
+.section-label{
+  font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--acc);font-weight:600;margin-bottom:.75rem;
+}
+.section-title{
+  font-size:clamp(1.8rem,4.5vw,3rem);
+  line-height:1.1;letter-spacing:-0.025em;
+  margin-bottom:1.5rem;
+}
+.section-body{color:var(--muted);font-weight:300;font-size:1rem;max-width:640px;line-height:1.75}
+
+/* ── ABOUT ── */
+.about-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(2rem,5vw,4rem);
+  align-items:center;
+  max-width:1100px;margin:0 auto;
+}
+.about-photos{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:.75rem;
+}
+.about-photos img{
+  width:100%;height:220px;object-fit:cover;border-radius:2px;
+  transition:opacity .3s;
+}
+.about-photos img:first-child{
+  grid-column:1/-1;height:280px;
+}
+.about-photos img:hover{opacity:.85}
+@media(max-width:760px){
+  .about-inner{grid-template-columns:1fr}
+  .about-photos{order:-1}
+}
+
+/* ── MENU (svc-layout 1: 2-col rows) ── */
+.menu-section{background:var(--bg2)}
+.menu-inner{max-width:1000px;margin:0 auto}
+.menu-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1px;
+  background:rgba(20,184,166,.1);
+  border:1px solid rgba(20,184,166,.1);
+  margin-top:2.5rem;
+}
+.menu-row{
+  background:var(--bg2);
+  padding:1.5rem 1.75rem;
+  display:flex;justify-content:space-between;align-items:baseline;
+  gap:1rem;
+  border-bottom:1px solid rgba(20,184,166,.08);
+  transition:background .2s;
+}
+.menu-row:hover{background:var(--bg3)}
+.menu-name{font-weight:500;font-size:.95rem}
+.menu-desc{color:var(--muted);font-size:.82rem;margin-top:.25rem;font-weight:300}
+.menu-price{color:var(--acc);font-size:.9rem;font-weight:600;white-space:nowrap;flex-shrink:0}
+.menu-cell{background:var(--bg2);padding:1.5rem 1.75rem;transition:background .2s}
+.menu-cell:hover{background:var(--bg3)}
+.menu-cat-heading{
+  font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--acc);font-weight:700;margin-bottom:1.25rem;
+  padding-bottom:.5rem;border-bottom:1px solid rgba(20,184,166,.2);
+}
+.menu-item{
+  display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;
+  padding:.55rem 0;border-bottom:1px solid rgba(20,184,166,.06);
+}
+.menu-item:last-child{border-bottom:none}
+.menu-item-name{font-size:.9rem;font-weight:500}
+.menu-item-price{color:var(--acc);font-size:.85rem;font-weight:600;white-space:nowrap;flex-shrink:0}
+@media(max-width:680px){.menu-grid{grid-template-columns:1fr}}
+
+/* ── GALLERY ── */
+.gallery-section{background:var(--bg)}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:.5rem;
+  margin-top:2rem;max-width:1100px;
+}
+.gallery-grid img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  border-radius:2px;
+  transition:opacity .25s,transform .25s;
+}
+.gallery-grid img:hover{opacity:.8;transform:scale(1.015)}
+@media(max-width:680px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ── TESTIMONIES ── */
+.testimonies-section{background:var(--bg3)}
+.testimonies-inner{max-width:960px;margin:0 auto}
+.testimonies-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:1.5rem;
+  margin-top:2.5rem;
+}
+.testimony{
+  border-left:3px solid var(--acc);
+  padding:1.5rem 1.75rem;
+  background:rgba(20,184,166,.04);
+  border-radius:0 4px 4px 0;
+  transition:background .2s;
+}
+.testimony:hover{background:rgba(20,184,166,.08)}
+.testimony blockquote{
+  font-size:clamp(.9rem,2vw,1.05rem);
+  font-weight:300;line-height:1.75;color:var(--text);font-style:italic;
+  margin-bottom:.75rem;
+}
+.testimony cite{
+  font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--acc);font-weight:600;font-style:normal;
+}
+
+/* ── HOURS & LOCATION ── */
+.info-section{background:var(--bg2)}
+.info-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(2rem,5vw,4rem);
+  max-width:1100px;margin:0 auto;
+  align-items:start;
+}
+.hours-table{width:100%;border-collapse:collapse;margin-top:1.5rem}
+.hours-table tr{border-bottom:1px solid rgba(20,184,166,.08)}
+.hours-table tr:last-child{border-bottom:none}
+.hours-table td{padding:.6rem 0;font-size:.9rem;vertical-align:top}
+.hours-table td:first-child{color:var(--muted);font-weight:400;width:48%}
+.hours-table td:last-child{font-weight:500;color:var(--text)}
+.map-wrap{
+  border-radius:2px;overflow:hidden;
+  border:1px solid rgba(20,184,166,.15);
+  margin-top:1.5rem;
+  height:280px;
+}
+.map-wrap iframe{width:100%;height:100%;border:0}
+@media(max-width:760px){
+  .info-inner{grid-template-columns:1fr}
+  .map-wrap{height:220px}
+}
+
+/* ── CONTACT CTA ── */
+.cta-section{
+  text-align:center;
+  padding:clamp(4rem,8vw,6rem) clamp(1rem,6vw,4rem);
+  background:var(--bg);
+}
+.cta-section .section-title{margin:0 auto 1rem;max-width:600px}
+.cta-section .section-body{margin:0 auto 2.25rem}
+.cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ── FOOTER ── */
+footer{
+  background:#070f0e;
+  padding:clamp(2rem,4vw,3rem) clamp(1rem,6vw,4rem);
+  border-top:1px solid rgba(20,184,166,.1);
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:1.5rem;
+}
+.footer-brand{font-size:1rem}
+.footer-brand span{display:block;font-size:.8rem;color:var(--muted);font-weight:300;margin-top:.2rem}
+.footer-links{display:flex;gap:1.25rem;flex-wrap:wrap}
+.footer-links a{font-size:.8rem;color:var(--muted);transition:color .2s}
+.footer-links a:hover{color:var(--acc)}
+.footer-credit{
+  width:100%;text-align:center;
+  font-size:.75rem;color:rgba(127,179,173,.5);
+  border-top:1px solid rgba(20,184,166,.07);
+  padding-top:1.25rem;margin-top:.5rem;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="brand nav-logo">
+    Cristal Bakery<span>Sanger, CA</span>
+  </div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#hours">Hours</a></li>
+  </ul>
+  <a class="nav-cta" href="tel:+15598756172">Call Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Sanger's Home Kitchen · Since 30+ Years</span>
+    <h1 class="brand">Cristal Bakery<br>&amp; <em>Restaurant</em></h1>
+    <p class="hero-sub">Home-style Mexican cooking made fast and made with love — breakfast burritos, chimichangas, carnitas tortas, and everything in between.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="tel:+15598756172">Call Now — (559) 875-6172</a>
+      <a class="btn-ghost" href="https://maps.google.com/?cid=14047267373894614969&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <span class="strip-item">Open 7 Days</span>
+  <span class="strip-item">7 AM – 8 PM Mon–Sat</span>
+  <span class="strip-item">Breakfast &amp; Lunch &amp; Dinner</span>
+  <span class="strip-item">Catering Available</span>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-text">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title brand">Thirty Years of Real<br>Home Cooking</h2>
+      <p class="section-body">
+        Cristal Bakery &amp; Restaurant has been a fixture in Sanger for over three decades. The kitchen runs the way it always has — fresh ingredients, bold flavors, and the kind of care that makes every plate taste like something your grandma would have made. From a solo lunch to 100-burrito catering orders for a golf tournament, nothing is too big or too small.
+      </p>
+      <br>
+      <p class="section-body">
+        The chimichanga is hand-made crunchy outside, soft and flavorful inside, served with house red sauce and a side salad. The rice is slow-cooked the right way. Come once and you'll understand why people have been coming back for 30 years.
+      </p>
+    </div>
+    <div class="about-photos">
+      <img src="./photos/02.jpg" alt="Cristal Bakery interior" loading="lazy">
+      <img src="./photos/03.jpg" alt="Fresh food at Cristal" loading="lazy">
+      <img src="./photos/04.jpg" alt="Cristal Restaurant dishes" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- MENU (svc-layout 1: 2-col rows) -->
+<section id="menu" class="menu-section">
+  <div class="menu-inner">
+    <p class="section-label">What We Serve</p>
+    <h2 class="section-title brand">The Menu</h2>
+    <div class="menu-grid">
+      <!-- Breakfast column -->
+      <div class="menu-cell">
+        <div class="menu-cat-heading">Breakfast Favorites</div>
+        <div class="menu-item">
+          <span class="menu-item-name">Breakfast Burrito</span>
+          <span class="menu-item-price">from $8</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Huevos Rancheros</span>
+          <span class="menu-item-price">from $9</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Chilaquiles</span>
+          <span class="menu-item-price">from $9</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Egg &amp; Bean Burrito</span>
+          <span class="menu-item-price">from $7</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Café de Olla</span>
+          <span class="menu-item-price">$2</span>
+        </div>
+      </div>
+      <!-- Lunch / Dinner column -->
+      <div class="menu-cell">
+        <div class="menu-cat-heading">Lunch &amp; Dinner</div>
+        <div class="menu-item">
+          <span class="menu-item-name">Beef Chimichanga</span>
+          <span class="menu-item-price">from $14</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Carnitas Torta</span>
+          <span class="menu-item-price">from $12</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Tacos (3)</span>
+          <span class="menu-item-price">from $11</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Combo Plate w/ Rice &amp; Beans</span>
+          <span class="menu-item-price">from $16</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Tamales (2)</span>
+          <span class="menu-item-price">from $8</span>
+        </div>
+      </div>
+      <!-- Bakery column -->
+      <div class="menu-cell">
+        <div class="menu-cat-heading">Bakery</div>
+        <div class="menu-item">
+          <span class="menu-item-name">Pan Dulce</span>
+          <span class="menu-item-price">from $1.50</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Empanadas</span>
+          <span class="menu-item-price">from $2</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Tres Leches Slice</span>
+          <span class="menu-item-price">from $4</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Concha</span>
+          <span class="menu-item-price">$1.50</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Seasonal Pastries</span>
+          <span class="menu-item-price">varies</span>
+        </div>
+      </div>
+      <!-- Catering column -->
+      <div class="menu-cell">
+        <div class="menu-cat-heading">Catering &amp; Extras</div>
+        <div class="menu-item">
+          <span class="menu-item-name">Burrito Catering Orders</span>
+          <span class="menu-item-price">call us</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Tray of Rice &amp; Beans</span>
+          <span class="menu-item-price">call us</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Party Tamales (dozen)</span>
+          <span class="menu-item-price">call us</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-item-name">Assorted Pan Dulce Box</span>
+          <span class="menu-item-price">call us</span>
+        </div>
+        <div class="menu-item" style="border-bottom:none">
+          <span class="menu-item-name" style="color:var(--muted);font-size:.8rem">Prices may vary · call for current pricing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="gallery-section">
+  <p class="section-label">A Look Inside</p>
+  <h2 class="section-title brand">The Food, The Place</h2>
+  <div class="gallery-grid">
+    <img src="./photos/05.jpg" alt="Cristal Bakery food" loading="lazy">
+    <img src="./photos/06.jpg" alt="Cristal Bakery restaurant" loading="lazy">
+    <img src="./photos/01.jpg" alt="Cristal Bakery dishes" loading="lazy">
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies" class="testimonies-section">
+  <div class="testimonies-inner">
+    <p class="section-label">Customer Testimonies</p>
+    <h2 class="section-title brand">In Their Words</h2>
+    <div class="testimonies-grid">
+      <div class="testimony">
+        <blockquote>"The best food in town — home style food made fast. I had the chimichanga beef with rice and refried beans. Big plate, comes with red sauce to put over the chimichanga. A lot of flavor. The lady is a great cook — she makes it nice and crunchy on the outside with inner soft meat. The rice is really good flavor, like my grandma used to make."</blockquote>
+        <cite>Allen E.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"We ordered 100 breakfast burritos from Cristal Bakery for our golf tournament yesterday. They were so delicious and the service was amazing! They went above and beyond to help make our breakfast a success!"</blockquote>
+        <cite>Andrew H.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"I have been coming to this place for 30+ years — it is awesome. I just had a Carnitas Torta for lunch, which is why I wanted to complement the cook and business with my gratitude. This place is perfect. For those who don't give them 5 stars — we have very different expectations."</blockquote>
+        <cite>Tim H.</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section id="hours" class="info-section">
+  <div class="info-inner">
+    <div>
+      <p class="section-label">Hours</p>
+      <h2 class="section-title brand">When We're Open</h2>
+      <table class="hours-table">
+        <tr><td>Monday</td><td>7:00 AM – 8:00 PM</td></tr>
+        <tr><td>Tuesday</td><td>7:00 AM – 8:00 PM</td></tr>
+        <tr><td>Wednesday</td><td>7:00 AM – 8:00 PM</td></tr>
+        <tr><td>Thursday</td><td>7:00 AM – 8:00 PM</td></tr>
+        <tr><td>Friday</td><td>7:00 AM – 8:00 PM</td></tr>
+        <tr><td>Saturday</td><td>7:00 AM – 8:00 PM</td></tr>
+        <tr><td>Sunday</td><td>7:00 AM – 3:00 PM</td></tr>
+      </table>
+    </div>
+    <div>
+      <p class="section-label">Location</p>
+      <h2 class="section-title brand">Find Us</h2>
+      <p style="color:var(--muted);font-size:.9rem;margin-top:1.5rem;margin-bottom:.5rem">704 O St #3136, Sanger, CA 93657</p>
+      <p style="color:var(--muted);font-size:.9rem;margin-bottom:1rem"><a href="tel:+15598756172" style="color:var(--acc)">(559) 875-6172</a></p>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=704+O+St+%233136%2C+Sanger%2C+CA+93657&z=15&output=embed"
+          title="Cristal Bakery & Restaurant location"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <p style="margin-top:1rem;font-size:.82rem;color:var(--muted)">
+        <a href="https://maps.google.com/?cid=14047267373894614969&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" style="color:var(--acc)">View on Google Maps →</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="cta-section" id="contact">
+  <p class="section-label">Ready to Order?</p>
+  <h2 class="section-title brand" style="margin:0 auto .75rem">Come In or Give Us a Call</h2>
+  <p class="section-body" style="margin:0 auto 2rem">Whether it's breakfast for one or burritos for a hundred — we've got you. Walk in any day of the week or call ahead for large orders and catering.</p>
+  <div class="cta-actions">
+    <a class="btn-primary" href="tel:+15598756172">Call (559) 875-6172</a>
+    <a class="btn-ghost" href="https://maps.google.com/?cid=14047267373894614969&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Get Directions</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="brand footer-brand">
+        Cristal Bakery &amp; Restaurant
+        <span>704 O St #3136, Sanger, CA 93657 · (559) 875-6172</span>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="https://maps.google.com/?cid=14047267373894614969&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+      <a href="tel:+15598756172">Call Us</a>
+    </div>
+  </div>
+  <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+</footer>
+
+<script>
+// Mobile nav toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// Hero parallax-ish: load image cleanly
+const heroBg = document.getElementById('heroBg');
+heroBg.style.backgroundImage = "url('./photos/01.jpg')";
+const img = new Image();
+img.onload = () => heroBg.classList.add('loaded');
+img.src = './photos/01.jpg';
+</script>
+</body>
+</html>

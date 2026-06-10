@@ -1,0 +1,586 @@
+<!-- laundry · warm-boutique · hero-layout 0 · svc-layout 0 · Fraunces/Nunito Sans -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Griffith Park Cleaners & Alterations — Los Angeles, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --acc:#be123c;
+  --bg:#fff1f2;
+  --ink:#1a1014;
+  --muted:#6b4a52;
+  --card:#ffffff;
+  --radius:12px;
+  --nav-h:64px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+body{font-family:'Nunito Sans',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+
+/* ── TYPOGRAPHY ── */
+.brand{font-family:'Fraunces',serif; font-weight:600;letter-spacing:-0.02em}
+h1,h2,h3{font-family:'Fraunces',serif;line-height:1.15}
+h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:600}
+h2{font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:400;font-style:italic}
+h3{font-size:1.1rem;font-weight:600}
+p{font-size:0.975rem;color:var(--muted);line-height:1.75}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  height:var(--nav-h);
+  background:#fff;
+  border-bottom:1px solid rgba(190,18,60,0.12);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(1rem,4vw,2.5rem);
+  box-shadow:0 1px 8px rgba(190,18,60,0.06);
+}
+.nav-logo{font-size:1.05rem;color:var(--acc)}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{font-size:0.85rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);transition:color 0.2s}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  background:var(--acc);color:#fff;
+  padding:0.45rem 1.1rem;border-radius:99px;
+  font-size:0.82rem;font-weight:700;letter-spacing:0.03em;
+  transition:background 0.2s,transform 0.15s;
+}
+.nav-cta:hover{background:#9b0e31;transform:translateY(-1px)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all 0.25s}
+#nav-toggle{display:none}
+@media(max-width:700px){
+  .nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:0.5rem 0;border-bottom:1px solid rgba(190,18,60,0.12);z-index:99}
+  .nav-links li a{display:block;padding:0.75rem 1.5rem}
+  #nav-toggle:checked ~ .nav-links{display:flex}
+  .nav-hamburger{display:flex}
+  .nav-cta-wrap{display:none}
+}
+
+/* ── HERO ── */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:calc(90vh - var(--nav-h));
+  overflow:hidden;
+}
+.hero-copy{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(2rem,6vw,5rem) clamp(1.5rem,5vw,4rem);
+  background:var(--bg);
+}
+.hero-eyebrow{
+  display:inline-block;
+  font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:1rem;
+}
+.hero h1{margin-bottom:1.25rem;color:var(--ink)}
+.hero h1 em{font-style:italic;color:var(--acc)}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:42ch;margin-bottom:2rem;line-height:1.65}
+.hero-actions{display:flex;flex-wrap:wrap;gap:0.75rem;align-items:center}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:0.45rem;
+  background:var(--acc);color:#fff;
+  padding:0.75rem 1.75rem;border-radius:99px;
+  font-size:0.9rem;font-weight:700;letter-spacing:0.02em;
+  transition:background 0.2s,transform 0.15s,box-shadow 0.2s;
+  box-shadow:0 4px 18px rgba(190,18,60,0.22);
+}
+.btn-primary:hover{background:#9b0e31;transform:translateY(-2px);box-shadow:0 6px 22px rgba(190,18,60,0.3)}
+.btn-secondary{
+  display:inline-flex;align-items:center;gap:0.45rem;
+  border:1.5px solid var(--acc);color:var(--acc);
+  padding:0.72rem 1.65rem;border-radius:99px;
+  font-size:0.9rem;font-weight:700;letter-spacing:0.02em;
+  transition:background 0.2s,color 0.2s,transform 0.15s;
+}
+.btn-secondary:hover{background:var(--acc);color:#fff;transform:translateY(-2px)}
+.hero-badge{
+  margin-top:2.5rem;display:flex;align-items:center;gap:0.65rem;
+  font-size:0.8rem;font-weight:600;color:var(--muted);
+}
+.hero-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+.hero-image{
+  position:relative;overflow:hidden;
+}
+.hero-image img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform 0.8s ease;
+}
+.hero-image:hover img{transform:scale(1.03)}
+.hero-image-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(190,18,60,0.08) 0%,transparent 60%);
+  pointer-events:none;
+}
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-image{height:56vw;min-height:220px;max-height:380px}
+  .hero-copy{padding:2.5rem 1.25rem 2rem}
+}
+
+/* ── STRIP ── */
+.strip{
+  background:var(--acc);color:#fff;
+  padding:0.9rem clamp(1rem,4vw,2.5rem);
+  display:flex;align-items:center;justify-content:center;gap:2rem;
+  flex-wrap:wrap;
+  font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+}
+.strip-item{display:flex;align-items:center;gap:0.4rem;opacity:0.92}
+.strip-sep{opacity:0.35;font-size:1rem}
+
+/* ── SECTION WRAPPER ── */
+section{padding:clamp(3rem,8vw,6rem) clamp(1.25rem,5vw,2.5rem)}
+.container{max-width:1100px;margin:0 auto}
+.section-label{
+  display:inline-block;
+  font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:0.6rem;
+}
+.section-divider{width:40px;height:3px;background:var(--acc);border-radius:2px;margin:1rem 0 2rem}
+
+/* ── ABOUT ── */
+#about{background:#fff}
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,4rem);align-items:center;
+}
+.about-images{
+  display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;
+}
+.about-images img{
+  border-radius:var(--radius);object-fit:cover;width:100%;aspect-ratio:3/4;
+  box-shadow:0 4px 20px rgba(0,0,0,0.08);
+  transition:transform 0.35s ease,box-shadow 0.35s ease;
+}
+.about-images img:hover{transform:scale(1.02);box-shadow:0 8px 28px rgba(0,0,0,0.12)}
+.about-images img:first-child{margin-top:2rem}
+.about-text p+p{margin-top:1rem}
+.about-text .highlight{
+  font-family:'Fraunces',serif;font-size:1.35rem;font-weight:400;font-style:italic;
+  color:var(--acc);line-height:1.4;margin:1.5rem 0;display:block;
+}
+@media(max-width:768px){
+  .about-grid{grid-template-columns:1fr}
+  .about-images{grid-template-columns:1fr 1fr}
+  .about-images img:first-child{margin-top:0}
+}
+
+/* ── SERVICES (cards layout 0) ── */
+#services{background:var(--bg)}
+.services-intro{max-width:55ch;margin-bottom:2.5rem}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:1.25rem;
+}
+.svc-card{
+  background:var(--card);border-radius:var(--radius);
+  padding:1.75rem 1.5rem;
+  border:1px solid rgba(190,18,60,0.1);
+  transition:transform 0.25s ease,box-shadow 0.25s ease,border-color 0.25s;
+  position:relative;overflow:hidden;
+}
+.svc-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;
+  height:3px;background:var(--acc);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.3s ease;
+}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(190,18,60,0.1);border-color:rgba(190,18,60,0.2)}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-icon{
+  font-size:1.5rem;margin-bottom:0.75rem;
+  display:inline-block;
+}
+.svc-card h3{font-size:1rem;margin-bottom:0.45rem;color:var(--ink)}
+.svc-card p{font-size:0.875rem;line-height:1.6}
+
+/* ── GALLERY ── */
+#gallery{background:#fff;padding-bottom:3rem}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:auto auto;
+  gap:0.75rem;
+}
+.gallery-grid img{
+  width:100%;height:100%;object-fit:cover;border-radius:var(--radius);
+  transition:opacity 0.3s,transform 0.4s;
+  cursor:pointer;
+}
+.gallery-grid img:hover{opacity:0.9;transform:scale(1.015)}
+.gallery-grid .g-tall{grid-row:span 2}
+@media(max-width:600px){
+  .gallery-grid{grid-template-columns:1fr 1fr;gap:0.5rem}
+  .gallery-grid .g-tall{grid-row:auto}
+}
+
+/* ── TESTIMONIES ── */
+#testimonies{background:var(--bg)}
+.testimonies-header{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.testimonies-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+  gap:1.25rem;
+}
+.testimony{
+  background:#fff;border-radius:var(--radius);
+  padding:1.75rem;
+  border:1px solid rgba(190,18,60,0.08);
+  transition:box-shadow 0.25s,transform 0.25s;
+  display:flex;flex-direction:column;gap:1rem;
+}
+.testimony:hover{box-shadow:0 8px 28px rgba(190,18,60,0.09);transform:translateY(-3px)}
+.testimony blockquote{
+  font-family:'Fraunces',serif;
+  font-size:0.975rem;font-weight:300;font-style:italic;
+  line-height:1.7;color:var(--ink);flex:1;
+}
+.testimony blockquote::before{
+  content:'\201C';
+  display:block;font-size:2.5rem;line-height:1;
+  color:var(--acc);margin-bottom:0.25rem;font-style:normal;
+}
+.testimony-name{font-size:0.8rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--acc)}
+.testimony.featured{
+  grid-column:1/-1;
+  display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;
+  background:var(--acc);color:#fff;
+}
+.testimony.featured blockquote{color:#fff}
+.testimony.featured blockquote::before{color:rgba(255,255,255,0.4)}
+.testimony.featured .testimony-name{color:rgba(255,255,255,0.75)}
+@media(max-width:600px){
+  .testimony.featured{grid-column:auto;grid-template-columns:1fr}
+}
+
+/* ── HOURS + MAP ── */
+#visit{background:#fff}
+.visit-grid{
+  display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(2rem,5vw,4rem);align-items:start;
+}
+.hours-card{
+  background:var(--bg);border-radius:var(--radius);padding:2rem 1.75rem;
+  border:1px solid rgba(190,18,60,0.1);
+}
+.hours-title{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;margin-bottom:1.25rem;color:var(--ink)}
+.hours-list{list-style:none;display:flex;flex-direction:column;gap:0.55rem}
+.hours-list li{
+  display:flex;justify-content:space-between;align-items:baseline;
+  font-size:0.875rem;padding-bottom:0.55rem;
+  border-bottom:1px solid rgba(190,18,60,0.07);
+}
+.hours-list li:last-child{border-bottom:none}
+.hours-list .day{font-weight:600;color:var(--ink)}
+.hours-list .time{color:var(--muted)}
+.hours-list .closed{color:#ccc;font-style:italic}
+.contact-block{margin-top:1.5rem;display:flex;flex-direction:column;gap:0.5rem}
+.contact-line{font-size:0.875rem;color:var(--muted);display:flex;align-items:center;gap:0.5rem}
+.contact-line a{color:var(--acc);font-weight:600;transition:opacity 0.2s}
+.contact-line a:hover{opacity:0.7}
+.map-wrap{
+  border-radius:var(--radius);overflow:hidden;
+  box-shadow:0 6px 24px rgba(0,0,0,0.08);
+  height:380px;
+}
+.map-wrap iframe{width:100%;height:100%;border:none;display:block}
+@media(max-width:768px){
+  .visit-grid{grid-template-columns:1fr}
+  .map-wrap{height:260px}
+}
+
+/* ── CTA BANNER ── */
+.cta-banner{
+  background:var(--acc);
+  padding:clamp(2.5rem,6vw,4rem) clamp(1.25rem,5vw,2.5rem);
+  text-align:center;
+}
+.cta-banner h2{color:#fff;font-style:normal;font-weight:600;margin-bottom:0.75rem}
+.cta-banner p{color:rgba(255,255,255,0.8);margin-bottom:2rem;font-size:1rem}
+.cta-banner .btn-white{
+  display:inline-flex;align-items:center;gap:0.45rem;
+  background:#fff;color:var(--acc);
+  padding:0.85rem 2rem;border-radius:99px;
+  font-size:0.95rem;font-weight:700;letter-spacing:0.02em;
+  transition:background 0.2s,transform 0.15s,box-shadow 0.2s;
+  box-shadow:0 4px 18px rgba(0,0,0,0.15);
+}
+.cta-banner .btn-white:hover{background:var(--bg);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink);color:rgba(255,255,255,0.65);
+  padding:2.5rem clamp(1.25rem,5vw,2.5rem);
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:flex-start;
+  flex-wrap:wrap;gap:2rem;
+}
+.footer-brand{margin-bottom:0.25rem}
+.footer-brand .brand{font-size:1.05rem;color:#fff}
+.footer-tagline{font-size:0.8rem;margin-top:0.25rem;max-width:32ch}
+.footer-links{display:flex;flex-direction:column;gap:0.5rem}
+.footer-links a{font-size:0.825rem;color:rgba(255,255,255,0.55);transition:color 0.2s}
+.footer-links a:hover{color:#fff}
+.footer-credit{
+  width:100%;text-align:center;
+  font-size:0.75rem;color:rgba(255,255,255,0.3);
+  padding-top:1.5rem;margin-top:1rem;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+.footer-credit a{color:rgba(255,255,255,0.45);text-decoration:underline;transition:color 0.2s}
+.footer-credit a:hover{color:rgba(255,255,255,0.7)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <label for="nav-toggle" class="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </label>
+  <input type="checkbox" id="nav-toggle" aria-hidden="true">
+  <a href="#" class="brand nav-logo">GP Cleaners</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#visit">Hours &amp; Location</a></li>
+  </ul>
+  <span class="nav-cta-wrap">
+    <a href="tel:3236645717" class="nav-cta">Call Now</a>
+  </span>
+</nav>
+
+<!-- HERO -->
+<section id="home" aria-label="Hero" style="padding:0">
+  <div class="hero">
+    <div class="hero-copy">
+      <span class="hero-eyebrow">Silverlake · Los Angeles</span>
+      <h1>Dry Cleaning &amp; Alterations Done <em>Right</em></h1>
+      <p class="hero-sub">Family-owned and trusted for over a decade on Hyperion Ave. Expert pressing, stubborn-stain removal, and custom alterations — all under one roof.</p>
+      <div class="hero-actions">
+        <a href="tel:3236645717" class="btn-primary">Call&nbsp;(323)&nbsp;664-5717</a>
+        <a href="https://www.google.com/maps?q=2617+Hyperion+Ave,+Los+Angeles,+CA+90027&z=15" target="_blank" rel="noopener" class="btn-secondary">Get Directions</a>
+      </div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Family-owned · Mon–Fri 7 am–7 pm · Free nearby parking
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="./photos/05.jpg" alt="Inside Griffith Park Cleaners & Alterations" loading="eager">
+      <div class="hero-image-overlay"></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip" aria-hidden="true">
+  <span class="strip-item">Dry Cleaning</span>
+  <span class="strip-sep">·</span>
+  <span class="strip-item">Custom Alterations</span>
+  <span class="strip-sep">·</span>
+  <span class="strip-item">Expert Pressing</span>
+  <span class="strip-sep">·</span>
+  <span class="strip-item">Stain Removal</span>
+  <span class="strip-sep">·</span>
+  <span class="strip-item">Fast Turnaround</span>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images">
+        <img src="./photos/01.jpg" alt="Griffith Park Cleaners storefront" loading="lazy">
+        <img src="./photos/02.jpg" alt="Cleaned and pressed garments" loading="lazy">
+      </div>
+      <div class="about-text">
+        <span class="section-label">Our Story</span>
+        <h2>A neighborhood institution since day one</h2>
+        <div class="section-divider"></div>
+        <p>Griffith Park Cleaners &amp; Alterations has been a fixture on Hyperion Ave in Silverlake for years, earning a loyal following with consistent, careful work and genuinely warm service.</p>
+        <span class="highlight">"When you walk in, you'll be greeted by Jack — a genuinely nice person, like everyone else working here."</span>
+        <p>Jack and the team combine state-of-the-art cleaning equipment with meticulous handwork. The in-house seamstress handles everything from a quick hem to full custom suit alterations — always at prices that won't surprise you.</p>
+        <p>Convenient parking right at the door, fast turnaround, and a staff that remembers your preferences: that's the Griffith Park difference.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <span class="section-label">What We Do</span>
+    <h2>Full-service garment care</h2>
+    <div class="section-divider"></div>
+    <p class="services-intro">From an everyday shirt to a delicate bridal gown, every piece gets the attention it deserves — cleaned, pressed, and returned to you looking its best.</p>
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon">👔</div>
+        <h3>Dry Cleaning</h3>
+        <p>Professional solvent cleaning for suits, dresses, delicates, and everyday wear. Perfectly pressed and smelling brand new every time.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">✂️</div>
+        <h3>Alterations &amp; Tailoring</h3>
+        <p>Expert in-house seamstress for hems, resizing, wedding-dress work, and fully custom alterations — at consistently reasonable prices.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">👕</div>
+        <h3>Shirt &amp; Laundry Service</h3>
+        <p>Shirts returned with crisp, perfect starch. Wash-and-fold service available for everyday laundry — drop off and go.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🧥</div>
+        <h3>Stain Removal</h3>
+        <p>Stubborn stains that other cleaners gave up on? We use professional-grade treatments to tackle even old, set-in stains safely.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">👗</div>
+        <h3>Formal &amp; Bridal</h3>
+        <p>Special-occasion gowns, suits, and formal wear handled with extra care — including preservation and last-minute party preparations.</p>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon">🧺</div>
+        <h3>Household Linens</h3>
+        <p>Comforters, drapes, tablecloths, and delicate household fabrics cleaned and returned fresh — no item too large or too delicate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" aria-label="Photo gallery">
+  <div class="container">
+    <span class="section-label">Inside the Shop</span>
+    <h2>See the care we put in</h2>
+    <div class="section-divider"></div>
+    <div class="gallery-grid">
+      <img src="./photos/03.jpg" alt="Garments on the rack" class="g-tall" loading="lazy">
+      <img src="./photos/04.jpg" alt="Pressing station" loading="lazy">
+      <img src="./photos/06.jpg" alt="Clean finished garments" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="container">
+    <div class="testimonies-header">
+      <div>
+        <span class="section-label">Customer Testimonies</span>
+        <h2>What our neighbors say</h2>
+      </div>
+    </div>
+    <div class="testimonies-grid">
+
+      <!-- Featured long testimony -->
+      <div class="testimony featured">
+        <div>
+          <blockquote>The best dry cleaner in Los Angeles! Bringing my clothes here for almost 10 years and never had a bad experience. Convenient parking just a few steps from the door gets me in and out quickly. Turnaround time is fast and always reliable. The staff shows excellent attention to detail — my shirts come back perfectly starched, my suits perfectly pressed, and everything smelling brand new. It's not easy to find a quality dry cleaning and custom alterations service that cares about its customers and doesn't over charge. I've been a happy customer for years.</blockquote>
+          <p class="testimony-name">Omar Y.</p>
+        </div>
+      </div>
+
+      <div class="testimony">
+        <blockquote>This place is a 10/10. They got multiple stains out of my satin dress — including a stain from last year that another cleaner barely touched — and were timely and friendly. Can't recommend enough!</blockquote>
+        <p class="testimony-name">A. H.</p>
+      </div>
+
+      <div class="testimony">
+        <blockquote>Got my suit and wife's dress altered for a last minute party. Great job by the alterations lady. Fit just perfect. The cleaning was also very spot on. Thank you!!</blockquote>
+        <p class="testimony-name">Jack J.</p>
+      </div>
+
+      <div class="testimony">
+        <blockquote>Got my jeans altered and repaired here and I'm very happy with the results — done very professionally and perfectly.</blockquote>
+        <p class="testimony-name">Coco G.</p>
+      </div>
+
+      <div class="testimony">
+        <blockquote>I been coming here for five years now and let me tell you this is by far the best cleaners in town! Always on time, friendly service, and the prices are great. Keep up the good work!</blockquote>
+        <p class="testimony-name">Chris P.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOURS + MAP -->
+<section id="visit">
+  <div class="container">
+    <span class="section-label">Find Us</span>
+    <h2>Hours &amp; Location</h2>
+    <div class="section-divider"></div>
+    <div class="visit-grid">
+      <div>
+        <div class="hours-card">
+          <p class="hours-title">Store Hours</p>
+          <ul class="hours-list">
+            <li><span class="day">Monday</span><span class="time">7:00 AM – 7:00 PM</span></li>
+            <li><span class="day">Tuesday</span><span class="time">7:00 AM – 7:00 PM</span></li>
+            <li><span class="day">Wednesday</span><span class="time">7:00 AM – 7:00 PM</span></li>
+            <li><span class="day">Thursday</span><span class="time">7:00 AM – 7:00 PM</span></li>
+            <li><span class="day">Friday</span><span class="time">7:00 AM – 7:00 PM</span></li>
+            <li><span class="day">Saturday</span><span class="time">8:00 AM – 6:30 PM</span></li>
+            <li><span class="day">Sunday</span><span class="closed">Closed</span></li>
+          </ul>
+        </div>
+        <div class="contact-block">
+          <p class="contact-line">📍 <span>2617 Hyperion Ave, Los Angeles, CA 90027</span></p>
+          <p class="contact-line">📞 <a href="tel:3236645717">(323) 664-5717</a></p>
+          <p class="contact-line">🗺️ <a href="https://maps.google.com/?cid=1033828471931537980" target="_blank" rel="noopener">View on Google Maps</a></p>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=2617+Hyperion+Ave,+Los+Angeles,+CA+90027&z=15&output=embed"
+          title="Griffith Park Cleaners & Alterations map"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="container" style="max-width:600px">
+    <h2>Ready to drop something off?</h2>
+    <p>Give us a call or stop by — parking is right at the door and we'll take it from there.</p>
+    <a href="tel:3236645717" class="btn-white">Call (323) 664-5717</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">
+        <span class="brand">Griffith Park Cleaners &amp; Alterations</span>
+      </div>
+      <p class="footer-tagline">2617 Hyperion Ave · Los Angeles, CA 90027<br>Mon–Fri 7am–7pm · Sat 8am–6:30pm</p>
+    </div>
+    <div class="footer-links">
+      <a href="tel:3236645717">(323) 664-5717</a>
+      <a href="https://maps.google.com/?cid=1033828471931537980" target="_blank" rel="noopener">Google Business</a>
+    </div>
+  </div>
+  <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+</footer>
+
+</body>
+</html>

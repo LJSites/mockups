@@ -1,0 +1,345 @@
+<!--
+  Archetype: Neighborhood athletic / court-energy streetwear barbershop — Pomona.
+  Distinct from blades-n-fades (Anton + warm charcoal/red): here it's
+  Bebas Neue condensed display + ink-black + ACID LIME accent + bone white.
+  Key structural decisions:
+   - Asymmetric split hero (oversized condensed type left, tall photo right), no dark-overlay-centered cliche.
+   - Running marquee strip under hero ("FADES · LINE-UPS · KIDS WELCOME...").
+   - Services as a numbered stacked list (01–06) with hairline rules — NOT a 3-card icon grid.
+   - Hours as a two-column ledger; today's row highlighted via tiny JS.
+   - Testimonies: pull-quote stack, oversized index numerals, first name + last initial, no stars.
+   - Gallery: horizontal scroll-snap film strip.
+   - No phone in data + reviews say "by appointment / call ahead" -> primary CTA = Get Directions (maps).
+   - Animation: none beyond marquee + hover. No fade-up.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Da Spot Barbershop — Pomona, CA</title>
+<meta name="description" content="Da Spot Barbershop in Pomona, CA. Clean fades, sharp line-ups, kids welcome. By appointment — call ahead.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#101213;
+    --ink2:#1b1e20;
+    --bone:#f4f1ea;
+    --acc:#c6f032;          /* acid lime */
+    --acc-deep:#9bbf1f;
+    --muted:#8c918d;
+    --line:rgba(244,241,234,.14);
+    --nav-h:62px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:'Barlow',system-ui,sans-serif;
+    font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.disp{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:.01em;line-height:.92}
+  .cond{font-family:'Barlow Condensed',sans-serif}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{width:min(1180px,92vw);margin-inline:auto}
+  .acc{color:var(--acc)}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(16,18,19,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    display:flex;align-items:center;
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:min(1180px,92vw)}
+  .brand{font-family:'Bebas Neue';font-size:1.7rem;letter-spacing:.04em;display:flex;align-items:center;gap:.5rem}
+  .brand b{color:var(--acc);font-weight:400}
+  .navlinks{display:flex;gap:1.6rem;font-family:'Barlow Condensed';font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.86rem}
+  .navlinks a{color:var(--muted);transition:color .15s}
+  .navlinks a:hover{color:var(--bone)}
+  .nav-cta{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+    background:var(--acc);color:var(--ink);padding:.5rem 1rem;font-size:.82rem;border-radius:2px}
+  .nav-cta:hover{background:#fff}
+  @media(max-width:760px){.navlinks{display:none}}
+
+  /* HERO */
+  .hero{padding:clamp(2.4rem,6vw,5rem) 0 0}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.5rem,4vw,3rem);align-items:end}
+  .kicker{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.22em;
+    font-size:.8rem;color:var(--acc);margin-bottom:1.1rem;display:flex;align-items:center;gap:.7rem}
+  .kicker::before{content:"";width:34px;height:2px;background:var(--acc);display:inline-block}
+  h1{font-size:clamp(4rem,15vw,11rem)}
+  h1 .l2{display:block;color:transparent;-webkit-text-stroke:1.6px var(--bone)}
+  .hero-sub{font-family:'Barlow Condensed';font-weight:500;font-size:clamp(1.05rem,2vw,1.35rem);
+    color:var(--muted);max-width:34ch;margin:1.4rem 0 1.8rem}
+  .hero-sub b{color:var(--bone);font-weight:600}
+  .btns{display:flex;flex-wrap:wrap;gap:.8rem}
+  .btn{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+    font-size:.95rem;padding:.85rem 1.5rem;border-radius:3px;display:inline-flex;align-items:center;gap:.55rem;transition:transform .12s,background .15s,color .15s}
+  .btn-primary{background:var(--acc);color:var(--ink)}
+  .btn-primary:hover{background:#fff;transform:translateY(-2px)}
+  .btn-ghost{border:1.5px solid var(--line);color:var(--bone)}
+  .btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+  .hero-photo{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:3/4;border:1px solid var(--line)}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15) contrast(1.05)}
+  .hero-photo::after{content:"805 PHILADELPHIA ST";position:absolute;left:0;bottom:0;
+    font-family:'Barlow Condensed';font-weight:700;letter-spacing:.14em;font-size:.72rem;
+    background:var(--acc);color:var(--ink);padding:.4rem .7rem}
+  @media(max-width:820px){
+    .hero-grid{grid-template-columns:1fr;align-items:start}
+    .hero-photo{aspect-ratio:16/11;order:-1}
+    .hero-photo::after{display:none}
+  }
+
+  /* MARQUEE */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:clamp(2rem,5vw,3.5rem);overflow:hidden;background:var(--ink2)}
+  .marquee-track{display:flex;white-space:nowrap;animation:scroll 26s linear infinite;will-change:transform}
+  .marquee-track span{font-family:'Bebas Neue';font-size:1.7rem;letter-spacing:.05em;padding:.7rem 0;color:var(--bone)}
+  .marquee-track .dot{color:var(--acc);padding-inline:1.4rem}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+  /* SECTION SHELL */
+  section{padding:clamp(3.5rem,8vw,6rem) 0}
+  .sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.4rem}
+  .sec-num{font-family:'Bebas Neue';font-size:1.5rem;color:var(--acc)}
+  .sec-title{font-size:clamp(2.4rem,6vw,4rem)}
+
+  /* ABOUT */
+  #about .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center}
+  #about p{color:#cdd0cb;margin-bottom:1.1rem}
+  #about p:first-of-type{font-family:'Barlow Condensed';font-weight:500;font-size:1.3rem;color:var(--bone)}
+  .about-photo{border-radius:4px;overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3}
+  .about-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(.1)}
+  @media(max-width:780px){#about .about-grid{grid-template-columns:1fr}}
+
+  /* SERVICES — numbered list */
+  #services{background:var(--ink2)}
+  .svc{border-top:1px solid var(--line)}
+  .svc:last-child{border-bottom:1px solid var(--line)}
+  .svc-row{display:grid;grid-template-columns:auto 1fr auto;gap:1.2rem;align-items:baseline;padding:1.4rem 0;transition:padding-left .18s,background .18s}
+  .svc-row:hover{padding-left:1rem;background:linear-gradient(90deg,rgba(198,240,50,.07),transparent)}
+  .svc-n{font-family:'Bebas Neue';font-size:1.4rem;color:var(--muted)}
+  .svc-row:hover .svc-n{color:var(--acc)}
+  .svc-name{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:clamp(1.3rem,3vw,1.9rem)}
+  .svc-desc{font-size:.92rem;color:var(--muted);grid-column:2;margin-top:.15rem}
+  .svc-tag{font-family:'Barlow Condensed';font-weight:600;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);align-self:center;white-space:nowrap}
+  .svc-note{margin-top:1.8rem;font-family:'Barlow Condensed';font-size:1rem;letter-spacing:.04em;color:var(--muted)}
+
+  /* GALLERY */
+  .strip{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem;-webkit-overflow-scrolling:touch}
+  .strip::-webkit-scrollbar{height:6px}
+  .strip::-webkit-scrollbar-thumb{background:var(--acc-deep);border-radius:3px}
+  .strip figure{flex:0 0 auto;width:clamp(240px,40vw,380px);scroll-snap-align:start;border-radius:4px;overflow:hidden;border:1px solid var(--line)}
+  .strip img{width:100%;height:260px;object-fit:cover;filter:grayscale(.12);transition:filter .25s,transform .4s}
+  .strip figure:hover img{filter:grayscale(0);transform:scale(1.04)}
+
+  /* TESTIMONIES */
+  #words{background:var(--ink2)}
+  .quotes{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(1.4rem,3vw,2.4rem)}
+  .q{border-left:2px solid var(--acc);padding:.2rem 0 .2rem 1.4rem;position:relative}
+  .q .qn{position:absolute;right:0;top:-.6rem;font-family:'Bebas Neue';font-size:3.4rem;color:rgba(244,241,234,.06);line-height:1}
+  .q p{font-family:'Barlow Condensed';font-weight:500;font-size:1.18rem;line-height:1.4;color:var(--bone);margin-bottom:.8rem}
+  .q cite{font-family:'Barlow Condensed';font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--acc);font-style:normal}
+  @media(max-width:720px){.quotes{grid-template-columns:1fr}}
+
+  /* VISIT */
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem)}
+  .ledger{width:100%;border-collapse:collapse}
+  .ledger td{padding:.7rem 0;border-bottom:1px solid var(--line);font-family:'Barlow Condensed';font-size:1.05rem}
+  .ledger td:first-child{font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  .ledger td:last-child{text-align:right;color:var(--muted)}
+  .ledger tr.today td{color:var(--acc)}
+  .ledger tr.today td:last-child{color:var(--acc)}
+  .addr{margin-top:1.6rem;font-family:'Barlow Condensed';font-size:1.05rem;line-height:1.5}
+  .addr .acc{display:block;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.2rem}
+  .findus{margin-top:1.4rem;display:flex;gap:1rem;flex-wrap:wrap}
+  .findus a{font-family:'Barlow Condensed';font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.85rem;color:var(--muted);border:1px solid var(--line);padding:.45rem .9rem;border-radius:2px;transition:.15s}
+  .findus a:hover{border-color:var(--acc);color:var(--acc)}
+  .map{border-radius:4px;overflow:hidden;border:1px solid var(--line);min-height:340px}
+  .map iframe{width:100%;height:100%;min-height:340px;border:0;filter:grayscale(.3) contrast(1.05) invert(.92) hue-rotate(180deg)}
+  @media(max-width:780px){.visit-grid{grid-template-columns:1fr}}
+
+  /* CTA BAND */
+  .band{background:var(--acc);color:var(--ink);text-align:center;padding:clamp(3rem,7vw,4.5rem) 0}
+  .band h2{font-size:clamp(2.6rem,8vw,5rem)}
+  .band p{font-family:'Barlow Condensed';font-weight:600;text-transform:uppercase;letter-spacing:.1em;margin:.6rem 0 1.6rem}
+  .band .btn-primary{background:var(--ink);color:var(--acc)}
+  .band .btn-primary:hover{background:#fff;color:var(--ink)}
+
+  /* FOOTER */
+  footer{padding:3rem 0 2.4rem;border-top:1px solid var(--line)}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;align-items:flex-end}
+  .foot-brand{font-family:'Bebas Neue';font-size:2.2rem;letter-spacing:.03em}
+  .foot-brand b{color:var(--acc);font-weight:400}
+  .foot-meta{font-family:'Barlow Condensed';font-size:.95rem;color:var(--muted);line-height:1.6}
+  .credit{margin-top:2.2rem;padding-top:1.4rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted)}
+  .credit a{color:var(--acc)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">DA <b>SPOT</b></a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#words">Words</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a href="https://www.google.com/maps?q=805+Philadelphia+St,+Pomona,+CA+91766&z=15" target="_blank" rel="noopener" class="nav-cta">Get Directions</a>
+  </div>
+</nav>
+
+<header id="top" class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="kicker">Pomona · Barbershop · Est. on Philadelphia St</div>
+        <h1>FRESH<span class="l2">EVERY TIME</span></h1>
+        <p class="hero-sub">Clean fades, crisp line-ups, and a chair that actually feels like the neighborhood. <b>Kids welcome. By appointment — call ahead.</b></p>
+        <div class="btns">
+          <a href="https://www.google.com/maps?q=805+Philadelphia+St,+Pomona,+CA+91766&z=15" target="_blank" rel="noopener" class="btn btn-primary">Get Directions →</a>
+          <a href="#services" class="btn btn-ghost">See the Cuts</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="./photos/04.jpg" alt="Inside Da Spot Barbershop">
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>FADES<span class="dot">●</span>LINE-UPS<span class="dot">●</span>KIDS WELCOME<span class="dot">●</span>SKIN FADES<span class="dot">●</span>BEARD DETAIL<span class="dot">●</span>POMONA STAND-UP<span class="dot">●</span></span>
+    <span>FADES<span class="dot">●</span>LINE-UPS<span class="dot">●</span>KIDS WELCOME<span class="dot">●</span>SKIN FADES<span class="dot">●</span>BEARD DETAIL<span class="dot">●</span>POMONA STAND-UP<span class="dot">●</span></span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2 class="sec-title">The Spot</h2></div>
+    <div class="about-grid">
+      <div>
+        <p>Da Spot is a neighborhood barbershop on Philadelphia Street in Pomona — the kind of chair you keep going back to.</p>
+        <p>The crew here is known for a steady, gentle hand and cuts that come out clean every visit. Regulars talk about walking in and coming out feeling like a different person — and bringing the kids along, too.</p>
+        <p>Cuts run by appointment, so give a call ahead and we'll save you a spot. No rush in the chair, no guesswork on the fade.</p>
+      </div>
+      <div class="about-photo"><img src="./photos/01.jpg" alt="Da Spot Barbershop interior"></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2 class="sec-title">In the Chair</h2></div>
+    <div class="svc">
+      <div class="svc-row"><span class="svc-n">01</span><div><div class="svc-name">Signature Fade</div><p class="svc-desc">Low, mid, high or skin — blended clean from the skin up.</p></div><span class="svc-tag">Most Booked</span></div>
+      <div class="svc-row"><span class="svc-n">02</span><div><div class="svc-name">Fade &amp; Line-Up</div><p class="svc-desc">The fade plus a razor-sharp edge — the look the regulars come back for.</p></div><span class="svc-tag">Shop Favorite</span></div>
+      <div class="svc-row"><span class="svc-n">03</span><div><div class="svc-name">Kids' Cut</div><p class="svc-desc">Patient hands, easy chair. The little ones love coming here.</p></div><span class="svc-tag"></span></div>
+      <div class="svc-row"><span class="svc-n">04</span><div><div class="svc-name">Beard Detail</div><p class="svc-desc">Trim, shape and line your beard to match the cut.</p></div><span class="svc-tag"></span></div>
+      <div class="svc-row"><span class="svc-n">05</span><div><div class="svc-name">Scissor Cut &amp; Style</div><p class="svc-desc">Length, texture, finish — tailored to how you actually wear it.</p></div><span class="svc-tag"></span></div>
+      <div class="svc-row"><span class="svc-n">06</span><div><div class="svc-name">Enhancement / Touch-Up</div><p class="svc-desc">Keep the line-up crisp between full cuts.</p></div><span class="svc-tag"></span></div>
+    </div>
+    <p class="svc-note">By appointment only — call ahead to book your barber.</p>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2 class="sec-title">The Work</h2></div>
+    <div class="strip">
+      <figure><img src="./photos/02.jpg" alt="Da Spot Barbershop"></figure>
+      <figure><img src="./photos/03.jpg" alt="Fresh cut at Da Spot"></figure>
+      <figure><img src="./photos/05.jpg" alt="Da Spot Barbershop chair"></figure>
+      <figure><img src="./photos/06.jpg" alt="Da Spot Barbershop work"></figure>
+      <figure><img src="./photos/01.jpg" alt="Inside Da Spot"></figure>
+    </div>
+  </div>
+</section>
+
+<section id="words">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2 class="sec-title">What People Say</h2></div>
+    <div class="quotes">
+      <blockquote class="q"><span class="qn">01</span><p>"Marz has the most gentle hands when cutting and I've noticed he's made a lot of gains — surprising he still has a soft touch. Highly recommend."</p><cite>Joseph R.</cite></blockquote>
+      <blockquote class="q"><span class="qn">02</span><p>"They are very professional, my kids love coming here. I 100% recommend this barber shop."</p><cite>Jenny G.</cite></blockquote>
+      <blockquote class="q"><span class="qn">03</span><p>"Top-notch professionalism and passion. The way they make you feel welcome and truly connect with you is awesome — they really care about your experience. Amazing skills, gets the job done."</p><cite>Gus H.</cite></blockquote>
+      <blockquote class="q"><span class="qn">04</span><p>"I love this place for my son — he always gets the fade with the line. Veronica is awesome, we love her. They're by appointment only, so make sure you call ahead."</p><cite>M. Encinas</cite></blockquote>
+      <blockquote class="q"><span class="qn">05</span><p>"Bro!! I went in and came out a different person. First-time visit, hands down excellent. Thanks for the freshest, cleanest haircut!"</p><cite>Peter R.</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2 class="sec-title">Pull Up</h2></div>
+    <div class="visit-grid">
+      <div>
+        <table class="ledger" id="hours">
+          <tr data-d="1"><td>Monday</td><td>11:00 AM – 6:00 PM</td></tr>
+          <tr data-d="2"><td>Tuesday</td><td>11:00 AM – 6:00 PM</td></tr>
+          <tr data-d="3"><td>Wednesday</td><td>11:00 AM – 6:00 PM</td></tr>
+          <tr data-d="4"><td>Thursday</td><td>10:00 AM – 6:00 PM</td></tr>
+          <tr data-d="5"><td>Friday</td><td>9:00 AM – 7:00 PM</td></tr>
+          <tr data-d="6"><td>Saturday</td><td>9:00 AM – 3:00 PM</td></tr>
+          <tr data-d="0"><td>Sunday</td><td>10:00 AM – 2:00 PM</td></tr>
+        </table>
+        <div class="addr">
+          <span class="acc">Find the chair</span>
+          805 Philadelphia St<br>Pomona, CA 91766
+        </div>
+        <div class="findus">
+          <a href="https://maps.google.com/?cid=10803105686300814953" target="_blank" rel="noopener">Google Business</a>
+          <a href="https://www.google.com/maps?q=805+Philadelphia+St,+Pomona,+CA+91766&z=15" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+      </div>
+      <div class="map">
+        <iframe src="https://www.google.com/maps?q=34.033787,-117.740022&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Da Spot Barbershop on the map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>READY FOR A FRESH ONE?</h2>
+    <p>By appointment · Call ahead · Pomona</p>
+    <a href="https://www.google.com/maps?q=805+Philadelphia+St,+Pomona,+CA+91766&z=15" target="_blank" rel="noopener" class="btn btn-primary">Get Directions →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">DA <b>SPOT</b> BARBERSHOP</div>
+      <div class="foot-meta">
+        805 Philadelphia St, Pomona, CA 91766<br>
+        By appointment — call ahead · <a href="https://maps.google.com/?cid=10803105686300814953" target="_blank" rel="noopener" style="color:var(--acc)">Google Business</a>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Highlight today's row in the hours ledger.
+  (function(){
+    var d=new Date().getDay();
+    var row=document.querySelector('#hours tr[data-d="'+d+'"]');
+    if(row)row.classList.add('today');
+  })();
+</script>
+</body>
+</html>

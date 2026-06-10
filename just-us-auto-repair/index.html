@@ -1,0 +1,403 @@
+<!--
+  ARCHETYPE: "The Honest Handshake" — a one-man neighborhood garage that runs on
+  trust and word of mouth. Personal, plainspoken, slightly hand-lettered. NOT a
+  fleet/franchise look, NOT a dark-charcoal tech-shop, NOT a green eco angle.
+
+  DISTINCTNESS (vs other work/ auto shops):
+    - Palette: oxblood/brick red (#8c2b2b) + warm bone paper (#f3ece1) + ink (#231b18).
+      Avoids the greens (big-q, green-phoenix), ambers/oranges+charcoal (aa-auto, hans),
+      and blues (vitmar) already in use.
+    - Display font: Oswald (condensed grotesque, signpainter feel) + Source Serif 4 body.
+      No other auto shop here uses this pairing.
+    - Layout: asymmetric editorial. Left-rail sticky nav on desktop, big typographic
+      hero (no photo — none exist), services as a NUMBERED stacked ledger (not a card
+      grid), testimonies as full-width pull quotes, one trust-strip band.
+
+  No photos exist for this business (_photo_urls empty) -> abstract paper + ruled-line
+  backgrounds only. No remote placeholders. No phone in data -> CTA is "Get Directions".
+  ANIMATION: none (deliberate — fits the plainspoken, no-nonsense tone).
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Just Us Auto Repair — Tulare, CA | One mechanic, done right</title>
+<meta name="description" content="Just Us Auto Repair on W Prosperity Ave in Tulare — a one-man shop where the same trusted mechanic does the work, gets it done fast, and gives you no excuses." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#f3ece1;
+    --paper-2:#ece2d3;
+    --ink:#231b18;
+    --ink-soft:#5a4d44;
+    --acc:#8c2b2b;       /* oxblood / brick */
+    --acc-deep:#6c1f1f;
+    --rule:#cdbfab;
+    --bg:var(--paper);
+    --nav-h:60px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:var(--nav-h);}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Source Serif 4",Georgia,serif;
+    font-size:18px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.disp{
+    font-family:"Oswald",Impact,sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.01em;
+    line-height:1.02;
+    margin:0;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  /* ---- top utility bar (mobile) ---- */
+  .topbar{
+    display:none;
+    position:sticky; top:0; z-index:50;
+    height:var(--nav-h);
+    align-items:center; justify-content:space-between;
+    padding:0 18px;
+    background:var(--ink);
+    color:var(--paper);
+    border-bottom:3px solid var(--acc);
+  }
+  .topbar .mark{font-family:"Oswald";font-weight:700;letter-spacing:.06em;font-size:18px;text-transform:uppercase;}
+  .topbar a.dir{
+    font-family:"Oswald";text-transform:uppercase;font-weight:600;font-size:13px;
+    letter-spacing:.06em; color:var(--paper); text-decoration:none;
+    border:1px solid var(--acc); background:var(--acc); padding:8px 12px;
+  }
+
+  /* ---- shell: left rail + content ---- */
+  .shell{display:grid; grid-template-columns:260px 1fr; min-height:100vh;}
+  .rail{
+    position:sticky; top:0; align-self:start; height:100vh;
+    background:var(--ink); color:var(--paper);
+    padding:34px 30px;
+    display:flex; flex-direction:column;
+    border-right:5px solid var(--acc);
+  }
+  .rail .logo{font-family:"Oswald";font-weight:700;font-size:30px;line-height:.95;text-transform:uppercase;letter-spacing:.02em;}
+  .rail .logo b{color:var(--acc); display:block; font-size:46px;}
+  .rail .sub{font-style:italic; color:#cdbcae; font-size:15px; margin-top:14px; line-height:1.45;}
+  .rail nav{margin-top:40px; display:flex; flex-direction:column; gap:2px;}
+  .rail nav a{
+    font-family:"Oswald"; text-transform:uppercase; letter-spacing:.08em;
+    font-size:14px; font-weight:500; text-decoration:none; color:#e7ddd2;
+    padding:9px 0; border-bottom:1px solid #3a2f2a;
+    display:flex; align-items:center; gap:12px;
+  }
+  .rail nav a span.n{color:var(--acc); font-weight:600; font-size:12px; width:20px;}
+  .rail nav a:hover{color:#fff;}
+  .rail nav a:hover span.n{color:var(--paper);}
+  .rail .foot{margin-top:auto; font-family:"Oswald"; font-size:12px; letter-spacing:.1em; color:#8a7b70; text-transform:uppercase; padding-top:24px;}
+
+  .content{min-width:0;}
+
+  /* ---- hero ---- */
+  .hero{
+    padding:78px 7vw 64px;
+    background:
+      repeating-linear-gradient(0deg, transparent 0 39px, var(--rule) 39px 40px),
+      var(--paper);
+    border-bottom:3px solid var(--ink);
+    position:relative;
+  }
+  .kicker{
+    font-family:"Oswald"; text-transform:uppercase; letter-spacing:.22em;
+    font-size:13px; font-weight:600; color:var(--acc); margin-bottom:18px;
+  }
+  .hero h1{font-size:clamp(46px,8.6vw,104px); font-weight:700; max-width:13ch;}
+  .hero h1 em{font-style:normal; color:var(--acc); display:inline;}
+  .hero .lede{
+    font-size:clamp(19px,2.4vw,23px); max-width:46ch; margin:26px 0 34px;
+    color:var(--ink-soft); line-height:1.55;
+  }
+  .cta{
+    display:inline-flex; align-items:center; gap:12px;
+    font-family:"Oswald"; text-transform:uppercase; letter-spacing:.07em; font-weight:600;
+    font-size:16px; text-decoration:none;
+    background:var(--acc); color:var(--paper);
+    padding:16px 26px; border:2px solid var(--acc);
+    transition:background .15s ease, color .15s ease;
+  }
+  .cta:hover{background:var(--acc-deep); border-color:var(--acc-deep);}
+  .cta.ghost{background:transparent; color:var(--ink); border-color:var(--ink);}
+  .cta.ghost:hover{background:var(--ink); color:var(--paper);}
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+  .arrow{font-family:"Source Serif 4";}
+
+  /* ---- trust strip ---- */
+  .strip{
+    background:var(--ink); color:var(--paper);
+    display:grid; grid-template-columns:repeat(3,1fr);
+  }
+  .strip .cell{padding:30px 34px; border-right:1px solid #3a2f2a;}
+  .strip .cell:last-child{border-right:none;}
+  .strip .cell .big{font-family:"Oswald"; text-transform:uppercase; font-weight:600; font-size:18px; letter-spacing:.04em; color:var(--paper);}
+  .strip .cell .small{font-size:15px; color:#c2b4a8; margin-top:8px; line-height:1.5;}
+
+  /* ---- generic section ---- */
+  section{padding:72px 7vw;}
+  .sec-head{display:flex; align-items:baseline; gap:18px; margin-bottom:34px;}
+  .sec-head .no{font-family:"Oswald"; color:var(--acc); font-weight:700; font-size:20px; letter-spacing:.1em;}
+  .sec-head h2{font-size:clamp(30px,4.4vw,46px); font-weight:600;}
+  .lead-serif{font-size:21px; max-width:60ch; color:var(--ink-soft);}
+
+  /* about */
+  #about{background:var(--paper-2); border-bottom:1px solid var(--rule);}
+  .about-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:48px; align-items:start;}
+  .about-grid p{margin:0 0 18px; max-width:56ch;}
+  .signoff{font-style:italic; color:var(--acc); font-size:20px;}
+  .card{
+    border:2px solid var(--ink); background:var(--paper);
+    padding:26px 26px 22px;
+  }
+  .card h3{font-size:17px; letter-spacing:.06em; margin-bottom:14px; color:var(--ink);}
+  .card .row{display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px dashed var(--rule); font-size:16px;}
+  .card .row:last-child{border-bottom:none;}
+  .card .row span:first-child{font-family:"Oswald"; text-transform:uppercase; letter-spacing:.04em; font-size:13px; color:var(--ink-soft);}
+  .card .row span:last-child{font-weight:600;}
+
+  /* services — numbered ledger */
+  .ledger{border-top:2px solid var(--ink);}
+  .ledger .item{
+    display:grid; grid-template-columns:64px 1fr; gap:8px;
+    padding:22px 4px; border-bottom:1px solid var(--rule);
+    align-items:baseline;
+  }
+  .ledger .item .num{font-family:"Oswald"; font-weight:700; font-size:26px; color:var(--acc);}
+  .ledger .item h3{font-size:clamp(20px,2.6vw,27px); font-weight:600; margin-bottom:6px;}
+  .ledger .item p{margin:0; color:var(--ink-soft); font-size:17px; max-width:62ch;}
+  .ledger-note{margin-top:24px; font-style:italic; color:var(--ink-soft);}
+
+  /* testimonies — pull quotes */
+  #voices{background:var(--ink); color:var(--paper);}
+  #voices .sec-head h2{color:var(--paper);}
+  #voices .sec-head .no{color:var(--acc);}
+  .quote{
+    border-left:4px solid var(--acc); padding:6px 0 6px 28px; margin:0 0 44px;
+    max-width:64ch;
+  }
+  .quote p{font-size:clamp(20px,2.7vw,28px); line-height:1.4; margin:0 0 16px; color:#f2e8dc;}
+  .quote p .mark{color:var(--acc); font-family:"Oswald"; font-weight:700;}
+  .quote cite{font-family:"Oswald"; text-transform:uppercase; letter-spacing:.1em; font-style:normal; font-size:14px; color:#c2b4a8;}
+
+  /* visit / map */
+  .visit-grid{display:grid; grid-template-columns:1fr 1.1fr; gap:0; border:2px solid var(--ink);}
+  .visit-info{padding:40px 38px;}
+  .visit-info .line{margin-bottom:24px;}
+  .visit-info .label{font-family:"Oswald"; text-transform:uppercase; letter-spacing:.12em; font-size:12px; color:var(--acc); margin-bottom:6px;}
+  .visit-info .val{font-size:19px; line-height:1.45;}
+  .visit-info .val a{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--rule);}
+  .visit-info .val a:hover{border-color:var(--acc); color:var(--acc);}
+  .map-wrap{min-height:340px; border-left:2px solid var(--ink);}
+  .map-wrap iframe{width:100%; height:100%; min-height:340px; border:0; filter:grayscale(.25) contrast(1.02);}
+
+  /* footer */
+  footer{
+    background:var(--ink); color:#c2b4a8;
+    padding:46px 7vw 40px; border-top:4px solid var(--acc);
+  }
+  footer .ftop{display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; align-items:flex-end;}
+  footer .fmark{font-family:"Oswald"; text-transform:uppercase; font-weight:700; font-size:24px; color:var(--paper); letter-spacing:.04em;}
+  footer .fmark span{color:var(--acc);}
+  footer .findus a{
+    font-family:"Oswald"; text-transform:uppercase; letter-spacing:.08em; font-size:13px;
+    color:var(--paper); text-decoration:none; border:1px solid #4a3d37; padding:9px 14px;
+  }
+  footer .findus a:hover{border-color:var(--acc); background:var(--acc);}
+  footer .credit{
+    margin-top:34px; padding-top:20px; border-top:1px solid #3a2f2a;
+    font-family:"Source Serif 4"; font-size:14px; color:#8a7b70;
+  }
+  footer .credit a{color:#c2b4a8;}
+
+  @media (max-width:880px){
+    .shell{grid-template-columns:1fr;}
+    .rail{display:none;}
+    .topbar{display:flex;}
+    .strip{grid-template-columns:1fr;}
+    .strip .cell{border-right:none; border-bottom:1px solid #3a2f2a;}
+    .about-grid{grid-template-columns:1fr; gap:30px;}
+    .visit-grid{grid-template-columns:1fr;}
+    .map-wrap{border-left:none; border-top:2px solid var(--ink);}
+    section{padding:54px 7vw;}
+    .hero{padding:54px 7vw 48px;}
+  }
+</style>
+</head>
+<body>
+
+  <!-- mobile top bar -->
+  <div class="topbar">
+    <div class="mark">Just Us Auto</div>
+    <a class="dir" href="https://www.google.com/maps?q=252+W+Prosperity+Ave,+Tulare,+CA+93274&z=15" target="_blank" rel="noopener">Directions</a>
+  </div>
+
+  <div class="shell">
+
+    <!-- desktop left rail -->
+    <aside class="rail">
+      <div class="logo">Just<br/>Us<b>Auto</b></div>
+      <div class="sub">A one-man repair shop on W&nbsp;Prosperity Ave. The same mechanic, every time.</div>
+      <nav>
+        <a href="#about"><span class="n">01</span> The Shop</a>
+        <a href="#work"><span class="n">02</span> What He Fixes</a>
+        <a href="#voices"><span class="n">03</span> In Their Words</a>
+        <a href="#visit"><span class="n">04</span> Find Us</a>
+      </nav>
+      <div class="foot">Tulare, California</div>
+    </aside>
+
+    <main class="content">
+
+      <!-- hero -->
+      <header class="hero">
+        <div class="kicker">Auto Repair &middot; Tulare, CA</div>
+        <h1>One mechanic.<br/>Your car, <em>done right.</em></h1>
+        <p class="lede">No service desk, no runaround, no row of strangers passing your keys around. Just one guy who's been keeping this neighborhood's cars on the road — and gets it done faster than the big shops.</p>
+        <div class="cta-row">
+          <a class="cta" href="https://www.google.com/maps?q=252+W+Prosperity+Ave,+Tulare,+CA+93274&z=15" target="_blank" rel="noopener">Get Directions <span class="arrow">&rarr;</span></a>
+          <a class="cta ghost" href="#work">See what he fixes</a>
+        </div>
+      </header>
+
+      <!-- trust strip -->
+      <div class="strip">
+        <div class="cell">
+          <div class="big">A real one-man deal</div>
+          <div class="small">The person you talk to is the person turning the wrench. Nothing gets lost in a hand-off.</div>
+        </div>
+        <div class="cell">
+          <div class="big">Quick turnaround</div>
+          <div class="small">Customers say he gets the job done faster than shops with a whole crew.</div>
+        </div>
+        <div class="cell">
+          <div class="big">Earned by regulars</div>
+          <div class="small">Families that have trusted him for years — and folks who came after another shop got it wrong.</div>
+        </div>
+      </div>
+
+      <!-- about -->
+      <section id="about">
+        <div class="sec-head"><span class="no">01</span><h2>The Shop</h2></div>
+        <div class="about-grid">
+          <div>
+            <p>Just Us Auto Repair is exactly what it sounds like — just one trusted mechanic on West Prosperity Avenue, doing the work himself from start to finish. No layers, no upsell from someone who never touched your car.</p>
+            <p>People come here because they were sent by family, or because they got burned somewhere else and needed it fixed properly. He'll tell you straight what's wrong, get it handled quickly, and won't hand you excuses.</p>
+            <p class="signoff">"He doesn't give you no excuses." — that's the whole pitch, really.</p>
+          </div>
+          <div class="card">
+            <h3>At a glance</h3>
+            <div class="row"><span>Run by</span><span>One mechanic</span></div>
+            <div class="row"><span>Service</span><span>Auto repair &amp; maintenance</span></div>
+            <div class="row"><span>Where</span><span>W Prosperity Ave</span></div>
+            <div class="row"><span>City</span><span>Tulare, CA</span></div>
+            <div class="row"><span>Best way in</span><span>Stop by the shop</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- services ledger -->
+      <section id="work">
+        <div class="sec-head"><span class="no">02</span><h2>What He Fixes</h2></div>
+        <p class="lead-serif" style="margin-bottom:30px;">General auto repair and maintenance — the everyday stuff that keeps a car running, plus the second opinion when another shop left you stuck.</p>
+        <div class="ledger">
+          <div class="item">
+            <div class="num">01</div>
+            <div>
+              <h3>Diagnostics &amp; Honest Estimates</h3>
+              <p>Find the actual problem and tell you what it'll take — before any work starts.</p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="num">02</div>
+            <div>
+              <h3>Brakes, Belts &amp; Routine Service</h3>
+              <p>Brakes, fluids, belts, filters and the regular upkeep that prevents the expensive surprises.</p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="num">03</div>
+            <div>
+              <h3>Engine &amp; Drivetrain Repairs</h3>
+              <p>The bigger jobs handled by one experienced set of hands, start to finish.</p>
+            </div>
+          </div>
+          <div class="item">
+            <div class="num">04</div>
+            <div>
+              <h3>Fix-It-Right Second Opinions</h3>
+              <p>Came from another mechanic who made it worse? He's done this before. Bring it in.</p>
+            </div>
+          </div>
+        </div>
+        <p class="ledger-note">Not sure if it's something he handles? Stop by the shop on Prosperity and ask.</p>
+      </section>
+
+      <!-- testimonies -->
+      <section id="voices">
+        <div class="sec-head"><span class="no">03</span><h2>In Their Words</h2></div>
+        <blockquote class="quote">
+          <p><span class="mark">&ldquo;</span>I've been going with this guy for years. My boyfriend, my grandparents — we all trust this mechanic. I even went to another shop and they messed up my car, and he fixed it for me. He's a great guy, gets things done quick, and he doesn't give you no excuses.<span class="mark">&rdquo;</span></p>
+          <cite>Samantha N.</cite>
+        </blockquote>
+        <blockquote class="quote">
+          <p><span class="mark">&ldquo;</span>I highly recommend this mechanic shop. He's a one-man deal and he gets the job done faster than big shops that have multiple coworkers.<span class="mark">&rdquo;</span></p>
+          <cite>Tulare County C.</cite>
+        </blockquote>
+      </section>
+
+      <!-- visit / map -->
+      <section id="visit">
+        <div class="sec-head"><span class="no">04</span><h2>Find Us</h2></div>
+        <div class="visit-grid">
+          <div class="visit-info">
+            <div class="line">
+              <div class="label">Address</div>
+              <div class="val"><a href="https://www.google.com/maps?q=252+W+Prosperity+Ave,+Tulare,+CA+93274&z=15" target="_blank" rel="noopener">252 W Prosperity Ave<br/>Tulare, CA 93274</a></div>
+            </div>
+            <div class="line">
+              <div class="label">How it works</div>
+              <div class="val">It's a small one-man shop — the surest way to get on his schedule is to drive over and talk to him.</div>
+            </div>
+            <div class="line">
+              <div class="label">Find us on</div>
+              <div class="val"><a href="https://maps.google.com/?cid=798700846370293028" target="_blank" rel="noopener">Google Business Profile &rarr;</a></div>
+            </div>
+            <a class="cta" href="https://www.google.com/maps?q=252+W+Prosperity+Ave,+Tulare,+CA+93274&z=15" target="_blank" rel="noopener" style="margin-top:8px;">Get Directions <span class="arrow">&rarr;</span></a>
+          </div>
+          <div class="map-wrap">
+            <iframe src="https://www.google.com/maps?q=252+W+Prosperity+Ave,+Tulare,+CA+93274&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Just Us Auto Repair, 252 W Prosperity Ave, Tulare CA"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="ftop">
+          <div class="fmark">Just Us <span>Auto Repair</span></div>
+          <div class="findus">
+            <a href="https://maps.google.com/?cid=798700846370293028" target="_blank" rel="noopener">Google Profile</a>
+          </div>
+        </div>
+        <div class="credit">
+          Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+        </div>
+      </footer>
+
+    </main>
+  </div>
+
+</body>
+</html>

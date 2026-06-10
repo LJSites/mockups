@@ -1,0 +1,488 @@
+<!-- coffee · industrial-poster · hero-layout 2 · svc-layout 0 · Anton/Roboto -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ideology Coffee — Glendale, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --acc:#d97706;
+  --bg:#1c1917;
+  --bg2:#292524;
+  --bg3:#3c3835;
+  --text:#e7e5e4;
+  --muted:#a8a29e;
+  --nav-h:64px;
+}
+html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+body{font-family:'Roboto',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-weight:400}
+.brand{font-family:'Anton',serif;letter-spacing:0.04em;text-transform:uppercase}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ─── NAV ─── */
+nav{
+  position:sticky;top:0;z-index:100;
+  height:var(--nav-h);
+  background:var(--bg);
+  border-bottom:2px solid var(--acc);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 1.5rem;
+}
+.nav-logo{font-size:1.4rem;line-height:1}
+.nav-logo span{color:var(--acc)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--muted);transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{
+  display:inline-block;
+  background:var(--acc);color:var(--bg);
+  font-weight:700;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;
+  padding:0.5rem 1.1rem;
+  border:none;cursor:pointer;
+  transition:background 0.2s,color 0.2s;
+}
+.nav-cta:hover{background:var(--text);color:var(--bg)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0;transition:background 0.2s}
+.nav-toggle:hover span{background:var(--acc)}
+
+/* ─── HERO — FULL BLEED ─── */
+.hero{
+  position:relative;
+  height:min(95vh,700px);
+  overflow:hidden;
+}
+.hero-img{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;object-position:center;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(28,25,23,0.3) 0%,rgba(28,25,23,0.88) 100%);
+}
+.hero-content{
+  position:relative;z-index:1;
+  height:100%;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:3rem 2rem 4rem;
+  max-width:900px;
+}
+.hero-eyebrow{
+  font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;
+  color:var(--acc);margin-bottom:0.6rem;
+}
+.hero h1{
+  font-size:clamp(3rem,9vw,7rem);
+  line-height:0.92;
+  margin-bottom:1.2rem;
+  color:#fff;
+}
+.hero-sub{
+  font-size:clamp(1rem,2.2vw,1.25rem);
+  font-weight:300;color:var(--text);
+  max-width:520px;margin-bottom:2rem;
+  line-height:1.5;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem}
+.btn-primary{
+  background:var(--acc);color:var(--bg);
+  font-weight:700;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.1em;
+  padding:0.85rem 2rem;border:2px solid var(--acc);
+  transition:background 0.2s,color 0.2s;
+}
+.btn-primary:hover{background:transparent;color:var(--acc)}
+.btn-ghost{
+  background:transparent;color:var(--text);
+  font-weight:700;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.1em;
+  padding:0.85rem 2rem;border:2px solid var(--text);
+  transition:border-color 0.2s,color 0.2s;
+}
+.btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+
+/* ─── SECTION LAYOUT ─── */
+section{padding:5rem 1.5rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{
+  font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;
+  color:var(--acc);margin-bottom:0.5rem;
+}
+.section-title{
+  font-size:clamp(2rem,5vw,3.5rem);
+  line-height:1;margin-bottom:1.5rem;
+}
+
+/* ─── ABOUT ─── */
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+.about-imgs img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.about-imgs img:first-child{margin-top:2rem}
+.about-text p{color:var(--muted);line-height:1.8;margin-bottom:1.2rem;font-size:1.05rem}
+.about-text p:last-of-type{margin-bottom:0}
+.about-stat-row{display:flex;gap:2.5rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--bg3)}
+.about-stat strong{display:block;font-size:2rem;font-weight:700;color:var(--acc)}
+.about-stat span{font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted)}
+
+/* ─── MENU / OFFERINGS — card layout ─── */
+#menu{background:var(--bg)}
+.menu-intro{max-width:620px;margin-bottom:3.5rem}
+.menu-intro p{color:var(--muted);font-size:1.05rem;line-height:1.8}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.5rem}
+.card{
+  background:var(--bg2);
+  border-left:3px solid var(--acc);
+  padding:1.75rem 1.5rem;
+  transition:background 0.2s,transform 0.2s;
+}
+.card:hover{background:var(--bg3);transform:translateY(-3px)}
+.card-tag{
+  font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;
+  color:var(--acc);margin-bottom:0.6rem;
+}
+.card h3{
+  font-size:1.2rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;
+  margin-bottom:0.5rem;
+}
+.card p{color:var(--muted);font-size:0.9rem;line-height:1.6}
+
+/* ─── PHOTO STRIP ─── */
+.photo-strip{
+  display:flex;gap:4px;overflow:hidden;
+  height:280px;
+}
+.photo-strip img{
+  flex:1;min-width:0;object-fit:cover;
+  transition:flex 0.4s ease;
+}
+.photo-strip img:hover{flex:2.5}
+
+/* ─── TESTIMONIES ─── */
+#testimonies{background:var(--bg2)}
+.testimonies-header{margin-bottom:3.5rem}
+.testimony-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2rem}
+.testimony{
+  background:var(--bg);
+  border-top:3px solid var(--acc);
+  padding:2rem 1.75rem;
+}
+.testimony blockquote{
+  font-size:0.97rem;color:var(--text);line-height:1.75;
+  font-style:italic;margin-bottom:1.25rem;
+  font-weight:300;
+}
+.testimony cite{
+  font-style:normal;font-size:0.8rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:0.12em;color:var(--acc);
+}
+
+/* ─── HOURS + LOCATION ─── */
+#visit{background:var(--bg)}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.hours-table{width:100%;border-collapse:collapse;margin-top:1.5rem}
+.hours-table tr{border-bottom:1px solid var(--bg3)}
+.hours-table td{padding:0.7rem 0;font-size:0.95rem}
+.hours-table td:first-child{font-weight:500;text-transform:uppercase;letter-spacing:0.06em;font-size:0.85rem}
+.hours-table td:last-child{text-align:right;color:var(--muted)}
+.map-wrapper{margin-top:1.5rem;position:relative;padding-bottom:60%;height:0;overflow:hidden}
+.map-wrapper iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(80%) invert(5%)}
+.visit-cta{margin-top:2rem}
+
+/* ─── CONTACT STRIP ─── */
+#contact{background:var(--bg3)}
+.contact-inner{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2rem;
+}
+.contact-headline{font-size:clamp(1.5rem,4vw,2.8rem);line-height:1.1;max-width:480px}
+.contact-headline em{color:var(--acc);font-style:normal}
+.contact-info{display:flex;flex-direction:column;gap:0.75rem}
+.contact-info a{
+  font-size:1rem;font-weight:500;color:var(--text);
+  display:flex;align-items:center;gap:0.5rem;
+  transition:color 0.2s;
+}
+.contact-info a:hover{color:var(--acc)}
+.contact-info .c-label{
+  font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:var(--muted);
+}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--bg);
+  border-top:1px solid var(--bg3);
+  padding:2.5rem 1.5rem;
+}
+.footer-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:1rem;
+}
+.footer-social{display:flex;gap:1.25rem}
+.footer-social a{
+  font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--muted);transition:color 0.2s;
+}
+.footer-social a:hover{color:var(--acc)}
+.footer-credit{font-size:0.75rem;color:var(--muted)}
+.footer-credit a{color:var(--acc);text-decoration:underline}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:768px){
+  .nav-links,.nav-cta-wrap{display:none}
+  .nav-toggle{display:block}
+  .nav-open .nav-links{
+    display:flex;flex-direction:column;
+    position:fixed;top:var(--nav-h);left:0;right:0;
+    background:var(--bg);padding:2rem 1.5rem;gap:1.5rem;
+    border-bottom:2px solid var(--acc);
+    z-index:99;
+  }
+  .nav-open .nav-links a{font-size:1.1rem}
+  .about-grid{grid-template-columns:1fr}
+  .about-imgs{display:none}
+  .visit-grid{grid-template-columns:1fr}
+  .cards-grid{grid-template-columns:1fr 1fr}
+  .testimony-grid{grid-template-columns:1fr}
+  .photo-strip{height:180px}
+}
+@media(max-width:480px){
+  .cards-grid{grid-template-columns:1fr}
+  .hero-content{padding:2rem 1.25rem 3rem}
+  section{padding:3.5rem 1.25rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="top-nav">
+  <a href="#" class="brand nav-logo">Ideology<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta-wrap">
+    <a href="tel:+18189372534" class="nav-cta">Call Now</a>
+  </div>
+  <button class="nav-toggle" aria-label="Toggle menu" id="nav-toggle">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO — FULL BLEED -->
+<section class="hero" id="hero">
+  <img class="hero-img" src="./photos/01.jpg" alt="Ideology Coffee interior">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Downtown Glendale · CA</p>
+    <h1 class="brand">Ideology<br>Coffee</h1>
+    <p class="hero-sub">Great coffee is a point of view. Lattes, cold brews, bagel sandwiches — crafted with intention, served with genuine warmth.</p>
+    <div class="hero-actions">
+      <a href="tel:+18189372534" class="btn-primary">Call Now</a>
+      <a href="https://www.google.com/maps?q=312+N+Central+Ave,+Glendale,+CA+91203" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-imgs">
+        <img src="./photos/02.jpg" alt="Coffee preparation">
+        <img src="./photos/03.jpg" alt="Coffee drinks">
+      </div>
+      <div class="about-text">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title brand">A Coffee Gem on Central Ave</h2>
+        <p>Nestled in the heart of downtown Glendale, Ideology Coffee is the neighborhood's go-to for seriously good coffee and food. Plenty of natural light, a serene vibe, and a staff that genuinely cares — every visit feels like the right choice.</p>
+        <p>From our signature Cold Brew Lavender to the crowd-favorite avocado toast and bagel sandwiches, everything here is made with care. Free WiFi, clean space, competitive prices. This is your new spot.</p>
+        <div class="about-stat-row">
+          <div class="about-stat">
+            <strong>7AM</strong>
+            <span>Weekday Open</span>
+          </div>
+          <div class="about-stat">
+            <strong>6PM</strong>
+            <span>Daily Close</span>
+          </div>
+          <div class="about-stat">
+            <strong>7 Days</strong>
+            <span>Every Week</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <img src="./photos/04.jpg" alt="Ideology Coffee">
+  <img src="./photos/05.jpg" alt="Ideology Coffee drinks">
+  <img src="./photos/06.jpg" alt="Ideology Coffee food">
+</div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="container">
+    <p class="section-label">What We Serve</p>
+    <h2 class="section-title brand">The Menu</h2>
+    <div class="menu-intro">
+      <p>Rotating seasonal specials alongside the classics. Every espresso is dialed, every sandwich is built to order. We also sell whole-bean bags to take the experience home.</p>
+    </div>
+    <div class="cards-grid">
+      <div class="card">
+        <p class="card-tag">Espresso Bar</p>
+        <h3>Lattes</h3>
+        <p>Silky, smooth, never bitter. Crafted with precision — available hot or iced, dairy or almond milk.</p>
+      </div>
+      <div class="card">
+        <p class="card-tag">Cold Brew</p>
+        <h3>Cold Brews</h3>
+        <p>House-steeped and incredibly smooth. Try the Cold Brew Lavender or the honey-milk cold brew — both are regulars.</p>
+      </div>
+      <div class="card">
+        <p class="card-tag">Tea &amp; More</p>
+        <h3>Teas &amp; Drinks</h3>
+        <p>A wide array of tea and specialty drinks alongside the espresso menu — something for every palette.</p>
+      </div>
+      <div class="card">
+        <p class="card-tag">Food</p>
+        <h3>Bagel Sandwiches</h3>
+        <p>Super fresh and loaded just right. The lox bagel with everything cream cheese and the avocado toast are fan favorites.</p>
+      </div>
+      <div class="card">
+        <p class="card-tag">Food</p>
+        <h3>Hot Paninis</h3>
+        <p>The Chicken Melt Panini and Caprese sandwich are warm, crisp, and consistently approved by the most discerning eaters.</p>
+      </div>
+      <div class="card">
+        <p class="card-tag">Retail</p>
+        <h3>Whole Bean Coffee</h3>
+        <p>Take the ideology home. Bags of our featured roasts available at the counter — great gift, better morning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="container">
+    <div class="testimonies-header">
+      <p class="section-label">In Their Words</p>
+      <h2 class="section-title brand">Customer Testimonies</h2>
+    </div>
+    <div class="testimony-grid">
+      <div class="testimony">
+        <blockquote>"Their bagel sandwiches are crazy good — super fresh and loaded just right. And the lattes? Perfection every time. Chill vibes, awesome people, and seriously tasty coffee + food. Ideology Coffee = my new go-to."</blockquote>
+        <cite>Sardor A.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"Cold Brew Lavender was refreshing and the Chicken Melt Panini was warm, crisp and bloody amazing. Service was ridiculous spot on. Prices were competitive. Overall, I was ebullient with their coffee and food. A must-visit spot in the area."</blockquote>
+        <cite>Carlo N.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"This is hands down the best latte I've had so far in the LA area. Incredibly smooth, creamy, flavorful, and not at all bitter. I also had the avocado toast and caprese sandwich — both delicious, also approved by my picky niece and nephew."</blockquote>
+        <cite>Jac L.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"The coffee was perfectly made! The perfect color for a cold brew with a great ratio of milk and honey to coffee. Plenty of seating, nice baristas, clean bathrooms. Lots of options for food and drink. I will definitely be back."</blockquote>
+        <cite>Makenzie R.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"The coffee was perfectly made, right temperature and excellent flavor. The lox bagel sandwich was really good — salmon cuts being just right in flavor and cream cheese with everything bagel being a solid combo. Lots of details and art pieces which made the dining experience very relaxing."</blockquote>
+        <cite>Funning</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS + MAP -->
+<section id="visit">
+  <div class="container">
+    <div class="visit-grid">
+      <div>
+        <p class="section-label">Plan Your Visit</p>
+        <h2 class="section-title brand">Hours &amp;<br>Location</h2>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>Monday – Friday</td><td>7:00 AM – 6:00 PM</td></tr>
+            <tr><td>Saturday</td><td>8:00 AM – 6:00 PM</td></tr>
+            <tr><td>Sunday</td><td>8:00 AM – 6:00 PM</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:1.25rem;color:var(--muted);font-size:0.9rem;">312 N Central Ave, Glendale, CA 91203<br>Street metered parking + free parking on nearby streets. Free WiFi inside.</p>
+        <div class="visit-cta">
+          <a href="https://www.google.com/maps?q=312+N+Central+Ave,+Glendale,+CA+91203" target="_blank" rel="noopener" class="btn-primary">Get Directions</a>
+        </div>
+      </div>
+      <div>
+        <div class="map-wrapper">
+          <iframe
+            src="https://www.google.com/maps?q=312+N+Central+Ave,+Glendale,+CA+91203&z=15&output=embed"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ideology Coffee location map">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div>
+        <h2 class="contact-headline brand">Come In.<br><em>The coffee is ready.</em></h2>
+      </div>
+      <div class="contact-info">
+        <span class="c-label">Phone</span>
+        <a href="tel:+18189372534">(818) 937-2534</a>
+        <span class="c-label" style="margin-top:0.5rem;">Address</span>
+        <a href="https://www.google.com/maps?q=312+N+Central+Ave,+Glendale,+CA+91203" target="_blank" rel="noopener">312 N Central Ave<br>Glendale, CA 91203</a>
+        <span class="c-label" style="margin-top:0.5rem;">Find Us</span>
+        <a href="https://maps.google.com/?cid=8110805532162828486&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business Listing ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p class="brand" style="font-size:1.1rem;">Ideology<span style="color:var(--acc)">.</span></p>
+    <div class="footer-social">
+      <a href="https://maps.google.com/?cid=8110805532162828486&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google</a>
+    </div>
+    <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </div>
+</footer>
+
+<script>
+const toggle = document.getElementById('nav-toggle');
+const nav = document.getElementById('top-nav');
+toggle.addEventListener('click', () => {
+  nav.classList.toggle('nav-open');
+});
+// close nav on link click (mobile)
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => nav.classList.remove('nav-open'));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!-- auto · bold-dark · hero-layout 2 · svc-layout 1 · Archivo Black/Inter -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gonzalez Auto Dismantling — Used Auto Parts | Arvin, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --acc:#14b8a6;
+  --bg:#0b1f1d;
+  --bg2:#0f2926;
+  --bg3:#132e2b;
+  --text:#e8f0ef;
+  --muted:#7da9a4;
+  --nav-h:64px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:16px}
+.brand{font-family:'Archivo Black',serif;letter-spacing:-0.02em}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  height:var(--nav-h);
+  background:rgba(11,31,29,0.95);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(20,184,166,0.15);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(1.25rem,4vw,3rem);
+}
+.nav-logo{font-size:1.15rem;color:#fff;text-decoration:none}
+.nav-logo span{color:var(--acc)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:0.875rem;font-weight:500;letter-spacing:0.03em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{
+  background:var(--acc);color:#0b1f1d;
+  text-decoration:none;font-weight:600;font-size:0.875rem;
+  padding:0.5rem 1.25rem;letter-spacing:0.03em;text-transform:uppercase;
+  transition:background 0.2s,opacity 0.2s;
+}
+.nav-cta:hover{background:#0d9488}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:transparent;padding:4px}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--text);transition:all 0.3s}
+
+/* HERO — full bleed */
+.hero{
+  position:relative;
+  min-height:min(90vh,720px);
+  display:flex;align-items:flex-end;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('./photos/01.jpg');
+  background-size:cover;background-position:center;
+  filter:brightness(0.35);
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(11,31,29,0.98) 0%, rgba(11,31,29,0.4) 60%, transparent 100%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  width:100%;
+  padding:clamp(2rem,6vw,5rem) clamp(1.25rem,5vw,4rem);
+  max-width:900px;
+}
+.hero-eyebrow{
+  display:inline-block;
+  color:var(--acc);font-size:0.8rem;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;
+  margin-bottom:1rem;
+  border-left:3px solid var(--acc);padding-left:0.75rem;
+}
+.hero h1{
+  font-size:clamp(2.5rem,7vw,5.5rem);
+  line-height:1.0;
+  color:#fff;
+  margin-bottom:1.25rem;
+}
+.hero-sub{
+  font-size:clamp(1rem,2vw,1.25rem);
+  color:var(--muted);
+  max-width:560px;
+  margin-bottom:2rem;
+}
+.hero-actions{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.btn-primary{
+  background:var(--acc);color:#0b1f1d;
+  text-decoration:none;font-weight:700;font-size:1rem;
+  padding:0.9rem 2rem;
+  display:inline-block;
+  transition:background 0.2s,transform 0.15s;
+  letter-spacing:0.02em;
+}
+.btn-primary:hover{background:#0d9488;transform:translateY(-1px)}
+.btn-ghost{
+  color:var(--text);text-decoration:none;font-weight:500;font-size:0.95rem;
+  border:1px solid rgba(255,255,255,0.25);padding:0.9rem 2rem;
+  display:inline-block;
+  transition:border-color 0.2s,color 0.2s;
+}
+.btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+
+/* STRIP */
+.strip{
+  background:var(--acc);
+  padding:1rem clamp(1.25rem,5vw,4rem);
+  display:flex;flex-wrap:wrap;gap:1rem 3rem;align-items:center;justify-content:center;
+}
+.strip-item{color:#0b1f1d;font-weight:600;font-size:0.875rem;letter-spacing:0.06em;text-transform:uppercase}
+
+/* SECTION WRAPPER */
+section{padding:clamp(3rem,8vw,6rem) clamp(1.25rem,5vw,4rem)}
+.container{max-width:1060px;margin:0 auto}
+.section-label{
+  color:var(--acc);font-size:0.75rem;font-weight:600;
+  letter-spacing:0.2em;text-transform:uppercase;
+  margin-bottom:0.75rem;display:block;
+}
+.section-title{
+  font-size:clamp(1.75rem,4vw,2.75rem);
+  line-height:1.1;color:#fff;margin-bottom:1.5rem;
+}
+
+/* ABOUT */
+#about{background:var(--bg2)}
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3rem;align-items:center;
+}
+.about-img-wrap{position:relative}
+.about-img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.about-img-accent{
+  position:absolute;bottom:-1rem;right:-1rem;
+  width:60%;aspect-ratio:4/3;object-fit:cover;
+  border:4px solid var(--bg2);
+}
+.about-text p{color:var(--muted);margin-bottom:1rem;font-size:1.05rem}
+.about-stat{
+  display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap;
+}
+.stat{border-left:3px solid var(--acc);padding-left:1rem}
+.stat-num{font-size:2rem;font-weight:700;color:#fff;display:block}
+.stat-lbl{font-size:0.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em}
+
+/* SERVICES — 2-col rows */
+#services{background:var(--bg)}
+.svc-list{display:flex;flex-direction:column;gap:0}
+.svc-row{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid rgba(255,255,255,0.07);
+  padding:1.75rem 0;gap:1rem;align-items:start;
+}
+.svc-row:last-child{border-bottom:1px solid rgba(255,255,255,0.07)}
+.svc-name{font-size:1.1rem;font-weight:600;color:#fff}
+.svc-desc{color:var(--muted);font-size:0.95rem;line-height:1.5}
+
+/* GALLERY */
+#gallery{background:var(--bg3)}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  grid-template-rows:auto auto;
+  gap:0.5rem;
+}
+.gallery-grid img{width:100%;height:200px;object-fit:cover;display:block;transition:opacity 0.25s}
+.gallery-grid img:hover{opacity:0.8}
+.gallery-grid .wide{grid-column:span 2;height:260px}
+
+/* TESTIMONIES */
+#testimonies{background:var(--bg2)}
+.test-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem}
+.test-card{
+  background:var(--bg3);
+  border-left:3px solid var(--acc);
+  padding:1.75rem;
+}
+.test-quote{
+  font-size:1.05rem;color:var(--text);line-height:1.65;
+  font-style:italic;margin-bottom:1.25rem;
+}
+.test-attr{color:var(--acc);font-size:0.85rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase}
+
+/* HOURS & LOCATION */
+#location{background:var(--bg)}
+.loc-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:3rem;align-items:start}
+.hours-table{width:100%;border-collapse:collapse;margin-top:1.5rem}
+.hours-table tr{border-bottom:1px solid rgba(255,255,255,0.06)}
+.hours-table td{padding:0.75rem 0;font-size:0.95rem}
+.hours-table td:first-child{color:var(--muted)}
+.hours-table td:last-child{color:#fff;text-align:right}
+.hours-table tr.today td{color:var(--acc)}
+.map-wrap{position:relative;padding-bottom:65%;height:0;overflow:hidden;margin-top:1.5rem}
+.map-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.contact-info{margin-top:2rem}
+.contact-item{display:flex;gap:0.75rem;align-items:flex-start;margin-bottom:1rem}
+.ci-label{color:var(--muted);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;min-width:70px;padding-top:0.1rem}
+.ci-val{color:#fff;font-size:1rem}
+.ci-val a{color:#fff;text-decoration:none;transition:color 0.2s}
+.ci-val a:hover{color:var(--acc)}
+
+/* SOCIAL */
+.social-links{display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap}
+.social-link{
+  color:var(--muted);text-decoration:none;font-size:0.85rem;font-weight:500;
+  letter-spacing:0.05em;text-transform:uppercase;
+  padding:0.5rem 1rem;border:1px solid rgba(255,255,255,0.12);
+  transition:border-color 0.2s,color 0.2s;
+}
+.social-link:hover{border-color:var(--acc);color:var(--acc)}
+
+/* CTA BANNER */
+.cta-band{
+  background:var(--acc);
+  padding:clamp(2.5rem,5vw,4rem) clamp(1.25rem,5vw,4rem);
+  text-align:center;
+}
+.cta-band h2{font-size:clamp(1.75rem,4vw,2.75rem);color:#0b1f1d;margin-bottom:1rem}
+.cta-band p{color:rgba(11,31,29,0.7);max-width:480px;margin:0 auto 2rem;font-size:1.05rem}
+.btn-dark{
+  background:#0b1f1d;color:#fff;
+  text-decoration:none;font-weight:700;font-size:1rem;
+  padding:0.9rem 2rem;display:inline-block;
+  transition:background 0.2s;letter-spacing:0.02em;
+}
+.btn-dark:hover{background:#132e2b}
+
+/* FOOTER */
+footer{
+  background:#060f0e;
+  padding:2rem clamp(1.25rem,5vw,4rem);
+  display:flex;flex-wrap:wrap;gap:1rem;
+  justify-content:space-between;align-items:center;
+  border-top:1px solid rgba(20,184,166,0.1);
+}
+.footer-credit{color:var(--muted);font-size:0.8rem}
+.footer-credit a{color:var(--acc);text-decoration:none}
+.footer-legal{color:rgba(255,255,255,0.3);font-size:0.75rem}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .nav-toggle{display:flex}
+  .nav-links.open{
+    display:flex;flex-direction:column;gap:0;
+    position:fixed;top:var(--nav-h);left:0;right:0;
+    background:var(--bg);padding:1rem 0;
+    border-bottom:1px solid rgba(20,184,166,0.15);
+    z-index:99;
+  }
+  .nav-links.open li{border-bottom:1px solid rgba(255,255,255,0.05)}
+  .nav-links.open a{display:block;padding:0.85rem 1.5rem;font-size:1rem}
+  .about-grid{grid-template-columns:1fr}
+  .about-img-accent{display:none}
+  .svc-row{grid-template-columns:1fr}
+  .loc-grid{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+  .gallery-grid .wide{grid-column:span 2}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo brand">Gonzalez <span>Auto</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Parts & Services</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#location">Hours & Location</a></li>
+  </ul>
+  <a href="tel:+16613047082" class="nav-cta">Call Now</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Arvin, California</span>
+    <h1 class="brand">Gonzalez<br>Auto<br>Dismantling</h1>
+    <p class="hero-sub">Quality used auto parts and trusted mechanical work — the go-to shop in the Central Valley when you need the right part, fast.</p>
+    <div class="hero-actions">
+      <a href="tel:+16613047082" class="btn-primary">Call (661) 304-7082</a>
+      <a href="https://maps.google.com/?q=941+S+Derby+St,+Arvin,+CA+93203" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <span class="strip-item">Mon – Fri &nbsp;8 AM – 5 PM</span>
+  <span class="strip-item">Used OEM Parts</span>
+  <span class="strip-item">Mechanical Repairs</span>
+  <span class="strip-item">Serving Arvin & Kern County</span>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="./photos/02.jpg" alt="Gonzalez Auto Dismantling yard" class="about-img">
+        <img src="./photos/03.jpg" alt="Auto parts on the lot" class="about-img-accent">
+      </div>
+      <div class="about-text">
+        <span class="section-label">Who We Are</span>
+        <h2 class="section-title brand">Your Trusted Parts Source in the Valley</h2>
+        <p>Gonzalez Auto Dismantling is Arvin's home for quality used auto parts and reliable mechanical service. Whether you're a DIYer hunting down a hard-to-find component or you need a mechanic who won't waste your time, we're the shop that takes the time to help.</p>
+        <p>We carry an ever-changing inventory of used OEM parts pulled from vehicles on our lot — the kind of parts that fit right and save you real money over dealership pricing.</p>
+        <div class="about-stat">
+          <div class="stat">
+            <span class="stat-num">OEM</span>
+            <span class="stat-lbl">Used Parts</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">Mon–Fri</span>
+            <span class="stat-lbl">Open 5 Days</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">Local</span>
+            <span class="stat-lbl">Arvin-Based</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <span class="section-label">What We Do</span>
+    <h2 class="section-title brand">Parts & Services</h2>
+    <div class="svc-list">
+      <div class="svc-row">
+        <div class="svc-name">Used Auto Parts</div>
+        <div class="svc-desc">OEM parts pulled from our on-site inventory — engines, transmissions, doors, hoods, bumpers, mirrors, lights, and more. Call ahead to check availability for your make and model.</div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-name">Mechanical Repair</div>
+        <div class="svc-desc">Full mechanical work from a team that takes time to diagnose the problem correctly. We don't rush — we fix it right.</div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-name">Engine & Drivetrain Parts</div>
+        <div class="svc-desc">Used engines, alternators, starters, radiators, and drivetrain components pulled and tested from vehicles on our lot.</div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-name">Body Parts & Panels</div>
+        <div class="svc-desc">Doors, fenders, hoods, trunk lids, bumpers, and trim pieces — often a fraction of dealer new-part cost.</div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-name">Wheels & Tires</div>
+        <div class="svc-desc">Used steel and alloy wheels, plus tire inventory that changes regularly. Ask what's currently on the lot.</div>
+      </div>
+      <div class="svc-row">
+        <div class="svc-name">Electrical & Interior</div>
+        <div class="svc-desc">Headlights, taillights, switches, seat assemblies, dashboards, and small trim — if the part is on the car, we likely have it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <span class="section-label">The Lot</span>
+    <h2 class="section-title brand">See Our Operation</h2>
+    <div class="gallery-grid" style="margin-top:2rem">
+      <img src="./photos/04.jpg" alt="Parts yard overview" class="wide">
+      <img src="./photos/05.jpg" alt="Vehicle inventory">
+      <img src="./photos/06.jpg" alt="Dismantled vehicles on lot">
+      <img src="./photos/01.jpg" alt="Shop entrance">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="container">
+    <span class="section-label">Customer Testimonies</span>
+    <h2 class="section-title brand">In Their Words</h2>
+    <div class="test-grid">
+      <div class="test-card">
+        <p class="test-quote">"Is the best mechanic shop in town they always the time to help with any mechanical problem and they also have what ever used parts you can need"</p>
+        <span class="test-attr">— Carlos Q.</span>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">"Good"</p>
+        <span class="test-attr">— Ernesto G.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section id="location">
+  <div class="container">
+    <div class="loc-grid">
+      <div>
+        <span class="section-label">Find Us</span>
+        <h2 class="section-title brand">Hours &amp; Location</h2>
+        <table class="hours-table">
+          <tr><td>Monday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Thursday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Friday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Saturday</td><td>Closed</td></tr>
+          <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="ci-label">Phone</span>
+            <span class="ci-val"><a href="tel:+16613047082">(661) 304-7082</a></span>
+          </div>
+          <div class="contact-item">
+            <span class="ci-label">Address</span>
+            <span class="ci-val">941 S Derby St<br>Arvin, CA 93203</span>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="https://maps.google.com/?cid=4301228670020435764" target="_blank" rel="noopener" class="social-link">Google Business</a>
+        </div>
+      </div>
+      <div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=941+S+Derby+St,+Arvin,+CA+93203&z=15&output=embed"
+            title="Gonzalez Auto Dismantling location map"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2 class="brand">Need a Part? Let's Talk.</h2>
+  <p>Call us Monday through Friday and we'll check inventory on the spot — no runaround, no waiting rooms.</p>
+  <a href="tel:+16613047082" class="btn-dark">Call (661) 304-7082</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-legal">&copy; 2024 Gonzalez Auto Dismantling &mdash; 941 S Derby St, Arvin, CA 93203</span>
+  <span class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></span>
+</footer>
+
+<script>
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => {
+  links.classList.toggle('open');
+});
+links.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => links.classList.remove('open'));
+});
+</script>
+
+</body>
+</html>

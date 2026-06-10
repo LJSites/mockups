@@ -1,0 +1,519 @@
+<!-- nails · bold-dark · hero-layout 2 · svc-layout 1 · Archivo Black/Inter -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stella Style — Hair Salon in San Diego</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --acc:#14b8a6;
+    --bg:#0b1f1d;
+    --bg2:#0f2925;
+    --bg3:#112e2a;
+    --text:#e8f4f2;
+    --muted:#7ab8b0;
+    --nav-h:64px;
+  }
+  html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .brand{font-family:'Archivo Black',serif;letter-spacing:-0.02em}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:100;
+    height:var(--nav-h);
+    background:rgba(11,31,29,0.95);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(20,184,166,0.15);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 clamp(1.25rem,5vw,3rem);
+  }
+  .nav-logo{font-size:1.25rem;color:var(--acc);text-decoration:none}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.875rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;transition:color .2s}
+  .nav-links a:hover{color:var(--acc)}
+  .nav-cta{
+    background:var(--acc);color:#0b1f1d;font-weight:600;font-size:0.875rem;
+    padding:0.5rem 1.25rem;border-radius:3px;text-decoration:none;letter-spacing:0.03em;
+    transition:background .2s,transform .15s;
+  }
+  .nav-cta:hover{background:#0d9488;transform:translateY(-1px)}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+  .hamburger span{display:block;width:24px;height:2px;background:var(--text);transition:transform .3s,opacity .3s}
+  .mobile-menu{display:none;position:fixed;inset:0;top:var(--nav-h);background:rgba(11,31,29,0.98);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{color:var(--text);text-decoration:none;font-size:1.5rem;font-weight:500;transition:color .2s}
+  .mobile-menu a:hover{color:var(--acc)}
+
+  /* HERO — full-bleed */
+  .hero{
+    position:relative;min-height:100svh;
+    display:flex;align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    display:grid;grid-template-columns:1fr 1fr 1fr;
+  }
+  .hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(0.45)}
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(11,31,29,1) 0%, rgba(11,31,29,0.5) 40%, transparent 100%);
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    padding:clamp(3rem,8vw,6rem) clamp(1.25rem,5vw,3rem);
+    max-width:900px;
+  }
+  .hero-eyebrow{
+    display:inline-block;font-size:0.8rem;font-weight:600;letter-spacing:0.15em;
+    text-transform:uppercase;color:var(--acc);margin-bottom:1.25rem;
+  }
+  .hero h1{
+    font-family:'Archivo Black',serif;
+    font-size:clamp(3rem,9vw,7.5rem);
+    line-height:0.95;
+    color:#fff;
+    margin-bottom:1.5rem;
+    letter-spacing:-0.03em;
+  }
+  .hero h1 em{font-style:normal;color:var(--acc)}
+  .hero-sub{
+    font-size:clamp(1rem,2.5vw,1.25rem);
+    color:var(--muted);
+    max-width:520px;
+    line-height:1.6;
+    margin-bottom:2.5rem;
+    font-weight:300;
+  }
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+  .btn-primary{
+    background:var(--acc);color:#0b1f1d;font-weight:700;font-size:1rem;
+    padding:0.875rem 2rem;border-radius:3px;text-decoration:none;letter-spacing:0.02em;
+    transition:background .2s,transform .15s;
+    display:inline-block;
+  }
+  .btn-primary:hover{background:#0d9488;transform:translateY(-2px)}
+  .btn-ghost{
+    border:1px solid rgba(20,184,166,0.4);color:var(--text);font-weight:500;
+    padding:0.875rem 2rem;border-radius:3px;text-decoration:none;font-size:1rem;
+    transition:border-color .2s,color .2s;
+  }
+  .btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+
+  /* SECTIONS */
+  section{padding:clamp(4rem,10vw,8rem) clamp(1.25rem,5vw,3rem)}
+  .container{max-width:1100px;margin:0 auto}
+  .section-label{
+    font-size:0.75rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--acc);margin-bottom:0.75rem;
+  }
+  .section-title{
+    font-family:'Archivo Black',serif;
+    font-size:clamp(2rem,5vw,3.5rem);
+    line-height:1.05;
+    letter-spacing:-0.02em;
+    margin-bottom:1.5rem;
+  }
+
+  /* ABOUT */
+  .about{background:var(--bg2)}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(2rem,5vw,5rem);
+    align-items:center;
+  }
+  .about-images{
+    display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;
+    gap:0.75rem;
+  }
+  .about-images img{width:100%;height:220px;object-fit:cover;border-radius:4px}
+  .about-images img:first-child{grid-column:span 2;height:280px}
+  .about-text p{color:var(--muted);line-height:1.8;margin-bottom:1.25rem}
+  .about-text p:last-of-type{margin-bottom:0}
+  .stat-row{
+    display:flex;gap:2.5rem;margin-top:2rem;padding-top:2rem;
+    border-top:1px solid rgba(20,184,166,0.15);
+  }
+  .stat-item{display:flex;flex-direction:column;gap:0.25rem}
+  .stat-num{font-family:'Archivo Black',serif;font-size:2rem;color:var(--acc)}
+  .stat-desc{font-size:0.8rem;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase}
+
+  /* SERVICES — 2-col rows */
+  .services-list{display:flex;flex-direction:column;gap:0}
+  .service-row{
+    display:grid;grid-template-columns:1fr auto;align-items:center;
+    padding:1.5rem 0;border-bottom:1px solid rgba(20,184,166,0.1);
+    gap:1rem;
+    transition:padding-left .2s;
+    cursor:default;
+  }
+  .service-row:first-child{border-top:1px solid rgba(20,184,166,0.1)}
+  .service-row:hover{padding-left:0.75rem}
+  .svc-name{font-family:'Archivo Black',serif;font-size:1.1rem;color:var(--text)}
+  .svc-desc{font-size:0.875rem;color:var(--muted);margin-top:0.25rem;line-height:1.5}
+  .svc-tag{
+    font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+    color:var(--acc);background:rgba(20,184,166,0.1);padding:0.3rem 0.75rem;border-radius:2px;
+    white-space:nowrap;
+  }
+
+  /* GALLERY */
+  .gallery{background:var(--bg3)}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0.5rem;
+    margin-top:2.5rem;
+  }
+  .gallery-grid img{
+    width:100%;aspect-ratio:1/1;object-fit:cover;
+    border-radius:3px;
+    transition:transform .3s,filter .3s;
+    filter:brightness(0.85);
+  }
+  .gallery-grid img:hover{transform:scale(1.03);filter:brightness(1)}
+
+  /* TESTIMONIES */
+  .testimonies{background:var(--bg2)}
+  .test-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:1.5rem;margin-top:3rem;
+  }
+  .test-card{
+    background:var(--bg3);padding:2rem;border-radius:4px;
+    border-left:3px solid var(--acc);
+    display:flex;flex-direction:column;gap:1rem;
+  }
+  .test-quote{
+    font-size:1rem;color:var(--text);line-height:1.75;
+    font-style:italic;font-weight:300;
+  }
+  .test-quote::before{content:'\201C';font-family:'Archivo Black',serif;font-size:3rem;color:var(--acc);line-height:0;vertical-align:-0.5rem;margin-right:0.25rem}
+  .test-author{font-size:0.8rem;font-weight:600;color:var(--acc);letter-spacing:0.1em;text-transform:uppercase}
+
+  /* HOURS & LOCATION */
+  .info{background:var(--bg)}
+  .info-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);
+    align-items:start;
+  }
+  .hours-table{width:100%;border-collapse:collapse;margin-top:1.5rem}
+  .hours-table tr{border-bottom:1px solid rgba(20,184,166,0.08)}
+  .hours-table td{padding:0.7rem 0;font-size:0.9rem}
+  .hours-table td:first-child{color:var(--muted)}
+  .hours-table td:last-child{text-align:right;color:var(--text)}
+  .map-wrap{margin-top:1.5rem;border-radius:4px;overflow:hidden;height:300px}
+  .map-wrap iframe{width:100%;height:100%;border:0;filter:invert(0.85) hue-rotate(170deg) saturate(0.6)}
+
+  /* CONTACT */
+  .contact{background:var(--bg2)}
+  .contact-inner{
+    display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);
+    align-items:start;
+  }
+  .contact-detail{display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.5rem}
+  .contact-label{font-size:0.75rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--acc)}
+  .contact-val{font-size:1.1rem;color:var(--text)}
+  .contact-val a{color:var(--text);text-decoration:none;transition:color .2s}
+  .contact-val a:hover{color:var(--acc)}
+  .social-row{display:flex;gap:1rem;margin-top:1rem}
+  .social-link{
+    display:inline-block;padding:0.5rem 1.25rem;
+    border:1px solid rgba(20,184,166,0.3);color:var(--muted);font-size:0.8rem;
+    font-weight:500;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;
+    border-radius:2px;transition:border-color .2s,color .2s;
+  }
+  .social-link:hover{border-color:var(--acc);color:var(--acc)}
+  .cta-box{
+    background:var(--bg3);padding:2.5rem;border-radius:4px;
+    border:1px solid rgba(20,184,166,0.15);
+    display:flex;flex-direction:column;align-items:flex-start;gap:1.5rem;
+  }
+  .cta-box p{color:var(--muted);line-height:1.7}
+
+  /* FOOTER */
+  footer{
+    background:#070f0e;padding:2rem clamp(1.25rem,5vw,3rem);
+    display:flex;flex-direction:column;align-items:center;gap:0.75rem;text-align:center;
+    border-top:1px solid rgba(20,184,166,0.1);
+  }
+  footer p{font-size:0.8rem;color:var(--muted)}
+  footer a{color:var(--muted);text-decoration:none}
+  footer a:hover{color:var(--acc)}
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    .about-grid,.info-grid,.contact-inner{grid-template-columns:1fr}
+    .nav-links,.nav-cta{display:none}
+    .hamburger{display:flex}
+    .hero-bg{grid-template-columns:1fr}
+    .hero-bg img:not(:first-child){display:none}
+    .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media(max-width:600px){
+    .test-grid{grid-template-columns:1fr}
+    .gallery-grid{grid-template-columns:1fr 1fr}
+    .stat-row{gap:1.5rem}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo brand">Stella Style</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#hours">Hours</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:+16199296957" class="nav-cta">Call Now</a>
+  <button class="hamburger" aria-label="Open menu" onclick="document.getElementById('mobileMenu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('open')">Services</a>
+  <a href="#testimonies" onclick="document.getElementById('mobileMenu').classList.remove('open')">Testimonies</a>
+  <a href="#hours" onclick="document.getElementById('mobileMenu').classList.remove('open')">Hours</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('open')">Contact</a>
+  <a href="tel:+16199296957" class="btn-primary" onclick="document.getElementById('mobileMenu').classList.remove('open')">Call Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <img src="./photos/02.jpg" alt="Stella Style salon interior">
+    <img src="./photos/04.jpg" alt="Hair styling at Stella Style">
+    <img src="./photos/06.jpg" alt="Beautiful hair results">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">San Diego · North Park · Since Day One</span>
+    <h1 class="brand">Hair That<br><em>Heals</em> &<br>Transforms</h1>
+    <p class="hero-sub">Specialist in Japanese straightening, Brazilian blowout, and keratin treatments — served from a serene outdoor patio studio with 35+ years of mastery.</p>
+    <div class="hero-actions">
+      <a href="tel:+16199296957" class="btn-primary">Call Now</a>
+      <a href="https://www.google.com/maps?q=1933+Lincoln+Ave,+San+Diego,+CA+92104&z=15" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-images">
+        <img src="./photos/01.jpg" alt="Stella Style outdoor patio salon">
+        <img src="./photos/03.jpg" alt="Hair treatment in progress">
+        <img src="./photos/05.jpg" alt="Finished hair styling">
+      </div>
+      <div class="about-text">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title brand">A Patio Studio Like No Other</h2>
+        <p>Stella Style is an intimate outdoor patio salon nestled in San Diego's North Park. The fresh breeze naturally carries away treatment fumes while the peaceful setting turns every appointment into a restorative escape.</p>
+        <p>Owner and master stylist Stella brings over 35 years of professional experience — trained in techniques found in Japan and Korea — to every client. Her philosophy is simple: understand the hair, educate the client, and deliver results that last.</p>
+        <p>Stella works with premium, formaldehyde-free keratin and straightening products. Every service includes a thorough consultation and a personalized aftercare walkthrough so your hair looks its best long after you leave.</p>
+        <div class="stat-row">
+          <div class="stat-item">
+            <span class="stat-num brand">35+</span>
+            <span class="stat-desc">Years Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num brand">Free</span>
+            <span class="stat-desc">Parking On-Site</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num brand">7 Days</span>
+            <span class="stat-desc">Open Weekly</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <p class="section-label">What We Offer</p>
+    <h2 class="section-title brand">Signature Services</h2>
+    <div class="services-list">
+      <div class="service-row">
+        <div>
+          <div class="svc-name">Japanese Permanent Hair Straightening</div>
+          <div class="svc-desc">Rebonding treatment that permanently relaxes curl and wave — smoother, silkier results that last months. Technique honed through training in Japan and Korea.</div>
+        </div>
+        <span class="svc-tag">Signature</span>
+      </div>
+      <div class="service-row">
+        <div>
+          <div class="svc-name">Brazilian Blowout</div>
+          <div class="svc-desc">Eliminates frizz and adds brilliant shine with a professional keratin smoothing system. Formulated free — safe for all hair types.</div>
+        </div>
+        <span class="svc-tag">Popular</span>
+      </div>
+      <div class="service-row">
+        <div>
+          <div class="svc-name">Keratin Complex Treatment</div>
+          <div class="svc-desc">Deep-penetrating keratin that rebuilds and strengthens hair from within, dramatically reducing dry time and taming unruly texture.</div>
+        </div>
+        <span class="svc-tag">Specialty</span>
+      </div>
+      <div class="service-row">
+        <div>
+          <div class="svc-name">Color Correction & Toning</div>
+          <div class="svc-desc">Expert correction of uneven bleach, banding, or unwanted warmth — restoring a balanced, polished result even in complex cases.</div>
+        </div>
+        <span class="svc-tag">Expert</span>
+      </div>
+      <div class="service-row">
+        <div>
+          <div class="svc-name">Texture Treatments & Face Framing</div>
+          <div class="svc-desc">Customized texture services combined with precise face-framing cuts that flatter your features and complement the treatment result.</div>
+        </div>
+        <span class="svc-tag">Custom</span>
+      </div>
+      <div class="service-row">
+        <div>
+          <div class="svc-name">Precision Haircut</div>
+          <div class="svc-desc">Clean, intentional cuts that work with your natural movement. Often included complimentary with smoothing and straightening services.</div>
+        </div>
+        <span class="svc-tag">Included</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <p class="section-label">The Studio</p>
+    <h2 class="section-title brand">See the Work</h2>
+    <div class="gallery-grid">
+      <img src="./photos/01.jpg" alt="Stella Style salon patio">
+      <img src="./photos/02.jpg" alt="Interior styling station">
+      <img src="./photos/03.jpg" alt="Treatment in progress">
+      <img src="./photos/04.jpg" alt="Hair styling close-up">
+      <img src="./photos/05.jpg" alt="Finished hair transformation">
+      <img src="./photos/06.jpg" alt="Beautiful hair results">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="testimonies" id="testimonies">
+  <div class="container">
+    <p class="section-label">In Their Words</p>
+    <h2 class="section-title brand">Customer Testimonies</h2>
+    <div class="test-grid">
+      <div class="test-card">
+        <p class="test-quote">Stella is amazing. I came in looking terrible, my previous stylist had bleached my hair unevenly. She completely toned my hair and fixed it. I thought it'd be impossible to fix but she did it. She's so nice and professional. Her shop is so cute and beautiful. I will be recommending her to everyone!</p>
+        <span class="test-author">— Catalina G.</span>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">Stella has a beautiful set up outside on her patio. The light breeze carries away any fumes and keeps the air around you fresh. I enjoyed her hair service which included a Japanese hair straightening and also a FREE keratin treatment after. I've had this treatment in Japan and Korea and she has the same care as they do.</p>
+        <span class="test-author">— Jackie B.</span>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">Stella took such good care of me during my Japanese permanent hair straightening rebonding treatment! It looks so sleek and beautiful. She did an amazing job explaining each part of the process and I really appreciate how she walked me through aftercare. Stella is such an expert and I can't recommend going to her enough!</p>
+        <span class="test-author">— Jillian S.</span>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">I had such an amazing experience with Stella! She is incredibly nice and did an awesome job on my hair. I got a texture treatment and face framing, and I absolutely love the result. Highly recommend her!</p>
+        <span class="test-author">— Nantana G.</span>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">Very unique and professional outside patio hair salon. Stella was able to take me last minute the same day! Her salon is so peaceful and relaxing, her energy is healing and calming. She is very professional with 35+ years of experience and uses great quality products. Highly recommended!</p>
+        <span class="test-author">— Olga C.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & MAP -->
+<section class="info" id="hours">
+  <div class="container">
+    <div class="info-grid">
+      <div>
+        <p class="section-label">Hours</p>
+        <h2 class="section-title brand">Open Every Day</h2>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>Monday</td><td>7:00 AM – 7:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>7:00 AM – 7:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>7:00 AM – 7:00 PM</td></tr>
+            <tr><td>Thursday</td><td>7:00 AM – 7:00 PM</td></tr>
+            <tr><td>Friday</td><td>7:00 AM – 7:00 PM</td></tr>
+            <tr><td>Saturday</td><td>7:00 AM – 7:00 PM</td></tr>
+            <tr><td>Sunday</td><td>7:00 AM – 7:00 PM</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <p class="section-label">Location</p>
+        <h2 class="section-title brand">Find Us</h2>
+        <p style="color:var(--muted);margin-bottom:1rem;font-size:0.95rem">1933 Lincoln Ave<br>San Diego, CA 92104<br><br>Free parking available directly outside the home studio. Easy access from North Park and surrounding neighborhoods.</p>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=1933+Lincoln+Ave,+San+Diego,+CA+92104&z=15&output=embed"
+            title="Stella Style location map"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div>
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-title brand">Book Your Appointment</h2>
+        <div class="contact-detail">
+          <span class="contact-label">Phone</span>
+          <span class="contact-val"><a href="tel:+16199296957">(619) 929-6957</a></span>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-label">Address</span>
+          <span class="contact-val">1933 Lincoln Ave<br>San Diego, CA 92104</span>
+        </div>
+        <div class="contact-detail">
+          <span class="contact-label">Find Us Online</span>
+          <div class="social-row">
+            <a href="https://maps.google.com/?cid=9563142643462768714&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="social-link">Google</a>
+          </div>
+        </div>
+      </div>
+      <div class="cta-box">
+        <div>
+          <p class="section-label">Ready?</p>
+          <h3 class="brand" style="font-size:1.75rem;line-height:1.1;margin-bottom:0.75rem">Your best hair starts with one call.</h3>
+        </div>
+        <p>Stella works by appointment — call to book your consultation. Same-day appointments are occasionally available. She'll walk you through the best service for your hair type and goals before anything begins.</p>
+        <a href="tel:+16199296957" class="btn-primary">Call Now — (619) 929-6957</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="brand" style="font-size:1rem;color:var(--acc)">Stella Style</p>
+  <p>1933 Lincoln Ave, San Diego, CA 92104 &nbsp;·&nbsp; <a href="tel:+16199296957">(619) 929-6957</a></p>
+  <p>Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+</footer>
+
+</body>
+</html>

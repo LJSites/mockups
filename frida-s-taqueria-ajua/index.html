@@ -1,0 +1,524 @@
+<!-- mexican · classic-editorial · hero-layout 1 · svc-layout 2 · Playfair Display/Source Sans 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frida's Taqueria Ajua! — Authentic Mexican Food in Modesto, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --acc:#b91c1c;
+  --bg:#faf7f2;
+  --ink:#1a1209;
+  --muted:#6b5c48;
+  --rule:#d9cfc3;
+  --nav-h:64px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--ink);font-size:1rem;line-height:1.65}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--bg);border-bottom:1px solid var(--rule);
+  height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;
+}
+.nav-brand{display:flex;align-items:center;gap:.5rem}
+.nav-brand .brand{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;letter-spacing:.01em;color:var(--ink)}
+.nav-brand .ajua{font-family:'Playfair Display',serif;font-style:italic;color:var(--acc);font-size:1.15rem}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.875rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--muted);transition:color .2s}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{
+  background:var(--acc);color:#fff;
+  padding:.45rem 1.1rem;
+  font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  border:none;cursor:pointer;transition:background .2s;
+}
+.nav-cta:hover{background:#991b1b}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--ink);transition:transform .3s}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  nav.open .nav-links{
+    display:flex;flex-direction:column;
+    position:absolute;top:var(--nav-h);left:0;right:0;
+    background:var(--bg);border-bottom:1px solid var(--rule);
+    padding:1.5rem 2rem;gap:1.25rem;
+  }
+  nav.open .nav-cta{display:block;margin:0 2rem 1.5rem}
+}
+
+/* HERO — left image layout */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:calc(100vh - var(--nav-h));
+}
+.hero-img-col{
+  overflow:hidden;
+  position:relative;
+}
+.hero-img-col img{
+  width:100%;height:100%;object-fit:cover;
+}
+.hero-content-col{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:4rem 3.5rem 4rem 4rem;
+  background:var(--bg);
+}
+.hero-eyebrow{
+  font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin-bottom:1.25rem;
+  display:flex;align-items:center;gap:.75rem;
+}
+.hero-eyebrow::before{content:'';display:block;width:2.5rem;height:1px;background:var(--acc)}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,4.5vw,3.5rem);
+  font-weight:700;line-height:1.15;
+  color:var(--ink);margin-bottom:.5rem;
+}
+.hero h1 em{font-style:italic;color:var(--acc)}
+.hero-tagline{
+  font-size:1.1rem;color:var(--muted);margin:1.25rem 0 2.25rem;
+  max-width:28ch;line-height:1.6;
+  border-left:3px solid var(--acc);padding-left:1rem;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  display:inline-block;
+  background:var(--acc);color:#fff;
+  padding:.75rem 1.75rem;
+  font-size:.875rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  transition:background .2s,transform .15s;
+}
+.btn-primary:hover{background:#991b1b;transform:translateY(-1px)}
+.btn-outline{
+  display:inline-block;
+  border:1.5px solid var(--ink);color:var(--ink);
+  padding:.75rem 1.75rem;
+  font-size:.875rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  transition:border-color .2s,color .2s,transform .15s;
+}
+.btn-outline:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-1px)}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-img-col{height:55vw;max-height:380px}
+  .hero-content-col{padding:3rem 1.75rem}
+}
+
+/* DIVIDER */
+.divider{
+  border:none;border-top:1px solid var(--rule);
+  margin:0 2rem;
+}
+
+/* SECTION WRAPPER */
+.section{padding:5rem 2rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-header{margin-bottom:3rem}
+.section-eyebrow{
+  font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--acc);font-weight:600;margin-bottom:.75rem;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700;
+  color:var(--ink);line-height:1.2;
+}
+
+/* ABOUT */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
+}
+.about-photos{
+  display:grid;grid-template-columns:1fr 1fr;
+  grid-template-rows:auto auto;gap:.75rem;
+}
+.about-photos img:first-child{
+  grid-column:1/-1;
+  aspect-ratio:16/9;object-fit:cover;
+}
+.about-photos img:not(:first-child){
+  aspect-ratio:1;object-fit:cover;
+}
+.about-text p{color:var(--muted);margin-bottom:1.25rem;font-size:1.05rem}
+.about-text p:last-child{margin-bottom:0}
+.about-accent{
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;font-style:italic;
+  color:var(--acc);margin-bottom:1.5rem;
+  line-height:1.4;
+}
+@media(max-width:768px){
+  .about-grid{grid-template-columns:1fr;gap:2.5rem}
+  .about-photos{order:-1}
+}
+
+/* MENU — numbered/stacked list */
+.menu-section{background:#fff}
+.menu-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:3rem 4rem;
+}
+.menu-category{}
+.menu-cat-title{
+  font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;
+  color:var(--ink);margin-bottom:1.25rem;
+  padding-bottom:.6rem;border-bottom:2px solid var(--acc);
+  display:flex;align-items:center;gap:.5rem;
+}
+.menu-cat-num{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:2rem;color:var(--rule);line-height:1;
+  margin-right:.25rem;
+}
+.menu-items{list-style:none}
+.menu-item{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:.6rem 0;border-bottom:1px dashed var(--rule);
+  font-size:.975rem;
+}
+.menu-item:last-child{border-bottom:none}
+.menu-item-name{font-weight:500}
+.menu-item-note{font-size:.85rem;color:var(--muted);display:block;margin-top:.15rem}
+
+/* GALLERY */
+.gallery-strip{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:.5rem;
+  max-width:1100px;margin:0 auto;
+}
+.gallery-strip img{
+  aspect-ratio:1;object-fit:cover;
+  transition:transform .3s ease;
+}
+.gallery-strip img:hover{transform:scale(1.02)}
+@media(max-width:600px){
+  .gallery-strip{grid-template-columns:1fr 1fr}
+}
+
+/* TESTIMONIES */
+.testimonies-section{}
+.testimonies-list{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2rem;
+}
+.testimony{
+  border-left:3px solid var(--acc);
+  padding:1.5rem 1.5rem 1.5rem 2rem;
+  background:#fff;
+}
+.testimony-quote{
+  font-family:'Playfair Display',serif;
+  font-style:italic;font-size:1.05rem;
+  color:var(--ink);line-height:1.7;
+  margin-bottom:1rem;
+}
+.testimony-quote::before{content:'\201C';color:var(--acc);font-size:1.6rem;line-height:.5;vertical-align:-.3em;margin-right:.15em}
+.testimony-attr{
+  font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;
+}
+
+/* HOURS + MAP */
+.info-section{background:#fff}
+.info-grid{
+  display:grid;grid-template-columns:1fr 1.6fr;
+  gap:4rem;align-items:start;
+}
+.hours-table{width:100%;border-collapse:collapse;margin-top:1.25rem}
+.hours-table tr{border-bottom:1px solid var(--rule)}
+.hours-table tr:last-child{border-bottom:none}
+.hours-table td{padding:.55rem 0;font-size:.975rem}
+.hours-table td:last-child{text-align:right;color:var(--muted)}
+.hours-table .closed{color:#999;font-style:italic}
+.map-wrap{
+  border:1px solid var(--rule);overflow:hidden;
+}
+.map-wrap iframe{
+  width:100%;height:340px;border:none;display:block;
+}
+@media(max-width:768px){
+  .info-grid{grid-template-columns:1fr;gap:2.5rem}
+}
+
+/* CONTACT */
+.contact-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:2rem;margin-top:2.5rem;
+}
+.contact-item-label{
+  font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--acc);font-weight:600;margin-bottom:.4rem;
+}
+.contact-item-val{font-size:1.05rem;font-weight:500}
+.contact-item-val a{transition:color .2s}
+.contact-item-val a:hover{color:var(--acc)}
+
+/* SOCIAL */
+.social-links{display:flex;gap:1.25rem;margin-top:2rem;flex-wrap:wrap}
+.social-link{
+  font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+  color:var(--muted);border-bottom:1px solid var(--rule);padding-bottom:.1rem;
+  transition:color .2s,border-color .2s;
+}
+.social-link:hover{color:var(--acc);border-color:var(--acc)}
+
+/* FOOTER */
+footer{
+  background:var(--ink);color:rgba(255,255,255,.6);
+  padding:2.5rem 2rem;
+  display:flex;flex-direction:column;align-items:center;
+  gap:.75rem;text-align:center;
+}
+.footer-brand{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;color:#fff;letter-spacing:.02em;
+}
+.footer-brand span{color:var(--acc);font-style:italic}
+footer small{font-size:.82rem;line-height:1.6}
+footer small a{color:rgba(255,255,255,.5);transition:color .2s}
+footer small a:hover{color:#fff}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-brand">
+    <span class="brand">Frida's Taqueria</span>
+    <span class="ajua">Ajua!</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#hours">Hours</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:2092485414" class="nav-cta">Call Us</a>
+  <button class="hamburger" aria-label="Open menu" onclick="document.getElementById('main-nav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO: left-image layout -->
+<section class="hero" id="hero">
+  <div class="hero-img-col">
+    <img src="./photos/01.jpg" alt="Frida's Taqueria Ajua! — food and interior" loading="eager">
+  </div>
+  <div class="hero-content-col">
+    <p class="hero-eyebrow">Modesto, California</p>
+    <h1>Authentic Mexican<br>flavor, <em>cooked with heart.</em></h1>
+    <p class="hero-tagline">Fresh masa, perfectly seasoned meats, and a kitchen that never cuts corners — this is the real thing.</p>
+    <div class="hero-actions">
+      <a href="tel:2092485414" class="btn-primary">Call Now</a>
+      <a href="https://www.google.com/maps?q=2101+W+Rumble+Rd+c+Modesto+CA+95350&z=15" target="_blank" rel="noopener" class="btn-outline">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-photos">
+        <img src="./photos/02.jpg" alt="Frida's Taqueria interior" loading="lazy">
+        <img src="./photos/03.jpg" alt="Frida's Taqueria food" loading="lazy">
+        <img src="./photos/04.jpg" alt="Frida's Taqueria dishes" loading="lazy">
+      </div>
+      <div class="about-text">
+        <div class="section-eyebrow">Our Story</div>
+        <h2 class="section-title">Where every plate<br>tells a story</h2>
+        <p class="about-accent">"Cozy, authentic, and full of beautiful Frida artwork that makes the experience even better."</p>
+        <p>Frida's Taqueria Ajua! is a hidden gem in Modesto — a warm, family-run taqueria where the Frida Kahlo theme runs through every corner, from the hand-painted murals to the carefully curated décor. The pride in this place is visible the moment you walk in.</p>
+        <p>Expect big portions of housemade classics: quesabirrias with deep-red consommé, grilled burritos with fresh ingredients, sopes de pollo made from scratch, mulitas, quesadillas, and aguas frescas made in-house. Chips and salsa arrive the moment you sit down. Radishes and pickled onions come with every plate — because that's how it's done.</p>
+        <p>The team here genuinely cares — about the food, the atmosphere, and every customer who walks through the door.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- MENU — numbered/stacked list -->
+<section class="section menu-section" id="menu">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">What We Serve</div>
+      <h2 class="section-title">The Menu</h2>
+    </div>
+    <div class="menu-grid">
+
+      <div class="menu-category">
+        <h3 class="menu-cat-title"><span class="menu-cat-num">01</span> Tacos &amp; Birria</h3>
+        <ul class="menu-items">
+          <li class="menu-item"><span><span class="menu-item-name">Quesabirria</span><span class="menu-item-note">Birria-stuffed quesadilla, consommé on the side</span></span></li>
+          <li class="menu-item"><span><span class="menu-item-name">Tacos de Pastor</span><span class="menu-item-note">Marinated al pastor, cilantro &amp; onion</span></span></li>
+          <li class="menu-item"><span><span class="menu-item-name">Tacos de Carne Asada</span><span class="menu-item-note">Grilled beef, salsa verde</span></span></li>
+          <li class="menu-item"><span><span class="menu-item-name">Tacos de Camarón</span><span class="menu-item-note">Shrimp, pickled onions, house salsa</span></span></li>
+        </ul>
+      </div>
+
+      <div class="menu-category">
+        <h3 class="menu-cat-title"><span class="menu-cat-num">02</span> Antojitos</h3>
+        <ul class="menu-items">
+          <li class="menu-item"><span><span class="menu-item-name">Sope de Pollo</span><span class="menu-item-note">Housemade masa, seasoned chicken, all the toppings</span></span></li>
+          <li class="menu-item"><span><span class="menu-item-name">Mulitas de Pastor</span><span class="menu-item-note">Double-decker with al pastor &amp; cheese</span></span></li>
+          <li class="menu-item"><span><span class="menu-item-name">Mulitas de Camarón</span><span class="menu-item-note">Shrimp &amp; melted cheese</span></span></li>
+          <li class="menu-item"><span><span class="menu-item-name">Quesadillas</span><span class="menu-item-note">Made to order, choice of meat</span></span></li>
+        </ul>
+      </div>
+
+      <div class="menu-category">
+        <h3 class="menu-cat-title"><span class="menu-cat-num">03</span> Burritos &amp; More</h3>
+        <ul class="menu-items">
+          <li class="menu-item"><span><span class="menu-item-name">Burrito Asado</span><span class="menu-item-note">Grilled, fresh ingredients, your choice of meat</span></span></li>
+          <li class="menu-item"><span><span class="menu-item-name">Menudo</span><span class="menu-item-note">Traditional red menudo, served with hominy</span></span></li>
+          <li class="menu-item"><span><span class="menu-item-name">Chips &amp; Salsa</span><span class="menu-item-note">Complimentary with dine-in orders</span></span></li>
+        </ul>
+      </div>
+
+      <div class="menu-category">
+        <h3 class="menu-cat-title"><span class="menu-cat-num">04</span> Drinks</h3>
+        <ul class="menu-items">
+          <li class="menu-item"><span><span class="menu-item-name">Aguas Frescas</span><span class="menu-item-note">Housemade, rotating flavors</span></span></li>
+          <li class="menu-item"><span><span class="menu-item-name">Jarritos</span><span class="menu-item-note">Assorted Mexican sodas</span></span></li>
+          <li class="menu-item"><span><span class="menu-item-name">Horchata</span><span class="menu-item-note">Classic rice &amp; cinnamon</span></span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="section" style="padding-top:0;padding-left:0;padding-right:0">
+  <div class="gallery-strip">
+    <img src="./photos/05.jpg" alt="Frida's Taqueria food" loading="lazy">
+    <img src="./photos/06.jpg" alt="Frida's Taqueria interior" loading="lazy">
+    <img src="./photos/02.jpg" alt="Frida's Taqueria dishes" loading="lazy">
+    <img src="./photos/04.jpg" alt="Frida's Taqueria atmosphere" loading="lazy">
+  </div>
+</div>
+
+<!-- TESTIMONIES -->
+<section class="section testimonies-section" id="testimonies">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Customer Testimonies</div>
+      <h2 class="section-title">In Their Words</h2>
+    </div>
+    <div class="testimonies-list">
+      <div class="testimony">
+        <p class="testimony-quote">Absolutely delicious food! I drove an hour to get here, and it was so worth the trip. The customer service was outstanding, and the Quesabirria are a must-try! I'll definitely be coming back again soon!</p>
+        <p class="testimony-attr">— Adriana S.</p>
+      </div>
+      <div class="testimony">
+        <p class="testimony-quote">This place is a hidden gem! I ordered their homemade sope de pollo — fresh masa, perfectly seasoned chicken, and all the toppings just right. The whole vibe inside is authentic, cozy, and full of beautiful Frida artwork that makes the experience even better.</p>
+        <p class="testimony-attr">— Rigo S.</p>
+      </div>
+      <div class="testimony">
+        <p class="testimony-quote">This is the BEST authentic Mexican food in the area, hands down! Every dish my family tried was spectacular. They grill their burritos, and the ingredients are fresh and perfectly seasoned. My kids said they would like to come back every Friday.</p>
+        <p class="testimony-attr">— Christin M.</p>
+      </div>
+      <div class="testimony">
+        <p class="testimony-quote">Frida's Taqueria is such a cute and delicious little spot. I love seeing their Frida Kahlo theme all throughout. The details they put into it shows their love for the business. The meat is flavorful and their sauces are spicy and delicious.</p>
+        <p class="testimony-attr">— L. J.</p>
+      </div>
+      <div class="testimony">
+        <p class="testimony-quote">Was randomly in town and wanted to try something new. So glad that we did. The food was absolutely phenomenal — we will definitely try to come back!</p>
+        <p class="testimony-attr">— Deth S.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- HOURS + MAP -->
+<section class="section info-section" id="hours">
+  <div class="section-inner">
+    <div class="info-grid">
+      <div>
+        <div class="section-eyebrow">When We're Open</div>
+        <h2 class="section-title">Hours</h2>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>Monday</td><td>9:00 AM – 7:00 PM</td></tr>
+            <tr><td>Tuesday</td><td class="closed">Closed</td></tr>
+            <tr><td>Wednesday</td><td>9:00 AM – 9:00 PM</td></tr>
+            <tr><td>Thursday</td><td>9:00 AM – 9:00 PM</td></tr>
+            <tr><td>Friday</td><td>9:00 AM – 9:00 PM</td></tr>
+            <tr><td>Saturday</td><td>9:00 AM – 9:00 PM</td></tr>
+            <tr><td>Sunday</td><td>9:00 AM – 7:00 PM</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <div class="section-eyebrow">Find Us</div>
+        <h2 class="section-title" style="margin-bottom:1.25rem">Location</h2>
+        <div class="map-wrap">
+          <iframe src="https://www.google.com/maps?q=2101+W+Rumble+Rd+c,+Modesto,+CA+95350&z=15&output=embed" loading="lazy" allowfullscreen title="Frida's Taqueria Ajua! on Google Maps"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Reach Us</div>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-item-label">Phone</p>
+        <p class="contact-item-val"><a href="tel:2092485414">(209) 248-5414</a></p>
+      </div>
+      <div>
+        <p class="contact-item-label">Address</p>
+        <p class="contact-item-val">2101 W Rumble Rd c<br>Modesto, CA 95350</p>
+      </div>
+      <div>
+        <p class="contact-item-label">Dine In &amp; Takeout</p>
+        <p class="contact-item-val">Walk-ins welcome</p>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem">
+      <a href="tel:2092485414" class="btn-primary" style="display:inline-block">Call Now — (209) 248-5414</a>
+    </div>
+    <div class="social-links">
+      <a href="https://maps.google.com/?cid=5199906137982113923" target="_blank" rel="noopener" class="social-link">Google Business</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand brand">Frida's Taqueria <span>Ajua!</span></div>
+  <small>2101 W Rumble Rd c, Modesto, CA 95350 &nbsp;·&nbsp; (209) 248-5414</small>
+  <small>Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></small>
+</footer>
+
+</body>
+</html>

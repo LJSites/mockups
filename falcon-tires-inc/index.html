@@ -1,0 +1,366 @@
+<!-- auto · bold-dark · hero-layout 2 · svc-layout 1 · Archivo Black/Inter -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Falcon Tires Inc. — Brawley, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--acc:#14b8a6;--bg:#0b1f1d;--bg2:#0f2a28;--bg3:#122e2b;--text:#e8f4f2;--muted:#7fb8b0;--nav-h:64px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+.brand{font-family:'Archivo Black',serif;letter-spacing:-0.02em}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;height:var(--nav-h);background:rgba(11,31,29,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(20,184,166,0.15);display:flex;align-items:center;padding:0 1.5rem}
+.nav-inner{width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.nav-logo{font-size:1.25rem;line-height:1}
+.nav-logo span{color:var(--acc)}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{font-size:.875rem;font-weight:500;color:var(--muted);letter-spacing:.03em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{background:var(--acc);color:#0b1f1d;font-weight:600;font-size:.875rem;padding:.55rem 1.2rem;border-radius:4px;letter-spacing:.02em;transition:background .2s,transform .15s}
+.nav-cta:hover{background:#0fa393;transform:translateY(-1px)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.4rem;color:var(--text)}
+.nav-toggle span{display:block;width:22px;height:2px;background:currentColor;margin:5px 0;transition:.3s}
+
+/* ── HERO (full-bleed layout 2) ── */
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:#000}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.45;transition:opacity 2s}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--bg) 0%,rgba(11,31,29,.7) 50%,transparent 100%)}
+.hero-content{position:relative;z-index:2;width:100%;max-width:1200px;margin:0 auto;padding:4rem 1.5rem 5rem}
+.hero-badge{display:inline-block;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);border:1px solid var(--acc);padding:.3rem .75rem;border-radius:3px;margin-bottom:1.5rem}
+.hero-content h1{font-size:clamp(2.8rem,8vw,5.5rem);line-height:1;letter-spacing:-.03em;max-width:14ch;margin-bottom:1.25rem}
+.hero-content h1 em{font-style:normal;color:var(--acc)}
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--muted);max-width:46ch;margin-bottom:2.5rem;font-weight:400}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--acc);color:#0b1f1d;font-weight:700;font-size:1rem;padding:.85rem 2rem;border-radius:4px;letter-spacing:.02em;transition:background .2s,transform .15s;display:inline-block}
+.btn-primary:hover{background:#0fa393;transform:translateY(-2px)}
+.btn-outline{border:1.5px solid var(--muted);color:var(--text);font-weight:600;font-size:1rem;padding:.85rem 2rem;border-radius:4px;letter-spacing:.02em;transition:border-color .2s,color .2s,transform .15s;display:inline-block}
+.btn-outline:hover{border-color:var(--acc);color:var(--acc);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;flex-wrap:wrap}
+.stat-item{display:flex;flex-direction:column}
+.stat-num{font-family:'Archivo Black',serif;font-size:2rem;color:var(--acc);line-height:1}
+.stat-label{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:.25rem}
+
+/* ── SECTION UTILITIES ── */
+section{padding:5rem 1.5rem}
+.container{max-width:1200px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--acc);margin-bottom:.75rem}
+.section-title{font-family:'Archivo Black',serif;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.1;letter-spacing:-.02em;margin-bottom:1.25rem}
+
+/* ── ABOUT ── */
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:.75rem;height:420px}
+.about-photos img{width:100%;height:100%;object-fit:cover;border-radius:6px}
+.about-photos img:first-child{grid-row:1/3}
+.about-text p{color:var(--muted);line-height:1.75;margin-bottom:1rem}
+.about-text p:last-of-type{margin-bottom:0}
+.about-accent-line{width:3rem;height:3px;background:var(--acc);margin-bottom:1.5rem;border-radius:2px}
+
+/* ── SERVICES (layout 1: 2-col rows) ── */
+#services{background:var(--bg)}
+.services-grid{display:flex;flex-direction:column;gap:0;border:1px solid rgba(20,184,166,.15);border-radius:8px;overflow:hidden}
+.svc-row{display:grid;grid-template-columns:2.5rem 1fr auto;align-items:center;gap:1.5rem;padding:1.5rem 2rem;border-bottom:1px solid rgba(20,184,166,.1);transition:background .2s}
+.svc-row:last-child{border-bottom:none}
+.svc-row:hover{background:rgba(20,184,166,.06)}
+.svc-num{font-family:'Archivo Black',serif;font-size:.85rem;color:var(--acc);opacity:.6}
+.svc-name{font-weight:600;font-size:1rem;color:var(--text)}
+.svc-desc{font-size:.875rem;color:var(--muted);margin-top:.2rem}
+.svc-tag{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--acc);border:1px solid rgba(20,184,166,.35);padding:.25rem .6rem;border-radius:3px;white-space:nowrap}
+
+/* ── PHOTO STRIP ── */
+.photo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;background:var(--bg3);padding:.5rem}
+.photo-strip img{width:100%;height:220px;object-fit:cover;transition:transform .4s}
+.photo-strip img:hover{transform:scale(1.03)}
+
+/* ── TESTIMONIES ── */
+#testimonies{background:var(--bg2)}
+.testimonies-intro{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+.testimonies-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.testimony-card{background:var(--bg3);border:1px solid rgba(20,184,166,.12);border-radius:8px;padding:2rem;position:relative}
+.testimony-card::before{content:'';position:absolute;top:0;left:2rem;width:3rem;height:2px;background:var(--acc)}
+.quote-text{font-size:.975rem;line-height:1.75;color:var(--muted);margin-bottom:1.25rem}
+.quote-attr{font-weight:600;font-size:.85rem;color:var(--text);letter-spacing:.03em}
+
+/* ── HOURS & LOCATION ── */
+#location{background:var(--bg)}
+.location-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:start}
+.hours-table{width:100%;border-collapse:collapse;margin-top:1rem}
+.hours-table tr{border-bottom:1px solid rgba(20,184,166,.1)}
+.hours-table tr:last-child{border-bottom:none}
+.hours-table td{padding:.65rem 0;font-size:.9rem}
+.hours-table td:first-child{color:var(--muted);width:40%}
+.hours-table td:last-child{font-weight:500;color:var(--text)}
+.closed-day{color:rgba(127,184,176,.45)!important}
+.map-wrap{border-radius:8px;overflow:hidden;border:1px solid rgba(20,184,166,.15)}
+.map-wrap iframe{display:block;width:100%;height:340px;border:none}
+.contact-info{margin-top:1.75rem}
+.contact-item{display:flex;gap:.75rem;align-items:baseline;margin-bottom:.75rem}
+.contact-label{font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);width:5rem;flex-shrink:0}
+.contact-value{font-size:.95rem;color:var(--text)}
+.contact-value a:hover{color:var(--acc)}
+
+/* ── CTA BAND ── */
+.cta-band{background:var(--acc);padding:4rem 1.5rem;text-align:center}
+.cta-band h2{font-family:'Archivo Black',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#0b1f1d;line-height:1.1;letter-spacing:-.02em;margin-bottom:1rem}
+.cta-band p{color:rgba(11,31,29,.7);font-size:1rem;margin-bottom:2rem;max-width:42ch;margin-left:auto;margin-right:auto}
+.btn-dark{background:#0b1f1d;color:var(--acc);font-weight:700;font-size:1rem;padding:.85rem 2rem;border-radius:4px;letter-spacing:.02em;transition:background .2s,transform .15s;display:inline-block}
+.btn-dark:hover{background:#0f2a28;transform:translateY(-2px)}
+
+/* ── FOOTER ── */
+footer{background:#070f0e;padding:2.5rem 1.5rem;border-top:1px solid rgba(20,184,166,.1)}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;gap:1rem;align-items:center;text-align:center}
+.footer-logo{font-size:1.1rem}
+.footer-logo span{color:var(--acc)}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+.footer-links a{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;transition:color .2s}
+.footer-links a:hover{color:var(--acc)}
+.footer-credit{font-size:.75rem;color:rgba(127,184,176,.5);margin-top:.5rem}
+.footer-credit a{color:rgba(127,184,176,.7);transition:color .2s}
+.footer-credit a:hover{color:var(--acc)}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .about-grid,.location-grid{grid-template-columns:1fr}
+  .about-photos{height:280px}
+  .testimonies-grid{grid-template-columns:1fr}
+  .photo-strip{grid-template-columns:1fr 1fr}
+  .photo-strip img:last-child{display:none}
+  .nav-links,.nav-cta{display:none}
+  .nav-toggle{display:block}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--bg2);padding:1.5rem;gap:1.25rem;border-bottom:1px solid rgba(20,184,166,.15);z-index:99}
+  .nav-links.open + .nav-cta{display:block;position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:99;padding:.75rem 2rem}
+}
+@media(max-width:600px){
+  .hero-content h1{font-size:2.5rem}
+  .svc-row{grid-template-columns:2rem 1fr;gap:1rem}
+  .svc-tag{display:none}
+  section{padding:3.5rem 1rem}
+  .testimonies-intro{flex-direction:column}
+  .photo-strip{grid-template-columns:1fr}
+  .photo-strip img{height:180px}
+  .about-photos{grid-template-columns:1fr;height:auto}
+  .about-photos img:first-child{grid-row:auto;height:180px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo brand">Falcon<span>Tires</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Location</a></li>
+    </ul>
+    <a href="tel:+17605506585" class="nav-cta">Call Now</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO (full-bleed layout 2) -->
+<section class="hero" id="home">
+  <div class="hero-bg">
+    <img src="./photos/01.jpg" alt="Falcon Tires shop"/>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge">Brawley, CA · Since Day One</div>
+    <h1 class="brand">Tires.<br/><em>Brakes.</em><br/>Done Right.</h1>
+    <p class="hero-sub">Honest work, fair prices, and a team that keeps you informed every step of the way. Falcon Tires has Brawley covered.</p>
+    <div class="hero-actions">
+      <a href="tel:+17605506585" class="btn-primary">Call (760) 550-6585</a>
+      <a href="https://www.google.com/maps?q=1120+Main+St,+Brawley,+CA+92227" target="_blank" rel="noopener" class="btn-outline">Get Directions</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">Tues–Fri</span><span class="stat-label">8 AM – 5 PM</span></div>
+      <div class="stat-item"><span class="stat-num">Sat</span><span class="stat-label">8 AM – 2:30 PM</span></div>
+      <div class="stat-item"><span class="stat-num">Free</span><span class="stat-label">Estimates</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-photos">
+      <img src="./photos/02.jpg" alt="Shop interior"/>
+      <img src="./photos/03.jpg" alt="Tire service"/>
+      <img src="./photos/04.jpg" alt="Vehicle inspection"/>
+    </div>
+    <div class="about-text">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title brand">Your Brawley<br/>Tire Experts</h2>
+      <div class="about-accent-line"></div>
+      <p>Falcon Tires Inc. is a trusted full-service tire and auto repair shop serving the Brawley community. We specialize in tires, brakes, and a full range of vehicle maintenance — all with honest estimates that are clear and easy to understand.</p>
+      <p>Our friendly team, led by Alex and the front desk crew, makes sure you're comfortable and well-informed while we work on your vehicle. We built our reputation on being reliable and fair — and we intend to keep it that way.</p>
+      <p>We proudly serve individual customers, families, and repeat clients who trust us with every vehicle they own.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip">
+  <img src="./photos/05.jpg" alt="Tire work"/>
+  <img src="./photos/06.jpg" alt="Auto repair"/>
+  <img src="./photos/01.jpg" alt="Falcon Tires"/>
+</div>
+
+<!-- SERVICES (layout 1: 2-col rows) -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title brand">Services &amp; Repairs</h2>
+    <div class="services-grid">
+      <div class="svc-row">
+        <span class="svc-num">01</span>
+        <div><div class="svc-name">Tire Sales &amp; Installation</div><div class="svc-desc">New tire fitment for all makes and models, mounted and balanced on-site.</div></div>
+        <span class="svc-tag">Core</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-num">02</span>
+        <div><div class="svc-name">Tire Rotation &amp; Balancing</div><div class="svc-desc">Even out wear and smooth your ride — extend tire life significantly.</div></div>
+        <span class="svc-tag">Maintenance</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-num">03</span>
+        <div><div class="svc-name">Brake Service &amp; Repair</div><div class="svc-desc">Pads, rotors, and brake lines inspected and replaced with quality parts.</div></div>
+        <span class="svc-tag">Safety</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-num">04</span>
+        <div><div class="svc-name">Flat Tire Repair</div><div class="svc-desc">Fast plug or patch repair so you're back on the road without delay.</div></div>
+        <span class="svc-tag">Quick</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-num">05</span>
+        <div><div class="svc-name">Wheel Alignment</div><div class="svc-desc">Precision alignment to reduce uneven wear and improve handling.</div></div>
+        <span class="svc-tag">Performance</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-num">06</span>
+        <div><div class="svc-name">General Auto Repair</div><div class="svc-desc">Trusted diagnostics and repairs beyond tires — honest estimates every time.</div></div>
+        <span class="svc-tag">Full Service</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="container">
+    <div class="testimonies-intro">
+      <div>
+        <div class="section-label">Customer Testimonies</div>
+        <h2 class="section-title brand">In Their Own Words</h2>
+      </div>
+      <a href="https://maps.google.com/?cid=14601643555637152268&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="btn-outline" style="font-size:.85rem;padding:.6rem 1.25rem">View on Google</a>
+    </div>
+    <div class="testimonies-grid">
+      <div class="testimony-card">
+        <p class="quote-text">"Best experience at Falcon Tires. They did a great job on my brakes and have super comfortable waiting area. Alex is friendly and kept me well informed."</p>
+        <div class="quote-attr">— Angie B.</div>
+      </div>
+      <div class="testimony-card">
+        <p class="quote-text">"Excellent service, they went above and beyond to help my mother and I with our car situation. The gentleman at the front desk was extremely kind, generous and understanding."</p>
+        <div class="quote-attr">— Allen G.</div>
+      </div>
+      <div class="testimony-card">
+        <p class="quote-text">"Honest and reliable service with fair prices and estimates that are clear and easy to read. I have taken my vehicles there several times. I recommend them!"</p>
+        <div class="quote-attr">— George N.</div>
+      </div>
+      <div class="testimony-card">
+        <p class="quote-text">"Have taken my vehicles to Falcon Tires for services and repairs. Always a great experience with their welcoming staff. Honest and trustworthy work with fair prices."</p>
+        <div class="quote-attr">— Monique N.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2 class="brand">Ready to Book Your Visit?</h2>
+  <p>Call us Tuesday through Saturday — no appointment needed for most services. We'll get you rolling.</p>
+  <a href="tel:+17605506585" class="btn-dark">Call (760) 550-6585</a>
+</div>
+
+<!-- HOURS & LOCATION -->
+<section id="location">
+  <div class="container location-grid">
+    <div>
+      <div class="section-label">Find Us</div>
+      <h2 class="section-title brand">Hours &amp;<br/>Location</h2>
+      <table class="hours-table">
+        <tbody>
+          <tr><td>Monday</td><td class="closed-day">Closed</td></tr>
+          <tr><td>Tuesday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Thursday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Friday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Saturday</td><td>8:00 AM – 2:30 PM</td></tr>
+          <tr><td>Sunday</td><td class="closed-day">Closed</td></tr>
+        </tbody>
+      </table>
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="contact-label">Phone</span>
+          <span class="contact-value"><a href="tel:+17605506585">(760) 550-6585</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Address</span>
+          <span class="contact-value">1120 Main St<br/>Brawley, CA 92227</span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Google</span>
+          <span class="contact-value"><a href="https://maps.google.com/?cid=14601643555637152268&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">View Listing ↗</a></span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="map-wrap">
+        <iframe src="https://www.google.com/maps?q=1120+Main+St,+Brawley,+CA+92227&z=15&output=embed" allowfullscreen loading="lazy" title="Falcon Tires Inc. map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="nav-logo brand footer-logo">Falcon<span>Tires</span> Inc.</div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#testimonies">Testimonies</a>
+      <a href="#location">Hours &amp; Location</a>
+      <a href="https://maps.google.com/?cid=14601643555637152268&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business ↗</a>
+    </div>
+    <div class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></div>
+  </div>
+</footer>
+
+<script>
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => {
+  links.classList.toggle('open');
+});
+links.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => links.classList.remove('open'));
+});
+</script>
+</body>
+</html>

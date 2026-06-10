@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  Archetype: "THE HIDDEN COUNTER" — an honest order-window taquería tucked inside a
+  Chevron on Stockdale Hwy. The design leans into the real story: a daytime birria
+  counter you stumble onto and tell people about. Not a poster, not a cantina —
+  a confident, ticket/menu-board feel.
+
+  Distinct from other work/ taquerías:
+    - Palette: deep teal-charcoal base + marigold + birria-red on a cool off-white
+      (most others are warm cream + red/pink/gold). --acc marigold #f0a417, --bg #f4f1ea.
+    - Display font: Fjalla One (none of the other taquerías use it: they use Anton,
+      Bebas, Chango, Alfa Slab, Abril, Playfair, Archivo Black, Teko, Yeseva...).
+    - Body: Hanken Grotesk.
+    - Layout: a sticky LEFT info-rail "order card" beside a scrolling photo+menu
+      column on desktop (collapses to stacked on mobile). Menu as a board-style
+      list with a marigold price column, not cards. Hero = full-bleed counter photo
+      with a flat color band, no dark-overlay-centered-headline.
+  Animation: none beyond hover states (deliberate).
+  Map: keyless maps?q=...&output=embed. Photos: local ./photos/NN.jpg only.
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taqueria — Quesabirria, Tamales &amp; Tortas · Stockdale Hwy, Bakersfield</title>
+<meta name="description" content="A made-to-order taquería counter on Stockdale Hwy in Bakersfield — quesabirria tacos with consommé, hot Chito burritos, tamales and more. Open mornings till evening.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --acc:#f0a417;        /* marigold */
+    --acc-deep:#d6850b;
+    --red:#c5341d;        /* birria red */
+    --ink:#1d2528;        /* teal-charcoal */
+    --ink-2:#33474c;
+    --teal:#1f4e54;       /* deep teal panel */
+    --bg:#f4f1ea;         /* cool off-white */
+    --card:#ffffff;
+    --line:#e1ddd2;
+    --muted:#5d6a6d;
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    background:var(--bg);color:var(--ink);
+    line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.disp{font-family:'Fjalla One',sans-serif;font-weight:400;letter-spacing:.01em;line-height:1.04}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:var(--ink);color:#fff;
+    border-bottom:3px solid var(--acc);
+  }
+  nav .inner{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;gap:18px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Fjalla One',sans-serif;font-size:20px;letter-spacing:.04em}
+  .brand .dot{width:13px;height:13px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px rgba(240,164,23,.25)}
+  .navlinks{display:flex;gap:26px;align-items:center}
+  .navlinks a{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:#d7dadb;transition:color .15s}
+  .navlinks a:hover{color:var(--acc)}
+  .nav-cta{
+    background:var(--acc);color:var(--ink);padding:9px 17px;border-radius:3px;
+    font-weight:800;font-size:13px;letter-spacing:.04em;transition:background .15s,transform .15s;
+  }
+  .nav-cta:hover{background:#ffba2e;transform:translateY(-1px)}
+  @media(max-width:820px){.navlinks a:not(.nav-cta){display:none}}
+
+  /* ---------- HERO ---------- */
+  header.hero{position:relative;background:var(--ink);color:#fff}
+  .hero-photo{position:relative;height:clamp(300px,46vw,520px);overflow:hidden}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 38%;filter:saturate(1.05)}
+  .hero-photo::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(29,37,40,.82) 0%,rgba(29,37,40,.30) 48%,rgba(29,37,40,0) 75%)}
+  .hero-copy{position:absolute;inset:0;display:flex;align-items:center;z-index:2}
+  .hero-copy .wrap{width:100%}
+  .kicker{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:700;
+    text-transform:uppercase;letter-spacing:.16em;color:var(--acc);margin-bottom:16px}
+  .kicker::before{content:"";width:26px;height:2px;background:var(--acc)}
+  .hero-copy h1{font-size:clamp(40px,7.4vw,76px);color:#fff;max-width:13ch;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+  .hero-copy h1 em{font-style:normal;color:var(--acc)}
+  .hero-copy p{margin-top:16px;max-width:34ch;font-size:clamp(15px,2.1vw,18px);color:#e4e7e6}
+  .hero-actions{margin-top:26px;display:flex;flex-wrap:wrap;gap:13px}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:4px;
+    font-weight:800;font-size:15px;letter-spacing:.02em;transition:transform .15s,box-shadow .15s,background .15s}
+  .btn-primary{background:var(--acc);color:var(--ink);box-shadow:0 8px 22px rgba(240,164,23,.32)}
+  .btn-primary:hover{background:#ffba2e;transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.45)}
+  .btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+
+  /* status strip */
+  .strip{background:var(--acc);color:var(--ink);font-weight:700;font-size:13.5px}
+  .strip .wrap{display:flex;flex-wrap:wrap;gap:8px 30px;align-items:center;padding:11px 22px}
+  .strip span{display:inline-flex;align-items:center;gap:8px;letter-spacing:.02em}
+  .strip b{font-weight:800}
+  .strip .sep{width:6px;height:6px;border-radius:50%;background:var(--ink);opacity:.55}
+
+  /* ---------- MAIN GRID ---------- */
+  .grid{display:grid;grid-template-columns:330px 1fr;gap:46px;padding:62px 0}
+  @media(max-width:900px){.grid{grid-template-columns:1fr;gap:40px;padding:46px 0}}
+
+  /* sticky order card (left rail) */
+  .rail{position:sticky;top:calc(var(--nav-h) + 22px);align-self:start}
+  @media(max-width:900px){.rail{position:static}}
+  .ocard{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;
+    box-shadow:0 14px 34px rgba(29,37,40,.08)}
+  .ocard .top{background:var(--teal);color:#fff;padding:20px 22px}
+  .ocard .top h3{font-size:21px;letter-spacing:.02em}
+  .ocard .top p{font-size:13px;color:#cfe0e1;margin-top:4px}
+  .ocard .body{padding:20px 22px}
+  .hourrow{display:flex;justify-content:space-between;gap:14px;padding:7px 0;font-size:14.5px;border-bottom:1px dashed var(--line)}
+  .hourrow:last-of-type{border-bottom:0}
+  .hourrow .d{color:var(--ink-2);font-weight:600}
+  .hourrow .t{color:var(--muted);font-variant-numeric:tabular-nums}
+  .hourrow.today{background:#fbf4e2;margin:0 -22px;padding:7px 22px;border-radius:5px;border-bottom:0}
+  .hourrow.today .d{color:var(--acc-deep);font-weight:800}
+  .hourrow.today .t{color:var(--ink);font-weight:700}
+  .hourrow.closed .t{color:var(--red);font-weight:700}
+  .ocard .addr{margin-top:18px;font-size:14px;color:var(--ink-2);line-height:1.5}
+  .ocard .addr .lbl{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:5px;font-weight:700}
+  .ocard .dirbtn{display:block;text-align:center;margin-top:18px;background:var(--red);color:#fff;
+    padding:13px;border-radius:5px;font-weight:800;letter-spacing:.02em;transition:background .15s,transform .15s}
+  .ocard .dirbtn:hover{background:#a82c17;transform:translateY(-1px)}
+
+  /* right column sections */
+  .col{display:flex;flex-direction:column;gap:62px}
+  .sec-head{margin-bottom:24px}
+  .sec-head .tag{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.14em;color:var(--red)}
+  .sec-head h2{font-size:clamp(28px,4.4vw,40px);margin-top:8px;color:var(--ink)}
+  .lead{font-size:clamp(16px,2.2vw,18.5px);color:var(--ink-2);max-width:62ch}
+  .lead + .lead{margin-top:15px}
+  .lead b{color:var(--ink);font-weight:700}
+
+  /* photo band under about */
+  .pgrid{display:grid;grid-template-columns:1.4fr 1fr;grid-template-rows:170px 170px;gap:12px;margin-top:30px}
+  .pgrid img{width:100%;height:100%;object-fit:cover;border-radius:7px}
+  .pgrid .a{grid-row:1 / span 2}
+  @media(max-width:560px){.pgrid{grid-template-columns:1fr 1fr;grid-template-rows:140px 140px}.pgrid .a{grid-row:auto;grid-column:1 / span 2}}
+
+  /* menu board */
+  .board{background:var(--ink);border-radius:10px;padding:30px clamp(20px,3.4vw,38px);color:#fff}
+  .board .bh{display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+    padding-bottom:14px;margin-bottom:6px;border-bottom:2px solid rgba(255,255,255,.12)}
+  .board .bh h3{font-size:22px;color:var(--acc);letter-spacing:.03em}
+  .board .bh .pl{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:#9fb0b2;font-weight:700}
+  .mrow{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:baseline;
+    padding:15px 0;border-bottom:1px dashed rgba(255,255,255,.13)}
+  .mrow:last-child{border-bottom:0}
+  .mrow .nm{font-family:'Fjalla One',sans-serif;font-size:18px;letter-spacing:.02em}
+  .mrow .nm .star{color:var(--acc);font-size:12px;vertical-align:super;margin-left:5px;letter-spacing:.1em}
+  .mrow .ds{grid-column:1;font-size:14px;color:#aeb9bb;margin-top:3px;max-width:46ch}
+  .mrow .pr{font-family:'Fjalla One',sans-serif;font-size:16px;color:var(--acc);white-space:nowrap}
+  .board .note{margin-top:20px;font-size:13.5px;color:#9fb0b2;border-top:2px solid rgba(255,255,255,.12);padding-top:16px}
+  .board .note b{color:var(--acc)}
+
+  /* testimonies */
+  .says{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:680px){.says{grid-template-columns:1fr}}
+  .say{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--acc);
+    border-radius:7px;padding:24px 24px 20px}
+  .say.feature{grid-column:1 / -1;border-left-color:var(--red)}
+  .say .q{font-size:15.5px;color:var(--ink-2);line-height:1.62}
+  .say.feature .q{font-size:17px}
+  .say .who{margin-top:15px;font-family:'Fjalla One',sans-serif;font-size:15px;letter-spacing:.03em;color:var(--ink)}
+  .say .who::before{content:"— ";color:var(--acc)}
+
+  /* map / find us */
+  .findwrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card)}
+  @media(max-width:760px){.findwrap{grid-template-columns:1fr}}
+  .findwrap .info{padding:32px clamp(22px,3vw,34px)}
+  .findwrap .info h3{font-size:24px;margin-bottom:14px}
+  .findwrap .info p{font-size:15px;color:var(--ink-2);margin-bottom:7px}
+  .findwrap .info .k{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:700;margin-top:18px}
+  .findwrap .map{min-height:300px}
+  .findwrap .map iframe{width:100%;height:100%;min-height:300px;border:0;filter:grayscale(.12)}
+  .findwrap .info .gbtn{display:inline-flex;align-items:center;gap:8px;margin-top:20px;
+    color:var(--teal);font-weight:800;font-size:14px;letter-spacing:.02em}
+  .findwrap .info .gbtn:hover{color:var(--red)}
+
+  /* CTA band */
+  .cta{background:var(--teal);color:#fff;text-align:center;padding:58px 22px}
+  .cta h2{font-size:clamp(28px,5vw,44px);color:#fff;max-width:18ch;margin:0 auto}
+  .cta h2 em{font-style:normal;color:var(--acc)}
+  .cta p{margin:14px auto 26px;max-width:42ch;color:#d3e0e1;font-size:16px}
+
+  /* footer */
+  footer{background:var(--ink);color:#c7cfd0;padding:46px 22px 30px}
+  footer .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-start}
+  footer .brand{color:#fff}
+  footer .fcol p{font-size:14px;margin-bottom:5px}
+  footer .fcol .h{font-family:'Fjalla One',sans-serif;color:var(--acc);font-size:14px;letter-spacing:.06em;margin-bottom:9px;text-transform:uppercase}
+  footer a.gb{color:#c7cfd0;font-weight:600}
+  footer a.gb:hover{color:var(--acc)}
+  footer .rule{height:1px;background:rgba(255,255,255,.1);margin:30px 0 20px}
+  footer .credit{font-size:12.5px;color:#8a9698;text-align:center;line-height:1.7}
+  footer .credit a{color:var(--acc);font-weight:600}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap inner">
+    <a class="brand" href="#top"><span class="dot"></span>TAQUERIA</a>
+    <div class="navlinks">
+      <a href="#about">The Spot</a>
+      <a href="#menu">Menu</a>
+      <a href="#says">Word of Mouth</a>
+      <a href="#find">Find Us</a>
+      <a class="nav-cta" href="#find">Get Directions</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-photo">
+    <img src="./photos/03.jpg" alt="The made-to-order taquería counter with menu boards and the kitchen window">
+  </div>
+  <div class="hero-copy">
+    <div class="wrap">
+      <span class="kicker">Stockdale Hwy · Bakersfield</span>
+      <h1>The birria counter <em>worth the detour.</em></h1>
+      <p>A made-to-order taquería tucked inside the Chevron on Stockdale — quesabirria with consommé, hot Chito burritos, and tamales people drive back for.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#find">Get Directions</a>
+        <a class="btn btn-ghost" href="#menu">See the Menu</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <span><b>Open mornings to evening</b></span>
+    <span class="sep"></span>
+    <span>Quesabirria &amp; consommé</span>
+    <span class="sep"></span>
+    <span>Drive-thru &amp; counter</span>
+    <span class="sep"></span>
+    <span>Weekend parking-lot lunch · Fri–Sun</span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="grid">
+
+    <!-- LEFT RAIL: order card -->
+    <aside class="rail">
+      <div class="ocard">
+        <div class="top">
+          <h3>Come hungry</h3>
+          <p>Made to order, fast and very hot.</p>
+        </div>
+        <div class="body">
+          <div class="hourrow"><span class="d">Monday</span><span class="t">8:00 AM – 6:00 PM</span></div>
+          <div class="hourrow"><span class="d">Tuesday</span><span class="t">8:00 AM – 6:00 PM</span></div>
+          <div class="hourrow"><span class="d">Wednesday</span><span class="t">8:00 AM – 6:00 PM</span></div>
+          <div class="hourrow"><span class="d">Thursday</span><span class="t">8:00 AM – 6:00 PM</span></div>
+          <div class="hourrow"><span class="d">Friday</span><span class="t">8:00 AM – 6:00 PM</span></div>
+          <div class="hourrow"><span class="d">Saturday</span><span class="t">8:00 AM – 3:00 PM</span></div>
+          <div class="hourrow closed"><span class="d">Sunday</span><span class="t">Closed</span></div>
+
+          <div class="addr">
+            <span class="lbl">Where to find us</span>
+            13004 Stockdale Hwy<br>Bakersfield, CA 93314<br>
+            <span style="color:var(--muted)">Inside the Chevron — drive-thru on the side</span>
+          </div>
+
+          <a class="dirbtn" href="https://www.google.com/maps?q=13004+Stockdale+Hwy,+Bakersfield,+CA+93314" target="_blank" rel="noopener">Get Directions →</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT COLUMN -->
+    <div class="col">
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="sec-head">
+          <span class="tag">The Spot</span>
+          <h2>A real find on Stockdale Hwy.</h2>
+        </div>
+        <p class="lead">Yes — it's inside a Chevron. That's part of the story. Behind the counter is a full taquería kitchen turning out <b>quesabirria tacos with consommé</b>, <b>tamales</b>, burritos and tortas, all made to order and handed over fast and hot. The dining area is clean, there are a couple of tables by the drive-thru, and on <b>Friday through Sunday</b> they fire up lunch out in the parking lot.</p>
+        <p class="lead">It's the kind of place you stumble onto, order on a hunch, and end up telling everyone about. The owner's usually the one at the register — polite, smiling, and ready to point you toward the birria.</p>
+
+        <div class="pgrid">
+          <img class="a" src="./photos/01.jpg" alt="The clean dining area with tables">
+          <img src="./photos/04.jpg" alt="Food prepared at the taquería">
+          <img src="./photos/05.jpg" alt="A made-to-order plate from the counter">
+        </div>
+      </section>
+
+      <!-- MENU -->
+      <section id="menu">
+        <div class="sec-head">
+          <span class="tag">From the Counter</span>
+          <h2>What people order.</h2>
+          <p class="lead" style="margin-top:12px">A short, honest board — the dishes our customers come back for. Prices are at the counter and may vary; ask about the day's specials.</p>
+        </div>
+
+        <div class="board">
+          <div class="bh">
+            <h3>House Favorites</h3>
+            <span class="pl">Made to order</span>
+          </div>
+
+          <div class="mrow">
+            <div class="nm">Quesabirria Tacos <span class="star">★ signature</span></div>
+            <div class="ds">Cheesy birria tacos served with a cup of rich consommé for dipping.</div>
+            <div class="pr">Ask</div>
+          </div>
+          <div class="mrow">
+            <div class="nm">Chito Burrito</div>
+            <div class="ds">A hot, hearty burrito — a regular's "10/10," prepped fast.</div>
+            <div class="pr">Ask</div>
+          </div>
+          <div class="mrow">
+            <div class="nm">Tamales</div>
+            <div class="ds">House tamales the regulars rave about. Don't skip them.</div>
+            <div class="pr">Ask</div>
+          </div>
+          <div class="mrow">
+            <div class="nm">Street Tacos</div>
+            <div class="ds">Classic tacos, made the way you know and love.</div>
+            <div class="pr">Ask</div>
+          </div>
+          <div class="mrow">
+            <div class="nm">Tortas</div>
+            <div class="ds">Generous Mexican sandwiches off the torta board.</div>
+            <div class="pr">Ask</div>
+          </div>
+          <div class="mrow">
+            <div class="nm">Aguas Frescas &amp; Drinks</div>
+            <div class="ds">House drinks to go with it — "the drinks as well!"</div>
+            <div class="pr">Ask</div>
+          </div>
+
+          <p class="note"><b>Heads up:</b> weekend lunch runs out of the parking lot <b>Friday–Sunday</b>. Stop by the counter or the drive-thru any day for the full menu.</p>
+        </div>
+      </section>
+
+      <!-- TESTIMONIES -->
+      <section id="says">
+        <div class="sec-head">
+          <span class="tag">Word of Mouth</span>
+          <h2>What people say.</h2>
+        </div>
+        <div class="says">
+          <div class="say feature">
+            <p class="q">"After a good workout I was looking for some good lunch and stumbled onto the Taqueria. I love birria, so I got the quesabirria tacos with consommé — better than I expected and authentic as I know it. The cashier was polite and smiling, the food was quick and very hot, and the place was clean. I'd definitely come back."</p>
+            <p class="who">Kris H.</p>
+          </div>
+          <div class="say">
+            <p class="q">"I don't ever leave a review — but they took my order fast, prep time was good, and the food is delicious. I got the hot Chito burrito. 10/10."</p>
+            <p class="who">Andrew E.</p>
+          </div>
+          <div class="say">
+            <p class="q">"Some of the best Mexican food! The tamales are awesome! The drinks as well!"</p>
+            <p class="who">Anthony C.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FIND US -->
+      <section id="find">
+        <div class="sec-head">
+          <span class="tag">Find Us</span>
+          <h2>Stop in today.</h2>
+        </div>
+        <div class="findwrap">
+          <div class="info">
+            <h3>13004 Stockdale Hwy</h3>
+            <p>Bakersfield, CA 93314</p>
+            <p style="color:var(--muted)">Inside the Chevron · counter &amp; drive-thru</p>
+            <div class="k">Hours</div>
+            <p>Mon–Fri · 8:00 AM – 6:00 PM</p>
+            <p>Saturday · 8:00 AM – 3:00 PM</p>
+            <p>Sunday · Closed</p>
+            <a class="gbtn" href="https://maps.google.com/?cid=1958412672974851668" target="_blank" rel="noopener">View on Google ↗</a>
+          </div>
+          <div class="map">
+            <iframe src="https://www.google.com/maps?q=13004+Stockdale+Hwy,+Bakersfield,+CA+93314&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Taqueria on Stockdale Hwy, Bakersfield"></iframe>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<section class="cta">
+  <h2>Come find the <em>quesabirria</em>.</h2>
+  <p>Pull into the Chevron on Stockdale, follow the consommé, and order something hot.</p>
+  <a class="btn btn-primary" href="https://www.google.com/maps?q=13004+Stockdale+Hwy,+Bakersfield,+CA+93314" target="_blank" rel="noopener">Get Directions</a>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div class="fcol">
+        <a class="brand" href="#top" style="font-size:22px"><span class="dot"></span>TAQUERIA</a>
+        <p style="margin-top:12px">A made-to-order taquería on Stockdale Hwy,<br>Bakersfield — birria, tamales, tortas &amp; more.</p>
+      </div>
+      <div class="fcol">
+        <p class="h">Visit</p>
+        <p>13004 Stockdale Hwy</p>
+        <p>Bakersfield, CA 93314</p>
+        <p style="margin-top:8px"><a class="gb" href="https://maps.google.com/?cid=1958412672974851668" target="_blank" rel="noopener">Google Business ↗</a></p>
+      </div>
+      <div class="fcol">
+        <p class="h">Hours</p>
+        <p>Mon–Fri · 8 AM – 6 PM</p>
+        <p>Saturday · 8 AM – 3 PM</p>
+        <p>Sunday · Closed</p>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <p class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

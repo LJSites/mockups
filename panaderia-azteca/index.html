@@ -1,0 +1,947 @@
+<!-- bakery · upscale-dark · hero-layout 2 · svc-layout 2 · Cormorant Garamond/Karla -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panaderia Azteca — Authentic Pan Dulce, Adelanto CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --acc:#9f1239;
+      --bg:#171717;
+      --bg2:#1f1f1f;
+      --bg3:#262626;
+      --text:#e8e0d5;
+      --muted:#9a9086;
+      --border:#2e2e2e;
+      --nav-h:64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+    }
+
+    body{font-family:'Karla',sans-serif}
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: rgba(23,23,23,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+    }
+
+    .nav-wordmark {
+      font-size: 1.35rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: clamp(1rem, 3vw, 2rem);
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acc) !important;
+      border: 1px solid var(--acc);
+      padding: 0.4rem 1rem;
+      transition: background 0.2s, color 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--acc) !important;
+      color: #fff !important;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.25s;
+    }
+
+    /* ── HERO — full bleed ── */
+    #hero {
+      position: relative;
+      height: 100svh;
+      min-height: 560px;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('./photos/01.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+
+    #hero:hover .hero-bg { transform: scale(1); }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(23,23,23,0.97) 0%,
+        rgba(23,23,23,0.55) 45%,
+        rgba(23,23,23,0.15) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: clamp(2.5rem, 8vw, 5rem) clamp(1.5rem, 6vw, 4rem);
+      max-width: 760px;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 1rem;
+    }
+
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.2rem, 8vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      color: #e8c9a0;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 2rem;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #fff;
+      background: var(--acc);
+      padding: 0.85rem 2rem;
+      border: 1px solid var(--acc);
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: #7f0f2e;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 0.85rem 2rem;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    /* ── STRIP ── */
+    .strip {
+      background: var(--acc);
+      padding: 0.85rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .strip-item {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #fff;
+      opacity: 0.9;
+    }
+
+    .strip-dot {
+      width: 4px;
+      height: 4px;
+      background: rgba(255,255,255,0.4);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: clamp(4rem, 10vw, 7rem) clamp(1.5rem, 6vw, 4rem);
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: #e8c9a0;
+    }
+
+    /* ── ABOUT ── */
+    #about .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-text strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .about-image-stack {
+      position: relative;
+      aspect-ratio: 4/5;
+    }
+
+    .about-image-stack img {
+      position: absolute;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-img-main {
+      inset: 0;
+      width: 85%;
+      height: 85%;
+      top: 0;
+      right: 0;
+    }
+
+    .about-img-accent {
+      width: 52%;
+      height: 52%;
+      bottom: 0;
+      left: 0;
+      border: 4px solid var(--bg);
+      box-shadow: 0 0 0 1px var(--border);
+    }
+
+    /* ── MENU / OFFERINGS ── */
+    #menu { background: var(--bg2); }
+
+    .menu-list {
+      margin-top: 3rem;
+      counter-reset: menu-counter;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .menu-item {
+      counter-increment: menu-counter;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+      cursor: default;
+      transition: background 0.18s;
+    }
+
+    .menu-item:first-child { border-top: 1px solid var(--border); }
+
+    .menu-item:hover {
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      margin-left: -0.5rem;
+      margin-right: -0.5rem;
+    }
+
+    .menu-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--acc);
+      opacity: 0.7;
+      min-width: 2rem;
+    }
+
+    .menu-item:hover .menu-num { opacity: 1; }
+
+    .menu-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .menu-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      font-weight: 300;
+      line-height: 1.5;
+    }
+
+    .menu-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--border);
+      align-self: center;
+    }
+
+    /* ── PHOTO STRIP ── */
+    #gallery {
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .photo-strip {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 4px;
+    }
+
+    .photo-strip figure {
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .photo-strip figure:first-child {
+      grid-row: 1 / 3;
+    }
+
+    .photo-strip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      filter: brightness(0.88);
+    }
+
+    .photo-strip figure:hover img {
+      transform: scale(1.04);
+      filter: brightness(1);
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies { background: var(--bg3); }
+
+    .testimonies-grid {
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+    }
+
+    .testimony {
+      background: var(--bg2);
+      padding: 2.25rem;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .testimony:hover { background: #2a2a2a; }
+
+    .testimony-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--acc);
+      opacity: 0.25;
+      position: absolute;
+      top: 1rem;
+      left: 1.75rem;
+      user-select: none;
+    }
+
+    .testimony-text {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.75;
+      font-style: italic;
+      position: relative;
+      padding-top: 1.5rem;
+    }
+
+    .testimony-attr {
+      margin-top: 1.25rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text);
+      opacity: 0.6;
+    }
+
+    /* ── HOURS & LOCATION ── */
+    #visit .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: start;
+    }
+
+    .hours-table {
+      margin-top: 1.5rem;
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr { border-bottom: 1px solid var(--border); }
+    .hours-table tr:last-child { border-bottom: none; }
+
+    .hours-table td {
+      padding: 0.7rem 0;
+      font-size: 0.88rem;
+    }
+
+    .hours-table td:first-child {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      font-weight: 500;
+      width: 50%;
+    }
+
+    .hours-table td:last-child {
+      color: var(--text);
+      text-align: right;
+    }
+
+    .hours-table .today td { color: var(--text); }
+    .hours-table .today td:first-child { color: #e8c9a0; }
+    .hours-table .closed td:last-child { color: var(--muted); }
+
+    .map-wrap {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      filter: grayscale(0.4) invert(0.88) hue-rotate(180deg);
+    }
+
+    .directions-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acc);
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+
+    .directions-link:hover { gap: 0.75rem; }
+
+    /* ── CONTACT BAND ── */
+    #contact {
+      background: var(--bg2);
+      padding-top: clamp(3rem, 8vw, 5rem);
+      padding-bottom: clamp(3rem, 8vw, 5rem);
+      text-align: center;
+    }
+
+    #contact .section-title { margin-bottom: 0.75rem; }
+
+    .contact-sub {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-phone {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--muted);
+      margin-top: 1.5rem;
+      letter-spacing: 0.04em;
+    }
+
+    .contact-phone a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-phone a:hover { color: var(--acc); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem clamp(1.5rem, 6vw, 4rem);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    .footer-credit {
+      width: 100%;
+      font-size: 0.72rem;
+      color: var(--muted);
+      opacity: 0.5;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── BRAND CLASS ── */
+    .brand{font-family:'Cormorant Garamond',serif; font-weight: 400; letter-spacing: 0.02em;}
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; gap: 0; }
+      .nav-links.open {
+        display: flex;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: rgba(23,23,23,0.98);
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.open li { padding: 0.6rem 1.5rem; }
+      .nav-toggle { display: flex; }
+
+      #about .about-grid,
+      #visit .visit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image-stack {
+        aspect-ratio: 3/2;
+      }
+
+      .photo-strip {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 200px 200px 200px;
+      }
+
+      .photo-strip figure:first-child {
+        grid-row: 1 / 2;
+        grid-column: 1 / 3;
+      }
+
+      .menu-item {
+        grid-template-columns: auto 1fr;
+      }
+
+      .menu-tag { display: none; }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .btn-primary, .btn-ghost { width: 100%; text-align: center; }
+      .contact-actions { flex-direction: column; align-items: center; }
+      .btn-primary.contact-btn, .btn-ghost.contact-btn { width: 260px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="top">
+    <a href="#hero" class="nav-wordmark brand">Panaderia Azteca</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Offerings</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="tel:+17602464009" class="nav-cta">Call Us</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO — full bleed -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Adelanto, California · Est. Pan Dulce Tradition</p>
+      <h1 class="hero-h1">
+        <span class="brand">Panaderia</span><br>
+        <em>Azteca</em>
+      </h1>
+      <p class="hero-sub">Freshly baked pan dulce, bolillos, and traditional Mexican breads — made daily with the warmth and craft of generations.</p>
+      <div class="hero-actions">
+        <a href="tel:+17602464009" class="btn-primary">Call Now</a>
+        <a href="https://www.google.com/maps?q=11398+Bartlett+Ave,+Adelanto,+CA+92301" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <span class="strip-item">Fresh Baked Daily</span>
+    <span class="strip-dot"></span>
+    <span class="strip-item">Mon – Fri 7am – 8pm</span>
+    <span class="strip-dot"></span>
+    <span class="strip-item">Saturday 7am – 3pm</span>
+    <span class="strip-dot"></span>
+    <span class="strip-item">(760) 246-4009</span>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title">A taste of <em>home</em>, baked fresh every morning</h2>
+          <p>In Adelanto's High Desert, Panaderia Azteca has become a gathering place for those who know what authentic Mexican baking tastes like — and miss it. Every morning the ovens warm early, and by the time the doors open, the air carries the unmistakable sweetness of freshly pulled pan dulce.</p>
+          <p>The owner and staff carry on a <strong>tradition of warmth and craft</strong>, greeting neighbors like old friends. Whether you come for the pillowy conchas, the crusty bolillos, or a sweet you haven't tasted since childhood, you'll find it here — made with care, not shortcuts.</p>
+          <p>Stop in. Take something home. Come back tomorrow.</p>
+        </div>
+        <div class="about-image-stack">
+          <img src="./photos/02.jpg" alt="Fresh pan dulce at Panaderia Azteca" class="about-img-main">
+          <img src="./photos/03.jpg" alt="Breads on display" class="about-img-accent">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <div id="gallery">
+    <div class="photo-strip">
+      <figure><img src="./photos/04.jpg" alt="Panaderia Azteca fresh baked breads"></figure>
+      <figure><img src="./photos/05.jpg" alt="Pan dulce assortment"></figure>
+      <figure><img src="./photos/06.jpg" alt="Traditional Mexican pastries"></figure>
+      <figure><img src="./photos/02.jpg" alt="Bakery display case"></figure>
+      <figure><img src="./photos/03.jpg" alt="Bolillos fresh from the oven"></figure>
+    </div>
+  </div>
+
+  <!-- MENU / OFFERINGS -->
+  <section id="menu">
+    <div class="section-inner">
+      <p class="section-label">What We Bake</p>
+      <h2 class="section-title">Daily <em>Offerings</em></h2>
+      <p style="color:var(--muted); max-width:520px; font-size:0.95rem;">Everything is made fresh in-house each morning. Selection varies by day — come early for the best picks.</p>
+
+      <div class="menu-list">
+        <div class="menu-item">
+          <span class="menu-num">01</span>
+          <div>
+            <div class="menu-name">Pan Dulce</div>
+            <div class="menu-desc">The heart of the bakery. Conchas, cuernos, polvorones, marranitos, and more — each batch baked to that soft, fresh standard that keeps regulars coming back.</div>
+          </div>
+          <span class="menu-tag">Signature</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-num">02</span>
+          <div>
+            <div class="menu-name">Bolillos</div>
+            <div class="menu-desc">Crusty on the outside, airy within. Baked fresh daily and widely considered the best in the High Desert — perfect alongside any meal or split and filled.</div>
+          </div>
+          <span class="menu-tag">Best Seller</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-num">03</span>
+          <div>
+            <div class="menu-name">Teleras &amp; Rolls</div>
+            <div class="menu-desc">Traditional Mexican sandwich rolls with a satisfying chew and golden crust. Ideal for tortas or enjoyed warm with butter.</div>
+          </div>
+          <span class="menu-tag">Daily</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-num">04</span>
+          <div>
+            <div class="menu-name">Seasonal Pastries</div>
+            <div class="menu-desc">The selection rotates with the seasons and the baker's hand — rosca de reyes around Día de Reyes, pan de muerto in autumn, and special sweets throughout the year.</div>
+          </div>
+          <span class="menu-tag">Rotating</span>
+        </div>
+        <div class="menu-item">
+          <span class="menu-num">05</span>
+          <div>
+            <div class="menu-name">Custom &amp; Bulk Orders</div>
+            <div class="menu-desc">Planning a gathering? Call ahead and we'll prepare a fresh assortment in the quantity you need — parties, quinceañeras, family events, and more.</div>
+          </div>
+          <span class="menu-tag">By Request</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="section-inner">
+      <p class="section-label">In Their Words</p>
+      <h2 class="section-title">Customer <em>Testimonies</em></h2>
+      <div class="testimonies-grid">
+        <div class="testimony">
+          <div class="testimony-mark">"</div>
+          <p class="testimony-text">Siempre delicioso! The only place in Adelanto I'll go for pan dulce, has that fresh, authentic taste I miss so much, and everyone I've met there have been warm, kind and welcoming as if meeting with old friends. I hope they flourish and prosper.</p>
+          <p class="testimony-attr">— Weary T.</p>
+        </div>
+        <div class="testimony">
+          <div class="testimony-mark">"</div>
+          <p class="testimony-text">Definitely a must try. All the bread is made fresh and is so soft. Owner is so pleasant and friendly.</p>
+          <p class="testimony-attr">— Cecilia O.</p>
+        </div>
+        <div class="testimony">
+          <div class="testimony-mark">"</div>
+          <p class="testimony-text">They have the best pan dulce in the HD! Their bolillos are also amazing!! Customer service is always good.</p>
+          <p class="testimony-attr">— Paulina E.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section id="visit">
+    <div class="section-inner">
+      <p class="section-label">Come See Us</p>
+      <h2 class="section-title">Hours &amp; <em>Location</em></h2>
+      <div class="visit-grid">
+        <div>
+          <table class="hours-table">
+            <tbody>
+              <tr><td>Monday</td><td>7:00 AM – 8:00 PM</td></tr>
+              <tr><td>Tuesday</td><td>7:00 AM – 8:00 PM</td></tr>
+              <tr><td>Wednesday</td><td>7:00 AM – 8:00 PM</td></tr>
+              <tr><td>Thursday</td><td>7:00 AM – 8:00 PM</td></tr>
+              <tr><td>Friday</td><td>7:00 AM – 8:00 PM</td></tr>
+              <tr><td>Saturday</td><td>7:00 AM – 3:00 PM</td></tr>
+              <tr class="closed"><td>Sunday</td><td>Closed</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:1.5rem; font-size:0.88rem; color:var(--muted);">11398 Bartlett Ave<br>Adelanto, CA 92301</p>
+          <a href="https://www.google.com/maps?q=11398+Bartlett+Ave,+Adelanto,+CA+92301" target="_blank" rel="noopener" class="directions-link">
+            Get Directions →
+          </a>
+          <p style="margin-top:1.75rem;">
+            <a href="https://maps.google.com/?cid=13137767164978047459&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="directions-link" style="color:var(--muted);">View on Google Business →</a>
+          </p>
+        </div>
+        <div>
+          <div class="map-wrap">
+            <iframe
+              src="https://www.google.com/maps?q=11398+Bartlett+Ave,+Adelanto,+CA+92301&z=15&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Panaderia Azteca location map"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT BAND -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Ready to Order?</p>
+      <h2 class="section-title">Come in or <em>call ahead</em></h2>
+      <p class="contact-sub">For bulk orders, special occasions, or just to ask what's fresh today — we're happy to hear from you.</p>
+      <div class="contact-actions">
+        <a href="tel:+17602464009" class="btn-primary contact-btn">Call Now</a>
+        <a href="https://www.google.com/maps?q=11398+Bartlett+Ave,+Adelanto,+CA+92301" target="_blank" rel="noopener" class="btn-ghost contact-btn">Get Directions</a>
+      </div>
+      <p class="contact-phone"><a href="tel:+17602464009">(760) 246-4009</a></p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-brand brand">Panaderia Azteca</span>
+    <div class="footer-links">
+      <a href="https://maps.google.com/?cid=13137767164978047459&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+      <a href="tel:+17602464009">(760) 246-4009</a>
+      <a href="https://www.google.com/maps?q=11398+Bartlett+Ave,+Adelanto,+CA+92301" target="_blank" rel="noopener">11398 Bartlett Ave, Adelanto CA</a>
+    </div>
+    <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+    });
+    // Close on link click
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+  </script>
+</body>
+</html>

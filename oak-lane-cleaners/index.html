@@ -1,0 +1,523 @@
+<!-- laundry · classic-editorial · hero-layout 1 · svc-layout 2 · Playfair Display/Source Sans 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oak Lane Cleaners — Delano, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --acc:#b91c1c;
+  --bg:#faf7f2;
+  --ink:#1a1612;
+  --muted:#6b6560;
+  --rule:#d9d4cc;
+  --nav-h:64px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--ink);font-size:17px;line-height:1.65}
+.brand{font-family:'Playfair Display',serif; font-weight:700;letter-spacing:-.01em}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  height:var(--nav-h);
+  background:var(--bg);
+  border-bottom:1px solid var(--rule);
+  display:flex;align-items:center;
+  padding:0 clamp(1.25rem,5vw,3rem);
+  gap:2rem;
+}
+.nav-brand{font-size:1.25rem;color:var(--ink);text-decoration:none;flex:1}
+.nav-brand span{color:var(--acc)}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{
+  font-size:.875rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;transition:color .2s;
+}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{
+  display:inline-block;
+  padding:.5rem 1.25rem;
+  background:var(--acc);color:#fff;
+  font-size:.875rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  text-decoration:none;transition:background .2s;
+}
+.nav-cta:hover{background:#991b1b}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:.25rem}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;transition:.2s}
+
+/* ── HERO — layout 1 (text left, graphic right) ── */
+#hero{
+  min-height:calc(100vh - var(--nav-h));
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:stretch;
+}
+.hero-text{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(3rem,8vw,7rem) clamp(1.5rem,5vw,4rem) clamp(3rem,8vw,7rem) clamp(1.5rem,6vw,5rem);
+}
+.hero-eyebrow{
+  font-size:.8125rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:1.25rem;
+}
+.hero-text h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,5.5vw,4.25rem);
+  font-weight:700;line-height:1.1;
+  color:var(--ink);margin-bottom:1.5rem;
+}
+.hero-text h1 em{font-style:italic;color:var(--acc)}
+.hero-text p{
+  font-size:1.0625rem;color:var(--muted);
+  max-width:38ch;margin-bottom:2.5rem;line-height:1.75;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  padding:.85rem 2rem;
+  background:var(--acc);color:#fff;
+  font-size:.9375rem;font-weight:600;letter-spacing:.03em;
+  text-decoration:none;display:inline-block;transition:background .2s;
+}
+.btn-primary:hover{background:#991b1b}
+.btn-ghost{
+  padding:.85rem 2rem;
+  border:1.5px solid var(--rule);color:var(--ink);
+  font-size:.9375rem;font-weight:600;letter-spacing:.03em;
+  text-decoration:none;display:inline-block;transition:border-color .2s,color .2s;
+}
+.btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+.hero-graphic{
+  background:#1a1612;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding:3rem;
+  position:relative;overflow:hidden;
+}
+.hero-graphic::before{
+  content:'';position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 48px,
+      rgba(250,247,242,.04) 48px,
+      rgba(250,247,242,.04) 49px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 48px,
+      rgba(250,247,242,.04) 48px,
+      rgba(250,247,242,.04) 49px
+    );
+}
+.hero-monogram{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(6rem,12vw,11rem);
+  font-weight:700;font-style:italic;
+  color:var(--acc);opacity:.18;
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  line-height:1;user-select:none;
+  letter-spacing:-.05em;
+}
+.hero-badge{
+  position:relative;z-index:1;
+  text-align:center;
+}
+.hero-badge-inner{
+  border:1px solid rgba(250,247,242,.15);
+  padding:2.5rem 2.5rem;
+  max-width:320px;
+}
+.hero-badge h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.75rem;font-weight:600;font-style:italic;
+  color:#faf7f2;line-height:1.25;margin-bottom:1rem;
+}
+.hero-badge p{
+  font-size:.875rem;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(250,247,242,.5);line-height:1.8;
+}
+.hero-badge hr{
+  border:none;border-top:1px solid rgba(250,247,242,.15);
+  margin:1.25rem 0;
+}
+
+/* ── DIVIDER ── */
+.section-rule{
+  border:none;border-top:1px solid var(--rule);
+  margin:0 clamp(1.5rem,6vw,5rem);
+}
+
+/* ── ABOUT ── */
+#about{
+  display:grid;grid-template-columns:1fr 2fr;gap:4rem;
+  padding:clamp(4rem,8vw,7rem) clamp(1.5rem,6vw,5rem);
+  align-items:start;
+}
+.about-label{
+  font-size:.8125rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--acc);padding-top:.35rem;
+}
+.about-content h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,3.5vw,2.5rem);
+  font-weight:700;line-height:1.15;
+  margin-bottom:1.5rem;
+}
+.about-content p{
+  color:var(--muted);font-size:1.0625rem;line-height:1.8;
+  max-width:60ch;
+}
+
+/* ── SERVICES (layout 2 — numbered stacked list) ── */
+#services{
+  background:#1a1612;
+  padding:clamp(4rem,8vw,7rem) clamp(1.5rem,6vw,5rem);
+}
+.services-header{
+  display:grid;grid-template-columns:1fr 2fr;gap:2rem;
+  margin-bottom:clamp(2.5rem,5vw,4rem);
+  align-items:end;
+}
+.services-label{
+  font-size:.8125rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--acc);padding-bottom:.35rem;
+}
+.services-header h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.75rem,3.5vw,2.75rem);
+  font-weight:700;color:#faf7f2;line-height:1.15;
+}
+.services-list{
+  list-style:none;
+  border-top:1px solid rgba(250,247,242,.1);
+}
+.services-list li{
+  display:grid;
+  grid-template-columns:3.5rem 1fr auto;
+  align-items:baseline;gap:1.5rem;
+  padding:1.75rem 0;
+  border-bottom:1px solid rgba(250,247,242,.1);
+  transition:background .15s;
+}
+.svc-num{
+  font-family:'Playfair Display',serif;
+  font-size:.9375rem;font-style:italic;color:var(--acc);
+}
+.svc-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.25rem;font-weight:600;color:#faf7f2;
+}
+.svc-note{
+  font-size:.875rem;color:rgba(250,247,242,.45);letter-spacing:.04em;
+  text-transform:uppercase;
+}
+
+/* ── TESTIMONIES ── */
+#testimonies{
+  padding:clamp(4rem,8vw,7rem) clamp(1.5rem,6vw,5rem);
+}
+.testimonies-header{
+  display:grid;grid-template-columns:1fr 2fr;gap:2rem;
+  margin-bottom:clamp(2.5rem,5vw,4rem);
+  align-items:end;
+}
+.test-label{
+  font-size:.8125rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--acc);padding-bottom:.35rem;
+}
+.testimonies-header h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.75rem,3.5vw,2.75rem);
+  font-weight:700;line-height:1.15;
+}
+.testimonies-notice{
+  display:grid;grid-template-columns:1fr 2fr;gap:2rem;
+  margin-top:4rem;
+}
+.testimonies-blank{
+  grid-column:2/3;
+}
+.testimonies-blank p{
+  font-family:'Playfair Display',serif;
+  font-size:1.125rem;font-style:italic;color:var(--muted);line-height:1.8;
+}
+.test-cta{margin-top:2rem}
+
+/* ── HOURS & LOCATION ── */
+#visit{
+  background:#f2ede6;
+  padding:clamp(4rem,8vw,7rem) clamp(1.5rem,6vw,5rem);
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;
+  align-items:start;
+}
+.visit-info-label{
+  font-size:.8125rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:1.5rem;
+}
+.visit-info h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,3vw,2.25rem);
+  font-weight:700;margin-bottom:2rem;line-height:1.15;
+}
+.hours-table{
+  width:100%;border-collapse:collapse;font-size:.9375rem;
+}
+.hours-table tr{border-bottom:1px solid var(--rule)}
+.hours-table td{padding:.6rem 0;color:var(--muted)}
+.hours-table td:first-child{font-weight:600;color:var(--ink);width:120px}
+.hours-closed{color:var(--acc) !important}
+.visit-address{margin-top:2rem}
+.visit-address p{font-size:1rem;color:var(--muted);line-height:1.8}
+.visit-phone{margin-top:.75rem}
+.visit-phone a{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;font-weight:600;color:var(--acc);text-decoration:none;
+}
+.visit-phone a:hover{text-decoration:underline}
+.map-wrap{
+  width:100%;aspect-ratio:4/3;overflow:hidden;
+  border:1px solid var(--rule);
+}
+.map-wrap iframe{width:100%;height:100%;border:none;display:block}
+.social-row{margin-top:1.75rem;display:flex;gap:1.25rem;flex-wrap:wrap}
+.social-link{
+  font-size:.8125rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  border-bottom:1px solid var(--rule);padding-bottom:2px;
+  transition:color .2s,border-color .2s;
+}
+.social-link:hover{color:var(--acc);border-color:var(--acc)}
+
+/* ── CTA BAND ── */
+#cta-band{
+  background:var(--acc);
+  padding:clamp(3.5rem,6vw,5.5rem) clamp(1.5rem,6vw,5rem);
+  display:flex;justify-content:space-between;align-items:center;gap:2rem;
+  flex-wrap:wrap;
+}
+#cta-band h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.6rem,3.5vw,2.5rem);
+  font-weight:700;color:#fff;line-height:1.15;
+}
+.btn-white{
+  padding:.9rem 2.25rem;
+  background:#fff;color:var(--acc);
+  font-size:.9375rem;font-weight:600;letter-spacing:.03em;
+  text-decoration:none;display:inline-block;
+  white-space:nowrap;transition:background .2s,color .2s;
+  flex-shrink:0;
+}
+.btn-white:hover{background:#faf7f2}
+
+/* ── FOOTER ── */
+footer{
+  background:#1a1612;
+  padding:clamp(2.5rem,5vw,4rem) clamp(1.5rem,6vw,5rem);
+  display:flex;justify-content:space-between;align-items:center;gap:2rem;
+  flex-wrap:wrap;
+}
+.footer-brand{color:#faf7f2;font-size:1rem}
+.footer-brand span{color:var(--acc)}
+.footer-credit{
+  font-size:.8125rem;color:rgba(250,247,242,.38);
+  text-align:right;line-height:1.7;
+}
+.footer-credit a{color:rgba(250,247,242,.55);text-decoration:none}
+.footer-credit a:hover{color:#faf7f2}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  #hero{grid-template-columns:1fr}
+  .hero-graphic{min-height:40vw;padding:2.5rem}
+  #about{grid-template-columns:1fr;gap:1.5rem}
+  .about-label{padding-top:0}
+  .services-header{grid-template-columns:1fr;gap:.75rem}
+  .services-list li{grid-template-columns:2.5rem 1fr;gap:1rem}
+  .svc-note{display:none}
+  .testimonies-header{grid-template-columns:1fr;gap:.75rem}
+  .testimonies-notice{grid-template-columns:1fr}
+  .testimonies-blank{grid-column:1}
+  #visit{grid-template-columns:1fr;gap:3rem}
+  #cta-band{flex-direction:column;align-items:flex-start;gap:1.5rem}
+  footer{flex-direction:column;align-items:flex-start}
+  .footer-credit{text-align:left}
+  .nav-links,.nav-cta{display:none}
+  .nav-hamburger{display:block}
+}
+@media(max-width:520px){
+  .hero-badge-inner{padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-brand brand">Oak Lane<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="tel:+16617212193" class="nav-cta">Call Now</a>
+  <button class="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <!-- text left -->
+  <div class="hero-text">
+    <p class="hero-eyebrow">Delano, California · Est. Local Business</p>
+    <h1>Clean clothes,<br><em>done right.</em></h1>
+    <p>Oak Lane Cleaners has served the Delano community with reliable, quality laundry and dry-cleaning care. Bring us your garments — we'll return them exactly as they should be.</p>
+    <div class="hero-actions">
+      <a href="tel:+16617212193" class="btn-primary">Call Now</a>
+      <a href="https://www.google.com/maps?q=910+Main+St,+Delano,+CA+93215&z=15&output=embed" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+    </div>
+  </div>
+  <!-- graphic right -->
+  <div class="hero-graphic">
+    <div class="hero-monogram">OL</div>
+    <div class="hero-badge">
+      <div class="hero-badge-inner">
+        <h2>Quality<br>you can<br>count on.</h2>
+        <hr>
+        <p>910 Main St<br>Delano, CA 93215<br>(661) 721-2193</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="about-label">About</p>
+  <div class="about-content">
+    <h2>Your neighborhood cleaners<br>in the heart of Delano.</h2>
+    <p>Oak Lane Cleaners is a trusted laundry and dry-cleaning service rooted in Delano, CA. We handle everyday loads and delicate garments with the same steady attention to detail — because what you wear matters. Stop by Monday through Saturday and let us take care of the rest.</p>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- SERVICES (layout 2 — numbered stacked list) -->
+<section id="services">
+  <div class="services-header">
+    <p class="services-label">Services</p>
+    <h2>What we do<br>for you.</h2>
+  </div>
+  <ul class="services-list">
+    <li>
+      <span class="svc-num">01.</span>
+      <span class="svc-name">Wash & Fold</span>
+      <span class="svc-note">Drop-off</span>
+    </li>
+    <li>
+      <span class="svc-num">02.</span>
+      <span class="svc-name">Dry Cleaning</span>
+      <span class="svc-note">Garment care</span>
+    </li>
+    <li>
+      <span class="svc-num">03.</span>
+      <span class="svc-name">Pressing & Finishing</span>
+      <span class="svc-note">Shirts · Pants · Suits</span>
+    </li>
+    <li>
+      <span class="svc-num">04.</span>
+      <span class="svc-name">Delicate & Specialty Items</span>
+      <span class="svc-note">By request</span>
+    </li>
+    <li>
+      <span class="svc-num">05.</span>
+      <span class="svc-name">Comforters & Bedding</span>
+      <span class="svc-note">Oversized loads</span>
+    </li>
+    <li>
+      <span class="svc-num">06.</span>
+      <span class="svc-name">Alterations</span>
+      <span class="svc-note">Ask about availability</span>
+    </li>
+  </ul>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="testimonies-header">
+    <p class="test-label">Customer Testimonies</p>
+    <h2>In their<br>own words.</h2>
+  </div>
+  <div class="testimonies-notice">
+    <div></div>
+    <div class="testimonies-blank">
+      <p>We let our work speak for itself. Oak Lane Cleaners has built its reputation one garment at a time — visit us and see why Delano keeps coming back.</p>
+      <div class="test-cta">
+        <a href="https://maps.google.com/?cid=6098324320176944712&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="btn-ghost">See Us on Google</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- HOURS & LOCATION -->
+<section id="visit">
+  <div class="visit-info">
+    <p class="visit-info-label">Hours &amp; Location</p>
+    <h2>Find us on<br>Main Street.</h2>
+    <table class="hours-table">
+      <tr><td>Monday</td><td>9:00 AM – 6:00 PM</td></tr>
+      <tr><td>Tuesday</td><td>9:00 AM – 6:00 PM</td></tr>
+      <tr><td>Wednesday</td><td>9:00 AM – 6:00 PM</td></tr>
+      <tr><td>Thursday</td><td>9:00 AM – 6:00 PM</td></tr>
+      <tr><td>Friday</td><td>9:00 AM – 6:00 PM</td></tr>
+      <tr><td>Saturday</td><td>9:00 AM – 3:00 PM</td></tr>
+      <tr><td>Sunday</td><td class="hours-closed">Closed</td></tr>
+    </table>
+    <div class="visit-address">
+      <p>910 Main St<br>Delano, CA 93215</p>
+    </div>
+    <div class="visit-phone">
+      <a href="tel:+16617212193">(661) 721-2193</a>
+    </div>
+    <div class="social-row">
+      <a href="https://maps.google.com/?cid=6098324320176944712&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="social-link">Google Business</a>
+    </div>
+  </div>
+  <div class="map-wrap">
+    <iframe
+      src="https://www.google.com/maps?q=910+Main+St,+Delano,+CA+93215&z=15&output=embed"
+      loading="lazy"
+      title="Oak Lane Cleaners location map"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="cta-band">
+  <h2>Ready to drop off<br>your laundry?</h2>
+  <a href="tel:+16617212193" class="btn-white">Call (661) 721-2193</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-brand brand">Oak Lane<span>.</span></p>
+  <p class="footer-credit">
+    Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+  </p>
+</footer>
+
+</body>
+</html>

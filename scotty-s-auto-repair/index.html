@@ -1,0 +1,680 @@
+<!-- auto · technical-clean · hero-layout 0 · svc-layout 1 · Space Grotesk/IBM Plex Sans -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scotty's Auto Repair — Bakersfield, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --acc:#2563eb;
+    --bg:#f8fafc;
+    --dark:#0f172a;
+    --mid:#334155;
+    --light:#64748b;
+    --border:#e2e8f0;
+    --nav-h:64px;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth;}
+  body{font-family:'IBM Plex Sans',sans-serif;background:var(--bg);color:var(--dark);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .brand{font-family:'Space Grotesk',serif;font-weight:700;letter-spacing:-0.02em;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:100;
+    height:var(--nav-h);
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    display:flex;align-items:center;
+    padding:0 clamp(1rem,4vw,3rem);
+    gap:2rem;
+  }
+  .nav-brand{
+    font-size:1.15rem;color:var(--dark);text-decoration:none;
+    display:flex;align-items:center;gap:0.5rem;white-space:nowrap;
+  }
+  .nav-brand span{
+    display:inline-block;width:8px;height:8px;
+    border-radius:50%;background:var(--acc);
+    flex-shrink:0;
+  }
+  .nav-links{
+    display:flex;gap:1.75rem;list-style:none;
+    margin-left:auto;align-items:center;
+  }
+  .nav-links a{
+    font-size:0.875rem;font-weight:500;
+    color:var(--mid);text-decoration:none;
+    transition:color 0.15s;
+  }
+  .nav-links a:hover{color:var(--acc);}
+  .nav-cta{
+    background:var(--acc);color:#fff !important;
+    padding:0.45rem 1rem;border-radius:4px;
+    font-weight:600 !important;
+    transition:background 0.15s !important;
+  }
+  .nav-cta:hover{background:#1d4ed8 !important;}
+  .nav-toggle{
+    display:none;background:none;border:none;cursor:pointer;
+    margin-left:auto;padding:6px;
+  }
+  .nav-toggle svg{display:block;}
+
+  /* HERO */
+  .hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:calc(100vh - var(--nav-h));
+    max-height:720px;
+  }
+  .hero-content{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(2rem,6vw,5rem) clamp(1.5rem,5vw,4rem);
+    background:#fff;
+  }
+  .hero-label{
+    display:inline-flex;align-items:center;gap:0.5rem;
+    font-size:0.75rem;font-weight:600;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--acc);
+    margin-bottom:1.25rem;
+  }
+  .hero-label::before{
+    content:'';display:block;
+    width:24px;height:2px;background:var(--acc);
+  }
+  .hero h1{
+    font-size:clamp(2rem,4.5vw,3.25rem);
+    font-weight:700;line-height:1.1;
+    letter-spacing:-0.03em;
+    color:var(--dark);
+    margin-bottom:1.25rem;
+  }
+  .hero h1 em{
+    font-style:normal;color:var(--acc);
+  }
+  .hero-desc{
+    font-size:1rem;color:var(--mid);
+    max-width:38ch;margin-bottom:2rem;
+    line-height:1.7;
+  }
+  .hero-actions{
+    display:flex;gap:1rem;flex-wrap:wrap;align-items:center;
+  }
+  .btn-primary{
+    display:inline-block;
+    background:var(--acc);color:#fff;
+    padding:0.75rem 1.75rem;
+    border-radius:4px;
+    font-family:'Space Grotesk',serif;
+    font-weight:600;font-size:0.95rem;
+    text-decoration:none;
+    border:2px solid var(--acc);
+    transition:background 0.15s,transform 0.1s;
+  }
+  .btn-primary:hover{background:#1d4ed8;border-color:#1d4ed8;transform:translateY(-1px);}
+  .btn-ghost{
+    display:inline-block;
+    color:var(--mid);
+    padding:0.75rem 1.5rem;
+    border-radius:4px;
+    font-weight:500;font-size:0.95rem;
+    text-decoration:none;
+    border:2px solid var(--border);
+    transition:border-color 0.15s,color 0.15s;
+  }
+  .btn-ghost:hover{border-color:var(--acc);color:var(--acc);}
+  .hero-trust{
+    margin-top:2.5rem;
+    display:flex;gap:2rem;flex-wrap:wrap;
+  }
+  .trust-item{
+    display:flex;flex-direction:column;
+  }
+  .trust-num{
+    font-family:'Space Grotesk',serif;
+    font-size:1.5rem;font-weight:700;color:var(--dark);
+    letter-spacing:-0.02em;
+  }
+  .trust-label{
+    font-size:0.75rem;color:var(--light);
+    text-transform:uppercase;letter-spacing:0.06em;font-weight:500;
+  }
+  .hero-image{
+    position:relative;overflow:hidden;
+    background:#cbd5e1;
+  }
+  .hero-image img{
+    width:100%;height:100%;object-fit:cover;
+    display:block;
+  }
+  .hero-image-badge{
+    position:absolute;bottom:1.5rem;left:1.5rem;
+    background:#fff;
+    padding:0.75rem 1rem;
+    border-radius:6px;
+    box-shadow:0 4px 16px rgba(0,0,0,0.12);
+    display:flex;align-items:center;gap:0.75rem;
+    max-width:220px;
+  }
+  .badge-icon{
+    width:36px;height:36px;border-radius:50%;
+    background:var(--acc);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .badge-icon svg{display:block;}
+  .badge-text{font-size:0.8rem;font-weight:500;color:var(--dark);line-height:1.3;}
+  .badge-text strong{display:block;font-size:0.9rem;font-weight:700;}
+
+  /* ABOUT STRIP */
+  .about-strip{
+    background:var(--dark);
+    padding:clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:4rem;
+    align-items:center;
+  }
+  .about-photos{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto auto;
+    gap:0.75rem;
+  }
+  .about-photos img{
+    width:100%;height:160px;object-fit:cover;border-radius:4px;display:block;
+  }
+  .about-photos img:first-child{
+    grid-column:1/-1;height:220px;
+  }
+  .about-text .section-label{
+    color:var(--acc);
+  }
+  .about-text h2{
+    color:#fff;
+  }
+  .about-text p{
+    color:#94a3b8;
+  }
+
+  /* SECTIONS shared */
+  .section-label{
+    display:inline-flex;align-items:center;gap:0.5rem;
+    font-size:0.75rem;font-weight:600;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--acc);
+    margin-bottom:0.75rem;
+  }
+  .section-label::before{
+    content:'';display:block;
+    width:20px;height:2px;background:var(--acc);
+  }
+  section h2{
+    font-family:'Space Grotesk',serif;
+    font-size:clamp(1.6rem,3.5vw,2.25rem);
+    font-weight:700;letter-spacing:-0.025em;
+    line-height:1.15;
+    margin-bottom:0.75rem;
+  }
+  section .section-intro{
+    font-size:1rem;color:var(--mid);
+    max-width:52ch;line-height:1.7;
+    margin-bottom:2.5rem;
+  }
+
+  /* SERVICES */
+  #services{
+    padding:clamp(3rem,7vw,6rem) clamp(1.5rem,5vw,4rem);
+    background:#fff;
+  }
+  .services-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border:1px solid var(--border);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .svc-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:start;
+    padding:1.25rem 1.5rem;
+    border-bottom:1px solid var(--border);
+    gap:1rem;
+    transition:background 0.12s;
+  }
+  .svc-row:last-child{border-bottom:none;}
+  .svc-row:hover{background:#f1f5f9;}
+  .svc-row:nth-child(even){border-left:1px solid var(--border);}
+  .svc-name{
+    font-family:'Space Grotesk',serif;
+    font-weight:600;font-size:0.95rem;color:var(--dark);
+    display:flex;align-items:flex-start;gap:0.6rem;
+  }
+  .svc-dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--acc);flex-shrink:0;margin-top:5px;
+  }
+  .svc-desc{
+    font-size:0.85rem;color:var(--light);
+    line-height:1.5;
+  }
+
+  /* TESTIMONIES */
+  #testimonies{
+    padding:clamp(3rem,7vw,6rem) clamp(1.5rem,5vw,4rem);
+    background:var(--bg);
+  }
+  .testimonies-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1.5rem;
+    margin-top:0;
+  }
+  .testimony{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:6px;
+    padding:1.75rem;
+    position:relative;
+    transition:box-shadow 0.15s;
+  }
+  .testimony:hover{box-shadow:0 6px 24px rgba(37,99,235,0.08);}
+  .testimony:first-child{
+    grid-column:1/-1;
+    background:var(--dark);
+    border-color:transparent;
+  }
+  .testimony:first-child .testimony-text{color:#cbd5e1;}
+  .testimony:first-child .testimony-attr{color:#94a3b8;}
+  .testimony:first-child .open-quote{color:var(--acc);}
+  .open-quote{
+    font-family:'Space Grotesk',serif;
+    font-size:3.5rem;line-height:0.7;
+    color:var(--acc);
+    opacity:0.4;
+    display:block;
+    margin-bottom:0.5rem;
+  }
+  .testimony-text{
+    font-size:0.95rem;color:var(--mid);
+    line-height:1.7;font-style:italic;
+    margin-bottom:1.25rem;
+  }
+  .testimony-attr{
+    font-size:0.8rem;font-weight:600;
+    letter-spacing:0.06em;text-transform:uppercase;
+    color:var(--light);
+  }
+
+  /* HOURS + MAP */
+  #hours{
+    padding:clamp(3rem,7vw,6rem) clamp(1.5rem,5vw,4rem);
+    background:#fff;
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:4rem;
+    align-items:start;
+  }
+  .hours-block{}
+  .hours-table{
+    width:100%;border-collapse:collapse;
+    margin-top:1.5rem;
+  }
+  .hours-table tr{
+    border-bottom:1px solid var(--border);
+  }
+  .hours-table tr:last-child{border-bottom:none;}
+  .hours-table td{
+    padding:0.65rem 0;
+    font-size:0.9rem;
+  }
+  .hours-table td:first-child{
+    color:var(--mid);font-weight:500;width:40%;
+  }
+  .hours-table td:last-child{
+    color:var(--dark);font-weight:500;text-align:right;
+  }
+  .closed-row td{color:var(--light) !important;}
+  .map-block{}
+  .map-block iframe{
+    width:100%;height:340px;
+    border:none;border-radius:6px;
+    display:block;
+  }
+  .contact-row{
+    margin-top:1.5rem;
+    display:flex;flex-direction:column;gap:0.5rem;
+  }
+  .contact-item{
+    display:flex;align-items:center;gap:0.75rem;
+    font-size:0.9rem;color:var(--mid);
+    text-decoration:none;
+    transition:color 0.12s;
+  }
+  .contact-item:hover{color:var(--acc);}
+  .contact-item svg{flex-shrink:0;color:var(--acc);}
+
+  /* PHOTO BAND */
+  .photo-band{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    height:260px;
+    overflow:hidden;
+  }
+  .photo-band img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform 0.4s;
+  }
+  .photo-band a:hover img{transform:scale(1.04);}
+  .photo-band a{overflow:hidden;display:block;}
+
+  /* FOOTER */
+  footer{
+    background:var(--dark);
+    padding:clamp(2rem,5vw,3.5rem) clamp(1.5rem,5vw,4rem);
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    gap:2rem;
+  }
+  .footer-brand{color:#fff;font-size:1.1rem;}
+  .footer-sub{
+    font-size:0.8rem;color:#64748b;
+    margin-top:0.35rem;
+  }
+  .footer-sub a{color:#64748b;transition:color 0.12s;}
+  .footer-sub a:hover{color:#94a3b8;}
+  .footer-links{
+    display:flex;gap:1.25rem;align-items:center;flex-wrap:wrap;
+    justify-content:flex-end;
+  }
+  .footer-links a{
+    font-size:0.8rem;font-weight:500;
+    color:#94a3b8;text-decoration:none;
+    transition:color 0.12s;
+    border:1px solid #334155;
+    padding:0.35rem 0.75rem;
+    border-radius:3px;
+  }
+  .footer-links a:hover{color:#fff;border-color:#64748b;}
+  .footer-legal{
+    grid-column:1/-1;
+    border-top:1px solid #1e293b;
+    padding-top:1.25rem;
+    margin-top:0.5rem;
+    font-size:0.75rem;color:#334155;
+    line-height:1.6;
+  }
+
+  /* RESPONSIVE */
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;max-height:none;}
+    .hero-image{height:320px;order:-1;}
+    .hero-image-badge{display:none;}
+    .about-strip{grid-template-columns:1fr;gap:2.5rem;}
+    .about-photos{grid-template-columns:1fr 1fr;}
+    .about-photos img:first-child{height:180px;}
+    .about-photos img{height:130px;}
+    .testimonies-layout{grid-template-columns:1fr;}
+    #hours{grid-template-columns:1fr;gap:2.5rem;}
+    footer{grid-template-columns:1fr;}
+    .footer-links{justify-content:flex-start;}
+  }
+  @media(max-width:640px){
+    .nav-links{display:none;}
+    .nav-links.open{
+      display:flex;flex-direction:column;gap:0;
+      position:absolute;top:var(--nav-h);left:0;right:0;
+      background:#fff;border-bottom:1px solid var(--border);
+      padding:0.5rem 0;
+    }
+    .nav-links.open a{
+      padding:0.75rem clamp(1rem,4vw,3rem);
+      font-size:1rem;
+    }
+    nav{position:relative;}
+    .nav-toggle{display:block;}
+    .services-grid{grid-template-columns:1fr;}
+    .svc-row{grid-column:1!important;border-left:none!important;grid-template-columns:1fr;}
+    .svc-row:nth-child(even){border-left:none!important;}
+    .photo-band{grid-template-columns:1fr 1fr;height:200px;}
+    .photo-band a:last-child{display:none;}
+    footer{grid-template-columns:1fr;}
+    .hero-trust{gap:1.5rem;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand brand">
+    <span></span>Scotty's Auto Repair
+  </a>
+  <button class="nav-toggle" aria-label="Menu" onclick="this.nextElementSibling.classList.toggle('open')">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <rect y="4" width="22" height="2" rx="1" fill="#334155"/>
+      <rect y="10" width="22" height="2" rx="1" fill="#334155"/>
+      <rect y="16" width="22" height="2" rx="1" fill="#334155"/>
+    </svg>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#hours">Hours &amp; Location</a></li>
+    <li><a href="tel:6614773985" class="nav-cta">Call Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="section-label">Bakersfield, CA · Rosedale Hwy</span>
+    <h1 class="brand">The mechanic<br>who <em>stays</em> until<br>it's fixed.</h1>
+    <p class="hero-desc">
+      Scotty's Auto Repair brings honest diagnostics, fair pricing, and the rare willingness to go past closing time so you never get stranded.
+    </p>
+    <div class="hero-actions">
+      <a href="tel:6614773985" class="btn-primary">Call (661) 477-3985</a>
+      <a href="https://maps.google.com/?cid=14864134090162950150" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item">
+        <span class="trust-num">Same-day</span>
+        <span class="trust-label">most repairs</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-num">Honest</span>
+        <span class="trust-label">flat estimates</span>
+      </div>
+      <div class="trust-item">
+        <span class="trust-num">Mon–Fri</span>
+        <span class="trust-label">8am – 6pm</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="./photos/01.jpg" alt="Scotty's Auto Repair shop exterior">
+    <div class="hero-image-badge">
+      <div class="badge-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <div class="badge-text"><strong>Stays after hours</strong> until your car is ready</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-strip" id="about">
+  <div class="about-photos">
+    <img src="./photos/02.jpg" alt="Inside the shop">
+    <img src="./photos/03.jpg" alt="Engine work">
+    <img src="./photos/04.jpg" alt="Vehicle on lift">
+  </div>
+  <div class="about-text">
+    <span class="section-label">About the shop</span>
+    <h2>Real diagnosis. Real talk. Real repair.</h2>
+    <p style="color:#94a3b8;margin-bottom:1.25rem;line-height:1.7;">
+      Scotty treats every vehicle like it's his own. He'll walk you through exactly what's wrong, give you an honest quote, and get it done — often the same day. No runaround, no upselling, no surprises on the bill.
+    </p>
+    <p style="color:#94a3b8;line-height:1.7;">
+      Located on Rosedale Highway in Bakersfield, the shop handles everything from complex AC jobs and power steering repairs to full diagnostics. If Scotty's busy, you're still in good hands — the wait is worth it.
+    </p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <span class="section-label">What we do</span>
+  <h2>Services</h2>
+  <p class="section-intro">From AC compressor replacements to evaporator cores, electrical diagnostics to routine maintenance — if it rolls, Scotty can fix it.</p>
+  <div class="services-grid">
+    <div class="svc-row">
+      <div class="svc-name"><span class="svc-dot"></span>Air Conditioning Repair</div>
+      <div class="svc-desc">Compressor replacement, line swaps, evaporator cores, full system recharge — ice-cold results.</div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-name"><span class="svc-dot"></span>Engine Diagnostics</div>
+      <div class="svc-desc">Precise electronic and visual diagnostics — no guesswork, no unnecessary parts.</div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-name"><span class="svc-dot"></span>Power Steering Repair</div>
+      <div class="svc-desc">Electrical and hydraulic power steering systems, sensors, and adapter wiring.</div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-name"><span class="svc-dot"></span>Electrical Systems</div>
+      <div class="svc-desc">Wiring diagnosis and repair, sensor replacement, and adapter troubleshooting.</div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-name"><span class="svc-dot"></span>Oil &amp; Fluid Services</div>
+      <div class="svc-desc">Oil changes, coolant flushes, brake fluid, transmission fluid — full preventive maintenance.</div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-name"><span class="svc-dot"></span>Brake Service</div>
+      <div class="svc-desc">Pads, rotors, calipers, and brake line inspection — stop safely, every time.</div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-name"><span class="svc-dot"></span>Suspension &amp; Steering</div>
+      <div class="svc-desc">Struts, shocks, tie rods, and alignment-related mechanical work.</div>
+    </div>
+    <div class="svc-row">
+      <div class="svc-name"><span class="svc-dot"></span>General Repair</div>
+      <div class="svc-desc">Most makes and models, domestic and import — call to confirm your vehicle.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO BAND -->
+<div class="photo-band">
+  <a href="./photos/05.jpg" target="_blank">
+    <img src="./photos/05.jpg" alt="Shop photo 5">
+  </a>
+  <a href="./photos/06.jpg" target="_blank">
+    <img src="./photos/06.jpg" alt="Shop photo 6">
+  </a>
+  <a href="./photos/02.jpg" target="_blank">
+    <img src="./photos/02.jpg" alt="Shop photo 2">
+  </a>
+</div>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <span class="section-label">Customer Testimonies</span>
+  <h2>In Their Words</h2>
+  <p class="section-intro">A few of the experiences that define what Scotty's is about.</p>
+  <div class="testimonies-layout">
+    <div class="testimony">
+      <span class="open-quote">"</span>
+      <p class="testimony-text">If you don't come here you don't deserve to have the car fixed. Dropped the car off close to closing time and he still got it fixed before the day was over. He even stayed after closing to make sure the job was done. Needed my AC fixed — compressor, cracked lines, all of it — done in 2–3 hours. He looked at the car like some kind of car god and knew what needed to be done. Hands down, the forever mechanic!</p>
+      <div class="testimony-attr">Austin W.</div>
+    </div>
+    <div class="testimony">
+      <span class="open-quote">"</span>
+      <p class="testimony-text">He was attentive, kind, and a man of his word. He provided the diagnostic in the time frame I requested and had it fixed before I expected. My SUV is running quietly and smoothly like normal. Absolutely recommend — if they are busy, they are worth the wait.</p>
+      <div class="testimony-attr">Sylvia M.</div>
+    </div>
+    <div class="testimony">
+      <span class="open-quote">"</span>
+      <p class="testimony-text">He quoted me the fairest estimate with the soonest completion date after calling multiple other shops in town. Dropped my truck off and got it back two days later with AC blowing ice cold. He communicated throughout the whole process. 10/10 recommend.</p>
+      <div class="testimony-attr">Bryan P.</div>
+    </div>
+    <div class="testimony">
+      <span class="open-quote">"</span>
+      <p class="testimony-text">Scotty diagnosed and fixed my car in less than 24 hours. He stayed a little extra after hours so I could pick up a car rental. He charged a fair price and was honest about everything. Highly recommend — wish this shop was closer to home.</p>
+      <div class="testimony-attr">Mark</div>
+    </div>
+    <div class="testimony">
+      <span class="open-quote">"</span>
+      <p class="testimony-text">The work done was good. Very friendly people here. I would certainly use this service again.</p>
+      <div class="testimony-attr">Charles C.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS + MAP -->
+<section id="hours">
+  <div class="hours-block">
+    <span class="section-label">Hours &amp; Contact</span>
+    <h2>Find Us on Rosedale Hwy</h2>
+    <table class="hours-table">
+      <tr><td>Monday</td><td>8:00 AM – 6:00 PM</td></tr>
+      <tr><td>Tuesday</td><td>8:00 AM – 6:00 PM</td></tr>
+      <tr><td>Wednesday</td><td>8:00 AM – 6:00 PM</td></tr>
+      <tr><td>Thursday</td><td>8:00 AM – 6:00 PM</td></tr>
+      <tr><td>Friday</td><td>8:00 AM – 6:00 PM</td></tr>
+      <tr class="closed-row"><td>Saturday</td><td>Closed</td></tr>
+      <tr class="closed-row"><td>Sunday</td><td>Closed</td></tr>
+    </table>
+    <div class="contact-row">
+      <a href="tel:6614773985" class="contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.78a16 16 0 006.29 6.29l1.14-1.14a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        (661) 477-3985
+      </a>
+      <a href="https://maps.google.com/?cid=14864134090162950150" target="_blank" rel="noopener" class="contact-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+        </svg>
+        6607 Rosedale Hwy, Bakersfield, CA 93308
+      </a>
+    </div>
+    <div style="margin-top:2rem;">
+      <a href="tel:6614773985" class="btn-primary">Call Now</a>
+    </div>
+  </div>
+  <div class="map-block">
+    <iframe
+      src="https://www.google.com/maps?q=6607+Rosedale+Hwy,+Bakersfield,+CA+93308&z=15&output=embed"
+      allowfullscreen=""
+      loading="lazy"
+      title="Scotty's Auto Repair location map">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand brand">Scotty's Auto Repair</div>
+    <div class="footer-sub">
+      6607 Rosedale Hwy, Bakersfield, CA 93308 &nbsp;·&nbsp; <a href="tel:6614773985">(661) 477-3985</a>
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="https://maps.google.com/?cid=14864134090162950150&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+  </div>
+  <div class="footer-legal">
+    Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+  </div>
+</footer>
+
+</body>
+</html>

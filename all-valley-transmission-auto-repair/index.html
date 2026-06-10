@@ -1,0 +1,498 @@
+<!-- auto · classic-editorial · hero-layout 1 · svc-layout 2 · Playfair Display/Source Sans 3 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Valley Transmission &amp; Auto Repair — Clovis, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --acc:#b91c1c;
+  --bg:#faf7f2;
+  --ink:#1a1a1a;
+  --muted:#6b6460;
+  --rule:#d9d3cb;
+  --nav-h:64px;
+}
+html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:1rem}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  height:var(--nav-h);
+  background:var(--bg);
+  border-bottom:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5vw;
+}
+.nav-brand{
+  font-size:1rem;letter-spacing:.04em;text-transform:uppercase;font-weight:600;
+}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{
+  font-size:.875rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--muted);
+  transition:color .2s;
+}
+.nav-links a:hover{color:var(--acc)}
+.nav-cta{
+  display:inline-block;padding:.45rem 1.1rem;
+  border:1.5px solid var(--acc);color:var(--acc);
+  font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+  transition:background .2s,color .2s;
+}
+.nav-cta:hover{background:var(--acc);color:#fff}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:.25rem}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);margin:5px 0;transition:.2s}
+@media(max-width:700px){
+  .nav-links{
+    display:none;flex-direction:column;gap:0;
+    position:absolute;top:var(--nav-h);left:0;right:0;
+    background:var(--bg);border-bottom:1px solid var(--rule);
+    padding:1rem 5vw;
+  }
+  .nav-links.open{display:flex}
+  .nav-links li{padding:.6rem 0;border-bottom:1px solid var(--rule)}
+  .nav-links li:last-child{border:none}
+  .hamburger{display:block}
+  .nav-desktop-cta{display:none}
+}
+
+/* HERO — layout 1: left image */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:calc(100vh - var(--nav-h));
+}
+.hero-image{
+  position:relative;overflow:hidden;
+}
+.hero-image img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .6s ease;
+}
+.hero-image:hover img{transform:scale(1.03)}
+.hero-content{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:4rem 6vw 4rem 5vw;
+  background:var(--bg);
+}
+.hero-eyebrow{
+  font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--acc);font-weight:600;margin-bottom:1.25rem;
+}
+.hero h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.2rem,4.5vw,3.4rem);
+  font-weight:700;line-height:1.15;
+  margin-bottom:1.25rem;
+}
+.hero h1 em{font-style:italic;color:var(--acc)}
+.hero-desc{
+  font-size:1.05rem;color:var(--muted);
+  max-width:38ch;margin-bottom:2rem;line-height:1.7;
+}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  display:inline-block;
+  padding:.75rem 1.75rem;
+  background:var(--acc);color:#fff;
+  font-size:.875rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;
+  transition:background .2s,transform .15s;
+}
+.btn-primary:hover{background:#991b1b;transform:translateY(-1px)}
+.btn-ghost{
+  display:inline-block;
+  padding:.75rem 1.75rem;
+  border:1.5px solid var(--rule);color:var(--muted);
+  font-size:.875rem;letter-spacing:.07em;text-transform:uppercase;font-weight:600;
+  transition:border-color .2s,color .2s;
+}
+.btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+@media(max-width:800px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-image{height:52vw;min-height:220px}
+  .hero-content{padding:2.5rem 6vw}
+}
+
+/* SECTION CHROME */
+section{padding:5rem 5vw}
+.section-label{
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--acc);font-weight:600;margin-bottom:.75rem;
+}
+.section-heading{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.7rem,3vw,2.4rem);
+  font-weight:700;line-height:1.2;
+  margin-bottom:1.25rem;
+}
+.section-rule{
+  width:3rem;height:2px;background:var(--acc);margin-bottom:2.5rem;
+}
+.col-2{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+@media(max-width:760px){.col-2{grid-template-columns:1fr}}
+
+/* ABOUT */
+#about{background:#fff;border-top:1px solid var(--rule)}
+.about-body{font-size:1.05rem;color:var(--muted);line-height:1.8;max-width:58ch}
+.about-photos{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.about-photos img{aspect-ratio:4/3;object-fit:cover;width:100%}
+
+/* SERVICES — layout 2: numbered/stacked list */
+#services{background:var(--bg);border-top:1px solid var(--rule)}
+.services-list{
+  counter-reset:svc;
+  list-style:none;
+  border-top:1px solid var(--rule);
+}
+.services-list li{
+  counter-increment:svc;
+  display:grid;
+  grid-template-columns:3.5rem 1fr auto;
+  align-items:baseline;
+  gap:1rem;
+  padding:1.25rem 0;
+  border-bottom:1px solid var(--rule);
+  transition:background .15s;
+}
+.services-list li:hover{background:rgba(185,28,28,.03)}
+.svc-num{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-style:italic;color:var(--rule);
+  font-weight:400;
+}
+.svc-num::before{content:counter(svc,decimal-leading-zero)}
+.svc-name{
+  font-size:1rem;font-weight:600;color:var(--ink);letter-spacing:.01em;
+}
+.svc-desc{
+  display:block;font-size:.875rem;color:var(--muted);margin-top:.2rem;font-weight:400;
+}
+.svc-tag{
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;
+}
+@media(max-width:560px){
+  .services-list li{grid-template-columns:2.5rem 1fr;gap:.5rem}
+  .svc-tag{display:none}
+}
+
+/* HOURS & MAP */
+#location{background:#fff;border-top:1px solid var(--rule)}
+.hours-table{width:100%;border-collapse:collapse;font-size:.95rem}
+.hours-table tr{border-bottom:1px solid var(--rule)}
+.hours-table tr:last-child{border-bottom:none}
+.hours-table td{padding:.7rem 0}
+.hours-table td:first-child{color:var(--muted);font-weight:600;letter-spacing:.02em;width:9rem}
+.closed{color:var(--rule)!important}
+.map-wrap{
+  border:1px solid var(--rule);overflow:hidden;
+  aspect-ratio:4/3;
+}
+.map-wrap iframe{width:100%;height:100%;border:none;display:block}
+.address-block{margin-top:1.75rem}
+.address-block p{font-size:.95rem;color:var(--muted);line-height:1.8}
+.address-block a{color:var(--acc);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.social-row{margin-top:1.25rem;display:flex;gap:.75rem;flex-wrap:wrap}
+.social-pill{
+  display:inline-block;padding:.4rem 1rem;
+  border:1px solid var(--rule);font-size:.8rem;
+  letter-spacing:.07em;text-transform:uppercase;font-weight:600;color:var(--muted);
+  transition:border-color .2s,color .2s;
+}
+.social-pill:hover{border-color:var(--acc);color:var(--acc)}
+
+/* TESTIMONIES */
+#testimonies{background:var(--bg);border-top:1px solid var(--rule)}
+.testimonies-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:2rem;
+}
+.testimony{
+  border-left:3px solid var(--acc);
+  padding:1.5rem 1.5rem 1.5rem 1.75rem;
+  background:#fff;
+}
+.testimony blockquote{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-style:italic;line-height:1.7;
+  color:var(--ink);margin-bottom:1rem;
+}
+.testimony cite{
+  display:block;font-size:.8rem;letter-spacing:.08em;
+  text-transform:uppercase;font-weight:600;color:var(--muted);font-style:normal;
+}
+
+/* CONTACT STRIP */
+#contact{
+  background:var(--acc);color:#fff;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:4.5rem 5vw;
+}
+#contact .section-label{color:rgba(255,255,255,.65)}
+#contact .section-heading{color:#fff;margin-bottom:.5rem}
+#contact p{font-size:1.05rem;opacity:.85;max-width:44ch;margin-bottom:2rem}
+#contact .btn-primary{
+  background:#fff;color:var(--acc);
+}
+#contact .btn-primary:hover{background:#f3f3f3}
+
+/* GALLERY STRIP */
+.gallery-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:4px;
+  overflow:hidden;
+}
+.gallery-strip img{
+  aspect-ratio:1/1;object-fit:cover;width:100%;
+  transition:opacity .2s;
+}
+.gallery-strip img:hover{opacity:.85}
+@media(max-width:600px){.gallery-strip{grid-template-columns:repeat(2,1fr)}}
+
+/* FOOTER */
+footer{
+  background:var(--ink);color:rgba(255,255,255,.5);
+  padding:2rem 5vw;
+  display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;
+  gap:1rem;font-size:.82rem;
+}
+footer a{color:rgba(255,255,255,.7);text-decoration:underline;text-underline-offset:3px}
+footer a:hover{color:#fff}
+
+.brand{font-family:'Playfair Display',serif; font-weight:700;letter-spacing:.01em}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav aria-label="Site navigation">
+  <span class="nav-brand brand">All Valley</span>
+  <button class="hamburger" aria-label="Toggle menu" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#location">Hours &amp; Location</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#contact" class="nav-cta nav-desktop-cta">Call Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO — left image -->
+<section class="hero" id="top" aria-label="Hero">
+  <div class="hero-image">
+    <img src="./photos/01.jpg" alt="All Valley Transmission & Auto Repair — shop exterior" loading="eager">
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Clovis, CA · Since the beginning</p>
+    <h1>Transmission &amp; Auto Repair<br><em>Done Right.</em></h1>
+    <p class="hero-desc">Trusted by Clovis and Fresno families for over a decade — fair prices, honest diagnostics, and a team that explains every repair in plain English.</p>
+    <div class="hero-actions">
+      <a href="tel:5593220345" class="btn-primary">Call (559) 322-0345</a>
+      <a href="#location" class="btn-ghost">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" aria-labelledby="about-heading">
+  <div class="col-2">
+    <div>
+      <p class="section-label">About Us</p>
+      <h2 class="section-heading" id="about-heading">Your Neighborhood Shop with a Decade of Loyal Customers</h2>
+      <div class="section-rule"></div>
+      <p class="about-body">
+        All Valley Transmission &amp; Auto Repair has served the Clovis and greater Fresno community for years as a full-service shop specializing in transmissions and general mechanical work. We're a small team that takes the time to explain what's wrong, why it matters, and what fixing it actually costs — no inflated estimates, no upselling. Whether you've driven across town for us or were just referred by a friend, we work to earn that trust on every visit.
+      </p>
+    </div>
+    <div class="about-photos">
+      <img src="./photos/02.jpg" alt="Shop interior — bay view">
+      <img src="./photos/03.jpg" alt="Technician at work">
+      <img src="./photos/04.jpg" alt="Engine service in progress">
+      <img src="./photos/05.jpg" alt="Customer vehicle on lift">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" aria-labelledby="services-heading">
+  <p class="section-label">What We Do</p>
+  <h2 class="section-heading" id="services-heading">Our Services</h2>
+  <div class="section-rule"></div>
+  <ul class="services-list">
+    <li>
+      <span class="svc-num"></span>
+      <span>
+        <span class="svc-name">Transmission Diagnosis &amp; Rebuild</span>
+        <span class="svc-desc">Automatic and manual — complete teardown, rebuild, or fluid service</span>
+      </span>
+      <span class="svc-tag">Specialty</span>
+    </li>
+    <li>
+      <span class="svc-num"></span>
+      <span>
+        <span class="svc-name">Engine Repair &amp; Diagnosis</span>
+        <span class="svc-desc">Check-engine codes, internal engine repairs, and performance issues</span>
+      </span>
+      <span class="svc-tag">Full Service</span>
+    </li>
+    <li>
+      <span class="svc-num"></span>
+      <span>
+        <span class="svc-name">Brakes &amp; Brake Systems</span>
+        <span class="svc-desc">Pads, rotors, calipers, and hydraulic brake line inspection</span>
+      </span>
+      <span class="svc-tag">Safety</span>
+    </li>
+    <li>
+      <span class="svc-num"></span>
+      <span>
+        <span class="svc-name">Belts &amp; Hoses</span>
+        <span class="svc-desc">Serpentine belts, timing belts, coolant hoses, and drive belts</span>
+      </span>
+      <span class="svc-tag">Maintenance</span>
+    </li>
+    <li>
+      <span class="svc-num"></span>
+      <span>
+        <span class="svc-name">Oil &amp; Fluid Services</span>
+        <span class="svc-desc">Oil changes, transmission fluid, coolant flush, and power steering</span>
+      </span>
+      <span class="svc-tag">Routine</span>
+    </li>
+    <li>
+      <span class="svc-num"></span>
+      <span>
+        <span class="svc-name">Electrical &amp; Charging Systems</span>
+        <span class="svc-desc">Battery testing, alternator, starter, and electrical diagnostics</span>
+      </span>
+      <span class="svc-tag">Diagnostic</span>
+    </li>
+    <li>
+      <span class="svc-num"></span>
+      <span>
+        <span class="svc-name">Suspension &amp; Steering</span>
+        <span class="svc-desc">Shocks, struts, control arms, wheel alignment referral</span>
+      </span>
+      <span class="svc-tag">Ride &amp; Handling</span>
+    </li>
+    <li>
+      <span class="svc-num"></span>
+      <span>
+        <span class="svc-name">Pre-Purchase Inspections</span>
+        <span class="svc-desc">Thorough inspections before buying a used vehicle</span>
+      </span>
+      <span class="svc-tag">Peace of Mind</span>
+    </li>
+  </ul>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery-strip" aria-label="Shop photo gallery">
+  <img src="./photos/06.jpg" alt="Shop photo 6" loading="lazy">
+  <img src="./photos/03.jpg" alt="Shop photo 3" loading="lazy">
+  <img src="./photos/04.jpg" alt="Shop photo 4" loading="lazy">
+  <img src="./photos/05.jpg" alt="Shop photo 5" loading="lazy">
+</div>
+
+<!-- HOURS & LOCATION -->
+<section id="location" aria-labelledby="location-heading">
+  <div class="col-2">
+    <div>
+      <p class="section-label">Find Us</p>
+      <h2 class="section-heading" id="location-heading">Hours &amp; Location</h2>
+      <div class="section-rule"></div>
+      <table class="hours-table" aria-label="Business hours">
+        <tbody>
+          <tr><td>Monday</td><td>7:00 AM – 6:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>7:00 AM – 6:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>7:00 AM – 6:00 PM</td></tr>
+          <tr><td>Thursday</td><td>7:00 AM – 6:00 PM</td></tr>
+          <tr><td class="closed">Friday</td><td class="closed">Closed</td></tr>
+          <tr><td class="closed">Saturday</td><td class="closed">Closed</td></tr>
+          <tr><td class="closed">Sunday</td><td class="closed">Closed</td></tr>
+        </tbody>
+      </table>
+      <div class="address-block">
+        <p>
+          1505 Tollhouse Rd Suite B<br>
+          Clovis, CA 93611<br><br>
+          <a href="tel:5593220345">(559) 322-0345</a>
+        </p>
+        <div class="social-row">
+          <a href="https://maps.google.com/?cid=15616431976824077423&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="social-pill">Google Business</a>
+        </div>
+      </div>
+    </div>
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps?q=1505+Tollhouse+Rd+Suite+B,+Clovis,+CA+93611&z=15&output=embed"
+        title="All Valley Transmission & Auto Repair location map"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        aria-label="Google Maps embed showing shop location">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies" aria-labelledby="testimonies-heading">
+  <p class="section-label">Customer Testimonies</p>
+  <h2 class="section-heading" id="testimonies-heading">In Their Own Words</h2>
+  <div class="section-rule"></div>
+  <div class="testimonies-grid">
+
+    <div class="testimony">
+      <blockquote>"Been going to All Valley over ten years. Staff is friendly and knowledgeable. Jobs are explained in terms I can understand. Travel across town to have them service my vehicles."</blockquote>
+      <cite>Nancy W.</cite>
+    </div>
+
+    <div class="testimony">
+      <blockquote>"I was referred to them by another mechanic for transmission work, but the problem ended up being with the engine — they diagnosed it, fixed it, noticed my serpentine belt was cracking and recommended replacing it. The truck runs like new now."</blockquote>
+      <cite>John B.</cite>
+    </div>
+
+    <div class="testimony">
+      <blockquote>"As a single woman, it can be hard to find a mechanic I can trust. I've NEVER felt anything but honesty from them. Great team, great people, great prices. I recommend them 100%."</blockquote>
+      <cite>Marcy P.</cite>
+    </div>
+
+    <div class="testimony">
+      <blockquote>"They gave me a reasonable quote and did the repairs quickly and efficiently. Having a trustworthy, reliable mechanic is invaluable. I would highly recommend them."</blockquote>
+      <cite>Kellye L.</cite>
+    </div>
+
+    <div class="testimony">
+      <blockquote>"Great experience at All Valley — they took care of my Corvette!"</blockquote>
+      <cite>Adrian C.</cite>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<section id="contact" aria-labelledby="contact-heading">
+  <p class="section-label">Ready to Book?</p>
+  <h2 class="section-heading" id="contact-heading">Let's Get Your Car Running Right</h2>
+  <p>Monday through Thursday, 7 AM to 6 PM. Call or stop by — no appointment needed for most services.</p>
+  <a href="tel:5593220345" class="btn-primary">Call (559) 322-0345</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="brand">All Valley Transmission &amp; Auto Repair</span>
+  <span>1505 Tollhouse Rd Suite B, Clovis, CA 93611</span>
+  <span>Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></span>
+</footer>
+
+</body>
+</html>

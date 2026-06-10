@@ -1,0 +1,558 @@
+<!-- laundry · bold-dark · hero-layout 2 · svc-layout 1 · Archivo Black/Inter -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Executive Image Cleaners — Downtown LA Dry Cleaning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --acc:#14b8a6;
+    --bg:#0b1f1d;
+    --bg2:#0f2926;
+    --bg3:#122e2a;
+    --text:#e8f4f2;
+    --muted:#7da8a3;
+    --nav-h:64px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+
+  /* ── NAV ── */
+  nav{
+    position:sticky;top:0;z-index:100;
+    height:var(--nav-h);
+    background:rgba(11,31,29,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(20,184,166,0.15);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 clamp(1rem,4vw,2.5rem);
+  }
+  .brand{font-family:'Archivo Black',serif;font-size:1.1rem;letter-spacing:0.04em;color:var(--acc);text-decoration:none}
+  .nav-links{display:flex;gap:clamp(1rem,3vw,2rem);list-style:none}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.85rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s}
+  .nav-links a:hover{color:var(--acc)}
+  .nav-cta{
+    background:var(--acc);color:#0b1f1d;
+    padding:0.45rem 1.1rem;
+    font-size:0.82rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;
+    text-decoration:none;
+    transition:opacity 0.2s;
+    border:none;cursor:pointer;
+  }
+  .nav-cta:hover{opacity:0.85}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+  .hamburger span{display:block;width:22px;height:2px;background:var(--text);transition:all 0.3s}
+  @media(max-width:720px){
+    .nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;background:rgba(11,31,29,0.98);flex-direction:column;padding:1.5rem 2rem;gap:1.25rem;border-bottom:1px solid rgba(20,184,166,0.15)}
+    .nav-links.open{display:flex}
+    .hamburger{display:flex}
+    .nav-cta{display:none}
+  }
+
+  /* ── HERO: full-bleed (layout 2) ── */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;align-items:flex-end;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    display:grid;grid-template-columns:1fr 1fr 1fr;
+  }
+  .hero-bg img{
+    width:100%;height:100%;object-fit:cover;
+    filter:brightness(0.28) saturate(0.6);
+  }
+  .hero-bg::after{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(11,31,29,0.98) 0%, rgba(11,31,29,0.5) 50%, rgba(11,31,29,0.1) 100%);
+  }
+  .hero-inner{
+    position:relative;z-index:1;
+    width:100%;
+    padding:clamp(3rem,8vw,6rem) clamp(1.5rem,6vw,5rem);
+    padding-bottom:clamp(3.5rem,8vw,6rem);
+  }
+  .hero-kicker{
+    display:inline-block;
+    color:var(--acc);font-size:0.75rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
+    border-left:3px solid var(--acc);padding-left:0.75rem;margin-bottom:1.5rem;
+  }
+  .hero h1{
+    font-family:'Archivo Black',serif;
+    font-size:clamp(2.8rem,7vw,6rem);
+    line-height:1.0;
+    letter-spacing:-0.01em;
+    max-width:18ch;
+    margin-bottom:1.5rem;
+  }
+  .hero h1 em{color:var(--acc);font-style:normal}
+  .hero-sub{
+    font-size:clamp(1rem,2vw,1.2rem);
+    color:var(--muted);
+    max-width:48ch;
+    margin-bottom:2.5rem;
+    font-weight:300;
+    line-height:1.7;
+  }
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+  .btn-primary{
+    background:var(--acc);color:#0b1f1d;
+    padding:0.85rem 2rem;
+    font-family:'Archivo Black',serif;font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;
+    text-decoration:none;display:inline-block;
+    transition:opacity 0.2s,transform 0.2s;
+  }
+  .btn-primary:hover{opacity:0.88;transform:translateY(-2px)}
+  .btn-ghost{
+    color:var(--text);border:1px solid rgba(232,244,242,0.25);
+    padding:0.85rem 2rem;
+    font-size:0.85rem;font-weight:500;letter-spacing:0.04em;
+    text-decoration:none;display:inline-block;
+    transition:border-color 0.2s,color 0.2s;
+  }
+  .btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+
+  /* ── STRIP ── */
+  .strip{
+    background:var(--acc);color:#0b1f1d;
+    padding:1rem clamp(1.5rem,6vw,5rem);
+    display:flex;gap:2.5rem;flex-wrap:wrap;align-items:center;justify-content:center;
+  }
+  .strip-item{font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase}
+  .strip-item::before{content:'✦ ';opacity:0.6}
+
+  /* ── SECTION SHARED ── */
+  section{padding:clamp(4rem,10vw,7rem) clamp(1.5rem,6vw,5rem)}
+  .sec-label{
+    font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;
+    color:var(--acc);margin-bottom:0.75rem;
+  }
+  .sec-title{
+    font-family:'Archivo Black',serif;
+    font-size:clamp(2rem,4vw,3rem);
+    line-height:1.1;letter-spacing:-0.01em;
+    margin-bottom:1.5rem;
+  }
+  .sec-body{color:var(--muted);max-width:60ch;line-height:1.8;font-weight:300;font-size:1.05rem}
+
+  /* ── ABOUT ── */
+  #about{background:var(--bg2)}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:clamp(2rem,5vw,5rem);
+    align-items:center;
+    max-width:1200px;margin:0 auto;
+  }
+  .about-photos{
+    display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;
+    gap:0.5rem;
+  }
+  .about-photos img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .about-photos img:first-child{grid-column:1/-1;aspect-ratio:16/7}
+  .about-text .sec-body{max-width:unset}
+  @media(max-width:820px){
+    .about-grid{grid-template-columns:1fr}
+    .about-photos{order:-1}
+  }
+
+  /* ── SERVICES: 2-col rows (layout 1) ── */
+  #services{background:var(--bg)}
+  .svc-header{max-width:700px;margin:0 auto clamp(2.5rem,5vw,4rem)}
+  .svc-list{
+    max-width:900px;margin:0 auto;
+    display:flex;flex-direction:column;gap:0;
+    border-top:1px solid rgba(20,184,166,0.15);
+  }
+  .svc-row{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:1rem;
+    align-items:start;
+    padding:1.5rem 0;
+    border-bottom:1px solid rgba(20,184,166,0.15);
+    transition:background 0.2s;
+  }
+  .svc-row:hover{background:rgba(20,184,166,0.04)}
+  .svc-name{
+    font-family:'Archivo Black',serif;
+    font-size:clamp(1.05rem,2vw,1.25rem);
+    color:var(--text);
+  }
+  .svc-desc{
+    color:var(--muted);font-size:0.9rem;line-height:1.6;margin-top:0.35rem;max-width:55ch;
+  }
+  .svc-tag{
+    font-size:0.7rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--acc);border:1px solid rgba(20,184,166,0.35);
+    padding:0.3rem 0.65rem;white-space:nowrap;align-self:center;
+  }
+
+  /* ── TESTIMONIES ── */
+  #testimonies{background:var(--bg3)}
+  .test-header{text-align:center;margin-bottom:clamp(2.5rem,5vw,4rem)}
+  .test-header .sec-label{display:block}
+  .test-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:1.5rem;
+    max-width:1100px;margin:0 auto;
+  }
+  .test-card{
+    background:rgba(20,184,166,0.05);
+    border:1px solid rgba(20,184,166,0.12);
+    padding:2rem;
+    position:relative;
+  }
+  .test-card::before{
+    content:'\201C';
+    font-family:'Archivo Black',serif;
+    font-size:5rem;line-height:0.7;
+    color:var(--acc);opacity:0.25;
+    position:absolute;top:1.5rem;left:1.5rem;
+    pointer-events:none;
+  }
+  .test-quote{
+    font-size:0.95rem;line-height:1.8;color:var(--text);font-weight:300;
+    padding-top:1.5rem;
+    position:relative;z-index:1;
+  }
+  .test-attr{
+    margin-top:1.5rem;
+    font-size:0.78rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--acc);
+  }
+
+  /* ── HOURS + MAP ── */
+  #location{background:var(--bg2)}
+  .loc-grid{
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:clamp(2rem,5vw,4rem);
+    max-width:1100px;margin:0 auto;align-items:start;
+  }
+  .hours-table{width:100%;border-collapse:collapse;margin-top:1.5rem}
+  .hours-table td{padding:0.6rem 0;font-size:0.92rem;border-bottom:1px solid rgba(20,184,166,0.1)}
+  .hours-table td:first-child{color:var(--muted);font-weight:500;padding-right:2rem}
+  .hours-table td:last-child{color:var(--text);font-weight:400}
+  .hours-table tr:last-child td{border-bottom:none}
+  .hours-closed{color:rgba(125,168,163,0.4)!important}
+  .map-wrap{width:100%;aspect-ratio:4/3;overflow:hidden;border:1px solid rgba(20,184,166,0.15)}
+  .map-wrap iframe{width:100%;height:100%;border:none;display:block;filter:grayscale(50%) invert(5%)}
+  .addr-block{margin-top:1.5rem}
+  .addr-block p{color:var(--muted);font-size:0.92rem;margin-bottom:0.35rem;line-height:1.6}
+  .addr-block a{color:var(--acc);text-decoration:none;font-weight:500}
+  .addr-block a:hover{text-decoration:underline}
+  @media(max-width:820px){
+    .loc-grid{grid-template-columns:1fr}
+    .map-wrap{aspect-ratio:16/9}
+  }
+
+  /* ── CTA BAND ── */
+  .cta-band{
+    background:var(--acc);
+    padding:clamp(3rem,7vw,5rem) clamp(1.5rem,6vw,5rem);
+    text-align:center;
+  }
+  .cta-band .sec-title{color:#0b1f1d;margin-bottom:0.75rem}
+  .cta-band p{color:rgba(11,31,29,0.7);max-width:50ch;margin:0 auto 2rem;font-size:1.05rem}
+  .btn-dark{
+    background:#0b1f1d;color:var(--acc);
+    padding:0.9rem 2.2rem;
+    font-family:'Archivo Black',serif;font-size:0.9rem;letter-spacing:0.05em;text-transform:uppercase;
+    text-decoration:none;display:inline-block;
+    border:2px solid #0b1f1d;
+    transition:background 0.2s,color 0.2s;
+  }
+  .btn-dark:hover{background:transparent;color:#0b1f1d}
+
+  /* ── FOOTER ── */
+  footer{
+    background:#070f0e;
+    padding:clamp(2.5rem,5vw,3.5rem) clamp(1.5rem,6vw,5rem);
+  }
+  .footer-inner{
+    max-width:1100px;margin:0 auto;
+    display:flex;gap:2rem;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;
+    padding-bottom:2rem;border-bottom:1px solid rgba(20,184,166,0.1);
+    margin-bottom:1.5rem;
+  }
+  .footer-brand{font-family:'Archivo Black',serif;font-size:1.1rem;color:var(--acc);margin-bottom:0.5rem}
+  .footer-tagline{color:var(--muted);font-size:0.85rem;max-width:28ch;line-height:1.6}
+  .footer-links h4{font-size:0.7rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem}
+  .footer-links ul{list-style:none}
+  .footer-links li{margin-bottom:0.4rem}
+  .footer-links a{color:rgba(232,244,242,0.55);font-size:0.88rem;text-decoration:none;transition:color 0.2s}
+  .footer-links a:hover{color:var(--acc)}
+  .footer-credit{
+    text-align:center;
+    color:rgba(125,168,163,0.4);font-size:0.78rem;
+  }
+  .social-row{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.75rem}
+  .social-link{
+    font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--muted);border:1px solid rgba(125,168,163,0.25);
+    padding:0.35rem 0.75rem;text-decoration:none;
+    transition:color 0.2s,border-color 0.2s;
+  }
+  .social-link:hover{color:var(--acc);border-color:var(--acc)}
+
+  @media(max-width:520px){
+    .hero h1{font-size:2.5rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="top" role="navigation" aria-label="Main navigation">
+  <a href="#top" class="brand" aria-label="Executive Image Cleaners home">Executive Image Cleaners</a>
+  <ul class="nav-links" id="nav-menu">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#location">Hours &amp; Location</a></li>
+  </ul>
+  <a href="tel:2134881045" class="nav-cta">Call Now</a>
+  <button class="hamburger" aria-label="Toggle navigation" onclick="document.getElementById('nav-menu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO: full-bleed, bottom-anchored layout -->
+<section class="hero" id="hero" aria-label="Hero">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="./photos/01.jpg" alt="">
+    <img src="./photos/02.jpg" alt="">
+    <img src="./photos/03.jpg" alt="">
+  </div>
+  <div class="hero-inner">
+    <div class="hero-kicker">Downtown Los Angeles · Est. in the Community</div>
+    <h1>Your Wardrobe,<br><em>Treated Right.</em></h1>
+    <p class="hero-sub">Family-owned dry cleaning in the heart of Downtown LA. Every garment handled with the kind of personal care you won't find anywhere else.</p>
+    <div class="cta-row">
+      <a href="tel:2134881045" class="btn-primary">Call Now — (213) 488-1045</a>
+      <a href="https://www.google.com/maps?q=600+W+9th+St+%23100,+Los+Angeles,+CA+90015&z=15" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip" aria-hidden="true">
+  <span class="strip-item">Suits &amp; Formalwear</span>
+  <span class="strip-item">Same-Day Available</span>
+  <span class="strip-item">Delicate Fabrics</span>
+  <span class="strip-item">Downtown LA Convenient</span>
+  <span class="strip-item">Family-Owned Since Day One</span>
+</div>
+
+<!-- ABOUT -->
+<section id="about" aria-label="About">
+  <div class="about-grid">
+    <div class="about-text">
+      <p class="sec-label">Who We Are</p>
+      <h2 class="sec-title">A Mom &amp; Pop Shop<br>That Means It</h2>
+      <p class="sec-body">
+        Executive Image Cleaners is a true gem in Downtown LA — a classic, family-run operation where the owners know your name, remember your preferences, and treat every garment like it matters. Because to them, it does.
+      </p>
+      <p class="sec-body" style="margin-top:1rem">
+        From delicate silks to everyday business suits, we've built a reputation for outstanding results and the kind of warm, personal service that a big city can rarely offer. Affordable pricing, meticulous attention to detail, and a genuine passion for the craft — that's the Executive Image difference.
+      </p>
+      <a href="tel:2134881045" class="btn-primary" style="margin-top:2rem;display:inline-block">Call to Schedule</a>
+    </div>
+    <div class="about-photos" aria-hidden="true">
+      <img src="./photos/04.jpg" alt="Executive Image Cleaners interior">
+      <img src="./photos/05.jpg" alt="Garments on hangers">
+      <img src="./photos/06.jpg" alt="Cleaning equipment">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES: 2-col rows (layout 1) -->
+<section id="services" aria-label="Services">
+  <div class="svc-header" style="text-align:center">
+    <p class="sec-label">What We Do</p>
+    <h2 class="sec-title">Full-Service Garment Care</h2>
+    <p class="sec-body" style="margin:0 auto">Whatever you need cleaned, pressed, or restored — from your sharpest suit to your most delicate fabric — Executive Image handles it with skill and care.</p>
+  </div>
+  <div class="svc-list" role="list">
+
+    <div class="svc-row" role="listitem">
+      <div>
+        <div class="svc-name">Dry Cleaning</div>
+        <div class="svc-desc">Suits, blazers, dresses, and formal wear returned sharper than ever — perfectly cleaned, pressed to perfection, no shine or damage.</div>
+      </div>
+      <span class="svc-tag">Signature</span>
+    </div>
+
+    <div class="svc-row" role="listitem">
+      <div>
+        <div class="svc-name">Professional Pressing</div>
+        <div class="svc-desc">Crisp, clean lines on shirts, trousers, and dress clothes. We know the difference between a rushed press and a perfect one.</div>
+      </div>
+      <span class="svc-tag">Popular</span>
+    </div>
+
+    <div class="svc-row" role="listitem">
+      <div>
+        <div class="svc-name">Delicate Fabric Care</div>
+        <div class="svc-desc">Silks, linens, and specialty fabrics treated with the extra attention they need. We explain any special care requirements upfront.</div>
+      </div>
+      <span class="svc-tag">Specialty</span>
+    </div>
+
+    <div class="svc-row" role="listitem">
+      <div>
+        <div class="svc-name">Stain Removal</div>
+        <div class="svc-desc">Even the tough stains you thought were permanent. Our expertise routinely exceeds expectations — bring us your difficult pieces.</div>
+      </div>
+      <span class="svc-tag">Expert</span>
+    </div>
+
+    <div class="svc-row" role="listitem">
+      <div>
+        <div class="svc-name">Everyday Laundry &amp; Wash</div>
+        <div class="svc-desc">Work clothes, casual wear, and everyday items handled with the same care we give your best suit. Quick, reliable, consistent.</div>
+      </div>
+      <span class="svc-tag">Everyday</span>
+    </div>
+
+    <div class="svc-row" role="listitem">
+      <div>
+        <div class="svc-name">Alterations &amp; Repairs</div>
+        <div class="svc-desc">Minor alterations and garment repairs to keep your wardrobe fitting and looking its best. Ask us what we can do.</div>
+      </div>
+      <span class="svc-tag">Ask Us</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- CUSTOMER TESTIMONIES -->
+<section id="testimonies" aria-label="Customer Testimonies">
+  <div class="test-header">
+    <span class="sec-label">In Their Words</span>
+    <h2 class="sec-title">Customer Testimonies</h2>
+  </div>
+  <div class="test-grid">
+
+    <div class="test-card">
+      <blockquote>
+        <p class="test-quote">Dropped off three suits recently, and they came back looking sharper than ever — perfectly cleaned, pressed to perfection, no shine or damage at all. The owners and staff are so warm and welcoming; it feels like family every time you walk in. Best of all, their prices are hands-down the most affordable I've found in the area for this level of quality.</p>
+        <footer class="test-attr">— Theo M.</footer>
+      </blockquote>
+    </div>
+
+    <div class="test-card">
+      <blockquote>
+        <p class="test-quote">From the moment you walk in, you can feel this isn't just another business — it's a family-owned store that genuinely cares. They greet you warmly, remember your name, and take time to explain any special care your garments might need. It's rare to find that level of personal attention in a big city. Even tough stains that I thought were permanent completely disappeared.</p>
+        <footer class="test-attr">— Barbara B.</footer>
+      </blockquote>
+    </div>
+
+    <div class="test-card">
+      <blockquote>
+        <p class="test-quote">After the second time they knew my name, and the third time I was picking up for my friend — I thought he only got shirts, and the mom said he has slacks as well. Sure enough he did. The level of service here is second to none. I could easily use the pick-up service in my building, but I choose to come here because of the connection I had the first time walking in.</p>
+        <footer class="test-attr">— Chris P.</footer>
+      </blockquote>
+    </div>
+
+    <div class="test-card">
+      <blockquote>
+        <p class="test-quote">The team here is professional, friendly, and always goes the extra mile to make sure my clothes look perfect. Turnaround times are fast, and they handle everything from delicate fabrics to business suits with real care and attention to detail. The location in Downtown LA is super convenient, and the customer service is top-notch.</p>
+        <footer class="test-attr">— Joseph B.</footer>
+      </blockquote>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOURS + MAP -->
+<section id="location" aria-label="Hours and Location">
+  <div class="loc-grid">
+    <div>
+      <p class="sec-label">Find Us</p>
+      <h2 class="sec-title">Hours &amp;<br>Location</h2>
+      <table class="hours-table" aria-label="Business hours">
+        <tbody>
+          <tr><td>Monday</td><td>9:00 AM – 6:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>9:00 AM – 6:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>9:00 AM – 6:00 PM</td></tr>
+          <tr><td>Thursday</td><td>9:00 AM – 6:00 PM</td></tr>
+          <tr><td>Friday</td><td>9:00 AM – 6:00 PM</td></tr>
+          <tr><td>Saturday</td><td>10:00 AM – 5:00 PM</td></tr>
+          <tr><td>Sunday</td><td class="hours-closed">Closed</td></tr>
+        </tbody>
+      </table>
+      <div class="addr-block">
+        <p>600 W 9th St #100<br>Los Angeles, CA 90015</p>
+        <p><a href="tel:2134881045">(213) 488-1045</a></p>
+        <p style="margin-top:1rem">
+          <a href="https://www.google.com/maps?q=600+W+9th+St+%23100,+Los+Angeles,+CA+90015&z=15" target="_blank" rel="noopener">Open in Google Maps →</a>
+        </p>
+        <p style="margin-top:0.5rem">
+          <a href="https://maps.google.com/?cid=6996455044284975973" target="_blank" rel="noopener">View on Google Business →</a>
+        </p>
+      </div>
+    </div>
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps?q=600+W+9th+St+%23100,+Los+Angeles,+CA+90015&z=15&output=embed"
+        title="Executive Image Cleaners location map"
+        loading="lazy"
+        aria-label="Map showing Executive Image Cleaners at 600 W 9th St, Los Angeles">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2 class="sec-title">Ready to Drop Off?</h2>
+  <p>Stop by Monday through Saturday — no appointment needed. Your clothes are in the best hands in Downtown LA.</p>
+  <a href="tel:2134881045" class="btn-dark">Call (213) 488-1045</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand">Executive Image Cleaners</div>
+      <p class="footer-tagline">Family-owned dry cleaning in Downtown Los Angeles. Your wardrobe deserves real care.</p>
+      <div class="social-row">
+        <a href="https://maps.google.com/?cid=6996455044284975973" target="_blank" rel="noopener" class="social-link">Google</a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonies">Testimonies</a></li>
+        <li><a href="#location">Hours &amp; Location</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:2134881045">(213) 488-1045</a></li>
+        <li><a href="https://www.google.com/maps?q=600+W+9th+St+%23100,+Los+Angeles,+CA+90015&z=15" target="_blank" rel="noopener">600 W 9th St #100<br>Los Angeles, CA 90015</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+</footer>
+
+</body>
+</html>

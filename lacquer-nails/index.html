@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<!--
+  ARCHETYPE: Modern glossy "lacquer" editorial / fashion poster.
+  The name "Lacquer Nails" reads as sleek and glossy, so the design leans into a
+  high-gloss lacquer-red on near-black ink — deliberately NOT the gold + serif
+  Garamond direction the other nail salons in work/ all share. Display face is
+  Syne (wide geometric display), body is Manrope — neither used by another nail site.
+  STRUCTURE:
+    - Fixed slim top nav with vertical wordmark cue; scroll-padding reserved.
+    - Asymmetric left-weighted hero: oversized stacked wordmark + offset photo column.
+    - Services as numbered horizontal rows (no card grid, no circular icons).
+    - Photo strip as an offset bento, not a uniform gallery.
+    - Testimonies as large pull-quotes in a stacked editorial column.
+    - Hours/location split with keyless Google Maps embed.
+  ANIMATION: none beyond hover transitions. No fade-up.
+  --acc lacquer red, --bg ink.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lacquer Nails — Nail Salon in Stockton, CA</title>
+<meta name="description" content="Lacquer Nails on Lincoln Center in Stockton — unhurried, expert nail care from technicians who take their time. Book by phone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#17120f;
+    --ink:#17120f;
+    --paper:#f4ede4;
+    --acc:#c0362c;        /* lacquer red */
+    --acc-deep:#8f221c;
+    --muted:#a99a8c;
+    --line:rgba(244,237,228,.14);
+    --nav-h:62px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    background:var(--bg);
+    color:var(--paper);
+    font-family:'Manrope',system-ui,sans-serif;
+    font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .display{font-family:'Syne',sans-serif;letter-spacing:-.02em}
+  .wrap{width:min(1180px,92vw);margin-inline:auto}
+  .eyebrow{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--acc);font-weight:700}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:50;
+    display:flex;align-items:center;
+    background:rgba(23,18,15,.82);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:min(1180px,92vw)}
+  .brand{font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:.02em;display:flex;align-items:center;gap:.5rem}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 4px rgba(192,54,44,.18)}
+  .navlinks{display:flex;gap:2rem;font-size:.82rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  .navlinks a{color:var(--muted);transition:color .2s}
+  .navlinks a:hover{color:var(--paper)}
+  .navcall{display:inline-flex;align-items:center;gap:.5rem;background:var(--acc);color:#fff;font-weight:700;
+    font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;padding:.55rem 1rem;border-radius:2px;transition:background .2s}
+  .navcall:hover{background:var(--acc-deep)}
+  @media(max-width:840px){.navlinks{display:none}}
+
+  /* HERO */
+  header{padding-top:calc(var(--nav-h) + 4.5rem);padding-bottom:4rem;position:relative}
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:end}
+  .hero-type h1{
+    font-family:'Syne',sans-serif;font-weight:800;
+    font-size:clamp(3.4rem,11vw,7.4rem);line-height:.9;letter-spacing:-.03em;
+    text-transform:uppercase;
+  }
+  .hero-type h1 .red{color:var(--acc);display:block}
+  .hero-type h1 .outline{color:transparent;-webkit-text-stroke:1.5px var(--paper);display:block}
+  .hero-sub{margin-top:1.8rem;max-width:34ch;color:#e6dccf;font-size:1.08rem}
+  .hero-meta{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.9rem;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:.6rem;font-weight:700;font-size:.86rem;letter-spacing:.05em;
+    text-transform:uppercase;padding:.85rem 1.5rem;border-radius:2px;transition:transform .15s, background .2s, color .2s;
+  }
+  .btn-pri{background:var(--acc);color:#fff}
+  .btn-pri:hover{background:var(--acc-deep)}
+  .btn-ghost{border:1px solid var(--line);color:var(--paper)}
+  .btn-ghost:hover{border-color:var(--acc);color:var(--acc)}
+  .hero-photo{position:relative}
+  .hero-photo img{width:100%;height:clamp(340px,52vh,560px);object-fit:cover;border-radius:3px;filter:saturate(1.04)}
+  .hero-photo .badge{
+    position:absolute;left:-1.2rem;bottom:1.6rem;background:var(--paper);color:var(--ink);
+    padding:.7rem 1.1rem;border-radius:2px;font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;
+    letter-spacing:.02em;line-height:1.2;
+  }
+  .hero-photo .badge b{color:var(--acc-deep)}
+  @media(max-width:840px){
+    .hero{grid-template-columns:1fr;gap:2.2rem}
+    .hero-photo .badge{left:auto;right:1rem}
+  }
+
+  /* RULE STRIP */
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:var(--acc)}
+  .strip .row{display:flex;gap:3.2rem;padding:.7rem 0;color:#fff;font-family:'Syne',sans-serif;font-weight:700;
+    font-size:.95rem;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap;animation:slide 26s linear infinite}
+  .strip span{opacity:.92}.strip i{opacity:.55;font-style:normal}
+  @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){.strip .row{animation:none}}
+
+  /* SECTIONS */
+  section{padding:5.5rem 0}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:2.6rem;flex-wrap:wrap}
+  .sec-head h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,4.5vw,3rem);line-height:1;text-transform:uppercase;letter-spacing:-.02em}
+  .sec-head .num{font-family:'Syne',sans-serif;color:var(--acc);font-weight:700;font-size:.85rem;letter-spacing:.2em}
+
+  /* ABOUT */
+  .about{display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:start}
+  .about p{color:#ddd2c5;font-size:1.12rem;line-height:1.75;margin-bottom:1.1rem}
+  .about p .lead{color:var(--paper)}
+  .about-aside{border-left:2px solid var(--acc);padding-left:1.4rem}
+  .about-aside h3{font-family:'Syne',sans-serif;text-transform:uppercase;font-size:.78rem;letter-spacing:.18em;color:var(--muted);margin-bottom:.6rem}
+  .about-aside p{font-size:1rem;color:#e6dccf}
+  @media(max-width:840px){.about{grid-template-columns:1fr;gap:2rem}}
+
+  /* SERVICES — numbered rows */
+  .svc{border-top:1px solid var(--line)}
+  .svc-row{
+    display:grid;grid-template-columns:auto 1fr auto;gap:1.4rem;align-items:center;
+    padding:1.6rem 0;border-bottom:1px solid var(--line);transition:padding-left .25s,background .25s;
+  }
+  .svc-row:hover{padding-left:1rem}
+  .svc-row .idx{font-family:'Syne',sans-serif;color:var(--acc);font-weight:700;font-size:.9rem;letter-spacing:.1em}
+  .svc-row .name{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.25rem,2.6vw,1.7rem);text-transform:uppercase;letter-spacing:-.01em}
+  .svc-row .desc{color:var(--muted);font-size:.95rem;margin-top:.2rem;letter-spacing:0;text-transform:none;font-family:'Manrope',sans-serif;font-weight:500}
+  .svc-row .arrow{color:var(--muted);font-size:1.3rem;transition:color .2s,transform .2s}
+  .svc-row:hover .arrow{color:var(--acc);transform:translateX(4px)}
+  @media(max-width:560px){.svc-row{grid-template-columns:auto 1fr;gap:1rem}.svc-row .arrow{display:none}}
+
+  /* GALLERY bento */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:160px;gap:14px}
+  .bento img{width:100%;height:100%;object-fit:cover;border-radius:3px;filter:saturate(1.03);transition:transform .4s, filter .4s}
+  .bento a:hover img{transform:scale(1.03);filter:saturate(1.12)}
+  .b1{grid-column:span 2;grid-row:span 2}
+  .b2{grid-column:span 2}
+  .b3{grid-column:span 1}.b4{grid-column:span 1}
+  .b5{grid-column:span 2;grid-row:span 1}
+  @media(max-width:700px){.bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:140px}
+    .b1{grid-column:span 2;grid-row:span 1}.b2,.b5{grid-column:span 2}.b3,.b4{grid-column:span 1}}
+
+  /* TESTIMONIES */
+  .says{display:flex;flex-direction:column;gap:2.6rem;max-width:880px}
+  .quote{position:relative;padding-left:2.4rem}
+  .quote::before{content:"\201C";position:absolute;left:-.2rem;top:-1rem;font-family:'Syne',sans-serif;
+    font-size:5rem;color:var(--acc);line-height:1;opacity:.85}
+  .quote p{font-family:'Syne',sans-serif;font-weight:600;font-size:clamp(1.3rem,3vw,1.85rem);line-height:1.35;letter-spacing:-.01em}
+  .quote .who{margin-top:1rem;color:var(--muted);font-family:'Manrope',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:.16em;text-transform:uppercase}
+  .quote:nth-child(even){padding-left:0;padding-right:2.4rem;text-align:right}
+  .quote:nth-child(even)::before{left:auto;right:0}
+  @media(max-width:560px){.quote:nth-child(even){padding-left:2.4rem;padding-right:0;text-align:left}.quote:nth-child(even)::before{left:-.2rem;right:auto}}
+
+  /* VISIT */
+  .visit{display:grid;grid-template-columns:1fr 1.1fr;gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .visit-info{padding:2.6rem}
+  .hours-list{list-style:none;margin:1.4rem 0}
+  .hours-list li{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.98rem}
+  .hours-list li.today{color:var(--acc)}
+  .hours-list .day{color:#e6dccf;font-weight:600}
+  .hours-list .time{color:var(--muted);font-variant-numeric:tabular-nums}
+  .hours-list li.today .time{color:var(--acc)}
+  .addr{margin:1.6rem 0 1.2rem;color:#ddd2c5}
+  .addr b{font-family:'Syne',sans-serif;display:block;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:.35rem}
+  .visit-map iframe{width:100%;height:100%;min-height:360px;border:0;filter:grayscale(.25) contrast(1.05)}
+  .findus{margin-top:1.3rem;display:flex;gap:1rem;flex-wrap:wrap}
+  .findus a{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:.5rem .9rem;border-radius:2px;font-weight:700;transition:.2s}
+  .findus a:hover{color:var(--acc);border-color:var(--acc)}
+  @media(max-width:840px){.visit{grid-template-columns:1fr}.visit-map iframe{min-height:300px}}
+
+  /* CTA band */
+  .band{background:var(--paper);color:var(--ink);padding:4.5rem 0}
+  .band .wrap{display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .band h2{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,5vw,3.4rem);text-transform:uppercase;line-height:.95;letter-spacing:-.02em;max-width:14ch}
+  .band h2 em{color:var(--acc);font-style:normal}
+  .band .btn-pri{background:var(--acc)}
+  .band .phone{display:block;font-family:'Syne',sans-serif;font-weight:700;font-size:1.4rem;margin-top:.4rem}
+  .band .btn-dark{background:var(--ink);color:var(--paper)}
+  .band .btn-dark:hover{background:#000}
+
+  /* FOOTER */
+  footer{padding:3rem 0 3.4rem;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;align-items:center}
+  footer .fbrand{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem}
+  footer .fbrand .dot{color:var(--acc)}
+  footer .credit{color:var(--muted);font-size:.82rem;max-width:46ch}
+  footer .credit a{color:var(--paper);border-bottom:1px solid var(--acc)}
+  footer .flinks{display:flex;gap:1.4rem;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  footer .flinks a:hover{color:var(--acc)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="dot"></span>Lacquer&nbsp;Nails</a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#says">In Their Words</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a class="navcall" href="tel:+12092353454">Call (209) 235-3454</a>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <div class="hero">
+      <div class="hero-type">
+        <span class="eyebrow">Nail Salon · Lincoln Center, Stockton</span>
+        <h1>
+          <span class="outline">High</span>
+          <span class="red">Gloss</span>
+          <span>Lacquer.</span>
+        </h1>
+        <p class="hero-sub">A nail studio where the work is unhurried and the finish is flawless. We take our time — so you leave satisfied, not rushed out the door.</p>
+        <div class="hero-meta">
+          <a class="btn btn-pri" href="tel:+12092353454">Call Now</a>
+          <a class="btn btn-ghost" href="#visit">Get Directions</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="./photos/01.jpg" alt="Inside Lacquer Nails in Stockton">
+        <div class="badge">Open Tue–Sun<br><b>Walk-ins welcome</b></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="row">
+    <span>Manicures</span><i>/</i><span>Pedicures</span><i>/</i><span>Gel &amp; Lacquer</span><i>/</i><span>Dip Powder</span><i>/</i><span>Nail Art</span><i>/</i>
+    <span>Manicures</span><i>/</i><span>Pedicures</span><i>/</i><span>Gel &amp; Lacquer</span><i>/</i><span>Dip Powder</span><i>/</i><span>Nail Art</span><i>/</i>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about">
+      <div>
+        <span class="eyebrow">About</span>
+        <p class="lead" style="font-family:'Syne',sans-serif;font-weight:600;font-size:1.5rem;line-height:1.4;margin:1rem 0 1.4rem">
+          Lacquer Nails is a Stockton salon built on one idea: never treat a guest like a dollar sign.
+        </p>
+        <p>Tucked into Lincoln Center, we&rsquo;re an inviting, relaxing room where regulars come back season after season for the same technicians they trust — names like Kim, Julie, and Teri, who&rsquo;ve built their reputations one careful set at a time.</p>
+        <p>Whether it&rsquo;s a quick polish change or a full gel set, the goal is the same: take the time to get it right.</p>
+      </div>
+      <aside class="about-aside">
+        <h3>Ask for</h3>
+        <p>Kim, Julie &amp; Teri — three of the technicians our regulars come back for, year after year.</p>
+        <br>
+        <h3>The room</h3>
+        <p>Inviting, relaxing, and unhurried — a salon that takes its time.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="services" style="padding-top:1rem">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>What we do</h2>
+      <span class="num">02 — SERVICES</span>
+    </div>
+    <div class="svc">
+      <div class="svc-row">
+        <span class="idx">01</span>
+        <div><div class="name">Manicures</div><div class="desc">Classic and gel manicures, shaped and finished with care.</div></div>
+        <span class="arrow">&rarr;</span>
+      </div>
+      <div class="svc-row">
+        <span class="idx">02</span>
+        <div><div class="name">Pedicures</div><div class="desc">Relaxing spa pedicures — the unhurried kind our regulars come back for.</div></div>
+        <span class="arrow">&rarr;</span>
+      </div>
+      <div class="svc-row">
+        <span class="idx">03</span>
+        <div><div class="name">Gel &amp; Lacquer</div><div class="desc">Long-wear gel and high-gloss lacquer in the color you have in mind.</div></div>
+        <span class="arrow">&rarr;</span>
+      </div>
+      <div class="svc-row">
+        <span class="idx">04</span>
+        <div><div class="name">Dip Powder</div><div class="desc">Durable dip systems for a strong, natural-looking finish.</div></div>
+        <span class="arrow">&rarr;</span>
+      </div>
+      <div class="svc-row">
+        <span class="idx">05</span>
+        <div><div class="name">Nail Art</div><div class="desc">Custom detail and design — bring a reference or talk it through with your tech.</div></div>
+        <span class="arrow">&rarr;</span>
+      </div>
+    </div>
+    <p style="margin-top:1.4rem;color:var(--muted);font-size:.92rem">Call <a href="tel:+12092353454" style="color:var(--acc);font-weight:700">(209) 235-3454</a> for pricing and availability.</p>
+  </div>
+</section>
+
+<section id="gallery" style="padding-top:1rem">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The work</h2>
+      <span class="num">03 — GALLERY</span>
+    </div>
+    <div class="bento">
+      <a class="b1"><img src="./photos/02.jpg" alt="Nail work at Lacquer Nails"></a>
+      <a class="b2"><img src="./photos/03.jpg" alt="Salon detail at Lacquer Nails"></a>
+      <a class="b3"><img src="./photos/04.jpg" alt="Finished nails at Lacquer Nails"></a>
+      <a class="b4"><img src="./photos/05.jpg" alt="Salon interior at Lacquer Nails"></a>
+      <a class="b5"><img src="./photos/06.jpg" alt="Nail design at Lacquer Nails"></a>
+    </div>
+  </div>
+</section>
+
+<section id="says">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>In their words</h2>
+      <span class="num">04 — TESTIMONIES</span>
+    </div>
+    <div class="says">
+      <figure class="quote">
+        <p>This is the last place you&rsquo;ll ever have to go. The skill level is expert level — Lacquer takes their time to make sure you&rsquo;re satisfied rather than treating you like a dollar sign.</p>
+        <figcaption class="who">Alexis B.</figcaption>
+      </figure>
+      <figure class="quote">
+        <p>I love this place. It&rsquo;s very inviting and relaxing. Julie does a fantastic job on my nails and she is really cool.</p>
+        <figcaption class="who">Nichole T.</figcaption>
+      </figure>
+      <figure class="quote">
+        <p>Teri is my go-to girl here. I&rsquo;ve been coming for years and she always does an amazing job. She takes her time and never disappoints.</p>
+        <figcaption class="who">Willnelia R.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="visit" style="padding-top:1rem">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Visit us</h2>
+      <span class="num">05 — HOURS &amp; LOCATION</span>
+    </div>
+    <div class="visit">
+      <div class="visit-info">
+        <div class="addr">
+          <b>Find us</b>
+          310 Lincoln Center<br>Stockton, CA 95207
+        </div>
+        <ul class="hours-list">
+          <li><span class="day">Monday</span><span class="time">Closed</span></li>
+          <li><span class="day">Tuesday</span><span class="time">9:00 AM – 7:00 PM</span></li>
+          <li><span class="day">Wednesday</span><span class="time">9:00 AM – 7:00 PM</span></li>
+          <li><span class="day">Thursday</span><span class="time">9:00 AM – 7:00 PM</span></li>
+          <li><span class="day">Friday</span><span class="time">9:00 AM – 7:00 PM</span></li>
+          <li><span class="day">Saturday</span><span class="time">9:00 AM – 7:00 PM</span></li>
+          <li><span class="day">Sunday</span><span class="time">9:00 AM – 5:00 PM</span></li>
+        </ul>
+        <a class="btn btn-pri" href="tel:+12092353454" style="margin-top:.4rem">Call to Book</a>
+        <div class="findus">
+          <a href="https://maps.google.com/?cid=17717224816457652684" target="_blank" rel="noopener">Google Business</a>
+          <a href="https://www.google.com/maps?q=310+Lincoln+Center,+Stockton,+CA+95207&z=15" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </div>
+      <div class="visit-map">
+        <iframe
+          src="https://www.google.com/maps?q=310%20Lincoln%20Center%2C%20Stockton%2C%20CA%2095207&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Lacquer Nails"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="wrap">
+    <h2>Ready for a fresh <em>set</em>?</h2>
+    <div>
+      <a class="btn btn-dark" href="tel:+12092353454">Call Now
+        <span class="phone">(209) 235-3454</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="fbrand">Lacquer Nails<span class="dot">.</span></div>
+      <p style="color:var(--muted);font-size:.85rem;margin-top:.4rem">310 Lincoln Center, Stockton, CA 95207 · (209) 235-3454</p>
+    </div>
+    <div class="flinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#visit">Visit</a>
+      <a href="https://maps.google.com/?cid=17717224816457652684" target="_blank" rel="noopener">Google</a>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:1.6rem">
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

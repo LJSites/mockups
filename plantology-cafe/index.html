@@ -1,0 +1,565 @@
+<!-- coffee · fresh-natural · hero-layout 1 · svc-layout 1 · DM Serif Display/Work Sans -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plantology Cafe — Oceanside, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --acc:#15803d;
+    --bg:#f7fee7;
+    --dark:#1a2e1a;
+    --mid:#3d5c3d;
+    --light:#dcfce7;
+    --warm:#fefce8;
+    --text:#2d3a2d;
+    --muted:#5a6e5a;
+    --nav-h:64px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{font-family:'Work Sans',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:16px}
+  .brand{font-family:'DM Serif Display',serif; font-size:1.5rem;color:var(--dark);letter-spacing:-0.01em}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:100;
+    height:var(--nav-h);
+    background:rgba(247,254,231,0.95);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(21,128,61,0.15);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 clamp(1rem,5vw,3rem);
+  }
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{text-decoration:none;color:var(--mid);font-size:0.85rem;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s}
+  .nav-links a:hover{color:var(--acc)}
+  .nav-cta{
+    display:inline-block;padding:0.5rem 1.25rem;
+    background:var(--acc);color:#fff;border-radius:2px;
+    font-size:0.8rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;
+    text-decoration:none;transition:background 0.2s,transform 0.15s;
+  }
+  .nav-cta:hover{background:var(--dark);transform:translateY(-1px)}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+  .hamburger span{display:block;width:22px;height:2px;background:var(--dark);transition:all 0.3s}
+
+  /* HERO — left image */
+  .hero{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    min-height:calc(100vh - var(--nav-h));
+  }
+  .hero-image{
+    position:relative;overflow:hidden;
+    min-height:480px;
+  }
+  .hero-image img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform 6s ease;
+  }
+  .hero-image:hover img{transform:scale(1.04)}
+  .hero-image-badge{
+    position:absolute;bottom:2rem;left:2rem;
+    background:var(--bg);padding:0.75rem 1.25rem;
+    font-family:'DM Serif Display',serif;font-style:italic;
+    font-size:1.05rem;color:var(--acc);
+    border-left:3px solid var(--acc);
+    max-width:240px;line-height:1.3;
+  }
+  .hero-content{
+    display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(2.5rem,6vw,5rem) clamp(1.5rem,4vw,4rem);
+    background:var(--warm);
+  }
+  .hero-eyebrow{
+    font-size:0.75rem;letter-spacing:0.12em;text-transform:uppercase;
+    color:var(--acc);font-weight:600;margin-bottom:1rem;
+  }
+  .hero-content h1{
+    font-family:'DM Serif Display',serif;
+    font-size:clamp(2.4rem,5vw,3.8rem);
+    line-height:1.1;
+    color:var(--dark);
+    margin-bottom:1.25rem;
+    letter-spacing:-0.02em;
+  }
+  .hero-content p{
+    font-size:1.05rem;color:var(--muted);
+    max-width:420px;margin-bottom:2rem;line-height:1.7;
+    font-weight:300;
+  }
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+  .btn-primary{
+    display:inline-block;padding:0.85rem 2rem;
+    background:var(--acc);color:#fff;
+    font-size:0.9rem;font-weight:600;letter-spacing:0.04em;
+    text-decoration:none;border-radius:2px;
+    transition:background 0.2s,transform 0.15s;
+  }
+  .btn-primary:hover{background:var(--dark);transform:translateY(-2px)}
+  .btn-ghost{
+    display:inline-block;padding:0.85rem 2rem;
+    border:1.5px solid var(--acc);color:var(--acc);
+    font-size:0.9rem;font-weight:600;letter-spacing:0.04em;
+    text-decoration:none;border-radius:2px;
+    transition:background 0.2s,color 0.2s;
+  }
+  .btn-ghost:hover{background:var(--acc);color:#fff}
+
+  /* STRIP */
+  .strip{
+    background:var(--acc);color:#fff;
+    text-align:center;padding:0.9rem 1rem;
+    font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:500;
+  }
+
+  /* ABOUT */
+  .about{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+  }
+  .about-gallery{
+    display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;
+    gap:3px;
+  }
+  .about-gallery img{width:100%;height:240px;object-fit:cover;display:block}
+  .about-gallery img:first-child{grid-column:1/-1;height:320px}
+  .about-text{
+    padding:clamp(2.5rem,5vw,4.5rem) clamp(1.5rem,4vw,3.5rem);
+    display:flex;flex-direction:column;justify-content:center;
+    background:var(--bg);
+  }
+  .section-label{
+    font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;
+    color:var(--acc);font-weight:600;margin-bottom:0.75rem;
+  }
+  .about-text h2{
+    font-family:'DM Serif Display',serif;
+    font-size:clamp(1.8rem,3vw,2.6rem);
+    color:var(--dark);margin-bottom:1.25rem;line-height:1.15;
+  }
+  .about-text p{
+    color:var(--muted);font-size:0.97rem;line-height:1.75;
+    font-weight:300;margin-bottom:1rem;
+  }
+  .about-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:1.25rem}
+  .tag{
+    font-size:0.75rem;font-weight:500;letter-spacing:0.05em;
+    padding:0.3rem 0.75rem;border:1px solid rgba(21,128,61,0.3);
+    color:var(--acc);border-radius:2px;background:var(--light);
+  }
+
+  /* MENU */
+  .menu-section{padding:clamp(3rem,6vw,5rem) clamp(1rem,5vw,3rem);background:var(--warm)}
+  .menu-section>h2{
+    font-family:'DM Serif Display',serif;
+    font-size:clamp(2rem,3.5vw,2.8rem);
+    color:var(--dark);text-align:center;margin-bottom:0.5rem;
+  }
+  .menu-section>.section-label{text-align:center;margin-bottom:2.5rem}
+  .menu-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:0;max-width:960px;margin:0 auto;
+    border:1px solid rgba(21,128,61,0.15);
+  }
+  .menu-item{
+    display:grid;grid-template-columns:80px 1fr;gap:0;
+    border:1px solid rgba(21,128,61,0.1);
+    background:var(--bg);
+    transition:background 0.2s;
+  }
+  .menu-item:hover{background:var(--light)}
+  .menu-item-num{
+    display:flex;align-items:center;justify-content:center;
+    font-family:'DM Serif Display',serif;font-style:italic;
+    font-size:2rem;color:rgba(21,128,61,0.25);
+    border-right:1px solid rgba(21,128,61,0.12);
+    padding:1.25rem 0;
+  }
+  .menu-item-body{padding:1.25rem 1.25rem}
+  .menu-item-body h3{
+    font-family:'DM Serif Display',serif;
+    font-size:1.05rem;color:var(--dark);margin-bottom:0.3rem;
+  }
+  .menu-item-body p{font-size:0.82rem;color:var(--muted);line-height:1.55;font-weight:300}
+
+  /* PLANTS */
+  .plants-section{
+    padding:clamp(3rem,6vw,5rem) clamp(1rem,5vw,3rem);
+    background:var(--dark);color:#fff;
+  }
+  .plants-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+  .plants-section h2{
+    font-family:'DM Serif Display',serif;
+    font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:1.25rem;
+    line-height:1.15;
+  }
+  .plants-section .section-label{color:rgba(220,252,231,0.7)}
+  .plants-section p{color:rgba(255,255,255,0.75);line-height:1.75;font-size:0.97rem;font-weight:300;margin-bottom:1rem}
+  .plants-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px}
+  .plants-img-grid img{width:100%;height:200px;object-fit:cover;display:block}
+  .plants-img-grid img:last-child{grid-column:1/-1;height:160px}
+
+  /* TESTIMONIES */
+  .testimonies{padding:clamp(3rem,6vw,5rem) clamp(1rem,5vw,3rem);background:var(--bg)}
+  .testimonies>h2{
+    font-family:'DM Serif Display',serif;
+    font-size:clamp(2rem,3.5vw,2.8rem);color:var(--dark);
+    text-align:center;margin-bottom:0.5rem;
+  }
+  .testimonies>.section-label{text-align:center;margin-bottom:2.5rem}
+  .testimony-list{
+    max-width:900px;margin:0 auto;
+    display:flex;flex-direction:column;gap:0;
+  }
+  .testimony-item{
+    padding:2rem 0;
+    border-bottom:1px solid rgba(21,128,61,0.15);
+    display:grid;grid-template-columns:3fr 1fr;
+    gap:2rem;align-items:start;
+  }
+  .testimony-item:last-child{border-bottom:none}
+  .testimony-quote{
+    font-family:'DM Serif Display',serif;font-style:italic;
+    font-size:1.08rem;color:var(--dark);line-height:1.65;
+    position:relative;
+  }
+  .testimony-quote::before{
+    content:'\201C';
+    font-size:3rem;color:var(--acc);opacity:0.3;
+    position:absolute;top:-0.75rem;left:-0.5rem;
+    font-family:'DM Serif Display',serif;line-height:1;
+  }
+  .testimony-quote p{padding-left:1.25rem}
+  .testimony-attr{
+    text-align:right;
+    font-size:0.82rem;font-weight:500;color:var(--acc);letter-spacing:0.04em;
+    padding-top:0.25rem;
+  }
+
+  /* HOURS & LOCATION */
+  .info-section{
+    display:grid;grid-template-columns:1fr 1fr;background:var(--warm);
+  }
+  .hours-block{
+    padding:clamp(2.5rem,5vw,4.5rem) clamp(1.5rem,4vw,3.5rem);
+    border-right:1px solid rgba(21,128,61,0.15);
+  }
+  .hours-block h2{
+    font-family:'DM Serif Display',serif;
+    font-size:1.8rem;color:var(--dark);margin-bottom:1.5rem;
+  }
+  .hours-table{width:100%;border-collapse:collapse}
+  .hours-table tr{border-bottom:1px solid rgba(21,128,61,0.1)}
+  .hours-table td{padding:0.6rem 0;font-size:0.9rem;color:var(--text)}
+  .hours-table td:first-child{font-weight:500;color:var(--mid);padding-right:2rem}
+  .hours-table .closed{color:rgba(90,110,90,0.5);font-style:italic}
+  .map-block{min-height:350px;position:relative}
+  .map-block iframe{width:100%;height:100%;border:0;display:block;min-height:350px}
+
+  /* CONTACT */
+  .contact{
+    padding:clamp(2.5rem,5vw,4rem) clamp(1rem,5vw,3rem);
+    background:var(--bg);
+    display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:1100px;margin:0 auto;
+    align-items:start;
+  }
+  .contact-left h2{
+    font-family:'DM Serif Display',serif;
+    font-size:clamp(1.6rem,3vw,2.2rem);color:var(--dark);margin-bottom:1rem;
+  }
+  .contact-left p{color:var(--muted);font-size:0.95rem;line-height:1.7;font-weight:300;margin-bottom:1.5rem}
+  .contact-detail{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.5rem}
+  .contact-detail a{
+    text-decoration:none;color:var(--text);font-size:0.92rem;font-weight:500;
+    transition:color 0.2s;
+  }
+  .contact-detail a:hover{color:var(--acc)}
+  .social-row{display:flex;gap:0.75rem;flex-wrap:wrap}
+  .social-link{
+    font-size:0.78rem;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;
+    text-decoration:none;color:var(--acc);
+    padding:0.35rem 0.75rem;border:1.5px solid rgba(21,128,61,0.3);
+    border-radius:2px;background:var(--light);transition:background 0.2s,color 0.2s;
+  }
+  .social-link:hover{background:var(--acc);color:#fff}
+  .contact-right .btn-primary{width:100%;text-align:center;font-size:1rem;padding:1rem}
+
+  /* FOOTER */
+  footer{
+    background:var(--dark);color:rgba(255,255,255,0.65);
+    text-align:center;padding:2rem 1rem;font-size:0.8rem;line-height:1.8;
+  }
+  footer a{color:rgba(220,252,231,0.7);text-decoration:none}
+  footer a:hover{color:#fff}
+
+  /* MOBILE */
+  @media(max-width:768px){
+    .nav-links{display:none;flex-direction:column;gap:0;
+      position:absolute;top:var(--nav-h);left:0;right:0;
+      background:var(--bg);padding:1rem 0;border-bottom:1px solid rgba(21,128,61,0.15);}
+    .nav-links.open{display:flex}
+    .nav-links a{padding:0.75rem clamp(1rem,5vw,3rem);border-bottom:1px solid rgba(21,128,61,0.08)}
+    .hamburger{display:flex}
+    .hero{grid-template-columns:1fr}
+    .hero-image{min-height:300px;order:0}
+    .hero-content{order:1}
+    .about{grid-template-columns:1fr}
+    .about-gallery img:first-child{height:220px}
+    .about-gallery img{height:160px}
+    .menu-grid{grid-template-columns:1fr}
+    .plants-inner{grid-template-columns:1fr}
+    .info-section{grid-template-columns:1fr}
+    .hours-block{border-right:none;border-bottom:1px solid rgba(21,128,61,0.15)}
+    .contact{grid-template-columns:1fr}
+    .testimony-item{grid-template-columns:1fr}
+    .testimony-attr{text-align:left}
+  }
+</style>
+</head>
+<body>
+
+<nav id="top">
+  <a href="#top" class="brand">Plantology Cafe</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#plants">Plants</a></li>
+    <li><a href="#testimonies">Stories</a></li>
+    <li><a href="#hours">Hours</a></li>
+    <li><a href="#contact">Visit</a></li>
+  </ul>
+  <a href="tel:+17608053258" class="nav-cta">Call Us</a>
+  <div class="hamburger" id="hamburger" aria-label="Toggle navigation" role="button" tabindex="0">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO — left image -->
+<section class="hero" id="home">
+  <div class="hero-image">
+    <img src="./photos/01.jpg" alt="Inside Plantology Cafe — plants and coffee">
+    <div class="hero-image-badge">Sip. Grow. Belong.</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Oceanside, CA — S. Coast Hwy</div>
+    <h1>Where coffee meets the garden.</h1>
+    <p>A sun-drenched cafe rooted in community, craft coffee, and the beauty of living things — serving Oceanside since our first bloom.</p>
+    <div class="hero-actions">
+      <a href="tel:+17608053258" class="btn-primary">Call to Order</a>
+      <a href="https://www.google.com/maps?q=913+S+Coast+Hwy,+Oceanside,+CA+92054&z=15&output=embed" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<div class="strip">Open Wed – Mon · 913 S Coast Hwy, Oceanside · (760) 805-3258</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-gallery">
+    <img src="./photos/02.jpg" alt="Cafe interior">
+    <img src="./photos/03.jpg" alt="Coffee drinks">
+    <img src="./photos/04.jpg" alt="Food and pastries">
+  </div>
+  <div class="about-text">
+    <div class="section-label">Our Story</div>
+    <h2>More than a cup — a whole world to explore.</h2>
+    <p>Plantology Cafe sits just off South Coast Highway in Oceanside, a rare place where specialty coffee and living botanicals share the same sunlit space. We source our coffee from local vendors who share our values, and we've built our menu around flavors that surprise you.</p>
+    <p>Every corner celebrates Latina, women, and LGBT empowerment — because a cafe should reflect the community it calls home. Pick up a plant, pot your own in our potting room, or simply linger over a café de olla.</p>
+    <div class="about-tags">
+      <span class="tag">Local Coffee Sourced</span>
+      <span class="tag">Plant Shop On-Site</span>
+      <span class="tag">Vegan Options</span>
+      <span class="tag">Community-Rooted</span>
+    </div>
+  </div>
+</section>
+
+<!-- MENU — 2-col rows layout -->
+<section class="menu-section" id="menu">
+  <div class="section-label">What We Serve</div>
+  <h2>From the Menu</h2>
+  <div class="menu-grid">
+    <div class="menu-item">
+      <div class="menu-item-num">01</div>
+      <div class="menu-item-body">
+        <h3>Café de Olla</h3>
+        <p>Traditional Mexican spiced coffee brewed the slow way — cinnamon, piloncillo, pure warmth in a cup.</p>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-num">02</div>
+      <div class="menu-item-body">
+        <h3>Oaxacan Chocolate Latte</h3>
+        <p>Deep, smoky chocolate from Oaxaca folded into a silky espresso latte. Delicious and distinctive.</p>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-num">03</div>
+      <div class="menu-item-body">
+        <h3>Cookie Butter Latte</h3>
+        <p>Sweet but balanced — a seasonal fan favorite with warmly spiced cookie butter woven through espresso.</p>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-num">04</div>
+      <div class="menu-item-body">
+        <h3>Raspberry Cheesecake Matcha</h3>
+        <p>Ceremonial-grade matcha meets tangy raspberry and creamy cheesecake flavor. Everything you need it to be.</p>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-num">05</div>
+      <div class="menu-item-body">
+        <h3>Avocado Toast</h3>
+        <p>Simple, packed with flavor. Ripe avocado on toasted bread — a perfect companion to your morning coffee.</p>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-num">06</div>
+      <div class="menu-item-body">
+        <h3>Turkey Pesto Panini</h3>
+        <p>Soft panini-pressed bread, roasted red peppers, pesto, turkey, and melted cheese. Enough for two meals.</p>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-num">07</div>
+      <div class="menu-item-body">
+        <h3>Torta Oaxaqueña</h3>
+        <p>A hearty Oaxacan-style torta bursting with layered flavors — a breakfast that earns a 11/10 rating.</p>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-num">08</div>
+      <div class="menu-item-body">
+        <h3>Vegan Twinkies & Treats</h3>
+        <p>Plant-based baked goods that don't compromise on joy. Grab a box for the people you love.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANTS -->
+<section class="plants-section" id="plants">
+  <div class="plants-inner">
+    <div>
+      <div class="section-label">The Plant Side</div>
+      <h2>A nursery inside a cafe. Seriously.</h2>
+      <p>Browse carnivorous plants, rare tropicals, and varieties you won't find at any garden center — all at surprisingly reasonable prices. Take one home, or stay and pot your own in our dedicated potting room.</p>
+      <p>It's the kind of place that makes you slow down, look closer, and leave with something green tucked under your arm.</p>
+      <a href="tel:+17608053258" class="btn-primary" style="display:inline-block;margin-top:1rem">Ask About Current Stock</a>
+    </div>
+    <div class="plants-img-grid">
+      <img src="./photos/05.jpg" alt="Plants for sale at Plantology Cafe">
+      <img src="./photos/06.jpg" alt="Plant selection inside the cafe">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="testimonies" id="testimonies">
+  <div class="section-label">Heard from Guests</div>
+  <h2>Customer Testimonies</h2>
+  <div class="testimony-list">
+    <div class="testimony-item">
+      <div class="testimony-quote">
+        <p>The cookie butter latte was phenom! Sweet but not too sweet and well balanced. There are tons of spots to sit inside and outside. You can also buy the plants or pot your own in a little potting room. So cute and the staff is sweet too.</p>
+      </div>
+      <div class="testimony-attr">Hadley H.</div>
+    </div>
+    <div class="testimony-item">
+      <div class="testimony-quote">
+        <p>Café de olla &amp; Oaxacan chocolate lattes were delicious. Avocado toast was simple yet packed with flavor. Can't forget the plants — all stunning. Coffee is from a local vendor. Love that kind of support.</p>
+      </div>
+      <div class="testimony-attr">Norma A.</div>
+    </div>
+    <div class="testimony-item">
+      <div class="testimony-quote">
+        <p>Magical little coffee shop off South Coast Hwy! The service was fast and friendly. They had carnivorous plants, and some plants I had never even seen before. The raspberry cheesecake matcha was everything I needed it to be and more!</p>
+      </div>
+      <div class="testimony-attr">Lena F.</div>
+    </div>
+    <div class="testimony-item">
+      <div class="testimony-quote">
+        <p>This small cafe is just the best — amazing food and drinks, cute odds and ends to purchase, beautiful thriving plants, and friendly service! I loved the torta oaxaqueña for breakfast. 11/10 would recommend!</p>
+      </div>
+      <div class="testimony-attr">Jennifer A.</div>
+    </div>
+    <div class="testimony-item">
+      <div class="testimony-quote">
+        <p>Plants everywhere, cute stickers, pins, and keychains, and an overall theme of Latina/women/LGBT empowerment. I love that. I bought a mocha and loved it. I will be back to try something new next time!</p>
+      </div>
+      <div class="testimony-attr">Alexandra D.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & MAP -->
+<section class="info-section" id="hours">
+  <div class="hours-block">
+    <div class="section-label">When We're Open</div>
+    <h2>Hours</h2>
+    <table class="hours-table">
+      <tr><td>Monday</td><td>7:00 AM – 1:00 PM</td></tr>
+      <tr><td>Tuesday</td><td class="closed">Closed</td></tr>
+      <tr><td>Wednesday</td><td>7:00 AM – 4:00 PM</td></tr>
+      <tr><td>Thursday</td><td>7:00 AM – 4:00 PM</td></tr>
+      <tr><td>Friday</td><td>7:00 AM – 4:00 PM</td></tr>
+      <tr><td>Saturday</td><td>7:00 AM – 4:00 PM</td></tr>
+      <tr><td>Sunday</td><td>7:00 AM – 4:00 PM</td></tr>
+    </table>
+    <p style="margin-top:1.5rem;font-size:0.83rem;color:var(--muted);font-style:italic">Hours may vary on holidays — call ahead to confirm.</p>
+  </div>
+  <div class="map-block">
+    <iframe
+      src="https://www.google.com/maps?q=913+S+Coast+Hwy,+Oceanside,+CA+92054&z=15&output=embed"
+      title="Plantology Cafe location"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact">
+    <div class="contact-left">
+      <div class="section-label">Find Us</div>
+      <h2>Come in, we kept a seat for you.</h2>
+      <p>We're at 913 S Coast Hwy in Oceanside, right where the coffee is always fresh and the plants are always thriving. We'd love to see you.</p>
+      <div class="contact-detail">
+        <a href="tel:+17608053258">(760) 805-3258</a>
+        <a href="https://maps.google.com/?q=913+S+Coast+Hwy,+Oceanside,+CA+92054" target="_blank" rel="noopener">913 S Coast Hwy, Oceanside, CA 92054</a>
+        <a href="https://maps.google.com/?cid=8336481685698693811&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">View on Google Maps</a>
+      </div>
+      <div class="social-row">
+        <a href="https://maps.google.com/?cid=8336481685698693811&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="social-link">Google Business</a>
+      </div>
+    </div>
+    <div class="contact-right" style="padding-top:3rem">
+      <p style="font-family:'DM Serif Display',serif;font-style:italic;font-size:1.15rem;color:var(--dark);margin-bottom:1.5rem;line-height:1.5">"A place where plants breathe and coffee does too."</p>
+      <a href="tel:+17608053258" class="btn-primary">Call (760) 805-3258</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p style="font-family:'DM Serif Display',serif;font-size:1rem;color:rgba(255,255,255,0.85);margin-bottom:0.5rem">Plantology Cafe</p>
+  <p>913 S Coast Hwy · Oceanside, CA 92054 · <a href="tel:+17608053258">(760) 805-3258</a></p>
+  <p style="margin-top:1rem">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  hamburger.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' ') navLinks.classList.toggle('open'); });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+</body>
+</html>

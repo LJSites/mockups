@@ -1,0 +1,816 @@
+<!-- flavor: oak-craftsman | accent: #6A2C70 | bg: #FBEAEA | hero: centered-poster | service: horizontal-scroll -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Oaks Barbers — Oroville, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --acc: #6A2C70;
+      --bg: #FBEAEA;
+      --dark: #1C0C1E;
+      --mid: #4A1C52;
+      --light-acc: #E8C4EE;
+      --text: #2A1A2E;
+      --muted: #7A6A7E;
+      --white: #FFFFFF;
+      --nav-h: 64px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    h1, h2, h3 {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 5vw, 3rem);
+    }
+
+    .nav-brand {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.15rem;
+      color: var(--bg);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--light-acc);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--acc);
+      color: var(--white) !important;
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--mid) !important; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--bg);
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: var(--dark);
+        padding: 1.5rem clamp(1rem, 5vw, 3rem);
+        gap: 1.25rem;
+        border-top: 1px solid rgba(251,234,234,0.08);
+      }
+    }
+
+    /* ── HERO ────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: clamp(480px, 80vh, 760px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('./photos/02.jpg');
+      background-size: cover;
+      background-position: center top;
+      filter: brightness(0.38) saturate(0.7);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: clamp(2rem, 8vw, 5rem) clamp(1.25rem, 6vw, 4rem);
+      max-width: 680px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--light-acc);
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--acc);
+      padding-bottom: 0.35rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      color: var(--bg);
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: rgba(251,234,234,0.78);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      padding: 0.85rem 2rem;
+      border: 2px solid var(--acc);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--bg);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--bg);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      padding: 0.85rem 2rem;
+      border: 2px solid rgba(251,234,234,0.5);
+      transition: border-color 0.2s, color 0.2s;
+      margin-left: 0.75rem;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--bg);
+    }
+
+    @media (max-width: 420px) {
+      .btn-outline { margin-left: 0; margin-top: 0.75rem; }
+      .hero-btns { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; }
+      .btn-outline { margin-left: 0; }
+    }
+
+    /* ── STRIP ───────────────────────────────────────────── */
+    .strip {
+      background: var(--acc);
+      color: var(--bg);
+      text-align: center;
+      padding: 0.85rem 1rem;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ── ABOUT ───────────────────────────────────────────── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 480px;
+    }
+
+    .about-photo {
+      background-image: url('./photos/01.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 340px;
+    }
+
+    .about-text {
+      background: var(--dark);
+      color: var(--bg);
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .section-label {
+      display: block;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--light-acc);
+      margin-bottom: 1rem;
+    }
+
+    .about-text h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--bg);
+      margin-bottom: 1.25rem;
+    }
+
+    .about-text p {
+      color: rgba(251,234,234,0.72);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-size: 0.96rem;
+    }
+
+    @media (max-width: 700px) {
+      #about { grid-template-columns: 1fr; }
+      .about-photo { min-height: 280px; order: -1; }
+    }
+
+    /* ── SERVICES ────────────────────────────────────────── */
+    #services {
+      padding: clamp(3rem, 7vw, 6rem) 0;
+      background: var(--bg);
+      overflow: hidden;
+    }
+
+    .services-header {
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+      margin-bottom: 2.5rem;
+    }
+
+    .services-header h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--dark);
+    }
+
+    .services-header p {
+      color: var(--muted);
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .services-scroll {
+      display: flex;
+      gap: 1.25rem;
+      overflow-x: auto;
+      padding: 0.5rem clamp(1.25rem, 5vw, 3rem) 1.5rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--acc) var(--light-acc);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .services-scroll::-webkit-scrollbar { height: 4px; }
+    .services-scroll::-webkit-scrollbar-track { background: var(--light-acc); }
+    .services-scroll::-webkit-scrollbar-thumb { background: var(--acc); border-radius: 2px; }
+
+    .service-card {
+      flex: 0 0 clamp(200px, 42vw, 260px);
+      background: var(--dark);
+      color: var(--bg);
+      padding: 2rem 1.5rem;
+      position: relative;
+      border-bottom: 3px solid var(--acc);
+    }
+
+    .service-card::before {
+      content: attr(data-num);
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 2.5rem;
+      color: rgba(106,44,112,0.25);
+      line-height: 1;
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      color: var(--bg);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-price {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.5rem;
+      color: var(--light-acc);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.83rem;
+      color: rgba(251,234,234,0.6);
+      line-height: 1.6;
+    }
+
+    /* ── GALLERY ─────────────────────────────────────────── */
+    #gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 220px 220px;
+    }
+
+    .gallery-cell {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-cell img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-cell:hover img { transform: scale(1.05); }
+
+    .gallery-cell.tall {
+      grid-row: span 2;
+    }
+
+    @media (max-width: 600px) {
+      #gallery {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .gallery-cell.tall { grid-row: span 1; }
+    }
+
+    /* ── TESTIMONIES ─────────────────────────────────────── */
+    #testimonies {
+      background: var(--dark);
+      padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 5vw, 3rem);
+    }
+
+    #testimonies .section-label { color: var(--light-acc); }
+
+    #testimonies h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--bg);
+      margin-bottom: 3rem;
+    }
+
+    .testimonies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: 2rem;
+    }
+
+    .testimony {
+      border-left: 3px solid var(--acc);
+      padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+      background: rgba(251,234,234,0.04);
+    }
+
+    .testimony blockquote {
+      font-style: italic;
+      color: rgba(251,234,234,0.78);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 1.1rem;
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-weight: 400;
+    }
+
+    .testimony cite {
+      font-style: normal;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light-acc);
+    }
+
+    /* ── HOURS & MAP ─────────────────────────────────────── */
+    #location {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 420px;
+    }
+
+    .hours-panel {
+      background: var(--bg);
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+    }
+
+    .hours-panel h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      color: var(--dark);
+      margin-bottom: 2rem;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid rgba(106,44,112,0.15);
+    }
+
+    .hours-table tr:last-child { border-bottom: none; }
+
+    .hours-table td {
+      padding: 0.6rem 0;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .hours-table td:last-child {
+      text-align: right;
+      color: var(--muted);
+    }
+
+    .day-closed { color: var(--muted) !important; }
+    .day-open { font-weight: 500; }
+
+    .address-block {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(106,44,112,0.2);
+    }
+
+    .address-block p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .address-block a {
+      display: inline-block;
+      margin-top: 0.75rem;
+      color: var(--acc);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--acc);
+      transition: opacity 0.2s;
+    }
+
+    .address-block a:hover { opacity: 0.7; }
+
+    .map-panel iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+      border: none;
+      display: block;
+      filter: grayscale(0.2);
+    }
+
+    @media (max-width: 700px) {
+      #location { grid-template-columns: 1fr; }
+      .map-panel iframe { min-height: 260px; }
+    }
+
+    /* ── CONTACT CTA ─────────────────────────────────────── */
+    #contact {
+      background: var(--acc);
+      padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 5vw, 3rem);
+      text-align: center;
+    }
+
+    #contact h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--bg);
+      margin-bottom: 0.75rem;
+    }
+
+    #contact p {
+      color: rgba(251,234,234,0.78);
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-phone {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--bg);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 2rem;
+      transition: opacity 0.2s;
+    }
+
+    .contact-phone:hover { opacity: 0.8; }
+
+    .btn-light {
+      display: inline-block;
+      background: var(--bg);
+      color: var(--acc);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.06em;
+      padding: 0.85rem 2rem;
+      border: 2px solid var(--bg);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-light:hover {
+      background: transparent;
+      color: var(--bg);
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      padding: 2rem clamp(1.25rem, 5vw, 3rem);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: 1.1rem;
+      color: var(--bg);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .footer-social a {
+      color: var(--light-acc);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-social a:hover { color: var(--bg); }
+
+    .footer-credit {
+      width: 100%;
+      border-top: 1px solid rgba(251,234,234,0.08);
+      margin-top: 1.25rem;
+      padding-top: 1.25rem;
+      font-size: 0.78rem;
+      color: rgba(251,234,234,0.4);
+    }
+
+    .footer-credit a {
+      color: rgba(251,234,234,0.55);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-credit a:hover { color: var(--light-acc); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="#hero">The Oaks Barbers</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Hours</a></li>
+      <li><a href="#contact" class="nav-cta">Call Now</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-img"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Oroville, California</span>
+      <h1>The Oaks<br>Barbers</h1>
+      <p class="hero-tagline">Precision cuts, personal attention — where every client leaves looking their best.</p>
+      <div class="hero-btns">
+        <a href="tel:+15305389277" class="btn-primary">Call to Book</a>
+        <a href="#location" class="btn-outline">Hours &amp; Location</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="strip">Wed – Fri &nbsp;·&nbsp; 9 AM – 4 PM &nbsp;·&nbsp; (530) 538-9277</div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-photo"></div>
+    <div class="about-text">
+      <span class="section-label">The Shop</span>
+      <h2>A hidden gem<br>in Oroville</h2>
+      <p>The Oaks Barbers isn't trying to be a chain. It's a neighborhood shop with one barber who genuinely cares about getting your cut right — the lengths, the taper, the finish.</p>
+      <p>Dana takes her time. Whether you're a first-timer or a regular, you leave feeling like the only client she had that day.</p>
+      <p>Walk-in welcome when there's room, or call ahead. Either way, expect precision and a clean result you'll actually be happy with.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-header">
+      <span class="section-label">What We Offer</span>
+      <h2>Services</h2>
+      <p>Scroll to browse &rarr;</p>
+    </div>
+    <div class="services-scroll">
+      <div class="service-card" data-num="01">
+        <h3>Classic Haircut</h3>
+        <div class="service-price">From $25</div>
+        <p>Scissor or clipper — tailored to your head shape, hair texture, and how you actually style it at home.</p>
+      </div>
+      <div class="service-card" data-num="02">
+        <h3>Taper &amp; Fade</h3>
+        <div class="service-price">From $28</div>
+        <p>Clean, precise taper or skin fade. Dana pays attention to the details around the ears and neckline.</p>
+      </div>
+      <div class="service-card" data-num="03">
+        <h3>Beard Trim</h3>
+        <div class="service-price">From $15</div>
+        <p>Shape-up and trim to complement your cut. Added to any haircut or as a standalone service.</p>
+      </div>
+      <div class="service-card" data-num="04">
+        <h3>Full Cut &amp; Beard</h3>
+        <div class="service-price">From $40</div>
+        <p>The complete refresh — haircut plus beard trim in one appointment. A solid hour of chair time.</p>
+      </div>
+      <div class="service-card" data-num="05">
+        <h3>Kids' Cut</h3>
+        <div class="service-price">From $18</div>
+        <p>Patient and precise. No rush, no chaos — just a clean result kids and parents both appreciate.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <div id="gallery">
+    <div class="gallery-cell tall">
+      <img src="./photos/03.jpg" alt="The Oaks Barbers interior" />
+    </div>
+    <div class="gallery-cell">
+      <img src="./photos/04.jpg" alt="Haircut in progress" />
+    </div>
+    <div class="gallery-cell">
+      <img src="./photos/05.jpg" alt="Barbershop tools and atmosphere" />
+    </div>
+    <div class="gallery-cell">
+      <img src="./photos/06.jpg" alt="The Oaks Barbers shop" />
+    </div>
+  </div>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <span class="section-label">In Their Words</span>
+    <h2>What People Say</h2>
+    <div class="testimonies-grid">
+      <div class="testimony">
+        <blockquote>"My haircut with Dana was not only the best haircut I've ever had, it was the best customer service experience I've ever had. She took her time and paid attention to every detail. I felt like a top priority when I was in her chair."</blockquote>
+        <cite>— joekickass52</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"Got my haircut last min, and Dana was able to accommodate. She gave me exactly what type of cut I was looking for with the proper lengths. This is a hidden gem. Dana is awesome!"</blockquote>
+        <cite>— Bird M.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"I went for the first time today, Dana was amazing and the price is right! She got my hair perfect!"</blockquote>
+        <cite>— Leah N.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"Coming in from out of town and had her do this refreshes my soul. Got me in quick and did a fantastic cut!"</blockquote>
+        <cite>— Tony C.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>"This was my first time going to the Oaks Barber's and it was a great experience. Thank you very much for the very nice haircut. I will be back."</blockquote>
+        <cite>— John S.</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & MAP -->
+  <section id="location">
+    <div class="hours-panel">
+      <span class="section-label">Find Us</span>
+      <h2>Hours &amp; Location</h2>
+      <table class="hours-table">
+        <tbody>
+          <tr><td class="day-closed">Monday</td><td class="day-closed">Closed</td></tr>
+          <tr><td class="day-closed">Tuesday</td><td class="day-closed">Closed</td></tr>
+          <tr><td class="day-open">Wednesday</td><td class="day-open">9:00 AM – 4:00 PM</td></tr>
+          <tr><td class="day-open">Thursday</td><td class="day-open">9:00 AM – 4:00 PM</td></tr>
+          <tr><td class="day-open">Friday</td><td class="day-open">9:00 AM – 4:00 PM</td></tr>
+          <tr><td class="day-closed">Saturday</td><td class="day-closed">Closed</td></tr>
+          <tr><td class="day-closed">Sunday</td><td class="day-closed">Closed</td></tr>
+        </tbody>
+      </table>
+      <div class="address-block">
+        <p>3035 Oro Dam Blvd E</p>
+        <p>Oroville, CA 95966</p>
+        <a href="https://maps.google.com/?q=3035+Oro+Dam+Blvd+E,+Oroville,+CA+95966" target="_blank" rel="noopener">Get Directions &rarr;</a>
+      </div>
+    </div>
+    <div class="map-panel">
+      <iframe
+        src="https://www.google.com/maps?q=3035+Oro+Dam+Blvd+E,+Oroville,+CA+95966&z=15&output=embed"
+        loading="lazy"
+        allowfullscreen
+        title="The Oaks Barbers location map"
+      ></iframe>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section id="contact">
+    <span class="section-label" style="color:rgba(251,234,234,0.6);">Book an Appointment</span>
+    <h2>Ready for a great cut?</h2>
+    <p>Call to book or check availability. Walk-ins welcome when there's an opening.</p>
+    <a href="tel:+15305389277" class="contact-phone">(530) 538-9277</a>
+    <a href="https://maps.google.com/?cid=11176666550888313487" class="btn-light" target="_blank" rel="noopener">View on Google Maps</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">The Oaks Barbers</div>
+    <div class="footer-social">
+      <a href="https://maps.google.com/?cid=11176666550888313487&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+    </div>
+    <div class="footer-credit">
+      Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => {
+      links.classList.toggle('open');
+    });
+    // Close on link click
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => links.classList.remove('open'));
+    });
+  </script>
+
+</body>
+</html>

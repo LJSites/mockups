@@ -1,0 +1,473 @@
+<!--
+  ARCHETYPE: Warm rustic adobe cantina — a sun-baked Jalisco taquero mobile.
+  Palette: terracotta-clay (#a8442a) + warm cream/adobe (#f4e9d6) + deep agave green (#1f3d2b),
+           with a hand-cut gold sun motif (#d99a2b) recurring as a stamp.
+  Type: "Rye" (woodcut/slab western display) for headlines + "Bitter" (warm slab serif) for body,
+        with "Caveat" for the hand-lettered taquero accents ("¡Gracias por su preferencia!").
+  Structure: asymmetric left-rail sticky nav on desktop collapsing to a top bar on mobile;
+             hero is a cream adobe panel with a stamped gold sun + the night-truck photo set into an arched window;
+             menu is a two-column rustic "pizarra" board (Carnes / Antojitos) rendered as slab type on cream, not cards;
+             testimonies are two oversized hand-lettered quote blocks on terracotta; hours table as a stamped ledger.
+             No fade-up animation — only a slow sun-glow on the hero stamp + clay button press states.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tacos El Guero — Auténticos Tacos Estilo Jalisco · Rialto, CA</title>
+<meta name="description" content="Tacos El Guero — authentic Jalisco-style street tacos in Rialto, CA. Al pastor, asada, cabeza, lengua, buche & tripa, fresh off the truck. Open nightly 5–11 PM." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --clay:#a8442a;
+    --clay-deep:#7e2f1c;
+    --cream:#f4e9d6;
+    --cream-deep:#e9d8bd;
+    --agave:#1f3d2b;
+    --agave-soft:#2c5238;
+    --gold:#d99a2b;
+    --ink:#2b1d14;
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:var(--nav-h); /* mobile top bar height */
+  }
+  body{
+    font-family:"Bitter",Georgia,serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:"Rye",serif;font-weight:400;letter-spacing:.01em;line-height:1.05;}
+  .hand{font-family:"Caveat",cursive;}
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+
+  /* ---------- gold sun stamp (reusable) ---------- */
+  .sun{
+    width:54px;height:54px;flex:none;border-radius:50%;
+    background:
+      radial-gradient(circle at 50% 50%, var(--gold) 0 44%, transparent 46%),
+      conic-gradient(from 0deg, var(--gold) 0 7%, transparent 7% 12.5%, var(--gold) 12.5% 19.5%, transparent 19.5% 25%, var(--gold) 25% 32%, transparent 32% 37.5%, var(--gold) 37.5% 44.5%, transparent 44.5% 50%, var(--gold) 50% 57%, transparent 57% 62.5%, var(--gold) 62.5% 69.5%, transparent 69.5% 75%, var(--gold) 75% 82%, transparent 82% 87.5%, var(--gold) 87.5% 94.5%, transparent 94.5% 100%);
+    position:relative;
+  }
+  .sun::after{
+    content:"";position:absolute;inset:30%;border-radius:50%;
+    background:var(--cream);
+    box-shadow:inset 0 0 0 2px var(--clay);
+  }
+
+  /* ---------- layout shell ---------- */
+  .shell{display:flex;min-height:100vh;}
+
+  /* desktop left rail */
+  .rail{
+    width:240px;flex:none;
+    background:var(--agave);
+    color:var(--cream);
+    position:sticky;top:0;align-self:flex-start;height:100vh;
+    padding:34px 26px;
+    display:flex;flex-direction:column;
+    border-right:4px solid var(--gold);
+  }
+  .rail .brand{font-family:"Rye";font-size:1.5rem;color:var(--cream);line-height:1.1;}
+  .rail .brand small{display:block;font-family:"Caveat";font-size:1.25rem;color:var(--gold);margin-top:6px;}
+  .rail nav{margin-top:40px;display:flex;flex-direction:column;gap:2px;}
+  .rail nav a{
+    font-family:"Bitter";font-weight:600;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+    color:#cdbfa6;text-decoration:none;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.08);
+    transition:color .18s,padding-left .18s;
+  }
+  .rail nav a:hover{color:var(--gold);padding-left:8px;}
+  .rail .rail-foot{margin-top:auto;font-size:.78rem;color:#a89c84;line-height:1.6;}
+  .rail .rail-foot strong{color:var(--cream);font-weight:600;}
+
+  .content{flex:1 1 auto;min-width:0;}
+
+  /* mobile top bar (hidden on desktop) */
+  .topbar{display:none;}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.5em;
+    font-family:"Bitter";font-weight:700;font-size:.95rem;letter-spacing:.04em;
+    text-decoration:none;border:none;cursor:pointer;
+    padding:14px 26px;border-radius:3px;
+    transition:transform .08s ease, box-shadow .12s ease, background .18s;
+  }
+  .btn-clay{background:var(--clay);color:var(--cream);box-shadow:0 4px 0 var(--clay-deep);}
+  .btn-clay:hover{background:#b94e32;}
+  .btn-clay:active{transform:translateY(3px);box-shadow:0 1px 0 var(--clay-deep);}
+  .btn-out{background:transparent;color:var(--agave);box-shadow:inset 0 0 0 2px var(--agave);}
+  .btn-out:hover{background:var(--agave);color:var(--cream);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:var(--cream);
+    background-image:radial-gradient(circle at 18% 12%, rgba(217,154,43,.10) 0, transparent 38%);
+    padding:64px 7vw 56px;
+    border-bottom:4px solid var(--gold);
+    position:relative;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;max-width:1080px;}
+  .eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+  .eyebrow span{font-family:"Bitter";font-weight:700;text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;color:var(--clay);}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.3rem);color:var(--clay);text-shadow:2px 2px 0 var(--cream-deep);}
+  .hero h1 em{font-style:normal;color:var(--agave);display:block;}
+  .hero .lede{font-size:1.18rem;margin:22px 0 12px;max-width:34ch;color:#4a3526;}
+  .hero .place{font-family:"Caveat";font-size:1.5rem;color:var(--agave-soft);margin-bottom:26px;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;}
+
+  .hero-photo{position:relative;}
+  .arch{
+    border-radius:50% 50% 8px 8px / 30% 30% 8px 8px;
+    overflow:hidden;border:6px solid var(--agave);
+    box-shadow:0 18px 0 -6px rgba(31,61,43,.18), 0 26px 50px -18px rgba(43,29,20,.5);
+    aspect-ratio:4/5;
+  }
+  .arch img{width:100%;height:100%;object-fit:cover;}
+  .hero-photo .stamp{
+    position:absolute;left:-26px;bottom:34px;
+    width:104px;height:104px;border-radius:50%;
+    background:var(--clay);color:var(--cream);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    box-shadow:0 8px 24px -6px rgba(43,29,20,.6);
+    border:3px solid var(--gold);
+    font-family:"Rye";font-size:.74rem;line-height:1.15;padding:8px;
+    animation:glow 4.5s ease-in-out infinite;
+  }
+  @keyframes glow{0%,100%{box-shadow:0 8px 24px -6px rgba(43,29,20,.6),0 0 0 0 rgba(217,154,43,.5);}50%{box-shadow:0 8px 24px -6px rgba(43,29,20,.6),0 0 0 7px rgba(217,154,43,0);}}
+  .hero-photo .stamp b{font-size:1.6rem;display:block;}
+
+  /* ---------- section frame ---------- */
+  section{padding:66px 7vw;}
+  .sec-head{display:flex;align-items:center;gap:18px;margin-bottom:34px;}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);}
+  .sec-kick{font-family:"Caveat";font-size:1.4rem;color:var(--clay);}
+
+  /* about */
+  .about{background:var(--agave);color:var(--cream);}
+  .about .sec-head h2{color:var(--cream);}
+  .about .sec-kick{color:var(--gold);}
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:46px;align-items:center;max-width:1040px;}
+  .about p{font-size:1.12rem;color:#e7dcc8;margin-bottom:18px;}
+  .about p strong{color:var(--gold);font-weight:600;}
+  .about-pic{border:5px solid var(--gold);border-radius:6px;overflow:hidden;box-shadow:0 16px 40px -16px #000;}
+  .about-pic img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+
+  /* menu — pizarra board */
+  .menu{background:var(--cream);}
+  .board{
+    max-width:1040px;background:var(--cream);
+    border:3px solid var(--agave);border-radius:8px;
+    box-shadow:6px 6px 0 var(--cream-deep);
+    padding:8px;
+  }
+  .board-inner{border:1px dashed var(--clay);border-radius:5px;padding:34px clamp(20px,4vw,46px);display:grid;grid-template-columns:1fr 1fr;gap:46px;}
+  .board-col h3{font-size:1.5rem;color:var(--clay);display:flex;align-items:center;gap:12px;margin-bottom:6px;}
+  .board-col h3 .bar{height:3px;flex:1;background:var(--gold);border-radius:2px;}
+  .board-col .sub{font-family:"Caveat";font-size:1.25rem;color:var(--agave-soft);margin-bottom:18px;}
+  .item{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:9px 0;border-bottom:1px dotted #c9b596;}
+  .item:last-child{border-bottom:none;}
+  .item .nm{font-weight:700;color:var(--ink);}
+  .item .ds{display:block;font-size:.86rem;font-weight:400;color:#6b5743;font-style:italic;}
+  .item .tag{font-family:"Bitter";font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);background:var(--agave-soft);padding:3px 8px;border-radius:20px;white-space:nowrap;}
+  .item .tag.hot{background:var(--clay);}
+  .board-note{text-align:center;margin-top:26px;}
+  .board-note .hand{font-size:1.7rem;color:var(--clay);}
+  .menu-cta{text-align:center;margin-top:30px;}
+
+  /* gallery strip */
+  .gallery{padding:0;}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+  .gallery-grid img{width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;filter:saturate(1.04);}
+  .gallery-grid figure{position:relative;overflow:hidden;}
+  .gallery-grid figure::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 2px var(--gold);opacity:0;transition:opacity .2s;}
+  .gallery-grid figure:hover::after{opacity:1;}
+
+  /* testimonies */
+  .says{background:var(--clay);color:var(--cream);}
+  .says .sec-head h2{color:var(--cream);}
+  .says .sec-kick{color:var(--gold);}
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:34px;max-width:1000px;}
+  .quote{border-left:4px solid var(--gold);padding:6px 0 6px 26px;}
+  .quote .qmark{font-family:"Rye";font-size:2.4rem;color:var(--gold);line-height:.6;}
+  .quote p{font-size:1.18rem;font-style:italic;color:#f6ecda;margin:8px 0 16px;}
+  .quote .who{font-family:"Bitter";font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:.82rem;color:var(--gold);}
+
+  /* hours + location */
+  .visit{background:var(--cream);}
+  .visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:46px;max-width:1060px;align-items:stretch;}
+  .ledger{background:var(--agave);color:var(--cream);border-radius:8px;padding:30px 32px;border-top:5px solid var(--gold);}
+  .ledger h3{color:var(--cream);font-size:1.4rem;margin-bottom:6px;}
+  .ledger .open{font-family:"Caveat";font-size:1.35rem;color:var(--gold);margin-bottom:18px;}
+  .hours-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:.98rem;}
+  .hours-row:last-child{border-bottom:none;}
+  .hours-row span:first-child{color:#cdbfa6;}
+  .hours-row span:last-child{font-weight:600;}
+  .addr{margin-top:22px;}
+  .addr a{color:var(--gold);font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;}
+  .map-wrap{border:5px solid var(--agave);border-radius:8px;overflow:hidden;box-shadow:6px 6px 0 var(--cream-deep);min-height:360px;}
+  .map-wrap iframe{width:100%;height:100%;min-height:360px;border:0;display:block;}
+
+  /* contact band */
+  .cta-band{background:var(--agave);color:var(--cream);text-align:center;}
+  .cta-band h2{font-size:clamp(2rem,4vw,3rem);color:var(--cream);}
+  .cta-band .hand{font-size:1.6rem;color:var(--gold);display:block;margin:10px 0 24px;}
+  .cta-band .hero-cta{justify-content:center;}
+  .cta-band .btn-out{color:var(--cream);box-shadow:inset 0 0 0 2px var(--gold);}
+  .cta-band .btn-out:hover{background:var(--gold);color:var(--ink);box-shadow:inset 0 0 0 2px var(--gold);}
+  .socials{margin-top:26px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+  .socials a{font-family:"Bitter";font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(217,154,43,.5);padding:8px 16px;border-radius:30px;transition:background .18s,color .18s;}
+  .socials a:hover{background:var(--gold);color:var(--ink);}
+
+  /* footer */
+  footer{background:var(--ink);color:#cdbfa6;text-align:center;padding:34px 7vw;font-size:.9rem;}
+  footer .fbrand{font-family:"Rye";color:var(--cream);font-size:1.2rem;margin-bottom:8px;}
+  footer .credit{margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font-size:.82rem;color:#8c8069;}
+  footer a{color:var(--gold);}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:900px){
+    .shell{flex-direction:column;}
+    .rail{display:none;}
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      position:sticky;top:0;z-index:50;height:var(--nav-h);
+      background:var(--agave);color:var(--cream);
+      padding:0 18px;border-bottom:3px solid var(--gold);
+    }
+    .topbar .tb-brand{font-family:"Rye";font-size:1.15rem;color:var(--cream);}
+    .topbar a.tb-call{font-family:"Bitter";font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid var(--gold);padding:7px 14px;border-radius:4px;}
+    .hero-grid{grid-template-columns:1fr;gap:34px;}
+    .hero-photo .arch{max-width:340px;margin:0 auto;}
+    .about-grid,.visit-grid,.quotes{grid-template-columns:1fr;gap:30px;}
+    .board-inner{grid-template-columns:1fr;gap:34px;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    section{padding:52px 7vw;}
+    .hero{padding:46px 7vw 44px;}
+  }
+  @media(max-width:480px){
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+    .hero h1{text-shadow:1.5px 1.5px 0 var(--cream-deep);}
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- desktop left rail nav -->
+  <aside class="rail">
+    <div class="brand">Tacos<br/>El Guero<small>Estilo Jalisco</small></div>
+    <nav>
+      <a href="#about">La Historia</a>
+      <a href="#menu">El Menú</a>
+      <a href="#galeria">Galería</a>
+      <a href="#says">Lo Que Dicen</a>
+      <a href="#visit">Horario &amp; Ubicación</a>
+      <a href="#contact">Encuéntranos</a>
+    </nav>
+    <div class="rail-foot">
+      <strong>Rialto, CA</strong><br/>
+      105 W Merrill Ave<br/>
+      Abierto cada noche<br/>5 – 11 PM
+    </div>
+  </aside>
+
+  <!-- mobile top bar -->
+  <header class="topbar">
+    <span class="tb-brand">Tacos El Guero</span>
+    <a class="tb-call" href="#visit">Horario</a>
+  </header>
+
+  <main class="content">
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="sun" aria-hidden="true"></span>
+            <span>Taquería sobre ruedas · Rialto</span>
+          </div>
+          <h1>Tacos El Guero<em>de las Arandas, Jalisco</em></h1>
+          <p class="lede">Tortilla de maíz al comal, carne a la plancha, cebolla y cilantro fresco — la receta de un pueblo tapatío, servida desde nuestra troca cada noche.</p>
+          <p class="place hand">¡Gracias por su preferencia!</p>
+          <div class="hero-cta">
+            <a class="btn btn-clay" href="https://www.google.com/maps?q=Tacos+El+Guero%2C+105+W+Merrill+Ave%2C+Rialto%2C+CA+92376" target="_blank" rel="noopener">Cómo llegar →</a>
+            <a class="btn btn-out" href="#menu">Ver el menú</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <div class="arch">
+            <img src="./photos/03.jpg" alt="Tacos El Guero food truck at night, lit up with a line of customers in Rialto" />
+          </div>
+          <div class="stamp"><b>10/10</b>los tacos</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <div class="sec-head">
+        <span class="sun" aria-hidden="true"></span>
+        <div>
+          <div class="sec-kick">la historia</div>
+          <h2>De Las Arandas a Rialto</h2>
+        </div>
+      </div>
+      <div class="about-grid">
+        <div>
+          <p>Tacos El Guero trae a las calles de Rialto el sabor de <strong>Jalisco</strong> — tacos de verdad, hechos como en el pueblo: trompo de pastor, asada a la plancha y los cortes que pocos se atreven a servir bien.</p>
+          <p>No somos un restaurante de manteles; somos la troca de la esquina donde se forma la fila y el <strong>servicio es rápido</strong>. Pides, esperas el comal, y te llevas un plato que sabe a casa.</p>
+          <p>Tacos, burritos, quesadillas y tortas — con <strong>aguas frescas y horchata</strong> bien fría para acompañar. Abrimos cada noche; ven con hambre.</p>
+        </div>
+        <div class="about-pic">
+          <img src="./photos/04.jpg" alt="A paper plate piled with five street tacos topped with onion and cilantro" />
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu" id="menu">
+      <div class="sec-head">
+        <span class="sun" aria-hidden="true"></span>
+        <div>
+          <div class="sec-kick">de nuestra plancha</div>
+          <h2>El Menú</h2>
+        </div>
+      </div>
+      <div class="board">
+        <div class="board-inner">
+          <div class="board-col">
+            <h3>Las Carnes <span class="bar"></span></h3>
+            <p class="sub">en taco, burrito, quesadilla o torta</p>
+            <div class="item"><span><span class="nm">Al Pastor</span><span class="ds">marinado del trompo, con su piña</span></span><span class="tag hot">Favorito</span></div>
+            <div class="item"><span><span class="nm">Asada</span><span class="ds">res a la plancha, jugosa</span></span></div>
+            <div class="item"><span><span class="nm">Pollo</span><span class="ds">a la plancha, bien sazonado</span></span></div>
+            <div class="item"><span><span class="nm">Cabeza</span><span class="ds">suave, tradicional</span></span></div>
+            <div class="item"><span><span class="nm">Lengua</span><span class="ds">tierna, cocida despacio</span></span></div>
+            <div class="item"><span><span class="nm">Buche</span><span class="ds">para los que saben</span></span></div>
+            <div class="item"><span><span class="nm">Tripa</span><span class="ds">doradita al comal</span></span><span class="tag">Crujiente</span></div>
+            <div class="item"><span><span class="nm">Chorizo</span><span class="ds">rojo, con sabor</span></span></div>
+          </div>
+          <div class="board-col">
+            <h3>Antojitos &amp; Aguas <span class="bar"></span></h3>
+            <p class="sub">para acompañar la noche</p>
+            <div class="item"><span><span class="nm">Tacos</span><span class="ds">tortilla de maíz, cebolla y cilantro</span></span></div>
+            <div class="item"><span><span class="nm">Burritos</span><span class="ds">grandes, de la carne que elijas</span></span></div>
+            <div class="item"><span><span class="nm">Quesadillas</span><span class="ds">con queso derretido al comal</span></span></div>
+            <div class="item"><span><span class="nm">Tortas</span><span class="ds">en pan, bien servidas</span></span></div>
+            <div class="item"><span><span class="nm">Horchata</span><span class="ds">de canela, bien fría</span></span><span class="tag">Casera</span></div>
+            <div class="item"><span><span class="nm">Aguas Frescas</span><span class="ds">jamaica, tamarindo y más</span></span></div>
+            <div class="item"><span><span class="nm">Jarritos &amp; Sodas</span><span class="ds">Coca, Fanta, Sangría</span></span></div>
+          </div>
+        </div>
+        <div class="board-note"><span class="hand">Especial: $1 los tacos — ¡solo los jueves!</span></div>
+      </div>
+      <div class="menu-cta">
+        <a class="btn btn-clay" href="https://www.google.com/maps?q=Tacos+El+Guero%2C+105+W+Merrill+Ave%2C+Rialto%2C+CA+92376" target="_blank" rel="noopener">Ven por los tuyos →</a>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galeria" aria-label="Galería">
+      <div class="gallery-grid">
+        <figure><img src="./photos/02.jpg" alt="Close-up of carnitas tacos with onion, cilantro and salsa verde in foil" /></figure>
+        <figure><img src="./photos/06.jpg" alt="The truck's painted menu banner showing tacos, burritos, quesadillas and tortas" /></figure>
+        <figure><img src="./photos/01.jpg" alt="Tacos El Guero food truck in daylight with hand-painted menu panels" /></figure>
+        <figure><img src="./photos/05.jpg" alt="Customers ordering at the truck window beside the painted Carnes menu" /></figure>
+        <figure><img src="./photos/04.jpg" alt="Plate of five street tacos topped with onion and cilantro" /></figure>
+        <figure><img src="./photos/03.jpg" alt="The lit-up taco truck at night with a crowd of customers" /></figure>
+      </div>
+    </section>
+
+    <!-- TESTIMONIES -->
+    <section class="says" id="says">
+      <div class="sec-head">
+        <span class="sun" aria-hidden="true"></span>
+        <div>
+          <div class="sec-kick">en sus palabras</div>
+          <h2>Lo Que Dicen</h2>
+        </div>
+      </div>
+      <div class="quotes">
+        <blockquote class="quote">
+          <div class="qmark">“</div>
+          <p>Great authentic tacos, excellent and fast service. All the tacos I tried were a 10 out of 10.</p>
+          <div class="who">Cecilia M.</div>
+        </blockquote>
+        <blockquote class="quote">
+          <div class="qmark">“</div>
+          <p>The service is okay to me, and the tacos are good — y'all must be getting the wrong things if you're saying they taste bad.</p>
+          <div class="who">Jeshua R.</div>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- VISIT -->
+    <section class="visit" id="visit">
+      <div class="sec-head">
+        <span class="sun" aria-hidden="true"></span>
+        <div>
+          <div class="sec-kick">horario &amp; ubicación</div>
+          <h2>Ven a la Troca</h2>
+        </div>
+      </div>
+      <div class="visit-grid">
+        <div class="ledger">
+          <h3>Horario</h3>
+          <p class="open">Abierto cada noche · 5 – 11 PM</p>
+          <div class="hours-row"><span>Lunes</span><span>5:00 – 11:00 PM</span></div>
+          <div class="hours-row"><span>Martes</span><span>5:00 – 11:00 PM</span></div>
+          <div class="hours-row"><span>Miércoles</span><span>5:00 – 11:00 PM</span></div>
+          <div class="hours-row"><span>Jueves</span><span>5:00 – 11:00 PM</span></div>
+          <div class="hours-row"><span>Viernes</span><span>5:00 – 11:00 PM</span></div>
+          <div class="hours-row"><span>Sábado</span><span>5:00 – 11:00 PM</span></div>
+          <div class="hours-row"><span>Domingo</span><span>5:00 – 11:00 PM</span></div>
+          <div class="addr">
+            <a href="https://www.google.com/maps?q=Tacos+El+Guero%2C+105+W+Merrill+Ave%2C+Rialto%2C+CA+92376" target="_blank" rel="noopener">105 W Merrill Ave, Rialto, CA 92376</a>
+          </div>
+        </div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=105%20W%20Merrill%20Ave%2C%20Rialto%2C%20CA%2092376&z=15&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Map to Tacos El Guero, 105 W Merrill Ave, Rialto, CA"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BAND -->
+    <section class="cta-band" id="contact">
+      <span class="sun" aria-hidden="true" style="margin:0 auto 18px;"></span>
+      <h2>Tráete el Hambre</h2>
+      <span class="hand">Te esperamos en la esquina de Merrill</span>
+      <div class="hero-cta">
+        <a class="btn btn-clay" href="https://www.google.com/maps?q=Tacos+El+Guero%2C+105+W+Merrill+Ave%2C+Rialto%2C+CA+92376" target="_blank" rel="noopener">Cómo llegar →</a>
+        <a class="btn btn-out" href="#menu">Ver el menú</a>
+      </div>
+      <div class="socials">
+        <a href="https://www.instagram.com/elguero_tacos/" target="_blank" rel="noopener">Instagram · @elguero_tacos</a>
+        <a href="https://maps.google.com/?cid=15987218436010448376" target="_blank" rel="noopener">Google · Ver perfil</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="fbrand">Tacos El Guero</div>
+      <div>105 W Merrill Ave, Rialto, CA 92376 · Abierto cada noche 5–11 PM</div>
+      <div class="credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</div>
+    </footer>
+
+  </main>
+</div>
+
+</body>
+</html>

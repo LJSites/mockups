@@ -1,0 +1,1140 @@
+<!-- flavor: verdant-workshop | accent: #2E7D32 | bg: #0E1410 | hero: bento-grid | service: sticker-cards -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Bullet Kouture Pit Stop — Pet Grooming in Newman, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --acc: #2E7D32;
+    --bg: #0E1410;
+    --acc-light: #4CAF50;
+    --acc-dim: #1B5E20;
+    --surface: #162018;
+    --surface-2: #1E2C20;
+    --text: #E8F0E9;
+    --text-muted: #8FA892;
+    --border: #2A3C2C;
+    --nav-h: 64px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-h);
+    font-size: 16px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, .nav-logo {
+    font-family: 'Syne', sans-serif;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    background: rgba(14, 20, 16, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .nav-logo {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .nav-logo span {
+    color: var(--acc-light);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+    margin-left: auto;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 400;
+    padding: 0.35rem 0.65rem;
+    border-radius: 4px;
+    transition: color 0.18s, background 0.18s;
+  }
+
+  .nav-links a:hover {
+    color: var(--text);
+    background: var(--surface-2);
+  }
+
+  .nav-cta {
+    margin-left: 0.5rem;
+    background: var(--acc) !important;
+    color: var(--text) !important;
+    font-weight: 500 !important;
+    padding: 0.4rem 0.9rem !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--acc-light) !important;
+  }
+
+  /* ── HERO BENTO GRID ── */
+  #hero {
+    padding: 2rem 1.5rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .bento {
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  @media (min-width: 640px) {
+    .bento {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .bento {
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 280px 200px;
+    }
+  }
+
+  .bento-cell {
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+
+  .bento-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Main headline cell */
+  .bento-headline {
+    background: var(--surface-2);
+    padding: 2rem 2rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 240px;
+  }
+
+  @media (min-width: 900px) {
+    .bento-headline {
+      grid-column: 1;
+      grid-row: 1 / 3;
+      min-height: unset;
+    }
+    .bento-img-a { grid-column: 2; grid-row: 1; }
+    .bento-img-b { grid-column: 3; grid-row: 1; }
+    .bento-stat  { grid-column: 2; grid-row: 2; }
+    .bento-img-c { grid-column: 3; grid-row: 2; }
+  }
+
+  .bento-headline .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--acc-light);
+    margin-bottom: 0.75rem;
+  }
+
+  .bento-headline h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+
+  .bento-headline h1 em {
+    font-style: normal;
+    color: var(--acc-light);
+  }
+
+  .bento-headline .tagline {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    max-width: 32ch;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--acc);
+    color: var(--text);
+    text-decoration: none;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    padding: 0.7rem 1.4rem;
+    border-radius: 6px;
+    align-self: flex-start;
+    transition: background 0.18s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--acc-light);
+    transform: translateY(-1px);
+  }
+
+  .bento-stat {
+    background: var(--acc-dim);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 140px;
+  }
+
+  .bento-stat .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .bento-stat .stat-label {
+    font-size: 0.8rem;
+    color: rgba(232,240,233,0.75);
+    font-weight: 400;
+    line-height: 1.3;
+  }
+
+  /* ── SECTION COMMON ── */
+  section {
+    padding: 4rem 1.5rem;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--acc-light);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .section-heading {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about-inner {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .about-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .about-photo-stack {
+    position: relative;
+    height: 360px;
+  }
+
+  .about-photo-stack img {
+    position: absolute;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 3px solid var(--border);
+  }
+
+  .about-photo-stack .p-main {
+    width: 75%;
+    height: 80%;
+    top: 0;
+    left: 0;
+  }
+
+  .about-photo-stack .p-accent {
+    width: 55%;
+    height: 55%;
+    bottom: 0;
+    right: 0;
+    border-color: var(--acc-dim);
+  }
+
+  .about-text p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  .about-text p strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .about-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .about-badge::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--acc-light);
+    flex-shrink: 0;
+  }
+
+  /* ── SERVICES — STICKER CARDS ── */
+  #services {
+    background: var(--bg);
+  }
+
+  .sticker-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  @media (min-width: 540px) {
+    .sticker-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (min-width: 900px) {
+    .sticker-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .sticker-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem 1.5rem 1.75rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .sticker-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--acc);
+  }
+
+  .sticker-card:hover {
+    border-color: var(--acc);
+    transform: translateY(-3px);
+  }
+
+  .sticker-card .card-tag {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--acc-light);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .sticker-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .sticker-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  .sticker-large {
+    background: var(--acc-dim);
+    border-color: var(--acc);
+  }
+
+  .sticker-large::before {
+    background: var(--acc-light);
+  }
+
+  .sticker-large h3, .sticker-large p, .sticker-large .card-tag {
+    color: var(--text);
+  }
+
+  @media (min-width: 540px) {
+    .sticker-large {
+      grid-column: span 2;
+    }
+  }
+
+  @media (min-width: 900px) {
+    .sticker-large {
+      grid-column: span 1;
+    }
+  }
+
+  /* ── TESTIMONIES ── */
+  #testimonies {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .testimony-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 640px) {
+    .testimony-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (min-width: 1000px) {
+    .testimony-grid { grid-template-columns: repeat(4, 1fr); }
+    .testimony-card:first-child { grid-column: span 2; }
+  }
+
+  .testimony-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .testimony-mark {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--acc);
+    line-height: 1;
+    display: block;
+    margin-bottom: -0.5rem;
+  }
+
+  .testimony-card blockquote {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-style: italic;
+    flex: 1;
+  }
+
+  .testimony-card cite {
+    font-size: 0.78rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    color: var(--text);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  .testimony-divider {
+    width: 2rem;
+    height: 2px;
+    background: var(--acc);
+    border: none;
+  }
+
+  /* ── GALLERY STRIP ── */
+  #gallery {
+    background: var(--bg);
+    padding: 2.5rem 0;
+    overflow: hidden;
+  }
+
+  .gallery-strip {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 0 1.5rem;
+    scrollbar-width: none;
+  }
+
+  .gallery-strip::-webkit-scrollbar { display: none; }
+
+  .gallery-strip img {
+    height: 200px;
+    width: auto;
+    min-width: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    border: 1px solid var(--border);
+  }
+
+  @media (min-width: 768px) {
+    .gallery-strip img { height: 260px; }
+  }
+
+  /* ── HOURS & LOCATION ── */
+  #location {
+    background: var(--bg);
+  }
+
+  .location-inner {
+    display: grid;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (min-width: 768px) {
+    .location-inner { grid-template-columns: 1fr 1.4fr; }
+  }
+
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .hours-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hours-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .hours-table td {
+    padding: 0.6rem 0;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+
+  .hours-table td:first-child {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    color: var(--text);
+    font-size: 0.82rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .hours-table td:last-child {
+    text-align: right;
+  }
+
+  .hours-table .closed {
+    color: var(--text-muted);
+    opacity: 0.5;
+  }
+
+  .location-info {
+    margin-top: 1.5rem;
+  }
+
+  .location-info p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .location-info a {
+    color: var(--acc-light);
+    text-decoration: none;
+  }
+
+  .location-info a:hover {
+    text-decoration: underline;
+  }
+
+  .location-cta {
+    margin-top: 1.5rem;
+  }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1.5px solid var(--acc);
+    color: var(--acc-light);
+    text-decoration: none;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    letter-spacing: 0.03em;
+    padding: 0.65rem 1.3rem;
+    border-radius: 6px;
+    transition: background 0.18s, color 0.18s;
+  }
+
+  .btn-outline:hover {
+    background: var(--acc);
+    color: var(--text);
+  }
+
+  .map-frame {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    height: 300px;
+  }
+
+  .map-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    .map-frame { height: 380px; }
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-inner {
+    display: grid;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (min-width: 768px) {
+    .contact-inner { grid-template-columns: 1fr 1fr; }
+  }
+
+  .contact-heading {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+
+  .contact-heading em {
+    font-style: normal;
+    color: var(--acc-light);
+  }
+
+  .contact-text {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    max-width: 38ch;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .contact-link-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .contact-link-row a {
+    color: var(--acc-light);
+    text-decoration: none;
+  }
+
+  .contact-link-row a:hover {
+    text-decoration: underline;
+  }
+
+  .contact-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--acc);
+    flex-shrink: 0;
+  }
+
+  .social-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .social-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.45rem 0.85rem;
+    border-radius: 5px;
+    transition: border-color 0.18s, color 0.18s;
+  }
+
+  .social-pill:hover {
+    border-color: var(--acc);
+    color: var(--text);
+  }
+
+  .cta-block {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-self: start;
+  }
+
+  .cta-block h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .cta-block p {
+    font-size: 0.87rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  .cta-block .btn-primary {
+    align-self: stretch;
+    text-align: center;
+  }
+
+  .cta-tel {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    display: block;
+    transition: color 0.18s;
+  }
+
+  .cta-tel:hover {
+    color: var(--acc-light);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: var(--text-muted);
+  }
+
+  .footer-logo span { color: var(--acc-light); }
+
+  .footer-credit {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    opacity: 0.6;
+  }
+
+  .footer-credit a {
+    color: var(--acc-light);
+    text-decoration: none;
+  }
+
+  .footer-credit a:hover {
+    text-decoration: underline;
+  }
+
+  /* ── MOBILE NAV TOGGLE ── */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.3rem;
+    margin-left: auto;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  @media (max-width: 700px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: var(--nav-h);
+      left: 0;
+      right: 0;
+      background: rgba(14, 20, 16, 0.97);
+      border-bottom: 1px solid var(--border);
+      flex-direction: column;
+      padding: 1rem 1.5rem;
+      gap: 0.25rem;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 1rem; padding: 0.6rem 0.5rem; }
+    .nav-cta { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Bullet <span>Kouture</span></a>
+  <button class="nav-toggle" aria-label="Toggle navigation" onclick="this.nextElementSibling.classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#location">Hours</a></li>
+    <li><a href="#contact" class="nav-cta">Call Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO — BENTO GRID -->
+<section id="hero" style="padding-top: 1.5rem; padding-bottom: 1.5rem;">
+  <div class="bento">
+    <div class="bento-cell bento-headline">
+      <span class="eyebrow">Newman, CA · Pet Grooming</span>
+      <h1>Where Every <em>Fur Baby</em> Deserves Kouture</h1>
+      <p class="tagline">Gentle, patient grooming from groomers who treat your pet like their own.</p>
+      <a href="tel:+12096467713" class="btn-primary">Call (209) 646-7713</a>
+    </div>
+    <div class="bento-cell bento-img-a">
+      <img src="./photos/01.jpg" alt="Dog grooming at The Bullet Kouture Pit Stop" loading="eager">
+    </div>
+    <div class="bento-cell bento-img-b">
+      <img src="./photos/02.jpg" alt="Freshly groomed pet" loading="eager">
+    </div>
+    <div class="bento-cell bento-stat">
+      <span class="stat-num">5★</span>
+      <span class="stat-label">Consistently five-star<br>care in Newman</span>
+    </div>
+    <div class="bento-cell bento-img-c">
+      <img src="./photos/03.jpg" alt="Happy pet at Bullet Kouture" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-photo-stack">
+        <img class="p-main" src="./photos/04.jpg" alt="Inside the Bullet Kouture Pit Stop salon">
+        <img class="p-accent" src="./photos/05.jpg" alt="Groomer working with a pet">
+      </div>
+      <div class="about-text">
+        <span class="section-label">Our Story</span>
+        <h2 class="section-heading" style="margin-bottom: 1.25rem;">A Pit Stop Built on Patience & Care</h2>
+        <p>The Bullet Kouture Pit Stop is Newman's go-to destination for pets who deserve the full treatment — <strong>deshedding, breed cuts, nail trims, and full-service grooming</strong> — delivered by groomers who genuinely love animals.</p>
+        <p>Lexie, Maudie, and the whole team are known for their calm, hands-on approach with anxious pets, rescues, and first-timers alike. Your dog doesn't need to be dreading their next appointment.</p>
+        <p>We take multiple pets at once, work around your schedule, and pour real artistry into every cut. Because your fur baby isn't just a client — they're family.</p>
+        <div>
+          <span class="about-badge">Gentle with anxious & rescue dogs</span>
+          <span class="about-badge">Walk-ins & appointments</span>
+          <span class="about-badge">Multiple pets at once</span>
+          <span class="about-badge">Newman's beautiful grooming salon</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES — STICKER CARDS -->
+<section id="services">
+  <div class="container">
+    <span class="section-label">What We Do</span>
+    <h2 class="section-heading">Full-Service Grooming,<br>Delivered with Care</h2>
+    <div class="sticker-grid">
+
+      <div class="sticker-card sticker-large">
+        <span class="card-tag">Signature Service</span>
+        <h3>Full Groom Package</h3>
+        <p>Bath, blow-dry, breed-specific cut, ear cleaning, nail trim, and finishing spritz — the complete experience. Our groomers consult with you on the exact look and then trust their craft to deliver it perfectly.</p>
+      </div>
+
+      <div class="sticker-card">
+        <span class="card-tag">Coat Care</span>
+        <h3>Deshed Treatment</h3>
+        <p>Deep conditioning deshed for double-coated breeds like German Shepherds, Huskies, and Labs. Dramatically reduces shedding and leaves the coat unbelievably soft.</p>
+      </div>
+
+      <div class="sticker-card">
+        <span class="card-tag">Finishing Touch</span>
+        <h3>Nail Trim</h3>
+        <p>Hand-cut with clippers for dogs who need extra care. Our groomers are known for keeping even the most anxious pups calm — no muzzle required for most clients.</p>
+      </div>
+
+      <div class="sticker-card">
+        <span class="card-tag">Bath Day</span>
+        <h3>Bath & Brush</h3>
+        <p>Shampoo, conditioning treatment, blow-dry, and thorough brush-out. Great for maintenance between full grooms or for dogs who just need a refresh.</p>
+      </div>
+
+      <div class="sticker-card">
+        <span class="card-tag">Specialty</span>
+        <h3>Anxiety-Friendly Grooming</h3>
+        <p>We specialize in rescue dogs and pets with histories of fear or abuse. Slow, patient handling, no rush, no force. Many anxious clients leave calm and happy.</p>
+      </div>
+
+      <div class="sticker-card">
+        <span class="card-tag">Add-On</span>
+        <h3>Breed-Specific Styling</h3>
+        <p>From Yorkies and Chorkies to Shepherds and beyond — describe your vision and let us execute. We love the creative side of grooming as much as the care side.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="container">
+    <span class="section-label">In Their Words</span>
+    <h2 class="section-heading">Customer Testimonies</h2>
+    <div class="testimony-grid">
+
+      <div class="testimony-card">
+        <span class="testimony-mark">"</span>
+        <blockquote>This is the best groomer I've been to so far! Lexie and Maudie do amazing jobs on both my pups. They also take them in at the same time which is wonderful. My dogs get so excited when we park in front of the beautiful building. I trust them to make the right call for their cuts. My pups always come out perfectly!</blockquote>
+        <hr class="testimony-divider">
+        <cite>Amanda O.</cite>
+      </div>
+
+      <div class="testimony-card">
+        <span class="testimony-mark">"</span>
+        <blockquote>I took my long-haired German Shepherd, Ari, there for a deshed and they did a wonderful job! She is now so soft and looks amazing. The staff are super friendly and give your fur baby top notch treatment. Great work for a reasonable price. Highly recommend!</blockquote>
+        <hr class="testimony-divider">
+        <cite>Brianna A.</cite>
+      </div>
+
+      <div class="testimony-card">
+        <span class="testimony-mark">"</span>
+        <blockquote>The groomer was so good! She was so kind and patient with our rescue who had a history of abuse and severe anxiety. Now Toby has a fresh new start!</blockquote>
+        <hr class="testimony-divider">
+        <cite>Shana V.</cite>
+      </div>
+
+      <div class="testimony-card">
+        <span class="testimony-mark">"</span>
+        <blockquote>Our Chorkie is a high anxiety puppy and Lexie trimmed her nails by hand with clippers so gently. Our puppy didn't even need to be muzzled. Thank you for a great experience, we will be back.</blockquote>
+        <hr class="testimony-divider">
+        <cite>Emerald W.</cite>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY STRIP -->
+<section id="gallery" style="padding: 2.5rem 0;">
+  <div class="gallery-strip">
+    <img src="./photos/01.jpg" alt="Groomed pet at Bullet Kouture">
+    <img src="./photos/02.jpg" alt="Pet care at the Pit Stop">
+    <img src="./photos/03.jpg" alt="Inside the Bullet Kouture salon">
+    <img src="./photos/04.jpg" alt="Newman's best pet groomer">
+    <img src="./photos/05.jpg" alt="Dog grooming detail">
+    <img src="./photos/06.jpg" alt="Happy pets at Bullet Kouture">
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section id="location">
+  <div class="container">
+    <div class="location-inner">
+      <div>
+        <span class="section-label">Find Us</span>
+        <h2 class="section-heading">Hours & Location</h2>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>Monday</td><td class="closed">Closed</td></tr>
+            <tr><td>Tuesday</td><td>8:00 AM – 3:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>8:00 AM – 3:00 PM</td></tr>
+            <tr><td>Thursday</td><td>8:00 AM – 3:00 PM</td></tr>
+            <tr><td>Friday</td><td>8:00 AM – 3:00 PM</td></tr>
+            <tr><td>Saturday</td><td>8:00 AM – 3:00 PM</td></tr>
+            <tr><td>Sunday</td><td class="closed">Closed</td></tr>
+          </tbody>
+        </table>
+        <div class="location-info">
+          <p>1232 Main St, Newman, CA 95360</p>
+          <p><a href="tel:+12096467713">(209) 646-7713</a></p>
+        </div>
+        <div class="location-cta">
+          <a href="https://www.google.com/maps?q=37.3166655,-121.02296059999999&z=15" target="_blank" rel="noopener" class="btn-outline">Get Directions</a>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=37.3166655,-121.02296059999999&z=15&output=embed"
+          title="The Bullet Kouture Pit Stop location map"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div>
+        <h2 class="contact-heading">Ready to book your <em>fur baby's</em> next appointment?</h2>
+        <p class="contact-text">Give us a call or find us on Google. We're open Tuesday through Saturday, 8 AM to 3 PM — appointments and walk-ins welcome.</p>
+        <div class="contact-links">
+          <div class="contact-link-row">
+            <span class="contact-dot"></span>
+            <span>Phone: <a href="tel:+12096467713">(209) 646-7713</a></span>
+          </div>
+          <div class="contact-link-row">
+            <span class="contact-dot"></span>
+            <span>1232 Main St, Newman, CA 95360</span>
+          </div>
+          <div class="contact-link-row">
+            <span class="contact-dot"></span>
+            <span>Tue–Sat: 8:00 AM – 3:00 PM</span>
+          </div>
+        </div>
+        <div class="social-row">
+          <a href="https://maps.google.com/?cid=15984457602181938851&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="social-pill">Google Business</a>
+        </div>
+      </div>
+      <div class="cta-block">
+        <h3>Call to Book</h3>
+        <p>Our groomers love talking about your pet before the appointment — tell us about their temperament, their last groom, and what you're envisioning. We'll take it from there.</p>
+        <a href="tel:+12096467713" class="cta-tel">(209) 646-7713</a>
+        <a href="tel:+12096467713" class="btn-primary">Call Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">The Bullet <span>Kouture</span> Pit Stop &nbsp;·&nbsp; Newman, CA</div>
+    <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

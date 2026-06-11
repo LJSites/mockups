@@ -1,0 +1,860 @@
+<!-- flavor: Mexican Heritage Magazine | accent: #6A2C70 | bg: #FBEAEA | hero: magazine-spread | service: sticker-cards -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Princesa Bakery — Cudahy, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --acc: #6A2C70;
+      --bg: #FBEAEA;
+      --acc-light: #9B59B6;
+      --acc-dark: #4A1A50;
+      --warm-white: #FFF8F5;
+      --ink: #2A1A1A;
+      --muted: #7A5C5C;
+      --gold: #C8960C;
+      --nav-h: 64px;
+    }
+
+    html {
+      scroll-padding-top: var(--nav-h);
+      scroll-behavior: smooth;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--acc-dark);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+
+    .nav-brand {
+      font-family: 'Abril Fatface', serif;
+      font-size: 1.15rem;
+      color: var(--bg);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      line-height: 1.1;
+    }
+
+    .nav-brand span {
+      display: block;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(251,234,234,0.7);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(251,234,234,0.85);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--acc-dark) !important;
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+    }
+
+    .nav-cta:hover { background: #e0a80d !important; color: var(--acc-dark) !important; }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--bg);
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: var(--acc-dark);
+        padding: 1.5rem 2rem;
+        gap: 1.2rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+    }
+
+    /* ── HERO: MAGAZINE SPREAD ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100svh - var(--nav-h));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-editorial {
+      background: var(--acc);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 3.5rem 4rem 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-family: 'Abril Fatface', serif;
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      line-height: 1.0;
+      color: var(--warm-white);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .hero-body {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(255,248,245,0.85);
+      max-width: 380px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--acc-dark);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: #e0a80d; transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1.5px solid rgba(255,248,245,0.5);
+      color: var(--warm-white);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--warm-white); background: rgba(255,255,255,0.08); }
+
+    .hero-photos {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-photos img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-photos-strip {
+      display: none;
+    }
+
+    /* Decorative rule on editorial panel */
+    .hero-editorial::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0; right: -1px;
+      width: 6px;
+      background: var(--gold);
+      z-index: 2;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-editorial {
+        padding: 3rem 2rem;
+        order: 2;
+      }
+      .hero-editorial::before { display: none; }
+      .hero-photos {
+        order: 1;
+        height: 55vw;
+        min-height: 240px;
+      }
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      padding: 5rem 1.5rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-heading {
+      font-family: 'Abril Fatface', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--warm-white);
+      border-top: 5px solid var(--acc);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .about-copy p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .about-copy p:last-child { margin-bottom: 0; }
+
+    .about-copy strong { color: var(--acc); }
+
+    .about-visual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 0.75rem;
+    }
+
+    .about-visual img {
+      border-radius: 2px;
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .about-visual img:first-child {
+      grid-column: 1 / 3;
+      height: 240px;
+    }
+
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { margin-top: 2rem; }
+    }
+
+    /* ── MENU / STICKER-CARDS ── */
+    #menu {
+      background: var(--bg);
+    }
+
+    .sticker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .sticker-card {
+      background: var(--warm-white);
+      border: 2px solid var(--acc);
+      border-radius: 4px;
+      padding: 1.75rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sticker-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 6px;
+      height: 100%;
+      background: var(--acc);
+    }
+
+    .sticker-card-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .sticker-card-name {
+      font-family: 'Abril Fatface', serif;
+      font-size: 1.15rem;
+      color: var(--acc-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .sticker-card-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── PHOTO GALLERY ── */
+    #gallery {
+      background: var(--acc-dark);
+      padding: 3rem 0;
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 0 1.5rem;
+    }
+
+    .gallery-track::-webkit-scrollbar { display: none; }
+
+    .gallery-track img {
+      flex: 0 0 auto;
+      width: min(340px, 80vw);
+      height: 260px;
+      object-fit: cover;
+      scroll-snap-align: start;
+      border-radius: 2px;
+    }
+
+    .gallery-caption {
+      text-align: center;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(251,234,234,0.45);
+      margin-top: 1rem;
+      padding: 0 1.5rem;
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies {
+      background: var(--warm-white);
+    }
+
+    .testimony-stack {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .testimony-card {
+      border-left: 4px solid var(--acc);
+      padding: 1.5rem 1.75rem;
+      background: var(--bg);
+    }
+
+    .testimony-quote {
+      font-size: 0.98rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .testimony-quote::before { content: '\201C'; }
+    .testimony-quote::after  { content: '\201D'; }
+
+    .testimony-attr {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acc);
+    }
+
+    .testimony-card.featured {
+      grid-column: 1 / -1;
+      border-left-width: 6px;
+      background: var(--acc);
+    }
+
+    .testimony-card.featured .testimony-quote {
+      color: rgba(255,248,245,0.92);
+      font-size: 1.1rem;
+    }
+
+    .testimony-card.featured .testimony-attr {
+      color: var(--gold);
+    }
+
+    @media (max-width: 680px) {
+      .testimony-stack { grid-template-columns: 1fr; }
+      .testimony-card.featured { grid-column: auto; }
+    }
+
+    /* ── HOURS & LOCATION ── */
+    #location {
+      background: var(--bg);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .hours-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid rgba(106,44,112,0.15);
+    }
+
+    .hours-table tr:last-child { border-bottom: none; }
+
+    .hours-table td {
+      padding: 0.55rem 0;
+      font-size: 0.92rem;
+    }
+
+    .hours-table td:first-child {
+      font-weight: 700;
+      color: var(--acc-dark);
+      min-width: 110px;
+    }
+
+    .hours-table td:last-child {
+      color: var(--muted);
+    }
+
+    .location-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .location-info a {
+      color: var(--acc);
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+
+    .location-info a:hover { color: var(--acc-dark); }
+
+    .map-embed {
+      width: 100%;
+      height: 360px;
+      border: 0;
+      border-radius: 2px;
+      border: 3px solid var(--acc);
+    }
+
+    @media (max-width: 700px) {
+      .location-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── CONTACT / CTA STRIP ── */
+    #contact {
+      background: var(--acc);
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+
+    .contact-inner {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .contact-inner .section-label {
+      color: var(--gold);
+    }
+
+    .contact-inner .section-heading {
+      color: var(--warm-white);
+      margin-bottom: 1rem;
+    }
+
+    .contact-body {
+      font-size: 1rem;
+      color: rgba(255,248,245,0.8);
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: var(--acc-dark);
+      color: rgba(251,234,234,0.55);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.82rem;
+    }
+
+    .footer a {
+      color: rgba(251,234,234,0.75);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer a:hover { color: var(--gold); }
+
+    .footer-social {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-social a {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-bottom: 1px solid rgba(251,234,234,0.2);
+      padding-bottom: 1px;
+    }
+
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(251,234,234,0.12);
+      margin: 1rem 0;
+    }
+
+    .footer-credit {
+      font-size: 0.78rem;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" role="navigation" aria-label="Site navigation">
+    <a href="#" class="nav-brand">
+      La Princesa Bakery
+      <span>Panadería · Cudahy, CA</span>
+    </a>
+    <button class="nav-toggle" aria-label="Open menu" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#testimonies">What People Say</a></li>
+      <li><a href="#location">Hours</a></li>
+      <li><a href="#contact" class="nav-cta">Call Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO: MAGAZINE SPREAD -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-editorial">
+      <p class="hero-eyebrow">Panadería &amp; Pastelería · Est. Cudahy, CA</p>
+      <h1 class="hero-title">La <em>Princesa</em><br>Bakery</h1>
+      <p class="hero-body">
+        Twenty years of handcrafted pan dulce, custom cakes, and warm tamales — baked with love, served like family in the heart of Cudahy.
+      </p>
+      <div class="hero-actions">
+        <a href="tel:+13237711901" class="btn-primary">Call (323) 771-1901</a>
+        <a href="#menu" class="btn-outline">See Our Menu</a>
+      </div>
+    </div>
+    <div class="hero-photos">
+      <img src="./photos/01.jpg" alt="La Princesa Bakery baked goods" />
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-copy">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-heading">A Gem in<br>Cudahy</h2>
+          <p>
+            La Princesa Bakery has been a <strong>beloved neighborhood institution</strong> for generations. Walk in and you'll find regulars who have been coming for over 20 years — and a staff who greets them by name.
+          </p>
+          <p>
+            From perfectly fluffy conchas to elaborate wedding cakes with coffee mousse and strawberry crème, every item is made with care. We specialize in <strong>custom cakes for any occasion</strong> — baby showers, birthdays, quinceañeras, and weddings — as well as fresh tamales, chocoflan, churro cheesecake, and rotating seasonal treats.
+          </p>
+          <p>
+            Come in for a concha and a coffee. Stay because it feels like home.
+          </p>
+        </div>
+        <div class="about-visual">
+          <img src="./photos/02.jpg" alt="Bakery interior" />
+          <img src="./photos/03.jpg" alt="Fresh pan dulce" />
+          <img src="./photos/04.jpg" alt="Custom cake detail" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU: STICKER-CARDS -->
+  <section id="menu" class="section">
+    <div class="section-inner">
+      <p class="section-label">What We Bake</p>
+      <h2 class="section-heading">The Menu</h2>
+      <p style="color:var(--muted); max-width:520px;">From daily pan dulce to made-to-order celebration cakes — ask about custom orders and seasonal specials.</p>
+
+      <div class="sticker-grid">
+        <div class="sticker-card">
+          <span class="sticker-card-icon">🍞</span>
+          <div class="sticker-card-name">Pan Dulce</div>
+          <p class="sticker-card-desc">Conchas, polvorones, empanadas, and more — baked fresh every morning in a variety of fillings.</p>
+        </div>
+        <div class="sticker-card">
+          <span class="sticker-card-icon">🎂</span>
+          <div class="sticker-card-name">Custom Cakes</div>
+          <p class="sticker-card-desc">Wedding, quinceañera, birthday, and baby shower cakes with flavors like red velvet, chocolate, vanilla, and coffee mousse.</p>
+        </div>
+        <div class="sticker-card">
+          <span class="sticker-card-icon">🫔</span>
+          <div class="sticker-card-name">Tamales</div>
+          <p class="sticker-card-desc">Authentic green chile tamales and seasonal varieties — a crowd favorite and a true Cudahy tradition.</p>
+        </div>
+        <div class="sticker-card">
+          <span class="sticker-card-icon">🍮</span>
+          <div class="sticker-card-name">Specialty Pastries</div>
+          <p class="sticker-card-desc">Chocoflan, churro cheesecake, holiday conchitas, and rotating seasonal specials that keep regulars coming back.</p>
+        </div>
+        <div class="sticker-card">
+          <span class="sticker-card-icon">🍫</span>
+          <div class="sticker-card-name">Chocolates &amp; Treats</div>
+          <p class="sticker-card-desc">Artisan chocolates and themed treats for every occasion — from Valentine's to baby showers.</p>
+        </div>
+        <div class="sticker-card">
+          <span class="sticker-card-icon">☕</span>
+          <div class="sticker-card-name">Coffee</div>
+          <p class="sticker-card-desc">Freshly brewed café to pair with your pan dulce. Rich, bold, and exactly what the morning calls for.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" aria-label="Photo gallery">
+    <div class="gallery-track">
+      <img src="./photos/01.jpg" alt="La Princesa Bakery baked goods" />
+      <img src="./photos/02.jpg" alt="Bakery interior" />
+      <img src="./photos/03.jpg" alt="Pan dulce selection" />
+      <img src="./photos/04.jpg" alt="Custom cake" />
+      <img src="./photos/05.jpg" alt="Pastries display" />
+      <img src="./photos/06.jpg" alt="Bakery treats" />
+    </div>
+    <p class="gallery-caption">Scroll to explore →</p>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies" class="section">
+    <div class="section-inner">
+      <p class="section-label">In Their Words</p>
+      <h2 class="section-heading">What People Say</h2>
+
+      <div class="testimony-stack">
+        <div class="testimony-card featured">
+          <p class="testimony-quote">La Princesa Bakery is a must-visit for anyone who loves authentic Mexican bread. It's always buzzing with happy customers, some I overheard have been coming here for 20 years! The staff is amazing — they treat everyone like family, even calling some by name.</p>
+          <p class="testimony-attr">— Magno P.</p>
+        </div>
+
+        <div class="testimony-card">
+          <p class="testimony-quote">My family has been going to this bakery for years. I ordered my wedding cake from them last minute and they assured me I would have my cake. All of our guests LOVED it.</p>
+          <p class="testimony-attr">— Crystal C.</p>
+        </div>
+
+        <div class="testimony-card">
+          <p class="testimony-quote">The service was exceptional, 10/10. You could tell that a lot of love went into making them. I'll definitely continue to order from La Princesa Bakery.</p>
+          <p class="testimony-attr">— Itha S.</p>
+        </div>
+
+        <div class="testimony-card">
+          <p class="testimony-quote">They did an amazing job — better than I had expected. Pastries and cake weren't just beautiful to look at but tasted so amazing. This bakery has become my family's new go-to bakery.</p>
+          <p class="testimony-attr">— Leslie H.</p>
+        </div>
+
+        <div class="testimony-card">
+          <p class="testimony-quote">Came for the Valentine's conchitas — yummy. Also got chocoflan, churro cheesecake, and these cute hello kitty chocolates. Must try.</p>
+          <p class="testimony-attr">— J. Gomez</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section id="location" class="section">
+    <div class="section-inner">
+      <p class="section-label">Visit Us</p>
+      <h2 class="section-heading">Hours &amp; Location</h2>
+
+      <div class="location-grid">
+        <div>
+          <table class="hours-table">
+            <tbody>
+              <tr><td>Monday</td><td>7:00 AM – 7:00 PM</td></tr>
+              <tr><td>Tuesday</td><td>7:00 AM – 7:00 PM</td></tr>
+              <tr><td>Wednesday</td><td>7:00 AM – 7:00 PM</td></tr>
+              <tr><td>Thursday</td><td>7:00 AM – 7:00 PM</td></tr>
+              <tr><td>Friday</td><td>7:00 AM – 7:00 PM</td></tr>
+              <tr><td>Saturday</td><td>7:00 AM – 7:00 PM</td></tr>
+              <tr><td>Sunday</td><td>7:00 AM – 3:00 PM</td></tr>
+            </tbody>
+          </table>
+
+          <div class="location-info">
+            <div>
+              <strong style="color:var(--acc-dark); font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;">Address</strong><br>
+              <span style="color:var(--muted);">7910 Atlantic Ave, Cudahy, CA 90201</span>
+            </div>
+            <div>
+              <strong style="color:var(--acc-dark); font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase;">Phone</strong><br>
+              <a href="tel:+13237711901">(323) 771-1901</a>
+            </div>
+          </div>
+
+          <a href="tel:+13237711901" class="btn-primary" style="display:inline-block; margin-top:0.5rem;">Call Now</a>
+        </div>
+
+        <div>
+          <iframe
+            class="map-embed"
+            src="https://www.google.com/maps?q=7910+Atlantic+Ave,+Cudahy,+CA+90201&z=15&output=embed"
+            title="La Princesa Bakery location map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA STRIP -->
+  <section id="contact" aria-label="Contact">
+    <div class="contact-inner">
+      <p class="section-label">Ready to Order?</p>
+      <h2 class="section-heading" style="font-family:'Abril Fatface',serif; font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--warm-white); margin-bottom:1rem;">Let's Bake Something<br>Beautiful Together</h2>
+      <p class="contact-body">
+        Call to place a custom cake order, ask about daily specials, or just find out what's fresh from the oven today.
+      </p>
+      <div class="contact-actions">
+        <a href="tel:+13237711901" class="btn-primary">Call (323) 771-1901</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=7910+Atlantic+Ave,+Cudahy,+CA+90201" target="_blank" rel="noopener" class="btn-outline">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-social">
+      <a href="https://maps.google.com/?cid=14762141340620475598&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+    </div>
+    <hr class="footer-divider" />
+    <p>7910 Atlantic Ave · Cudahy, CA 90201 · <a href="tel:+13237711901">(323) 771-1901</a></p>
+    <hr class="footer-divider" />
+    <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>

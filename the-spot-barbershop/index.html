@@ -1,0 +1,421 @@
+<!--
+ARCHETYPE: Urban Classic Barbershop — "streetwise but clean."
+PALETTE: Deep navy (#141b2e) ground + warm camel/tan (#c89a5b) accent + cream (#f4ede0) paper.
+DISPLAY FONT: Oswald (condensed grotesque, all-caps signage) for headings/nav; Bitter (slab serif) for
+  pull-quotes & emphasis; Inter for body. Distinct from the sleek-black/electric modern shop and the
+  vintage-oxblood heritage shop.
+STRUCTURAL DECISIONS:
+  - Left-aligned split hero: oversized condensed wordmark + meta strip over a navy field, real fade
+    photo (01) bleeding to the right via clip; no centered overlay headline.
+  - Sticky top bar (navy, camel rule). html{scroll-padding-top:64px} reserves it.
+  - Services presented as a two-column "price ledger" (rows, not icon cards) — barber-shop board feel.
+  - Gallery is an asymmetric photo band (the shop's real work + crew).
+  - Testimonies as a horizontal stack of slab-serif quote blocks with camel ticks, NO stars/scores.
+  - Hours rendered as a striped roster table; map embed keyless.
+  - Single repeated CTA: "Call The Spot" (tel:). Walk-ins-welcome framing throughout.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Spot Barbershop — Fontana, CA</title>
+<meta name="description" content="The Spot Barbershop — fresh fades, beard work and clean cuts in Fontana, CA. Walk-ins welcome on Foothill Blvd.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Bitter:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#141b2e;
+    --navy-2:#1d2740;
+    --camel:#c89a5b;
+    --camel-dk:#a87c3e;
+    --cream:#f4ede0;
+    --cream-2:#ebe0cd;
+    --ink:#171717;
+    --muted:#6b6256;
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.cond{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.02em;font-weight:600;line-height:1.04}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* ---- NAV ---- */
+  header.nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:var(--navy);
+    border-bottom:2px solid var(--camel);
+  }
+  .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;max-width:1120px;margin:0 auto;padding:0 24px}
+  .brand{display:flex;align-items:center;gap:10px;color:var(--cream)}
+  .brand .mark{
+    width:34px;height:34px;border:2px solid var(--camel);border-radius:50%;
+    display:grid;place-items:center;font-family:'Oswald';font-weight:700;font-size:14px;color:var(--camel);
+  }
+  .brand b{font-family:'Oswald';font-weight:600;font-size:17px;letter-spacing:.06em;text-transform:uppercase}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-family:'Oswald';font-weight:500;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#cdd3e0;transition:color .15s}
+  .nav-links a:hover{color:var(--camel)}
+  .nav-call{
+    font-family:'Oswald';font-weight:600;letter-spacing:.08em;font-size:13px;text-transform:uppercase;
+    color:var(--navy)!important;background:var(--camel);padding:9px 16px;border-radius:2px;transition:background .15s
+  }
+  .nav-call:hover{background:#d9ab6c}
+  @media(max-width:760px){.nav-links a:not(.nav-call){display:none}}
+
+  /* ---- HERO ---- */
+  .hero{background:var(--navy);color:var(--cream);position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;align-items:stretch;min-height:560px}
+  .hero-text{padding:64px 24px 64px 0;display:flex;flex-direction:column;justify-content:center;max-width:600px;margin-left:auto;width:100%;padding-left:0}
+  .hero-left{padding-left:max(24px,calc((100vw - 1120px)/2 + 24px))}
+  .eyebrow{font-family:'Oswald';letter-spacing:.28em;font-size:12.5px;color:var(--camel);font-weight:500;margin-bottom:18px}
+  .hero h1{font-size:clamp(52px,8.2vw,104px);font-weight:700;color:var(--cream)}
+  .hero h1 .l2{color:var(--camel)}
+  .hero .sub{font-family:'Bitter',serif;font-style:italic;font-weight:500;font-size:clamp(16px,2.2vw,20px);color:#d7dbe6;margin-top:18px;max-width:34ch}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:30px;font-family:'Oswald';font-size:12.5px;letter-spacing:.1em;color:#aeb6c7;text-transform:uppercase}
+  .hero-meta span{display:flex;align-items:center;gap:8px}
+  .hero-meta .dot{width:6px;height:6px;background:var(--camel);border-radius:50%}
+  .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn-primary{
+    font-family:'Oswald';font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:15px;
+    background:var(--camel);color:var(--navy);padding:15px 30px;border-radius:2px;border:2px solid var(--camel);
+    transition:.15s;display:inline-flex;align-items:center;gap:10px
+  }
+  .btn-primary:hover{background:#d9ab6c;border-color:#d9ab6c}
+  .btn-ghost{
+    font-family:'Oswald';font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:15px;
+    color:var(--cream);padding:15px 28px;border:2px solid #3b4660;border-radius:2px;transition:.15s
+  }
+  .btn-ghost:hover{border-color:var(--camel);color:var(--camel)}
+  .hero-photo{position:relative;background:#0e1422}
+  .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+  .hero-photo:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--navy) 0%,rgba(20,27,46,.45) 22%,rgba(20,27,46,0) 55%)}
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;min-height:0}
+    .hero-text{padding:48px 24px 44px;max-width:none}
+    .hero-left{padding-left:24px}
+    .hero-photo{height:320px;order:2}
+    .hero-photo:after{background:linear-gradient(0deg,var(--navy) 0%,rgba(20,27,46,0) 50%)}
+  }
+
+  /* ---- MARQUEE STRIP ---- */
+  .strip{background:var(--camel);color:var(--navy)}
+  .strip .wrap{display:flex;flex-wrap:wrap;gap:8px 38px;justify-content:center;padding:13px 24px;font-family:'Oswald';font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+  .strip .dot{opacity:.5}
+
+  /* ---- SECTION SCAFFOLD ---- */
+  section{padding:84px 0}
+  .sec-label{font-family:'Oswald';letter-spacing:.26em;font-size:12.5px;color:var(--camel-dk);font-weight:600;margin-bottom:14px}
+  .sec-title{font-size:clamp(32px,5vw,52px);color:var(--navy);font-weight:700}
+
+  /* ---- ABOUT ---- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .about p{margin-top:18px;font-size:16.5px;color:#3a352c}
+  .about .lead{font-family:'Bitter',serif;font-size:20px;font-weight:500;color:var(--navy);line-height:1.5}
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px}
+  .about-photos img{width:100%;height:100%;object-fit:cover;border-radius:3px}
+  .about-photos .tall{grid-row:span 2;height:100%;min-height:340px}
+  .about-photos .short{height:163px}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:36px}.about-photos .tall{min-height:280px}}
+
+  /* ---- SERVICES (ledger) ---- */
+  .services{background:var(--navy);color:var(--cream)}
+  .services .sec-title{color:var(--cream)}
+  .services .sec-label{color:var(--camel)}
+  .ledger{margin-top:42px;display:grid;grid-template-columns:1fr 1fr;gap:0 64px}
+  .svc-row{display:flex;align-items:baseline;gap:14px;padding:18px 0;border-bottom:1px solid #2a3450}
+  .svc-row .nm{font-family:'Oswald';font-weight:500;font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:var(--cream);white-space:nowrap}
+  .svc-row .lead-line{flex:1;border-bottom:1px dotted #46527a;transform:translateY(-4px)}
+  .svc-row .pr{font-family:'Oswald';font-weight:600;font-size:18px;color:var(--camel)}
+  .svc-row .desc{display:block;font-family:'Inter';font-size:13px;letter-spacing:0;text-transform:none;color:#9aa3b8;margin-top:4px;font-weight:400}
+  .svc-cell{display:flex;flex-direction:column}
+  .svc-note{margin-top:30px;font-family:'Bitter',serif;font-style:italic;color:#aeb6c7;font-size:15px}
+  @media(max-width:720px){.ledger{grid-template-columns:1fr;gap:0}}
+
+  /* ---- GALLERY ---- */
+  .gallery{padding-bottom:84px}
+  .gal-grid{margin-top:42px;display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+  .gal-grid figure{overflow:hidden;border-radius:3px;background:#0e1422;position:relative}
+  .gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .gal-grid figure:hover img{transform:scale(1.06)}
+  .gal-grid .big{grid-column:span 2;grid-row:span 2}
+  .gal-grid .wide{grid-column:span 2}
+  @media(max-width:820px){
+    .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+    .gal-grid .big{grid-column:span 2;grid-row:span 2}
+    .gal-grid .wide{grid-column:span 2}
+  }
+
+  /* ---- TESTIMONIES ---- */
+  .says{background:var(--cream-2)}
+  .quotes{margin-top:46px;columns:2;column-gap:36px}
+  .quote{break-inside:avoid;background:var(--cream);border-left:3px solid var(--camel);padding:26px 28px;margin-bottom:36px;border-radius:0 3px 3px 0;box-shadow:0 1px 0 rgba(0,0,0,.04)}
+  .quote p{font-family:'Bitter',serif;font-size:17px;font-style:italic;color:#2a2a2a;line-height:1.6}
+  .quote .who{margin-top:16px;font-family:'Oswald';font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-size:13px;color:var(--camel-dk)}
+  .quote .who:before{content:"— "}
+  @media(max-width:720px){.quotes{columns:1}}
+
+  /* ---- VISIT / HOURS / MAP ---- */
+  .visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:46px;align-items:start}
+  .roster{width:100%;border-collapse:collapse;margin-top:6px}
+  .roster td{padding:11px 4px;font-size:15px;border-bottom:1px solid #e0d6c3}
+  .roster td.day{font-family:'Oswald';font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:14px;color:var(--navy)}
+  .roster td.hrs{text-align:right;color:#4a4438}
+  .roster tr.today td{color:var(--camel-dk)}
+  .roster tr.today td.hrs{font-weight:600}
+  .info-block{margin-top:30px}
+  .info-block .k{font-family:'Oswald';letter-spacing:.16em;text-transform:uppercase;font-size:11.5px;color:var(--camel-dk);font-weight:600}
+  .info-block .v{font-size:16px;color:var(--navy);margin-top:3px}
+  .info-block .v a:hover{color:var(--camel-dk)}
+  .map-frame{border:0;width:100%;height:420px;border-radius:4px;filter:grayscale(.25)}
+  .visit .btn-primary{margin-top:26px}
+  @media(max-width:820px){.visit-grid{grid-template-columns:1fr;gap:32px}.map-frame{height:320px}}
+
+  /* ---- FOOTER ---- */
+  footer{background:var(--navy);color:#aeb6c7;padding:56px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:34px}
+  footer .brand b{color:var(--cream)}
+  footer .ftit{font-family:'Oswald';letter-spacing:.16em;text-transform:uppercase;font-size:12px;color:var(--camel);font-weight:600;margin-bottom:14px}
+  footer a:hover{color:var(--camel)}
+  .foot-list{list-style:none}
+  .foot-list li{margin-bottom:9px;font-size:14.5px}
+  .foot-tag{font-family:'Bitter',serif;font-style:italic;font-size:14.5px;color:#9aa3b8;margin-top:16px;max-width:30ch}
+  .credit{border-top:1px solid #2a3450;margin-top:40px;padding-top:22px;font-size:13px;color:#7d859a;display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between}
+  .credit a{color:#9aa3b8}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <span class="mark">TS</span>
+      <b>The Spot</b>
+    </a>
+    <nav class="nav-links">
+      <a href="#about">Shop</a>
+      <a href="#services">Services</a>
+      <a href="#work">The Work</a>
+      <a href="#says">Testimonies</a>
+      <a href="#visit">Visit</a>
+      <a class="nav-call" href="tel:+19093568011">(909) 356-8011</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-text hero-left">
+      <div class="eyebrow">Fontana, California &nbsp;·&nbsp; Est. on Foothill</div>
+      <h1>The<br>Spot<br><span class="l2">Barbershop</span></h1>
+      <p class="sub">Fresh fades, sharp beard work, and clean cuts — done right, every chair, every time.</p>
+      <div class="hero-meta">
+        <span><i class="dot"></i> Walk-ins Welcome</span>
+        <span><i class="dot"></i> 7 Days a Week</span>
+        <span><i class="dot"></i> Fades · Beards · Kids</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn-primary" href="tel:+19093568011">Call The Spot</a>
+        <a class="btn-ghost" href="#services">See Services</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="./photos/01.jpg" alt="A crisp skin fade finished at The Spot Barbershop">
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="wrap">
+    <span>Skin Fades</span><span class="dot">/</span>
+    <span>Beard Trims</span><span class="dot">/</span>
+    <span>Line-Ups</span><span class="dot">/</span>
+    <span>Kids' Cuts</span><span class="dot">/</span>
+    <span>Hot Towel Finish</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="sec-label">The Shop</div>
+      <h2 class="sec-title">Your spot on Foothill.</h2>
+      <p class="lead">Some folks have been coming since they were kids. Others walked in five years ago and never looked for another barber again.</p>
+      <p>The Spot is a working Fontana barbershop — a real chair, a real crew, and a cut that's on point whether you book a regular or walk in off Foothill Blvd. The room moves fast and friendly: you get greeted, you get sat, and you walk out fresh.</p>
+      <p>Fades, tapers, line-ups, beard sculpting, and patient kids' cuts — the barbers here take pride in getting you exactly what you asked for, and aren't afraid to try something new when you want to switch it up.</p>
+    </div>
+    <div class="about-photos">
+      <img class="tall" src="./photos/03.jpg" alt="Slicked-back fade in progress at The Spot">
+      <img class="short" src="./photos/06.jpg" alt="Two of the barbers at The Spot Barbershop">
+      <img class="short" src="./photos/05.jpg" alt="A barber and his young client at The Spot">
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="wrap">
+    <div class="sec-label">The Board</div>
+    <h2 class="sec-title">Services &amp; Cuts</h2>
+    <div class="ledger">
+      <div class="svc-cell">
+        <div class="svc-row">
+          <span class="nm">Haircut</span><span class="lead-line"></span><span class="pr">$25</span>
+        </div>
+        <div class="svc-row"><span class="desc">Classic cut, taper or fade — washed, shaped and styled clean.</span></div>
+        <div class="svc-row">
+          <span class="nm">Skin Fade</span><span class="lead-line"></span><span class="pr">$30</span>
+        </div>
+        <div class="svc-row"><span class="desc">Bald-blended fade taken down to the skin, sharp and seamless.</span></div>
+        <div class="svc-row">
+          <span class="nm">Cut + Beard</span><span class="lead-line"></span><span class="pr">$38</span>
+        </div>
+        <div class="svc-row"><span class="desc">Full haircut paired with a sculpted, lined-up beard.</span></div>
+      </div>
+      <div class="svc-cell">
+        <div class="svc-row">
+          <span class="nm">Beard Trim</span><span class="lead-line"></span><span class="pr">$15</span>
+        </div>
+        <div class="svc-row"><span class="desc">Shape-up, line, and hot-towel finish for a tidy beard.</span></div>
+        <div class="svc-row">
+          <span class="nm">Line-Up</span><span class="lead-line"></span><span class="pr">$12</span>
+        </div>
+        <div class="svc-row"><span class="desc">Crisp edge-up to keep your last cut looking new.</span></div>
+        <div class="svc-row">
+          <span class="nm">Kids' Cut</span><span class="lead-line"></span><span class="pr">$20</span>
+        </div>
+        <div class="svc-row"><span class="desc">Patient, no-stress cuts for the little ones (12 &amp; under).</span></div>
+      </div>
+    </div>
+    <p class="svc-note">Pricing shown for the mockup — ask your barber for the current rates. Walk-ins welcome; regulars, just ask for your guy.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="work" class="gallery">
+  <div class="wrap">
+    <div class="sec-label">The Work</div>
+    <h2 class="sec-title">Straight off the chair.</h2>
+    <div class="gal-grid">
+      <figure class="big"><img src="./photos/04.jpg" alt="Spiky textured crop with a clean fade at The Spot"></figure>
+      <figure><img src="./photos/02.jpg" alt="Pomp and beard combo cut at The Spot"></figure>
+      <figure><img src="./photos/01.jpg" alt="Skin fade from the back"></figure>
+      <figure class="wide"><img src="./photos/03.jpg" alt="Slicked fade with the shop floor behind"></figure>
+      <figure><img src="./photos/05.jpg" alt="A dad and his son at the shop"></figure>
+      <figure><img src="./photos/06.jpg" alt="The barbers at The Spot"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="says" class="says">
+  <div class="wrap">
+    <div class="sec-label">In Their Words</div>
+    <h2 class="sec-title">What people say.</h2>
+    <div class="quotes">
+      <div class="quote">
+        <p>This is literally THE SPOT! Been coming here a couple years now and always on point. They all get down pretty clean, but my boy Miguel in the back corner is my go-to.</p>
+        <div class="who">Richard L.</div>
+      </div>
+      <div class="quote">
+        <p>I moved to Fontana about 5 years ago and needed a new barber. The Spot was closest, so I walked in and immediately liked the atmosphere. Got greeted well, and within 20 minutes I was in a chair. Five years later, still my barber.</p>
+        <div class="who">Juan R.</div>
+      </div>
+      <div class="quote">
+        <p>Great place to get a cut — I've been going here since I was a kid. He'll get you in and out in a reasonable time with a fresh new look, and the best part is his willingness to try something new and challenge his norm.</p>
+        <div class="who">Daniel X.</div>
+      </div>
+      <div class="quote">
+        <p>My shout-out goes to my barber at The Spot for always being consistent with my kids' cuts, and the patience for my 3-year-old. I appreciate the devotion to making us look fresh every time.</p>
+        <div class="who">Art G.</div>
+      </div>
+      <div class="quote">
+        <p>I just wanna thank my barber for being consistent and always doing a good job on my kids' hair.</p>
+        <div class="who">Denise N.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit" class="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <div class="sec-label">Hours &amp; Location</div>
+      <h2 class="sec-title" style="margin-bottom:22px">Come through.</h2>
+      <table class="roster">
+        <tr><td class="day">Monday</td><td class="hrs">9:00 AM – 7:00 PM</td></tr>
+        <tr><td class="day">Tuesday</td><td class="hrs">9:00 AM – 7:00 PM</td></tr>
+        <tr><td class="day">Wednesday</td><td class="hrs">9:00 AM – 7:00 PM</td></tr>
+        <tr><td class="day">Thursday</td><td class="hrs">9:00 AM – 7:00 PM</td></tr>
+        <tr><td class="day">Friday</td><td class="hrs">9:00 AM – 7:00 PM</td></tr>
+        <tr><td class="day">Saturday</td><td class="hrs">10:00 AM – 5:00 PM</td></tr>
+        <tr><td class="day">Sunday</td><td class="hrs">10:00 AM – 3:00 PM</td></tr>
+      </table>
+      <div class="info-block">
+        <div class="k">Find Us</div>
+        <div class="v"><a href="https://www.google.com/maps?q=16113+Foothill+Blvd,+Fontana,+CA+92335" target="_blank" rel="noopener">16113 Foothill Blvd, Fontana, CA 92335</a></div>
+      </div>
+      <div class="info-block">
+        <div class="k">Call / Walk In</div>
+        <div class="v"><a href="tel:+19093568011">(909) 356-8011</a></div>
+      </div>
+      <a class="btn-primary" href="tel:+19093568011">Call The Spot</a>
+    </div>
+    <div>
+      <iframe class="map-frame"
+        src="https://www.google.com/maps?q=16113+Foothill+Blvd,+Fontana,+CA+92335&z=15&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="The Spot Barbershop on the map"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <a class="brand" href="#top">
+        <span class="mark">TS</span>
+        <b>The Spot Barbershop</b>
+      </a>
+      <p class="foot-tag">A working Fontana barbershop on Foothill Blvd. Walk in, get fresh.</p>
+    </div>
+    <div>
+      <div class="ftit">Visit</div>
+      <ul class="foot-list">
+        <li><a href="https://www.google.com/maps?q=16113+Foothill+Blvd,+Fontana,+CA+92335" target="_blank" rel="noopener">16113 Foothill Blvd<br>Fontana, CA 92335</a></li>
+        <li><a href="tel:+19093568011">(909) 356-8011</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ftit">Find Us On</div>
+      <ul class="foot-list">
+        <li><a href="https://maps.google.com/?cid=9836741836285142159" target="_blank" rel="noopener">Google Business Profile</a></li>
+        <li><a href="#services">Services &amp; Cuts</a></li>
+        <li><a href="#says">Testimonies</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap credit">
+    <span>Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</span>
+    <span>© The Spot Barbershop · Fontana, CA</span>
+  </div>
+</footer>
+
+</body>
+</html>

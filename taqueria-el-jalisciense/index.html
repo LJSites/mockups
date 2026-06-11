@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<!--
+  ARCHETYPE: "Jalisco Mariachi Cantina" — festive, traditional-pride taqueria.
+  This is a Bakersfield FOOD TRUCK serving til 11pm, so the design leans into the
+  warm night-market glow of its own neon-script sign (photos 01/06): deep cantina
+  red + rich antique gold + warm cream. Ornate display serif (Playfair Display)
+  for the Jalisco-pride headlines, paired with Cormorant Garamond running text and
+  a Bebas Caps small-label voice for menu/section tags.
+
+  STRUCTURE (deliberately distinct from sibling taquerias — no lucha black/yellow,
+  no terracotta/cobalt mercado, no jade/magenta Día):
+    - Full-bleed night hero over the truck-at-night photo, gold script wordmark,
+      a hand-lettered "papel picado" banner strip as a recurring motif.
+    - Hours rendered as a "tonight's window" card because the truck is only open
+      Wed-Fri evenings + Sunday — the schedule is a feature, not fine print.
+    - Menu = an asymmetric two-column "carta" with a featured Especial callout
+      (the Jalisciense Burrito) rather than a 3-up icon grid.
+    - Testimonies as stacked pull-quotes on a deep-red field, no cards/stars.
+    - Sticky slim nav -> scroll-padding-top reserved (64px).
+  ANIMATION: none beyond CSS hover transitions (intentional restraint).
+  MAP: keyless google.com/maps?q=...&output=embed. PHOTOS: local ./photos/NN.jpg.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Taqueria El Jalisciense — Bakersfield's #1 Taco Spot</title>
+<meta name="description" content="Taqueria El Jalisciense — authentic Jalisco-style tacos, quesabirria, and the legendary Jalisciense Burrito from a Bakersfield food truck. Ranked #1 in Kern County." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Bebas+Neue&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --red:#7d1216;        /* deep cantina red */
+    --red-deep:#530a0d;
+    --gold:#c79a3e;       /* rich antique gold */
+    --gold-bright:#e7c068;
+    --cream:#f7efde;      /* warm cream paper */
+    --cream-deep:#efe3c8;
+    --ink:#241510;
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h);}
+  body{
+    font-family:"Cormorant Garamond",Georgia,serif;
+    background:var(--cream);
+    color:var(--ink);
+    font-size:19px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:"Playfair Display",Georgia,serif;line-height:1.08;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .tag{font-family:"Bebas Neue",sans-serif;letter-spacing:.22em;font-size:.95rem;}
+
+  /* ---------- papel picado motif (recurring) ---------- */
+  .papel{
+    height:18px;width:100%;
+    background:
+      radial-gradient(circle at 12px -6px, transparent 11px, var(--gold) 11px 12px, transparent 12px) 0 0/24px 18px repeat-x;
+    opacity:.9;
+  }
+  .papel.red{background:
+      radial-gradient(circle at 12px -6px, transparent 11px, var(--red) 11px 12px, transparent 12px) 0 0/24px 18px repeat-x;}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(83,10,13,.97);
+    border-bottom:1px solid rgba(199,154,62,.5);
+    display:flex;align-items:center;
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%;}
+  .brand-mini{font-family:"Playfair Display";font-weight:700;color:var(--gold-bright);font-size:1.15rem;letter-spacing:.01em;}
+  .brand-mini span{color:var(--cream);font-style:italic;font-weight:600;}
+  .nav-links{display:flex;gap:28px;align-items:center;}
+  .nav-links a{font-family:"Bebas Neue",sans-serif;letter-spacing:.16em;font-size:1rem;color:var(--cream);transition:color .2s;}
+  .nav-links a:hover{color:var(--gold-bright);}
+  .nav-call{
+    font-family:"Bebas Neue",sans-serif;letter-spacing:.12em;font-size:1rem;
+    color:var(--red-deep)!important;background:var(--gold-bright);
+    padding:8px 16px;border-radius:2px;transition:transform .15s,background .2s;
+  }
+  .nav-call:hover{background:#fff;transform:translateY(-1px);}
+  @media(max-width:760px){.nav-links a:not(.nav-call){display:none;}}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;min-height:88vh;display:flex;align-items:flex-end;
+    color:var(--cream);text-align:center;
+    background:linear-gradient(rgba(40,4,6,.45),rgba(40,4,6,.82)),url('./photos/06.jpg') center 38%/cover no-repeat;
+  }
+  .hero-inner{width:100%;padding:0 24px 84px;}
+  .hero .eyebrow{color:var(--gold-bright);margin-bottom:14px;}
+  .hero h1{
+    font-weight:800;font-size:clamp(2.7rem,8vw,5.6rem);
+    text-shadow:0 4px 30px rgba(0,0,0,.6);margin-bottom:6px;
+  }
+  .hero h1 em{font-style:italic;color:var(--gold-bright);font-weight:700;display:block;}
+  .hero .sub{
+    font-size:clamp(1.15rem,2.6vw,1.5rem);max-width:640px;margin:18px auto 30px;
+    color:var(--cream-deep);font-weight:500;
+  }
+  .hero-cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    font-family:"Bebas Neue",sans-serif;letter-spacing:.14em;font-size:1.15rem;
+    padding:14px 30px;border-radius:2px;transition:transform .15s,box-shadow .2s,background .2s;
+    border:2px solid var(--gold-bright);
+  }
+  .btn-gold{background:var(--gold-bright);color:var(--red-deep);box-shadow:0 6px 24px rgba(0,0,0,.4);}
+  .btn-gold:hover{transform:translateY(-2px);background:#fff;}
+  .btn-ghost{background:transparent;color:var(--gold-bright);}
+  .btn-ghost:hover{background:rgba(231,192,104,.16);transform:translateY(-2px);}
+  .ranked{
+    display:inline-block;margin-top:34px;font-family:"Bebas Neue",sans-serif;
+    letter-spacing:.2em;font-size:.92rem;color:var(--cream-deep);
+    border-top:1px solid rgba(199,154,62,.45);padding-top:14px;
+  }
+  .ranked b{color:var(--gold-bright);}
+
+  /* ---------- section frame ---------- */
+  section{padding:78px 0;}
+  .sec-tag{color:var(--red);display:block;margin-bottom:8px;}
+  .sec-title{font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--red);}
+  .sec-title em{font-style:italic;color:var(--gold);}
+
+  /* ---------- about ---------- */
+  #about{background:var(--cream-deep);}
+  .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;}
+  .about-grid p{margin-top:18px;font-size:1.18rem;}
+  .about-grid p:first-of-type{margin-top:22px;}
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .about-photos img{width:100%;height:100%;object-fit:cover;border:6px solid #fff;box-shadow:0 10px 30px rgba(83,10,13,.22);}
+  .about-photos .tall{grid-row:span 2;height:100%;min-height:330px;}
+  @media(max-width:820px){
+    .about-grid{grid-template-columns:1fr;gap:34px;}
+    .about-photos .tall{grid-row:auto;min-height:260px;}
+  }
+
+  /* ---------- menu / carta ---------- */
+  #menu{background:var(--cream);}
+  .carta{display:grid;grid-template-columns:1fr 1fr;gap:46px 64px;margin-top:42px;}
+  .carta h3{font-size:1.5rem;color:var(--red);border-bottom:2px solid var(--gold);padding-bottom:8px;margin-bottom:6px;
+    display:flex;align-items:baseline;justify-content:space-between;}
+  .carta h3 .tag{color:var(--gold);font-size:.75rem;}
+  .item{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px dashed rgba(125,18,22,.22);align-items:baseline;}
+  .item:last-child{border-bottom:none;}
+  .item .name{font-weight:600;font-size:1.2rem;}
+  .item .desc{display:block;font-size:1rem;color:#6a5040;font-style:italic;font-weight:400;}
+  .especial{
+    grid-column:1/-1;background:var(--red);color:var(--cream);
+    padding:34px 36px;border-radius:4px;position:relative;overflow:hidden;
+    display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:center;
+    box-shadow:0 16px 40px rgba(83,10,13,.3);
+  }
+  .especial::before{content:"";position:absolute;inset:8px;border:1px solid rgba(231,192,104,.45);border-radius:3px;pointer-events:none;}
+  .especial .tag{color:var(--gold-bright);}
+  .especial h3{font-family:"Playfair Display";color:var(--gold-bright);font-size:1.95rem;border:none;padding:0;margin:8px 0 12px;display:block;font-weight:800;}
+  .especial p{color:var(--cream-deep);font-size:1.15rem;}
+  .especial img{width:100%;height:230px;object-fit:cover;border:5px solid var(--gold-bright);border-radius:3px;}
+  .menu-note{margin-top:30px;text-align:center;font-style:italic;color:#6a5040;font-size:1.08rem;}
+  @media(max-width:820px){
+    .carta{grid-template-columns:1fr;gap:32px;}
+    .especial{grid-template-columns:1fr;}
+    .especial img{height:200px;}
+  }
+
+  /* ---------- gallery strip ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:0;}
+  .gallery img{width:100%;height:clamp(180px,22vw,280px);object-fit:cover;filter:saturate(1.05);}
+  @media(max-width:760px){.gallery{grid-template-columns:1fr 1fr;}}
+
+  /* ---------- testimonies ---------- */
+  #say{background:var(--red-deep);color:var(--cream);text-align:center;}
+  #say .sec-tag{color:var(--gold-bright);}
+  #say .sec-title{color:var(--cream);}
+  #say .sec-title em{color:var(--gold-bright);}
+  .quotes{max-width:780px;margin:46px auto 0;display:flex;flex-direction:column;gap:40px;}
+  .quote{position:relative;padding-top:8px;}
+  .quote p{font-family:"Cormorant Garamond";font-style:italic;font-size:clamp(1.3rem,3vw,1.7rem);line-height:1.4;color:var(--cream);}
+  .quote .mark{font-family:"Playfair Display";font-size:3.4rem;color:var(--gold);line-height:0;display:block;height:.5em;}
+  .quote .who{display:block;margin-top:14px;font-family:"Bebas Neue",sans-serif;letter-spacing:.18em;color:var(--gold-bright);font-size:1.05rem;}
+  .quote+.quote{border-top:1px solid rgba(199,154,62,.3);padding-top:34px;}
+
+  /* ---------- visit / hours / map ---------- */
+  #visit{background:var(--cream-deep);}
+  .visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;margin-top:40px;align-items:stretch;}
+  .hours-card{background:#fff;border:1px solid rgba(125,18,22,.2);border-top:5px solid var(--red);border-radius:4px;padding:30px 32px;box-shadow:0 10px 30px rgba(83,10,13,.12);}
+  .hours-card h3{font-size:1.5rem;color:var(--red);margin-bottom:6px;}
+  .tonight{font-style:italic;color:#6a5040;margin-bottom:18px;}
+  .hrow{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dotted rgba(125,18,22,.25);font-size:1.08rem;}
+  .hrow:last-of-type{border-bottom:none;}
+  .hrow.open .day{font-weight:600;color:var(--ink);}
+  .hrow.open .time{color:var(--red);font-weight:600;}
+  .hrow.closed{color:#a99}
+  .addr{margin-top:22px;padding-top:18px;border-top:2px solid var(--gold);}
+  .addr .tag{color:var(--gold);display:block;margin-bottom:6px;}
+  .addr a{display:inline-block;margin-top:4px;}
+  .find{margin-top:18px;}
+  .find a{font-family:"Bebas Neue",sans-serif;letter-spacing:.12em;color:var(--red);border-bottom:1px solid var(--gold);transition:color .2s;}
+  .find a:hover{color:var(--gold);}
+  .map-wrap{border:6px solid #fff;box-shadow:0 12px 34px rgba(83,10,13,.2);min-height:380px;}
+  .map-wrap iframe{width:100%;height:100%;min-height:380px;border:0;display:block;}
+  @media(max-width:820px){.visit-grid{grid-template-columns:1fr;}}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:var(--cream-deep);text-align:center;padding:54px 24px 40px;}
+  footer .fbrand{font-family:"Playfair Display";font-style:italic;font-weight:700;color:var(--gold-bright);font-size:1.7rem;}
+  footer .fcontact{margin:14px 0 6px;font-size:1.1rem;}
+  footer .fcontact a{color:var(--cream);border-bottom:1px solid rgba(199,154,62,.5);}
+  footer .flinks{margin-top:18px;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;}
+  footer .flinks a{font-family:"Bebas Neue",sans-serif;letter-spacing:.14em;color:var(--gold-bright);font-size:.95rem;transition:color .2s;}
+  footer .flinks a:hover{color:#fff;}
+  .credit{margin-top:30px;padding-top:22px;border-top:1px solid rgba(199,154,62,.25);font-size:.95rem;color:#9b8a72;font-style:italic;}
+  .credit a{color:var(--gold-bright);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand-mini">El <span>Jalisciense</span></a>
+    <div class="nav-links">
+      <a href="#about">Our Story</a>
+      <a href="#menu">La Carta</a>
+      <a href="#say">In Their Words</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:+16613142677" class="nav-call">Call · (661) 314-2677</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <p class="eyebrow tag">Auténtica · Estilo Jalisco · Bakersfield</p>
+    <h1>Taqueria<em>El Jalisciense</em></h1>
+    <p class="sub">A little truck off South Union with a big reputation — slow-grilled meats, fresh corn tortillas, and three salsas that mean business.</p>
+    <div class="hero-cta">
+      <a href="https://www.google.com/maps?q=5500+S+Union+Ave,+Bakersfield,+CA+93307" target="_blank" rel="noopener" class="btn btn-gold">Get Directions</a>
+      <a href="tel:+16613142677" class="btn btn-ghost">Call to Order</a>
+    </div>
+    <span class="ranked">Ranked the <b>#1 Taco Spot in Kern County</b></span>
+  </div>
+</header>
+<div class="papel"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <span class="sec-tag tag">Our Story</span>
+      <h2 class="sec-title">Cooked the <em>Jalisco</em> way — every night we're open.</h2>
+      <p>El Jalisciense is a family food truck serving the South Union neighborhood the way our grandparents did it back home: marinated meats over open heat, tortillas pressed fresh, and salsas built by hand. Nothing pre-made, nothing rushed.</p>
+      <p>From the first taste of the meat to those amazing corn tortillas and three different salsas, regulars say it plainly — they don't eat tacos anywhere else. Pull up under the lights, grab a seat, and find out why.</p>
+    </div>
+    <div class="about-photos">
+      <img class="tall" src="./photos/01.jpg" alt="Outdoor seating under string lights at the El Jalisciense taco truck at night" />
+      <img src="./photos/03.jpg" alt="Order of tacos topped with cilantro, onion and pickled red onion" />
+      <img src="./photos/05.jpg" alt="Basket of grilled ribs with charred onions and chiles" />
+    </div>
+  </div>
+</section>
+<div class="papel red"></div>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="wrap">
+    <span class="sec-tag tag">La Carta</span>
+    <h2 class="sec-title">What's <em>on the grill</em></h2>
+    <div class="carta">
+
+      <div class="especial">
+        <div>
+          <span class="tag">The House Especial</span>
+          <h3>The Jalisciense Burrito</h3>
+          <p>Loaded with juicy thick-cut steak, big grilled shrimp, and a spicy hot link — the one our regulars drive across town for. Best in the West, and they'll tell you so.</p>
+        </div>
+        <img src="./photos/04.jpg" alt="The signature Jalisciense plate with crispy quesabirria and grilled vegetables" />
+      </div>
+
+      <div>
+        <h3>Tacos <span class="tag">Estilo Jalisco</span></h3>
+        <div class="item"><span><span class="name">Taco al Pastor</span><span class="desc">Marinated pork, onion, cilantro, salsa verde</span></span></div>
+        <div class="item"><span><span class="name">Taco de Asada</span><span class="desc">The best-quality steak, grilled onions, double tortilla</span></span></div>
+        <div class="item"><span><span class="name">Quesabirria Taco</span><span class="desc">Crispy cheese-griddled birria with consommé to dip</span></span></div>
+        <div class="item"><span><span class="name">Taco de Carnitas</span><span class="desc">Slow-cooked, crisped on the flat-top, pickled onion</span></span></div>
+      </div>
+
+      <div>
+        <h3>Más de la Casa <span class="tag">Más</span></h3>
+        <div class="item"><span><span class="name">Quesadillas</span><span class="desc">Handmade, your choice of marinated meat &amp; melted cheese</span></span></div>
+        <div class="item"><span><span class="name">Costillas a la Parrilla</span><span class="desc">Grilled ribs with charred onion &amp; chiles toreados</span></span></div>
+        <div class="item"><span><span class="name">Aguas Frescas</span><span class="desc">Refreshing fresh-fruit drinks, made daily</span></span></div>
+        <div class="item"><span><span class="name">Tres Salsas</span><span class="desc">Three house salsas — the spicy one is a favorite</span></span></div>
+      </div>
+
+    </div>
+    <p class="menu-note">Walk-up window &amp; outdoor seating. Open evenings Wed–Fri and all day Sunday — call ahead and we'll have it hot.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div class="gallery">
+  <img src="./photos/02.jpg" alt="Close-up of street tacos with grilled jalapeño and lime" />
+  <img src="./photos/03.jpg" alt="Tacos with pickled red onion on checkered paper" />
+  <img src="./photos/05.jpg" alt="Grilled ribs platter" />
+  <img src="./photos/06.jpg" alt="The El Jalisciense food truck lit up at night" />
+</div>
+
+<!-- TESTIMONIES -->
+<section id="say">
+  <div class="wrap">
+    <span class="sec-tag tag">In Their Words</span>
+    <h2 class="sec-title">What the <em>regulars</em> say</h2>
+    <div class="quotes">
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>Once you get a taste of their tacos, you will LOVE them. The quality of the meat is the best, everything down to the grilled onions is mouth-watering, the fruit drinks so refreshing. We do not eat tacos anywhere else.</p>
+        <span class="who">— Sav</span>
+      </div>
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>My favorite taco spot in all of Kern County. Everyone is always friendly and the food is always 1000/10. I love how spicy the salsa is.</p>
+        <span class="who">— Karla M.</span>
+      </div>
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>The Number 1 taco spot ranked in Kern County — look no further. The Special Jalisciense Burrito with juicy thick steak, big shrimp and a spicy hot link, and their quesabirria tacos… best in the West. Must try!</p>
+        <span class="who">— Marcos E.</span>
+      </div>
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>Delicious food and great customer service. From the amazing corn tortillas, to the tender marinated meat, to the three different salsas that are all so tasty — these guys really get after it.</p>
+        <span class="who">— Kody C.</span>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="papel"></div>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="wrap">
+    <span class="sec-tag tag">Find Us</span>
+    <h2 class="sec-title">Pull up <em>under the lights</em></h2>
+    <div class="visit-grid">
+      <div class="hours-card">
+        <h3>Hours</h3>
+        <p class="tonight">Evenings Wed–Fri &amp; all day Sunday — closed Mon, Tue &amp; Sat.</p>
+        <div class="hrow closed"><span class="day">Monday</span><span class="time">Closed</span></div>
+        <div class="hrow closed"><span class="day">Tuesday</span><span class="time">Closed</span></div>
+        <div class="hrow open"><span class="day">Wednesday</span><span class="time">5:00 – 11:00 PM</span></div>
+        <div class="hrow open"><span class="day">Thursday</span><span class="time">5:00 – 11:00 PM</span></div>
+        <div class="hrow open"><span class="day">Friday</span><span class="time">5:00 – 11:00 PM</span></div>
+        <div class="hrow closed"><span class="day">Saturday</span><span class="time">Closed</span></div>
+        <div class="hrow open"><span class="day">Sunday</span><span class="time">9:00 AM – 5:00 PM</span></div>
+
+        <div class="addr">
+          <span class="tag">The Truck</span>
+          5500 S Union Ave<br />Bakersfield, CA 93307
+          <div class="find">
+            <a href="https://www.google.com/maps?q=5500+S+Union+Ave,+Bakersfield,+CA+93307" target="_blank" rel="noopener">Get Directions →</a>
+          </div>
+          <div class="find" style="margin-top:8px;">
+            <a href="https://maps.google.com/?cid=4469031547352755590" target="_blank" rel="noopener">Find us on Google →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=35.304703499999995,-119.00265050000002&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Taqueria El Jalisciense, 5500 S Union Ave, Bakersfield"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fbrand">Taqueria El Jalisciense</div>
+  <p class="fcontact">Hungry? <a href="tel:+16613142677">(661) 314-2677</a> · 5500 S Union Ave, Bakersfield, CA</p>
+  <div class="flinks">
+    <a href="https://maps.google.com/?cid=4469031547352755590" target="_blank" rel="noopener">Google Business</a>
+    <a href="https://www.google.com/maps?q=5500+S+Union+Ave,+Bakersfield,+CA+93307" target="_blank" rel="noopener">Directions</a>
+  </div>
+  <p class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+</footer>
+
+</body>
+</html>

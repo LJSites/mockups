@@ -1,0 +1,466 @@
+<!--
+  ARCHETYPE: Clean modern collision & body-shop — "precision panel-shop" direction.
+  Bright white + bold cobalt blue (#1456E6) with a sharp signal-red accent (#E8222B).
+  Display: Archivo Expanded (bold grotesk, wide caps) for headings; Inter for body.
+  Structural decisions (distinct from other auto shops in the set):
+    - Split asymmetric hero: heavy white type block left, photo right with a thin
+      red baseline rule and a cobalt corner block. No dark-overlay/centered hero.
+    - Sticky thin top bar with a left wordmark + a red "Call Now" pill on the right.
+      scroll-padding-top reserves the bar height so anchors never duck under it.
+    - Services shown as a numbered horizontal "process / capability" list (no
+      3-column circular-icon grid), divided by hairline rules.
+    - Testimonies = wide quote slabs stacked, big quotation mark, first-name+last-init,
+      NO stars/scores/labels. Section titled "What Drivers Say."
+    - Keyless Google Maps embed (maps?q=...&output=embed). All photos local ./photos/NN.jpg.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chino Auto Repair &amp; Collision — Body Shop &amp; Mechanic in Chino, CA</title>
+<meta name="description" content="Honest collision repair, OEM-spec body work, and full mechanical service in Chino, CA. Family-trusted for over 10 years. Call (909) 517-3699." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Archivo+Expanded:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cobalt:#1456E6;
+    --cobalt-dk:#0E3FAE;
+    --red:#E8222B;
+    --ink:#0B1220;
+    --slate:#54627A;
+    --line:#E3E8F2;
+    --paper:#FFFFFF;
+    --wash:#F5F7FC;
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h);}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.disp{font-family:'Archivo Expanded','Archivo',sans-serif;letter-spacing:-.01em;line-height:1.02;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;
+    letter-spacing:.22em;font-size:.72rem;color:var(--cobalt);
+  }
+  .eyebrow.red{color:var(--red);}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(255,255,255,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{max-width:1160px;margin:0 auto;padding:0 24px;height:100%;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Archivo Expanded',sans-serif;font-weight:900;font-size:1.02rem;text-transform:uppercase;letter-spacing:.02em;}
+  .brand .mark{width:30px;height:30px;border-radius:6px;background:var(--cobalt);
+    position:relative;flex:0 0 auto;overflow:hidden;}
+  .brand .mark::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:7px;background:var(--red);}
+  .brand .mark::before{content:"C";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Archivo Expanded';font-weight:900;font-size:.9rem;padding-bottom:4px;}
+  .nav-links{display:flex;align-items:center;gap:30px;}
+  .nav-links a{font-weight:600;font-size:.93rem;color:var(--slate);transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;font-family:'Archivo',sans-serif;
+    font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.8rem;
+    padding:11px 20px;border-radius:6px;transition:transform .12s ease,box-shadow .15s ease,background .15s;
+    white-space:nowrap;
+  }
+  .btn-red{background:var(--red);color:#fff;box-shadow:0 6px 18px rgba(232,34,43,.28);}
+  .btn-red:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(232,34,43,.36);}
+  .btn-cobalt{background:var(--cobalt);color:#fff;box-shadow:0 6px 18px rgba(20,86,230,.26);}
+  .btn-cobalt:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(20,86,230,.34);}
+  .btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:#fff;transform:translateY(-2px);}
+  .nav .btn{padding:9px 16px;}
+  @media(max-width:860px){.nav-links{display:none;}}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 0;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;}
+  .hero-copy .tagline{display:inline-flex;align-items:center;gap:10px;margin-bottom:22px;}
+  .hero-copy .tagline span{width:34px;height:3px;background:var(--red);display:inline-block;}
+  .hero h1{font-size:clamp(2.5rem,5.4vw,4.1rem);font-weight:900;text-transform:uppercase;}
+  .hero h1 .blue{color:var(--cobalt);}
+  .hero .lead{margin:24px 0 32px;font-size:1.12rem;color:var(--slate);max-width:30em;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-cta .btn{padding:14px 26px;font-size:.85rem;}
+  .hero-stats{display:flex;gap:34px;margin-top:40px;padding-top:28px;border-top:1px solid var(--line);}
+  .hero-stats .num{font-family:'Archivo Expanded';font-weight:900;font-size:1.7rem;color:var(--ink);}
+  .hero-stats .lbl{font-size:.78rem;color:var(--slate);text-transform:uppercase;letter-spacing:.1em;font-weight:600;}
+  .hero-photo{position:relative;}
+  .hero-photo .frame{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(11,18,32,.18);}
+  .hero-photo .frame img{width:100%;height:440px;object-fit:cover;}
+  .hero-photo .baseline{height:7px;background:var(--red);border-radius:0 0 4px 4px;}
+  .hero-photo .corner{position:absolute;top:-14px;left:-14px;width:88px;height:88px;background:var(--cobalt);border-radius:12px;z-index:-1;}
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:34px;}
+    .hero-photo .frame img{height:320px;}
+    .hero-stats{gap:24px;}
+  }
+
+  /* ---------- MARQUEE / TRUST STRIP ---------- */
+  .strip{background:var(--ink);color:#fff;margin-top:64px;padding:18px 0;overflow:hidden;}
+  .strip .row{display:flex;gap:48px;align-items:center;justify-content:center;flex-wrap:wrap;font-family:'Archivo',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:.82rem;}
+  .strip .row span{color:rgba(255,255,255,.55);}
+  .strip .dot{color:var(--red);}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:84px 0;}
+  .sec-head{max-width:40em;margin-bottom:46px;}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:800;text-transform:uppercase;margin-top:12px;}
+  .sec-head p{margin-top:16px;color:var(--slate);font-size:1.05rem;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--wash);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;}
+  .about-imgs{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px;}
+  .about-imgs img{width:100%;border-radius:10px;object-fit:cover;height:185px;box-shadow:0 10px 28px rgba(11,18,32,.1);}
+  .about-imgs img:first-child{grid-column:1 / -1;height:230px;}
+  .about-body h2{font-size:clamp(1.9rem,3.6vw,2.6rem);font-weight:800;text-transform:uppercase;margin:12px 0 18px;}
+  .about-body p{color:var(--slate);margin-bottom:16px;}
+  .about-body .name{color:var(--cobalt);font-weight:700;}
+  .checks{list-style:none;margin-top:24px;display:grid;gap:12px;}
+  .checks li{display:flex;gap:12px;align-items:flex-start;font-weight:600;color:var(--ink);}
+  .checks li::before{content:"";flex:0 0 auto;width:20px;height:20px;border-radius:5px;background:var(--cobalt);margin-top:3px;
+    -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='black' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/></svg>") center/15px no-repeat;
+    mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='black' d='M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z'/></svg>") center/15px no-repeat;background:var(--cobalt);}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:34px;}}
+
+  /* ---------- SERVICES (numbered list) ---------- */
+  .svc-list{border-top:1px solid var(--line);}
+  .svc-item{
+    display:grid;grid-template-columns:90px 1fr auto;gap:28px;align-items:center;
+    padding:30px 4px;border-bottom:1px solid var(--line);transition:background .2s;
+  }
+  .svc-item:hover{background:var(--wash);}
+  .svc-item .no{font-family:'Archivo Expanded';font-weight:900;font-size:1.5rem;color:var(--line);transition:color .2s;}
+  .svc-item:hover .no{color:var(--cobalt);}
+  .svc-item h3{font-size:1.28rem;font-weight:800;text-transform:uppercase;margin-bottom:5px;}
+  .svc-item p{color:var(--slate);font-size:.98rem;margin:0;max-width:46em;}
+  .svc-item .tag{justify-self:end;font-family:'Archivo';font-weight:800;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--red);border:1.5px solid var(--red);border-radius:999px;padding:5px 13px;white-space:nowrap;}
+  @media(max-width:680px){
+    .svc-item{grid-template-columns:54px 1fr;gap:16px;}
+    .svc-item .tag{display:none;}
+    .svc-item .no{font-size:1.2rem;}
+  }
+
+  /* ---------- TESTIMONIES ---------- */
+  .says{background:var(--ink);color:#fff;}
+  .says .sec-head h2{color:#fff;}
+  .says .sec-head .eyebrow{color:#7BA0FF;}
+  .quotes{display:grid;gap:22px;}
+  .quote{
+    background:#121A2C;border:1px solid #1F2A40;border-radius:12px;padding:34px 36px;
+    position:relative;display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:start;
+  }
+  .quote .mark{font-family:'Archivo Expanded';font-weight:900;font-size:3.4rem;line-height:.7;color:var(--cobalt);}
+  .quote p{color:#D7DEEC;font-size:1.04rem;line-height:1.65;}
+  .quote .who{margin-top:16px;font-family:'Archivo';font-weight:800;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;color:#fff;}
+  .quote .who::before{content:"";display:inline-block;width:22px;height:2px;background:var(--red);vertical-align:middle;margin-right:10px;}
+  .quotes-2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px;}
+  .quotes-2 .quote{grid-template-columns:1fr;gap:0;}
+  .quotes-2 .quote .mark{margin-bottom:10px;}
+  @media(max-width:760px){.quotes-2{grid-template-columns:1fr;}.quote{padding:28px 24px;}}
+
+  /* ---------- VISIT / MAP ---------- */
+  .visit-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:46px;align-items:stretch;}
+  .info-card{background:var(--wash);border-radius:12px;padding:38px;border:1px solid var(--line);}
+  .info-card h3{font-size:1.05rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;font-weight:800;}
+  .info-block{padding:20px 0;border-bottom:1px solid var(--line);}
+  .info-block:last-child{border-bottom:0;padding-bottom:0;}
+  .info-block .k{font-family:'Archivo';font-weight:800;text-transform:uppercase;letter-spacing:.1em;font-size:.7rem;color:var(--cobalt);margin-bottom:8px;}
+  .info-block a:hover{color:var(--cobalt);}
+  .hours-row{display:flex;justify-content:space-between;font-size:.96rem;padding:4px 0;}
+  .hours-row.closed{color:var(--slate);}
+  .hours-row .day{font-weight:600;}
+  .visit-cta{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;}
+  .map-wrap{border-radius:12px;overflow:hidden;border:1px solid var(--line);min-height:420px;box-shadow:0 16px 40px rgba(11,18,32,.1);}
+  .map-wrap iframe{width:100%;height:100%;min-height:420px;border:0;display:block;}
+  @media(max-width:860px){.visit-grid{grid-template-columns:1fr;}.map-wrap{min-height:340px;}.map-wrap iframe{min-height:340px;}}
+
+  /* ---------- CTA BAND ---------- */
+  .band{background:var(--cobalt);color:#fff;text-align:center;}
+  .band h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;text-transform:uppercase;color:#fff;}
+  .band p{color:rgba(255,255,255,.85);margin:16px auto 30px;max-width:34em;font-size:1.08rem;}
+  .band .btn-ghost{background:#fff;border-color:#fff;color:var(--cobalt);}
+  .band .btn-ghost:hover{background:var(--red);border-color:var(--red);color:#fff;}
+  .band .btn-red{box-shadow:0 8px 22px rgba(0,0,0,.25);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#fff;padding:60px 0 34px;}
+  .foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start;padding-bottom:32px;border-bottom:1px solid #1F2A40;}
+  .foot-brand{max-width:24em;}
+  .foot-brand .brand{color:#fff;margin-bottom:14px;}
+  .foot-brand p{color:#94A0B4;font-size:.95rem;}
+  .foot-cols{display:flex;gap:64px;flex-wrap:wrap;}
+  .foot-col h4{font-family:'Archivo';font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#7BA0FF;margin-bottom:14px;}
+  .foot-col a,.foot-col p{display:block;color:#C3CBDA;font-size:.95rem;margin-bottom:9px;}
+  .foot-col a:hover{color:#fff;}
+  .foot-bottom{padding-top:26px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;}
+  .foot-bottom .credit{color:#94A0B4;font-size:.86rem;}
+  .foot-bottom .credit a{color:#7BA0FF;}
+  .foot-bottom .legal{color:#6B7689;font-size:.82rem;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand"><span class="mark"></span> Chino Auto Repair <span style="color:var(--red);">&amp; Collision</span></a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#says">Testimonies</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a href="tel:+19095173699" class="btn btn-red">Call Now</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-bottom:0;">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="tagline"><span></span><span class="eyebrow red">Collision &amp; Body Shop · Chino, CA</span></div>
+          <h1>Back On The Road,<br /><span class="blue">Built To Spec.</span></h1>
+          <p class="lead">Honest collision repair and full mechanical service from a family-run shop Chino drivers have trusted for over a decade. OEM parts, panel gaps done right, no surprises.</p>
+          <div class="hero-cta">
+            <a href="tel:+19095173699" class="btn btn-red">Call (909) 517-3699</a>
+            <a href="#visit" class="btn btn-ghost">Get Directions</a>
+          </div>
+          <div class="hero-stats">
+            <div><div class="num">10+ yrs</div><div class="lbl">Trusted in Chino</div></div>
+            <div><div class="num">OEM</div><div class="lbl">Original Parts</div></div>
+            <div><div class="num">2 hr</div><div class="lbl">Same-day fixes</div></div>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <div class="corner"></div>
+          <div class="frame">
+            <img src="./photos/02.jpg" alt="Chino Auto Repair &amp; Collision shop floor with vehicles in for body and mechanical work" />
+            <div class="baseline"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="strip">
+    <div class="wrap">
+      <div class="row">
+        <span>Collision Repair</span><span class="dot">•</span>
+        <span>Auto Body</span><span class="dot">•</span>
+        <span>Frame &amp; Alignment</span><span class="dot">•</span>
+        <span>Mechanical Service</span><span class="dot">•</span>
+        <span>Paint &amp; Refinish</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-imgs">
+          <img src="./photos/05.jpg" alt="Body shop bay with vehicles on lifts mid-repair" />
+          <img src="./photos/03.jpg" alt="Clean customer waiting lounge at Chino Auto Repair" />
+          <img src="./photos/06.jpg" alt="Mechanic working at a tool bench in the service bay" />
+        </div>
+        <div class="about-body">
+          <span class="eyebrow">Who We Are</span>
+          <h2>A Shop That Treats Your Car Like Its Own</h2>
+          <p>Run by owner <span class="name">Sarkis</span> and a crew that has kept Chino moving for years, Chino Auto Repair &amp; Collision pairs old-school honesty with the precision a modern vehicle needs — from a fender-bender on a daily driver to frame-true collision work on a sports car.</p>
+          <p>You get a clear estimate, original-spec parts, and a straight answer every time. No upsell, no guesswork.</p>
+          <ul class="checks">
+            <li>Insurance &amp; out-of-pocket collision work</li>
+            <li>OEM components, sourced to match your vehicle</li>
+            <li>Honest assessments — we'll tell you what actually needs fixing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow red">What We Do</span>
+        <h2>Bumper To Frame, Under One Roof</h2>
+        <p>Collision and mechanical work handled in-house by people who take pride in the details — so your car leaves driving exactly like it should.</p>
+      </div>
+      <div class="svc-list">
+        <div class="svc-item">
+          <div class="no">01</div>
+          <div><h3>Collision &amp; Body Repair</h3><p>Front-end and panel damage restored to factory fitment — every gap, line, and seam set back to spec.</p></div>
+          <span class="tag">Most Requested</span>
+        </div>
+        <div class="svc-item">
+          <div class="no">02</div>
+          <div><h3>Frame &amp; Structural</h3><p>Bent frames, misalignment, and structural damage corrected so the car is straight, safe, and true.</p></div>
+        </div>
+        <div class="svc-item">
+          <div class="no">03</div>
+          <div><h3>Paint &amp; Refinishing</h3><p>Color-matched paint and refinishing that blends seamlessly with the rest of the vehicle.</p></div>
+        </div>
+        <div class="svc-item">
+          <div class="no">04</div>
+          <div><h3>Mechanical Repair</h3><p>Brakes, leaks, electrical, latches, and everyday wear — diagnosed honestly and fixed right the first time.</p></div>
+        </div>
+        <div class="svc-item">
+          <div class="no">05</div>
+          <div><h3>Diagnostics &amp; Maintenance</h3><p>Straightforward inspections and service that keep your car running well between repairs.</p></div>
+        </div>
+        <div class="svc-item">
+          <div class="no">06</div>
+          <div><h3>Specialty &amp; Sports Cars</h3><p>Porsche, BMW, and enthusiast builds welcome — handled with OEM parts and a craftsman's eye.</p></div>
+          <span class="tag">Enthusiast Friendly</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section class="says" id="says">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">In Their Words</span>
+        <h2>What Drivers Say</h2>
+      </div>
+      <div class="quotes">
+        <div class="quote">
+          <div class="mark">&ldquo;</div>
+          <div>
+            <p>What started as a stressful repair after an accident turned into one of the best automotive experiences I've ever had. Sarkis and William treated my Porsche as if it were their own — they didn't just patch things up, they perfected every detail with original parts. Every panel gap is perfect, and the structure, alignment, and fitment were brought exactly to spec. If you're serious about your car and want it in the hands of someone who truly understands it, this is who you trust.</p>
+            <div class="who">Arno</div>
+          </div>
+        </div>
+      </div>
+      <div class="quotes-2">
+        <div class="quote">
+          <div class="mark">&ldquo;</div>
+          <p>The owner, Sarkis, came out and checked my BMW himself. His technician figured out the burnt release cables and broken latch, installed new parts, and now it's like new. They always go above and beyond. I recommend Chino Auto Repair &amp; Collision to everyone.</p>
+          <div class="who">Tony</div>
+        </div>
+        <div class="quote">
+          <div class="mark">&ldquo;</div>
+          <p>One of the best places you can take your car. Sarkis, Alonzo, and the staff are super honest and very knowledgeable. I've been bringing both of my Hondas here for over 10 years and have had nothing but outstanding service.</p>
+          <div class="who">Steven B.</div>
+        </div>
+        <div class="quote">
+          <div class="mark">&ldquo;</div>
+          <p>Recommended by my parents and I'll definitely come back. The staff were awesome and they fixed my car within 2 hours. Highly recommend for great, friendly staff and awesome mechanics.</p>
+          <div class="who">Teresa C.</div>
+        </div>
+        <div class="quote">
+          <div class="mark">&ldquo;</div>
+          <p>I had a leak and had my older BMW towed in. They took a look, found a minor problem, and fixed it at no cost. Really honest mechanics that do great work — highly recommend.</p>
+          <div class="who">John E.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT / MAP -->
+  <section id="visit">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Stop By</span>
+        <h2>Hours &amp; Location</h2>
+        <p>Just off Chino Ave — drop in for an honest estimate or call ahead to get on the schedule.</p>
+      </div>
+      <div class="visit-grid">
+        <div class="info-card">
+          <div class="info-block">
+            <div class="k">Address</div>
+            <a href="https://www.google.com/maps?q=Chino+Auto+Repair+%26+Collision+4760+Chino+Ave+Chino+CA+91710" target="_blank" rel="noopener" style="font-weight:600;">4760 Chino Ave<br />Chino, CA 91710</a>
+          </div>
+          <div class="info-block">
+            <div class="k">Phone</div>
+            <a href="tel:+19095173699" style="font-weight:700;font-size:1.15rem;">(909) 517-3699</a>
+          </div>
+          <div class="info-block">
+            <div class="k">Hours</div>
+            <div class="hours-row"><span class="day">Mon – Fri</span><span>8:30 AM – 6:00 PM</span></div>
+            <div class="hours-row closed"><span class="day">Saturday</span><span>Closed</span></div>
+            <div class="hours-row closed"><span class="day">Sunday</span><span>Closed</span></div>
+          </div>
+          <div class="visit-cta">
+            <a href="tel:+19095173699" class="btn btn-red">Call Now</a>
+            <a href="https://www.google.com/maps?q=Chino+Auto+Repair+%26+Collision+4760+Chino+Ave+Chino+CA+91710" target="_blank" rel="noopener" class="btn btn-cobalt">Get Directions</a>
+          </div>
+        </div>
+        <div class="map-wrap">
+          <iframe
+            title="Map to Chino Auto Repair &amp; Collision"
+            src="https://www.google.com/maps?q=4760+Chino+Ave,+Chino,+CA+91710&z=15&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="band">
+    <div class="wrap">
+      <h2>Damage Done? Let's Make It Right.</h2>
+      <p>Whether it's collision work, a frame that needs straightening, or a repair you've been putting off — bring it to the shop Chino trusts.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+        <a href="tel:+19095173699" class="btn btn-red">Call (909) 517-3699</a>
+        <a href="https://www.google.com/maps?q=4760+Chino+Ave,+Chino,+CA+91710" target="_blank" rel="noopener" class="btn btn-ghost">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="brand"><span class="mark"></span> Chino Auto Repair &amp; Collision</a>
+        <p>Family-run collision, body, and mechanical service in Chino, CA. Honest work, original parts, done right the first time.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Visit</h4>
+          <a href="https://www.google.com/maps?q=4760+Chino+Ave,+Chino,+CA+91710" target="_blank" rel="noopener">4760 Chino Ave<br />Chino, CA 91710</a>
+        </div>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <a href="tel:+19095173699">(909) 517-3699</a>
+          <p>Mon – Fri · 8:30a – 6p</p>
+        </div>
+        <div class="foot-col">
+          <h4>Find Us</h4>
+          <a href="https://maps.google.com/?cid=12867089629520581988" target="_blank" rel="noopener">Google Business Profile</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</div>
+      <div class="legal">© 2026 Chino Auto Repair &amp; Collision</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

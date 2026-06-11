@@ -1,0 +1,506 @@
+<!--
+  ARCHETYPE: Industrial-craft coffee roastery + creamery — "roastery floor" warehouse warmth.
+  Palette: deep espresso-brown (#2a1c12 / #1a110a) + cream (#f3ead9) + warm copper accent (#c07a3e).
+  Display type: Oswald (condensed, sturdy, stencil-adjacent industrial signage) for headers;
+  body in Source Serif 4 for a printed-bag, roasters'-label feel.
+  STRUCTURAL DECISIONS:
+   - Fixed slim nav with copper underline hovers; html scroll-padding-top reserves the 64px bar.
+   - Asymmetric split hero: branded-cup photo on the right, stacked stencil wordmark + brew-bar
+     line on the left over an espresso panel (NOT a centered overlay hero).
+   - "On the bar" offering presented as a horizontal ruled ledger (roast/creamery/kitchen columns),
+     not 3 circular-icon cards.
+   - Photo strip "The roastery floor" as a varied-height masonry-ish grid.
+   - Testimonies as stacked ledger entries with an oversized copper quote mark, no cards/stars.
+   - Hours rendered as a printed receipt panel beside the keyless Google map embed.
+   - Animation: none beyond CSS hover transitions (intentional restraint).
+  HARD RULES honored: local ./photos/NN.jpg only; keyless maps?q=...&output=embed; exact footer line;
+  testimonies labeled "In Their Words", first-name + last-initial, no stars/scores/counts.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Deep Barrel — Roasters &amp; Creamery | Norco, CA</title>
+<meta name="description" content="Deep Barrel: small-batch craft coffee roasted in Norco, plus an independent creamery, fresh pastries, and fried-ice-cream classics like the Norco Cowboy." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --espresso:#1a110a;
+    --espresso-2:#2a1c12;
+    --bark:#3c2a1c;
+    --cream:#f3ead9;
+    --cream-2:#e7d9c1;
+    --copper:#c07a3e;
+    --copper-bright:#d98f4d;
+    --ink:#2a1c12;
+    --muted:#7a6a55;
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h);}
+  body{
+    font-family:"Source Serif 4",Georgia,serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.stencil{
+    font-family:"Oswald",sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    font-weight:600;
+    line-height:1.04;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:"Oswald",sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.34em;
+    font-size:.72rem;
+    font-weight:500;
+    color:var(--copper);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:50;
+    background:rgba(20,13,7,.94);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(192,122,62,.35);
+    display:flex;align-items:center;
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%;}
+  .brandmark{
+    font-family:"Oswald",sans-serif;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--cream);font-size:1.05rem;
+    display:flex;align-items:baseline;gap:.5ch;
+  }
+  .brandmark span{color:var(--copper);font-size:.62rem;letter-spacing:.28em;}
+  .navlinks{display:flex;gap:30px;align-items:center;}
+  .navlinks a{
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.13em;
+    font-size:.78rem;color:var(--cream-2);font-weight:500;position:relative;padding:4px 0;
+  }
+  .navlinks a::after{
+    content:"";position:absolute;left:0;right:100%;bottom:-2px;height:2px;
+    background:var(--copper);transition:right .25s ease;
+  }
+  .navlinks a:hover{color:#fff;}
+  .navlinks a:hover::after{right:0;}
+  .nav-call{
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;
+    font-size:.78rem;font-weight:600;color:var(--espresso)!important;
+    background:var(--copper);padding:9px 18px;border-radius:1px;
+  }
+  .nav-call::after{display:none;}
+  .nav-call:hover{background:var(--copper-bright);}
+  .navtoggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    margin-top:var(--nav-h);
+    background:var(--espresso);
+    color:var(--cream);
+    display:grid;grid-template-columns:1.05fr .95fr;
+  }
+  .hero-copy{
+    padding:78px clamp(24px,5vw,72px) 70px;
+    display:flex;flex-direction:column;justify-content:center;
+    background:
+      linear-gradient(180deg,rgba(20,13,7,.0),rgba(20,13,7,.25)),
+      radial-gradient(120% 90% at 0% 0%,#2a1c12 0%,#150d06 78%);
+    border-right:3px solid var(--copper);
+  }
+  .estab{font-family:"Oswald",sans-serif;letter-spacing:.4em;font-size:.66rem;color:var(--copper);text-transform:uppercase;margin-bottom:22px;}
+  .wordmark{font-size:clamp(3.4rem,8vw,6.2rem);font-weight:700;letter-spacing:.02em;color:var(--cream);}
+  .wordmark .b2{display:block;color:var(--cream);}
+  .roast-line{
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.28em;
+    font-size:clamp(.8rem,1.6vw,1rem);color:var(--cream-2);margin-top:14px;font-weight:400;
+    border-top:1px solid rgba(192,122,62,.45);border-bottom:1px solid rgba(192,122,62,.45);
+    padding:12px 0;display:inline-block;
+  }
+  .hero-sub{
+    font-family:"Source Serif 4",serif;font-size:1.08rem;color:#d8c8ae;
+    max-width:42ch;margin:26px 0 32px;line-height:1.6;text-transform:none;letter-spacing:0;font-weight:400;
+  }
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.12em;font-weight:600;
+    font-size:.86rem;padding:14px 26px;border-radius:1px;display:inline-flex;align-items:center;gap:9px;
+    transition:transform .18s ease,background .18s ease,color .18s ease;border:1.5px solid var(--copper);
+  }
+  .btn-solid{background:var(--copper);color:var(--espresso);}
+  .btn-solid:hover{background:var(--copper-bright);transform:translateY(-2px);}
+  .btn-ghost{background:transparent;color:var(--cream);}
+  .btn-ghost:hover{background:var(--copper);color:var(--espresso);transform:translateY(-2px);}
+  .hero-photo{position:relative;min-height:480px;}
+  .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,13,7,.55),rgba(20,13,7,0) 38%);}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:84px 0;}
+  .sec-head{margin-bottom:42px;}
+  .sec-head h2{font-size:clamp(2rem,4.2vw,3rem);color:var(--espresso);margin-top:8px;}
+  .rule{width:54px;height:3px;background:var(--copper);margin-top:18px;}
+
+  /* ---------- ABOUT ---------- */
+  #about{background:var(--cream);}
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+  .about-grid p{margin-bottom:18px;font-size:1.06rem;color:#3a2c1d;}
+  .about-grid p.lead{font-size:1.22rem;color:var(--espresso);font-weight:600;font-family:"Source Serif 4",serif;}
+  .about-photo{position:relative;}
+  .about-photo img{border:1px solid var(--cream-2);box-shadow:18px 18px 0 var(--copper);}
+  .signoff{font-family:"Oswald",sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--copper);font-size:.8rem;margin-top:26px;}
+
+  /* ---------- ON THE BAR (ledger) ---------- */
+  #bar{background:var(--espresso-2);color:var(--cream);}
+  #bar .eyebrow{color:var(--copper-bright);}
+  #bar .sec-head h2{color:var(--cream);}
+  .ledger{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--copper);}
+  .col{padding:36px 30px;border-right:1px solid rgba(192,122,62,.28);}
+  .col:last-child{border-right:none;}
+  .col h3{font-size:1.5rem;color:var(--copper-bright);margin-bottom:6px;}
+  .col .tag{font-family:"Oswald",sans-serif;letter-spacing:.22em;font-size:.66rem;color:#caa77f;text-transform:uppercase;}
+  .menu-row{
+    display:flex;justify-content:space-between;gap:14px;padding:13px 0;
+    border-bottom:1px dotted rgba(231,217,193,.22);align-items:baseline;
+  }
+  .menu-row:last-child{border-bottom:none;}
+  .menu-row .name{font-family:"Source Serif 4",serif;font-size:1.02rem;color:var(--cream);}
+  .menu-row .name small{display:block;color:#b39b7c;font-size:.82rem;font-style:italic;}
+  .menu-row .dot{flex:1;border-bottom:1px dotted rgba(192,122,62,.5);transform:translateY(-4px);margin:0 4px;}
+  .bar-note{margin-top:30px;font-style:italic;color:#cbb593;font-size:.98rem;}
+
+  /* ---------- ROASTERY FLOOR (gallery) ---------- */
+  #floor{background:var(--cream);}
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px;}
+  .gallery figure{overflow:hidden;border:1px solid var(--cream-2);position:relative;}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .6s ease;filter:saturate(.92);}
+  .gallery figure:hover img{transform:scale(1.06);filter:saturate(1.05);}
+  .g-wide{grid-column:span 2;}
+  .g-tall{grid-row:span 2;}
+  .g-cap{
+    position:absolute;left:0;bottom:0;right:0;padding:18px 16px 12px;
+    background:linear-gradient(0deg,rgba(20,13,7,.82),transparent);
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.16em;
+    font-size:.72rem;color:var(--cream);
+  }
+
+  /* ---------- TESTIMONIES ---------- */
+  #words{background:var(--espresso);color:var(--cream);}
+  #words .eyebrow{color:var(--copper-bright);}
+  #words .sec-head h2{color:var(--cream);}
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:18px 48px;}
+  .quote{padding:30px 0 28px;border-top:1px solid rgba(192,122,62,.3);position:relative;}
+  .quote::before{
+    content:"\201C";font-family:"Oswald",sans-serif;color:var(--copper);
+    font-size:4.2rem;line-height:.7;position:absolute;top:14px;left:0;opacity:.5;
+  }
+  .quote p{padding-left:54px;font-size:1.06rem;color:#e6d6bb;line-height:1.6;font-style:italic;}
+  .quote cite{
+    display:block;padding-left:54px;margin-top:16px;font-style:normal;
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.18em;
+    font-size:.76rem;color:var(--copper-bright);
+  }
+
+  /* ---------- VISIT ---------- */
+  #visit{background:var(--cream);}
+  .visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:stretch;}
+  .receipt{
+    background:#fff;border:1px solid var(--cream-2);padding:34px 32px;
+    box-shadow:0 10px 30px rgba(42,28,18,.08);position:relative;
+  }
+  .receipt h3{font-size:1.35rem;color:var(--espresso);margin-bottom:4px;}
+  .receipt .addr{font-style:italic;color:var(--muted);margin-bottom:22px;line-height:1.5;}
+  .hrow{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dotted var(--cream-2);font-size:.98rem;}
+  .hrow:last-of-type{border-bottom:none;}
+  .hrow .d{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--bark);}
+  .hrow.today{background:#f6efe0;margin:0 -10px;padding:8px 10px;border-bottom:1px dotted var(--cream-2);}
+  .hrow.today .d{color:var(--copper);}
+  .findus{margin-top:26px;padding-top:22px;border-top:2px solid var(--espresso);}
+  .findus a{
+    display:inline-flex;align-items:center;gap:8px;font-family:"Oswald",sans-serif;
+    text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;color:var(--espresso);
+    border:1.5px solid var(--bark);padding:9px 15px;margin:6px 8px 0 0;border-radius:1px;transition:all .2s;
+  }
+  .findus a:hover{background:var(--espresso);color:var(--cream);}
+  .visit-cta{margin-top:26px;}
+  .map{min-height:440px;height:100%;border:1px solid var(--cream-2);}
+  .map iframe{width:100%;height:100%;min-height:440px;border:0;filter:grayscale(.18) sepia(.08);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--espresso);color:var(--cream-2);padding:56px 0 30px;border-top:3px solid var(--copper);}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;align-items:flex-end;}
+  .foot-brand .brandmark{font-size:1.5rem;}
+  .foot-brand p{margin-top:10px;font-style:italic;color:#a99172;max-width:34ch;}
+  .foot-links{display:flex;gap:18px;flex-wrap:wrap;}
+  .foot-links a{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.13em;font-size:.78rem;color:var(--cream-2);}
+  .foot-links a:hover{color:var(--copper-bright);}
+  .credit{
+    margin-top:38px;padding-top:22px;border-top:1px solid rgba(192,122,62,.25);
+    font-size:.86rem;color:#9a8366;text-align:center;
+  }
+  .credit a{color:var(--copper-bright);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    header.hero{grid-template-columns:1fr;}
+    .hero-photo{min-height:320px;order:-1;}
+    .about-grid,.visit-grid{grid-template-columns:1fr;gap:40px;}
+    .ledger{grid-template-columns:1fr;}
+    .col{border-right:none;border-bottom:1px solid rgba(192,122,62,.28);}
+    .col:last-child{border-bottom:none;}
+    .quotes{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px;}
+    .g-tall{grid-row:span 1;}
+    .about-photo img{box-shadow:12px 12px 0 var(--copper);}
+  }
+  @media(max-width:680px){
+    .navlinks{
+      position:fixed;top:var(--nav-h);left:0;right:0;flex-direction:column;gap:0;
+      background:rgba(20,13,7,.98);border-bottom:1px solid rgba(192,122,62,.35);
+      max-height:0;overflow:hidden;transition:max-height .3s ease;
+    }
+    .navlinks.open{max-height:380px;}
+    .navlinks a{padding:16px 24px;width:100%;border-top:1px solid rgba(192,122,62,.18);}
+    .navlinks .nav-call{margin:14px 24px;text-align:center;justify-content:center;}
+    .navtoggle{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+    .navtoggle span{width:24px;height:2px;background:var(--cream);display:block;}
+    section{padding:60px 0;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brandmark">Deep Barrel <span>EST. 2022</span></a>
+    <button class="navtoggle" aria-label="Menu" onclick="document.getElementById('nl').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="navlinks" id="nl">
+      <a href="#about" onclick="document.getElementById('nl').classList.remove('open')">The Roastery</a>
+      <a href="#bar" onclick="document.getElementById('nl').classList.remove('open')">On the Bar</a>
+      <a href="#floor" onclick="document.getElementById('nl').classList.remove('open')">The Floor</a>
+      <a href="#words" onclick="document.getElementById('nl').classList.remove('open')">In Their Words</a>
+      <a href="#visit" onclick="document.getElementById('nl').classList.remove('open')">Visit</a>
+      <a href="tel:+19514271981" class="nav-call">(951) 427-1981</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-copy">
+    <div class="estab">Norco, California &nbsp;·&nbsp; Small-batch since 2022</div>
+    <h1 class="wordmark">Deep<span class="b2">Barrel</span></h1>
+    <div class="roast-line">Roasters &amp; Creamery</div>
+    <p class="hero-sub">Coffee roasted on the floor, scooped-to-order ice cream, and pastries pulled fresh every morning — an independent corner of Sixth Street worth slowing down for.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="tel:+19514271981">Call the Shop</a>
+      <a class="btn btn-ghost" href="https://www.google.com/maps?q=1188+Sixth+St,+Norco,+CA+92860" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="./photos/02.jpg" alt="A Deep Barrel branded coffee cup beside a fresh pistachio muffin at the brew bar" />
+  </div>
+</header>
+
+<main>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="eyebrow">The Roastery</div>
+        <h2 class="sec-head" style="margin-bottom:24px;">Brewed With Intent,<br>Scooped With Joy</h2>
+        <p class="lead">Deep Barrel started in 2022 with one idea: a neighborhood spot that takes its coffee as seriously as its ice cream.</p>
+        <p>Walk in and you'll find the brew bar working pour-overs and siphon coffee, a roaster humming behind the counter, and a creamery case stacked with house flavors — from Rocky Road to a Salted Caramel Truffle. The kitchen turns out warm sandwiches and breakfast rolls all day, and the pastry case is restocked before the doors open.</p>
+        <p>It's small, it's almost always busy, and that's the point. Families, regulars, and first-timers all end up at the same wood bar — the kind of place Norco was missing.</p>
+        <div class="signoff">— Coffee · Creamery · Kitchen · Norco</div>
+      </div>
+      <div class="about-photo">
+        <img src="./photos/03.jpg" alt="The wood-bar interior of Deep Barrel with the brew bar and coffee-cup-art wall" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ON THE BAR -->
+  <section id="bar">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">What's Pouring &amp; Scooping</div>
+        <h2>On the Bar</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="ledger">
+        <div class="col">
+          <h3>The Brew Bar</h3>
+          <div class="tag">Roasted in-house</div>
+          <div style="margin-top:18px;">
+            <div class="menu-row"><span class="name">Pour-Over <small>single-origin, made to order</small></span><span class="dot"></span></div>
+            <div class="menu-row"><span class="name">Siphon Coffee <small>clean, full-bodied, theatrical</small></span><span class="dot"></span></div>
+            <div class="menu-row"><span class="name">Espresso &amp; Lattes <small>pulled on the bar machine</small></span><span class="dot"></span></div>
+            <div class="menu-row"><span class="name">Cold Brew &amp; Dirty Sodas <small>now serving</small></span><span class="dot"></span></div>
+          </div>
+        </div>
+        <div class="col">
+          <h3>The Creamery</h3>
+          <div class="tag">Independent · house flavors</div>
+          <div style="margin-top:18px;">
+            <div class="menu-row"><span class="name">"Norco Cowboy" Fried Ice Cream <small>house signature</small></span><span class="dot"></span></div>
+            <div class="menu-row"><span class="name">Scoops &amp; Shakes <small>Rocky Road, Moose Tracks, Biscotti &amp; more</small></span><span class="dot"></span></div>
+            <div class="menu-row"><span class="name">Ice Cream Sandwich <small>on a fresh cookie</small></span><span class="dot"></span></div>
+            <div class="menu-row"><span class="name">Rainbow Sherbet &amp; Sorbet <small>kid favorites</small></span><span class="dot"></span></div>
+          </div>
+        </div>
+        <div class="col">
+          <h3>The Kitchen</h3>
+          <div class="tag">Fresh daily</div>
+          <div style="margin-top:18px;">
+            <div class="menu-row"><span class="name">Warm Breakfast Sandwiches <small>egg, sausage &amp; cheese rolls</small></span><span class="dot"></span></div>
+            <div class="menu-row"><span class="name">Original Cinnamon Rolls <small>baked fresh</small></span><span class="dot"></span></div>
+            <div class="menu-row"><span class="name">Muffins <small>pistachio, blueberry, banana-nut</small></span><span class="dot"></span></div>
+            <div class="menu-row"><span class="name">Croissants, Danish &amp; Turnovers <small>from the case</small></span><span class="dot"></span></div>
+          </div>
+        </div>
+      </div>
+      <p class="bar-note">Menu is a sampling of what's on the boards — flavors and pastries rotate, so ask what's fresh today.</p>
+    </div>
+  </section>
+
+  <!-- ROASTERY FLOOR GALLERY -->
+  <section id="floor">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">A Look Inside</div>
+        <h2>The Roastery Floor</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="gallery">
+        <figure class="g-wide g-tall">
+          <img src="./photos/05.jpg" alt="The Norco Cowboy fried ice cream in front of a Deep Barrel branded wood barrel" />
+          <figcaption class="g-cap">The "Norco Cowboy"</figcaption>
+        </figure>
+        <figure>
+          <img src="./photos/01.jpg" alt="Creamery case with hand-lettered flavor labels and the menu boards" />
+          <figcaption class="g-cap">The Creamery Case</figcaption>
+        </figure>
+        <figure>
+          <img src="./photos/06.jpg" alt="Pastry case stocked with muffins, cinnamon rolls and croissants" />
+          <figcaption class="g-cap">Pastry Case</figcaption>
+        </figure>
+        <figure class="g-wide">
+          <img src="./photos/04.jpg" alt="The Deep Barrel storefront sign reading Coffee and Ice Cream in Norco" />
+          <figcaption class="g-cap">1188 Sixth St, Norco</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="words">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">From the Regulars</div>
+        <h2>In Their Words</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="quotes">
+        <blockquote class="quote">
+          <p>Great experience — even better coffee! I was worried about walking into a place where they just do drip coffee. I was wrong. This place knows exactly how to make great coffee. The sausage and egg rolls were delicious too.</p>
+          <cite>Alex V.</cite>
+        </blockquote>
+        <blockquote class="quote">
+          <p>Love love love this independent ice cream shop and coffee shop. We enjoyed the "Norco Cowboy" fried ice cream, chocolate hazelnut, and rainbow sherbet. The staff was friendly — very family atmosphere!</p>
+          <cite>Debra P.</cite>
+        </blockquote>
+        <blockquote class="quote">
+          <p>Amazing coffee, great service, and the pastries — the cinnamon rolls are fresh and delicious. They have fried ice cream and great sandwiches. My girl loves this place. Will be coming back very soon.</p>
+          <cite>Daniel P.</cite>
+        </blockquote>
+        <blockquote class="quote">
+          <p>Love their coffee and pastries! Not too sweet, kid-friendly, and the coffee aroma is so comforting. Super friendly staff, and even though the shop is small, it's always busy.</p>
+          <cite>Selly M.</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="eyebrow">Hours &amp; Location</div>
+        <h2>Find the Barrel</h2>
+        <div class="rule"></div>
+      </div>
+      <div class="visit-grid">
+        <div class="receipt">
+          <h3>Deep Barrel</h3>
+          <p class="addr">1188 Sixth St<br>Norco, CA 92860</p>
+          <div class="hrow" id="row-mon"><span class="d">Mon</span><span>6:30a – 8:00p</span></div>
+          <div class="hrow" id="row-tue"><span class="d">Tue</span><span>6:30a – 8:00p</span></div>
+          <div class="hrow" id="row-wed"><span class="d">Wed</span><span>6:30a – 8:00p</span></div>
+          <div class="hrow" id="row-thu"><span class="d">Thu</span><span>6:30a – 8:00p</span></div>
+          <div class="hrow" id="row-fri"><span class="d">Fri</span><span>6:30a – 8:00p</span></div>
+          <div class="hrow" id="row-sat"><span class="d">Sat</span><span>6:30a – 8:00p</span></div>
+          <div class="hrow" id="row-sun"><span class="d">Sun</span><span>11:30a – 6:00p</span></div>
+
+          <div class="findus">
+            <div class="eyebrow" style="margin-bottom:8px;color:var(--bark);">Find Us On</div>
+            <a href="https://maps.google.com/?cid=5112562381840306113" target="_blank" rel="noopener">Google Business</a>
+          </div>
+          <div class="visit-cta">
+            <a class="btn btn-solid" href="tel:+19514271981" style="border-color:var(--bark);">Call (951) 427-1981</a>
+          </div>
+        </div>
+        <div class="map">
+          <iframe
+            src="https://www.google.com/maps?q=1188+Sixth+St,+Norco,+CA+92860&z=15&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Map to Deep Barrel, 1188 Sixth St, Norco, CA"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="brandmark">Deep Barrel <span style="color:var(--copper);font-size:.6rem;letter-spacing:.28em;">EST. 2022</span></div>
+        <p>Roasters &amp; Creamery — small-batch coffee, scooped-to-order ice cream, and fresh pastries in Norco, California.</p>
+      </div>
+      <div class="foot-links">
+        <a href="#about">The Roastery</a>
+        <a href="#bar">On the Bar</a>
+        <a href="#visit">Visit</a>
+        <a href="https://maps.google.com/?cid=5112562381840306113" target="_blank" rel="noopener">Google Business</a>
+        <a href="tel:+19514271981">(951) 427-1981</a>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Highlight today's hours row in the receipt.
+  (function(){
+    var ids=["row-sun","row-mon","row-tue","row-wed","row-thu","row-fri","row-sat"];
+    var el=document.getElementById(ids[new Date().getDay()]);
+    if(el)el.classList.add("today");
+  })();
+</script>
+</body>
+</html>

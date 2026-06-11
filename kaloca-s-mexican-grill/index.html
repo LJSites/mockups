@@ -1,0 +1,393 @@
+<!--
+  ARCHETYPE: Coastal Mariscos / Seaside-Cantina — a breezy beach-town taqueria.
+  Palette: aqua-blue (#1f9fb8 / #d4f1f4) + coral (#ff6f5e) + warm sand (#fdf6ec) + lime accent (#a4d65e).
+  Display font: "Pacifico" (breezy hand-painted beach sign) over "Fraunces" headings + "Mulish" body.
+  Structural decisions:
+   - Asymmetric split hero (no centered-overlay-pill): painted-sign wordmark left, photo card right.
+   - Wavy SVG section dividers, "tide line" rule under headings.
+   - Menu as a tasting-list / two-column tide menu, not 3-up cards.
+   - Testimonies as a horizontal "postcards from the table" rail, no stars/avatars.
+   - Single animation approach: gentle CSS float on the hero photo + buoy badge only. No fade-up.
+   - Primary CTA repeated: "Call to Order" (tel:). Keyless Google Maps embed.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kaloca's Mexican Grill — Red Bluff, CA</title>
+<meta name="description" content="Kaloca's Mexican Grill in downtown Red Bluff — carnitas, carne asada, chimichangas & fresh in-house salsa. The best Mexican food in town.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --aqua:#1f9fb8;
+    --aqua-deep:#136578;
+    --aqua-mist:#d4f1f4;
+    --coral:#ff6f5e;
+    --coral-deep:#e6533f;
+    --sand:#fdf6ec;
+    --sand-deep:#f4e7d3;
+    --lime:#a4d65e;
+    --ink:#173640;
+    --slate:#46606a;
+    --nav-h:68px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    font-family:"Mulish",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:"Fraunces",serif;line-height:1.1;font-weight:600}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 24px}
+  .script{font-family:"Pacifico",cursive;font-weight:400}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(253,246,236,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--sand-deep);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:100%}
+  .brand{display:flex;align-items:center;gap:10px;font-family:"Pacifico",cursive;font-size:1.5rem;color:var(--aqua-deep)}
+  .brand .buoy{width:22px;height:22px;border-radius:50%;background:
+    repeating-conic-gradient(var(--coral) 0 25%, #fff 0 50%);
+    box-shadow:0 0 0 3px var(--aqua-mist)}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{font-family:"Mulish";font-weight:600;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);position:relative;padding:4px 0}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--coral);transition:width .25s ease}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{width:100%}
+  .nav-call{display:inline-flex;align-items:center;gap:7px;background:var(--coral);color:#fff !important;
+    padding:9px 18px;border-radius:30px;font-family:"Mulish";font-weight:700;font-size:.82rem;letter-spacing:.03em;
+    box-shadow:0 5px 14px rgba(255,111,94,.35);transition:transform .2s, box-shadow .2s}
+  .nav-call:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,111,94,.45)}
+  .nav-links a.nav-call::after{display:none}
+  .burger{display:none}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;background:linear-gradient(170deg,var(--aqua-mist) 0%, var(--sand) 70%);overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;padding:72px 0 96px}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:"Mulish";font-weight:700;font-size:.74rem;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--aqua-deep);margin-bottom:20px}
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--coral)}
+  .hero h1{font-size:clamp(2.7rem,6vw,4.4rem);font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  .hero h1 .script{display:block;font-family:"Pacifico",cursive;font-size:.62em;color:var(--aqua);font-weight:400;margin-bottom:.1em}
+  .hero p.lead{font-size:1.12rem;color:var(--slate);max-width:38ch;margin:22px 0 32px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:"Mulish";font-weight:700;font-size:.95rem;
+    padding:14px 26px;border-radius:32px;transition:transform .2s, box-shadow .2s;letter-spacing:.01em}
+  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 8px 20px rgba(255,111,94,.32)}
+  .btn-coral:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(255,111,94,.42)}
+  .btn-ghost{background:transparent;color:var(--aqua-deep);border:2px solid var(--aqua)}
+  .btn-ghost:hover{background:var(--aqua);color:#fff;transform:translateY(-3px)}
+  .hero-photo{position:relative}
+  .hero-photo img{width:100%;height:480px;object-fit:cover;border-radius:22px 22px 90px 22px;
+    box-shadow:0 26px 50px -18px rgba(19,101,120,.5);animation:bob 6s ease-in-out infinite}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .buoy-badge{position:absolute;top:-26px;left:-26px;width:108px;height:108px;border-radius:50%;
+    background:var(--sand);border:5px solid var(--coral);display:grid;place-items:center;text-align:center;
+    box-shadow:0 10px 24px rgba(19,101,120,.28);animation:bob 6s ease-in-out infinite .6s}
+  .buoy-badge span{font-family:"Pacifico",cursive;color:var(--aqua-deep);font-size:.78rem;line-height:1.15;padding:0 8px}
+  .buoy-badge b{display:block;font-family:"Fraunces";font-size:1.5rem;color:var(--coral);font-weight:700}
+  .wave-bottom{display:block;width:100%;height:64px;margin-top:-1px}
+
+  /* ---------- SECTION SHELLS ---------- */
+  section{position:relative}
+  .pad{padding:78px 0}
+  .kicker{font-family:"Mulish";font-weight:700;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:12px}
+  .sec-head h2{font-size:clamp(1.9rem,4vw,2.7rem);color:var(--ink)}
+  .tideline{width:78px;height:5px;border-radius:5px;margin-top:18px;
+    background:linear-gradient(90deg,var(--aqua),var(--lime));}
+  .tideline.center{margin-left:auto;margin-right:auto}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .about-copy p{color:var(--slate);font-size:1.06rem;margin-top:18px}
+  .stat-row{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  .stat{flex:1;min-width:130px;background:var(--aqua-mist);border-radius:16px;padding:18px 20px;border-bottom:4px solid var(--aqua)}
+  .stat b{display:block;font-family:"Fraunces";font-size:1.7rem;color:var(--aqua-deep);font-weight:700}
+  .stat span{font-size:.85rem;color:var(--slate);font-weight:600}
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px}
+  .about-photos img{width:100%;height:100%;object-fit:cover;border-radius:16px;min-height:150px}
+  .about-photos .tall{grid-row:span 2;border-radius:16px 16px 16px 60px}
+
+  /* ---------- MENU (tide list) ---------- */
+  #menu{background:var(--ink);color:var(--sand)}
+  #menu .kicker{color:var(--lime)}
+  #menu h2{color:#fff}
+  #menu .sub{color:#bcd3da;max-width:46ch;margin-top:14px}
+  .menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:52px}
+  .menu-block h3{font-family:"Pacifico",cursive;font-weight:400;color:var(--coral);font-size:1.5rem;margin-bottom:6px}
+  .menu-block .blurb{font-size:.86rem;color:#9fbac2;margin-bottom:22px}
+  .dish{display:flex;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px dashed rgba(164,214,94,.28)}
+  .dish .nm{font-family:"Fraunces";font-weight:600;font-size:1.06rem;color:#fff;white-space:nowrap}
+  .dish .ds{font-size:.84rem;color:#9fbac2;flex:1}
+  .dish .tag{font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);
+    background:var(--lime);padding:3px 8px;border-radius:20px;white-space:nowrap}
+  .menu-note{margin-top:46px;text-align:center;font-family:"Pacifico",cursive;color:var(--aqua-mist);font-size:1.15rem}
+
+  /* ---------- TESTIMONIES (postcards) ---------- */
+  #say{background:linear-gradient(180deg,var(--sand) 0%, var(--aqua-mist) 100%)}
+  .post-rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(310px,1fr);gap:22px;
+    margin-top:46px;overflow-x:auto;padding-bottom:18px;scroll-snap-type:x mandatory}
+  .post-rail::-webkit-scrollbar{height:8px}
+  .post-rail::-webkit-scrollbar-thumb{background:var(--aqua);border-radius:8px}
+  .postcard{scroll-snap-align:start;background:#fff;border-radius:16px;padding:28px 26px 24px;
+    box-shadow:0 14px 32px -16px rgba(19,101,120,.35);position:relative;border-top:6px solid var(--coral);
+    display:flex;flex-direction:column}
+  .postcard:nth-child(even){border-top-color:var(--aqua)}
+  .postcard:nth-child(3n){border-top-color:var(--lime)}
+  .postcard .mark{font-family:"Pacifico",cursive;font-size:2.6rem;color:var(--aqua-mist);line-height:.5;height:24px}
+  .postcard p{font-size:.98rem;color:var(--ink);flex:1}
+  .postcard .who{margin-top:18px;font-family:"Fraunces";font-weight:700;color:var(--aqua-deep);font-size:.98rem}
+  .postcard .stamp{position:absolute;top:20px;right:22px;width:34px;height:34px;border-radius:50%;
+    background:repeating-conic-gradient(var(--coral) 0 25%, #fff 0 50%);opacity:.55}
+
+  /* ---------- VISIT / HOURS / MAP ---------- */
+  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:46px;align-items:stretch}
+  .info-card{background:#fff;border-radius:20px;padding:36px 34px;box-shadow:0 16px 38px -22px rgba(19,101,120,.4)}
+  .info-card h3{font-size:1.05rem;letter-spacing:.04em;text-transform:uppercase;color:var(--aqua-deep);margin-bottom:6px;font-family:"Mulish";font-weight:800;font-size:.82rem;letter-spacing:.14em}
+  .info-card .addr{font-family:"Fraunces";font-size:1.25rem;color:var(--ink);margin-bottom:4px}
+  .info-card .ph{color:var(--slate)}
+  .hours-table{margin:22px 0;width:100%;border-collapse:collapse}
+  .hours-table td{padding:7px 0;font-size:.94rem;border-bottom:1px dotted var(--sand-deep)}
+  .hours-table td:last-child{text-align:right;font-weight:600;color:var(--ink)}
+  .hours-table td:first-child{color:var(--slate)}
+  .open-pill{display:inline-flex;align-items:center;gap:8px;background:var(--aqua-mist);color:var(--aqua-deep);
+    font-weight:700;font-size:.82rem;padding:7px 15px;border-radius:24px;margin-bottom:22px}
+  .open-pill .live{width:9px;height:9px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px rgba(164,214,94,.3)}
+  .findus{margin-top:24px;font-size:.9rem;color:var(--slate)}
+  .findus a{color:var(--aqua-deep);font-weight:700;border-bottom:2px solid var(--lime)}
+  .map-card{border-radius:20px;overflow:hidden;box-shadow:0 16px 38px -22px rgba(19,101,120,.4);min-height:380px}
+  .map-card iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+  .visit-cta{margin-top:26px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--aqua-deep);color:#dbeef2;padding:0 0 34px}
+  .foot-wave{display:block;width:100%;height:56px}
+  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap;padding-top:14px}
+  .foot-brand .script{font-size:2rem;color:#fff}
+  .foot-brand p{color:#a9d4dd;max-width:34ch;margin-top:8px;font-size:.94rem}
+  .foot-links{display:flex;gap:26px;flex-wrap:wrap}
+  .foot-links a{font-weight:600;font-size:.9rem;color:#cfe9ee;border-bottom:1px solid transparent;transition:border-color .2s}
+  .foot-links a:hover{border-color:var(--coral)}
+  .credit{border-top:1px solid rgba(255,255,255,.16);margin-top:30px;padding-top:22px;font-size:.82rem;color:#8fc0cb;text-align:center;line-height:1.7}
+  .credit a{color:#fff;font-weight:600}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:880px){
+    .hero-grid,.about-grid,.visit-grid,.menu-cols{grid-template-columns:1fr}
+    .hero-grid{padding:48px 0 70px;gap:40px}
+    .hero-photo img{height:360px}
+    .about-photos{order:-1}
+    .nav-links{position:fixed;inset:var(--nav-h) 0 auto 0;flex-direction:column;gap:0;background:var(--sand);
+      border-bottom:1px solid var(--sand-deep);padding:6px 0;transform:translateY(-130%);transition:transform .3s;box-shadow:0 14px 30px -18px rgba(0,0,0,.3)}
+    .nav-links.open{transform:translateY(0)}
+    .nav-links a{padding:14px 24px;width:100%;border-bottom:1px solid var(--sand-deep)}
+    .nav-links a.nav-call{margin:12px 24px;justify-content:center;width:auto}
+    .burger{display:flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+    .burger span{width:26px;height:3px;background:var(--aqua-deep);border-radius:3px;transition:.25s}
+    .burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+    .burger.open span:nth-child(2){opacity:0}
+    .burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+  }
+  @media(max-width:520px){
+    .wrap{padding:0 18px}
+    .buoy-badge{width:88px;height:88px;top:-18px;left:-12px}
+    .stat{min-width:100%}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand"><span class="buoy"></span>Kaloca's</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="links">
+      <a href="#about">Our Story</a>
+      <a href="#menu">The Menu</a>
+      <a href="#say">Word of Mouth</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:+15306902027" class="nav-call">📞 (530) 690-2027</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span>Downtown Red Bluff · Since the corner of Main St</span>
+      <h1><span class="script">Fresh, flavorful</span>Mexican grill, the way Red Bluff loves it.</h1>
+      <p class="lead">Carnitas you'll dream about, carne asada off the grill, and chips &amp; salsa made fresh in-house — generous plates at honest prices.</p>
+      <div class="hero-cta">
+        <a href="tel:+15306902027" class="btn btn-coral">📞 Call to Order</a>
+        <a href="#menu" class="btn btn-ghost">Peek at the Menu</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="buoy-badge"><span><b>10/10</b>say the regulars</span></div>
+      <img src="./photos/02.jpg" alt="Plates of carne asada tacos, quesadilla and a crispy taco bowl at Kaloca's">
+    </div>
+  </div>
+  <svg class="wave-bottom" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#fdf6ec" d="M0,32 C180,72 360,4 540,24 C720,44 900,68 1080,44 C1260,20 1380,40 1440,32 L1440,64 L0,64 Z"></path>
+  </svg>
+</section>
+
+<!-- ABOUT -->
+<section class="pad" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <p class="kicker">Our Story</p>
+      <h2>A little corner spot with a big reputation.</h2>
+      <div class="tideline"></div>
+      <p>Tucked into a historic storefront on Main Street, Kaloca's is the kind of neighborhood grill where the salsa is made fresh, the chips keep coming, and the staff remember your order. Locals will tell you straight: this is <em>the</em> place for Mexican food in Red Bluff.</p>
+      <p>From the carnitas to the chimichangas, everything comes out piping hot, packed with flavor, and plated like it means it — no wonder folks become regulars after a single visit.</p>
+      <div class="stat-row">
+        <div class="stat"><b>In-House</b><span>Salsa, chips &amp; sauces made fresh daily</span></div>
+        <div class="stat"><b>7 Days</b><span>Open every day, 10:30 to 9</span></div>
+        <div class="stat"><b>Fair Prices</b><span>Big plates that won't break the bank</span></div>
+      </div>
+    </div>
+    <div class="about-photos">
+      <img class="tall" src="./photos/03.jpg" alt="Bright, sunny dining room at Kaloca's with hand-painted chairs">
+      <img src="./photos/05.jpg" alt="Golden quesadilla with guacamole, pico and jalapeños">
+      <img src="./photos/04.jpg" alt="Smothered burrito with lettuce and fresh tomato on a blue plate">
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="pad" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">The Menu</p>
+      <h2>Something on the board for everyone.</h2>
+      <p class="sub">A taste of what's coming out of the kitchen. Every plate comes with free chips &amp; fresh salsa — ask about today's specials.</p>
+    </div>
+    <div class="menu-cols">
+      <div class="menu-block">
+        <h3>From the Grill</h3>
+        <p class="blurb">Tender, marinated, flame-kissed.</p>
+        <div class="dish"><span class="nm">Carnitas Plate</span><span class="ds">Slow-cooked pork, beans &amp; rice — add the stuffed carnitas taco</span><span class="tag">Fan favorite</span></div>
+        <div class="dish"><span class="nm">Carne Asada Quesadilla</span><span class="ds">Grilled steak folded into a crisp tortilla with melted cheese</span></div>
+        <div class="dish"><span class="nm">Ground Beef Chimichanga</span><span class="ds">Crispy-fried, smothered, lettuce &amp; fresh tomato</span></div>
+        <div class="dish"><span class="nm">Shredded Beef &amp; Chicken Tacos</span><span class="ds">Slow-simmered, double-stacked, your way</span></div>
+      </div>
+      <div class="menu-block">
+        <h3>House &amp; Veggie</h3>
+        <p class="blurb">Creamy, fresh, made-to-order.</p>
+        <div class="dish"><span class="nm">Pollo a la Crema</span><span class="ds">Creamy mushroom chicken, corn or flour tortillas</span></div>
+        <div class="dish"><span class="nm">Burrito Elegante</span><span class="ds">Loaded &amp; smothered — try the veggie version</span><span class="tag">Veggie</span></div>
+        <div class="dish"><span class="nm">Veggie Enchiladas</span><span class="ds">Packed with a big flavor punch</span><span class="tag">Veggie</span></div>
+        <div class="dish"><span class="nm">Beans, Rice &amp; Salsa</span><span class="ds">"Bomb by themselves" — and the Diabla sauce is a must</span></div>
+      </div>
+    </div>
+    <p class="menu-note">~ free chips &amp; salsa with every table ~</p>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="pad" id="say">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Word of Mouth</p>
+      <h2>What folks say after they visit.</h2>
+      <div class="tideline"></div>
+    </div>
+    <div class="post-rail">
+      <div class="postcard"><span class="stamp"></span><span class="mark">“</span>
+        <p>Don't go anywhere else for Mexican in Red Bluff! This is our place. The food is always delicious and flavorful — even the beans and rice are bomb by themselves. They're really nice and the prices are great too.</p>
+        <span class="who">— Anne B.</span></div>
+      <div class="postcard"><span class="stamp"></span><span class="mark">“</span>
+        <p>The service was lovely, friendly and warm. Our food arrived super quick and VERY hot. We've tried every Mexican restaurant in town and the flavor, plate size, and prices are by far the best at Kaloca's. 10/10, can't recommend enough!</p>
+        <span class="who">— Kami D.</span></div>
+      <div class="postcard"><span class="stamp"></span><span class="mark">“</span>
+        <p>I'm never disappointed when I eat here. The food is always flavorful and is really reasonably priced. Highly recommend to everyone. Try the Diabla sauce!</p>
+        <span class="who">— Maris J.</span></div>
+      <div class="postcard"><span class="stamp"></span><span class="mark">“</span>
+        <p>Good service and ambience, fast and the food was piping hot. The pollo a la crème was fresh and creamy, the veggie enchiladas packed with flavor. Free chips and salsa, everything fresh and in-house made.</p>
+        <span class="who">— Jagadeesh R.</span></div>
+      <div class="postcard"><span class="stamp"></span><span class="mark">“</span>
+        <p>They have the BEST carnitas ever — their stuffed carnitas taco was out of this world. Small restaurant, but fast and precise service, and every server was kind and attentive. This will definitely be on my to-go list.</p>
+        <span class="who">— Rosita L.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="pad" id="visit" style="background:var(--aqua-mist)">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:36px">
+      <p class="kicker">Drop By</p>
+      <h2>Find us on Main Street.</h2>
+      <div class="tideline"></div>
+    </div>
+    <div class="visit-grid">
+      <div class="info-card">
+        <div class="open-pill"><span class="live"></span>Open 7 days · 10:30 AM – 9:00 PM</div>
+        <h3>Where</h3>
+        <p class="addr">607 Main St</p>
+        <p class="ph">Red Bluff, CA 96080</p>
+        <h3 style="margin-top:24px">Call</h3>
+        <p class="addr"><a href="tel:+15306902027" style="color:var(--coral)">(530) 690-2027</a></p>
+        <table class="hours-table">
+          <tr><td>Monday – Friday</td><td>10:30 AM – 9:00 PM</td></tr>
+          <tr><td>Saturday</td><td>10:30 AM – 9:00 PM</td></tr>
+          <tr><td>Sunday</td><td>10:30 AM – 9:00 PM</td></tr>
+        </table>
+        <p class="findus">Find us on <a href="https://maps.google.com/?cid=16481564600416358233" target="_blank" rel="noopener">Google</a>.</p>
+        <div class="visit-cta"><a href="tel:+15306902027" class="btn btn-coral">📞 Call to Order</a></div>
+      </div>
+      <div class="map-card">
+        <iframe src="https://www.google.com/maps?q=607%20Main%20St%2C%20Red%20Bluff%2C%20CA%2096080&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Kaloca's Mexican Grill, 607 Main St, Red Bluff CA"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <svg class="foot-wave" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="#d4f1f4" d="M0,28 C200,0 360,52 600,40 C840,28 1020,4 1260,28 C1360,38 1410,30 1440,26 L1440,0 L0,0 Z"></path>
+  </svg>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="script">Kaloca's</div>
+        <p>Mexican Grill · 607 Main St, Red Bluff, CA — the corner spot for the best Mexican food in town.</p>
+      </div>
+      <nav class="foot-links">
+        <a href="#about">Our Story</a>
+        <a href="#menu">Menu</a>
+        <a href="#say">Word of Mouth</a>
+        <a href="#visit">Visit</a>
+        <a href="https://maps.google.com/?cid=16481564600416358233" target="_blank" rel="noopener">Google Listing</a>
+        <a href="tel:+15306902027">(530) 690-2027</a>
+      </nav>
+    </div>
+    <p class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </p>
+  </div>
+</footer>
+
+<script>
+  const burger=document.getElementById('burger'),links=document.getElementById('links');
+  burger.addEventListener('click',()=>{burger.classList.toggle('open');links.classList.toggle('open');});
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');links.classList.remove('open');}));
+</script>
+</body>
+</html>

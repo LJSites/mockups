@@ -1,0 +1,1174 @@
+<!-- flavor: old-neighborhood diner | accent: #B11226 | bg: #0F0F12 | hero: bento-grid | service: sticker-cards -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tommy's Family Restaurant — Monterey Park, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --acc: #B11226;
+    --bg: #0F0F12;
+    --bg2: #18181D;
+    --bg3: #1F1F26;
+    --text: #E8E2D9;
+    --text-muted: #8A8480;
+    --text-dim: #5A5650;
+    --border: #2A2A30;
+    --acc-dim: #7A0D1A;
+    --warm: #D4A96A;
+    --nav-h: 64px;
+    --gap: clamp(12px, 2.5vw, 20px);
+    --radius: 4px;
+  }
+
+  html {
+    scroll-padding-top: var(--nav-h);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lora', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    background: rgba(15, 15, 18, 0.96);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(16px, 4vw, 48px);
+  }
+
+  .nav-logo {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(16px, 2.5vw, 22px);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .nav-logo span {
+    color: var(--acc);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: clamp(16px, 3vw, 32px);
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    background: var(--acc);
+    color: #fff !important;
+    padding: 8px 18px;
+    font-family: 'Oswald', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    text-decoration: none;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--acc-dim) !important; color: #fff !important; }
+
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    transition: 0.2s;
+  }
+
+  @media (max-width: 680px) {
+    .nav-links { display: none; }
+    .nav-cta-desktop { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 24px clamp(16px, 4vw, 48px);
+      gap: 20px;
+    }
+    .nav-links.open a { font-size: 13px; }
+  }
+
+  /* ── HERO BENTO GRID ── */
+  #hero {
+    padding: clamp(24px, 4vw, 48px) clamp(16px, 4vw, 48px) clamp(32px, 5vw, 60px);
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: var(--gap);
+  }
+
+  /* Cell A: name + tagline — spans 2 cols */
+  .bento-a {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: clamp(28px, 4vw, 56px) clamp(24px, 3vw, 48px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+    min-height: 240px;
+  }
+
+  .bento-a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(177,18,38,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .est-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-bottom: 16px;
+  }
+
+  .bento-a h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(36px, 6vw, 80px);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+
+  .bento-a h1 em {
+    font-style: normal;
+    color: var(--acc);
+  }
+
+  .bento-tagline {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: clamp(14px, 1.8vw, 18px);
+    color: var(--text-muted);
+    max-width: 520px;
+    line-height: 1.5;
+  }
+
+  /* Cell B: photo 1 — col 3, rows 1–2 */
+  .bento-b {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    min-height: 360px;
+  }
+
+  .bento-b img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .bento-b:hover img { transform: scale(1.03); }
+
+  /* Cell C: quick info bar */
+  .bento-c {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    background: var(--acc);
+    padding: clamp(18px, 2.5vw, 28px) clamp(20px, 2.5vw, 32px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .bento-c .quick-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .bento-c .quick-val {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: clamp(20px, 2.5vw, 28px);
+    color: #fff;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+
+  .bento-c a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  /* Cell D: photo 2 */
+  .bento-d {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    min-height: 200px;
+  }
+
+  .bento-d img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .bento-d:hover img { transform: scale(1.03); }
+
+  /* Cell E: strip — hours & CTA */
+  .bento-e {
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: clamp(18px, 2.5vw, 28px) clamp(20px, 2.5vw, 40px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .bento-e-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .hours-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .hours-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3DB85C;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px #3DB85C;
+  }
+
+  .hours-text { color: var(--text); }
+
+  .address-line {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--acc);
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 36px;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+
+  .btn-primary:hover {
+    background: var(--acc-dim);
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 860px) {
+    .bento-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto;
+    }
+    .bento-a { grid-column: 1 / 3; grid-row: 1; min-height: 200px; }
+    .bento-b { grid-column: 1 / 3; grid-row: 2; min-height: 260px; }
+    .bento-c { grid-column: 1 / 2; grid-row: 3; }
+    .bento-d { grid-column: 2 / 3; grid-row: 3; min-height: 160px; }
+    .bento-e { grid-column: 1 / 3; grid-row: 4; }
+  }
+
+  @media (max-width: 520px) {
+    .bento-grid {
+      grid-template-columns: 1fr;
+    }
+    .bento-a, .bento-b, .bento-c, .bento-d, .bento-e {
+      grid-column: 1;
+    }
+    .bento-a { grid-row: 1; }
+    .bento-b { grid-row: 2; }
+    .bento-c { grid-row: 3; }
+    .bento-d { grid-row: 4; }
+    .bento-e { grid-row: 5; }
+  }
+
+  /* ── SECTION WRAPPER ── */
+  section {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 48px);
+  }
+
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-heading {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: clamp(28px, 4.5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: clamp(24px, 3vw, 40px);
+  }
+
+  .section-divider {
+    width: 48px;
+    height: 3px;
+    background: var(--acc);
+    margin-bottom: clamp(24px, 3vw, 40px);
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    border-top: 1px solid var(--border);
+  }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    font-size: clamp(15px, 1.5vw, 17px);
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 200px 160px;
+    gap: 8px;
+  }
+
+  .about-photos .ap1 {
+    grid-column: 1 / 3;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .about-photos .ap2,
+  .about-photos .ap3 {
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .about-photos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 720px) {
+    .about-inner { grid-template-columns: 1fr; }
+    .about-photos { grid-template-rows: 220px 140px; }
+  }
+
+  /* ── MENU / STICKER CARDS ── */
+  #menu {
+    border-top: 1px solid var(--border);
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+  }
+
+  #menu > .menu-section-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 48px);
+  }
+
+  .sticker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: clamp(10px, 1.5vw, 16px);
+  }
+
+  .sticker-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: clamp(20px, 2.5vw, 32px);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .sticker-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--acc);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  .sticker-card:hover {
+    border-color: var(--acc-dim);
+    transform: translateY(-2px);
+  }
+
+  .sticker-card:hover::after {
+    transform: scaleX(1);
+  }
+
+  .sticker-num {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 42px;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 8px;
+    transition: color 0.2s;
+  }
+
+  .sticker-card:hover .sticker-num {
+    color: var(--acc-dim);
+  }
+
+  .sticker-name {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: clamp(18px, 2vw, 22px);
+    letter-spacing: 0.03em;
+    color: var(--text);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+
+  .sticker-desc {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  .sticker-tag {
+    display: inline-block;
+    margin-top: 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--acc);
+    border: 1px solid var(--acc-dim);
+    padding: 3px 8px;
+  }
+
+  /* ── TESTIMONIES ── */
+  #testimonies {
+    border-top: 1px solid var(--border);
+  }
+
+  .testimony-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(10px, 1.5vw, 16px);
+  }
+
+  .testimony-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--acc);
+    padding: clamp(22px, 2.5vw, 36px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .testimony-card:nth-child(3) {
+    grid-column: 1 / 3;
+  }
+
+  .testimony-quote {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: clamp(14px, 1.4vw, 16px);
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .testimony-quote::before {
+    content: '\201C';
+    font-family: 'Oswald', sans-serif;
+    font-size: 56px;
+    font-style: normal;
+    color: var(--acc);
+    display: block;
+    line-height: 0.7;
+    margin-bottom: 12px;
+  }
+
+  .testimony-attr {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  @media (max-width: 640px) {
+    .testimony-grid { grid-template-columns: 1fr; }
+    .testimony-card:nth-child(3) { grid-column: 1; }
+  }
+
+  /* ── HOURS & LOCATION ── */
+  #location {
+    border-top: 1px solid var(--border);
+  }
+
+  .location-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(32px, 5vw, 64px);
+    align-items: start;
+  }
+
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .hours-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hours-table tr:last-child { border-bottom: none; }
+
+  .hours-table td {
+    padding: 12px 0;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+
+  .hours-table td:first-child {
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-size: 12px;
+    padding-right: 24px;
+    white-space: nowrap;
+  }
+
+  .hours-table td:last-child {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--warm);
+    letter-spacing: 0.02em;
+  }
+
+  .map-wrap {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .map-wrap iframe {
+    display: block;
+    width: 100%;
+    height: 380px;
+    border: 0;
+    filter: grayscale(30%) contrast(1.05);
+  }
+
+  .phone-block {
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .phone-link {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: clamp(20px, 3vw, 28px);
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .phone-link:hover { color: var(--acc); }
+
+  @media (max-width: 720px) {
+    .location-inner { grid-template-columns: 1fr; }
+    .map-wrap iframe { height: 300px; }
+  }
+
+  /* ── PHOTO STRIP ── */
+  #gallery {
+    border-top: 1px solid var(--border);
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .photo-strip {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    height: 240px;
+  }
+
+  .photo-strip-cell {
+    overflow: hidden;
+    border-right: 2px solid var(--bg);
+  }
+
+  .photo-strip-cell:last-child { border-right: none; }
+
+  .photo-strip-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease, filter 0.3s;
+    filter: grayscale(20%);
+  }
+
+  .photo-strip-cell:hover img {
+    transform: scale(1.06);
+    filter: grayscale(0%);
+  }
+
+  @media (max-width: 640px) {
+    .photo-strip { grid-template-columns: repeat(3, 1fr); height: 280px; }
+  }
+
+  /* ── CALL TO ACTION BANNER ── */
+  .cta-banner {
+    background: var(--acc);
+    padding: clamp(40px, 6vw, 72px) clamp(16px, 4vw, 48px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .cta-banner-text {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 4vw, 44px);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #fff;
+    line-height: 1.05;
+    max-width: 600px;
+  }
+
+  .btn-ghost {
+    display: inline-block;
+    border: 2px solid #fff;
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 14px 36px;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .btn-ghost:hover {
+    background: #fff;
+    color: var(--acc);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: clamp(32px, 5vw, 60px) clamp(16px, 4vw, 48px);
+  }
+
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: clamp(24px, 4vw, 48px);
+  }
+
+  .footer-brand .footer-logo {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 12px;
+  }
+
+  .footer-brand .footer-logo span { color: var(--acc); }
+
+  .footer-brand p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    max-width: 320px;
+  }
+
+  .footer-col-title {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-col ul a {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-col ul a:hover { color: var(--text); }
+
+  .footer-bottom {
+    max-width: 1280px;
+    margin: clamp(24px, 3vw, 40px) auto 0;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-credit {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-credit a {
+    color: var(--acc);
+    text-decoration: none;
+  }
+
+  .footer-credit a:hover { text-decoration: underline; }
+
+  @media (max-width: 720px) {
+    .footer-inner { grid-template-columns: 1fr; }
+  }
+
+  /* ── UTILITY ── */
+  .visually-hidden {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Tommy's <span>&</span> Family</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#location">Hours</a></li>
+    <li><a href="tel:+13237217122" class="nav-cta" aria-label="Call Tommy's Family Restaurant">Call Now</a></li>
+  </ul>
+  <a href="tel:+13237217122" class="nav-cta nav-cta-desktop" style="display:none;"></a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO BENTO GRID -->
+<div id="hero">
+  <div class="bento-grid">
+
+    <!-- A: headline -->
+    <div class="bento-a">
+      <span class="est-tag">Monterey Park, CA &mdash; Est. Family Tradition</span>
+      <h1>Tommy's<br><em>Family</em><br>Restaurant</h1>
+      <p class="bento-tagline">Home-style Mexican cooking, generous plates, and the same warm welcome your grandparents knew.</p>
+    </div>
+
+    <!-- B: photo 1 -->
+    <div class="bento-b">
+      <img src="./photos/01.jpg" alt="Interior of Tommy's Family Restaurant" loading="eager">
+    </div>
+
+    <!-- C: quick phone -->
+    <div class="bento-c">
+      <span class="quick-label">Reservations / Orders</span>
+      <a href="tel:+13237217122" class="quick-val">(323) 721-7122</a>
+    </div>
+
+    <!-- D: photo 2 -->
+    <div class="bento-d">
+      <img src="./photos/02.jpg" alt="Food at Tommy's Family Restaurant" loading="lazy">
+    </div>
+
+    <!-- E: hours + CTA -->
+    <div class="bento-e">
+      <div class="bento-e-left">
+        <div class="hours-badge">
+          <span class="hours-dot"></span>
+          <span class="hours-text">Open Daily &mdash; <strong>7:30 AM – 9:00 PM</strong></span>
+        </div>
+        <span class="address-line">1150 W Riggin St &nbsp;·&nbsp; Monterey Park, CA 91754</span>
+      </div>
+      <a href="https://maps.google.com/?q=1150+W+Riggin+St,+Monterey+Park,+CA+91754" target="_blank" rel="noopener" class="btn-primary">Get Directions</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <span class="section-label">Our Story</span>
+  <h2 class="section-heading">A Corner Table<br>for Generations</h2>
+  <div class="section-divider"></div>
+  <div class="about-inner">
+    <div class="about-text">
+      <p>Some restaurants are destinations. Tommy's Family Restaurant is something rarer — it's a <em>constant</em>. Tucked on W Riggin St in Monterey Park, it has held the same corner and the same standard for so long that grandparents bring their grandchildren, and those grandchildren bring their kids.</p>
+      <p>The kitchen doesn't chase trends. It chases flavor — big albondigas in a broth that will actually fix what ails you, chile rellenos that earn the name, and tortillas that show up fresh and ready for whatever you have planned tomorrow.</p>
+      <p>Walk in feeling lousy, leave feeling taken care of. That's the whole idea.</p>
+    </div>
+    <div class="about-photos">
+      <div class="ap1">
+        <img src="./photos/03.jpg" alt="Tommy's restaurant dining room" loading="lazy">
+      </div>
+      <div class="ap2">
+        <img src="./photos/04.jpg" alt="Mexican food at Tommy's" loading="lazy">
+      </div>
+      <div class="ap3">
+        <img src="./photos/05.jpg" alt="Tommy's kitchen dishes" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU — STICKER CARDS -->
+<div id="menu">
+  <div class="menu-section-wrap">
+    <span class="section-label">What We Make</span>
+    <h2 class="section-heading">The Menu<br>Standards</h2>
+    <div class="section-divider"></div>
+    <div class="sticker-grid">
+
+      <div class="sticker-card">
+        <div class="sticker-num">01</div>
+        <div class="sticker-name">Albondigas Soup</div>
+        <p class="sticker-desc">Mexican meatball soup with garden vegetables, a deep broth, and generous protein. The one to order when you need to feel better fast.</p>
+        <span class="sticker-tag">House Staple</span>
+      </div>
+
+      <div class="sticker-card">
+        <div class="sticker-num">02</div>
+        <div class="sticker-name">Chile Relleno</div>
+        <p class="sticker-desc">Stuffed, lightly battered, and properly sauced. You've had chile rellenos elsewhere — this is the version you'll compare them to after.</p>
+        <span class="sticker-tag">Customer Favorite</span>
+      </div>
+
+      <div class="sticker-card">
+        <div class="sticker-num">03</div>
+        <div class="sticker-name">Menudo</div>
+        <p class="sticker-desc">Traditional weekend menudo, made to the measure that regulars come back for. Red broth, honest texture, no shortcuts.</p>
+        <span class="sticker-tag">Weekend Tradition</span>
+      </div>
+
+      <div class="sticker-card">
+        <div class="sticker-num">04</div>
+        <div class="sticker-name">Cocido</div>
+        <p class="sticker-desc">Slow-cooked Mexican beef and vegetable stew — a bowl so hearty it doubles as tomorrow's lunch without complaint.</p>
+        <span class="sticker-tag">Comfort Bowl</span>
+      </div>
+
+      <div class="sticker-card">
+        <div class="sticker-num">05</div>
+        <div class="sticker-name">Shredded Beef Taco</div>
+        <p class="sticker-desc">Tender braised beef folded into a warm tortilla. Topped simply, because the meat earns the focus.</p>
+        <span class="sticker-tag">Socal Classic</span>
+      </div>
+
+      <div class="sticker-card">
+        <div class="sticker-num">06</div>
+        <div class="sticker-name">Chorizo Burrito</div>
+        <p class="sticker-desc">Spiced pork packed into a full-size burrito — the choice that satisfies without over-thinking it. Paired with house rice that actually tastes like something.</p>
+        <span class="sticker-tag">Fan Pick</span>
+      </div>
+
+      <div class="sticker-card">
+        <div class="sticker-num">07</div>
+        <div class="sticker-name">Green &amp; Red Salsa</div>
+        <p class="sticker-desc">Both house-made, both excellent. The red one has a following. Start there.</p>
+        <span class="sticker-tag">Table Must</span>
+      </div>
+
+      <div class="sticker-card">
+        <div class="sticker-num">08</div>
+        <div class="sticker-name">House Rice &amp; Tortillas</div>
+        <p class="sticker-desc">Sides that pull their weight. The tortillas arrive fresh — grab a few extras and plan accordingly.</p>
+        <span class="sticker-tag">Goes With Everything</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<div id="gallery">
+  <div class="photo-strip">
+    <div class="photo-strip-cell"><img src="./photos/01.jpg" alt="Tommy's Family Restaurant photo 1" loading="lazy"></div>
+    <div class="photo-strip-cell"><img src="./photos/02.jpg" alt="Tommy's Family Restaurant photo 2" loading="lazy"></div>
+    <div class="photo-strip-cell"><img src="./photos/03.jpg" alt="Tommy's Family Restaurant photo 3" loading="lazy"></div>
+    <div class="photo-strip-cell"><img src="./photos/04.jpg" alt="Tommy's Family Restaurant photo 4" loading="lazy"></div>
+    <div class="photo-strip-cell"><img src="./photos/05.jpg" alt="Tommy's Family Restaurant photo 5" loading="lazy"></div>
+    <div class="photo-strip-cell"><img src="./photos/06.jpg" alt="Tommy's Family Restaurant photo 6" loading="lazy"></div>
+  </div>
+</div>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <span class="section-label">In Their Words</span>
+  <h2 class="section-heading">Customer<br>Testimonies</h2>
+  <div class="section-divider"></div>
+  <div class="testimony-grid">
+
+    <div class="testimony-card">
+      <p class="testimony-quote">This place has been around for years. Came with my madre for brunch. They did some remodeling but it's still the same place my grandparents would take me to. A classic but oldie. Food is good and portions are big.</p>
+      <span class="testimony-attr">— Anthony S.</span>
+    </div>
+
+    <div class="testimony-card">
+      <p class="testimony-quote">Came home from work not feeling well and wanting soup and Tommy's saved the day! I got the albondigas and hubs got cocido. It hit the spot and we have leftovers for tomorrow. Generous portions of protein and delicious. Rice was yummy too. Both the green and red salsa are excellent. Super nice and friendly staff.</p>
+      <span class="testimony-attr">— May May L.</span>
+    </div>
+
+    <div class="testimony-card">
+      <p class="testimony-quote">I had the chile relleno and shredded beef taco. Authentic SoCal Mexican food. My son had a chorizo burrito that was also delicious. The staff was friendly and welcoming.</p>
+      <span class="testimony-attr">— Stephanie D.</span>
+    </div>
+
+    <div class="testimony-card">
+      <p class="testimony-quote">Tommy's Family Restaurant is the best place for a comfort meal — seating down, looking out the window at this crazy world. My wife enjoys the albondigas soup every time. The chile relleno here is very good. We've eaten many versions from different restaurants; these are among the best.</p>
+      <span class="testimony-attr">— Sergio Z.</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="cta-banner-text">Ready for a real meal?<br>Come find us in Monterey Park.</div>
+  <a href="tel:+13237217122" class="btn-ghost">Call (323) 721-7122</a>
+</div>
+
+<!-- HOURS & LOCATION -->
+<section id="location">
+  <span class="section-label">Find Us</span>
+  <h2 class="section-heading">Hours &amp;<br>Location</h2>
+  <div class="section-divider"></div>
+  <div class="location-inner">
+    <div>
+      <table class="hours-table" aria-label="Business hours">
+        <tbody>
+          <tr><td>Monday</td><td>7:30 AM – 9:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>7:30 AM – 9:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>7:30 AM – 9:00 PM</td></tr>
+          <tr><td>Thursday</td><td>7:30 AM – 9:00 PM</td></tr>
+          <tr><td>Friday</td><td>7:30 AM – 9:00 PM</td></tr>
+          <tr><td>Saturday</td><td>7:30 AM – 9:00 PM</td></tr>
+          <tr><td>Sunday</td><td>7:30 AM – 9:00 PM</td></tr>
+        </tbody>
+      </table>
+      <div class="phone-block">
+        <a href="tel:+13237217122" class="phone-link">(323) 721-7122</a>
+        <a href="https://maps.google.com/?q=1150+W+Riggin+St,+Monterey+Park,+CA+91754" target="_blank" rel="noopener" class="btn-primary">Get Directions</a>
+      </div>
+    </div>
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps?q=34.0369525,-118.14616719999998&z=15&output=embed"
+        title="Tommy's Family Restaurant location map"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Tommy's <span>&</span> Family</div>
+      <p>Home-style Mexican cooking in the heart of Monterey Park. Open daily for breakfast, lunch, and dinner. Come in and stay a while.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Navigate</div>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#testimonies">Testimonies</a></li>
+        <li><a href="#location">Hours &amp; Location</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Find Us</div>
+      <ul>
+        <li><a href="https://maps.google.com/?cid=8468634964989988194&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a></li>
+        <li><a href="https://maps.google.com/?q=1150+W+Riggin+St,+Monterey+Park,+CA+91754" target="_blank" rel="noopener">Google Maps</a></li>
+        <li><a href="tel:+13237217122">Call Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-credit">
+      1150 W Riggin St, Monterey Park, CA 91754
+    </span>
+    <span class="footer-credit">
+      Mockup designed by LJ Sites &mdash; interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', function() {
+    const open = navLinks.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+  });
+
+  // Close nav on link click (mobile)
+  navLinks.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+</body>
+</html>

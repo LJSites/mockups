@@ -1,0 +1,1022 @@
+<!-- flavor: Mexican BBQ Roadhouse | accent: #1A1A1A | bg: #F5E9D8 | hero: right-photo | service: price-list-table -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Santa Maria's Ramon's Grille — Red Bluff, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --acc: #1A1A1A;
+      --bg: #F5E9D8;
+      --fire: #B84C1A;
+      --smoke: #6B5B4E;
+      --cream: #FBF5EC;
+      --border: #D9C9B2;
+      --nav-h: 64px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--acc);
+      font-family: 'Source Sans 3', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ─────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--acc);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--bg);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      line-height: 1.2;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--border);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--bg); }
+
+    .nav-cta {
+      background: var(--fire);
+      color: #fff !important;
+      padding: 0.4rem 1rem;
+      border-radius: 3px;
+    }
+
+    .nav-cta:hover { background: #9e3e13 !important; color: #fff !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--bg);
+      transition: all 0.3s;
+    }
+
+    @media (max-width: 700px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        background: var(--acc);
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0 1rem;
+        border-top: 1px solid #333;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* ── HERO ────────────────────────────────────── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - var(--nav-h));
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 3rem 4rem 4rem;
+      background: var(--bg);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fire);
+      margin-bottom: 1rem;
+    }
+
+    .hero-h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--acc);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--fire);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--smoke);
+      max-width: 420px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--fire);
+      color: #fff;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.8rem 1.8rem;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: #9e3e13; transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid var(--acc);
+      color: var(--acc);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.6rem;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover { background: var(--acc); color: var(--bg); }
+
+    .hero-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      background: var(--acc);
+      color: var(--bg);
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      font-style: italic;
+      padding: 0.6rem 1rem;
+      border-left: 3px solid var(--fire);
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+      .hero-photo {
+        height: 55vw;
+        min-height: 260px;
+        order: -1;
+      }
+      .hero-text {
+        padding: 2.5rem 1.5rem;
+      }
+      .hero-h1 { font-size: clamp(2rem, 7vw, 3rem); }
+    }
+
+    /* ── DIVIDER ─────────────────────────────────── */
+    .smoke-divider {
+      height: 6px;
+      background: repeating-linear-gradient(90deg, var(--fire) 0, var(--fire) 40px, transparent 40px, transparent 50px);
+      opacity: 0.35;
+    }
+
+    /* ── SECTION BASE ────────────────────────────── */
+    section { padding: 4.5rem 1.5rem; }
+
+    .section-inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--fire);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── ABOUT ───────────────────────────────────── */
+    #about {
+      background: var(--cream);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 0.75rem;
+    }
+
+    .about-photos img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      border-radius: 2px;
+    }
+
+    .about-photos img:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/7;
+    }
+
+    .about-text p {
+      color: var(--smoke);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-stat {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      border-left: 3px solid var(--fire);
+      padding-left: 0.75rem;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--acc);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--smoke);
+    }
+
+    @media (max-width: 700px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* ── MENU ────────────────────────────────────── */
+    #menu {
+      background: var(--bg);
+    }
+
+    .menu-intro {
+      color: var(--smoke);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .menu-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 3rem;
+    }
+
+    .menu-category {
+      margin-bottom: 2rem;
+    }
+
+    .menu-cat-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--fire);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .price-table tr {
+      border-bottom: 1px dotted var(--border);
+    }
+
+    .price-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .price-table td {
+      padding: 0.55rem 0;
+      font-size: 0.93rem;
+      color: var(--acc);
+    }
+
+    .price-table td:first-child {
+      font-weight: 600;
+      padding-right: 0.5rem;
+    }
+
+    .price-table td.price-note {
+      text-align: right;
+      color: var(--smoke);
+      font-size: 0.82rem;
+      font-style: italic;
+      white-space: nowrap;
+    }
+
+    .menu-note {
+      margin-top: 1.75rem;
+      padding: 1rem 1.25rem;
+      background: var(--cream);
+      border-left: 4px solid var(--fire);
+      font-size: 0.9rem;
+      color: var(--smoke);
+      font-style: italic;
+    }
+
+    @media (max-width: 650px) {
+      .menu-columns { grid-template-columns: 1fr; gap: 0; }
+    }
+
+    /* ── GALLERY ─────────────────────────────────── */
+    #gallery {
+      background: var(--acc);
+      padding-top: 3.5rem;
+      padding-bottom: 3.5rem;
+    }
+
+    #gallery .section-title { color: var(--bg); }
+    #gallery .section-label { color: var(--fire); }
+
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .gallery-strip img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.92) saturate(1.1);
+      transition: filter 0.25s, transform 0.25s;
+      border-radius: 2px;
+    }
+
+    .gallery-strip img:hover {
+      filter: brightness(1) saturate(1.2);
+      transform: scale(1.02);
+    }
+
+    @media (max-width: 600px) {
+      .gallery-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ── TESTIMONIES ─────────────────────────────── */
+    #testimonies {
+      background: var(--cream);
+    }
+
+    .testimony-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .testimony-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 1.75rem 1.5rem;
+      border-radius: 2px;
+      position: relative;
+    }
+
+    .testimony-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--fire);
+      opacity: 0.3;
+      position: absolute;
+      top: 0.5rem;
+      left: 1rem;
+    }
+
+    .testimony-quote {
+      font-size: 0.93rem;
+      color: var(--smoke);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      padding-top: 1rem;
+    }
+
+    .testimony-author {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--acc);
+      font-style: italic;
+    }
+
+    /* ── HOURS & LOCATION ────────────────────────── */
+    #visit {
+      background: var(--bg);
+    }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .hours-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hours-table tr:last-child { border-bottom: none; }
+
+    .hours-table td {
+      padding: 0.5rem 0;
+      font-size: 0.93rem;
+    }
+
+    .hours-table td:first-child {
+      font-weight: 600;
+      color: var(--acc);
+      width: 110px;
+    }
+
+    .hours-table td:last-child {
+      color: var(--smoke);
+    }
+
+    .hours-table tr.closed td:last-child {
+      color: var(--border);
+      font-style: italic;
+    }
+
+    .contact-block {
+      margin-top: 1.75rem;
+    }
+
+    .contact-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+    }
+
+    .contact-line {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.6rem;
+      font-size: 0.95rem;
+      color: var(--smoke);
+    }
+
+    .contact-line a {
+      color: var(--fire);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-line a:hover { text-decoration: underline; }
+
+    .map-block iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .map-caption {
+      font-size: 0.8rem;
+      color: var(--smoke);
+      margin-top: 0.5rem;
+    }
+
+    .map-caption a {
+      color: var(--fire);
+      text-decoration: none;
+    }
+
+    @media (max-width: 700px) {
+      .visit-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .map-block iframe { height: 240px; }
+    }
+
+    /* ── CTA BANNER ──────────────────────────────── */
+    .cta-banner {
+      background: var(--fire);
+      padding: 3.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+
+    .cta-banner p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .cta-banner .btn-white {
+      display: inline-block;
+      background: #fff;
+      color: var(--fire);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.2rem;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .cta-banner .btn-white:hover {
+      background: #f0e8e0;
+      transform: translateY(-1px);
+    }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: var(--acc);
+      color: var(--border);
+      padding: 2.5rem 1.5rem;
+    }
+
+    .footer-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--bg);
+      margin-bottom: 0.35rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.82rem;
+      color: var(--smoke);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.4rem;
+    }
+
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--smoke);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--bg); }
+
+    .footer-credit {
+      max-width: 960px;
+      margin: 1.5rem auto 0;
+      padding-top: 1.25rem;
+      border-top: 1px solid #2e2e2e;
+      font-size: 0.78rem;
+      color: #555;
+    }
+
+    .footer-credit a {
+      color: #777;
+      text-decoration: none;
+    }
+
+    .footer-credit a:hover { color: var(--bg); }
+
+    @media (max-width: 550px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-links { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#top" class="nav-brand">Santa Maria's<br>Ramon's Grille</a>
+    <button class="hamburger" aria-label="Toggle menu" onclick="this.nextElementSibling.classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#visit">Hours &amp; Map</a></li>
+      <li><a href="tel:+15306902076" class="nav-cta">Call Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="top" style="padding:0;">
+    <div class="hero">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Red Bluff, CA &nbsp;·&nbsp; Mexican BBQ Fusion</p>
+        <h1 class="hero-h1">Tri-Tip, Birria<br>& <em>Soul</em> on<br>Main Street</h1>
+        <p class="hero-desc">Santa Maria's Ramon's Grille brings bold Santa Maria–style tri-tip together with authentic Mexican flavors — rodeo fries, birria tacos, steak bruschetta and more. Open Tue–Fri, 11 AM – 7 PM.</p>
+        <div class="hero-actions">
+          <a href="tel:+15306902076" class="btn-primary">Call to Order</a>
+          <a href="https://www.google.com/maps?q=158+Main+St,+Red+Bluff,+CA+96080&z=15&output=embed" target="_blank" rel="noopener" class="btn-outline">Get Directions</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="./photos/01.jpg" alt="Santa Maria's Ramon's Grille — food" />
+        <div class="hero-badge">Best in Town — Nurse-Approved</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="smoke-divider"></div>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-photos">
+          <img src="./photos/03.jpg" alt="Ramon's Grille interior" />
+          <img src="./photos/04.jpg" alt="Food at Ramon's Grille" />
+          <img src="./photos/05.jpg" alt="Menu dishes" />
+        </div>
+        <div class="about-text">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title">Where BBQ Smoke Meets Mexican Heart</h2>
+          <p>At Santa Maria's Ramon's Grille, we do things our way: slow-smoked Santa Maria–style tri-tip, scratch-made Mexican staples, and a whole lot of heart — all served out of a cozy spot on Red Bluff's Main Street.</p>
+          <p>Whether you're swinging by for a quick lunch or feeding the whole crew, you'll leave full, satisfied, and already planning your next visit. The rodeo fries have their own fan club, and the birria tacos earn regulars for life.</p>
+          <div class="about-stat">
+            <div class="stat-item">
+              <span class="stat-num">Tue–Fri</span>
+              <span class="stat-label">Open for Lunch & Dinner</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">11–7</span>
+              <span class="stat-label">Daily Hours</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="smoke-divider"></div>
+
+  <!-- ── MENU ── -->
+  <section id="menu">
+    <div class="section-inner">
+      <p class="section-label">What We Serve</p>
+      <h2 class="section-title">The Menu</h2>
+      <p class="menu-intro">Bold flavors, generous portions, honest prices. We fuse Santa Maria–style BBQ with traditional Mexican cooking — the kind of combo that earns hospital nurse recommendations.</p>
+
+      <div class="menu-columns">
+        <div>
+          <div class="menu-category">
+            <p class="menu-cat-title">BBQ Signatures</p>
+            <table class="price-table">
+              <tbody>
+                <tr>
+                  <td>Tri-Tip Plate</td>
+                  <td class="price-note">BBQ classic</td>
+                </tr>
+                <tr>
+                  <td>BBQ Chicken</td>
+                  <td class="price-note">Smoky & tender</td>
+                </tr>
+                <tr>
+                  <td>Rodeo Fries</td>
+                  <td class="price-note">Fan favorite</td>
+                </tr>
+                <tr>
+                  <td>Steak Bruschetta</td>
+                  <td class="price-note">Beyond amazing</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="menu-category">
+            <p class="menu-cat-title">From the Grill</p>
+            <table class="price-table">
+              <tbody>
+                <tr>
+                  <td>Burger</td>
+                  <td class="price-note">House-made</td>
+                </tr>
+                <tr>
+                  <td>Mac &amp; Cheese</td>
+                  <td class="price-note">Comfort favorite</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <div class="menu-category">
+            <p class="menu-cat-title">Mexican Specialties</p>
+            <table class="price-table">
+              <tbody>
+                <tr>
+                  <td>Birria Tacos</td>
+                  <td class="price-note">Rich &amp; savory</td>
+                </tr>
+                <tr>
+                  <td>Tacos</td>
+                  <td class="price-note">Daily selection</td>
+                </tr>
+                <tr>
+                  <td>Tortas</td>
+                  <td class="price-note">Overstuffed</td>
+                </tr>
+                <tr>
+                  <td>Burritos</td>
+                  <td class="price-note">Generous portions</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="menu-category">
+            <p class="menu-cat-title">Extras</p>
+            <table class="price-table">
+              <tbody>
+                <tr>
+                  <td>Daily Specials</td>
+                  <td class="price-note">Ask us!</td>
+                </tr>
+                <tr>
+                  <td>Family Packs</td>
+                  <td class="price-note">Feeds the crew</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <p class="menu-note">Menu rotates seasonally. Call us at <a href="tel:+15306902076" style="color:var(--fire); font-weight:600;">(530) 690-2076</a> to hear today's specials or to place a pickup order.</p>
+    </div>
+  </section>
+
+  <!-- ── GALLERY ── -->
+  <section id="gallery">
+    <div class="section-inner">
+      <p class="section-label">A Look Inside</p>
+      <h2 class="section-title">The Food &amp; The Vibe</h2>
+      <div class="gallery-strip">
+        <img src="./photos/02.jpg" alt="Ramon's Grille dish" />
+        <img src="./photos/04.jpg" alt="Tri-tip plate" />
+        <img src="./photos/06.jpg" alt="Grille interior" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIES ── -->
+  <section id="testimonies">
+    <div class="section-inner">
+      <p class="section-label">In Their Words</p>
+      <h2 class="section-title">Customer Testimonies</h2>
+      <div class="testimony-grid">
+        <div class="testimony-card">
+          <p class="testimony-quote">"I love eating here! They got food that satisfies not just your hunger but your soul! They have good vibes all around and make sure you're very well taken care of! My favorite are the rodeo fries which I now refuse to have anywhere else! Bring your family and friends and come grab some tri-tip!"</p>
+          <p class="testimony-author">— Mellennia F.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">"Heard this place was good BBQ and Mexican food. Myself and two others all ordered different food. All of it was excellent and larger portions. Very affordable also."</p>
+          <p class="testimony-author">— Andrew C.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">"My mom was at the hospital and the nurses told me this was the best restaurant in town. They weren't lying. Nothing wrong with tasty and affordable Mexican BBQ Fusion food."</p>
+          <p class="testimony-author">— Hale C.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">"The food here is easily top of its class. It's so delicious and affordable. This steak bruschetta is beyond amazing. You have to try it. Everything else is incredible as well."</p>
+          <p class="testimony-author">— James L.</p>
+        </div>
+        <div class="testimony-card">
+          <p class="testimony-quote">"Awesome BBQ tri-tip and really tasty chicken. Lots of food for the price. Overall really great food and friendly atmosphere. Will be back soon for another great meal."</p>
+          <p class="testimony-author">— James W.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA BANNER ── -->
+  <div class="cta-banner">
+    <h2>Hungry? Give Us a Call.</h2>
+    <p>Tue–Fri · 11 AM – 7 PM · 158 Main St, Red Bluff, CA</p>
+    <a href="tel:+15306902076" class="btn-white">Call (530) 690-2076</a>
+  </div>
+
+  <!-- ── HOURS & LOCATION ── -->
+  <section id="visit">
+    <div class="section-inner">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Hours &amp; Location</h2>
+      <div class="visit-grid">
+        <div>
+          <div class="hours-block">
+            <h3>Hours</h3>
+            <table class="hours-table">
+              <tbody>
+                <tr class="closed"><td>Monday</td><td>Closed</td></tr>
+                <tr><td>Tuesday</td><td>11:00 AM – 7:00 PM</td></tr>
+                <tr><td>Wednesday</td><td>11:00 AM – 7:00 PM</td></tr>
+                <tr><td>Thursday</td><td>11:00 AM – 7:00 PM</td></tr>
+                <tr><td>Friday</td><td>11:00 AM – 7:00 PM</td></tr>
+                <tr class="closed"><td>Saturday</td><td>Closed</td></tr>
+                <tr class="closed"><td>Sunday</td><td>Closed</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="contact-block">
+            <h3>Contact</h3>
+            <div class="contact-line">
+              <span>📞</span>
+              <a href="tel:+15306902076">(530) 690-2076</a>
+            </div>
+            <div class="contact-line">
+              <span>📍</span>
+              <span>158 Main St, Red Bluff, CA 96080</span>
+            </div>
+            <div class="contact-line" style="margin-top:0.75rem;">
+              <a href="https://maps.google.com/?cid=3517729475616640916&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">View on Google Maps →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="map-block">
+          <iframe
+            src="https://www.google.com/maps?q=158+Main+St,+Red+Bluff,+CA+96080&z=15&output=embed"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Santa Maria's Ramon's Grille on Google Maps">
+          </iframe>
+          <p class="map-caption">
+            158 Main St, Red Bluff, CA 96080 &nbsp;·&nbsp;
+            <a href="https://www.google.com/maps/dir/?api=1&destination=158+Main+St,+Red+Bluff,+CA+96080" target="_blank" rel="noopener">Get Directions</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Santa Maria's Ramon's Grille</div>
+        <div class="footer-tagline">158 Main St · Red Bluff, CA 96080 · Tue–Fri 11 AM–7 PM</div>
+      </div>
+      <div class="footer-links">
+        <a href="tel:+15306902076">(530) 690-2076</a>
+        <a href="https://maps.google.com/?cid=3517729475616640916&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+      </div>
+    </div>
+    <div class="footer-credit">
+      Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </div>
+  </footer>
+
+</body>
+</html>

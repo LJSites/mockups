@@ -1,0 +1,522 @@
+<!--
+  ARCHETYPE: Retro-Americana Tire & Alignment Shop — 1950s mid-century roadside garage.
+  A nostalgic, sign-painted feel: cream backdrop, vintage mid-century blue panels, a pop
+  of signal red. Display face is "Alfa Slab One"–era slab/script energy via Alfa Slab One +
+  Bebas-style condensed caps; body in Work Sans. Diner-badge hero, hand-painted "service
+  menu" laid out like an old gas-station price board, award banner motif pulled from the
+  shop's real "Best of Blythe" banners. NOT gunmetal-diesel / navy-technical / orange-
+  industrial / green-family. Structural choices: split hero (badge + photo), horizontal
+  award strip, two-column service board with dotted leaders, alternating testimony ledger,
+  combined hours+map footer block. Animation: none (static, true to a painted sign).
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Joe's Alignment — Honest Auto Repair & Alignment in Blythe, CA</title>
+<meta name="description" content="Joe's Alignment — Blythe, California's honest, award-winning auto repair and front-end alignment shop since the old days. Family-run, fair prices, real mechanics." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Oswald:wght@400;500;600;700&family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#f4ead2;
+    --cream-2:#efe2c2;
+    --blue:#2a6f8e;        /* mid-century teal-blue */
+    --blue-deep:#1d5066;
+    --blue-ink:#163b4c;
+    --red:#c4362e;         /* signal red pop */
+    --red-deep:#9c2820;
+    --ink:#27211a;
+    --gold:#d8a648;
+    --line:#cab98f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:84px; /* reserve sticky-nav height */
+  }
+  body{
+    font-family:"Work Sans",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{width:min(1120px,92vw);margin-inline:auto}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--blue);
+    border-bottom:4px solid var(--red);
+    height:84px;display:flex;align-items:center;
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;width:min(1180px,94vw)}
+  .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:var(--cream)}
+  .brand .badge{
+    font-family:"Alfa Slab One",serif;
+    background:var(--cream);color:var(--blue-deep);
+    width:46px;height:46px;border-radius:50%;
+    display:grid;place-items:center;font-size:1.25rem;
+    border:3px solid var(--red);line-height:1;flex:none;
+  }
+  .brand b{font-family:"Oswald",sans-serif;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:1.18rem;line-height:1}
+  .brand span{display:block;font-size:.66rem;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-top:2px}
+  .nav-links{display:flex;align-items:center;gap:1.6rem}
+  .nav-links a{
+    text-decoration:none;color:var(--cream);
+    font-family:"Oswald",sans-serif;font-weight:500;letter-spacing:.1em;
+    text-transform:uppercase;font-size:.82rem;
+  }
+  .nav-links a:hover{color:var(--gold)}
+  .nav-call{
+    background:var(--red);color:#fff !important;
+    padding:.62rem 1.1rem;border-radius:3px;
+    font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.08em;
+    border:2px solid #fff3;
+  }
+  .nav-call:hover{background:var(--red-deep);color:#fff}
+  .nav-burger{display:none;background:none;border:0;color:var(--cream);font-size:1.6rem;cursor:pointer}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 12% 0%, #2f7c9d 0, var(--blue) 55%, var(--blue-deep) 100%);
+    color:var(--cream);
+    border-bottom:6px solid var(--red);
+    position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:repeating-linear-gradient(135deg,#ffffff08 0 2px,transparent 2px 22px);
+    pointer-events:none;
+  }
+  .hero .grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:2.6rem;
+    align-items:center;padding:3.4rem 0 3.6rem;position:relative;z-index:1;
+  }
+  .est{
+    display:inline-flex;align-items:center;gap:.55rem;
+    font-family:"Oswald",sans-serif;letter-spacing:.22em;text-transform:uppercase;
+    font-size:.74rem;color:var(--gold);margin-bottom:1.1rem;
+  }
+  .est::before,.est::after{content:"";height:1px;width:34px;background:var(--gold);opacity:.7}
+  h1{
+    font-family:"Alfa Slab One",serif;
+    font-size:clamp(2.6rem,6vw,4.3rem);
+    line-height:.96;color:var(--cream);
+    text-shadow:3px 3px 0 var(--red-deep);
+    margin-bottom:.2rem;
+  }
+  h1 .sub{display:block;font-family:"Oswald",sans-serif;font-weight:600;
+    font-size:clamp(1rem,2.2vw,1.45rem);letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold);text-shadow:none;margin-top:.7rem}
+  .hero p.lead{
+    max-width:42ch;margin:1.3rem 0 1.8rem;font-size:1.06rem;color:#f4ead2dd;
+  }
+  .cta-row{display:flex;flex-wrap:wrap;gap:.9rem}
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;text-decoration:none;
+    padding:.95rem 1.5rem;border-radius:4px;font-size:.96rem;
+  }
+  .btn-red{background:var(--red);color:#fff;border:2px solid #fff2}
+  .btn-red:hover{background:var(--red-deep)}
+  .btn-cream{background:var(--cream);color:var(--blue-deep);border:2px solid var(--blue-deep)}
+  .btn-cream:hover{background:#fff}
+
+  .hero-photo{
+    position:relative;
+  }
+  .hero-photo .frame{
+    border:7px solid var(--cream);
+    border-radius:6px;
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+    overflow:hidden;transform:rotate(-1.4deg);
+  }
+  .hero-photo .frame img{width:100%;height:380px;object-fit:cover}
+  .hero-photo .stamp{
+    position:absolute;bottom:-22px;right:-10px;
+    width:118px;height:118px;border-radius:50%;
+    background:var(--red);color:var(--cream);
+    border:4px dashed var(--cream);
+    display:grid;place-items:center;text-align:center;
+    transform:rotate(8deg);box-shadow:0 8px 18px rgba(0,0,0,.3);
+  }
+  .hero-photo .stamp b{font-family:"Alfa Slab One",serif;font-size:1.5rem;line-height:1}
+  .hero-photo .stamp span{font-family:"Oswald",sans-serif;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;display:block;margin-top:3px}
+
+  /* ---------- AWARD STRIP ---------- */
+  .awards{
+    background:var(--cream-2);
+    border-bottom:2px solid var(--line);
+    padding:1.1rem 0;
+  }
+  .awards .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:1.4rem 2.4rem;text-align:center}
+  .award{
+    display:flex;align-items:center;gap:.7rem;
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.08em;
+    color:var(--blue-deep);font-size:.92rem;font-weight:500;
+  }
+  .award .star{color:var(--red);font-size:1.2rem;line-height:1}
+  .award b{color:var(--red-deep)}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:4.2rem 0}
+  .eyebrow{
+    font-family:"Oswald",sans-serif;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--red);font-size:.78rem;font-weight:600;margin-bottom:.55rem;
+  }
+  .h2{
+    font-family:"Alfa Slab One",serif;color:var(--blue-deep);
+    font-size:clamp(1.9rem,4.2vw,2.8rem);line-height:1.02;margin-bottom:1rem;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--cream)}
+  .about .grid{display:grid;grid-template-columns:1fr 1fr;gap:2.8rem;align-items:center}
+  .about p{margin-bottom:1rem;font-size:1.05rem;max-width:52ch}
+  .about .photos{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .about .photos img{
+    width:100%;height:100%;object-fit:cover;border:5px solid #fff;
+    box-shadow:0 8px 18px rgba(0,0,0,.14);border-radius:4px;min-height:170px;
+  }
+  .about .photos img.tall{grid-row:span 2;min-height:0}
+  .vals{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.3rem}
+  .vals span{
+    background:var(--blue);color:var(--cream);
+    font-family:"Oswald",sans-serif;letter-spacing:.06em;text-transform:uppercase;
+    font-size:.74rem;padding:.4rem .8rem;border-radius:3px;
+  }
+
+  /* ---------- SERVICE BOARD ---------- */
+  .services{background:var(--blue-deep);color:var(--cream);border-block:6px solid var(--red)}
+  .services .head{text-align:center;margin-bottom:2.4rem}
+  .services .eyebrow{color:var(--gold)}
+  .services .h2{color:var(--cream)}
+  .board{
+    background:var(--blue-ink);
+    border:3px solid #ffffff22;border-radius:8px;
+    padding:2rem clamp(1.2rem,4vw,2.6rem);
+    display:grid;grid-template-columns:1fr 1fr;gap:.3rem 3rem;
+    box-shadow:inset 0 0 0 8px #00000022;
+  }
+  .svc{
+    display:flex;align-items:baseline;gap:.6rem;
+    padding:.8rem 0;border-bottom:1px dashed #ffffff2b;
+  }
+  .svc .name{font-family:"Oswald",sans-serif;font-weight:500;letter-spacing:.03em;font-size:1.05rem;white-space:nowrap}
+  .svc .dots{flex:1;border-bottom:2px dotted #ffffff3a;transform:translateY(-4px)}
+  .svc .note{font-size:.84rem;color:var(--gold);font-family:"Oswald",sans-serif;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+  .board-note{
+    grid-column:1/-1;text-align:center;margin-top:1.3rem;
+    font-style:italic;color:#f4ead2cc;font-size:.98rem;
+  }
+
+  /* ---------- TESTIMONIES ---------- */
+  .says{background:var(--cream-2)}
+  .says .head{margin-bottom:2.2rem}
+  .ledger{display:grid;gap:1.3rem}
+  .quote{
+    background:var(--cream);border:1px solid var(--line);
+    border-left:7px solid var(--red);
+    border-radius:4px;padding:1.5rem 1.7rem;
+    box-shadow:0 5px 14px rgba(0,0,0,.06);
+  }
+  .quote:nth-child(even){border-left-color:var(--blue)}
+  .quote p{font-size:1.08rem;font-style:italic;color:var(--ink);margin-bottom:.7rem}
+  .quote .who{
+    font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;font-size:.84rem;color:var(--blue-deep);
+  }
+  .quote:nth-child(even) .who{color:var(--red-deep)}
+  @media(min-width:760px){
+    .ledger{grid-template-columns:1fr 1fr}
+    .quote:first-child{grid-column:1/-1}
+  }
+
+  /* ---------- VISIT / MAP / HOURS ---------- */
+  .visit{background:var(--blue);color:var(--cream)}
+  .visit .grid{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem}
+  .visit .eyebrow{color:var(--gold)}
+  .visit .h2{color:var(--cream)}
+  .info-card{
+    background:var(--cream);color:var(--ink);
+    border-radius:6px;padding:1.6rem 1.8rem;border-top:6px solid var(--red);
+  }
+  .info-card h3{
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;
+    color:var(--blue-deep);font-size:1rem;margin:1.1rem 0 .5rem;
+  }
+  .info-card h3:first-child{margin-top:0}
+  .hours{list-style:none;font-size:.98rem}
+  .hours li{display:flex;justify-content:space-between;padding:.32rem 0;border-bottom:1px dotted var(--line)}
+  .hours li.closed{color:var(--red-deep)}
+  .hours li b{font-weight:600}
+  .contact-line{display:flex;align-items:center;gap:.5rem;margin:.4rem 0;font-size:1.02rem}
+  .contact-line a{color:var(--blue-deep);text-decoration:none;font-weight:600}
+  .contact-line a:hover{color:var(--red)}
+  .map{
+    border:7px solid var(--cream);border-radius:6px;overflow:hidden;
+    box-shadow:0 14px 30px rgba(0,0,0,.3);min-height:340px;
+  }
+  .map iframe{width:100%;height:100%;min-height:340px;border:0;display:block;filter:saturate(.92)}
+  .visit .btn-red{margin-top:1.3rem}
+
+  /* ---------- CALLOUT ---------- */
+  .callout{
+    background:var(--red);color:var(--cream);text-align:center;
+    border-block:6px solid var(--blue-deep);
+  }
+  .callout .h2{color:var(--cream);text-shadow:2px 2px 0 var(--red-deep)}
+  .callout p{max-width:46ch;margin:.6rem auto 1.6rem;font-size:1.08rem}
+  .callout .btn-cream{background:var(--cream);color:var(--red-deep);border-color:var(--cream)}
+  .callout .btn-cream:hover{background:#fff}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#f4ead2bb;padding:3rem 0 2.2rem;font-size:.92rem}
+  footer .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+  footer h4{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);font-size:.86rem;margin-bottom:.8rem}
+  footer a{color:#f4ead2cc;text-decoration:none}
+  footer a:hover{color:var(--red)}
+  footer .fbrand{font-family:"Alfa Slab One",serif;color:var(--cream);font-size:1.4rem;margin-bottom:.5rem}
+  footer ul{list-style:none}
+  footer ul li{margin:.3rem 0}
+  .credit{
+    border-top:1px solid #ffffff1a;padding-top:1.3rem;text-align:center;
+    color:#f4ead299;font-size:.86rem;
+  }
+  .credit a{color:var(--gold)}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:860px){
+    .nav-links{
+      position:absolute;top:84px;left:0;right:0;background:var(--blue-deep);
+      flex-direction:column;align-items:stretch;gap:0;padding:.5rem 0;
+      border-bottom:4px solid var(--red);display:none;
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{padding:.85rem 7vw;border-bottom:1px solid #ffffff14}
+    .nav-call{margin:.6rem 7vw;text-align:center}
+    .nav-burger{display:block}
+    .hero .grid{grid-template-columns:1fr;gap:2rem}
+    .hero-photo .frame{transform:rotate(0)}
+    .about .grid,.visit .grid{grid-template-columns:1fr}
+    .board{grid-template-columns:1fr;gap:0}
+    .svc .note{font-size:.78rem}
+  }
+  @media(max-width:480px){
+    .hero-photo .frame img{height:280px}
+    .about .photos img{min-height:130px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="badge">J</span>
+      <span><b>Joe's Alignment</b><span>Blythe, California</span></span>
+    </a>
+    <nav class="nav-links" id="menu">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#says">Testimonies</a>
+      <a href="#visit">Visit</a>
+      <a class="nav-call" href="tel:+17609229055">Call (760) 922-9055</a>
+    </nav>
+    <button class="nav-burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')">&#9776;</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top" style="padding:0">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <span class="est">Honest Auto Care &middot; Family Run</span>
+        <h1>Straight Roads<br>Start Here.
+          <span class="sub">Front-End Alignment &amp; Auto Repair</span>
+        </h1>
+        <p class="lead">For years, drivers across the Palo Verde Valley have trusted Joe's Alignment to fix the pull, square up the front end, and get them back on the road — at a price that's actually fair.</p>
+        <div class="cta-row">
+          <a class="btn btn-red" href="tel:+17609229055">&#9742;&nbsp; Call Now</a>
+          <a class="btn btn-cream" href="https://www.google.com/maps?q=129+S+Commercial+St,+Blythe,+CA+92225" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="frame">
+          <img src="./photos/03.jpg" alt="Inside Joe's Alignment garage — alignment rack, tires and tools" />
+        </div>
+        <div class="stamp"><div><b>EST.</b><span>Blythe, CA</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<div class="awards">
+  <div class="wrap">
+    <div class="award"><span class="star">&#9733;</span> Winner &mdash; <b>Best of Blythe 2020</b></div>
+    <div class="award"><span class="star">&#9733;</span> <b>Best Auto Repair</b> &mdash; Best in Blythe 2021</div>
+    <div class="award"><span class="star">&#9733;</span> As featured in the <b>Palo Verde Valley Times</b></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <p class="eyebrow">The Shop</p>
+        <h2 class="h2">A real garage, run by real people.</h2>
+        <p>Joe's Alignment is the kind of shop that's getting harder to find — where the folks at the counter explain exactly what your car needs, show you the worn part, and never charge you for work you don't need. RV owners from Quartzsite to Lake Havasu make the trip to Blythe because they trust the answer they'll get here.</p>
+        <p>From front-end alignments to brakes, tires, and everyday repair, we keep cars, trucks, RVs, and 4x4s tracking straight and running right. Drop by, and we'll give you an honest look and a fair quote.</p>
+        <div class="vals">
+          <span>Honest Quotes</span>
+          <span>Fair Prices</span>
+          <span>RVs &amp; 4x4 Welcome</span>
+          <span>Family Owned</span>
+        </div>
+      </div>
+      <div class="photos">
+        <img class="tall" src="./photos/04.jpg" alt="Wheel hub and tire service detail at Joe's Alignment" />
+        <img src="./photos/06.jpg" alt="A customer's Jeep Wrangler along the Colorado River near Blythe" />
+        <img src="./photos/02.jpg" alt="Class C RV serviced at Joe's Alignment" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Under the Hood</p>
+      <h2 class="h2">The Service Board</h2>
+    </div>
+    <div class="board">
+      <div class="svc"><span class="name">Front-End Alignment</span><span class="dots"></span><span class="note">Our Specialty</span></div>
+      <div class="svc"><span class="name">Suspension &amp; Steering</span><span class="dots"></span><span class="note">Pulls &amp; Wander</span></div>
+      <div class="svc"><span class="name">Tires &amp; Rotation</span><span class="dots"></span><span class="note">Mount &amp; Balance</span></div>
+      <div class="svc"><span class="name">Brake Service</span><span class="dots"></span><span class="note">Pads &amp; Rotors</span></div>
+      <div class="svc"><span class="name">RV &amp; Motorhome Alignment</span><span class="dots"></span><span class="note">Class A / B / C</span></div>
+      <div class="svc"><span class="name">4x4 &amp; Lifted Trucks</span><span class="dots"></span><span class="note">Off-Road Ready</span></div>
+      <div class="svc"><span class="name">General Auto Repair</span><span class="dots"></span><span class="note">Cars &amp; Vans</span></div>
+      <div class="svc"><span class="name">Diagnostics &amp; Inspection</span><span class="dots"></span><span class="note">Honest Look</span></div>
+      <p class="board-note">Not sure what's wrong? Bring it by — we'll take a look and tell you straight.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">In Their Words</p>
+      <h2 class="h2">What People Say</h2>
+    </div>
+    <div class="ledger">
+      <div class="quote">
+        <p>"I came out from Quartzsite, Arizona to have Joe's Alignment fix my Class C RV which had a slow pull to the right — and finally got it fixed. Honest shop, showed me the part I needed, and I really didn't spend that much money. I've mentioned this business to other people looking for an honest, reasonable automotive shop. Thank you."</p>
+        <span class="who">&mdash; Dave M.</span>
+      </div>
+      <div class="quote">
+        <p>"They were so helpful in getting my car back on the road and getting me home safely!! I would recommend them to anyone near Blythe, California that needs car repairs."</p>
+        <span class="who">&mdash; Virginia R.</span>
+      </div>
+      <div class="quote">
+        <p>"Joe's Alignment always comes through for my needs. They're honest and won't try to make you pay for anything more than your actual problem. They walked me through everything and gave me the option to think about it. Some of the best receptionists and mechanics in town."</p>
+        <span class="who">&mdash; Arlene W.</span>
+      </div>
+      <div class="quote">
+        <p>"Kind staff. They gave me an appointment for the next day and the price was great. Would go back."</p>
+        <span class="who">&mdash; Rebecca S.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <p class="eyebrow">Find Us</p>
+        <h2 class="h2">Stop by the shop.</h2>
+        <div class="info-card">
+          <h3>Hours</h3>
+          <ul class="hours">
+            <li><span>Monday</span><b>8:00 AM – 5:00 PM</b></li>
+            <li><span>Tuesday</span><b>8:00 AM – 5:00 PM</b></li>
+            <li><span>Wednesday</span><b>8:00 AM – 5:00 PM</b></li>
+            <li><span>Thursday</span><b>8:00 AM – 5:00 PM</b></li>
+            <li><span>Friday</span><b>8:00 AM – 4:00 PM</b></li>
+            <li class="closed"><span>Saturday</span><b>Closed</b></li>
+            <li class="closed"><span>Sunday</span><b>Closed</b></li>
+          </ul>
+          <h3>Visit &amp; Call</h3>
+          <div class="contact-line">&#128205;&nbsp; <a href="https://www.google.com/maps?q=129+S+Commercial+St,+Blythe,+CA+92225" target="_blank" rel="noopener">129 S Commercial St, Blythe, CA 92225</a></div>
+          <div class="contact-line">&#9742;&nbsp; <a href="tel:+17609229055">(760) 922-9055</a></div>
+          <a class="btn btn-red" href="tel:+17609229055">&#9742;&nbsp; Call the Shop</a>
+        </div>
+      </div>
+      <div class="map">
+        <iframe
+          src="https://www.google.com/maps?q=129+S+Commercial+St,+Blythe,+CA+92225&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Joe's Alignment, 129 S Commercial St, Blythe, CA"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALLOUT -->
+<section class="callout">
+  <div class="wrap">
+    <h2 class="h2">Pulling to one side?</h2>
+    <p>Don't fight the wheel another mile. Give Joe's a call and we'll get you tracking straight.</p>
+    <a class="btn btn-cream" href="tel:+17609229055">&#9742;&nbsp; Call (760) 922-9055</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="fbrand">Joe's Alignment</div>
+        <p>Honest, award-winning auto repair and front-end alignment in Blythe, California. Cars, trucks, RVs &amp; 4x4s welcome.</p>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <ul>
+          <li>Mon–Thu: 8AM – 5PM</li>
+          <li>Friday: 8AM – 4PM</li>
+          <li>Sat &amp; Sun: Closed</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get in Touch</h4>
+        <ul>
+          <li><a href="tel:+17609229055">(760) 922-9055</a></li>
+          <li><a href="https://www.google.com/maps?q=129+S+Commercial+St,+Blythe,+CA+92225" target="_blank" rel="noopener">129 S Commercial St</a></li>
+          <li><a href="https://maps.google.com/?cid=3880816956430694491" target="_blank" rel="noopener">Find us on Google</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

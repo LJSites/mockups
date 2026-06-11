@@ -1,0 +1,483 @@
+<!--
+ARCHETYPE: Fresh eco / "green-earth" neighborhood dry cleaner.
+  Authentic hook — this shop carries a real GreenEarth sticker (photo 04), so the
+  eco-fresh angle isn't invented. Soft mint/sage + warm white + charcoal ink,
+  friendly rounded sans (Quicksand display / Nunito Sans body), light airy feel.
+  Deliberately DISTINCT from the other cleaners in the set: not electric-blue tech,
+  not navy/teal minimal, not platinum-luxe, not plaza-friendly — this one is the
+  calm, leafy, plant-forward eco cleaner.
+
+STRUCTURE DECISIONS:
+  - Asymmetric split hero: text column + tall storefront photo card, no dark-overlay
+    centered hero. A thin "leaf-mark" wordmark, not an icon set.
+  - Services shown as a flowing 2-col "list with weights" (no 3-column circle-icon grid):
+    a tall feature column (signature services) + a compact "also handled here" tag cloud.
+  - Eco band breaks the rhythm: GreenEarth pledge as a full-width sage band.
+  - Testimonies = staggered quote stack ("In Their Words"), no cards/avatars/stars.
+  - Hours as a clean two-column ledger beside the keyless map embed.
+  - Single repeated CTA: Call Now (tel:). Free pickup/delivery surfaced as a sticky note.
+  - No scroll animation; only quiet hover transitions. Sticky nav -> scroll-padding-top.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>G &amp; S Cleaners — Eco Dry Cleaning, Laundry &amp; Alterations · Paramount, CA</title>
+<meta name="description" content="G & S Cleaners in Paramount, CA — a family-run, GreenEarth dry cleaner. Dry cleaning, professional laundry, alterations, leather, shoe & cap restoration, wedding gown preservation. Free pickup & delivery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mint:#d9ede2;      /* soft mint wash */
+    --mint-deep:#bfe0cf;
+    --sage:#6f9a82;      /* primary sage */
+    --sage-ink:#3f6b53;  /* deeper sage for accents */
+    --leaf:#4f8466;
+    --charcoal:#2c332f;  /* charcoal ink */
+    --slate:#5c655f;
+    --paper:#fbfdfb;     /* warm white */
+    --cloud:#f2f8f4;
+    --line:#dfe9e2;
+    --radius:18px;
+    --shadow:0 18px 40px -22px rgba(63,107,83,.45);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:78px;}
+  body{
+    margin:0; background:var(--paper); color:var(--charcoal);
+    font-family:"Nunito Sans",system-ui,sans-serif; font-size:17px; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.disp{font-family:"Quicksand",system-ui,sans-serif; line-height:1.12; margin:0;}
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  .wrap{width:min(1120px,92vw); margin-inline:auto;}
+  .eyebrow{
+    font-family:"Quicksand"; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+    font-size:.72rem; color:var(--sage-ink);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,253,251,.86); backdrop-filter:saturate(160%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex; align-items:center; justify-content:space-between; height:78px;}
+  .brand{display:flex; align-items:center; gap:.6rem; font-family:"Quicksand"; font-weight:700; font-size:1.15rem; color:var(--charcoal);}
+  .leaf{
+    width:30px;height:30px;border-radius:50% 50% 50% 4px; transform:rotate(-12deg);
+    background:linear-gradient(150deg,var(--sage),var(--leaf));
+    box-shadow:inset 0 0 0 4px rgba(255,255,255,.35);
+    flex:0 0 auto;
+  }
+  .nav-links{display:flex; gap:2rem; align-items:center;}
+  .nav-links a{font-weight:600; font-size:.95rem; color:var(--slate); transition:color .18s;}
+  .nav-links a:hover{color:var(--sage-ink);}
+  .nav-cta{
+    font-family:"Quicksand"; font-weight:700; font-size:.92rem; color:#fff !important;
+    background:var(--sage); padding:.6rem 1.15rem; border-radius:999px;
+    box-shadow:0 8px 18px -8px rgba(79,132,102,.8); transition:transform .18s, background .18s;
+  }
+  .nav-cta:hover{background:var(--leaf); transform:translateY(-1px);}
+  .nav-links .menu-only{display:inline;}
+  @media(max-width:820px){ .nav-links .menu-only{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 30px; position:relative; overflow:hidden;}
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(60% 70% at 12% 0%, var(--mint) 0%, transparent 60%),
+               radial-gradient(50% 60% at 100% 30%, var(--cloud) 0%, transparent 55%);
+    z-index:-1;
+  }
+  .hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:54px; align-items:center;}
+  .pill{
+    display:inline-flex; align-items:center; gap:.5rem; background:#fff; border:1px solid var(--mint-deep);
+    color:var(--sage-ink); font-weight:700; font-size:.82rem; font-family:"Quicksand";
+    padding:.42rem .9rem; border-radius:999px; box-shadow:var(--shadow);
+  }
+  .pill .dot{width:8px;height:8px;border-radius:50%;background:var(--leaf);}
+  h1{font-size:clamp(2.5rem,5.4vw,3.9rem); font-weight:700; letter-spacing:-.01em; margin:1.1rem 0 .2rem;}
+  h1 .amp{color:var(--sage);}
+  .lede{font-size:1.18rem; color:var(--slate); max-width:30ch; margin:.6rem 0 1.6rem;}
+  .hero-cta{display:flex; gap:.9rem; flex-wrap:wrap; align-items:center;}
+  .btn{
+    font-family:"Quicksand"; font-weight:700; border-radius:999px; padding:.95rem 1.7rem;
+    display:inline-flex; align-items:center; gap:.55rem; transition:transform .18s, box-shadow .18s, background .18s; cursor:pointer;
+  }
+  .btn-primary{background:var(--charcoal); color:#fff; box-shadow:0 14px 30px -14px rgba(44,51,47,.9);}
+  .btn-primary:hover{transform:translateY(-2px); background:#1f2521;}
+  .btn-ghost{background:transparent; color:var(--sage-ink); border:1.5px solid var(--mint-deep);}
+  .btn-ghost:hover{background:#fff; transform:translateY(-2px);}
+  .hero-meta{margin-top:1.5rem; display:flex; gap:1.6rem; flex-wrap:wrap; font-size:.9rem; color:var(--slate);}
+  .hero-meta b{font-family:"Quicksand"; color:var(--charcoal); display:block; font-size:1.02rem;}
+
+  .hero-photo{position:relative;}
+  .hero-photo img{
+    width:100%; height:520px; object-fit:cover; border-radius:26px; box-shadow:var(--shadow);
+    border:8px solid #fff;
+  }
+  .note{
+    position:absolute; left:-18px; bottom:34px; background:#fff; border-radius:14px;
+    padding:.85rem 1.1rem; box-shadow:var(--shadow); border:1px solid var(--line);
+    max-width:215px; transform:rotate(-2deg);
+  }
+  .note .k{font-family:"Quicksand"; font-weight:700; color:var(--leaf); font-size:.95rem; display:flex; align-items:center; gap:.4rem;}
+  .note .v{font-size:.84rem; color:var(--slate); line-height:1.4; margin-top:.15rem;}
+
+  /* ---------- ECO BAND ---------- */
+  .eco{background:var(--sage); color:#eef7f0; margin-top:40px;}
+  .eco-in{display:grid; grid-template-columns:auto 1fr; gap:2rem; align-items:center; padding:34px 0;}
+  .eco-mark{
+    width:72px;height:72px;border-radius:50% 50% 50% 6px; transform:rotate(-12deg); flex:0 0 auto;
+    background:rgba(255,255,255,.16); display:grid; place-items:center; font-size:2rem;
+    border:1px solid rgba(255,255,255,.3);
+  }
+  .eco h2{font-size:1.45rem; color:#fff; margin-bottom:.25rem;}
+  .eco p{margin:0; color:#e1efe6; max-width:62ch; font-size:1.02rem;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:78px 0;}
+  .sec-head{max-width:50ch; margin-bottom:2.6rem;}
+  .sec-head h2{font-size:clamp(1.8rem,3.4vw,2.5rem); margin-top:.5rem;}
+  .sec-head p{color:var(--slate); margin:.7rem 0 0;}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;}
+  .about-photos{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .about-photos img{border-radius:16px; height:230px; width:100%; object-fit:cover; box-shadow:var(--shadow);}
+  .about-photos img:first-child{grid-column:1 / -1; height:250px;}
+  .about-copy p{color:var(--slate);}
+  .about-copy p+p{margin-top:1rem;}
+  .fam-tag{display:inline-flex; align-items:center; gap:.5rem; background:var(--cloud); border:1px solid var(--line);
+    color:var(--sage-ink); font-family:"Quicksand"; font-weight:700; font-size:.85rem; padding:.4rem .9rem;
+    border-radius:999px; margin-bottom:1rem;}
+
+  /* SERVICES */
+  #services{background:linear-gradient(180deg,var(--cloud),var(--paper));}
+  .svc-grid{display:grid; grid-template-columns:1.15fr .85fr; gap:46px;}
+  .svc-feature{display:grid; gap:1px; background:var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);}
+  .svc-row{
+    background:var(--paper); padding:1.5rem 1.6rem; display:flex; justify-content:space-between; align-items:baseline; gap:1rem;
+    transition:background .18s;
+  }
+  .svc-row:hover{background:#fff;}
+  .svc-row h3{font-size:1.18rem; font-weight:700;}
+  .svc-row p{margin:.3rem 0 0; color:var(--slate); font-size:.95rem; max-width:42ch;}
+  .svc-row .price{font-family:"Quicksand"; font-weight:700; color:var(--leaf); white-space:nowrap; font-size:1.05rem;}
+  .svc-side h3{font-family:"Quicksand"; font-size:1.05rem; color:var(--charcoal); margin-bottom:1rem;}
+  .tags{display:flex; flex-wrap:wrap; gap:.6rem;}
+  .tag{
+    background:#fff; border:1px solid var(--mint-deep); color:var(--sage-ink);
+    font-weight:600; font-size:.9rem; padding:.5rem .95rem; border-radius:12px; transition:transform .15s, background .15s;
+  }
+  .tag:hover{background:var(--mint); transform:translateY(-2px);}
+  .svc-photo{margin-top:1.6rem; border-radius:16px; overflow:hidden; box-shadow:var(--shadow);}
+  .svc-photo img{height:200px; width:100%; object-fit:cover;}
+
+  /* TESTIMONIES */
+  .quotes{display:grid; grid-template-columns:repeat(2,1fr); gap:28px;}
+  .q{
+    position:relative; padding:1.8rem 1.9rem; background:var(--paper); border:1px solid var(--line);
+    border-radius:var(--radius); box-shadow:0 14px 34px -26px rgba(63,107,83,.5);
+  }
+  .q:nth-child(odd){background:var(--cloud); transform:translateY(0);}
+  .q:nth-child(2),.q:nth-child(3){margin-top:26px;}
+  .q .mark{font-family:"Quicksand"; font-weight:700; font-size:2.6rem; color:var(--mint-deep); line-height:0; display:block; height:.6em;}
+  .q p{color:var(--charcoal); font-size:1.02rem; margin:.4rem 0 1rem;}
+  .q .who{font-family:"Quicksand"; font-weight:700; color:var(--sage-ink); font-size:.95rem; display:flex; align-items:center; gap:.5rem;}
+  .q .who::before{content:""; width:22px; height:2px; background:var(--sage); display:inline-block;}
+
+  /* VISIT */
+  #visit{background:linear-gradient(180deg,var(--paper),var(--mint));}
+  .visit-grid{display:grid; grid-template-columns:.95fr 1.05fr; gap:46px; align-items:stretch;}
+  .ledger{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:2rem; box-shadow:var(--shadow);}
+  .hours-row{display:flex; justify-content:space-between; padding:.65rem 0; border-bottom:1px dashed var(--line); font-size:.98rem;}
+  .hours-row:last-of-type{border-bottom:0;}
+  .hours-row .d{font-weight:600;}
+  .hours-row.today{background:var(--mint); margin:0 -.7rem; padding:.65rem .7rem; border-radius:10px; border-bottom:0;}
+  .hours-row .h{color:var(--slate);}
+  .hours-row .closed{color:#b06a5e;}
+  .addr{margin-top:1.4rem; padding-top:1.2rem; border-top:1px solid var(--line);}
+  .addr .label{font-size:.85rem; color:var(--slate);}
+  .addr .val{font-family:"Quicksand"; font-weight:700; font-size:1.05rem; color:var(--charcoal); margin-top:.15rem;}
+  .addr a.maplink{color:var(--leaf); font-weight:700; font-family:"Quicksand"; display:inline-block; margin-top:.3rem;}
+  .findus{margin-top:1.1rem; font-size:.9rem; color:var(--slate);}
+  .findus a{color:var(--sage-ink); font-weight:700; border-bottom:2px solid var(--mint-deep);}
+  .map-card{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); border:8px solid #fff; min-height:430px;}
+  .map-card iframe{width:100%; height:100%; min-height:414px; border:0; display:block;}
+  .visit-cta{margin-top:1.6rem; display:flex; gap:.9rem; flex-wrap:wrap;}
+
+  /* FOOTER */
+  footer{background:var(--charcoal); color:#c8d2cc; padding:54px 0 30px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:34px; padding-bottom:34px; border-bottom:1px solid rgba(255,255,255,.1);}
+  .foot-brand{display:flex; align-items:center; gap:.6rem; font-family:"Quicksand"; font-weight:700; color:#fff; font-size:1.2rem; margin-bottom:.7rem;}
+  footer h4{font-family:"Quicksand"; color:#fff; font-size:.95rem; letter-spacing:.05em; margin:0 0 .8rem;}
+  footer a{color:#c8d2cc; transition:color .18s;}
+  footer a:hover{color:#fff;}
+  footer ul{list-style:none; padding:0; margin:0; display:grid; gap:.5rem; font-size:.95rem;}
+  .credit{padding-top:22px; font-size:.85rem; color:#8a948e; display:flex; justify-content:space-between; flex-wrap:wrap; gap:.6rem;}
+  .credit a{color:#aeb8b2; border-bottom:1px solid rgba(255,255,255,.25);}
+
+  @media(max-width:900px){
+    .hero-grid,.about-grid,.svc-grid,.visit-grid,.eco-in{grid-template-columns:1fr;}
+    .hero-photo img{height:420px;}
+    .quotes{grid-template-columns:1fr;}
+    .q:nth-child(2),.q:nth-child(3){margin-top:0;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+    .eco-in{gap:1.2rem;}
+  }
+  @media(max-width:560px){
+    body{font-size:16px;}
+    .hero{padding:42px 0 18px;}
+    .about-photos{grid-template-columns:1fr;}
+    .about-photos img:first-child{height:220px;}
+    .svc-row{flex-direction:column; gap:.4rem;}
+    .foot-grid{grid-template-columns:1fr;}
+    .note{left:0;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="leaf" aria-hidden="true"></span>G&nbsp;&amp;&nbsp;S Cleaners</a>
+    <div class="nav-links">
+      <a class="menu-only" href="#about">About</a>
+      <a class="menu-only" href="#services">Services</a>
+      <a class="menu-only" href="#words">In Their Words</a>
+      <a class="menu-only" href="#visit">Visit</a>
+      <a class="nav-cta" href="tel:+15623704225">Call (562) 370-4225</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill"><span class="dot"></span>GreenEarth&nbsp;· eco dry cleaning in Paramount</span>
+      <h1>Cleaner clothes, <span class="amp">&amp;</span> a lighter footprint.</h1>
+      <p class="lede">A family-run cleaner doing careful, gentle work — dry cleaning, laundry &amp; alterations done the green way.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="tel:+15623704225">Call Now</a>
+        <a class="btn btn-ghost" href="#services">See what we clean</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>Husband &amp; wife run</b>One careful team</div>
+        <div><b>$2 dress shirts</b>Crisp, every time</div>
+        <div><b>Free pickup &amp; delivery</b>We come to you</div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="./photos/04.jpg" alt="G & S Cleaners storefront in Paramount, with a GreenEarth sticker and open sign">
+      <div class="note">
+        <span class="k">🌿 GreenEarth member</span>
+        <span class="v">Gentle, non-toxic cleaning that's kinder to your fabrics — and the planet.</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="eco">
+  <div class="wrap eco-in">
+    <div class="eco-mark" aria-hidden="true">🌿</div>
+    <div>
+      <h2>The green-cleaning promise</h2>
+      <p>We're a GreenEarth cleaner — your suits, silks and everyday shirts come back fresh without the harsh chemical smell of old-school dry cleaning. Better for delicate fabrics, better for the people who wear them.</p>
+    </div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-photos">
+      <img src="./photos/03.jpg" alt="G & S Cleaners storefront window listing dry cleaning, laundry, leather and alterations">
+      <img src="./photos/02.jpg" alt="The front counter at G & S Cleaners with professional cleaning and rug-cleaning signs">
+      <img src="./photos/01.jpg" alt="Racks of freshly cleaned, plastic-wrapped garments inside the shop">
+    </div>
+    <div class="about-copy">
+      <span class="fam-tag">🧵 A family practice on Somerset Blvd</span>
+      <div class="sec-head" style="margin-bottom:1.2rem;">
+        <span class="eyebrow">Who we are</span>
+        <h2>Two people who actually care for your clothes.</h2>
+      </div>
+      <p>G &amp; S Cleaners is a husband-and-wife shop in Paramount that treats every order like it's their own. Drop off a stack of dress shirts and pants, a leather jacket, a treasured baseball cap — they handle it with the same patience and skill.</p>
+      <p>Buttons that fall off get sewn back on. Zippers get changed. Complaints get made right. After more than a decade of regulars trusting them with twenty shirts at a time, that's just how it works around here.</p>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What we do</span>
+      <h2>From everyday laundry to the things you can't replace.</h2>
+      <p>Signature services we're known for — plus the long list of jobs neighbors keep bringing us.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-feature">
+        <div class="svc-row">
+          <div>
+            <h3>Dry Cleaning</h3>
+            <p>Suits, dresses, silks and delicates cleaned the gentle GreenEarth way — fresh, pressed, no chemical odor.</p>
+          </div>
+          <span class="price">Often next&#8209;day</span>
+        </div>
+        <div class="svc-row">
+          <div>
+            <h3>Professional Laundry</h3>
+            <p>Crisp, hand-finished dress shirts that come back impeccable — buttons replaced free if any go missing.</p>
+          </div>
+          <span class="price">$2 / shirt</span>
+        </div>
+        <div class="svc-row">
+          <div>
+            <h3>Alterations &amp; Repairs</h3>
+            <p>Hems, zipper changes, taking things in or out — a real seamstress on a long list of happy outfits.</p>
+          </div>
+          <span class="price">By the job</span>
+        </div>
+        <div class="svc-row">
+          <div>
+            <h3>Wedding Gown Preservation</h3>
+            <p>Cleaned and sealed in a Bridal Keepsafe box, so the dress looks as perfect in twenty years as it did today.</p>
+          </div>
+          <span class="price">Keepsafe box</span>
+        </div>
+        <div class="svc-row">
+          <div>
+            <h3>Cap &amp; Keepsake Restoration</h3>
+            <p>Saved a 14-year-old baseball cap once and made it look new — sentimental pieces are in good hands here.</p>
+          </div>
+          <span class="price">We try miracles</span>
+        </div>
+      </div>
+      <div class="svc-side">
+        <h3>Also handled here</h3>
+        <div class="tags">
+          <span class="tag">Leather &amp; suede</span>
+          <span class="tag">Fur (acid-free)</span>
+          <span class="tag">Shoe repair</span>
+          <span class="tag">Handbags</span>
+          <span class="tag">Rug cleaning</span>
+          <span class="tag">Oriental &amp; Persian rugs</span>
+          <span class="tag">Wash &amp; fold</span>
+          <span class="tag">Hats</span>
+          <span class="tag">Button repair</span>
+        </div>
+        <div class="svc-photo">
+          <img src="./photos/06.jpg" alt="G & S Cleaners free pickup and delivery van">
+        </div>
+        <p style="font-size:.92rem;color:var(--slate);margin:.9rem 0 0;">Can't get away? Ask about <b style="color:var(--sage-ink);font-family:'Quicksand'">free pickup &amp; delivery</b> — the van comes to you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="words">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">In their words</span>
+      <h2>What the regulars say.</h2>
+    </div>
+    <div class="quotes">
+      <blockquote class="q">
+        <span class="mark">&ldquo;</span>
+        <p>My white shirts are impeccable, and you always find a smile. I bring over twenty shirts and pants and several suit jackets at a time — if a button falls they always replace it. A husband-and-wife team, and a tremendous one.</p>
+        <span class="who">Efren P.</span>
+      </blockquote>
+      <blockquote class="q">
+        <span class="mark">&ldquo;</span>
+        <p>Friendly staff, and they worked miracles. I came in with a baseball cap that has sentimental value and they left it looking like new. Thank you for saving my husband's 14-year-old cap.</p>
+        <span class="who">Xochitl O.</span>
+      </blockquote>
+      <blockquote class="q">
+        <span class="mark">&ldquo;</span>
+        <p>Wonderful customer service — my clothes were ready the next day. Great business, and inexpensive as well.</p>
+        <span class="who">Cardell O.</span>
+      </blockquote>
+      <blockquote class="q">
+        <span class="mark">&ldquo;</span>
+        <p>Very nice staff, a real family practice. They do a good job — I've taken a lot of my outfits in for a zipper change and they always come through.</p>
+        <span class="who">Nancy M.</span>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Stop by</span>
+      <h2>Hours &amp; location.</h2>
+      <p>Tucked in the Somerset Blvd plaza, Unit E. (Look for the balloons — and ask about pickup &amp; delivery.)</p>
+    </div>
+    <div class="visit-grid">
+      <div class="ledger">
+        <div class="hours-row"><span class="d">Monday</span><span class="h">9:00 AM – 6:00 PM</span></div>
+        <div class="hours-row"><span class="d">Tuesday</span><span class="h">9:00 AM – 6:00 PM</span></div>
+        <div class="hours-row"><span class="d">Wednesday</span><span class="h">9:00 AM – 6:00 PM</span></div>
+        <div class="hours-row"><span class="d">Thursday</span><span class="h">9:00 AM – 6:00 PM</span></div>
+        <div class="hours-row"><span class="d">Friday</span><span class="h">9:00 AM – 6:00 PM</span></div>
+        <div class="hours-row"><span class="d">Saturday</span><span class="h">9:00 AM – 5:00 PM</span></div>
+        <div class="hours-row"><span class="d">Sunday</span><span class="h closed">Closed</span></div>
+        <div class="addr">
+          <div class="label">Find us</div>
+          <div class="val">6708 Somerset Blvd, Unit E<br>Paramount, CA 90723</div>
+          <a class="maplink" href="https://www.google.com/maps?q=6708+Somerset+Blvd+Unit+E,+Paramount,+CA+90723" target="_blank" rel="noopener">Get directions →</a>
+          <div class="findus">Also on <a href="https://maps.google.com/?cid=9563600934704950777" target="_blank" rel="noopener">Google Business</a></div>
+        </div>
+        <div class="visit-cta">
+          <a class="btn btn-primary" href="tel:+15623704225">Call Now</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps?q=6708+Somerset+Blvd+Unit+E,+Paramount,+CA+90723" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </div>
+      <div class="map-card">
+        <iframe
+          title="Map to G & S Cleaners, 6708 Somerset Blvd Unit E, Paramount, CA 90723"
+          src="https://www.google.com/maps?q=6708%20Somerset%20Blvd%20Unit%20E%2C%20Paramount%2C%20CA%2090723&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><span class="leaf" aria-hidden="true"></span>G &amp; S Cleaners</div>
+        <p style="margin:0;max-width:34ch;color:#aeb8b2;">A family-run GreenEarth cleaner in Paramount — dry cleaning, laundry, alterations &amp; more, done with care.</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <ul>
+          <li>6708 Somerset Blvd, Unit E</li>
+          <li>Paramount, CA 90723</li>
+          <li><a href="tel:+15623704225">(562) 370-4225</a></li>
+          <li><a href="https://maps.google.com/?cid=9563600934704950777" target="_blank" rel="noopener">Google Business</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <ul>
+          <li>Mon – Fri · 9 AM – 6 PM</li>
+          <li>Saturday · 9 AM – 5 PM</li>
+          <li>Sunday · Closed</li>
+          <li><a href="tel:+15623704225">Free pickup &amp; delivery</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="credit">
+      <span>Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</span>
+      <span>© G &amp; S Cleaners · Paramount, CA</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

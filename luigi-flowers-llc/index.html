@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<!--
+  ARCHETYPE: Elegant luxe boutique florist — "atelier de fleurs"
+  Palette: ivory/cream (#f7f1e8) ground + deep wine/burgundy (#5a1426 / #7a1f33) + antique gold (#b08d3f)
+  Display type: Cormorant Garamond (refined high-contrast serif) for headings + small-caps gold eyebrows;
+                Jost (clean humanist sans) for body. Upscale-romantic boutique.
+  STRUCTURAL DECISIONS (distinct from sage/dusty-rose garden-editorial sibling):
+   - Centered crest-style hero with thin gold rule + monogram, NO photo overlay headline (uses a framed
+     asymmetric photo plate beside the wordmark on desktop instead).
+   - Sticky slim top bar w/ gold underline nav; scroll-padding-top reserves its height.
+   - "The Atelier" about as a two-column letterpress block; signature arrangements as a tall editorial
+     gallery (varied tile heights, not a 3-col icon grid).
+   - Testimonies as a single rotating-free stacked "carte" column with gold quote marks, no stars.
+   - Keyless google maps embed; primary CTA "Call the Shop" (tel:) repeated; warm boutique, no animation
+     beyond gentle hover lifts.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Luigi's Flowers — Boutique Florist in Victorville, CA</title>
+<meta name="description" content="Luigi's Flowers, LLC — a boutique florist in Victorville offering fresh hand-arranged bouquets, custom arrangements, bulk roses, and sympathy tributes. Open daily." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#f7f1e8;
+    --ivory-2:#efe6d6;
+    --wine:#5a1426;
+    --wine-2:#7a1f33;
+    --ink:#2a1620;
+    --gold:#b08d3f;
+    --gold-soft:#c9ac6b;
+    --paper:#fbf7f0;
+    --shadow:rgba(40,12,22,.16);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:74px; /* reserves the sticky nav height */
+  }
+  body{
+    font-family:'Jost',system-ui,sans-serif;
+    background:var(--ivory);
+    color:var(--ink);
+    font-weight:300;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-family:'Jost',sans-serif;
+    font-weight:400;
+    letter-spacing:.34em;
+    text-transform:uppercase;
+    font-size:.7rem;
+    color:var(--gold);
+  }
+  .rule{
+    width:64px;height:1px;background:var(--gold);
+    margin:18px 0;border:0;
+  }
+  .rule.center{margin:18px auto}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    height:74px;display:flex;align-items:center;
+    background:rgba(247,241,232,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(176,141,63,.32);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brandmark{
+    font-family:'Cormorant Garamond',serif;
+    font-size:1.5rem;font-weight:600;color:var(--wine);
+    letter-spacing:.02em;line-height:1;
+  }
+  .brandmark small{
+    display:block;font-family:'Jost',sans-serif;font-weight:400;
+    font-size:.56rem;letter-spacing:.32em;color:var(--gold);
+    text-transform:uppercase;margin-top:3px;
+  }
+  .navlinks{display:flex;gap:30px;align-items:center}
+  .navlinks a{
+    font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink);position:relative;padding:6px 0;
+  }
+  .navlinks a::after{
+    content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
+    background:var(--gold);transition:width .3s ease;
+  }
+  .navlinks a:hover::after{width:100%}
+  .nav-cta{
+    font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;
+    border:1px solid var(--wine);color:var(--wine);
+    padding:9px 18px;border-radius:2px;transition:all .25s ease;
+  }
+  .nav-cta:hover{background:var(--wine);color:var(--paper)}
+  .nav-toggle{display:none}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 78px;background:
+      radial-gradient(120% 90% at 80% 0%, #fff 0%, var(--ivory) 55%);
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+  .hero-monogram{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    color:var(--gold);font-size:1.1rem;letter-spacing:.2em;margin-bottom:10px;
+  }
+  .hero h1{
+    font-size:clamp(3rem,7vw,5.4rem);line-height:.98;color:var(--wine);
+    letter-spacing:.01em;
+  }
+  .hero h1 em{font-style:italic;color:var(--gold);display:block;font-size:.62em;font-weight:400;margin-top:6px}
+  .hero p.lede{
+    max-width:430px;margin:26px 0 32px;font-size:1.02rem;color:#4a3340;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Jost',sans-serif;font-size:.8rem;letter-spacing:.16em;
+    text-transform:uppercase;cursor:pointer;transition:all .25s ease;
+  }
+  .btn-primary{
+    background:var(--wine);color:var(--paper);
+    padding:15px 30px;border:1px solid var(--wine);border-radius:2px;
+  }
+  .btn-primary:hover{background:var(--wine-2);box-shadow:0 10px 26px var(--shadow);transform:translateY(-1px)}
+  .btn-ghost{
+    color:var(--wine);padding:15px 8px;border-bottom:1px solid transparent;
+  }
+  .btn-ghost:hover{border-color:var(--gold)}
+  .hero-actions{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+  .hero-plate{position:relative}
+  .hero-plate img{
+    width:100%;height:560px;object-fit:cover;border-radius:2px;
+    box-shadow:0 26px 60px rgba(40,12,22,.28);
+  }
+  .hero-plate::before{
+    content:"";position:absolute;inset:-16px -16px 24px 24px;
+    border:1px solid var(--gold);border-radius:2px;z-index:-1;
+  }
+  .hero-tag{
+    position:absolute;left:-22px;bottom:30px;background:var(--paper);
+    padding:16px 22px;box-shadow:0 14px 30px var(--shadow);border-radius:2px;
+    border-top:2px solid var(--gold);
+  }
+  .hero-tag .serif{font-size:1.7rem;color:var(--wine);font-style:italic;line-height:1}
+  .hero-tag span{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+
+  /* ---------- STRIP ---------- */
+  .strip{background:var(--wine);color:var(--ivory)}
+  .strip .wrap{display:flex;justify-content:space-between;gap:24px;padding:26px 28px;flex-wrap:wrap}
+  .strip .item{display:flex;flex-direction:column;gap:4px;min-width:150px}
+  .strip .item b{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--gold-soft);font-weight:600}
+  .strip .item span{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:88px 0}
+  .sec-head{max-width:640px}
+  .sec-head.center{margin:0 auto;text-align:center}
+  .sec-head h2{font-size:clamp(2.2rem,4.5vw,3.2rem);color:var(--wine);line-height:1.05}
+  .sec-head p{margin-top:14px;color:#5a4350}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--paper)}
+  .about .grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-top:8px}
+  .about .body p{margin-bottom:18px;color:#4a3340}
+  .about .body p:first-of-type{
+    font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;
+    color:var(--wine);line-height:1.4;
+  }
+  .about figure{position:relative}
+  .about figure img{width:100%;height:480px;object-fit:cover;border-radius:2px;box-shadow:0 18px 44px var(--shadow)}
+  .about figure figcaption{
+    position:absolute;top:18px;left:18px;background:var(--paper);
+    font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+    padding:7px 12px;border:1px solid rgba(176,141,63,.4);
+  }
+  .signature{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;
+    color:var(--wine);margin-top:6px;
+  }
+
+  /* ---------- ARRANGEMENTS (editorial gallery) ---------- */
+  .gal{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;margin-top:48px}
+  .card{
+    position:relative;overflow:hidden;border-radius:2px;background:#000;
+    box-shadow:0 14px 34px var(--shadow);
+  }
+  .card img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease;opacity:.96}
+  .card:hover img{transform:scale(1.05)}
+  .card .cap{
+    position:absolute;left:0;right:0;bottom:0;padding:22px 22px 18px;
+    background:linear-gradient(to top,rgba(40,8,18,.82),rgba(40,8,18,0));
+    color:var(--ivory);
+  }
+  .card .cap .k{font-size:.62rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold-soft)}
+  .card .cap .t{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:500;line-height:1.1;margin-top:3px}
+  .card .cap .d{font-size:.8rem;opacity:.8;margin-top:6px;max-width:34ch}
+  .c-tall{grid-column:span 4;min-height:460px}
+  .c-wide{grid-column:span 8;min-height:340px}
+  .c-half{grid-column:span 6;min-height:330px}
+  .c-third{grid-column:span 4;min-height:330px}
+
+  /* ---------- TESTIMONIES ---------- */
+  .says{background:var(--wine);color:var(--ivory)}
+  .says .sec-head h2{color:#fff}
+  .says .sec-head p{color:rgba(247,241,232,.72)}
+  .cartes{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;margin-top:50px}
+  .carte{
+    border:1px solid rgba(201,172,107,.34);background:rgba(255,255,255,.03);
+    padding:38px 34px;border-radius:2px;position:relative;
+  }
+  .carte .q{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:1.32rem;line-height:1.55;color:#f4ecdd;
+  }
+  .carte::before{
+    content:"\201C";font-family:'Cormorant Garamond',serif;
+    position:absolute;top:8px;left:22px;font-size:4rem;color:var(--gold);opacity:.55;line-height:1;
+  }
+  .carte .q{padding-top:20px;display:block}
+  .carte .by{
+    margin-top:20px;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold-soft);display:flex;align-items:center;gap:10px;
+  }
+  .carte .by::before{content:"";width:24px;height:1px;background:var(--gold)}
+
+  /* ---------- VISIT ---------- */
+  .visit .grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;margin-top:42px;align-items:stretch}
+  .hours-list{margin-top:10px;border-top:1px solid rgba(176,141,63,.3)}
+  .hours-list .row{
+    display:flex;justify-content:space-between;padding:11px 0;
+    border-bottom:1px solid rgba(176,141,63,.22);font-size:.92rem;
+  }
+  .hours-list .row .day{letter-spacing:.04em;color:#4a3340}
+  .hours-list .row .hrs{color:var(--wine);font-weight:400}
+  .visit .info p{margin:6px 0;color:#4a3340}
+  .visit .info a.line{color:var(--wine);border-bottom:1px solid var(--gold-soft)}
+  .findus{margin-top:24px;font-size:.78rem;letter-spacing:.06em}
+  .findus a{color:var(--wine);border-bottom:1px solid transparent;transition:border .2s}
+  .findus a:hover{border-color:var(--gold)}
+  .mapframe{
+    border:1px solid rgba(176,141,63,.4);padding:8px;background:var(--paper);
+    border-radius:2px;box-shadow:0 16px 38px var(--shadow);min-height:380px;
+  }
+  .mapframe iframe{width:100%;height:100%;min-height:362px;border:0;filter:saturate(.92)}
+  .visit-cta{margin-top:30px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#e9dccb;padding:60px 0 30px}
+  footer .top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  footer .brandmark{color:#fff}
+  footer .brandmark small{color:var(--gold-soft)}
+  footer .col h4{
+    font-family:'Jost',sans-serif;font-weight:400;font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px;
+  }
+  footer .col p,footer .col a{font-size:.9rem;color:#cdbba8;line-height:1.9;display:block}
+  footer .col a:hover{color:#fff}
+  footer .credit{
+    margin-top:46px;padding-top:22px;border-top:1px solid rgba(176,141,63,.26);
+    display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
+    font-size:.78rem;color:#9c8a78;
+  }
+  footer .credit a{color:var(--gold-soft)}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:920px){
+    html{scroll-padding-top:66px}
+    nav{height:66px}
+    .navlinks{
+      position:fixed;inset:66px 0 auto 0;background:var(--ivory);
+      flex-direction:column;gap:0;padding:0;
+      max-height:0;overflow:hidden;transition:max-height .35s ease;
+      border-bottom:1px solid rgba(176,141,63,.3);
+    }
+    .navlinks.open{max-height:420px}
+    .navlinks a{width:100%;text-align:center;padding:16px 0;border-bottom:1px solid rgba(176,141,63,.18)}
+    .navlinks a::after{display:none}
+    .nav-cta{display:none}
+    .nav-toggle{
+      display:flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;
+    }
+    .nav-toggle span{width:24px;height:2px;background:var(--wine);display:block}
+    .hero .wrap,.about .grid,.visit .grid{grid-template-columns:1fr}
+    .hero-plate{order:-1}
+    .hero-plate img{height:380px}
+    .hero-plate::before{inset:-12px -12px 16px 16px}
+    .gal{gap:16px}
+    .c-tall,.c-wide,.c-half,.c-third{grid-column:span 12;min-height:300px}
+    .cartes{grid-template-columns:1fr}
+    .about figure{order:-1}
+  }
+  @media(max-width:520px){
+    .wrap{padding:0 20px}
+    section{padding:64px 0}
+    .strip .wrap{gap:18px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brandmark">Luigi's Flowers<small>Boutique Florist · Victorville</small></a>
+    <div class="navlinks" id="menu">
+      <a href="#atelier">The Atelier</a>
+      <a href="#arrangements">Arrangements</a>
+      <a href="#says">In Their Words</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a href="tel:+13234486226" class="nav-cta">Call the Shop</a>
+    <button class="nav-toggle" id="toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="hero-monogram">— est. in the High Desert —</div>
+      <div class="eyebrow">Fresh · Hand-Arranged · Daily</div>
+      <h1>Luigi's Flowers<em>blooms, arranged with love</em></h1>
+      <p class="lede">A boutique flower shop in Victorville where every bouquet is built by hand — fuller, fresher, and more beautiful than you'd expect, at prices that surprise. Custom arrangements made exactly the way you imagine them.</p>
+      <div class="hero-actions">
+        <a href="tel:+13234486226" class="btn btn-primary">Call the Shop</a>
+        <a href="#arrangements" class="btn btn-ghost">View Arrangements →</a>
+      </div>
+    </div>
+    <div class="hero-plate">
+      <img src="./photos/05.jpg" alt="A lavish basket of pink and blush roses with eucalyptus" />
+      <div class="hero-tag">
+        <span>From around</span>
+        <div class="serif">$30 bouquets</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="wrap">
+    <div class="item"><b>Open Daily</b><span>8 AM – 7 PM, every day</span></div>
+    <div class="item"><b>Custom Made</b><span>Arranged to your vision</span></div>
+    <div class="item"><b>Bulk Roses</b><span>By the dozen & beyond</span></div>
+    <div class="item"><b>Same-Day</b><span>Often, even hours ahead</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="atelier">
+  <div class="wrap">
+    <div class="grid">
+      <div class="body">
+        <div class="eyebrow">The Atelier</div>
+        <hr class="rule" />
+        <p>Flowers you can feel the care in.</p>
+        <p>At Luigi's Flowers, every stem is chosen and placed by hand. We're a true neighborhood flower shop in Victorville — the kind of place where the staff knows roses by name and an arrangement is never rushed off an assembly line.</p>
+        <p>From a simple dozen to a sweeping custom centerpiece, we build each piece to be fuller and more striking than what you'll find elsewhere — and we keep our prices honest while we do it. Whether it's a celebration, a quiet apology, or a final goodbye, we treat your flowers as something worth getting right.</p>
+        <div class="signature">— The Luigi's Flowers family</div>
+      </div>
+      <figure>
+        <img src="./photos/06.jpg" alt="Close-up of richly colored red, orange and yellow roses" />
+        <figcaption>In the shop</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ARRANGEMENTS -->
+<section id="arrangements">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="eyebrow">Our Work</div>
+      <hr class="rule center" />
+      <h2>Signature Arrangements</h2>
+      <p>A handful of the pieces that leave our counter — boxed roses, lavish baskets, bulk blooms, and sympathy tributes built with care.</p>
+    </div>
+    <div class="gal">
+      <article class="card c-tall">
+        <img src="./photos/04.jpg" alt="Boxed cream and ivory roses" />
+        <div class="cap"><div class="k">Boxed Roses</div><div class="t">Cream &amp; Blush</div><div class="d">A dozen velvety roses, boxed and ready to hand over.</div></div>
+      </article>
+      <article class="card c-wide">
+        <img src="./photos/06.jpg" alt="Mix of red, yellow and orange roses" />
+        <div class="cap"><div class="k">Mixed Roses</div><div class="t">Warm Tones, By the Bunch</div><div class="d">Bulk roses in fiery reds, golds and sunset orange — ready for any occasion.</div></div>
+      </article>
+      <article class="card c-half">
+        <img src="./photos/05.jpg" alt="Large basket arrangement of pink and white roses" />
+        <div class="cap"><div class="k">Statement Basket</div><div class="t">Garden Basket</div><div class="d">A grand basket of pink &amp; white roses with eucalyptus.</div></div>
+      </article>
+      <article class="card c-third">
+        <img src="./photos/02.jpg" alt="Box of bright yellow roses" />
+        <div class="cap"><div class="k">Boxed Roses</div><div class="t">Golden Dozen</div><div class="d">Cheerful yellow roses for the brightest days.</div></div>
+      </article>
+      <article class="card c-third">
+        <img src="./photos/03.jpg" alt="Sympathy floral tributes including a cross and heart" />
+        <div class="cap"><div class="k">Sympathy</div><div class="t">Tributes &amp; Standing Sprays</div><div class="d">Crosses, hearts and wreaths arranged with quiet dignity.</div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="sec-head center">
+      <div class="eyebrow">In Their Words</div>
+      <hr class="rule center" />
+      <h2>Customer Testimonies</h2>
+      <p>A few notes from the people we've had the joy of arranging for.</p>
+    </div>
+    <div class="cartes">
+      <div class="carte">
+        <span class="q">Hands down the best flower shop. The quality is amazing — every bouquet has been fuller, bigger, and more beautiful than anything I've seen elsewhere, and for around $30. They create custom arrangements exactly the way you want them, and the customer service is always top-notch.</span>
+        <div class="by">Izamar C.</div>
+      </div>
+      <div class="carte">
+        <span class="q">Amazing flowers and bouquets, professionally arranged by friendly staff. It's definitely worth the visit — bulk roses are available as well.</span>
+        <div class="by">Hector M.</div>
+      </div>
+      <div class="carte">
+        <span class="q">My boyfriend has been a client for over a year and has given me the most gorgeous bouquets from here. The way the flowers are arranged, with so much care, transmits the love he feels for me. Highly recommend.</span>
+        <div class="by">Yanina B.</div>
+      </div>
+      <div class="carte">
+        <span class="q">Ordered with only hours for the shop to prepare and they did a wonderful job. I'd recommend Luigi's to anyone looking for a beautiful arrangement. Thank you for creating such lovely flowers for the service.</span>
+        <div class="by">Ruth C.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Find Us</div>
+      <hr class="rule" />
+      <h2>Visit the Shop</h2>
+      <p>Stop by any day of the week, or call ahead and we'll have it ready.</p>
+    </div>
+    <div class="grid">
+      <div class="info">
+        <h3 class="serif" style="font-size:1.6rem;color:var(--wine);margin-bottom:4px">Hours</h3>
+        <div class="hours-list">
+          <div class="row"><span class="day">Monday</span><span class="hrs">8:00 AM – 7:00 PM</span></div>
+          <div class="row"><span class="day">Tuesday</span><span class="hrs">8:00 AM – 7:00 PM</span></div>
+          <div class="row"><span class="day">Wednesday</span><span class="hrs">8:00 AM – 7:00 PM</span></div>
+          <div class="row"><span class="day">Thursday</span><span class="hrs">8:00 AM – 7:00 PM</span></div>
+          <div class="row"><span class="day">Friday</span><span class="hrs">8:00 AM – 7:00 PM</span></div>
+          <div class="row"><span class="day">Saturday</span><span class="hrs">8:00 AM – 7:00 PM</span></div>
+          <div class="row"><span class="day">Sunday</span><span class="hrs">8:00 AM – 7:00 PM</span></div>
+        </div>
+        <div style="margin-top:26px">
+          <p><strong style="font-weight:400;color:var(--wine)">Luigi's Flowers, LLC</strong></p>
+          <p>14084 Amargosa Rd, Suite C150<br />Victorville, CA 92392</p>
+          <p><a href="tel:+13234486226" class="line">(323) 448-6226</a></p>
+        </div>
+        <div class="findus">
+          Find us on
+          <a href="https://maps.google.com/?cid=10361947663760369859" target="_blank" rel="noopener">Google Business</a>
+        </div>
+        <div class="visit-cta">
+          <a href="tel:+13234486226" class="btn btn-primary">Call the Shop</a>
+        </div>
+      </div>
+      <div class="mapframe">
+        <iframe
+          src="https://www.google.com/maps?q=14084%20Amargosa%20Rd%20C150%2C%20Victorville%2C%20CA%2092392&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Luigi's Flowers in Victorville, CA"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="brandmark">Luigi's Flowers<small>Boutique Florist · Victorville</small></div>
+        <p style="max-width:300px;color:#cdbba8;margin-top:18px;font-size:.9rem">Fresh, hand-arranged bouquets &amp; custom florals in the High Desert. Open every day, 8 AM – 7 PM.</p>
+      </div>
+      <div class="col">
+        <h4>Shop</h4>
+        <p>14084 Amargosa Rd, C150</p>
+        <p>Victorville, CA 92392</p>
+        <a href="https://maps.google.com/?cid=10361947663760369859" target="_blank" rel="noopener">Open in Google Maps</a>
+      </div>
+      <div class="col">
+        <h4>Get In Touch</h4>
+        <a href="tel:+13234486226">(323) 448-6226</a>
+        <p>Open daily · 8 AM – 7 PM</p>
+        <a href="#arrangements">View Arrangements</a>
+      </div>
+    </div>
+    <div class="credit">
+      <span>Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</span>
+      <span>© Luigi's Flowers, LLC</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  var t = document.getElementById('toggle');
+  var m = document.getElementById('menu');
+  if(t){ t.addEventListener('click', function(){ m.classList.toggle('open'); }); }
+  m && m.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ m.classList.remove('open'); });
+  });
+</script>
+</body>
+</html>

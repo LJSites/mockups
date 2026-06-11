@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  ARCHETYPE: Colorful neighborhood "mercado" / Mexican imports + snacks shop.
+  STRUCTURAL DECISIONS:
+  - Warm market palette: terracotta (#c0432b) + cobalt blue (#1d54b8) + marigold (#f5a623)
+    on a cream/masa base. Friendly rounded display face (Baloo 2) + clean body (Nunito Sans).
+  - Papel-picado banner strip rendered with pure CSS (no images) sits under the sticky nav,
+    repeated as a thin divider between major sections for tasteful "mercado" warmth.
+  - Sticky nav with html{scroll-padding-top} reserving the bar (+ papel strip) height.
+  - Hero is an ASYMMETRIC split (not centered-overlay): big rounded headline + intro on the
+    left, a tilted "photo polaroid" stack of the two food shots on the right. Marigold burst
+    behind it. Primary CTA = Call Now (tel:), repeated in nav + final contact band.
+  - "From the Mercado" specials taken straight from the real in-store menu board (photo 03):
+    raspados, bionicos, fresas con crema, tostilocos, aguas frescas — shown as a price LIST
+    on a colored ticket card, NOT a 3-col icon grid. Plus a goods strip (candy, medicine,
+    candles, imports) from the testimonies.
+  - Testimonies = offset speech-bubble cards, first name + last initial, no stars/scores.
+  - Keyless Google Maps embed. Hover states on buttons + cards. No fade-up-on-everything;
+    only a gentle papel sway on the top strip.
+-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mexican Imports — Mercado, Raspados &amp; Antojitos in Kerman, CA</title>
+<meta name="description" content="Mexican Imports in Kerman, CA — your neighborhood mercado for raspados, bionicos, fresas con crema, aguas frescas, Mexican candy, medicine, candles & imported goods.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --terra:#c0432b;
+    --terra-dk:#9a3320;
+    --cobalt:#1d54b8;
+    --cobalt-dk:#163f8c;
+    --marigold:#f5a623;
+    --pink:#e85d8a;
+    --green:#3a9d6e;
+    --cream:#fdf5e6;
+    --masa:#fbe9c8;
+    --ink:#33231a;
+    --ink-soft:#6b5648;
+    --nav-h:68px;
+    --papel-h:22px;
+  }
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;
+    /* reserve sticky nav + papel strip so anchors don't park under the bar */
+    scroll-padding-top:calc(var(--nav-h) + var(--papel-h));
+  }
+  body{
+    margin:0;
+    font-family:'Nunito Sans',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:'Baloo 2',system-ui,sans-serif;line-height:1.08;margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{width:min(1120px,92vw);margin-inline:auto;}
+
+  /* ---------- PAPEL PICADO STRIP (pure CSS) ---------- */
+  .papel{
+    height:var(--papel-h);
+    background:
+      repeating-linear-gradient(90deg,
+        var(--terra) 0 56px, var(--cobalt) 56px 112px,
+        var(--marigold) 112px 168px, var(--pink) 168px 224px,
+        var(--green) 224px 280px);
+    position:relative;
+    box-shadow:inset 0 -3px 6px rgba(0,0,0,.12);
+  }
+  .papel::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 28px 0, transparent 8px, rgba(0,0,0,.001) 9px) 0 100%/56px 14px repeat-x,
+      radial-gradient(circle at 14px 100%, #fdf5e6 6px, transparent 7px) 0 0/28px 11px repeat-x;
+    -webkit-mask:linear-gradient(#000,#000);
+  }
+  .papel.sway{animation:sway 7s ease-in-out infinite;transform-origin:top center;}
+  @keyframes sway{0%,100%{transform:skewX(0deg)}50%{transform:skewX(-1.4deg)}}
+
+  /* ---------- NAV ---------- */
+  nav.bar{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:var(--cream);
+    border-bottom:3px solid var(--masa);
+    display:flex;align-items:center;
+  }
+  nav.bar .wrap{display:flex;align-items:center;justify-content:space-between;width:min(1120px,94vw);}
+  .brand{display:flex;align-items:center;gap:11px;}
+  .brand .mark{
+    width:40px;height:40px;border-radius:13px;flex:none;
+    background:var(--terra);color:var(--marigold);
+    display:grid;place-items:center;font-family:'Baloo 2';font-weight:800;font-size:1.3rem;
+    box-shadow:0 3px 0 var(--terra-dk);
+  }
+  .brand b{font-family:'Baloo 2';font-weight:800;font-size:1.22rem;color:var(--terra);letter-spacing:.2px;}
+  .brand span{display:block;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cobalt);font-weight:700;margin-top:-3px;}
+  .navlinks{display:flex;align-items:center;gap:26px;}
+  .navlinks a{font-weight:700;color:var(--ink-soft);font-size:.96rem;transition:color .15s;}
+  .navlinks a:hover{color:var(--terra);}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Baloo 2';font-weight:700;font-size:1rem;
+    padding:.62em 1.15em;border-radius:999px;border:none;cursor:pointer;
+    transition:transform .12s ease, box-shadow .12s ease, background .15s;
+  }
+  .btn-call{background:var(--terra);color:#fff;box-shadow:0 4px 0 var(--terra-dk);}
+  .btn-call:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--terra-dk);background:#cf4a30;}
+  .btn-call:active{transform:translateY(2px);box-shadow:0 1px 0 var(--terra-dk);}
+  .btn-blue{background:var(--cobalt);color:#fff;box-shadow:0 4px 0 var(--cobalt-dk);}
+  .btn-blue:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--cobalt-dk);}
+  .nav-call{display:none;}
+  @media(min-width:880px){.nav-call{display:inline-flex;}}
+  @media(max-width:879px){.navlinks .lnk{display:none;}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;padding:54px 0 60px;}
+  .hero::before{
+    content:"";position:absolute;right:-180px;top:-120px;width:560px;height:560px;border-radius:50%;
+    background:radial-gradient(circle,var(--marigold) 0 38%,rgba(245,166,35,.35) 39% 60%,transparent 61%);
+    z-index:0;opacity:.85;
+  }
+  .hero .wrap{position:relative;z-index:1;display:grid;gap:42px;align-items:center;}
+  @media(min-width:900px){.hero .wrap{grid-template-columns:1.05fr .95fr;}}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--cobalt);color:#fff;font-weight:700;font-size:.78rem;
+    letter-spacing:.14em;text-transform:uppercase;padding:.4em .9em;border-radius:999px;
+  }
+  .hero h1{
+    font-size:clamp(2.5rem,6.4vw,4.1rem);font-weight:800;color:var(--terra);
+    margin:18px 0 10px;letter-spacing:-.5px;
+  }
+  .hero h1 em{color:var(--cobalt);font-style:normal;display:block;}
+  .hero p.lead{font-size:1.12rem;color:var(--ink-soft);max-width:34ch;font-weight:600;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px;align-items:center;}
+  .hours-flag{font-weight:700;font-size:.92rem;color:var(--green);display:flex;align-items:center;gap:7px;}
+  .hours-flag i{width:9px;height:9px;border-radius:50%;background:var(--green);display:inline-block;box-shadow:0 0 0 4px rgba(58,157,110,.18);}
+
+  /* polaroid stack */
+  .polas{position:relative;min-height:380px;}
+  .pola{
+    position:absolute;background:#fff;padding:11px 11px 40px;border-radius:8px;
+    box-shadow:0 14px 30px -8px rgba(51,35,26,.4);
+  }
+  .pola img{border-radius:4px;width:100%;height:100%;object-fit:cover;}
+  .pola b{position:absolute;left:0;right:0;bottom:11px;text-align:center;font-family:'Baloo 2';font-weight:600;color:var(--ink-soft);font-size:.86rem;}
+  .pola.a{width:64%;aspect-ratio:3/4;left:2%;top:0;transform:rotate(-5deg);z-index:2;}
+  .pola.a img{aspect-ratio:3/4;}
+  .pola.b{width:58%;aspect-ratio:1/1;right:0;top:34%;transform:rotate(6deg);z-index:3;border:1px solid #eee;}
+  .pola.b img{aspect-ratio:1/1;}
+  @media(max-width:899px){.polas{min-height:430px;max-width:440px;margin-inline:auto;}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:64px 0;}
+  .sec-head{margin-bottom:34px;max-width:60ch;}
+  .sec-head .kick{color:var(--cobalt);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.82rem;font-family:'Nunito Sans';}
+  .sec-head h2{font-size:clamp(2rem,4.5vw,2.9rem);color:var(--terra);font-weight:800;margin-top:6px;}
+  .sec-head p{color:var(--ink-soft);font-size:1.06rem;margin-top:10px;}
+
+  /* ABOUT */
+  #about{background:var(--masa);}
+  #about .grid{display:grid;gap:40px;align-items:center;}
+  @media(min-width:860px){#about .grid{grid-template-columns:1fr 1.05fr;}}
+  #about .frame{border-radius:18px;overflow:hidden;border:6px solid #fff;box-shadow:0 16px 34px -12px rgba(51,35,26,.45);transform:rotate(-1.4deg);}
+  #about .frame img{width:100%;aspect-ratio:16/10;object-fit:cover;}
+  #about .txt p{font-size:1.08rem;color:var(--ink);margin:0 0 16px;}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+  .badge{background:#fff;border:2px solid var(--terra);color:var(--terra-dk);font-weight:700;font-size:.9rem;padding:.4em .85em;border-radius:999px;font-family:'Baloo 2';}
+
+  /* MENU / SPECIALS */
+  #menu .menu-grid{display:grid;gap:26px;}
+  @media(min-width:820px){#menu .menu-grid{grid-template-columns:1.15fr .85fr;}}
+  .ticket{
+    background:#fff;border-radius:18px;padding:30px 30px 26px;
+    box-shadow:0 14px 34px -16px rgba(51,35,26,.4);
+    border-top:8px solid var(--marigold);
+  }
+  .ticket h3{font-size:1.5rem;color:var(--cobalt);margin-bottom:4px;}
+  .ticket .sub{color:var(--ink-soft);font-size:.92rem;margin-bottom:18px;}
+  .row{display:flex;align-items:baseline;gap:10px;padding:11px 0;border-bottom:1.5px dashed #e8d9bd;}
+  .row:last-child{border-bottom:none;}
+  .row .nm{font-family:'Baloo 2';font-weight:600;color:var(--ink);font-size:1.08rem;}
+  .row .ds{color:var(--ink-soft);font-size:.86rem;display:block;font-family:'Nunito Sans';font-weight:400;margin-top:-3px;}
+  .row .dots{flex:1;border-bottom:2px dotted #d9c6a3;transform:translateY(-4px);min-width:18px;}
+  .row .pr{font-family:'Baloo 2';font-weight:800;color:var(--terra);font-size:1.06rem;white-space:nowrap;}
+  .menu-note{margin-top:16px;font-size:.82rem;color:var(--ink-soft);font-style:italic;}
+
+  .goods{background:var(--cobalt);color:#fff;border-radius:18px;padding:30px;box-shadow:0 14px 34px -16px rgba(22,63,140,.6);}
+  .goods h3{color:var(--marigold);font-size:1.45rem;margin-bottom:6px;}
+  .goods p{color:rgba(255,255,255,.85);font-size:.96rem;margin:0 0 18px;}
+  .goods ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 14px;}
+  .goods li{display:flex;align-items:center;gap:9px;font-weight:700;font-family:'Baloo 2';font-size:1.02rem;}
+  .goods li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--marigold);flex:none;}
+
+  /* TESTIMONIES */
+  #say{background:linear-gradient(180deg,var(--cream),var(--masa));}
+  .bubbles{display:grid;gap:24px;}
+  @media(min-width:760px){.bubbles{grid-template-columns:1fr 1fr;}}
+  .bubble{
+    background:#fff;border-radius:18px;padding:26px 26px 22px;position:relative;
+    box-shadow:0 10px 26px -14px rgba(51,35,26,.35);
+    border-left:6px solid var(--pink);
+  }
+  .bubble:nth-child(2){border-left-color:var(--cobalt);}
+  .bubble:nth-child(3){border-left-color:var(--green);}
+  .bubble:nth-child(4){border-left-color:var(--marigold);}
+  @media(min-width:760px){.bubble:nth-child(even){transform:translateY(20px);}}
+  .bubble q{display:block;font-size:1.1rem;color:var(--ink);font-weight:600;quotes:"\201C""\201D";}
+  .bubble q::before{content:open-quote;color:var(--terra);font-family:'Baloo 2';font-size:1.6em;line-height:0;}
+  .bubble .who{margin-top:14px;font-family:'Baloo 2';font-weight:700;color:var(--terra);display:flex;align-items:center;gap:8px;}
+  .bubble .who::before{content:"";width:26px;height:3px;background:var(--marigold);border-radius:2px;}
+
+  /* VISIT / MAP */
+  #visit .grid{display:grid;gap:34px;}
+  @media(min-width:880px){#visit .grid{grid-template-columns:.85fr 1.15fr;}}
+  .info h3{color:var(--cobalt);font-size:1.4rem;margin-bottom:14px;}
+  .hours-tbl{width:100%;border-collapse:collapse;margin-bottom:8px;}
+  .hours-tbl td{padding:8px 0;border-bottom:1.5px dashed #e8d9bd;font-size:.98rem;}
+  .hours-tbl td:last-child{text-align:right;font-weight:700;font-family:'Baloo 2';color:var(--ink);}
+  .hours-tbl tr.closed td{color:var(--terra);}
+  .hours-tbl tr.today td{background:rgba(245,166,35,.16);}
+  .info .line{margin:4px 0;color:var(--ink);font-weight:600;}
+  .info .line b{font-family:'Baloo 2';color:var(--terra);}
+  .info .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px;}
+  .findus{margin-top:22px;font-size:.92rem;}
+  .findus a{color:var(--cobalt);font-weight:700;text-decoration:underline;text-underline-offset:3px;}
+  .mapframe{border-radius:18px;overflow:hidden;border:6px solid #fff;box-shadow:0 16px 34px -14px rgba(51,35,26,.4);min-height:340px;}
+  .mapframe iframe{width:100%;height:100%;min-height:360px;border:0;display:block;}
+
+  /* CTA BAND */
+  .band{background:var(--terra);color:#fff;text-align:center;padding:56px 0;}
+  .band h2{font-size:clamp(1.9rem,4.5vw,2.7rem);color:#fff;margin-bottom:10px;}
+  .band p{color:rgba(255,255,255,.9);font-size:1.1rem;margin:0 0 24px;font-weight:600;}
+  .band .btn-call{background:var(--marigold);color:var(--ink);box-shadow:0 4px 0 #c9851a;}
+  .band .btn-call:hover{background:#ffb733;box-shadow:0 6px 0 #c9851a;}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:#e9dcc9;padding:44px 0 30px;}
+  footer .wrap{display:grid;gap:24px;}
+  @media(min-width:720px){footer .wrap{grid-template-columns:1.4fr 1fr 1fr;}}
+  footer .fbrand b{font-family:'Baloo 2';font-size:1.3rem;color:var(--marigold);}
+  footer .fbrand p{color:#bdab93;font-size:.95rem;max-width:34ch;margin:8px 0 0;}
+  footer h4{font-family:'Baloo 2';color:#fff;font-size:1.05rem;margin:0 0 10px;}
+  footer a{color:#e9dcc9;}
+  footer .fcol a{display:block;margin:5px 0;color:#cbbaa0;font-weight:600;}
+  footer .fcol a:hover{color:var(--marigold);}
+  .credit{border-top:1px solid #4a392c;margin-top:30px;padding-top:18px;text-align:center;color:#a8957c;font-size:.86rem;}
+  .credit a{color:var(--marigold);font-weight:700;}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="bar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Mexican Imports home">
+      <span class="mark">MI</span>
+      <span>
+        <b>Mexican Imports</b>
+        <span>Mercado · Kerman, CA</span>
+      </span>
+    </a>
+    <div class="navlinks">
+      <a class="lnk" href="#about">About</a>
+      <a class="lnk" href="#menu">Antojitos</a>
+      <a class="lnk" href="#say">Testimonies</a>
+      <a class="lnk" href="#visit">Visit</a>
+      <a class="btn btn-call nav-call" href="tel:+15598465552">📞 Call Now</a>
+    </div>
+  </div>
+</nav>
+<div class="papel sway" aria-hidden="true"></div>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="intro">
+      <span class="eyebrow">🌶️ Tu tienda del barrio</span>
+      <h1>Raspados, antojitos &amp; <em>a little bit of home.</em></h1>
+      <p class="lead">A friendly Kerman mercado packed with fresh fruit snacks, ice-cold raspados, and the Mexican candy, medicine &amp; imports you can't find anywhere else.</p>
+      <div class="hero-cta">
+        <a class="btn btn-call" href="tel:+15598465552">📞 Call Now · (559) 846-5552</a>
+        <span class="hours-flag"><i></i> Open Mon–Sat · 10am–6pm</span>
+      </div>
+    </div>
+    <div class="polas">
+      <figure class="pola a">
+        <img src="./photos/02.jpg" alt="Fresh fruit raspado with strawberries and mango in a bowl">
+        <b>Fresas con raspado</b>
+      </figure>
+      <figure class="pola b">
+        <img src="./photos/01.jpg" alt="Bionico fruit cup topped with colorful candy">
+        <b>Bionico con dulces</b>
+      </figure>
+    </div>
+  </div>
+</header>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="wrap grid">
+    <div class="frame">
+      <img src="./photos/03.jpg" alt="The Mexican Imports menu board listing raspados, bionicos, aguas frescas and natural juices">
+    </div>
+    <div class="txt">
+      <div class="sec-head" style="margin-bottom:18px">
+        <span class="kick">More than a snack shop</span>
+        <h2>A whole mercado under one roof</h2>
+      </div>
+      <p>Step into Mexican Imports and you'll find the flavors of home everywhere you look — bright bowls of fresh fruit, raspados in every flavor, and shelves stocked with the goods our Kerman neighbors grew up with.</p>
+      <p>Come for a mango-chile snack and stay for the Mexican candy, the hard-to-find medicine, the candles, and the everyday imports that make this place feel like a corner of Mexico right here in the Central Valley. And folks always mention one thing first: the staff are genuinely kind.</p>
+      <div class="badges">
+        <span class="badge">Fresh fruit daily</span>
+        <span class="badge">Mexican candy</span>
+        <span class="badge">Family-friendly</span>
+        <span class="badge">Friendly service</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="papel" aria-hidden="true"></div>
+
+<!-- ===== MENU / SPECIALS ===== -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kick">Fresh off the board</span>
+      <h2>Antojitos &amp; aguas frescas</h2>
+      <p>Made-to-order fruit treats and ice-cold drinks — the same favorites our regulars come back for every week.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="ticket">
+        <h3>From the menu board</h3>
+        <p class="sub">Sizes &amp; prices straight from the shop</p>
+
+        <div class="row">
+          <span><span class="nm">Bionicos</span><span class="ds">Strawberries, banana, melon, mango &amp; apple in sweet cream</span></span>
+          <span class="dots"></span><span class="pr">$5–$9</span>
+        </div>
+        <div class="row">
+          <span><span class="nm">Raspados</span><span class="ds">Vanilla, tamarind, chile, coconut, strawberries &amp; cream &amp; more</span></span>
+          <span class="dots"></span><span class="pr">$2–$3.50</span>
+        </div>
+        <div class="row">
+          <span><span class="nm">Fresas con Crema</span><span class="ds">Fresh strawberries &amp; cream</span></span>
+          <span class="dots"></span><span class="pr">$4–$5</span>
+        </div>
+        <div class="row">
+          <span><span class="nm">Ensalada de Frutas</span><span class="ds">Fruit salad cup, your favorite mix</span></span>
+          <span class="dots"></span><span class="pr">$4–$5</span>
+        </div>
+        <div class="row">
+          <span><span class="nm">Tostilocos</span><span class="ds">Chips loaded with cueritos, jicama, cucumber, peanuts &amp; sauce</span></span>
+          <span class="dots"></span><span class="pr">$5</span>
+        </div>
+        <div class="row">
+          <span><span class="nm">Grano de Elote</span><span class="ds">Corn cup with mayo, cheese, lime &amp; chile</span></span>
+          <span class="dots"></span><span class="pr">$2–$4</span>
+        </div>
+        <div class="row">
+          <span><span class="nm">Tortas de Jamón y Lomo</span><span class="ds">Ham &amp; loin tortas, made fresh</span></span>
+          <span class="dots"></span><span class="pr">$4</span>
+        </div>
+        <div class="row">
+          <span><span class="nm">Aguas Frescas</span><span class="ds">Limón, horchata, fresa, tamarindo &amp; piña</span></span>
+          <span class="dots"></span><span class="pr">$1.50–$2.50</span>
+        </div>
+        <p class="menu-note">A taste of the favorites — ask in-store for the full list of smoothies, jugos naturales &amp; chocomilk.</p>
+      </div>
+
+      <div class="goods">
+        <h3>And the imports</h3>
+        <p>Not just snacks — the everyday goods our neighbors love:</p>
+        <ul>
+          <li>Mexican candy</li>
+          <li>Medicine</li>
+          <li>Candles &amp; veladoras</li>
+          <li>Imported goods</li>
+          <li>Snacks &amp; treats</li>
+          <li>Mango ice</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIES ===== -->
+<section id="say">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;margin-inline:auto">
+      <span class="kick">In their words</span>
+      <h2>What the neighborhood says</h2>
+    </div>
+    <div class="bubbles">
+      <div class="bubble">
+        <q>They have the best snacks — especially the mango ice. Beyond friendly, and the service is great.</q>
+        <div class="who">Shauna L.</div>
+      </div>
+      <div class="bubble">
+        <q>Great place for Mexican candy. All types of goods, easy to find, and the staff is nice.</q>
+        <div class="who">Flor M.</div>
+      </div>
+      <div class="bubble">
+        <q>Tastes soooooo delicious!</q>
+        <div class="who">Cecilia N.</div>
+      </div>
+      <div class="bubble">
+        <q>The woman was very helpful.</q>
+        <div class="who">Sylvia G.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="papel" aria-hidden="true"></div>
+
+<!-- ===== VISIT / HOURS / MAP ===== -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kick">Come say hola</span>
+      <h2>Hours &amp; location</h2>
+    </div>
+    <div class="grid">
+      <div class="info">
+        <h3>Open this week</h3>
+        <table class="hours-tbl">
+          <tr><td>Monday</td><td>10am – 6pm</td></tr>
+          <tr><td>Tuesday</td><td>10am – 6pm</td></tr>
+          <tr><td>Wednesday</td><td>10am – 6pm</td></tr>
+          <tr><td>Thursday</td><td>10am – 6pm</td></tr>
+          <tr><td>Friday</td><td>10am – 6pm</td></tr>
+          <tr><td>Saturday</td><td>10am – 6pm</td></tr>
+          <tr class="closed"><td>Sunday</td><td>Closed</td></tr>
+        </table>
+        <p class="line"><b>Find us:</b> 15065 W Whitesbridge Ave, Kerman, CA 93630</p>
+        <p class="line"><b>Call:</b> (559) 846-5552</p>
+        <div class="actions">
+          <a class="btn btn-call" href="tel:+15598465552">📞 Call Now</a>
+          <a class="btn btn-blue" href="https://www.google.com/maps?q=15065+W+Whitesbridge+Ave,+Kerman,+CA+93630" target="_blank" rel="noopener">📍 Get Directions</a>
+        </div>
+        <p class="findus">Find us on <a href="https://maps.google.com/?cid=7313093987915742706" target="_blank" rel="noopener">Google</a>.</p>
+      </div>
+      <div class="mapframe">
+        <iframe
+          src="https://www.google.com/maps?q=15065%20W%20Whitesbridge%20Ave%2C%20Kerman%2C%20CA%2093630&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Mexican Imports, Kerman CA"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BAND ===== -->
+<div class="band">
+  <div class="wrap">
+    <h2>Craving a raspado?</h2>
+    <p>We're just down Whitesbridge Ave in Kerman — come grab a fresh one.</p>
+    <a class="btn btn-call" href="tel:+15598465552">📞 Call (559) 846-5552</a>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="fbrand">
+      <b>Mexican Imports</b>
+      <p>Your neighborhood mercado for raspados, antojitos, candy &amp; imports in Kerman, California.</p>
+    </div>
+    <div class="fcol">
+      <h4>Visit</h4>
+      <a href="https://www.google.com/maps?q=15065+W+Whitesbridge+Ave,+Kerman,+CA+93630" target="_blank" rel="noopener">15065 W Whitesbridge Ave<br>Kerman, CA 93630</a>
+      <a href="https://maps.google.com/?cid=7313093987915742706" target="_blank" rel="noopener">Find us on Google</a>
+    </div>
+    <div class="fcol">
+      <h4>Hours</h4>
+      <a href="#visit">Mon–Sat · 10am – 6pm</a>
+      <a href="#visit">Sunday · Closed</a>
+      <a href="tel:+15598465552">📞 (559) 846-5552</a>
+    </div>
+    <div class="credit" style="grid-column:1/-1">
+      Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

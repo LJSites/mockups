@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<!--
+  ARCHETYPE: Heavy-duty DIESEL & truck shop — "shop floor / industrial spec-sheet".
+  Rugged diesel-grit feel: gunmetal-gray steel + hazard-yellow stripe + black.
+  Display: Saira Condensed (industrial condensed sans) for headings; Spline Sans Mono
+  (mono) for kickers/labels/spec data; Inter for body.
+  Structural decisions (deliberately distinct from sibling auto shops — no orange-
+  industrial, navy-technical, green-family, red-station, or tan-route):
+    - Hazard-tape diagonal stripe motif (yellow/black) as the signature, not a hero overlay.
+    - Hero = left text column on gunmetal + right image rail; hood-ornament hazard bar up top.
+    - Services as a numbered "WORK ORDER" spec list (rows w/ mono indices), not 3 icon cols.
+    - Diagonal photo strip (the shop floor) between sections, no captions.
+    - Testimonies as monospaced "shop log" entries, no stars/scores/avatars.
+    - Hours rendered as a punch-card / status board with OPEN/CLOSED chips.
+    - Animation: none beyond hover states (strongest choice for a rugged spec sheet).
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manteca Auto &amp; Diesel Repair — Heavy-Duty Diesel &amp; Truck Service | Manteca, CA</title>
+<meta name="description" content="Manteca Auto & Diesel Repair — honest, knowledgeable diesel and truck specialists in Manteca, CA. Diagnostics, fuel systems, engine work, smog help, and fair pricing. Call (209) 647-4095." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --steel-900:#16181c;
+    --steel-850:#1c1f24;
+    --steel-800:#23272e;
+    --steel-700:#2d323a;
+    --steel-600:#3a4049;
+    --steel-line:#41474f;
+    --gun:#5b626c;
+    --ash:#9aa1ab;
+    --fog:#c9ced6;
+    --paper:#eceef1;
+    --hazard:#ffd400;
+    --hazard-deep:#e6bf00;
+    --black:#0c0d0f;
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:var(--nav-h);
+    -webkit-text-size-adjust:100%;
+  }
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--steel-900);
+    color:var(--fog);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.cond{font-family:'Saira Condensed',sans-serif;text-transform:uppercase;line-height:0.98;letter-spacing:0.01em;}
+  .mono{font-family:'Spline Sans Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px;}
+
+  /* hazard tape */
+  .hazard-bar{
+    height:10px;
+    background:repeating-linear-gradient(135deg,var(--hazard) 0 18px,var(--black) 18px 36px);
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:60;
+    height:var(--nav-h);
+    background:rgba(18,20,23,0.96);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--steel-line);
+    display:flex;align-items:center;
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-mark{
+    font-family:'Saira Condensed';font-weight:800;font-size:1.02rem;
+    color:var(--black);background:var(--hazard);
+    padding:4px 9px;letter-spacing:0.04em;line-height:1;
+    clip-path:polygon(0 0,100% 0,92% 100%,0% 100%);
+  }
+  .brand-name{font-family:'Saira Condensed';font-weight:700;font-size:1.18rem;color:var(--paper);letter-spacing:0.02em;text-transform:uppercase;}
+  .brand-name small{display:block;font-family:'Spline Sans Mono';font-weight:400;font-size:0.56rem;letter-spacing:0.34em;color:var(--ash);text-transform:uppercase;margin-top:1px;}
+  .nav-links{display:flex;align-items:center;gap:30px;}
+  .nav-links a{font-family:'Spline Sans Mono';font-size:0.74rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ash);transition:color .15s;}
+  .nav-links a:hover{color:var(--hazard);}
+  .nav-call{
+    font-family:'Saira Condensed';font-weight:700;text-transform:uppercase;
+    background:var(--hazard);color:var(--black);
+    padding:9px 16px;font-size:0.92rem;letter-spacing:0.03em;
+    border:1px solid var(--hazard);transition:background .15s,color .15s;
+    clip-path:polygon(7px 0,100% 0,100% calc(100% - 7px),calc(100% - 7px) 100%,0 100%,0 7px);
+  }
+  .nav-call:hover{background:transparent;color:var(--hazard);}
+  .nav-toggle{display:none;}
+  @media(max-width:880px){
+    .nav-links a:not(.nav-call){display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      linear-gradient(180deg,var(--steel-850),var(--steel-900));
+    border-bottom:1px solid var(--steel-line);
+    position:relative;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:0;align-items:stretch;}
+  .hero-copy{padding:62px 48px 58px 0;}
+  .kicker{
+    font-family:'Spline Sans Mono';font-size:0.72rem;letter-spacing:0.26em;text-transform:uppercase;
+    color:var(--hazard);margin-bottom:22px;display:flex;align-items:center;gap:12px;
+  }
+  .kicker::before{content:"";width:34px;height:2px;background:var(--hazard);}
+  .hero h1{
+    font-weight:800;font-size:clamp(2.9rem,6.6vw,5.1rem);color:var(--paper);
+    margin-bottom:20px;
+  }
+  .hero h1 .hi{color:var(--hazard);}
+  .hero-lede{font-size:1.06rem;color:var(--fog);max-width:38ch;margin-bottom:18px;}
+  .hero-sub{font-family:'Spline Sans Mono';font-size:0.8rem;color:var(--ash);letter-spacing:0.04em;margin-bottom:30px;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Saira Condensed';font-weight:700;text-transform:uppercase;font-size:1.12rem;letter-spacing:0.03em;
+    padding:13px 24px;border:1px solid var(--steel-line);
+    transition:transform .12s,background .15s,color .15s,border-color .15s;
+  }
+  .btn-primary{background:var(--hazard);color:var(--black);border-color:var(--hazard);
+    clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px);}
+  .btn-primary:hover{background:var(--hazard-deep);transform:translateY(-2px);}
+  .btn-ghost{background:transparent;color:var(--paper);}
+  .btn-ghost:hover{border-color:var(--hazard);color:var(--hazard);}
+  .hero-media{
+    position:relative;
+    border-left:1px solid var(--steel-line);
+    background:var(--black);
+    overflow:hidden;
+  }
+  .hero-media img{width:100%;height:100%;min-height:420px;object-fit:cover;filter:grayscale(0.18) contrast(1.05);}
+  .hero-media::after{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:8px;
+    background:repeating-linear-gradient(135deg,var(--hazard) 0 14px,var(--black) 14px 28px);
+  }
+  .hero-tag{
+    position:absolute;right:0;bottom:0;
+    background:var(--black);border-top:1px solid var(--steel-line);border-left:1px solid var(--steel-line);
+    padding:10px 16px;font-family:'Spline Sans Mono';font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--hazard);
+  }
+  @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-copy{padding:44px 0 34px;}
+    .hero-media{border-left:none;border-top:1px solid var(--steel-line);}
+    .hero-media img{min-height:300px;}
+  }
+
+  /* ---------- spec strip ---------- */
+  .spec-strip{
+    background:var(--black);border-bottom:1px solid var(--steel-line);
+  }
+  .spec-strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);}
+  .spec{padding:20px 18px;border-left:1px solid var(--steel-700);}
+  .spec:first-child{border-left:none;}
+  .spec b{display:block;font-family:'Saira Condensed';font-weight:700;font-size:1.55rem;color:var(--hazard);letter-spacing:0.02em;line-height:1;}
+  .spec span{font-family:'Spline Sans Mono';font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ash);}
+  @media(max-width:680px){.spec-strip .wrap{grid-template-columns:1fr 1fr;}.spec:nth-child(3){border-left:none;}}
+
+  /* ---------- section frame ---------- */
+  section{padding:78px 0;}
+  .sec-head{margin-bottom:42px;}
+  .sec-tag{font-family:'Spline Sans Mono';font-size:0.7rem;letter-spacing:0.24em;text-transform:uppercase;color:var(--hazard);}
+  .sec-head h2{font-weight:700;font-size:clamp(2rem,4.4vw,3.1rem);color:var(--paper);margin-top:10px;}
+  .sec-head p{color:var(--ash);max-width:60ch;margin-top:14px;}
+
+  /* ABOUT */
+  #about{background:var(--steel-850);border-top:1px solid var(--steel-line);border-bottom:1px solid var(--steel-line);}
+  .about-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:48px;align-items:center;}
+  .about-grid p{margin-bottom:18px;color:var(--fog);}
+  .about-grid p:last-child{margin-bottom:0;}
+  .about-grid .lead{font-size:1.16rem;color:var(--paper);font-weight:500;}
+  .about-photo{position:relative;border:1px solid var(--steel-line);}
+  .about-photo img{width:100%;height:100%;object-fit:cover;min-height:340px;filter:grayscale(0.1) contrast(1.04);}
+  .about-photo .corner{position:absolute;top:-1px;left:-1px;background:var(--hazard);color:var(--black);font-family:'Spline Sans Mono';font-weight:600;font-size:0.62rem;letter-spacing:0.14em;padding:6px 12px;text-transform:uppercase;}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:32px;}}
+
+  /* SERVICES = WORK ORDER list */
+  .wo{border:1px solid var(--steel-line);background:var(--steel-850);}
+  .wo-row{
+    display:grid;grid-template-columns:74px 1fr auto;gap:22px;align-items:baseline;
+    padding:22px 26px;border-bottom:1px solid var(--steel-700);
+    transition:background .14s;
+  }
+  .wo-row:last-child{border-bottom:none;}
+  .wo-row:hover{background:var(--steel-800);}
+  .wo-idx{font-family:'Spline Sans Mono';font-weight:600;font-size:0.84rem;color:var(--hazard);letter-spacing:0.04em;}
+  .wo-name{font-family:'Saira Condensed';font-weight:700;font-size:1.5rem;color:var(--paper);text-transform:uppercase;letter-spacing:0.01em;}
+  .wo-name small{display:block;font-family:'Inter';font-weight:400;text-transform:none;letter-spacing:0;font-size:0.92rem;color:var(--ash);margin-top:4px;line-height:1.5;}
+  .wo-spec{font-family:'Spline Sans Mono';font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--gun);white-space:nowrap;}
+  @media(max-width:680px){
+    .wo-row{grid-template-columns:48px 1fr;gap:14px;}
+    .wo-spec{display:none;}
+  }
+
+  /* diagonal photo strip */
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;background:var(--black);padding:4px 0;border-top:1px solid var(--steel-line);border-bottom:1px solid var(--steel-line);}
+  .strip div{aspect-ratio:4/3;overflow:hidden;}
+  .strip img{width:100%;height:100%;object-fit:cover;filter:grayscale(0.25) contrast(1.06);transition:filter .3s,transform .3s;}
+  .strip img:hover{filter:grayscale(0) contrast(1.08);transform:scale(1.04);}
+  @media(max-width:680px){.strip{grid-template-columns:1fr 1fr;}}
+
+  /* TESTIMONIES = shop log */
+  #say{background:var(--steel-850);border-top:1px solid var(--steel-line);}
+  .log{display:grid;grid-template-columns:1fr 1fr;gap:4px;}
+  .log-entry{
+    background:var(--steel-900);border:1px solid var(--steel-line);
+    padding:30px 28px;position:relative;
+  }
+  .log-entry::before{
+    content:attr(data-id);position:absolute;top:14px;right:18px;
+    font-family:'Spline Sans Mono';font-size:0.62rem;letter-spacing:0.1em;color:var(--steel-600);
+  }
+  .log-entry .q{font-size:1.02rem;color:var(--fog);margin-bottom:20px;}
+  .log-entry .q::before{content:"// ";font-family:'Spline Sans Mono';color:var(--hazard);}
+  .log-by{font-family:'Spline Sans Mono';font-size:0.74rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--paper);display:flex;align-items:center;gap:10px;}
+  .log-by::before{content:"";width:10px;height:10px;background:var(--hazard);clip-path:polygon(50% 0,100% 100%,0 100%);}
+  @media(max-width:760px){.log{grid-template-columns:1fr;}}
+
+  /* HOURS + LOCATION */
+  #visit{background:var(--steel-900);}
+  .visit-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:stretch;}
+  .board{border:1px solid var(--steel-line);background:var(--steel-850);}
+  .board-head{padding:18px 22px;border-bottom:1px solid var(--steel-line);display:flex;align-items:center;justify-content:space-between;}
+  .board-head h3{font-family:'Saira Condensed';font-weight:700;font-size:1.4rem;color:var(--paper);text-transform:uppercase;}
+  .now-chip{font-family:'Spline Sans Mono';font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;padding:4px 9px;border:1px solid var(--steel-600);color:var(--ash);}
+  .hrow{display:flex;align-items:center;justify-content:space-between;padding:13px 22px;border-bottom:1px solid var(--steel-700);font-family:'Spline Sans Mono';font-size:0.82rem;}
+  .hrow:last-child{border-bottom:none;}
+  .hrow .day{color:var(--fog);letter-spacing:0.06em;text-transform:uppercase;}
+  .hrow .hrs{color:var(--paper);}
+  .hrow.closed .hrs{color:var(--gun);}
+  .hrow .pill{font-size:0.6rem;padding:2px 7px;letter-spacing:0.1em;}
+  .pill-open{background:var(--hazard);color:var(--black);}
+  .pill-closed{border:1px solid var(--steel-600);color:var(--gun);}
+
+  .loc-card{border:1px solid var(--steel-line);background:var(--steel-850);display:flex;flex-direction:column;}
+  .map-frame{border:0;width:100%;flex:1;min-height:300px;filter:grayscale(0.4) contrast(1.05);background:var(--steel-800);}
+  .loc-info{padding:22px;border-top:1px solid var(--steel-line);}
+  .loc-info .addr{font-family:'Spline Sans Mono';font-size:0.86rem;color:var(--paper);margin-bottom:6px;}
+  .loc-info .city{font-family:'Spline Sans Mono';font-size:0.74rem;color:var(--ash);letter-spacing:0.06em;margin-bottom:18px;}
+  .loc-info .btn{font-size:1rem;padding:11px 20px;}
+  @media(max-width:820px){.visit-grid{grid-template-columns:1fr;gap:24px;}}
+
+  /* CALL BANNER */
+  .call-band{
+    background:var(--hazard);color:var(--black);position:relative;overflow:hidden;
+    padding:0;border-top:6px solid var(--black);border-bottom:6px solid var(--black);
+  }
+  .call-band .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:40px 22px;}
+  .call-band h2{color:var(--black);font-weight:800;font-size:clamp(1.9rem,4.6vw,3rem);}
+  .call-band p{font-family:'Spline Sans Mono';font-size:0.82rem;letter-spacing:0.06em;color:#3a3100;margin-top:6px;}
+  .call-band .btn{
+    background:var(--black);color:var(--hazard);border-color:var(--black);font-size:1.35rem;padding:15px 30px;
+    clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px);
+  }
+  .call-band .btn:hover{background:var(--steel-900);transform:translateY(-2px);}
+
+  /* FOOTER */
+  footer{background:var(--black);border-top:1px solid var(--steel-line);padding:54px 0 30px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:38px;margin-bottom:40px;}
+  .foot-brand .brand-name{font-size:1.5rem;}
+  .foot-brand p{color:var(--ash);font-size:0.9rem;margin-top:14px;max-width:40ch;}
+  .foot-col h4{font-family:'Spline Sans Mono';font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--hazard);margin-bottom:16px;}
+  .foot-col a,.foot-col p{display:block;color:var(--fog);font-size:0.9rem;margin-bottom:10px;font-family:'Spline Sans Mono';}
+  .foot-col a:hover{color:var(--hazard);}
+  .foot-bottom{border-top:1px solid var(--steel-700);padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;}
+  .credit{color:var(--gun);font-size:0.82rem;font-family:'Spline Sans Mono';}
+  .credit a{color:var(--ash);}
+  .credit a:hover{color:var(--hazard);}
+  .foot-meta{color:var(--gun);font-size:0.74rem;font-family:'Spline Sans Mono';letter-spacing:0.06em;}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr;gap:28px;}}
+</style>
+</head>
+<body>
+
+  <div class="hazard-bar"></div>
+
+  <nav>
+    <div class="wrap">
+      <a class="brand" href="#top">
+        <span class="brand-mark">M/D</span>
+        <span class="brand-name">Manteca Auto &amp; Diesel<small>Heavy-Duty Repair · Est. Manteca, CA</small></span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">Shop</a>
+        <a href="#work">Services</a>
+        <a href="#say">Testimonies</a>
+        <a href="#visit">Hours</a>
+        <a class="nav-call" href="tel:+12096474095">(209) 647-4095</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="kicker">Diesel · Light &amp; Heavy-Duty · Manteca, CA</div>
+          <h1>Built for the<br><span class="hi">long haul.</span></h1>
+          <p class="hero-lede">Straight-talking diesel and truck specialists. Diagnostics, fuel systems, engine work, and the smog headaches nobody else wants — done right, priced fair.</p>
+          <p class="hero-sub">F-250 · F-350 · RAM 6.7 · Duramax · Power Stroke · fleet &amp; classics</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="tel:+12096474095">Call the shop</a>
+            <a class="btn btn-ghost" href="#visit">Hours &amp; directions</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="./photos/03.jpg" alt="Lifted Ford F-350 diesel truck in the Manteca Auto & Diesel Repair shop bay" loading="eager" />
+          <span class="hero-tag">Bay 01 · In Service</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SPEC STRIP -->
+  <div class="spec-strip">
+    <div class="wrap">
+      <div class="spec"><b>DIESEL</b><span>Our specialty</span></div>
+      <div class="spec"><b>M–F</b><span>8am – 5pm</span></div>
+      <div class="spec"><b>FAIR</b><span>Cost-effective fixes</span></div>
+      <div class="spec"><b>209</b><span>647-4095</span></div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <div class="sec-tag">// The shop</div>
+          <h2 class="cond" style="font-size:clamp(2rem,4.4vw,3.1rem);color:var(--paper);margin:10px 0 24px;">Knows trucks. Looks out for you.</h2>
+          <p class="lead">When a diesel starts running rough miles from home, you want the shop that actually wants to figure it out — not just throw parts at it.</p>
+          <p>Manteca Auto &amp; Diesel Repair handles light- and heavy-duty trucks, classic builds, fleet vehicles, and the diesels other shops shy away from. Fuel filters and injectors, engine work, drivability and electrical diagnostics, brakes, and the smog-readiness runaround on older trucks.</p>
+          <p>Mark and the crew take the time to explain your options and find the cost-effective fix — the kind of straight, knowledgeable service that gets travelers and locals alike back on the road and recommending the shop after.</p>
+        </div>
+        <div class="about-photo">
+          <span class="corner">// On the lift</span>
+          <img src="./photos/01.jpg" alt="Truck on a two-post lift over a diesel engine on the shop floor" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES / WORK ORDER -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-tag">// Work order</div>
+        <h2>What we turn wrenches on</h2>
+        <p>Trucks first, but we service cars too. If it has a diesel, a check-engine light, or a smog problem on an older rig, start here.</p>
+      </div>
+      <div class="wo">
+        <div class="wo-row">
+          <div class="wo-idx">[01]</div>
+          <div class="wo-name">Diesel Diagnostics &amp; Repair
+            <small>Power Stroke, Cummins &amp; Duramax — drivability, hard-start, power-loss and check-engine diagnosis.</small>
+          </div>
+          <div class="wo-spec">Light + Heavy-Duty</div>
+        </div>
+        <div class="wo-row">
+          <div class="wo-idx">[02]</div>
+          <div class="wo-name">Fuel Systems &amp; Filters
+            <small>Filter service, injectors and fuel delivery — genuine OEM / Mopar parts when it matters.</small>
+          </div>
+          <div class="wo-spec">OEM Parts</div>
+        </div>
+        <div class="wo-row">
+          <div class="wo-idx">[03]</div>
+          <div class="wo-name">Engine Service &amp; Rebuilds
+            <small>Major engine work, gaskets and top-end on V8 gas and diesel powerplants.</small>
+          </div>
+          <div class="wo-spec">Gas + Diesel</div>
+        </div>
+        <div class="wo-row">
+          <div class="wo-idx">[04]</div>
+          <div class="wo-name">Smog &amp; Emissions Help
+            <small>Trouble passing on an older truck? We go the extra mile to get you smog-ready.</small>
+          </div>
+          <div class="wo-spec">Older Rigs OK</div>
+        </div>
+        <div class="wo-row">
+          <div class="wo-idx">[05]</div>
+          <div class="wo-name">Brakes, Suspension &amp; Lifts
+            <small>Brake service, suspension and driveline on lifted trucks, classics and daily drivers.</small>
+          </div>
+          <div class="wo-spec">Custom Builds</div>
+        </div>
+        <div class="wo-row">
+          <div class="wo-idx">[06]</div>
+          <div class="wo-name">General Auto Maintenance
+            <small>Scheduled maintenance and honest recommendations to keep the high-mile stuff alive.</small>
+          </div>
+          <div class="wo-spec">Cars + Trucks</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <div class="strip" aria-hidden="false">
+    <div><img src="./photos/05.jpg" alt="Diesel vehicle in for service with the hood up" loading="lazy" /></div>
+    <div><img src="./photos/04.jpg" alt="V8 diesel engine block on the bench" loading="lazy" /></div>
+    <div><img src="./photos/06.jpg" alt="Truck chassis and engine on the shop floor" loading="lazy" /></div>
+    <div><img src="./photos/02.jpg" alt="Custom classic pickup truck outside the shop" loading="lazy" /></div>
+  </div>
+
+  <!-- TESTIMONIES -->
+  <section id="say">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-tag">// Shop log</div>
+        <h2>What truck owners say</h2>
+        <p>Hand-picked notes from drivers who trust us with their rigs.</p>
+      </div>
+      <div class="log">
+        <div class="log-entry" data-id="ENTRY · 01">
+          <p class="q">Had trouble smogging my diesel truck — he and Marina went the extra mile to help me get it done. He's very knowledgeable on my '99 Ford 250, takes the time to explain my options and gives cost-effective solutions. I trust his recommendation and feel he looks out for my interests.</p>
+          <div class="log-by">B Clarke</div>
+        </div>
+        <div class="log-entry" data-id="ENTRY · 02">
+          <p class="q">Visiting from out of state and needed the fuel filters changed on my 2019 RAM 6.7 diesel. Mark said they were busy but he'd fit me in — used genuine Mopar filters and got me out in under two hours. Great customer service all around. I'd trust this place to work on my truck again.</p>
+          <div class="log-by">Watson Family</div>
+        </div>
+        <div class="log-entry" data-id="ENTRY · 03">
+          <p class="q">My truck started running terrible while I had my fifth wheel at a campground in Manteca. They fixed it and it ran better than ever, and even gave me a ride to pick it up. I've used them a few times — nothing but professional and helpful. Mine's an F-350 diesel. Most excellent service, very fair pricing.</p>
+          <div class="log-by">Randy G.</div>
+        </div>
+        <div class="log-entry" data-id="ENTRY · 04">
+          <p class="q">Great mechanic, knows what he's doing and fair prices. Would definitely recommend this place!</p>
+          <div class="log-by">Christopher V.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS + LOCATION -->
+  <section id="visit">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-tag">// Find the shop</div>
+        <h2>Hours &amp; location</h2>
+      </div>
+      <div class="visit-grid">
+        <div class="board">
+          <div class="board-head">
+            <h3>Shop Hours</h3>
+            <span class="now-chip">PST · Manteca</span>
+          </div>
+          <div class="hrow"><span class="day">Mon</span><span class="hrs">8:00a – 5:00p <span class="pill pill-open">Open</span></span></div>
+          <div class="hrow"><span class="day">Tue</span><span class="hrs">8:00a – 5:00p <span class="pill pill-open">Open</span></span></div>
+          <div class="hrow"><span class="day">Wed</span><span class="hrs">8:00a – 5:00p <span class="pill pill-open">Open</span></span></div>
+          <div class="hrow"><span class="day">Thu</span><span class="hrs">8:00a – 5:00p <span class="pill pill-open">Open</span></span></div>
+          <div class="hrow"><span class="day">Fri</span><span class="hrs">8:00a – 5:00p <span class="pill pill-open">Open</span></span></div>
+          <div class="hrow closed"><span class="day">Sat</span><span class="hrs">Closed <span class="pill pill-closed">Closed</span></span></div>
+          <div class="hrow closed"><span class="day">Sun</span><span class="hrs">Closed <span class="pill pill-closed">Closed</span></span></div>
+        </div>
+        <div class="loc-card">
+          <iframe class="map-frame" src="https://www.google.com/maps?q=Manteca%20Auto%20%26%20Diesel%20Repair%2C%201029%20W%20Yosemite%20Ave%2C%20Manteca%2C%20CA%2095337&z=15&output=embed" title="Map to Manteca Auto & Diesel Repair" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="loc-info">
+            <div class="addr">1029 W Yosemite Ave</div>
+            <div class="city">Manteca, CA 95337</div>
+            <a class="btn btn-primary" href="https://www.google.com/maps?q=Manteca+Auto+%26+Diesel+Repair,+1029+W+Yosemite+Ave,+Manteca,+CA+95337" target="_blank" rel="noopener">Get directions</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL BANNER -->
+  <div class="call-band">
+    <div class="wrap">
+      <div>
+        <h2>Got a truck that needs sorting?</h2>
+        <p>// Talk to a real diesel tech — no runaround.</p>
+      </div>
+      <a class="btn" href="tel:+12096474095">Call (209) 647-4095</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <span class="brand-name">Manteca Auto &amp; Diesel Repair</span>
+          <p>Honest, knowledgeable diesel &amp; truck repair in Manteca, California. Light- and heavy-duty, classics, fleet, and the jobs nobody else wants.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <a href="tel:+12096474095">(209) 647-4095</a>
+          <p>1029 W Yosemite Ave<br>Manteca, CA 95337</p>
+          <a href="https://maps.google.com/?cid=2706745818839718659" target="_blank" rel="noopener">Google Business profile</a>
+        </div>
+        <div class="foot-col">
+          <h4>Hours</h4>
+          <p>Mon – Fri · 8:00a – 5:00p</p>
+          <p>Sat – Sun · Closed</p>
+          <a href="#work">View services</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <div class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></div>
+        <div class="foot-meta">© 2026 Manteca Auto &amp; Diesel Repair · Manteca, CA</div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

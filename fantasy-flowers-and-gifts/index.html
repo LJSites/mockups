@@ -1,0 +1,850 @@
+<!-- flavor: Bold Editorial Florist | accent: #C8472B | bg: #FBF6EE | hero: full-bleed-photo | service: 2-col-rows -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fantasy Flowers and Gifts — Lynwood, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --acc: #C8472B;
+      --bg: #FBF6EE;
+      --ink: #1A1210;
+      --muted: #6B5B52;
+      --border: #D9CFC5;
+      --nav-h: 64px;
+    }
+
+    html {
+      scroll-padding-top: var(--nav-h);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--bg);
+      border-bottom: 2px solid var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 5vw, 3rem);
+    }
+
+    .nav-brand {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      color: var(--ink);
+      text-transform: uppercase;
+    }
+
+    .nav-brand span {
+      color: var(--acc);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--acc); }
+
+    .nav-cta {
+      background: var(--acc);
+      color: #fff !important;
+      padding: 0.4rem 1.1rem;
+    }
+
+    .nav-cta:hover { background: #a8361f; color: #fff !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--ink);
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    #home {
+      position: relative;
+      height: min(90vh, 680px);
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.5rem, 6vw, 4rem);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 1.5rem;
+    }
+
+    .hero-bar h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .hero-bar h1 em {
+      color: var(--acc);
+      font-style: normal;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      font-style: italic;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      max-width: 38ch;
+    }
+
+    .hero-aside {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: #fff;
+      font-family: 'Anton', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.75rem 2rem;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: #a8361f;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid var(--acc);
+      color: var(--acc);
+      font-family: 'Anton', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.7rem 1.8rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: var(--acc);
+      color: #fff;
+    }
+
+    .hero-phone {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-top: 0.6rem;
+    }
+
+    /* ── SECTIONS ── */
+    section { scroll-margin-top: var(--nav-h); }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 clamp(1.2rem, 5vw, 3rem);
+    }
+
+    .section-label {
+      font-family: 'Anton', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-heading {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.0;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+    }
+
+    .about-copy h2 { margin-bottom: 1.25rem; }
+
+    .about-copy p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    .about-copy p:last-child { margin-bottom: 0; }
+
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .about-photos img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-photos img:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/9;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .services-header {
+      margin-bottom: 3rem;
+    }
+
+    /* 2-col-rows layout */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 2px solid var(--ink);
+      border-left: 2px solid var(--ink);
+    }
+
+    .service-row {
+      display: contents;
+    }
+
+    .service-item {
+      padding: 1.75rem 2rem;
+      border-bottom: 2px solid var(--ink);
+      border-right: 2px solid var(--ink);
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .service-item:hover {
+      background: rgba(200, 71, 43, 0.05);
+    }
+
+    .service-num {
+      font-family: 'Anton', sans-serif;
+      font-size: 2.5rem;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .service-item h3 {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .service-item p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ── PHOTO STRIP ── */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      height: 300px;
+      overflow: hidden;
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+    }
+
+    .photo-strip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.9);
+      transition: filter 0.3s;
+    }
+
+    .photo-strip img:hover { filter: saturate(1.1); }
+
+    /* ── TESTIMONIES ── */
+    #testimonies {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .testimonies-header { margin-bottom: 3rem; }
+
+    .testi-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--ink);
+      border: 2px solid var(--ink);
+    }
+
+    .testi-card {
+      background: var(--bg);
+      padding: 2rem 2rem 1.75rem;
+    }
+
+    .testi-quote {
+      font-size: 1.0rem;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .testi-quote::before {
+      content: '\201C';
+      font-family: 'Anton', sans-serif;
+      font-size: 3rem;
+      line-height: 0;
+      vertical-align: -0.6rem;
+      color: var(--acc);
+      margin-right: 0.15rem;
+    }
+
+    .testi-attr {
+      font-family: 'Anton', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--acc);
+    }
+
+    /* ── HOURS & MAP ── */
+    #visit {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+    }
+
+    .visit-copy h2 { margin-bottom: 1.5rem; }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hours-table td {
+      padding: 0.55rem 0;
+    }
+
+    .hours-table td:last-child {
+      text-align: right;
+      color: var(--muted);
+    }
+
+    .hours-table tr.today td { font-weight: 600; color: var(--acc); }
+
+    .visit-address {
+      margin-top: 1.75rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .visit-address strong {
+      display: block;
+      font-family: 'Anton', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.25rem;
+    }
+
+    .map-frame {
+      border: 2px solid var(--ink);
+      overflow: hidden;
+    }
+
+    .map-frame iframe {
+      display: block;
+      width: 100%;
+      height: 380px;
+      border: none;
+    }
+
+    /* ── CONTACT / CTA BAND ── */
+    #contact {
+      background: var(--ink);
+      color: var(--bg);
+      padding: clamp(3.5rem, 7vw, 6rem) 0;
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .contact-inner h2 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--bg);
+    }
+
+    .contact-inner h2 em {
+      color: var(--acc);
+      font-style: normal;
+    }
+
+    .contact-inner p {
+      font-size: 0.95rem;
+      color: rgba(251,246,238,0.65);
+      margin-top: 0.5rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: flex-end;
+    }
+
+    .btn-light {
+      display: inline-block;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Anton', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.75rem 2rem;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .btn-light:hover { background: #ede5d8; }
+
+    .btn-acc {
+      display: inline-block;
+      background: var(--acc);
+      color: #fff;
+      font-family: 'Anton', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.75rem 2rem;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .btn-acc:hover { background: #a8361f; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 2px solid var(--ink);
+      padding: 2.5rem clamp(1.2rem, 5vw, 3rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-family: 'Anton', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .footer-brand span { color: var(--acc); }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--acc); }
+
+    .footer-credit {
+      width: 100%;
+      font-size: 0.78rem;
+      color: var(--border);
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: var(--bg);
+        border-bottom: 2px solid var(--ink);
+        padding: 1.5rem 1.5rem;
+        gap: 1.2rem;
+      }
+      .hamburger { display: flex; }
+
+      .hero-bar {
+        grid-template-columns: 1fr;
+      }
+      .hero-aside { text-align: left; }
+
+      .about-grid { grid-template-columns: 1fr; }
+      .about-photos { grid-template-columns: 1fr 1fr; }
+      .about-photos img:first-child { grid-column: 1 / -1; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .photo-strip { grid-template-columns: 1fr 1fr; height: 220px; }
+      .photo-strip img:last-child { display: none; }
+
+      .testi-list { grid-template-columns: 1fr; }
+
+      .visit-grid { grid-template-columns: 1fr; }
+      .map-frame iframe { height: 280px; }
+
+      .contact-inner { grid-template-columns: 1fr; }
+      .contact-actions { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+
+      footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-brand" href="#home">Fantasy <span>Flowers</span></a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="tel:+13106324550" class="nav-cta">Call Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <img class="hero-img" src="./photos/01.jpg" alt="Fantasy Flowers and Gifts — fresh flower arrangements" />
+    <div class="hero-bar">
+      <div>
+        <h1>Fantasy<br /><em>Flowers</em><br />&amp; Gifts</h1>
+        <p class="hero-sub">Same-day delivery. Fresh blooms. Personal service in Lynwood, CA since day one.</p>
+      </div>
+      <div class="hero-aside">
+        <a href="tel:+13106324550" class="btn-primary">Call Now</a>
+        <p class="hero-phone">(310) 632-4550</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-copy">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-heading">Flowers Made<br />Personal</h2>
+          <p>At Fantasy Flowers and Gifts, we work with <em>your</em> vision and your budget. Every arrangement is hand-crafted with fresh, quality blooms — and we're known for going the extra mile, adding touches at no extra charge because we genuinely care.</p>
+          <p>Monica, Maricely, and the whole team have built a reputation on warm, fast, and reliable service. Same-day delivery is our specialty — call in the morning, receive beauty by afternoon.</p>
+          <p>Serving Lynwood and the greater South LA area — proudly the Best Flower Shop in LA, as our customers say.</p>
+        </div>
+        <div class="about-photos">
+          <img src="./photos/02.jpg" alt="Floral arrangement at Fantasy Flowers" />
+          <img src="./photos/03.jpg" alt="Fantasy Flowers storefront and gifts" />
+          <img src="./photos/04.jpg" alt="Bouquet detail at Fantasy Flowers" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-heading">Everything<br />in Bloom</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-item">
+          <div class="service-num">01</div>
+          <h3>Custom Arrangements</h3>
+          <p>Hand-designed bouquets and centerpieces tailored to your vision — roses, tulips, lilies, tropicals, and more. We work within your budget without cutting corners.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-num">02</div>
+          <h3>Same-Day Delivery</h3>
+          <p>Call us in the morning and we'll have your arrangement delivered the same day. Fast, reliable, and handled with care from shop to door.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-num">03</div>
+          <h3>Wedding &amp; Events</h3>
+          <p>Bridal bouquets, reception centerpieces, ceremony florals, and more. We collaborate with you from first consultation to final placement.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-num">04</div>
+          <h3>Sympathy &amp; Tributes</h3>
+          <p>Respectful, thoughtful arrangements for funerals, memorials, and those quiet moments when flowers speak when words cannot.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-num">05</div>
+          <h3>Gift Baskets &amp; Extras</h3>
+          <p>Pair your blooms with chocolates, balloons, plush, or candles. We build gift packages for birthdays, anniversaries, get-well wishes, and beyond.</p>
+        </div>
+        <div class="service-item">
+          <div class="service-num">06</div>
+          <h3>Walk-In &amp; Pick-Up</h3>
+          <p>Visit us at 3541 E Imperial Hwy, Lynwood. Browse fresh-cut stems, ready arrangements, and seasonal specials — no appointment needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <div class="photo-strip">
+    <img src="./photos/05.jpg" alt="Fantasy Flowers — arrangement detail" />
+    <img src="./photos/06.jpg" alt="Fantasy Flowers — gift arrangement" />
+    <img src="./photos/02.jpg" alt="Fantasy Flowers — seasonal blooms" />
+  </div>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="container">
+      <div class="testimonies-header">
+        <p class="section-label">In Their Words</p>
+        <h2 class="section-heading">Customer<br />Testimonies</h2>
+      </div>
+      <div class="testi-list">
+        <div class="testi-card">
+          <p class="testi-quote">Monica delivered a beautiful arrangement only hours after we called it in. Great customer service!</p>
+          <p class="testi-attr">— Jon B.</p>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">I seriously don't go anywhere else but here to get my beautiful flower arrangements. Excellent customer service — they work with what you want and even the prices are way cheaper than other shops. I always leave super happy and it's always better than expected, especially when they put additional things on the arrangements with no extra charge.</p>
+          <p class="testi-attr">— Marcus G.</p>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">This florist is amazing. I called for a tulip arrangement to be delivered the same day. Maricely was wonderful and so friendly &amp; personable. If you love beautiful flower arrangements, personable service &amp; fast delivery, please choose this business.</p>
+          <p class="testi-attr">— Felice J.</p>
+        </div>
+        <div class="testi-card">
+          <p class="testi-quote">Excellent service and pricing — they work with your budget and rest assured you're getting fresh flowers and beautiful ones at that. I thank all the ladies that work there, very welcoming and professional. BEST FLOWER SHOP IN LA.</p>
+          <p class="testi-attr">— Edgar S.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT / HOURS / MAP -->
+  <section id="visit">
+    <div class="container">
+      <div class="visit-grid">
+        <div class="visit-copy">
+          <p class="section-label">Come See Us</p>
+          <h2 class="section-heading">Hours &amp;<br />Location</h2>
+          <table class="hours-table">
+            <tbody>
+              <tr><td>Monday</td><td>9:30 AM – 6:00 PM</td></tr>
+              <tr><td>Tuesday</td><td>9:30 AM – 6:00 PM</td></tr>
+              <tr><td>Wednesday</td><td>9:30 AM – 6:00 PM</td></tr>
+              <tr><td>Thursday</td><td>9:30 AM – 6:00 PM</td></tr>
+              <tr><td>Friday</td><td>9:30 AM – 6:00 PM</td></tr>
+              <tr><td>Saturday</td><td>9:30 AM – 2:30 PM</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+            </tbody>
+          </table>
+          <div class="visit-address">
+            <strong>Address</strong>
+            3541 E Imperial Hwy<br />Lynwood, CA 90262
+          </div>
+          <div class="visit-address" style="margin-top:1.25rem;">
+            <strong>Phone</strong>
+            <a href="tel:+13106324550" style="color:var(--acc);text-decoration:none;">(310) 632-4550</a>
+          </div>
+          <div class="visit-address" style="margin-top:1.25rem;">
+            <strong>Find Us Online</strong>
+            <a href="https://maps.google.com/?cid=3450933414398463060" target="_blank" rel="noopener" style="color:var(--acc);text-decoration:none;">Google Business Profile</a>
+          </div>
+        </div>
+        <div class="map-frame">
+          <iframe
+            src="https://www.google.com/maps?q=3541+E+Imperial+Hwy,+Lynwood,+CA+90262&z=15&output=embed"
+            title="Fantasy Flowers and Gifts location map"
+            loading="lazy"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / CTA BAND -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div>
+          <h2>Ready to Order<br /><em>Your</em> Arrangement?</h2>
+          <p>Call us or stop by — we'll work with your vision and your budget.</p>
+        </div>
+        <div class="contact-actions">
+          <a href="tel:+13106324550" class="btn-acc">Call Now</a>
+          <a href="https://www.google.com/maps?q=3541+E+Imperial+Hwy,+Lynwood,+CA+90262" target="_blank" rel="noopener" class="btn-light">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">Fantasy <span>Flowers</span> &amp; Gifts</div>
+    <ul class="footer-links">
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="https://maps.google.com/?cid=3450933414398463060" target="_blank" rel="noopener">Google Business</a></li>
+    </ul>
+    <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    // Close on link click
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+
+    // Highlight today's hours
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+    const today = days[new Date().getDay()];
+    document.querySelectorAll('.hours-table tr').forEach(row => {
+      if (row.cells[0] && row.cells[0].textContent.trim() === today) {
+        row.classList.add('today');
+      }
+    });
+  </script>
+</body>
+</html>

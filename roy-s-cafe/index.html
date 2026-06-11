@@ -1,0 +1,809 @@
+<!-- flavor: Route 66 Road-Diner | accent: #0E5A4F | bg: #F2F4EF | hero: left-split | service: numbered-stacked -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roy's Cafe — Barstow, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --acc: #0E5A4F;
+      --bg: #F2F4EF;
+      --ink: #1A1A18;
+      --muted: #5C5C55;
+      --rule: #C8C9C0;
+      --warm: #B84A1A;
+      --nav-h: 64px;
+    }
+
+    html {
+      scroll-padding-top: var(--nav-h);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--acc);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+
+    .nav-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.75rem;
+      letter-spacing: 0.08em;
+      color: var(--bg);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--bg);
+      text-decoration: none;
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    .nav-cta {
+      background: var(--warm);
+      color: #fff !important;
+      opacity: 1 !important;
+      padding: 0.4rem 1.1rem;
+      border-radius: 2px;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--bg);
+    }
+
+    /* ── HERO — LEFT SPLIT ── */
+    #home {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - var(--nav-h));
+    }
+
+    .hero-left {
+      background: var(--acc);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 3.5rem;
+      gap: 1.5rem;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(242,244,239,0.6);
+    }
+
+    .hero-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      color: var(--bg);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(242,244,239,0.8);
+      font-weight: 300;
+      font-style: italic;
+      max-width: 28ch;
+      line-height: 1.5;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--warm);
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      padding: 0.75rem 2rem;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: #9c3e16; }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid rgba(242,244,239,0.5);
+      color: var(--bg);
+      text-decoration: none;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      padding: 0.75rem 2rem;
+      border-radius: 2px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--bg);
+      background: rgba(242,244,239,0.08);
+    }
+
+    .hero-detail {
+      font-size: 0.8rem;
+      color: rgba(242,244,239,0.45);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(14,90,79,0.15) 0%, transparent 40%);
+    }
+
+    /* ── STRIP ── */
+    .strip {
+      background: var(--warm);
+      color: #fff;
+      text-align: center;
+      padding: 0.9rem 2rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTION SHELL ── */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 4vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 1.5rem 0;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-body {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .about-body p + p { margin-top: 1rem; }
+
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+
+    .about-photos img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      border-radius: 2px;
+    }
+
+    .about-photos img:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/9;
+    }
+
+    /* ── MENU — NUMBERED STACKED ── */
+    #menu { background: var(--ink); }
+
+    #menu .section-label { color: var(--warm); }
+    #menu .section-title { color: var(--bg); }
+
+    .menu-intro {
+      color: rgba(242,244,239,0.6);
+      font-size: 1rem;
+      max-width: 55ch;
+      font-style: italic;
+      margin-bottom: 3rem;
+    }
+
+    .menu-list {
+      list-style: none;
+      counter-reset: menu-counter;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-item {
+      counter-increment: menu-counter;
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      gap: 1.25rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(242,244,239,0.1);
+      align-items: start;
+    }
+
+    .menu-item:first-child { border-top: 1px solid rgba(242,244,239,0.1); }
+
+    .menu-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      line-height: 1;
+      color: var(--acc);
+      padding-top: 0.1rem;
+    }
+
+    .menu-num::before {
+      content: counter(menu-counter, decimal-leading-zero);
+    }
+
+    .menu-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.06em;
+      color: var(--bg);
+      margin-bottom: 0.3rem;
+    }
+
+    .menu-desc {
+      font-size: 0.9rem;
+      color: rgba(242,244,239,0.55);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    /* ── GALLERY STRIP ── */
+    .photo-row {
+      display: flex;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    .photo-row img {
+      flex: 1 1 0;
+      min-width: 0;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.85);
+      transition: flex 0.4s ease, filter 0.3s;
+    }
+
+    .photo-row img:hover {
+      flex: 2;
+      filter: saturate(1.1);
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies { background: var(--bg); }
+
+    .testimonies-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 2.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .testimony {
+      padding: 2.5rem 2rem 2.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .testimony:nth-child(even) {
+      padding-left: 2rem;
+      padding-right: 0;
+      border-left: 1px solid var(--rule);
+    }
+
+    .testimony-quote {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .testimony-quote::before {
+      content: '\201C';
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--acc);
+      line-height: 0;
+      vertical-align: -0.5rem;
+      margin-right: 0.15rem;
+    }
+
+    .testimony-attr {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      color: var(--acc);
+    }
+
+    /* ── HOURS & MAP ── */
+    #visit { background: #EAECEA; }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .hours-table td {
+      padding: 0.7rem 0;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .hours-table td:first-child {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.07em;
+      color: var(--ink);
+      padding-right: 1.5rem;
+    }
+
+    .map-frame {
+      width: 100%;
+      height: 340px;
+      border: none;
+      display: block;
+      border-radius: 2px;
+      filter: grayscale(0.2);
+    }
+
+    .visit-address {
+      margin-top: 1.25rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .visit-address strong {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 0.07em;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--acc); }
+
+    #contact .section-label { color: rgba(242,244,239,0.5); }
+    #contact .section-title { color: var(--bg); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 2.5rem;
+      align-items: start;
+    }
+
+    .contact-block p {
+      font-size: 1rem;
+      color: rgba(242,244,239,0.7);
+      line-height: 1.7;
+      font-style: italic;
+    }
+
+    .contact-block .btn-primary {
+      margin-top: 1.5rem;
+    }
+
+    .contact-details { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .contact-row {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .contact-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      color: rgba(242,244,239,0.4);
+      text-transform: uppercase;
+      min-width: 6rem;
+      padding-top: 0.1rem;
+    }
+
+    .contact-val {
+      font-size: 1rem;
+      color: var(--bg);
+    }
+
+    .contact-val a {
+      color: var(--bg);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(242,244,239,0.3);
+      transition: border-color 0.2s;
+    }
+
+    .contact-val a:hover { border-color: var(--bg); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0a0a09;
+      color: rgba(242,244,239,0.35);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      line-height: 1.8;
+    }
+
+    footer a {
+      color: rgba(242,244,239,0.55);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--bg); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      :root { --nav-h: 56px; }
+
+      .nav-links { display: none; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: var(--acc); padding: 1rem 2rem 1.5rem; gap: 1rem; }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+
+      #home { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 3rem 1.5rem; }
+      .hero-right { height: 260px; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-photos img:first-child { aspect-ratio: 16/7; }
+
+      .menu-item { grid-template-columns: 2.5rem 1fr; }
+      .menu-num { font-size: 2rem; }
+
+      .photo-row { flex-direction: column; }
+      .photo-row img { height: 200px; flex: none; width: 100%; }
+      .photo-row img:hover { flex: none; }
+
+      .testimonies-layout { grid-template-columns: 1fr; }
+      .testimony:nth-child(even) { padding-left: 0; border-left: none; }
+
+      .visit-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-h1 { font-size: 3rem; }
+      section { padding: 3.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="nav-brand">Roy's Cafe</a>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#visit">Hours</a></li>
+      <li><a href="#contact" class="nav-cta">Call Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO — LEFT SPLIT -->
+  <section id="home">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Barstow, CA &nbsp;·&nbsp; Route 66</p>
+      <h1 class="hero-h1">Roy's<br>Cafe</h1>
+      <p class="hero-sub">Old-school American diner cooking, served straight — the way it's always been done on this stretch of the 66.</p>
+      <div class="hero-actions">
+        <a href="tel:+17607180498" class="btn-primary">Call Now</a>
+        <a href="https://www.google.com/maps?q=413+E+Main+St,+Barstow,+CA+92311&z=15&output=embed" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+      </div>
+      <p class="hero-detail">Open daily &nbsp;7 AM – 9 PM &nbsp;·&nbsp; (760) 718-0498</p>
+    </div>
+    <div class="hero-right">
+      <img src="./photos/01.jpg" alt="Roy's Cafe — interior" />
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="strip">Open 7 Days &nbsp;·&nbsp; 7:00 AM to 9:00 PM &nbsp;·&nbsp; 413 E Main St, Barstow</div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <p class="section-label">The Place</p>
+          <h2 class="section-title">A Proper Diner,<br>No Apologies</h2>
+          <hr class="rule" />
+          <div class="about-body">
+            <p>Roy's Cafe sits right on East Main in Barstow — a mile marker for road-trippers who know that a good diner doesn't need to dress itself up. Classic booth seating, a short-order kitchen that moves, and a menu built on the kind of food you actually want after a few hours behind the wheel.</p>
+            <p>Burgers, mashed potatoes, country gravy, ham and cheese on a flat-top — cooked to order, priced right, served by people who mean it. Route 66 has been changed by chain restaurants and bypass roads, but Roy's is still here doing exactly what it's always done.</p>
+          </div>
+        </div>
+        <div class="about-photos">
+          <img src="./photos/02.jpg" alt="Roy's Cafe food" />
+          <img src="./photos/03.jpg" alt="Roy's Cafe interior" />
+          <img src="./photos/04.jpg" alt="Roy's Cafe diner atmosphere" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU — NUMBERED STACKED -->
+  <section id="menu">
+    <div class="container">
+      <p class="section-label">What We Make</p>
+      <h2 class="section-title">The Menu</h2>
+      <p class="menu-intro">Diner classics, cooked fresh. No tricks, no trends — just good American food made the way it's supposed to be.</p>
+      <ul class="menu-list">
+        <li class="menu-item">
+          <span class="menu-num"></span>
+          <div>
+            <p class="menu-name">Pastrami Cheeseburger</p>
+            <p class="menu-desc">Fresh beef patty loaded with pastrami and grilled onions — the kind of burger that earns its reputation on a road trip.</p>
+          </div>
+        </li>
+        <li class="menu-item">
+          <span class="menu-num"></span>
+          <div>
+            <p class="menu-name">Grilled Ham & Cheese</p>
+            <p class="menu-desc">Flat-top pressed, golden on the outside. A diner staple executed without shortcuts.</p>
+          </div>
+        </li>
+        <li class="menu-item">
+          <span class="menu-num"></span>
+          <div>
+            <p class="menu-name">Mashed Potatoes & Country Gravy</p>
+            <p class="menu-desc">Creamy mashed, draped in house-made country gravy. A comfort side that holds its own as a full plate.</p>
+          </div>
+        </li>
+        <li class="menu-item">
+          <span class="menu-num"></span>
+          <div>
+            <p class="menu-name">Onion Rings</p>
+            <p class="menu-desc">Large cut, crispy batter, served hot. Simple and done right.</p>
+          </div>
+        </li>
+        <li class="menu-item">
+          <span class="menu-num"></span>
+          <div>
+            <p class="menu-name">Carne Asada Street Tacos</p>
+            <p class="menu-desc">A generous plate of street-style tacos — good for a break from the burger side of the menu.</p>
+          </div>
+        </li>
+        <li class="menu-item">
+          <span class="menu-num"></span>
+          <div>
+            <p class="menu-name">Classic Breakfast Plates</p>
+            <p class="menu-desc">Eggs, toast, hash browns — the full-service diner breakfast lineup, served from 7 AM.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- GALLERY STRIP -->
+  <div class="photo-row">
+    <img src="./photos/05.jpg" alt="Roy's Cafe food" />
+    <img src="./photos/06.jpg" alt="Roy's Cafe diner" />
+    <img src="./photos/01.jpg" alt="Roy's Cafe atmosphere" />
+  </div>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="container">
+      <p class="section-label">In Their Words</p>
+      <h2 class="section-title">Customer Testimonies</h2>
+      <div class="testimonies-layout">
+        <div class="testimony">
+          <p class="testimony-quote">Roy's was right on point and delivered exactly that. Classic decor, a classic diner menu and food that was cooked perfectly and tasted great! It's still great to be able to relive the good old days.</p>
+          <p class="testimony-attr">Mike T.</p>
+        </div>
+        <div class="testimony">
+          <p class="testimony-quote">Food was great! My grilled ham and cheese was good and so were my mashed potatoes with country gravy. Great service — both the cook and waitress were kind and made sure we were enjoying everything. Solid option for some good food while traveling!</p>
+          <p class="testimony-attr">Cam C.</p>
+        </div>
+        <div class="testimony">
+          <p class="testimony-quote">The Pastrami burger was really good — fresh ingredients and just the right amount of pastrami. It's a cool spot to grab a bite if you're driving through.</p>
+          <p class="testimony-attr">Azhar K.</p>
+        </div>
+        <div class="testimony">
+          <p class="testimony-quote">The food was delicious. I enjoyed it very much.</p>
+          <p class="testimony-attr">Luisa P.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & MAP -->
+  <section id="visit">
+    <div class="container">
+      <p class="section-label">Come In</p>
+      <h2 class="section-title">Hours & Location</h2>
+      <hr class="rule" />
+      <div class="visit-grid">
+        <div>
+          <table class="hours-table">
+            <tr><td>Monday</td><td>7:00 AM – 9:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>7:00 AM – 9:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>7:00 AM – 9:00 PM</td></tr>
+            <tr><td>Thursday</td><td>7:00 AM – 9:00 PM</td></tr>
+            <tr><td>Friday</td><td>7:00 AM – 9:00 PM</td></tr>
+            <tr><td>Saturday</td><td>7:00 AM – 9:00 PM</td></tr>
+            <tr><td>Sunday</td><td>7:00 AM – 9:00 PM</td></tr>
+          </table>
+          <div class="visit-address">
+            <strong>Roy's Cafe</strong><br>
+            413 E Main St<br>
+            Barstow, CA 92311<br><br>
+            <a href="tel:+17607180498" style="color: var(--acc); text-decoration: none; border-bottom: 1px solid var(--acc);">(760) 718-0498</a>
+          </div>
+        </div>
+        <div>
+          <iframe
+            class="map-frame"
+            src="https://www.google.com/maps?q=413+E+Main+St,+Barstow,+CA+92311&z=15&output=embed"
+            loading="lazy"
+            title="Roy's Cafe location map"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <p class="section-label">Reach Us</p>
+      <h2 class="section-title">Stop In or Call Ahead</h2>
+      <div class="contact-grid">
+        <div class="contact-block">
+          <p>No reservation needed — just pull up, find a seat, and order. If you want to call ahead or check on something, we're easy to reach.</p>
+          <a href="tel:+17607180498" class="btn-primary">Call (760) 718-0498</a>
+        </div>
+        <div class="contact-details">
+          <div class="contact-row">
+            <span class="contact-label">Phone</span>
+            <span class="contact-val"><a href="tel:+17607180498">(760) 718-0498</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Address</span>
+            <span class="contact-val">413 E Main St, Barstow, CA 92311</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Hours</span>
+            <span class="contact-val">Daily, 7:00 AM – 9:00 PM</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Google</span>
+            <span class="contact-val"><a href="https://maps.google.com/?cid=4214236795684619891&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">View Business Listing</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Roy's Cafe &nbsp;·&nbsp; 413 E Main St, Barstow, CA 92311 &nbsp;·&nbsp; <a href="tel:+17607180498">(760) 718-0498</a></p>
+    <p style="margin-top: 0.4rem;">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>

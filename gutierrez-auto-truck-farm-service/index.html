@@ -1,0 +1,545 @@
+<!--
+  ARCHETYPE: Farm & Ranch heartland workshop — "Central Valley ag-country tire & service yard."
+  Rugged agricultural feel for a Tulare auto/truck/farm-equipment tire shop. NOT diesel-gunmetal,
+  NOT southwestern-turquoise, NOT retro-blue, NOT navy-technical.
+
+  PALETTE: olive-drab (#4a4f2c / #6b7239), barn-red (#a3331f / #c44230), cream/wheat (#efe7d4 / #f6f1e3),
+           weathered ink (#2a2620). Earthy, dusty, sun-bleached.
+  FONTS:   "Oswald" (rugged condensed slab-ish display, all-caps Western feel) for headings;
+           "Bitter" (slab serif) for accents/labels; "Source Sans 3" for body.
+
+  STRUCTURE:
+   - Top utility strip (phone + hours-at-a-glance) over olive; logo-left sticky nav.
+   - Hero = split: left cream panel with stacked Western headline + dual CTA; right full-bleed shop photo,
+     a barn-red "ranch brand" badge overlapping the seam. No dark-overlay-centered-hero.
+   - "What rolls through our yard" service list = two-column ruled ledger rows (NOT 3 circular icons).
+   - Photo "yard" band (asymmetric mosaic of the real photos).
+   - Testimonies = stacked field-note cards on cream, barn-red quote tick, name + last initial, no stars.
+   - Hours + map split, keyless google.com/maps?q=...&output=embed.
+   - Footer olive, exact LJ Sites credit line.
+  ANIMATION: none beyond hover states + sticky nav. Deliberate, no scroll fades.
+  scroll-padding-top set for the sticky nav (no anchor lands under the bar).
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gutierrez Auto Truck &amp; Farm Service — Tires &amp; Service · Tulare, CA</title>
+<meta name="description" content="Family tire & service yard in Tulare, CA. Auto, truck, and farm-equipment tires, brakes, and alignment. Fast, fair prices, Central Valley grit. Call (559) 684-7000." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Bitter:ital,wght@0,500;0,700;1,500&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --olive:#4a4f2c;
+    --olive-2:#6b7239;
+    --olive-deep:#363a1f;
+    --barn:#a3331f;
+    --barn-bright:#c44230;
+    --cream:#f6f1e3;
+    --cream-2:#efe7d4;
+    --wheat:#e3d8bd;
+    --ink:#2a2620;
+    --ink-soft:#5a534a;
+    --nav-h:66px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:calc(var(--nav-h) + 8px);
+  }
+  body{
+    font-family:"Source Sans 3",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:"Oswald",sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.01em;
+    line-height:1.02;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 20px;}
+
+  /* ---------- utility strip ---------- */
+  .util{
+    background:var(--olive-deep);
+    color:var(--cream);
+    font-family:"Bitter",serif;
+    font-size:.78rem;
+    letter-spacing:.04em;
+  }
+  .util .wrap{display:flex;justify-content:space-between;align-items:center;gap:14px;padding-top:7px;padding-bottom:7px;flex-wrap:wrap;}
+  .util a{color:var(--cream);font-weight:700;white-space:nowrap;}
+  .util a:hover{color:#f2cb9a;}
+  .util .sep{opacity:.4;}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    height:var(--nav-h);
+    background:var(--cream);
+    border-bottom:3px solid var(--olive);
+    box-shadow:0 2px 0 rgba(42,38,32,.08);
+  }
+  nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:11px;}
+  .brand .mark{
+    width:38px;height:38px;flex:none;border-radius:50%;
+    background:var(--barn);color:var(--cream);
+    display:grid;place-items:center;
+    font-family:"Oswald";font-weight:700;font-size:1.25rem;
+    border:2px solid var(--olive);
+  }
+  .brand b{font-family:"Oswald";font-weight:700;font-size:1.12rem;letter-spacing:.02em;line-height:1;}
+  .brand small{display:block;font-family:"Bitter",serif;font-size:.6rem;letter-spacing:.22em;color:var(--olive-2);text-transform:uppercase;margin-top:3px;}
+  .navlinks{display:flex;gap:26px;align-items:center;}
+  .navlinks a{
+    font-family:"Oswald";font-weight:600;text-transform:uppercase;
+    font-size:.85rem;letter-spacing:.06em;color:var(--ink);
+    padding-bottom:3px;border-bottom:2px solid transparent;
+  }
+  .navlinks a:hover{color:var(--barn);border-color:var(--barn);}
+  .nav-call{
+    font-family:"Oswald";font-weight:700;font-size:.85rem;letter-spacing:.05em;
+    background:var(--barn);color:var(--cream)!important;
+    padding:9px 16px;border-radius:2px;border-bottom:2px solid transparent!important;
+  }
+  .nav-call:hover{background:var(--barn-bright);}
+  @media(max-width:820px){.navlinks a:not(.nav-call){display:none;}}
+
+  /* ---------- hero ---------- */
+  .hero{
+    display:grid;grid-template-columns:1.05fr 1fr;
+    background:var(--cream-2);
+    border-bottom:3px solid var(--olive);
+    position:relative;
+  }
+  .hero-copy{padding:62px 46px 58px;display:flex;flex-direction:column;justify-content:center;}
+  .eyebrow{
+    font-family:"Bitter",serif;font-weight:700;font-style:italic;
+    color:var(--barn);letter-spacing:.04em;font-size:.95rem;margin-bottom:14px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:34px;height:3px;background:var(--barn);display:inline-block;}
+  .hero h1{
+    font-size:clamp(2.5rem,5.4vw,4.05rem);font-weight:700;color:var(--ink);
+  }
+  .hero h1 .red{color:var(--barn);display:block;}
+  .hero p.lead{
+    font-size:1.12rem;color:var(--ink-soft);margin:22px 0 30px;max-width:30em;
+  }
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn{
+    font-family:"Oswald";font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+    font-size:1rem;padding:15px 26px;border-radius:2px;
+    display:inline-flex;align-items:center;gap:9px;cursor:pointer;
+    transition:transform .12s ease,background .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--barn);color:var(--cream);border:2px solid var(--barn);}
+  .btn-primary:hover{background:var(--barn-bright);border-color:var(--barn-bright);}
+  .btn-ghost{background:transparent;color:var(--olive-deep);border:2px solid var(--olive);}
+  .btn-ghost:hover{background:var(--olive);color:var(--cream);}
+  .hero-photo{
+    position:relative;background:var(--olive);
+    background-image:url("./photos/03.jpg");
+    background-size:cover;background-position:center;
+    min-height:420px;
+    border-left:3px solid var(--olive);
+  }
+  .brandbadge{
+    position:absolute;left:-46px;bottom:38px;
+    background:var(--barn);color:var(--cream);
+    border:3px solid var(--cream);
+    padding:16px 22px;max-width:240px;
+    box-shadow:5px 5px 0 rgba(42,38,32,.35);
+    transform:rotate(-2deg);
+  }
+  .brandbadge b{font-family:"Oswald";font-weight:700;font-size:1.32rem;display:block;letter-spacing:.02em;line-height:1.05;}
+  .brandbadge span{font-family:"Bitter",serif;font-size:.8rem;letter-spacing:.05em;display:block;margin-top:5px;}
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;}
+    .hero-photo{min-height:300px;border-left:none;border-top:3px solid var(--olive);}
+    .brandbadge{left:auto;right:20px;bottom:20px;transform:rotate(-2deg) scale(.92);}
+    .hero-copy{padding:46px 24px 48px;}
+  }
+
+  /* ---------- stat strip ---------- */
+  .stats{background:var(--olive);color:var(--cream);}
+  .stats .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;padding:22px 20px;}
+  .stat{display:flex;flex-direction:column;gap:2px;min-width:130px;}
+  .stat b{font-family:"Oswald";font-weight:700;font-size:1.55rem;color:#f2cb9a;letter-spacing:.02em;}
+  .stat span{font-family:"Bitter",serif;font-size:.82rem;letter-spacing:.04em;opacity:.92;}
+
+  /* ---------- section frame ---------- */
+  section{padding:74px 0;}
+  .sec-head{margin-bottom:40px;max-width:42em;}
+  .sec-kicker{
+    font-family:"Bitter",serif;font-weight:700;font-style:italic;color:var(--barn);
+    letter-spacing:.05em;font-size:.95rem;margin-bottom:8px;
+  }
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:700;color:var(--ink);}
+  .sec-head p{margin-top:14px;color:var(--ink-soft);font-size:1.06rem;}
+
+  /* ---------- about ---------- */
+  #about{background:var(--cream);}
+  .about-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;}
+  .about-grid p{color:var(--ink-soft);font-size:1.07rem;margin-bottom:16px;}
+  .about-grid p strong{color:var(--ink);}
+  .about-photo{
+    border:3px solid var(--olive);
+    box-shadow:8px 8px 0 var(--wheat);
+  }
+  .about-photo img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:30px;}.about-photo{max-width:360px;}}
+
+  /* ---------- services ledger ---------- */
+  #services{background:var(--olive-deep);color:var(--cream);}
+  #services .sec-head h2{color:var(--cream);}
+  #services .sec-kicker{color:#f2cb9a;}
+  #services .sec-head p{color:#d9d4c2;}
+  .ledger{display:grid;grid-template-columns:1fr 1fr;gap:0 50px;}
+  .lrow{
+    display:flex;align-items:baseline;gap:14px;
+    padding:18px 0;border-bottom:1px solid rgba(246,241,227,.18);
+  }
+  .lrow .n{
+    font-family:"Bitter",serif;font-style:italic;color:#f2cb9a;
+    font-size:.9rem;flex:none;width:30px;
+  }
+  .lrow .t{flex:1;}
+  .lrow h3{font-family:"Oswald";font-weight:600;font-size:1.18rem;color:var(--cream);letter-spacing:.03em;}
+  .lrow p{font-size:.93rem;color:#cfcab8;margin-top:3px;line-height:1.45;}
+  @media(max-width:760px){.ledger{grid-template-columns:1fr;gap:0;}}
+
+  /* ---------- yard mosaic ---------- */
+  #yard{background:var(--cream-2);}
+  .mosaic{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-auto-rows:150px;
+    gap:14px;
+  }
+  .mosaic figure{
+    overflow:hidden;border:3px solid var(--olive);background:var(--olive);
+  }
+  .mosaic img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease;}
+  .mosaic figure:hover img{transform:scale(1.05);}
+  .m-a{grid-column:span 2;grid-row:span 2;}
+  .m-b{grid-column:span 2;grid-row:span 1;}
+  .m-c{grid-column:span 1;grid-row:span 1;}
+  @media(max-width:760px){
+    .mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px;}
+    .m-a{grid-column:span 2;grid-row:span 2;}
+    .m-b{grid-column:span 2;}
+  }
+
+  /* ---------- testimonies ---------- */
+  #say{background:var(--cream);}
+  .notes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .note{
+    background:var(--cream-2);
+    border:1px solid var(--wheat);
+    border-top:5px solid var(--barn);
+    padding:28px 26px 24px;
+    position:relative;
+    box-shadow:4px 4px 0 rgba(42,38,32,.06);
+  }
+  .note .q{
+    font-family:"Bitter",serif;font-size:2.6rem;color:var(--barn);
+    line-height:.4;display:block;height:.5em;
+  }
+  .note p{font-size:1rem;color:var(--ink);margin:14px 0 18px;}
+  .note cite{
+    font-family:"Oswald";font-weight:600;font-style:normal;text-transform:uppercase;
+    letter-spacing:.05em;font-size:.85rem;color:var(--olive-2);
+    display:flex;align-items:center;gap:9px;
+  }
+  .note cite::before{content:"";width:18px;height:2px;background:var(--olive-2);display:inline-block;}
+  @media(max-width:860px){.notes{grid-template-columns:1fr;max-width:520px;}}
+
+  /* ---------- hours + map ---------- */
+  #visit{background:var(--olive);color:var(--cream);}
+  #visit .sec-head h2{color:var(--cream);}
+  #visit .sec-kicker{color:#f2cb9a;}
+  .visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:stretch;}
+  .hours-card{background:var(--olive-deep);border:2px solid rgba(246,241,227,.25);padding:30px 28px;}
+  .hours-card h3{font-family:"Oswald";font-weight:600;font-size:1.2rem;color:#f2cb9a;letter-spacing:.04em;margin-bottom:16px;}
+  .hrow{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed rgba(246,241,227,.18);font-size:.96rem;}
+  .hrow:last-child{border-bottom:none;}
+  .hrow .d{font-family:"Bitter",serif;}
+  .hrow .h{font-weight:600;color:var(--cream);}
+  .hrow.closed .h{color:#e7a08f;}
+  .hrow.today{background:rgba(242,203,154,.12);margin:0 -10px;padding-left:10px;padding-right:10px;border-radius:2px;}
+  .addr-line{margin-top:22px;font-size:.98rem;color:#e6e1cf;line-height:1.5;}
+  .addr-line a{color:#f2cb9a;font-weight:600;border-bottom:1px solid rgba(242,203,154,.4);}
+  .map-frame{border:3px solid var(--olive-deep);min-height:380px;background:var(--olive-deep);}
+  .map-frame iframe{width:100%;height:100%;min-height:380px;border:0;display:block;filter:saturate(.9);}
+  @media(max-width:820px){.visit-grid{grid-template-columns:1fr;}}
+
+  /* ---------- contact band ---------- */
+  #contact{background:var(--barn);color:var(--cream);text-align:center;padding:66px 0;}
+  #contact h2{font-size:clamp(2rem,4.4vw,3rem);font-weight:700;color:var(--cream);}
+  #contact p{font-family:"Bitter",serif;font-size:1.12rem;margin:14px auto 28px;max-width:34em;color:#f7e8e2;}
+  #contact .btn-cream{background:var(--cream);color:var(--barn);border:2px solid var(--cream);}
+  #contact .btn-cream:hover{background:var(--cream-2);}
+  #contact .btn-line{background:transparent;color:var(--cream);border:2px solid var(--cream);}
+  #contact .btn-line:hover{background:rgba(255,255,255,.12);}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--olive-deep);color:#cfcab8;padding:40px 0 30px;font-size:.9rem;}
+  .foot-grid{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:flex-start;}
+  .foot-brand b{font-family:"Oswald";font-weight:700;font-size:1.2rem;color:var(--cream);letter-spacing:.02em;}
+  .foot-brand p{margin-top:6px;font-family:"Bitter",serif;font-size:.85rem;}
+  .foot-links{display:flex;flex-direction:column;gap:7px;text-align:right;}
+  .foot-links a{color:#e6e1cf;}
+  .foot-links a:hover{color:#f2cb9a;}
+  .credit{
+    margin-top:30px;padding-top:18px;border-top:1px solid rgba(246,241,227,.16);
+    font-family:"Bitter",serif;font-size:.84rem;color:#b3ae9c;text-align:center;
+  }
+  .credit a{color:#f2cb9a;}
+</style>
+</head>
+<body>
+
+<!-- utility strip -->
+<div class="util">
+  <div class="wrap">
+    <span>Tulare, CA · Auto · Truck · Farm Equipment</span>
+    <span>
+      <a href="tel:+15596847000">(559) 684-7000</a>
+      <span class="sep">·</span>
+      Mon–Fri 8–6:30 &nbsp;·&nbsp; Sat 8–3
+    </span>
+  </div>
+</div>
+
+<!-- nav -->
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <span class="mark">G</span>
+      <span>
+        <b>Gutierrez</b>
+        <small>Auto · Truck · Farm</small>
+      </span>
+    </a>
+    <div class="navlinks">
+      <a href="#about">Shop</a>
+      <a href="#services">Service</a>
+      <a href="#yard">The Yard</a>
+      <a href="#say">Testimonies</a>
+      <a href="#visit">Hours</a>
+      <a href="tel:+15596847000" class="nav-call">Call (559) 684-7000</a>
+    </div>
+  </div>
+</nav>
+
+<!-- hero -->
+<header class="hero" id="top">
+  <div class="hero-copy">
+    <span class="eyebrow">Family-run in the heart of Tulare County</span>
+    <h1>
+      Tires &amp; service
+      <span class="red">built for the valley.</span>
+    </h1>
+    <p class="lead">
+      From the family pickup to the long-haul rig to the equipment that works your ground —
+      we mount, balance, brake, and align it fast, fair, and done right the first time.
+    </p>
+    <div class="cta-row">
+      <a href="tel:+15596847000" class="btn btn-primary">Call the Shop</a>
+      <a href="https://www.google.com/maps?q=1132+E+Paige+Ave,+Tulare,+CA+93274" target="_blank" rel="noopener" class="btn btn-ghost">Get Directions</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <div class="brandbadge">
+      <b>Auto · Truck<br>· Farm</b>
+      <span>Commercial &amp; passenger, side by side.</span>
+    </div>
+  </div>
+</header>
+
+<!-- stat strip -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><b>Auto + Heavy</b><span>Cars to commercial rigs</span></div>
+    <div class="stat"><b>Farm Equipment</b><span>Tractor &amp; implement tires</span></div>
+    <div class="stat"><b>Fast Turnaround</b><span>In, out, back to work</span></div>
+    <div class="stat"><b>Fair Prices</b><span>Straight talk, no upsell</span></div>
+  </div>
+</div>
+
+<!-- about -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="sec-kicker">About the shop</div>
+      <h2 style="font-size:clamp(1.9rem,3.6vw,2.7rem);margin-bottom:18px;">One yard for everything that rolls.</h2>
+      <p>
+        <strong>Gutierrez Auto Truck &amp; Farm Service</strong> sits on East Paige Avenue
+        in Tulare — Central Valley ag country, where a flat tire can mean a field that
+        doesn't get worked. We grew up around trucks and tractors, and we built this shop
+        to keep all of it moving.
+      </p>
+      <p>
+        Walk in with a passenger car, a commercial big rig, or a piece of farm equipment and
+        you'll get the same thing: technicians who actually know the mechanics, a wall of name
+        brands — <strong>Yokohama, Firestone, Bridgestone</strong> — and a price you can live with.
+      </p>
+      <p>
+        No appointment circus, no run-around. Pull in, tell us what's wrong, and we'll have
+        you back on the road or back in the field as fast as it can be done right.
+      </p>
+    </div>
+    <div class="about-photo">
+      <img src="./photos/06.jpg" alt="Technician at Gutierrez Auto Truck & Farm Service" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- services ledger -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">What rolls through our yard</div>
+      <h2>Service for the whole fleet.</h2>
+      <p>Passenger, commercial, and agricultural — under one roof on Paige Avenue.</p>
+    </div>
+    <div class="ledger">
+      <div class="lrow"><span class="n">01</span><div class="t"><h3>New &amp; Used Tires</h3><p>Auto, light truck, and commercial — major brands plus solid used sets when the budget's tight.</p></div></div>
+      <div class="lrow"><span class="n">02</span><div class="t"><h3>Truck &amp; Big-Rig Tires</h3><p>Drive, steer, and trailer tires for commercial haulers. Mounting, balancing, and quick swaps.</p></div></div>
+      <div class="lrow"><span class="n">03</span><div class="t"><h3>Farm Equipment Tires</h3><p>Tractor, implement, and equipment tires for the operations that feed the valley.</p></div></div>
+      <div class="lrow"><span class="n">04</span><div class="t"><h3>Brakes</h3><p>Inspection, pads, and repair for passenger and heavy-duty — stopping power you can trust.</p></div></div>
+      <div class="lrow"><span class="n">05</span><div class="t"><h3>Wheel Alignment</h3><p>Straighten it out, save your tires, and quit fighting the wheel down the highway.</p></div></div>
+      <div class="lrow"><span class="n">06</span><div class="t"><h3>Flat Repair &amp; Mounting</h3><p>Patches, plugs, mount-and-balance — fast turnaround so you're not stuck waiting.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- yard mosaic -->
+<section id="yard">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Around the lot</div>
+      <h2>The yard at work.</h2>
+    </div>
+    <div class="mosaic">
+      <figure class="m-a"><img src="./photos/01.jpg" alt="Stacks of truck and commercial tires inside the shop" loading="lazy" /></figure>
+      <figure class="m-b"><img src="./photos/03.jpg" alt="Gutierrez shop exterior with a flatbed trailer on the lot" loading="lazy" /></figure>
+      <figure class="m-c"><img src="./photos/04.jpg" alt="Commercial truck up on the service lot for tire work" loading="lazy" /></figure>
+      <figure class="m-c"><img src="./photos/05.jpg" alt="Wheel hub serviced at the shop" loading="lazy" /></figure>
+      <figure class="m-b"><img src="./photos/02.jpg" alt="Gutierrez Auto Truck & Farm Service sign with tire brand logos" loading="lazy" /></figure>
+    </div>
+  </div>
+</section>
+
+<!-- testimonies -->
+<section id="say">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">In their words</div>
+      <h2>What folks say after they pull out.</h2>
+    </div>
+    <div class="notes">
+      <figure class="note">
+        <span class="q">&ldquo;</span>
+        <p>Fast, low price, very knowledgeable. Needed tires and brakes replaced. Recommended — super fast.</p>
+        <cite>Andy L.</cite>
+      </figure>
+      <figure class="note">
+        <span class="q">&ldquo;</span>
+        <p>Always a pleasure to do business with these people! Good prices, good and fast service, very friendly.</p>
+        <cite>Jaime V.</cite>
+      </figure>
+      <figure class="note">
+        <span class="q">&ldquo;</span>
+        <p>Excellent place to purchase tires for commercial and passenger vehicles. The technicians are fluent on the mechanics and necessities for your vehicle. Best place in the 559.</p>
+        <cite>Harvey B.</cite>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- hours + map -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-kicker">Find us · Hours</div>
+      <h2>Pull in off Paige Avenue.</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="hours-card">
+        <h3>Shop Hours</h3>
+        <div class="hrow" data-day="1"><span class="d">Monday</span><span class="h">8:00 AM – 6:30 PM</span></div>
+        <div class="hrow" data-day="2"><span class="d">Tuesday</span><span class="h">8:00 AM – 6:30 PM</span></div>
+        <div class="hrow" data-day="3"><span class="d">Wednesday</span><span class="h">8:00 AM – 6:30 PM</span></div>
+        <div class="hrow" data-day="4"><span class="d">Thursday</span><span class="h">8:00 AM – 6:30 PM</span></div>
+        <div class="hrow" data-day="5"><span class="d">Friday</span><span class="h">8:00 AM – 6:30 PM</span></div>
+        <div class="hrow" data-day="6"><span class="d">Saturday</span><span class="h">8:00 AM – 3:00 PM</span></div>
+        <div class="hrow closed" data-day="0"><span class="d">Sunday</span><span class="h">Closed</span></div>
+        <div class="addr-line">
+          1132 E Paige Ave<br>Tulare, CA 93274<br>
+          <a href="https://www.google.com/maps?q=1132+E+Paige+Ave,+Tulare,+CA+93274" target="_blank" rel="noopener">Get directions →</a>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=1132+E+Paige+Ave,+Tulare,+CA+93274&z=15&output=embed"
+          title="Map to Gutierrez Auto Truck & Farm Service, 1132 E Paige Ave, Tulare, CA"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- contact band -->
+<section id="contact">
+  <div class="wrap">
+    <h2>Got a tire down? Let's get you rolling.</h2>
+    <p>Call the shop and tell us what you're driving — car, rig, or tractor — and we'll get you handled.</p>
+    <div class="cta-row" style="justify-content:center;">
+      <a href="tel:+15596847000" class="btn btn-cream">Call (559) 684-7000</a>
+      <a href="https://www.google.com/maps?q=1132+E+Paige+Ave,+Tulare,+CA+93274" target="_blank" rel="noopener" class="btn btn-line">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <b>Gutierrez Auto Truck &amp; Farm Service</b>
+        <p>1132 E Paige Ave · Tulare, CA 93274</p>
+        <p>Yokohama · Firestone · Bridgestone</p>
+      </div>
+      <div class="foot-links">
+        <a href="tel:+15596847000">(559) 684-7000</a>
+        <a href="https://www.google.com/maps?q=1132+E+Paige+Ave,+Tulare,+CA+93274" target="_blank" rel="noopener">Get directions</a>
+        <a href="https://maps.google.com/?cid=6990550325317891709" target="_blank" rel="noopener">Find us on Google</a>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // highlight today's hours row — purely cosmetic, no live data
+  (function(){
+    var d=new Date().getDay();
+    var row=document.querySelector('.hrow[data-day="'+d+'"]');
+    if(row){row.classList.add('today');}
+  })();
+</script>
+</body>
+</html>

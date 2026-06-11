@@ -1,0 +1,478 @@
+<!--
+  ARCHETYPE: Lucha-libre street-taco truck — high-energy, bold & loud.
+  Palette: ink black (#0d0d0f) + electric yellow (#ffd60a) + turquoise (#1fd6c4),
+           with hot-coral (#ff4d3d) accents pulled from the truck mural.
+  Display type: Anton (ultra-condensed bold caps) for headlines + ticker;
+                Archivo for UI/body. Street-poster energy, ALL CAPS, slab edges.
+  Structural decisions:
+    - Fixed top nav (slim, ink) with a scrolling electric-yellow "ticker" strip
+      below it (EST 2017 · STREET TACOS · TURLOCK CA). scroll-padding-top reserves both.
+    - Hero is a split: oversized stacked headline on black w/ turquoise+coral
+      lucha framing on the LEFT, the food-truck photo (03) bleeding on the RIGHT.
+      NOT a centered dark-overlay stock hero.
+    - Menu is presented as a hand-lettered "EL MENÚ" price list (real prices from
+      the truck mural photo), two columns, leader dots — like a taquería board,
+      not 3-column icon cards.
+    - Testimonies = angled "VOCES DE LA CALLE" cards, no stars, first name + last initial.
+    - One repeated CTA: Call Now (tel:). Get Directions secondary.
+    - Animation: marquee ticker only + restrained hover lifts. No fade-up.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Javi's Tacos — Street Tacos in Turlock, CA</title>
+<meta name="description" content="Javi's Tacos — bold street tacos, asada fries, quesadillas supreme and more in Turlock, CA since 2017. Open daily 10:30am–10pm.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0d0d0f;
+    --ink-2:#17171b;
+    --yellow:#ffd60a;
+    --turq:#1fd6c4;
+    --coral:#ff4d3d;
+    --paper:#f6f3ea;
+    --muted:#a6a6ad;
+    --nav-h:58px;
+    --ticker-h:34px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{
+    scroll-behavior:smooth;
+    /* reserve fixed nav + ticker so anchor jumps don't hide under the bar */
+    scroll-padding-top:calc(var(--nav-h) + var(--ticker-h) + 8px);
+  }
+  body{
+    font-family:'Archivo',system-ui,sans-serif;
+    background:var(--ink);
+    color:var(--paper);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Anton',Impact,sans-serif;
+    font-weight:400;
+    letter-spacing:.01em;
+    text-transform:uppercase;
+    line-height:.92;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:60;
+    background:rgba(13,13,15,.94);
+    backdrop-filter:blur(6px);
+    border-bottom:2px solid var(--yellow);
+    display:flex;align-items:center;
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Anton';font-size:1.35rem;letter-spacing:.04em}
+  .brand .dot{color:var(--coral)}
+  .brand .mark{
+    width:30px;height:30px;border-radius:50%;
+    background:var(--yellow);color:var(--ink);
+    display:grid;place-items:center;font-size:1rem;
+    box-shadow:0 0 0 2px var(--ink),0 0 0 4px var(--turq);
+  }
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--paper);position:relative;padding:4px 0}
+  .nav-links a:hover{color:var(--yellow)}
+  .nav-call{
+    background:var(--yellow);color:var(--ink)!important;
+    padding:9px 16px;font-family:'Anton';letter-spacing:.05em;
+    border-radius:2px;font-size:.9rem;
+    box-shadow:3px 3px 0 var(--turq);
+    transition:transform .12s ease,box-shadow .12s ease;
+  }
+  .nav-call:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--coral)}
+  .burger{display:none;background:none;border:0;color:var(--yellow);font-size:1.6rem;cursor:pointer}
+
+  /* ---------- TICKER ---------- */
+  .ticker{
+    position:fixed;top:var(--nav-h);left:0;right:0;height:var(--ticker-h);z-index:55;
+    background:var(--yellow);color:var(--ink);
+    display:flex;align-items:center;overflow:hidden;white-space:nowrap;
+    border-bottom:2px solid var(--ink);
+  }
+  .ticker-track{display:inline-flex;gap:0;animation:scroll 26s linear infinite;will-change:transform}
+  .ticker-track span{font-family:'Anton';font-size:.92rem;letter-spacing:.12em;padding:0 22px;display:inline-flex;align-items:center}
+  .ticker-track span::after{content:"★";color:var(--coral);margin-left:22px;font-size:.7rem}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+
+  .spacer{height:calc(var(--nav-h) + var(--ticker-h))}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;background:var(--ink);
+    border-bottom:3px solid var(--yellow);
+    overflow:hidden;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:stretch;min-height:560px}
+  .hero-left{padding:64px 22px 64px 0;display:flex;flex-direction:column;justify-content:center}
+  .hero-left .wrap-pad{padding-left:max(22px,calc((100vw - 1180px)/2 + 22px))}
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Anton';color:var(--turq);letter-spacing:.18em;font-size:.85rem;margin-bottom:18px;
+  }
+  .kicker .bar{width:34px;height:3px;background:var(--coral)}
+  .hero h1{font-size:clamp(3.4rem,8.5vw,6.4rem);color:var(--paper)}
+  .hero h1 .y{color:var(--yellow)}
+  .hero h1 .t{color:var(--turq);-webkit-text-stroke:0}
+  .hero-sub{margin:22px 0 30px;max-width:430px;color:#d9d6cf;font-size:1.08rem}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{
+    font-family:'Anton';letter-spacing:.04em;font-size:1.05rem;
+    padding:14px 26px;border-radius:2px;display:inline-flex;align-items:center;gap:10px;
+    transition:transform .12s ease,box-shadow .12s ease;cursor:pointer;border:0;
+  }
+  .btn-primary{background:var(--yellow);color:var(--ink);box-shadow:4px 4px 0 var(--turq)}
+  .btn-primary:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--coral)}
+  .btn-ghost{background:transparent;color:var(--paper);border:2px solid var(--turq);box-shadow:none}
+  .btn-ghost:hover{background:var(--turq);color:var(--ink)}
+  .hero-meta{margin-top:34px;display:flex;gap:26px;flex-wrap:wrap;color:var(--muted);font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em}
+  .hero-meta b{color:var(--yellow);font-family:'Anton';font-weight:400;letter-spacing:.04em}
+  .hero-right{position:relative;border-left:3px solid var(--yellow)}
+  .hero-right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05)}
+  .hero-right::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink) 0%,transparent 22%)}
+  .hero-badge{
+    position:absolute;bottom:24px;right:24px;z-index:3;
+    background:var(--coral);color:#fff;font-family:'Anton';
+    padding:12px 18px;letter-spacing:.06em;transform:rotate(-4deg);
+    box-shadow:4px 4px 0 var(--ink);border:2px solid var(--ink);
+  }
+
+  /* ---------- SECTION FRAME ---------- */
+  section{padding:84px 0}
+  .sec-head{margin-bottom:42px}
+  .sec-head .tag{font-family:'Anton';color:var(--turq);letter-spacing:.2em;font-size:.8rem;display:block;margin-bottom:8px}
+  .sec-head h2{font-size:clamp(2.3rem,5vw,3.6rem);color:var(--paper)}
+  .sec-head h2 em{font-style:normal;color:var(--yellow)}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--ink-2);border-top:3px solid var(--coral)}
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center}
+  .about p{color:#d9d6cf;font-size:1.06rem;margin-bottom:16px}
+  .about .lead{font-family:'Anton';font-size:1.5rem;color:var(--paper);line-height:1.15;text-transform:none;letter-spacing:0;margin-bottom:22px}
+  .about .lead span{color:var(--yellow)}
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .about-photos img{border:2px solid var(--yellow);height:100%;object-fit:cover;aspect-ratio:1/1}
+  .about-photos .tall{grid-row:span 2;aspect-ratio:auto}
+
+  /* ---------- MENU ---------- */
+  .menu{background:var(--ink)}
+  .menu-board{
+    background:linear-gradient(180deg,#141417,#0e0e11);
+    border:3px solid var(--yellow);border-radius:4px;
+    padding:38px clamp(22px,4vw,54px);position:relative;
+  }
+  .menu-board::before{content:"EL MENÚ";position:absolute;top:-20px;left:30px;background:var(--yellow);color:var(--ink);font-family:'Anton';padding:6px 16px;letter-spacing:.1em;font-size:1.1rem}
+  .menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px 56px;margin-top:14px}
+  .m-item{display:flex;align-items:baseline;gap:8px;padding:8px 0;border-bottom:1px dotted #34343b}
+  .m-item .name{font-family:'Anton';font-size:1.18rem;color:var(--paper);letter-spacing:.02em;white-space:nowrap}
+  .m-item .name.tq{color:var(--turq)}
+  .m-item .desc{font-size:.78rem;color:var(--muted);font-weight:500;flex:1;text-align:left;padding-left:4px;line-height:1.3}
+  .m-item .price{font-family:'Anton';color:var(--yellow);font-size:1.15rem;margin-left:auto;white-space:nowrap}
+  .menu-foot{margin-top:28px;display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}
+  .meats{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{background:var(--ink);border:2px solid var(--turq);color:var(--turq);font-family:'Anton';font-size:.8rem;letter-spacing:.06em;padding:5px 12px;border-radius:2px}
+  .menu-note{color:var(--muted);font-size:.82rem;font-style:italic}
+
+  /* ---------- TESTIMONIES ---------- */
+  .voces{background:var(--ink-2);border-top:3px solid var(--turq)}
+  .voce-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .voce{
+    background:var(--ink);border:2px solid #2a2a30;border-left:6px solid var(--yellow);
+    padding:26px 24px;position:relative;transition:transform .14s ease,border-color .14s ease;
+  }
+  .voce:nth-child(2){border-left-color:var(--turq)}
+  .voce:nth-child(3){border-left-color:var(--coral)}
+  .voce:hover{transform:translateY(-4px);border-top-color:#3a3a42}
+  .voce .q{font-family:'Anton';color:var(--yellow);font-size:2.4rem;line-height:0;display:block;height:18px}
+  .voce p{color:#dcd9d2;font-size:.98rem;margin:6px 0 16px}
+  .voce .who{font-family:'Anton';color:var(--paper);letter-spacing:.05em;font-size:.95rem}
+  .voce .who::before{content:"— "}
+
+  /* ---------- VISIT ---------- */
+  .visit{background:var(--ink)}
+  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;border:3px solid var(--yellow);border-radius:4px;overflow:hidden}
+  .visit-info{padding:42px clamp(24px,3.5vw,46px);background:var(--ink-2)}
+  .visit-info h3{font-size:1.6rem;color:var(--yellow);margin-bottom:6px}
+  .visit-info .addr{color:#d9d6cf;font-size:1.05rem;margin-bottom:26px}
+  .hours-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dotted #33333a;font-size:.95rem}
+  .hours-row span:first-child{font-weight:700;letter-spacing:.03em}
+  .hours-row span:last-child{color:var(--turq);font-family:'Anton';letter-spacing:.04em}
+  .open-banner{
+    margin:24px 0;background:var(--turq);color:var(--ink);font-family:'Anton';
+    padding:12px 16px;letter-spacing:.04em;display:flex;align-items:center;gap:10px;
+  }
+  .open-banner .pulse{width:11px;height:11px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 0 rgba(13,13,15,.5);animation:p 1.8s infinite}
+  @keyframes p{0%{box-shadow:0 0 0 0 rgba(13,13,15,.55)}70%{box-shadow:0 0 0 10px rgba(13,13,15,0)}100%{box-shadow:0 0 0 0 rgba(13,13,15,0)}}
+  .visit-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+  .visit-map iframe{width:100%;height:100%;min-height:420px;border:0;display:block;filter:grayscale(.15) contrast(1.05)}
+  .findus{margin-top:22px;color:var(--muted);font-size:.85rem;letter-spacing:.04em}
+  .findus a{color:var(--yellow);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+
+  /* ---------- FINAL CTA ---------- */
+  .closer{background:var(--yellow);color:var(--ink);text-align:center;padding:74px 22px}
+  .closer h2{font-size:clamp(2.4rem,6vw,4.4rem);color:var(--ink)}
+  .closer p{font-family:'Anton';letter-spacing:.04em;font-size:1.2rem;margin:10px 0 26px}
+  .closer .btn-primary{background:var(--ink);color:var(--yellow);box-shadow:5px 5px 0 var(--coral)}
+  .closer .btn-primary:hover{box-shadow:7px 7px 0 var(--turq)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);border-top:3px solid var(--coral);padding:46px 22px 34px;text-align:center}
+  .f-brand{font-family:'Anton';font-size:1.9rem;letter-spacing:.05em;margin-bottom:8px}
+  .f-brand .dot{color:var(--coral)}
+  .f-links{display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin:18px 0;font-weight:700;text-transform:uppercase;letter-spacing:.07em;font-size:.82rem}
+  .f-links a:hover{color:var(--yellow)}
+  .f-social a{color:var(--turq);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+  .credit{margin-top:24px;padding-top:20px;border-top:1px solid #26262c;color:var(--muted);font-size:.82rem}
+  .credit a{color:var(--yellow)}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .nav-links{display:none}
+    .burger{display:block}
+    .nav-links.open{
+      display:flex;flex-direction:column;position:absolute;top:var(--nav-h);left:0;right:0;
+      background:var(--ink);padding:18px 22px;gap:16px;border-bottom:2px solid var(--yellow);
+    }
+    .hero-grid{grid-template-columns:1fr}
+    .hero-left{padding:48px 22px 40px;order:2}
+    .hero-left .wrap-pad{padding-left:0}
+    .hero-right{order:1;min-height:300px;border-left:0;border-bottom:3px solid var(--yellow)}
+    .hero-right::after{background:linear-gradient(0deg,var(--ink) 0%,transparent 40%)}
+    .about-grid{grid-template-columns:1fr;gap:30px}
+    .menu-cols{grid-template-columns:1fr}
+    .voce-grid{grid-template-columns:1fr}
+    .visit-grid{grid-template-columns:1fr}
+    .visit-map iframe{min-height:320px}
+  }
+  @media (max-width:560px){
+    .m-item .desc{display:none}
+    .hero-meta{gap:18px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="mark">🌮</span>JAVI'S<span class="dot">.</span>TACOS
+    </a>
+    <div class="nav-links" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#menu">El Menú</a>
+      <a href="#voces">Testimonies</a>
+      <a href="#visit">Visit</a>
+      <a class="nav-call" href="tel:+12095951568">Call (209) 595-1568</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>EST. 2017</span><span>STREET TACOS</span><span>TURLOCK · CA</span><span>ASADA · PASTOR · POLLO · SHRIMP</span><span>OPEN DAILY TIL 10PM</span>
+    <span>EST. 2017</span><span>STREET TACOS</span><span>TURLOCK · CA</span><span>ASADA · PASTOR · POLLO · SHRIMP</span><span>OPEN DAILY TIL 10PM</span>
+  </div>
+</div>
+
+<span class="spacer" id="top"></span>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="wrap-pad">
+        <span class="kicker"><span class="bar"></span>TAQUERÍA · TURLOCK SINCE 2017</span>
+        <h1>BIG <span class="y">FLAVOR</span>,<br>STRAIGHT<br>OFF THE <span class="t">TRUCK</span>.</h1>
+        <p class="hero-sub">Tacos packed with meat, asada fries piled high, and salsas that hit. Javi's has been Turlock's go-to street taquería since 2017 — pull up hungry.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="tel:+12095951568">📞 Call Now</a>
+          <a class="btn btn-ghost" href="#menu">See the Menú</a>
+        </div>
+        <div class="hero-meta">
+          <span>Open Daily<br><b>10:30AM–10PM</b></span>
+          <span>Find Us<br><b>1590 Lander Ave</b></span>
+          <span>Order<br><b>(209) 595-1568</b></span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="./photos/03.jpg" alt="Javi's Tacos food truck in Turlock at dusk">
+      <div class="hero-badge">¡BUEN PROVECHO!</div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">★ QUIÉNES SOMOS</span>
+      <h2>NOT YOUR AVERAGE <em>TACO STOP</em></h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p class="lead">Family-recommended, soccer-game approved, and built on one idea: <span>pile it with meat and don't skimp on the salsa.</span></p>
+        <p>What started rolling through Turlock in 2017 has become a local fixture — the kind of truck people drive across town for. Order a plate of crunchy shredded beef, the Javi's Special built to share, or our famous loaded asada fries with everything on top.</p>
+        <p>Big portions, fair prices, and salsas folks rave about. Hand it through the window and you'll get why this place keeps getting passed down from family to family.</p>
+        <div class="hero-meta" style="margin-top:24px">
+          <span>Bestseller<br><b>JAVI'S FRIES</b></span>
+          <span>Made to share<br><b>JAVI'S SPECIAL</b></span>
+        </div>
+      </div>
+      <div class="about-photos">
+        <img class="tall" src="./photos/02.jpg" alt="Loaded carne asada fries with cheese, pico, and jalapeños">
+        <img src="./photos/06.jpg" alt="Quesadilla supreme with carne asada in a basket">
+        <img src="./photos/01.jpg" alt="Crunchy taco plate with Mexican rice and refried beans">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">★ HECHO A LA ORDEN</span>
+      <h2>THE <em>MENÚ</em></h2>
+    </div>
+    <div class="menu-board">
+      <div class="menu-cols">
+        <div class="m-item"><span class="name">Tacos</span><span class="desc">Meat, onion, cilantro, salsa</span><span class="price">$2.50</span></div>
+        <div class="m-item"><span class="name tq">Javi's Fries</span><span class="desc">Fries, meat, guacamole, sour cream, pico</span><span class="price">$11.50</span></div>
+        <div class="m-item"><span class="name">Quesadilla Regular</span><span class="desc">Meat, cheese, onion, cilantro, salsa</span><span class="price">$7.00</span></div>
+        <div class="m-item"><span class="name">California Burrito</span><span class="desc">Meat, fries, cheese, guac, pico</span><span class="price">$11.30</span></div>
+        <div class="m-item"><span class="name tq">Quesadilla Supreme</span><span class="desc">Cheese, salsa, lettuce, tomato, guac, sour cream</span><span class="price">$11.50</span></div>
+        <div class="m-item"><span class="name">Street Dog</span><span class="desc">Bacon-wrapped, grilled onions, mustard, ketchup</span><span class="price">$4.50</span></div>
+        <div class="m-item"><span class="name">Burrito Regular</span><span class="desc">Meat, rice, beans, onion, cilantro, salsa</span><span class="price">$9.99</span></div>
+        <div class="m-item"><span class="name">Nachos</span><span class="desc">Meat, guac, sour cream, pico de gallo, salsa</span><span class="price">$11.50</span></div>
+        <div class="m-item"><span class="name tq">Burrito Supreme</span><span class="desc">Meat, rice, beans, onion, cheese, sour cream, salsa</span><span class="price">$10.99</span></div>
+        <div class="m-item"><span class="name">Buffalo Chicken Fries</span><span class="desc">Chicken, cheese, buffalo sauce, ranch</span><span class="price">$11.00</span></div>
+        <div class="m-item"><span class="name">Torta</span><span class="desc">Meat, lettuce, tomato, guac, cheese, salsa, jalapeños</span><span class="price">$10.50</span></div>
+        <div class="m-item"><span class="name">Churro</span><span class="desc">Cinnamon-sugar, fried to order</span><span class="price">$1.50</span></div>
+      </div>
+      <div class="menu-foot">
+        <div class="meats">
+          <span class="chip">Asada</span>
+          <span class="chip">Pastor</span>
+          <span class="chip">Pollo</span>
+          <span class="chip">Chorizo</span>
+          <span class="chip">Shrimp</span>
+        </div>
+        <span class="menu-note">Aguas frescas &amp; cold drinks too — ask at the window.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="voces" id="voces">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">★ LO QUE DICE LA GENTE</span>
+      <h2>VOCES DE LA <em>CALLE</em></h2>
+    </div>
+    <div class="voce-grid">
+      <div class="voce">
+        <span class="q">“</span>
+        <p>Recommended by different family members — we came in for a soccer game from Stockton and the service was excellent. The crunchy shredded beef and the Javi's Special were delicious. The Javi's Special is definitely a plate to share.</p>
+        <div class="who">Carlos D.</div>
+      </div>
+      <div class="voce">
+        <span class="q">“</span>
+        <p>We had the Quesadilla Supreme with carne asada and a carne asada taco. Portion size great for the price, and the salsas that came with our food were great.</p>
+        <div class="who">Yolanda V.</div>
+      </div>
+      <div class="voce">
+        <span class="q">“</span>
+        <p>Would always see this truck passing by during work, so I thought I'd try it. Ordered an asada and a pastor taco — flavor is there and I really liked how they packed it with meat.</p>
+        <div class="who">Francisco M.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="tag">★ PÁSALE</span>
+      <h2>FIND THE <em>TRUCK</em></h2>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-info">
+        <h3>JAVI'S TACOS</h3>
+        <div class="addr">1590 Lander Ave<br>Turlock, CA 95380</div>
+        <div class="hours">
+          <div class="hours-row"><span>Monday</span><span>10:30A – 10P</span></div>
+          <div class="hours-row"><span>Tuesday</span><span>10:30A – 10P</span></div>
+          <div class="hours-row"><span>Wednesday</span><span>10:30A – 10P</span></div>
+          <div class="hours-row"><span>Thursday</span><span>10:30A – 10P</span></div>
+          <div class="hours-row"><span>Friday</span><span>10:30A – 10P</span></div>
+          <div class="hours-row"><span>Saturday</span><span>10:30A – 10P</span></div>
+          <div class="hours-row"><span>Sunday</span><span>10:30A – 10P</span></div>
+        </div>
+        <div class="open-banner"><span class="pulse"></span>OPEN 7 DAYS A WEEK</div>
+        <div class="visit-actions">
+          <a class="btn btn-primary" href="tel:+12095951568">📞 Call Now</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps?q=1590+Lander+Ave,+Turlock,+CA+95380" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+        <div class="findus">Find us on <a href="https://maps.google.com/?cid=57939625682924593" target="_blank" rel="noopener">Google Business</a></div>
+      </div>
+      <div class="visit-map">
+        <iframe
+          src="https://www.google.com/maps?q=1590%20Lander%20Ave,%20Turlock,%20CA%2095380&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Javi's Tacos, 1590 Lander Ave, Turlock CA"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSER -->
+<section class="closer">
+  <h2>HUNGRY YET?</h2>
+  <p>Call ahead or roll up to the window.</p>
+  <a class="btn btn-primary" href="tel:+12095951568">📞 (209) 595-1568</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-brand">JAVI'S<span class="dot">.</span>TACOS</div>
+  <div class="f-social">Street tacos in Turlock, CA · Est. 2017</div>
+  <div class="f-links">
+    <a href="#about">About</a>
+    <a href="#menu">El Menú</a>
+    <a href="#voces">Testimonies</a>
+    <a href="#visit">Visit</a>
+    <a href="tel:+12095951568">Call</a>
+  </div>
+  <div class="f-social">
+    <a href="https://maps.google.com/?cid=57939625682924593" target="_blank" rel="noopener">Find us on Google Business</a>
+  </div>
+  <div class="credit">
+    Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  const burger=document.getElementById('burger');
+  const links=document.getElementById('navlinks');
+  burger.addEventListener('click',()=>links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+</script>
+</body>
+</html>

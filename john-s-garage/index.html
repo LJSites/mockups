@@ -1,0 +1,1187 @@
+<!-- flavor: desert-workshop | accent: #E07A1F | bg: #1C1B19 | hero: magazine-spread | service: accordion -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John's Garage — Yucca Valley Tire & Auto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --acc: #E07A1F;
+      --bg: #1C1B19;
+      --bg2: #252420;
+      --bg3: #2E2C27;
+      --text: #E8E3D8;
+      --muted: #9B9282;
+      --nav-h: 64px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      background: var(--bg);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--bg);
+      border-bottom: 1px solid rgba(224, 122, 31, 0.18);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-logo span { color: var(--acc); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--acc); }
+
+    .nav-cta {
+      background: var(--acc);
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .nav-mobile-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s;
+    }
+
+    /* ── HERO — magazine-spread ── */
+    #hero {
+      min-height: calc(100svh - var(--nav-h));
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 3rem 4rem 2.5rem;
+      background: var(--bg);
+    }
+
+    .hero-eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-left h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2.75rem, 5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-left h1 em {
+      font-style: italic;
+      color: var(--acc);
+    }
+
+    .hero-tagline {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 36ch;
+      margin-bottom: 2.5rem;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: #fff;
+      padding: 0.85rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid rgba(224, 122, 31, 0.4);
+      color: var(--acc);
+      padding: 0.85rem 2rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(224, 122, 31, 0.1);
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-right-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, var(--bg) 0%, transparent 30%);
+      pointer-events: none;
+    }
+
+    .hero-strip {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      right: 2rem;
+      background: rgba(28, 27, 25, 0.88);
+      border-left: 3px solid var(--acc);
+      padding: 1rem 1.25rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .hero-strip p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .hero-strip strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 0.35rem;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--bg2);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .trust-item::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--acc);
+      transform: rotate(45deg);
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 0.75rem;
+    }
+
+    .about-img-main {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+
+    .about-img-main img,
+    .about-img-sm img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-img-sm {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .about-text .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 1rem;
+    }
+
+    .about-text h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.9rem, 3vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.015em;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .about-stat-row {
+      display: flex;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat {
+      border-left: 2px solid var(--acc);
+      padding-left: 1rem;
+    }
+
+    .stat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--acc);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ── SERVICES — accordion ── */
+    #services {
+      background: var(--bg2);
+      padding: 5rem 2rem;
+    }
+
+    .services-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-header .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.9rem, 3vw, 2.75rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+    }
+
+    .accordion {
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .accordion-item {
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .accordion-trigger {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 0;
+      text-align: left;
+      gap: 1rem;
+    }
+
+    .accordion-trigger-label {
+      font-family: 'Fraunces', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .accordion-icon {
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(224, 122, 31, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      color: var(--acc);
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .accordion-item.open .accordion-icon {
+      background: var(--acc);
+      border-color: var(--acc);
+      color: #fff;
+    }
+
+    .accordion-body {
+      display: none;
+      padding-bottom: 1.5rem;
+    }
+
+    .accordion-item.open .accordion-body {
+      display: block;
+    }
+
+    .accordion-body p {
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 68ch;
+    }
+
+    .accordion-item.open .accordion-trigger-label {
+      color: var(--acc);
+    }
+
+    /* ── PHOTOS STRIP ── */
+    .photos-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      height: 280px;
+      overflow: hidden;
+    }
+
+    .photos-strip-item {
+      overflow: hidden;
+    }
+
+    .photos-strip-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .photos-strip-item:hover img {
+      transform: scale(1.04);
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies {
+      padding: 5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonies-header {
+      margin-bottom: 3rem;
+    }
+
+    .testimonies-header .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.75rem;
+    }
+
+    .testimonies-header h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.9rem, 3vw, 2.75rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+    }
+
+    .testimonies-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .testimony-card {
+      background: var(--bg2);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 2rem;
+      position: relative;
+    }
+
+    .testimony-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-family: 'Fraunces', serif;
+      font-size: 4rem;
+      color: var(--acc);
+      opacity: 0.2;
+      line-height: 1;
+    }
+
+    .testimony-card blockquote {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+    .testimony-attr {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--acc);
+    }
+
+    .testimony-card.featured {
+      background: var(--bg3);
+      border-color: rgba(224, 122, 31, 0.25);
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .testimony-card.featured blockquote {
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    /* ── HOURS & MAP ── */
+    #location {
+      background: var(--bg2);
+      padding: 5rem 2rem;
+    }
+
+    .location-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .hours-block .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.75rem;
+    }
+
+    .hours-block h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.015em;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .hours-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .hours-table td {
+      padding: 0.65rem 0;
+      font-size: 0.9rem;
+    }
+
+    .hours-table .day {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.8rem;
+    }
+
+    .hours-table .time {
+      text-align: right;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .hours-table .closed {
+      color: var(--muted);
+      opacity: 0.5;
+    }
+
+    .contact-details {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .contact-line {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-line a {
+      color: var(--acc);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-line a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--acc);
+      flex-shrink: 0;
+    }
+
+    .map-block iframe {
+      width: 100%;
+      height: 380px;
+      border: none;
+      display: block;
+      filter: grayscale(30%) contrast(1.05);
+    }
+
+    .map-cta {
+      margin-top: 1rem;
+      display: inline-block;
+    }
+
+    /* ── CTA BANNER ── */
+    #cta {
+      background: var(--acc);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    #cta h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.9rem, 3vw, 2.75rem);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    #cta p {
+      color: rgba(255,255,255,0.8);
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-dark {
+      display: inline-block;
+      background: var(--bg);
+      color: var(--text);
+      padding: 0.9rem 2.25rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s;
+    }
+
+    .btn-dark:hover { opacity: 0.85; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 2.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-align: center;
+    }
+
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    .footer-logo span { color: var(--acc); }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--acc); }
+
+    .footer-credit {
+      font-size: 0.78rem;
+      color: var(--muted);
+      opacity: 0.6;
+    }
+
+    .footer-credit a {
+      color: var(--muted);
+      text-decoration: underline;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      #hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-right {
+        height: 55vw;
+        max-height: 400px;
+      }
+
+      .hero-right-overlay {
+        background: linear-gradient(180deg, var(--bg) 0%, transparent 25%);
+      }
+
+      .hero-left {
+        padding: 3rem 1.5rem;
+      }
+
+      #about {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .testimonies-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimony-card.featured {
+        grid-template-columns: 1fr;
+      }
+
+      .location-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .photos-strip {
+        grid-template-columns: 1fr 1fr;
+        height: 200px;
+      }
+
+      .photos-strip-item:last-child {
+        display: none;
+      }
+
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        padding: 1.5rem;
+        gap: 1.25rem;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+        z-index: 99;
+      }
+      .nav-cta { display: none; }
+      .nav-mobile-toggle { display: flex; }
+    }
+
+    @media (max-width: 600px) {
+      .trust-bar {
+        gap: 1.25rem;
+        padding: 1rem;
+      }
+
+      .about-stat-row {
+        gap: 1.5rem;
+      }
+
+      .photos-strip {
+        grid-template-columns: 1fr;
+        height: 240px;
+      }
+
+      .photos-strip-item:not(:first-child) {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">John's <span>Garage</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Hours & Map</a></li>
+    </ul>
+    <a href="tel:+17602282905" class="nav-cta">Call Now</a>
+    <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO — magazine-spread -->
+  <section id="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Yucca Valley, CA — Est. John's Garage</p>
+      <h1>Tires.<br>Auto Repair.<br><em>Done right.</em></h1>
+      <p class="hero-tagline">Nine years of trust in the high desert. From new tires to fuel pumps, John's Garage keeps your vehicle road-ready — fast, fair, and with a welcome you'll remember.</p>
+      <div class="hero-actions">
+        <a href="tel:+17602282905" class="btn-primary">Call (760) 228-2905</a>
+        <a href="https://www.google.com/maps?q=7024+Old+Woman+Springs+Rd,+Yucca+Valley,+CA+92284&z=15&output=embed" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="./photos/01.jpg" alt="John's Garage exterior" />
+      <div class="hero-right-overlay"></div>
+      <div class="hero-strip">
+        <p>"My car runs like a dream now, and the customer service was fantastic. Will go there from now on."</p>
+        <strong>— Dustin L., Verified Customer</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item">Tires & Installation</div>
+    <div class="trust-item">Auto Repair</div>
+    <div class="trust-item">Mon–Sat Service</div>
+    <div class="trust-item">Yucca Valley, CA</div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-images">
+      <div class="about-img-main">
+        <img src="./photos/02.jpg" alt="Work in progress at John's Garage" />
+      </div>
+      <div class="about-img-sm">
+        <img src="./photos/03.jpg" alt="Tires at John's Garage" />
+      </div>
+      <div class="about-img-sm">
+        <img src="./photos/04.jpg" alt="Service at John's Garage" />
+      </div>
+    </div>
+    <div class="about-text">
+      <p class="section-label">Who We Are</p>
+      <h2>A garage that actually cares about you</h2>
+      <p>John's Garage has been serving the Yucca Valley community from our spot on Old Woman Springs Road. We built this place on one simple belief: auto service should be straightforward, affordable, and kind — every single time.</p>
+      <p>Whether you're a long-time local or just passing through the high desert with an unexpected flat, you're going to feel the difference. Our team — from Miss Rita at the front to the techs in the bays — shows up for every customer like family.</p>
+      <div class="about-stat-row">
+        <div class="stat">
+          <div class="stat-num">9+</div>
+          <div class="stat-label">Years Serving<br>Yucca Valley</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">Fair</div>
+          <div class="stat-label">Pricing,<br>Always</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5★</div>
+          <div class="stat-label">Customer<br>Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES — accordion -->
+  <section id="services">
+    <div class="services-inner">
+      <div class="section-header">
+        <p class="section-label">What We Do</p>
+        <h2>Services & Specialties</h2>
+      </div>
+
+      <div class="accordion" id="accordion">
+        <div class="accordion-item open">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span class="accordion-trigger-label">Tire Sales & Installation</span>
+            <span class="accordion-icon">&#8722;</span>
+          </button>
+          <div class="accordion-body">
+            <p>New tires sourced and installed while you wait. We carry a range of sizes for passenger cars, vans, and trucks — with competitive pricing and fast mounting. Need a patch or plug? We handle those same day, often in under 30 minutes.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-trigger-label">General Auto Repair</span>
+            <span class="accordion-icon">&#43;</span>
+          </button>
+          <div class="accordion-body">
+            <p>From brake jobs to fuel pump replacements, our mechanics tackle the full range of repairs. We use quality parts and quote you honestly before we wrench — no surprise invoices.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-trigger-label">Flat Tire Emergency</span>
+            <span class="accordion-icon">&#43;</span>
+          </button>
+          <div class="accordion-body">
+            <p>Caught a screw in your tire on the way through 29 Palms or heading up to Big Bear? We get road travelers in fast. Quick diagnosis, honest repair vs. replace recommendation, and you're back on the road the same visit.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-trigger-label">Brake Inspection & Service</span>
+            <span class="accordion-icon">&#43;</span>
+          </button>
+          <div class="accordion-body">
+            <p>Desert roads are tough on brakes. We inspect pads, rotors, calipers, and brake fluid as part of every visit — and let you know what's actually needed, not what runs up the bill.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span class="accordion-trigger-label">Oil Changes & Maintenance</span>
+            <span class="accordion-icon">&#43;</span>
+          </button>
+          <div class="accordion-body">
+            <p>Routine oil changes, filter replacements, and fluid top-offs. Keep your vehicle dialed in between bigger services — we'll remind you what's coming due and keep things simple.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTOS STRIP -->
+  <div class="photos-strip">
+    <div class="photos-strip-item">
+      <img src="./photos/05.jpg" alt="John's Garage shop" />
+    </div>
+    <div class="photos-strip-item">
+      <img src="./photos/06.jpg" alt="John's Garage team" />
+    </div>
+    <div class="photos-strip-item">
+      <img src="./photos/03.jpg" alt="Tires and equipment" />
+    </div>
+  </div>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="testimonies-header">
+      <p class="section-label">In Their Words</p>
+      <h2>What Our Customers Say</h2>
+    </div>
+    <div class="testimonies-grid">
+
+      <div class="testimony-card featured">
+        <div>
+          <blockquote>"I have been going to John's Garage for 9 years. All the employees have always been courteous and respectful — which is evident if I continue to do business with them faithfully. I would refer John's to anyone."</blockquote>
+          <div class="testimony-attr">Douglas S.</div>
+        </div>
+        <div style="align-self:center;">
+          <a href="tel:+17602282905" class="btn-primary" style="white-space:nowrap;">Call Now</a>
+        </div>
+      </div>
+
+      <div class="testimony-card">
+        <blockquote>"The best experience ever! Miss Rita was so helpful, knowledgeable, and I was very impressed with her multitasking abilities in this busy environment. Thank you for the affordable tires and excellent customer service."</blockquote>
+        <div class="testimony-attr">Yvonne S.</div>
+      </div>
+
+      <div class="testimony-card">
+        <blockquote>"Tires, new fuel pump, a lot of work. The pricing was absolutely reasonable, my car runs like a dream now, and the customer service was fantastic. Will go there from now on. Thanks Louie!"</blockquote>
+        <div class="testimony-attr">Dustin L.</div>
+      </div>
+
+      <div class="testimony-card">
+        <blockquote>"We had a screw in our tire visiting the area. They got us in fast, repaired the damage at a great price. Very nice and great service — 10/10."</blockquote>
+        <div class="testimony-attr">Erik D.</div>
+      </div>
+
+      <div class="testimony-card">
+        <blockquote>"Not just the price or the tires, or how fast they installed them — it was the above-and-beyond customer service. My dad uses oxygen and they were so attentive to his needs. A place with a big heart."</blockquote>
+        <div class="testimony-attr">Franny C.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOURS & MAP -->
+  <section id="location">
+    <div class="location-inner">
+      <div class="hours-block">
+        <p class="section-label">Find Us</p>
+        <h2>Hours & Location</h2>
+
+        <table class="hours-table">
+          <tbody>
+            <tr>
+              <td class="day">Monday</td>
+              <td class="time">8:00 AM – 5:00 PM</td>
+            </tr>
+            <tr>
+              <td class="day">Tuesday</td>
+              <td class="time">8:00 AM – 5:00 PM</td>
+            </tr>
+            <tr>
+              <td class="day">Wednesday</td>
+              <td class="time">8:00 AM – 5:00 PM</td>
+            </tr>
+            <tr>
+              <td class="day">Thursday</td>
+              <td class="time">8:00 AM – 5:00 PM</td>
+            </tr>
+            <tr>
+              <td class="day">Friday</td>
+              <td class="time">8:00 AM – 5:00 PM</td>
+            </tr>
+            <tr>
+              <td class="day">Saturday</td>
+              <td class="time">8:00 AM – 2:00 PM</td>
+            </tr>
+            <tr>
+              <td class="day">Sunday</td>
+              <td class="time closed">Closed</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="contact-details">
+          <div class="contact-line">
+            <div class="contact-dot"></div>
+            <span>7024 Old Woman Springs Rd, Yucca Valley, CA 92284</span>
+          </div>
+          <div class="contact-line">
+            <div class="contact-dot"></div>
+            <a href="tel:+17602282905">(760) 228-2905</a>
+          </div>
+          <div class="contact-line">
+            <div class="contact-dot"></div>
+            <a href="https://maps.google.com/?cid=2719171941449541036" target="_blank" rel="noopener">View on Google Business</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-block">
+        <iframe
+          src="https://www.google.com/maps?q=7024+Old+Woman+Springs+Rd,+Yucca+Valley,+CA+92284&z=15&output=embed"
+          title="John's Garage location map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          aria-label="Map showing John's Garage at 7024 Old Woman Springs Rd, Yucca Valley CA"></iframe>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=7024+Old+Woman+Springs+Rd,+Yucca+Valley,+CA+92284" target="_blank" rel="noopener" class="btn-ghost map-cta">Get Directions &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section id="cta">
+    <h2>Ready to bring your vehicle in?</h2>
+    <p>Call ahead or just pull up — we'll take care of you.</p>
+    <a href="tel:+17602282905" class="btn-dark">Call (760) 228-2905</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">John's <span>Garage</span></div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#testimonies">Testimonies</a>
+      <a href="#location">Hours & Map</a>
+      <a href="https://maps.google.com/?cid=2719171941449541036" target="_blank" rel="noopener">Google Business</a>
+    </div>
+    <p class="footer-credit">
+      Mockup designed by LJ Sites — interested in making this yours?
+      <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </p>
+  </footer>
+
+  <script>
+    // Accordion
+    document.querySelectorAll('.accordion-trigger').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = this.closest('.accordion-item');
+        var isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.accordion-item').forEach(function(el) {
+          el.classList.remove('open');
+          el.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+          el.querySelector('.accordion-icon').innerHTML = '&#43;';
+        });
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          this.setAttribute('aria-expanded', 'true');
+          item.querySelector('.accordion-icon').innerHTML = '&#8722;';
+        }
+      });
+    });
+
+    // Mobile nav toggle
+    var navToggle = document.getElementById('nav-toggle');
+    var navLinks = document.getElementById('nav-links');
+    navToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('open');
+    });
+    // Close nav on link click
+    navLinks.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() {
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

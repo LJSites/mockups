@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<!--
+  ARCHETYPE: Soft floral cottage-cafe / garden-oasis brochure site.
+  Distinct from the playful-pun coffee house and the espresso-brown craft roastery siblings.
+
+  PALETTE: sage green (#6e7e5e / #4f5e42) + blush (#e4c2c0 / #f3e3df) + warm cream (#faf6ee).
+  DISPLAY FONT: "Fraunces" (soft, humanist, optical-display serif w/ rounded warmth) for headings;
+  body in "Nunito Sans" (humanist rounded sans) for airy calm. A garden, not a coffee-machine.
+
+  STRUCTURAL DECISIONS:
+   - Asymmetric editorial hero: left type column + right offset photo card with a blush "petal" frame,
+     NOT a centered overlay hero (anti-pattern avoided).
+   - Sticky slim top nav; html{scroll-padding-top} reserves its height so anchors never park under it.
+   - "The Garden Menu" presented as a two-column handwritten-style price list w/ seasonal callout,
+     NOT 3-col icon cards.
+   - Testimonies = staggered quote leaves ("In Their Words"), no stars / scores / counts.
+   - Photo gallery is a masonry-ish strip celebrating the real plant-filled space.
+   - One primary CTA ("Get Directions") repeated in nav, hero, and location band.
+   - Keyless Google Maps embed (maps?q=...&output=embed). No animation beyond gentle hover lifts.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Flowerbud Coffee — Coffee &amp; Plants in Jurupa Valley</title>
+<meta name="description" content="Flowerbud Coffee is a cozy, plant-filled coffee & matcha shop in Jurupa Valley, CA — a little garden oasis for specialty lattes, seasonal drinks, and a peaceful morning." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --sage:#6e7e5e;
+    --sage-deep:#4f5e42;
+    --sage-soft:#aeba9e;
+    --blush:#e4c2c0;
+    --blush-soft:#f3e3df;
+    --cream:#faf6ee;
+    --cream-2:#f4ece0;
+    --ink:#3a3a33;
+    --ink-soft:#6c6b60;
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:var(--nav-h);
+  }
+  body{
+    margin:0;
+    font-family:"Nunito Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.65;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:"Fraunces",Georgia,serif;
+    font-weight:500;
+    color:var(--sage-deep);
+    line-height:1.12;
+    margin:0;
+    letter-spacing:-.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- NAV ---------- */
+  nav.top{
+    position:sticky;top:0;z-index:50;
+    height:var(--nav-h);
+    background:rgba(250,246,238,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid #e9e0d2;
+    display:flex;align-items:center;
+  }
+  nav.top .wrap{display:flex;align-items:center;justify-content:space-between;width:100%;}
+  .brand{
+    font-family:"Fraunces",serif;
+    font-size:1.28rem;font-weight:600;color:var(--sage-deep);
+    display:flex;align-items:center;gap:.5rem;letter-spacing:.01em;
+  }
+  .brand .bud{
+    width:11px;height:11px;border-radius:50% 50% 50% 0;
+    background:var(--blush);transform:rotate(45deg);display:inline-block;
+    border:1px solid #d3a7a4;
+  }
+  .nav-links{display:flex;align-items:center;gap:1.9rem;}
+  .nav-links a.lnk{
+    font-size:.83rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--ink-soft);transition:color .2s;
+  }
+  .nav-links a.lnk:hover{color:var(--sage-deep);}
+  .nav-cta{
+    font-size:.8rem;font-weight:700;letter-spacing:.04em;
+    background:var(--sage-deep);color:var(--cream);
+    padding:.55rem 1.05rem;border-radius:999px;transition:background .2s,transform .2s;
+  }
+  .nav-cta:hover{background:var(--sage);transform:translateY(-1px);}
+  .nav-toggle{display:none;}
+  @media(max-width:760px){
+    .nav-links a.lnk{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 48px;position:relative;overflow:hidden;}
+  .hero::before{
+    content:"";position:absolute;right:-140px;top:-120px;width:420px;height:420px;
+    background:radial-gradient(circle,var(--blush-soft) 0%,transparent 70%);
+    z-index:0;
+  }
+  .hero .grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center;
+    position:relative;z-index:1;
+  }
+  .eyebrow{
+    font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--sage);margin-bottom:1.1rem;display:flex;align-items:center;gap:.6rem;
+  }
+  .eyebrow::before{content:"";width:30px;height:1px;background:var(--sage-soft);}
+  .hero h1{font-size:clamp(2.7rem,6vw,4.1rem);margin-bottom:1.2rem;}
+  .hero h1 em{font-style:italic;color:var(--blush);font-weight:400;}
+  .hero p.lede{
+    font-size:1.12rem;color:var(--ink-soft);max-width:30rem;margin:0 0 2rem;
+  }
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-weight:700;font-size:.92rem;letter-spacing:.02em;
+    padding:.85rem 1.6rem;border-radius:999px;transition:transform .2s,background .2s,box-shadow .2s;
+  }
+  .btn-primary{background:var(--sage-deep);color:var(--cream);box-shadow:0 8px 22px -12px rgba(79,94,66,.7);}
+  .btn-primary:hover{background:var(--sage);transform:translateY(-2px);}
+  .btn-ghost{border:1.5px solid var(--sage-soft);color:var(--sage-deep);}
+  .btn-ghost:hover{border-color:var(--sage);background:#fff;transform:translateY(-2px);}
+
+  .hero-photo{position:relative;}
+  .hero-photo .frame{
+    border-radius:200px 200px 18px 18px;
+    overflow:hidden;
+    border:8px solid #fff;
+    box-shadow:0 26px 50px -28px rgba(79,94,66,.55);
+    aspect-ratio:4/5;
+  }
+  .hero-photo .frame img{width:100%;height:100%;object-fit:cover;}
+  .hero-photo .badge{
+    position:absolute;left:-22px;bottom:34px;
+    background:var(--blush);color:#5a3b3a;
+    font-family:"Fraunces",serif;font-size:.92rem;font-weight:600;
+    padding:.65rem 1.1rem;border-radius:999px;
+    box-shadow:0 10px 24px -14px rgba(0,0,0,.4);
+    transform:rotate(-4deg);
+  }
+  @media(max-width:860px){
+    .hero .grid{grid-template-columns:1fr;gap:38px;}
+    .hero-photo{max-width:380px;margin:0 auto;}
+    .hero-photo .badge{left:0;}
+  }
+
+  /* ---------- SECTION GENERICS ---------- */
+  section{padding:72px 0;}
+  .sec-label{
+    font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--sage);margin-bottom:.9rem;
+  }
+  .sec-h{font-size:clamp(2rem,4vw,2.7rem);margin-bottom:1rem;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--cream-2);}
+  .about .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:center;}
+  .about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .about-imgs img{border-radius:14px;height:100%;object-fit:cover;width:100%;
+    box-shadow:0 14px 30px -22px rgba(0,0,0,.45);}
+  .about-imgs .tall{grid-row:span 2;aspect-ratio:3/5;}
+  .about-imgs .short{aspect-ratio:5/4;}
+  .about p{color:var(--ink-soft);font-size:1.05rem;margin:0 0 1.1rem;}
+  .about p:first-of-type{margin-top:1.2rem;}
+  .leaf-rule{display:inline-flex;gap:.4rem;color:var(--sage-soft);margin-top:.5rem;font-size:1.3rem;}
+  @media(max-width:860px){
+    .about .grid{grid-template-columns:1fr;gap:34px;}
+    .about-imgs{max-width:460px;}
+  }
+
+  /* ---------- MENU ---------- */
+  .menu{background:var(--cream);}
+  .menu-head{text-align:center;max-width:34rem;margin:0 auto 3rem;}
+  .menu-head p{color:var(--ink-soft);margin:.6rem 0 0;}
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px 64px;max-width:880px;margin:0 auto;}
+  .menu-col h3{
+    font-size:1.5rem;color:var(--sage-deep);margin-bottom:1.3rem;
+    padding-bottom:.6rem;border-bottom:2px solid var(--blush-soft);
+    display:flex;align-items:baseline;justify-content:space-between;
+  }
+  .menu-col h3 span{font-family:"Nunito Sans";font-size:.72rem;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--blush);}
+  .menu-item{display:flex;align-items:baseline;gap:.6rem;margin-bottom:1.05rem;}
+  .menu-item .nm{font-weight:700;color:var(--ink);white-space:nowrap;}
+  .menu-item .dot{flex:1;border-bottom:1px dotted #cbc3b3;transform:translateY(-3px);}
+  .menu-item .pr{font-family:"Fraunces",serif;color:var(--sage);font-weight:600;}
+  .menu-item .ds{display:block;font-size:.86rem;color:var(--ink-soft);font-weight:400;margin-top:.05rem;}
+  .menu-item .nm-wrap{display:flex;flex-direction:column;}
+  .seasonal{
+    margin-top:2.6rem;background:var(--blush-soft);border-radius:18px;
+    padding:1.6rem 1.9rem;max-width:880px;margin-left:auto;margin-right:auto;
+    display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap;
+  }
+  .seasonal .tag{
+    font-family:"Fraunces",serif;font-style:italic;font-size:1.35rem;color:#8a5350;
+    flex-shrink:0;
+  }
+  .seasonal .picks{color:#7a514f;font-weight:600;font-size:.98rem;}
+  .menu-note{text-align:center;color:var(--ink-soft);font-size:.9rem;margin-top:1.8rem;font-style:italic;}
+  @media(max-width:680px){.menu-grid{grid-template-columns:1fr;gap:36px;}}
+
+  /* ---------- GALLERY ---------- */
+  .gallery{background:var(--sage-deep);color:var(--cream);}
+  .gallery .sec-label{color:var(--blush);}
+  .gallery .sec-h{color:#fff;}
+  .gallery-head{max-width:34rem;margin-bottom:2.4rem;}
+  .gallery-head p{color:#d7ddcb;margin-top:.7rem;}
+  .gal-strip{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px;}
+  .gal-strip img{width:100%;height:100%;object-fit:cover;border-radius:12px;
+    transition:transform .35s ease;}
+  .gal-strip a{overflow:hidden;border-radius:12px;display:block;}
+  .gal-strip a:hover img{transform:scale(1.06);}
+  .gal-strip .a{grid-column:span 2;grid-row:span 2;}
+  .gal-strip .b{grid-column:span 2;}
+  @media(max-width:680px){
+    .gal-strip{grid-template-columns:1fr 1fr;grid-auto-rows:130px;}
+    .gal-strip .a{grid-column:span 2;}
+    .gal-strip .b{grid-column:span 2;}
+  }
+
+  /* ---------- TESTIMONIES ---------- */
+  .says{background:var(--cream-2);}
+  .says-head{text-align:center;margin-bottom:3rem;}
+  .quotes{column-count:2;column-gap:30px;max-width:920px;margin:0 auto;}
+  .quote{
+    break-inside:avoid;background:#fff;border-radius:16px;padding:1.7rem 1.8rem;
+    margin-bottom:30px;box-shadow:0 16px 34px -26px rgba(79,94,66,.55);
+    border:1px solid #efe7d9;position:relative;
+  }
+  .quote::before{
+    content:"\201C";font-family:"Fraunces",serif;font-size:3.4rem;color:var(--blush);
+    position:absolute;top:.1rem;left:1rem;line-height:1;
+  }
+  .quote p{margin:.8rem 0 1.1rem;color:var(--ink);font-size:1rem;position:relative;z-index:1;}
+  .quote .who{
+    font-family:"Fraunces",serif;font-weight:600;color:var(--sage-deep);font-size:1rem;
+    display:flex;align-items:center;gap:.5rem;
+  }
+  .quote .who::before{content:"";width:8px;height:8px;border-radius:50% 50% 50% 0;
+    background:var(--sage-soft);transform:rotate(45deg);}
+  @media(max-width:680px){.quotes{column-count:1;}}
+
+  /* ---------- LOCATION ---------- */
+  .loc{background:var(--cream);}
+  .loc .grid{display:grid;grid-template-columns:1fr 1.15fr;gap:46px;align-items:stretch;}
+  .loc-info h2{margin-bottom:1.4rem;}
+  .hours-list{list-style:none;padding:0;margin:0 0 1.8rem;max-width:23rem;}
+  .hours-list li{display:flex;justify-content:space-between;padding:.5rem 0;
+    border-bottom:1px dashed #e3dac9;font-size:.97rem;}
+  .hours-list li span:first-child{color:var(--ink-soft);font-weight:600;}
+  .hours-list li.today{color:var(--sage-deep);}
+  .hours-list li.today span{font-weight:700;color:var(--sage-deep);}
+  .contact-line{display:flex;align-items:center;gap:.65rem;margin-bottom:.7rem;
+    color:var(--ink);font-size:1rem;}
+  .contact-line .ic{color:var(--sage);font-weight:700;}
+  .find-us{margin-top:1.6rem;display:flex;gap:.7rem;flex-wrap:wrap;}
+  .find-us a{
+    font-size:.82rem;font-weight:700;letter-spacing:.03em;
+    border:1.5px solid var(--sage-soft);color:var(--sage-deep);
+    padding:.5rem 1rem;border-radius:999px;transition:.2s;
+  }
+  .find-us a:hover{background:var(--sage-deep);color:var(--cream);border-color:var(--sage-deep);}
+  .loc-map{border-radius:18px;overflow:hidden;min-height:360px;
+    border:6px solid #fff;box-shadow:0 18px 40px -28px rgba(0,0,0,.5);}
+  .loc-map iframe{width:100%;height:100%;min-height:360px;border:0;display:block;}
+  .loc-cta{margin-top:1.8rem;}
+  @media(max-width:860px){.loc .grid{grid-template-columns:1fr;gap:32px;}}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--sage-deep);color:#dfe4d4;padding:54px 0 30px;}
+  footer .grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:34px;}
+  footer .brand-f{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:600;color:#fff;
+    margin-bottom:.7rem;}
+  footer p{color:#c7cfb8;font-size:.93rem;margin:.2rem 0;}
+  footer h4{font-family:"Nunito Sans";font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--blush);margin:0 0 1rem;font-weight:700;}
+  footer a.fl{color:#dfe4d4;display:block;font-size:.93rem;padding:.2rem 0;transition:color .2s;}
+  footer a.fl:hover{color:#fff;}
+  .credit{border-top:1px solid #5d6b4f;margin-top:40px;padding-top:22px;text-align:center;
+    font-size:.84rem;color:#aeb89c;}
+  .credit a{color:var(--blush);}
+  @media(max-width:680px){footer .grid{grid-template-columns:1fr;gap:26px;}}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="bud"></span>Flowerbud Coffee</a>
+    <div class="nav-links">
+      <a class="lnk" href="#about">Our Story</a>
+      <a class="lnk" href="#menu">Menu</a>
+      <a class="lnk" href="#gallery">The Space</a>
+      <a class="lnk" href="#says">In Their Words</a>
+      <a class="nav-cta" href="https://www.google.com/maps?q=2591+Rubidoux+Blvd+Unit+D,+Jurupa+Valley,+CA+92509" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="grid">
+      <div class="hero-copy">
+        <div class="eyebrow">Coffee &amp; Plants &middot; Jurupa Valley</div>
+        <h1>A little <em>garden oasis</em> for your morning cup.</h1>
+        <p class="lede">Specialty lattes, smooth matcha, and seasonal sips — served in a plant-filled, sunlit corner of Rubidoux Blvd. Pull up a chair, slow down, and stay a while.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://www.google.com/maps?q=2591+Rubidoux+Blvd+Unit+D,+Jurupa+Valley,+CA+92509" target="_blank" rel="noopener">Get Directions &rarr;</a>
+          <a class="btn btn-ghost" href="#menu">See the Menu</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="frame"><img src="./photos/02.jpg" alt="Iced raspberry latte with the Flowerbud Coffee logo, set on a brick ledge in the garden" /></div>
+        <div class="badge">🌷 Open 7 days a week</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="grid">
+      <div class="about-imgs">
+        <img class="tall" src="./photos/01.jpg" alt="Sage-tiled coffee bar at Flowerbud, lined with hanging plants and a Mizuba matcha sign" />
+        <img class="short" src="./photos/04.jpg" alt="Hand-poured latte in a Flowerbud cup with delicate latte art" />
+        <img class="short" src="./photos/06.jpg" alt="Green espresso bar surrounded by leafy plants and vinyl records" />
+      </div>
+      <div class="about-copy">
+        <div class="sec-label">Our Story</div>
+        <h2 class="sec-h">A hidden gem, grown with care.</h2>
+        <p>Tucked off Rubidoux Boulevard, Flowerbud Coffee is the kind of place you stumble onto and never forget — beautiful inside and out, full of greenery, and quietly buzzing with good morning energy.</p>
+        <p>We pour thoughtful coffee and genuinely lovely matcha, from a tummy-friendly Spanish latte to bright, plant-based options. Whether you settle into the couch indoors or claim a table on the patio (yes, there's a Connect Four), we built this little space to feel like a garden you can actually relax in.</p>
+        <div class="leaf-rule">🌿 🌵 🌷</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <div class="sec-label">The Garden Menu</div>
+      <h2 class="sec-h">Sip something lovely.</h2>
+      <p>A rotating little menu of espresso classics, signature lattes, and ceremonial-grade matcha — made to order, hot or iced.</p>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-col">
+        <h3>Coffee &amp; Espresso <span>Hot · Iced</span></h3>
+        <div class="menu-item">
+          <span class="nm-wrap"><span class="nm">Spanish Latte</span><span class="ds">House favorite — try it with oat milk</span></span>
+          <span class="dot"></span><span class="pr">5.75</span>
+        </div>
+        <div class="menu-item">
+          <span class="nm-wrap"><span class="nm">Vanilla Latte</span></span>
+          <span class="dot"></span><span class="pr">5.25</span>
+        </div>
+        <div class="menu-item">
+          <span class="nm-wrap"><span class="nm">Mexican Mocha</span><span class="ds">Warm spice &amp; chocolate</span></span>
+          <span class="dot"></span><span class="pr">5.75</span>
+        </div>
+        <div class="menu-item">
+          <span class="nm-wrap"><span class="nm">Cappuccino</span></span>
+          <span class="dot"></span><span class="pr">4.75</span>
+        </div>
+        <div class="menu-item">
+          <span class="nm-wrap"><span class="nm">Drip Coffee</span></span>
+          <span class="dot"></span><span class="pr">3.25</span>
+        </div>
+      </div>
+
+      <div class="menu-col">
+        <h3>Matcha &amp; Specialty <span>Plant-based ✓</span></h3>
+        <div class="menu-item">
+          <span class="nm-wrap"><span class="nm">Iced Matcha Latte</span><span class="ds">Mizuba ceremonial matcha</span></span>
+          <span class="dot"></span><span class="pr">5.75</span>
+        </div>
+        <div class="menu-item">
+          <span class="nm-wrap"><span class="nm">Strawberry Matcha</span><span class="ds">Layered &amp; pretty in pink</span></span>
+          <span class="dot"></span><span class="pr">6.25</span>
+        </div>
+        <div class="menu-item">
+          <span class="nm-wrap"><span class="nm">Something in the Orange</span><span class="ds">A whisper of citrus</span></span>
+          <span class="dot"></span><span class="pr">6.00</span>
+        </div>
+        <div class="menu-item">
+          <span class="nm-wrap"><span class="nm">Fresh Pastries</span><span class="ds">Baked goods, daily selection</span></span>
+          <span class="dot"></span><span class="pr">market</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="seasonal">
+      <span class="tag">On the seasonal board &mdash;</span>
+      <span class="picks">Pumpkin Spice Latte &middot; Sweater Weather &middot; Gingerbread Pastry &middot; and more, as the seasons turn.</span>
+    </div>
+    <p class="menu-note">Drinks shown are a sampling — ask the team what's brewing today.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="gallery-head">
+      <div class="sec-label">The Space</div>
+      <h2 class="sec-h">Cozy, green, and just a little magical.</h2>
+      <p>Indoor seating, a sunny patio, and plants in every corner — the photos below are the real Flowerbud.</p>
+    </div>
+    <div class="gal-strip">
+      <a class="a" href="./photos/01.jpg" target="_blank" rel="noopener"><img src="./photos/01.jpg" alt="Coffee counter with sage tile, plants, and a matcha sign" /></a>
+      <a href="./photos/03.jpg" target="_blank" rel="noopener"><img src="./photos/03.jpg" alt="Strawberry and matcha iced drinks on a wood table in the airy interior" /></a>
+      <a href="./photos/06.jpg" target="_blank" rel="noopener"><img src="./photos/06.jpg" alt="Leafy plants beside the green espresso bar" /></a>
+      <a class="b" href="./photos/05.jpg" target="_blank" rel="noopener"><img src="./photos/05.jpg" alt="Flowerbud Coffee storefront with green-striped patio umbrellas and mountains behind" /></a>
+      <a href="./photos/04.jpg" target="_blank" rel="noopener"><img src="./photos/04.jpg" alt="Latte with delicate latte art in a Flowerbud cup" /></a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="says-head">
+      <div class="sec-label" style="text-align:center;">In Their Words</div>
+      <h2 class="sec-h">What people say after their first visit.</h2>
+    </div>
+    <div class="quotes">
+      <div class="quote">
+        <p>Absolutely beautiful hidden gem in Jurupa Valley with great matcha and coffee options. It feels like a little garden oasis you can relax and enjoy your matcha in. The staff are so friendly and the matcha is great too.</p>
+        <div class="who">Eve</div>
+      </div>
+      <div class="quote">
+        <p>Love everything about this coffee place! The atmosphere, the service, and most of all the coffees! Our favorite is the Spanish latte with oat milk — it will not upset your tummy at all. LOVE IT HERE!!!</p>
+        <div class="who">Lizzet H.</div>
+      </div>
+      <div class="quote">
+        <p>Perfect Sunday coffee. A great place to get away from the noise and relax for a peaceful morning. I love the design and theme of the interior — the perfect mix of cozy and neat. The "Something in the Orange" was done very well, and there's a nice patio with Connect Four.</p>
+        <div class="who">Jerry C.</div>
+      </div>
+      <div class="quote">
+        <p>It was a rainy day and we were craving something warm — a vanilla latte and a pumpkin spice latte from the seasonal menu, both delicious. The shop is clean, cozy, and beautifully decorated. I especially loved all the plants!</p>
+        <div class="who">Rosabell M.</div>
+      </div>
+      <div class="quote">
+        <p>A cute coffee shop my friends and I checked out after seeing their fall drink menu. The "Sweater Weather" was amazing and the staff was super friendly — a couch and a few tables for seating. So glad we found it.</p>
+        <div class="who">Kevin G.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="loc" id="contact">
+  <div class="wrap">
+    <div class="grid">
+      <div class="loc-info">
+        <div class="sec-label">Visit &amp; Hours</div>
+        <h2 class="sec-h">Come find your corner.</h2>
+        <ul class="hours-list" id="hours">
+          <li data-day="1"><span>Monday</span><span>8:00 AM – 2:00 PM</span></li>
+          <li data-day="2"><span>Tuesday</span><span>8:00 AM – 2:00 PM</span></li>
+          <li data-day="3"><span>Wednesday</span><span>8:00 AM – 2:00 PM</span></li>
+          <li data-day="4"><span>Thursday</span><span>8:00 AM – 2:00 PM</span></li>
+          <li data-day="5"><span>Friday</span><span>8:00 AM – 2:00 PM</span></li>
+          <li data-day="6"><span>Saturday</span><span>8:30 AM – 2:00 PM</span></li>
+          <li data-day="0"><span>Sunday</span><span>8:30 AM – 2:00 PM</span></li>
+        </ul>
+        <div class="contact-line"><span class="ic">📍</span> 2591 Rubidoux Blvd, Unit D, Jurupa Valley, CA 92509</div>
+        <div class="contact-line"><span class="ic">☎</span> <a href="tel:+19092314884">(909) 231-4884</a></div>
+        <div class="find-us">
+          <a href="https://maps.google.com/?cid=974118123950774466" target="_blank" rel="noopener">Google Business</a>
+        </div>
+        <div class="loc-cta">
+          <a class="btn btn-primary" href="https://www.google.com/maps?q=2591+Rubidoux+Blvd+Unit+D,+Jurupa+Valley,+CA+92509" target="_blank" rel="noopener">Get Directions &rarr;</a>
+        </div>
+      </div>
+      <div class="loc-map">
+        <iframe
+          src="https://www.google.com/maps?q=34.0128043,-117.3935733&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Flowerbud Coffee, 2591 Rubidoux Blvd Unit D, Jurupa Valley, CA"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="brand-f">Flowerbud Coffee</div>
+        <p>Coffee &amp; Plants — a cozy garden cafe in Jurupa Valley, California.</p>
+        <p>2591 Rubidoux Blvd, Unit D<br />Jurupa Valley, CA 92509</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <a class="fl" href="#menu">Our Menu</a>
+        <a class="fl" href="#about">Our Story</a>
+        <a class="fl" href="#contact">Hours &amp; Location</a>
+      </div>
+      <div>
+        <h4>Get in Touch</h4>
+        <a class="fl" href="tel:+19092314884">(909) 231-4884</a>
+        <a class="fl" href="https://maps.google.com/?cid=974118123950774466" target="_blank" rel="noopener">Find us on Google</a>
+        <a class="fl" href="https://www.google.com/maps?q=2591+Rubidoux+Blvd+Unit+D,+Jurupa+Valley,+CA+92509" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Gently highlight today's row in the hours list (no animation, just a quiet touch).
+  (function(){
+    var today = new Date().getDay();
+    var row = document.querySelector('#hours li[data-day="'+today+'"]');
+    if(row) row.classList.add('today');
+  })();
+</script>
+</body>
+</html>

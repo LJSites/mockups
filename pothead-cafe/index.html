@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<!--
+  ARCHETYPE: Playful botanical pun coffee house — "Pothead Cafe" read as POTTED-plant / greenhouse.
+  Distinct from the soft-floral matcha cafe (this is warmer, earthier, terracotta-led) and the
+  espresso-brown craft roastery (this is leafy, hand-drawn, quirky — not refined/dark).
+
+  PALETTE: terracotta clay (#c2542d) + leafy garden green (#3f6b3a) on warm cream (#f7efe2),
+           with deep soil-brown ink (#33271d) for type.
+  DISPLAY FONT: "Bricolage Grotesque" (chunky, quirky, friendly grotesque) for headers,
+                paired with "DM Sans" for body. Accent script-free; the pun carries the personality.
+
+  STRUCTURE DECISIONS:
+   - Sticky top nav (clay border-bottom); html{scroll-padding-top:72px} reserves space for anchors.
+   - Hero = split: oversized punny wordmark + "potted" SVG plant motif on terracotta, photo card offset.
+   - "Potted Menu" = signature drinks listed as a hand-set tabbed/list ledger, NOT 3-col icon cards.
+   - Gallery = asymmetric photo bed.
+   - Testimonies = staggered "leaf cards" w/ hanging quote marks, first-name + last-initial, NO stars.
+   - Hours + keyless Google Maps embed side by side.
+   - Single primary CTA "Call Now" (tel:) repeated in nav + hero + contact (weekend-pastry note included).
+   - Animation: restrained — only a slow leaf-sway on the plant motif + gentle hover lifts. No fade-up spam.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pothead Cafe — Mira Loma Coffee House</title>
+<meta name="description" content="Pothead Cafe — a cozy, plant-loving coffee house in Mira Loma, CA. Innovative lattes, shaken espressos, and a vibe all its own. (951) 790-1223.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --clay:#c2542d;
+    --clay-dk:#a3401e;
+    --leaf:#3f6b3a;
+    --leaf-dk:#2e5029;
+    --cream:#f7efe2;
+    --cream-2:#efe3cf;
+    --soil:#33271d;
+    --soil-soft:#5b4a3a;
+    --line:#d9c8ad;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:72px;}
+  body{
+    font-family:"DM Sans",system-ui,sans-serif;
+    color:var(--soil);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1.02;letter-spacing:-.01em;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(247,239,226,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:2px solid var(--clay);
+    height:72px;display:flex;align-items:center;
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.25rem;color:var(--clay-dk);letter-spacing:-.02em;}
+  .brand .pot{width:26px;height:26px;flex:0 0 auto;}
+  .nav-links{display:flex;align-items:center;gap:26px;}
+  .nav-links a{font-weight:500;font-size:.95rem;color:var(--soil);position:relative;padding:4px 0;}
+  .nav-links a:not(.btn):hover{color:var(--clay-dk);}
+  .nav-links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--leaf);transition:width .22s ease;}
+  .nav-links a:not(.btn):hover::after{width:100%;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--clay);color:var(--cream);
+    font-weight:600;font-family:"DM Sans";
+    padding:11px 20px;border-radius:2px;border:2px solid var(--clay);
+    transition:transform .15s ease,background .2s ease,box-shadow .2s ease;
+    box-shadow:3px 3px 0 var(--soil);
+  }
+  .btn:hover{background:var(--clay-dk);transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--soil);}
+  .btn.leaf{background:var(--leaf);border-color:var(--leaf);}
+  .btn.leaf:hover{background:var(--leaf-dk);}
+  .btn.ghost{background:transparent;color:var(--clay-dk);box-shadow:none;border-color:var(--clay);}
+  .btn.ghost:hover{background:var(--clay);color:var(--cream);box-shadow:3px 3px 0 var(--soil);}
+  .nav-toggle{display:none;}
+  @media(max-width:820px){
+    .nav-links{display:none;}
+    .nav-links .btn{display:inline-flex;}
+    .nav-mini{display:inline-flex;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;background:var(--cream);border-bottom:2px solid var(--line);}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center;padding:62px 0 70px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--leaf-dk);margin-bottom:18px;}
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--clay);}
+  .hero h1{font-size:clamp(3rem,8.5vw,5.4rem);font-weight:800;color:var(--soil);}
+  .hero h1 .clay{color:var(--clay-dk);}
+  .hero h1 .leaf{color:var(--leaf);}
+  .hero p.lede{font-size:1.18rem;color:var(--soil-soft);max-width:38ch;margin:22px 0 30px;}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .hero-note{margin-top:22px;font-size:.92rem;color:var(--soil-soft);display:flex;align-items:center;gap:8px;}
+  .hero-note b{color:var(--leaf-dk);font-weight:600;}
+
+  .hero-art{position:relative;}
+  .photo-card{
+    position:relative;border:3px solid var(--soil);background:var(--cream);
+    box-shadow:10px 10px 0 var(--clay);border-radius:3px;overflow:hidden;
+    transform:rotate(1.4deg);
+  }
+  .photo-card img{width:100%;height:460px;object-fit:cover;}
+  .tag-leaf{
+    position:absolute;left:-14px;bottom:24px;z-index:3;
+    background:var(--leaf);color:var(--cream);font-family:"Bricolage Grotesque";font-weight:800;
+    padding:9px 16px;font-size:.95rem;letter-spacing:.02em;transform:rotate(-3deg);
+    border:2px solid var(--soil);box-shadow:3px 3px 0 var(--soil);
+  }
+  .sway{transform-origin:bottom center;animation:sway 5.5s ease-in-out infinite;}
+  @keyframes sway{0%,100%{transform:rotate(-3deg);}50%{transform:rotate(3deg);}}
+  .pot-deco{position:absolute;right:-10px;top:-26px;width:120px;opacity:.95;z-index:2;}
+
+  @media(max-width:820px){
+    .hero-grid{grid-template-columns:1fr;gap:36px;padding:42px 0 50px;}
+    .photo-card{transform:none;}
+    .photo-card img{height:360px;}
+    .pot-deco{display:none;}
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:74px 0;}
+  .sec-head{margin-bottom:38px;}
+  .sec-kicker{font-weight:600;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--clay-dk);display:block;margin-bottom:10px;}
+  .sec-head h2{font-size:clamp(2rem,4.6vw,3rem);font-weight:800;color:var(--soil);}
+  .sec-head p{color:var(--soil-soft);max-width:56ch;margin-top:14px;font-size:1.05rem;}
+
+  /* ---------- ABOUT ---------- */
+  #about{background:var(--cream-2);border-top:2px solid var(--line);border-bottom:2px solid var(--line);}
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;}
+  .about-copy p{margin-bottom:16px;color:var(--soil-soft);font-size:1.08rem;}
+  .about-copy p strong{color:var(--soil);}
+  .about-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .pill{display:inline-flex;align-items:center;gap:7px;background:var(--cream);border:2px solid var(--leaf);color:var(--leaf-dk);font-weight:600;font-size:.9rem;padding:7px 14px;border-radius:30px;}
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .about-photos img{border:3px solid var(--soil);border-radius:3px;width:100%;height:200px;object-fit:cover;box-shadow:5px 5px 0 var(--clay);}
+  .about-photos img:nth-child(1){grid-row:span 2;height:100%;min-height:300px;}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:30px;}.about-photos img:nth-child(1){min-height:240px;}}
+
+  /* ---------- MENU ---------- */
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 54px;}
+  .menu-col h3{font-size:1.25rem;font-weight:800;color:var(--leaf-dk);display:flex;align-items:center;gap:10px;margin:6px 0 8px;padding-bottom:10px;border-bottom:2px solid var(--line);}
+  .menu-col h3 svg{width:20px;height:20px;}
+  .item{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 0;border-bottom:1px dashed var(--line);}
+  .item:last-child{border-bottom:none;}
+  .item .nm{font-weight:600;font-size:1.05rem;color:var(--soil);}
+  .item .ds{font-size:.9rem;color:var(--soil-soft);display:block;font-weight:400;margin-top:2px;}
+  .item .pr{font-family:"Bricolage Grotesque";font-weight:800;color:var(--clay-dk);white-space:nowrap;font-size:1.05rem;}
+  .menu-note{margin-top:30px;background:var(--cream-2);border:2px dashed var(--clay);padding:16px 20px;border-radius:3px;font-size:.96rem;color:var(--soil-soft);display:flex;gap:12px;align-items:flex-start;}
+  .menu-note b{color:var(--clay-dk);}
+  @media(max-width:820px){.menu-grid{grid-template-columns:1fr;}}
+
+  /* ---------- GALLERY ---------- */
+  #gallery{background:var(--leaf-dk);color:var(--cream);border-top:2px solid var(--soil);}
+  #gallery .sec-kicker{color:#d7e3c9;}
+  #gallery .sec-head h2{color:var(--cream);}
+  #gallery .sec-head p{color:#d7e3c9;}
+  .gal{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:14px;}
+  .gal img{width:100%;height:100%;object-fit:cover;border:2px solid var(--cream);border-radius:3px;transition:transform .3s ease;}
+  .gal a:hover img{transform:scale(1.03);}
+  .gal a:nth-child(1){grid-column:span 2;grid-row:span 2;}
+  .gal a:nth-child(4){grid-column:span 2;}
+  @media(max-width:820px){.gal{grid-template-columns:1fr 1fr;grid-auto-rows:130px;}.gal a:nth-child(1){grid-column:span 2;}.gal a:nth-child(4){grid-column:span 1;}}
+
+  /* ---------- TESTIMONIES ---------- */
+  .tcols{columns:2;column-gap:24px;}
+  .tcard{
+    break-inside:avoid;margin:0 0 24px;background:var(--cream);
+    border:2px solid var(--soil);border-radius:4px;padding:26px 26px 22px;position:relative;
+    box-shadow:5px 5px 0 var(--leaf);
+  }
+  .tcard:nth-child(even){box-shadow:5px 5px 0 var(--clay);}
+  .tcard .qm{font-family:"Bricolage Grotesque";font-weight:800;font-size:3rem;color:var(--clay);line-height:.6;display:block;height:24px;}
+  .tcard p{font-size:1.02rem;color:var(--soil);margin:6px 0 16px;}
+  .tcard .who{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--leaf-dk);font-size:.95rem;}
+  .tcard .who::before{content:"";width:22px;height:2px;background:var(--clay);display:inline-block;}
+  @media(max-width:760px){.tcols{columns:1;}}
+
+  /* ---------- VISIT ---------- */
+  #visit{background:var(--cream-2);border-top:2px solid var(--line);}
+  .visit-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:40px;align-items:stretch;}
+  .info-card{background:var(--cream);border:2px solid var(--soil);border-radius:4px;padding:30px 30px 26px;box-shadow:6px 6px 0 var(--clay);}
+  .info-card h3{font-size:1.4rem;font-weight:800;color:var(--clay-dk);margin-bottom:6px;}
+  .info-card .addr{color:var(--soil-soft);margin-bottom:20px;font-size:1rem;}
+  .hours{list-style:none;border-top:2px solid var(--line);}
+  .hours li{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--line);font-size:.97rem;}
+  .hours li.today{background:rgba(63,107,58,.1);margin:0 -10px;padding:9px 10px;border-radius:3px;border-bottom:1px dashed var(--line);}
+  .hours .day{font-weight:600;color:var(--soil);}
+  .hours .hr{color:var(--soil-soft);}
+  .hours .closed{color:var(--clay-dk);font-style:italic;}
+  .info-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;}
+  .find-us{margin-top:20px;font-size:.92rem;color:var(--soil-soft);}
+  .find-us a{color:var(--leaf-dk);font-weight:600;text-decoration:underline;text-underline-offset:3px;}
+  .map-wrap{border:2px solid var(--soil);border-radius:4px;overflow:hidden;box-shadow:6px 6px 0 var(--leaf);min-height:430px;}
+  .map-wrap iframe{width:100%;height:100%;min-height:430px;border:0;display:block;filter:saturate(.92);}
+  @media(max-width:820px){.visit-grid{grid-template-columns:1fr;}.map-wrap{min-height:320px;}.map-wrap iframe{min-height:320px;}}
+
+  /* ---------- CTA STRIP ---------- */
+  .cta-strip{background:var(--clay);color:var(--cream);text-align:center;border-top:2px solid var(--soil);border-bottom:2px solid var(--soil);}
+  .cta-strip h2{font-size:clamp(1.9rem,4.6vw,2.8rem);font-weight:800;margin-bottom:10px;}
+  .cta-strip p{color:#f7e7d9;max-width:46ch;margin:0 auto 26px;font-size:1.06rem;}
+  .cta-strip .btn{background:var(--cream);color:var(--clay-dk);border-color:var(--cream);box-shadow:4px 4px 0 var(--soil);}
+  .cta-strip .btn:hover{background:#fff;box-shadow:6px 6px 0 var(--soil);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--soil);color:var(--cream-2);padding:46px 0 30px;}
+  .foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start;margin-bottom:30px;}
+  .foot-brand{display:flex;align-items:center;gap:11px;font-family:"Bricolage Grotesque";font-weight:800;font-size:1.4rem;color:var(--cream);}
+  .foot-brand .pot{width:30px;height:30px;}
+  .foot-col h4{font-family:"Bricolage Grotesque";font-weight:700;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);margin-bottom:12px;}
+  .foot-col a,.foot-col p{display:block;color:var(--cream-2);font-size:.95rem;margin-bottom:7px;}
+  .foot-col a:hover{color:#fff;text-decoration:underline;text-underline-offset:3px;}
+  .foot-rule{border-top:1px solid #50402f;padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.85rem;color:#b9a88f;}
+  .credit{color:#cdbda4;}
+  .credit a{color:var(--clay);}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="Pothead Cafe home">
+      <svg class="pot" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <path d="M6 18h20l-2 9a2 2 0 0 1-2 1.6H10a2 2 0 0 1-2-1.6L6 18Z" fill="#c2542d" stroke="#33271d" stroke-width="1.6"/>
+        <rect x="5" y="14.5" width="22" height="4" rx="1.2" fill="#a3401e" stroke="#33271d" stroke-width="1.6"/>
+        <path d="M16 14.5c0-4 1-7 1-7" stroke="#3f6b3a" stroke-width="1.7" stroke-linecap="round"/>
+        <path d="M17 9c2.4-1.4 5-1 5-1s-.6 2.6-3 3.4-3.2-.5-2-2.4Z" fill="#3f6b3a"/>
+        <path d="M16 11c-2.4-1.4-5-1-5-1s.6 2.6 3 3.4 3.2-.5 2-2.4Z" fill="#3f6b3a"/>
+      </svg>
+      Pothead Cafe
+    </a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#say">In Their Words</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:+19517901223" class="btn leaf nav-mini">Call Now</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<a id="top"></a>
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span> Mira Loma's coffee greenhouse</span>
+      <h1>Good coffee,<br><span class="clay">well</span> <span class="leaf">potted.</span></h1>
+      <p class="lede">A cozy, hidden-gem coffee house where the lattes are wildly inventive, the shaken espressos hit, and the vibe is entirely its own.</p>
+      <div class="hero-cta">
+        <a href="tel:+19517901223" class="btn">Call Now · (951) 790-1223</a>
+        <a href="#menu" class="btn ghost">See the menu</a>
+      </div>
+      <p class="hero-note"><b>Open Wed–Sun</b> · Weekend pastries from a local baker</p>
+    </div>
+    <div class="hero-art">
+      <svg class="pot-deco sway" viewBox="0 0 120 130" fill="none" aria-hidden="true">
+        <path d="M28 70h64l-6 44a5 5 0 0 1-5 4.3H39a5 5 0 0 1-5-4.3L28 70Z" fill="#c2542d" stroke="#33271d" stroke-width="2.4"/>
+        <rect x="24" y="60" width="72" height="11" rx="3" fill="#a3401e" stroke="#33271d" stroke-width="2.4"/>
+        <path d="M60 60C60 40 62 16 62 16" stroke="#2e5029" stroke-width="3" stroke-linecap="round"/>
+        <path d="M62 24c8-6 19-4 19-4s-2 10-11 12-11-3-8-8Z" fill="#3f6b3a" stroke="#2e5029" stroke-width="1.6"/>
+        <path d="M60 36c-8-6-19-4-19-4s2 10 11 12 11-3 8-8Z" fill="#3f6b3a" stroke="#2e5029" stroke-width="1.6"/>
+        <path d="M62 16c5-4 13-3 13-3s-1 7-7 8-8-2-6-5Z" fill="#3f6b3a" stroke="#2e5029" stroke-width="1.6"/>
+      </svg>
+      <div class="photo-card">
+        <img src="./photos/04.jpg" alt="An iced latte from Pothead Cafe wearing the cafe's signature skeleton 'Pothead Club' sticker">
+        <span class="tag-leaf">brewed with personality</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <span class="sec-kicker">Our little corner</span>
+      <h2 style="font-family:'Bricolage Grotesque';font-weight:800;font-size:clamp(2rem,4.6vw,3rem);color:var(--soil);margin-bottom:18px;">Tucked away, and worth finding.</h2>
+      <p>Pothead Cafe is a <strong>charming, cozy coffee shop</strong> hidden in a small Mira Loma shopping center — the kind of spot regulars guard like a secret. Step inside and the personality hits you: warm, a little gothic, and unmistakably <strong>not a chain</strong>.</p>
+      <p>We pour drinks you won't find anywhere else — Oreo lattes, white chocolate lattes, dirty chais, Abuelita peppermint lattes, and shaken espressos people drive across town for. Every cup is made with care, by a crew that actually wants you to have a great morning.</p>
+      <div class="about-pills">
+        <span class="pill">🌱 Inventive flavors</span>
+        <span class="pill">🌱 Family-run vibe</span>
+        <span class="pill">🌱 Hidden gem</span>
+      </div>
+    </div>
+    <div class="about-photos">
+      <img src="./photos/06.jpg" alt="The neon-lit Pothead Cafe storefront and glass entrance">
+      <img src="./photos/02.jpg" alt="Iced drinks and a weekend snack on the cafe's patio bench">
+      <img src="./photos/03.jpg" alt="Two iced lattes from Pothead Cafe">
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU ============ -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">From the pot</span>
+      <h2>The potted menu</h2>
+      <p>A rotating, ever-inventive lineup — here's what regulars keep coming back for. Prices are sample pricing for this mockup.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-col">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 14h12l-1.4 5a2 2 0 0 1-2 1.6H7.4a2 2 0 0 1-2-1.6L4 14Z" fill="#c2542d"/><path d="M16 14h2.5a2.5 2.5 0 0 1 0 5H16" stroke="#3f6b3a" stroke-width="1.6"/><path d="M7 9c0-1.5 1-2.5 1-3M11 9c0-1.5 1-2.5 1-3" stroke="#3f6b3a" stroke-width="1.6" stroke-linecap="round"/></svg>
+          Signature lattes
+        </h3>
+        <div class="item"><span class="nm">Oreo Latte<span class="ds">Cookies-and-cream espresso — a house favorite</span></span><span class="pr">$6</span></div>
+        <div class="item"><span class="nm">White Chocolate Latte<span class="ds">Smooth, sweet, dangerously easy to reorder</span></span><span class="pr">$6</span></div>
+        <div class="item"><span class="nm">Dirty Chai Latte<span class="ds">Spiced chai with a shot of espresso</span></span><span class="pr">$6</span></div>
+        <div class="item"><span class="nm">Abuelita Peppermint Latte<span class="ds">Mexican chocolate, cool peppermint finish</span></span><span class="pr">$6.50</span></div>
+      </div>
+      <div class="menu-col">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="6" y="4" width="12" height="16" rx="2" stroke="#3f6b3a" stroke-width="1.6"/><path d="M9 8h6M9 11h6" stroke="#c2542d" stroke-width="1.6" stroke-linecap="round"/></svg>
+          Espresso &amp; more
+        </h3>
+        <div class="item"><span class="nm">Shaken Espresso<span class="ds">"Fire." Innovative, ice-cold, all theirs</span></span><span class="pr">$5.50</span></div>
+        <div class="item"><span class="nm">Classic Latte<span class="ds">Espresso + steamed milk, done right</span></span><span class="pr">$5</span></div>
+        <div class="item"><span class="nm">Cold Brew<span class="ds">Slow-steeped, smooth and bold</span></span><span class="pr">$5</span></div>
+        <div class="item"><span class="nm">Loose-Leaf Teas<span class="ds">Hot or iced — ask what's steeping</span></span><span class="pr">$4.50</span></div>
+      </div>
+    </div>
+    <div class="menu-note">
+      <span>🥐</span>
+      <span><b>Weekends only:</b> fresh pastries from a local third-party baker (Sat &amp; Sun). Come early — bagels and croissants go fast.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">A peek inside</span>
+      <h2>The whole vibe</h2>
+      <p>From the neon sign to the skeleton "Pothead Club" stickers — this is what makes us, us.</p>
+    </div>
+    <div class="gal">
+      <a href="./photos/01.jpg" target="_blank" rel="noopener"><img src="./photos/01.jpg" alt="The Pothead Cafe storefront with its hand-painted sign"></a>
+      <a href="./photos/04.jpg" target="_blank" rel="noopener"><img src="./photos/04.jpg" alt="Iced latte with the Pothead Club skeleton sticker"></a>
+      <a href="./photos/05.jpg" target="_blank" rel="noopener"><img src="./photos/05.jpg" alt="An iced coffee held on the road, name written on the cup"></a>
+      <a href="./photos/02.jpg" target="_blank" rel="noopener"><img src="./photos/02.jpg" alt="Iced drinks and a snack on the cafe patio bench"></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIES ============ -->
+<section id="say">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">From the regulars</span>
+      <h2>In their words</h2>
+      <p>Hand-picked notes from folks who found us — and keep coming back.</p>
+    </div>
+    <div class="tcols">
+      <div class="tcard">
+        <span class="qm">&ldquo;</span>
+        <p>Honestly, the absolute best coffee place I've ever had in my life. The employees are all super nice, the vibe in there is awesome — haven't had one coffee I didn't like, and I haven't gotten the same one twice yet. Can't recommend this place enough.</p>
+        <span class="who">Ryan F.</span>
+      </div>
+      <div class="tcard">
+        <span class="qm">&ldquo;</span>
+        <p>I've been here three times now and every single drink has been bomb dot com. The Oreo latte, the white chocolate latte, and the dirty chai latte are all some of the best drinks I've ever had. Plus the service is always great — a must for coffee or tea.</p>
+        <span class="who">Seoul S.</span>
+      </div>
+      <div class="tcard">
+        <span class="qm">&ldquo;</span>
+        <p>Hands down one of my favorite coffee spots. Drinks are great and innovative with their flavors. Their shaken espressos are fire. Highly recommend.</p>
+        <span class="who">Rob</span>
+      </div>
+      <div class="tcard">
+        <span class="qm">&ldquo;</span>
+        <p>This charming, cozy coffee shop is tucked away in a small, hidden shopping center, with a unique, almost gothic charm. I tried the Abuelita peppermint latte — flavorful and satisfying. (Pastries are a weekend treat!)</p>
+        <span class="who">Rosabell M.</span>
+      </div>
+      <div class="tcard">
+        <span class="qm">&ldquo;</span>
+        <p>First time going there, super happy with the service and flavors on offer. Staff was super nice too!</p>
+        <span class="who">Ben Y.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-kicker">Find your way over</span>
+      <h2>Hours &amp; location</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="info-card">
+        <h3>Pothead Cafe</h3>
+        <p class="addr">5666 Etiwanda Ave, Ste D<br>Mira Loma, CA 91752</p>
+        <ul class="hours">
+          <li><span class="day">Monday</span><span class="hr closed">Closed</span></li>
+          <li><span class="day">Tuesday</span><span class="hr closed">Closed</span></li>
+          <li><span class="day">Wednesday</span><span class="hr">8:30 AM – 1:00 PM</span></li>
+          <li><span class="day">Thursday</span><span class="hr">8:30 AM – 3:00 PM</span></li>
+          <li><span class="day">Friday</span><span class="hr">8:30 AM – 3:00 PM</span></li>
+          <li><span class="day">Saturday</span><span class="hr">9:00 AM – 2:00 PM</span></li>
+          <li><span class="day">Sunday</span><span class="hr">9:00 AM – 2:00 PM</span></li>
+        </ul>
+        <div class="info-actions">
+          <a href="tel:+19517901223" class="btn">Call Now</a>
+          <a href="https://www.google.com/maps?q=5666+Etiwanda+Ave+Ste+D,+Mira+Loma,+CA+91752" target="_blank" rel="noopener" class="btn ghost">Get directions</a>
+        </div>
+        <p class="find-us">Find us on <a href="https://maps.google.com/?cid=12039469772498932667" target="_blank" rel="noopener">Google Business</a>.</p>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=5666+Etiwanda+Ave+Ste+D,+Mira+Loma,+CA+91752&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Pothead Cafe, Mira Loma"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA STRIP ============ -->
+<section class="cta-strip">
+  <div class="wrap">
+    <h2>Your new favorite cup is potted &amp; waiting.</h2>
+    <p>Swing by Wednesday through Sunday, or give us a ring to ask what's brewing today.</p>
+    <a href="tel:+19517901223" class="btn">Call Now · (951) 790-1223</a>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg class="pot" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M6 18h20l-2 9a2 2 0 0 1-2 1.6H10a2 2 0 0 1-2-1.6L6 18Z" fill="#c2542d" stroke="#f7efe2" stroke-width="1.4"/>
+            <rect x="5" y="14.5" width="22" height="4" rx="1.2" fill="#a3401e" stroke="#f7efe2" stroke-width="1.4"/>
+            <path d="M16 14.5c0-4 1-7 1-7" stroke="#7fae6f" stroke-width="1.7" stroke-linecap="round"/>
+            <path d="M17 9c2.4-1.4 5-1 5-1s-.6 2.6-3 3.4-3.2-.5-2-2.4Z" fill="#7fae6f"/>
+            <path d="M16 11c-2.4-1.4-5-1-5-1s.6 2.6 3 3.4 3.2-.5 2-2.4Z" fill="#7fae6f"/>
+          </svg>
+          Pothead Cafe
+        </div>
+        <p style="color:#b9a88f;font-size:.95rem;margin-top:12px;max-width:30ch;">A cozy, plant-loving coffee house in Mira Loma, CA.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Visit</h4>
+        <p>5666 Etiwanda Ave, Ste D</p>
+        <p>Mira Loma, CA 91752</p>
+        <a href="https://www.google.com/maps?q=5666+Etiwanda+Ave+Ste+D,+Mira+Loma,+CA+91752" target="_blank" rel="noopener">Get directions →</a>
+      </div>
+      <div class="foot-col">
+        <h4>Reach us</h4>
+        <a href="tel:+19517901223">(951) 790-1223</a>
+        <a href="https://maps.google.com/?cid=12039469772498932667" target="_blank" rel="noopener">Google Business →</a>
+        <p>Open Wed – Sun</p>
+      </div>
+    </div>
+    <div class="foot-rule">
+      <span>© 2026 Pothead Cafe · Mira Loma, California</span>
+      <span class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

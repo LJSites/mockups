@@ -1,0 +1,864 @@
+<!-- flavor: Desert Craftsman | accent: #1A1A1A | bg: #F5E9D8 | hero: right-photo | service: price-list-table -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extreme Auto Body & Custom — Blythe, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --acc: #1A1A1A;
+      --bg: #F5E9D8;
+      --warm: #C8773A;
+      --light: #EDE0CC;
+      --muted: #6B5A47;
+      --white: #FDFAF5;
+      --nav-h: 64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--acc);
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 400;
+      line-height: 1.65;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1.2;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--acc);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 5vw, 3rem);
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--bg);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--bg);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    .nav-cta {
+      background: var(--warm);
+      color: var(--white) !important;
+      padding: 0.45rem 1.1rem;
+      font-size: 0.8rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.1em !important;
+      text-transform: uppercase !important;
+      opacity: 1 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: #b3672f !important; }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--bg);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* ── HERO ── */
+    #home {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - var(--nav-h));
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 8vw, 6rem) clamp(1.5rem, 6vw, 5rem);
+      background: var(--bg);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--acc);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-copy h1 em {
+      font-style: italic;
+      color: var(--warm);
+    }
+
+    .hero-copy p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 38ch;
+      margin-bottom: 2.2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: var(--bg);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--warm);
+      color: var(--white);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 2px solid var(--acc);
+      color: var(--acc);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover {
+      background: var(--acc);
+      color: var(--bg);
+    }
+
+    .hero-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero-photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(26,26,26,0.65) 0%, transparent 60%);
+      padding: 2rem 1.8rem 1.5rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--warm);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+    }
+
+    /* ── SECTION SHELL ── */
+    section {
+      padding: clamp(3.5rem, 8vw, 6rem) clamp(1.2rem, 6vw, 4rem);
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      color: var(--acc);
+      margin-bottom: 1rem;
+    }
+
+    .section-rule {
+      width: 48px;
+      height: 3px;
+      background: var(--warm);
+      margin-bottom: 2rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--light);
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .about-stat-row {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .about-stat dt {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--warm);
+      line-height: 1;
+    }
+
+    .about-stat dd {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.3rem;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+      max-width: 52ch;
+    }
+
+    .about-copy p + p { margin-top: 1rem; }
+
+    .about-photo-side {
+      position: relative;
+    }
+
+    .about-photo-side img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .about-photo-accent {
+      position: absolute;
+      bottom: -18px;
+      right: -18px;
+      width: 90px;
+      height: 90px;
+      background: var(--warm);
+      z-index: -1;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--bg);
+    }
+
+    .services-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+
+    .price-table thead {
+      background: var(--acc);
+      color: var(--bg);
+    }
+
+    .price-table thead th {
+      padding: 0.85rem 1.2rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-align: left;
+    }
+
+    .price-table thead th:last-child { text-align: right; }
+
+    .price-table tbody tr {
+      border-bottom: 1px solid var(--light);
+      transition: background 0.15s;
+    }
+
+    .price-table tbody tr:hover { background: var(--light); }
+
+    .price-table tbody td {
+      padding: 1.1rem 1.2rem;
+      font-size: 0.97rem;
+      color: var(--acc);
+      vertical-align: top;
+    }
+
+    .price-table tbody td:last-child {
+      text-align: right;
+      font-weight: 600;
+      color: var(--warm);
+      white-space: nowrap;
+    }
+
+    .price-table td.desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      padding-top: 0;
+      padding-bottom: 1rem;
+    }
+
+    .price-table tr.desc-row td {
+      padding-top: 0;
+      padding-bottom: 1rem;
+      border-bottom: none;
+    }
+
+    .price-table tr.main-row td { padding-bottom: 0.3rem; border-bottom: none; }
+
+    .price-note {
+      margin-top: 1.5rem;
+      font-size: 0.83rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies {
+      background: var(--acc);
+      color: var(--bg);
+    }
+
+    #testimonies .section-label { color: var(--warm); }
+    #testimonies .section-title { color: var(--bg); }
+    #testimonies .section-rule { background: var(--warm); }
+
+    .testimony-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 780px;
+    }
+
+    .testimony-card {
+      border-left: 3px solid var(--warm);
+      padding-left: 1.5rem;
+    }
+
+    .testimony-card blockquote {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-style: italic;
+      font-weight: 600;
+      color: var(--bg);
+      line-height: 1.6;
+      margin-bottom: 0.75rem;
+    }
+
+    .testimony-card cite {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm);
+      font-style: normal;
+    }
+
+    /* ── HOURS + MAP ── */
+    #contact {
+      background: var(--light);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: start;
+    }
+
+    .hours-block h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--acc);
+      margin-bottom: 1.2rem;
+    }
+
+    .hours-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.93rem;
+      color: var(--muted);
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(26,26,26,0.1);
+    }
+
+    .hours-list li:last-child { border-bottom: none; }
+
+    .hours-list .day { font-weight: 600; color: var(--acc); }
+    .hours-list .closed { color: var(--warm); font-weight: 600; }
+
+    .contact-details {
+      margin-top: 2rem;
+    }
+
+    .contact-details p {
+      font-size: 0.93rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-details a {
+      color: var(--warm);
+      font-weight: 600;
+    }
+
+    .contact-details a:hover { text-decoration: underline; }
+
+    .contact-cta {
+      margin-top: 1.5rem;
+    }
+
+    .social-links {
+      margin-top: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--muted);
+      padding-bottom: 1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .social-link:hover {
+      color: var(--warm);
+      border-color: var(--warm);
+    }
+
+    .map-wrap {
+      position: relative;
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 360px;
+      border: none;
+      display: block;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--acc);
+      color: var(--bg);
+      padding: 2.5rem clamp(1.2rem, 6vw, 4rem);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-credit {
+      font-size: 0.78rem;
+      color: rgba(245,233,216,0.55);
+    }
+
+    .footer-credit a {
+      color: var(--warm);
+    }
+
+    .footer-credit a:hover { text-decoration: underline; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      #home {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-photo {
+        height: 55vw;
+        min-height: 260px;
+        order: -1;
+      }
+
+      .hero-copy {
+        padding: 2.5rem 1.5rem 3rem;
+      }
+
+      .hero-copy h1 { font-size: 2.2rem; }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-photo-side { order: -1; }
+
+      .about-photo-side img { height: 280px; }
+
+      .about-photo-accent { display: none; }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .nav-links { display: none; }
+
+      .nav-hamburger { display: flex; }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        background: var(--acc);
+        padding: 1.5rem 2rem 2rem;
+        gap: 1.2rem;
+        z-index: 99;
+      }
+
+      .nav-links.open a {
+        font-size: 1rem;
+        opacity: 0.9;
+      }
+
+      .about-stat-row { gap: 1.5rem; }
+    }
+
+    @media (max-width: 580px) {
+      .price-table thead th:last-child,
+      .price-table tbody td:last-child {
+        display: none;
+      }
+
+      .price-note { font-size: 0.8rem; }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav aria-label="Main navigation">
+    <span class="nav-brand">Extreme Auto Body</span>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#contact">Hours &amp; Map</a></li>
+      <li><a href="tel:7609225033" class="nav-cta">Call Now</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="home" aria-label="Hero">
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Blythe, CA — Est. Auto Body Specialists</p>
+      <h1>Body Work Done <em>Right,</em><br>The First Time.</h1>
+      <p>From fender benders to full custom paintwork, Extreme Auto Body & Custom delivers dealership-quality results with small-shop prices — right here in the desert.</p>
+      <div class="hero-actions">
+        <a href="tel:7609225033" class="btn-primary">Call (760) 922-5033</a>
+        <a href="#services" class="btn-ghost">See Our Work</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="./photos/01.jpg" alt="Extreme Auto Body & Custom shop exterior" />
+      <div class="hero-photo-overlay">
+        <span class="hero-badge">Mon – Fri &nbsp;·&nbsp; 7 AM – 3 PM</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-copy">
+        <p class="section-label">Who We Are</p>
+        <h2 class="section-title">A Jewel in the Desert</h2>
+        <div class="section-rule"></div>
+        <p>Extreme Auto Body & Custom is a family-run collision and custom shop on East Hobsonway in Blythe. Owner Cynthia brings hands-on expertise and a straight-talking approach — no runaround, no inflated estimates. From the moment you walk in, Anna in the office makes sure the whole process is fast and stress-free.</p>
+        <p>Whether it's a minor scrape or a serious collision repair, the finish we deliver is seamless — paint matched, lines even, and looking like nothing ever happened.</p>
+        <dl class="about-stat-row">
+          <div class="about-stat">
+            <dt>100%</dt>
+            <dd>Paint Match<br>Guarantee</dd>
+          </div>
+          <div class="about-stat">
+            <dt>&lt;1hr</dt>
+            <dd>Quick Turnaround<br>on Small Jobs</dd>
+          </div>
+          <div class="about-stat">
+            <dt>Local</dt>
+            <dd>Owner-Operated<br>Since Day One</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="about-photo-side">
+        <img src="./photos/01.jpg" alt="Auto body work at Extreme Auto Body & Custom" />
+        <div class="about-photo-accent"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section id="services">
+    <div class="services-inner">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Services &amp; Pricing</h2>
+      <div class="section-rule"></div>
+
+      <table class="price-table" aria-label="Services and pricing">
+        <thead>
+          <tr>
+            <th scope="col">Service</th>
+            <th scope="col">Details</th>
+            <th scope="col">Starting From</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Collision Repair</strong></td>
+            <td>Structural and panel repair following an accident — frame straightening, dent removal, and refinishing to factory spec.</td>
+            <td>Get a Quote</td>
+          </tr>
+          <tr>
+            <td><strong>Paint &amp; Color Match</strong></td>
+            <td>Spot, panel, and full-vehicle repaints using computer-matched formulas — so the repair is invisible.</td>
+            <td>$150+</td>
+          </tr>
+          <tr>
+            <td><strong>Dent &amp; Scratch Repair</strong></td>
+            <td>Fender benders, parking-lot dings, and surface scratches — restored cleanly so you'd never know.</td>
+            <td>$80+</td>
+          </tr>
+          <tr>
+            <td><strong>Custom Bodywork</strong></td>
+            <td>Body-kit fitting, custom panels, and one-off fabrication for modified builds and personal projects.</td>
+            <td>Get a Quote</td>
+          </tr>
+          <tr>
+            <td><strong>Bumper Repair &amp; Replace</strong></td>
+            <td>Crack repair, re-painting, or full bumper replacement — front and rear.</td>
+            <td>$120+</td>
+          </tr>
+          <tr>
+            <td><strong>Minor Mechanical</strong></td>
+            <td>Small mechanical fixes tied to collision damage — we handle the whole job so you don't have to shop around.</td>
+            <td>Get a Quote</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="price-note">All prices are estimates and vary by vehicle size and damage extent. Call or stop in for a free, no-pressure assessment.</p>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIES ── -->
+  <section id="testimonies">
+    <p class="section-label">In Their Words</p>
+    <h2 class="section-title">Customer Testimonies</h2>
+    <div class="section-rule"></div>
+
+    <div class="testimony-stack">
+      <div class="testimony-card">
+        <blockquote>"Great shop! I am so glad I found it. Wonderful employees — Anna in the office got me in very fast, Cynthia, the owner, very knowledgeable, friendly &amp; knows her business. Gave me a great price for a small problem &amp; I was there less than an hour. Jewels in the desert. Highly recommend this shop. Nice &amp; clean as well."</blockquote>
+        <cite>— Lee P.</cite>
+      </div>
+      <div class="testimony-card">
+        <blockquote>"Extreme Auto Body did a great job on my truck. I was involved in a little fender bender — my truck looks the same as before. The paint match was spot on, all the lines were even. Came out great. Thanks, Extreme Auto Body!"</blockquote>
+        <cite>— Nottheone R.</cite>
+      </div>
+      <div class="testimony-card">
+        <blockquote>"Had an amazing experience with them! They got everything done quickly and did an outstanding job on fixing some damage on my car. Looks brand new! Going to keep going to them any time I need body work for my car."</blockquote>
+        <cite>— Julian R.</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOURS + MAP ── -->
+  <section id="contact">
+    <div class="contact-inner">
+      <div>
+        <p class="section-label">Find Us</p>
+        <h2 class="section-title">Hours &amp; Location</h2>
+        <div class="section-rule"></div>
+
+        <div class="hours-block">
+          <h3>Business Hours</h3>
+          <ul class="hours-list">
+            <li><span class="day">Monday</span><span>7:00 AM – 3:00 PM</span></li>
+            <li><span class="day">Tuesday</span><span>7:00 AM – 3:00 PM</span></li>
+            <li><span class="day">Wednesday</span><span>7:00 AM – 3:00 PM</span></li>
+            <li><span class="day">Thursday</span><span>7:00 AM – 3:00 PM</span></li>
+            <li><span class="day">Friday</span><span>7:00 AM – 3:00 PM</span></li>
+            <li><span class="day">Saturday</span><span class="closed">Closed</span></li>
+            <li><span class="day">Sunday</span><span class="closed">Closed</span></li>
+          </ul>
+        </div>
+
+        <div class="contact-details">
+          <p><strong>Address:</strong><br>1202 E Hobsonway, Blythe, CA 92225</p>
+          <p style="margin-top:0.75rem;"><strong>Phone:</strong><br><a href="tel:7609225033">(760) 922-5033</a></p>
+        </div>
+
+        <div class="contact-cta">
+          <a href="tel:7609225033" class="btn-primary">Call Now</a>
+        </div>
+
+        <div class="social-links">
+          <a href="https://maps.google.com/?cid=8043794983629237502&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="social-link">Google Business</a>
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=1202+E+Hobsonway,+Blythe,+CA+92225&z=15&output=embed"
+          title="Extreme Auto Body & Custom location map"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span class="footer-brand">Extreme Auto Body &amp; Custom</span>
+    <span class="footer-credit">
+      Mockup designed by LJ Sites — interested in making this yours?
+      <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </span>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
+  </script>
+
+</body>
+</html>

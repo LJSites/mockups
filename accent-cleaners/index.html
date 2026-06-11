@@ -1,0 +1,404 @@
+<!--
+  ARCHETYPE: "Pressed-shirt minimalism" — a crisp, trustworthy neighborhood dry cleaner.
+  Editorial/utility hybrid: lots of white, a thin teal hairline system, sharp left-aligned
+  alignment grid (no centered hero, no overlay+pill). Calm navy ink + soft teal accent,
+  pulled from the navy "ACCENT CLEANERS" storefront lettering.
+
+  STRUCTURAL DECISIONS:
+  - Sticky top bar (slim, 64px) with hairline border; html{scroll-padding-top:64px}.
+  - Split asymmetric hero: type column (name + tagline + dual CTA + quick facts strip)
+    beside a single tall storefront photo. No overlay, no centered headline.
+  - Services as a clean two-column "list ledger" (label + note), not 3 icon cards.
+  - "What People Say" testimonies as a stacked editorial quote list with a teal rule,
+    no cards/avatars/stars.
+  - Hours as a tidy table; location as keyless Google Maps embed beside it.
+  - Photo strip (the real garments) as an honest gallery band.
+  - Display font: Fraunces (warm but precise serif) for headings; Inter for body —
+    a tidy geometric-ish sans. Palette differs from typical teal-gradient cleaner templates.
+  - Animation: none (deliberate — pressed/calm). Only hover transitions on links/buttons.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Accent Cleaners — Dry Cleaning &amp; Alterations · Santa Ana</title>
+<meta name="description" content="Accent Cleaners in Santa Ana, CA — trusted dry cleaning, alterations, wedding gowns and comforters with environmentally friendly cleaning. Family-run for 30+ years.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#13243d;        /* calm navy */
+    --ink-soft:#475569;
+    --teal:#1d7a86;       /* soft teal accent */
+    --teal-tint:#e7f2f3;
+    --paper:#ffffff;
+    --paper-2:#f6f8f9;
+    --line:#e2e8ec;
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.1;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-family:'Inter',sans-serif;font-weight:600;font-size:.72rem;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--teal);
+  }
+
+  /* ---- Nav ---- */
+  .nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(255,255,255,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:1.18rem;letter-spacing:-.01em;display:flex;align-items:center;gap:.55rem}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--teal);display:inline-block}
+  .nav-links{display:flex;align-items:center;gap:2rem}
+  .nav-links a{font-size:.86rem;font-weight:500;color:var(--ink-soft);transition:color .2s}
+  .nav-links a:hover{color:var(--teal)}
+  .nav-call{font-size:.86rem;font-weight:600;color:var(--ink);border:1px solid var(--line);
+    padding:.5rem .9rem;border-radius:2px;transition:border-color .2s,color .2s}
+  .nav-call:hover{border-color:var(--teal);color:var(--teal)}
+  @media(max-width:760px){.nav-links a:not(.nav-call){display:none}}
+
+  /* ---- Buttons ---- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;font-weight:600;font-size:.92rem;
+    padding:.85rem 1.4rem;border-radius:2px;transition:.2s;
+  }
+  .btn-primary{background:var(--ink);color:#fff}
+  .btn-primary:hover{background:var(--teal)}
+  .btn-ghost{border:1px solid var(--ink);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
+
+  /* ---- Hero ---- */
+  .hero{padding:72px 0 0}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero h1{font-size:clamp(2.5rem,5vw,4rem);margin:.5rem 0 1rem}
+  .hero .lede{font-size:1.12rem;color:var(--ink-soft);max-width:34ch;margin-bottom:1.9rem}
+  .cta-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:2.4rem}
+  .facts{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line)}
+  .fact{padding:1rem 1.5rem 1rem 0;margin-right:1.5rem;border-right:1px solid var(--line)}
+  .fact:last-child{border-right:0;margin-right:0}
+  .fact .k{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:600}
+  .fact .v{font-family:'Fraunces',serif;font-size:1.05rem;margin-top:.15rem}
+  .hero-photo{position:relative}
+  .hero-photo img{width:100%;height:560px;object-fit:cover;border-radius:3px}
+  .hero-photo .tag{
+    position:absolute;left:18px;bottom:18px;background:#fff;color:var(--ink);
+    font-size:.78rem;font-weight:600;padding:.5rem .85rem;border-radius:2px;
+    box-shadow:0 6px 22px rgba(19,36,61,.16);
+  }
+  @media(max-width:860px){
+    .hero{padding:48px 0 0}
+    .hero-grid{grid-template-columns:1fr;gap:32px}
+    .hero-photo{order:-1}
+    .hero-photo img{height:340px}
+  }
+
+  /* ---- Section frame ---- */
+  section{padding:84px 0}
+  .sec-head{max-width:46ch;margin-bottom:48px}
+  .sec-head h2{font-size:clamp(1.8rem,3.2vw,2.5rem);margin:.6rem 0 .8rem}
+  .sec-head p{color:var(--ink-soft)}
+
+  .band{background:var(--paper-2)}
+  .band-tint{background:var(--teal-tint)}
+
+  /* ---- About ---- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .about-grid img{width:100%;height:420px;object-fit:cover;border-radius:3px}
+  .about-copy p{color:var(--ink-soft);margin-bottom:1rem}
+  .about-copy p:first-of-type{font-size:1.18rem;color:var(--ink);font-family:'Fraunces',serif;line-height:1.4}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:28px}.about-grid img{height:300px}}
+
+  /* ---- Services ledger ---- */
+  .ledger{display:grid;grid-template-columns:1fr 1fr;gap:0 64px}
+  .svc{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;padding:1.4rem 0;border-top:1px solid var(--line)}
+  .svc .num{font-family:'Fraunces',serif;color:var(--teal);font-size:1.05rem;font-weight:600;padding-top:.1rem}
+  .svc h3{font-size:1.2rem;margin-bottom:.25rem}
+  .svc p{font-size:.95rem;color:var(--ink-soft)}
+  @media(max-width:760px){.ledger{grid-template-columns:1fr;gap:0}}
+
+  /* ---- Testimonies ---- */
+  .quotes{display:grid;gap:0}
+  .quote{padding:2.4rem 0;border-top:1px solid var(--line);display:grid;grid-template-columns:auto 1fr;gap:2rem}
+  .quote:first-child{border-top:0;padding-top:0}
+  .quote .mark{font-family:'Fraunces',serif;font-size:3rem;line-height:.7;color:var(--teal);font-weight:600}
+  .quote blockquote{font-family:'Fraunces',serif;font-size:1.22rem;line-height:1.5;color:var(--ink)}
+  .quote .by{margin-top:.9rem;font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+  @media(max-width:600px){.quote{grid-template-columns:1fr;gap:.9rem}.quote blockquote{font-size:1.08rem}}
+
+  /* ---- Gallery ---- */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .gallery img{width:100%;height:240px;object-fit:cover;border-radius:3px}
+  .gallery a:first-child{grid-column:span 2;grid-row:span 2}
+  .gallery a:first-child img{height:494px}
+  @media(max-width:760px){
+    .gallery{grid-template-columns:1fr 1fr}
+    .gallery img{height:180px}
+    .gallery a:first-child{grid-column:span 2;grid-row:auto}
+    .gallery a:first-child img{height:240px}
+  }
+
+  /* ---- Hours + Map ---- */
+  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+  .hours-table{width:100%;border-collapse:collapse}
+  .hours-table td{padding:.7rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+  .hours-table td:last-child{text-align:right;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+  .hours-table tr.today td{font-weight:600;color:var(--teal)}
+  .hours-table tr.today td:last-child{color:var(--teal)}
+  .closed{color:#9aa5b1}
+  .addr-block{margin-top:1.6rem;font-size:.95rem;color:var(--ink-soft);line-height:1.7}
+  .addr-block strong{color:var(--ink);font-weight:600}
+  .map-frame{border:1px solid var(--line);border-radius:3px;overflow:hidden}
+  .map-frame iframe{display:block;width:100%;height:420px;border:0;filter:grayscale(.12)}
+  @media(max-width:860px){.visit-grid{grid-template-columns:1fr;gap:32px}.map-frame iframe{height:320px}}
+
+  /* ---- Contact CTA ---- */
+  .contact{background:var(--ink);color:#fff;text-align:center;padding:96px 0}
+  .contact h2{font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:1rem}
+  .contact p{color:#aebdd0;max-width:42ch;margin:0 auto 2rem}
+  .contact .eyebrow{color:#5fb3bd}
+  .contact .btn-primary{background:#fff;color:var(--ink)}
+  .contact .btn-primary:hover{background:var(--teal);color:#fff}
+  .contact .btn-ghost{border-color:rgba(255,255,255,.4);color:#fff}
+  .contact .btn-ghost:hover{border-color:#fff}
+  .contact .lines{margin-top:2.2rem;font-size:.95rem;color:#cdd8e6}
+  .contact .lines a{color:#fff;border-bottom:1px solid rgba(255,255,255,.3)}
+
+  /* ---- Footer ---- */
+  footer{background:#0d1a2c;color:#94a3b8;padding:40px 0;font-size:.86rem}
+  .foot-grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+  .foot-grid a{color:#cbd5e1;transition:color .2s}
+  .foot-grid a:hover{color:#fff}
+  .foot-social{display:flex;gap:1.3rem}
+  .credit{border-top:1px solid rgba(255,255,255,.08);margin-top:24px;padding-top:20px;color:#64748b;font-size:.8rem}
+  .credit a{color:#94a3b8}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="dot"></span>Accent&nbsp;Cleaners</a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#say">Testimonies</a>
+      <a href="#visit">Hours &amp; Location</a>
+      <a href="tel:+17147544008" class="nav-call">(714)&nbsp;754-4008</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">Dry Cleaning &amp; Alterations · Santa Ana</span>
+        <h1>Clothes that come back better than you left them.</h1>
+        <p class="lede">A trusted neighborhood cleaner specializing in wedding gowns, fine garments and comforters — with environmentally friendly cleaning and expert on-site alterations.</p>
+        <div class="cta-row">
+          <a href="tel:+17147544008" class="btn btn-primary">Call (714) 754-4008</a>
+          <a href="https://www.google.com/maps?q=Accent+Cleaners,3767+S+Plaza+Dr,Santa+Ana,CA+92704" target="_blank" rel="noopener" class="btn btn-ghost">Get Directions</a>
+        </div>
+        <div class="facts">
+          <div class="fact"><div class="k">Serving Santa Ana</div><div class="v">30+ years</div></div>
+          <div class="fact"><div class="k">Specialty</div><div class="v">Gowns &amp; comforters</div></div>
+          <div class="fact"><div class="k">Open Mon–Sat</div><div class="v">From 7:00 AM</div></div>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="./photos/01.jpg" alt="Accent Cleaners storefront in Santa Ana">
+        <span class="tag">3767 S Plaza Dr, Santa Ana</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <img src="./photos/02.jpg" alt="Inside Accent Cleaners — racks of pressed, bagged garments">
+    <div class="about-copy">
+      <span class="eyebrow">About the shop</span>
+      <p>For more than three decades, Santa Ana has trusted Accent Cleaners with the clothes that matter most.</p>
+      <p>From the everyday shirt to the once-in-a-lifetime wedding gown, every piece is treated with the same patient, hands-on care. The team is known for rescuing garments others give up on — set-in stains, delicate fabrics, alterations that need to fit just right.</p>
+      <p>We use environmentally friendly cleaning processes and even recycle our hangers and plastics — a cleaner you can feel good about, inside and out.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What we do</span>
+      <h2>Careful work, garment by garment.</h2>
+      <p>No two pieces are alike, and we don't treat them like they are. Here's where we shine.</p>
+    </div>
+    <div class="ledger">
+      <div class="svc"><span class="num">01</span><div><h3>Dry Cleaning</h3><p>Crisp, fresh, professionally finished — suits, shirts, dresses and everyday wear, returned ready to wear.</p></div></div>
+      <div class="svc"><span class="num">02</span><div><h3>Expert Alterations</h3><p>On-site tailoring that fits right — hems, taper, resizing and repairs that always meet expectations.</p></div></div>
+      <div class="svc"><span class="num">03</span><div><h3>Wedding Gowns</h3><p>Specialty cleaning, pressing and preservation for the dress you'll want to keep forever.</p></div></div>
+      <div class="svc"><span class="num">04</span><div><h3>Comforters &amp; Household</h3><p>Bulky bedding, comforters and delicate linens cleaned and freshened with care.</p></div></div>
+      <div class="svc"><span class="num">05</span><div><h3>Stain Rescue</h3><p>Years-old, set-in stains others won't touch — if we can't get it out, no one can.</p></div></div>
+      <div class="svc"><span class="num">06</span><div><h3>Eco-Friendly Process</h3><p>Environmentally friendly cleaning, with recycled hangers and plastics on every order.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="say">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">In their words</span>
+      <h2>What people say.</h2>
+    </div>
+    <div class="quotes">
+      <figure class="quote">
+        <span class="mark">&ldquo;</span>
+        <div>
+          <blockquote>I took my old sports coat that had been stained for years — I loved that thing and was sad it was unwearable. They assured me that if they couldn't clean it, no one could. When I came to pick it up: unbelievable. A fantastic job. Definitely found my go-to dry cleaner.</blockquote>
+          <div class="by">Alex M.</div>
+        </div>
+      </figure>
+      <figure class="quote">
+        <span class="mark">&ldquo;</span>
+        <div>
+          <blockquote>They made my day! A two-year-old stain removed. I brought in a suit I'd worn once to a wedding, with a dark brown drink stain on the back I never noticed. It looked like it would never come out — but it completely vanished. Like brand new.</blockquote>
+          <div class="by">Dylan D.</div>
+        </div>
+      </figure>
+      <figure class="quote">
+        <span class="mark">&ldquo;</span>
+        <div>
+          <blockquote>Accent Cleaners have a great team. They always do a fantastic job with my dry cleaning and alterations — and they even recycle hangers and plastics. A very reliable, professional place to trust with your clothing and your business.</blockquote>
+          <div class="by">Schuyler T.</div>
+        </div>
+      </figure>
+      <figure class="quote">
+        <span class="mark">&ldquo;</span>
+        <div>
+          <blockquote>I have been a customer for over 30 years and both the alterations and dry cleaning departments do a good job. My clothing looks great and repairs have always met my expectations. I've tried other cleaners and no one compares to Accent.</blockquote>
+          <div class="by">CC M.</div>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="band-tint" id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">From the shop floor</span>
+      <h2>Real garments, real care.</h2>
+    </div>
+    <div class="gallery">
+      <a href="./photos/02.jpg" target="_blank" rel="noopener"><img src="./photos/02.jpg" alt="Counter and bagged garment racks at Accent Cleaners"></a>
+      <a href="./photos/03.jpg" target="_blank" rel="noopener"><img src="./photos/03.jpg" alt="A freshly cleaned grey cardigan ready for pickup"></a>
+      <a href="./photos/04.jpg" target="_blank" rel="noopener"><img src="./photos/04.jpg" alt="A green evening gown cleaned and hung among garments"></a>
+      <a href="./photos/05.jpg" target="_blank" rel="noopener"><img src="./photos/05.jpg" alt="Detail of a cream blazer cuff after cleaning"></a>
+      <a href="./photos/06.jpg" target="_blank" rel="noopener"><img src="./photos/06.jpg" alt="Close detail of a cleaned cream jacket"></a>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS + MAP -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Visit us</span>
+      <h2>Hours &amp; location.</h2>
+    </div>
+    <div class="visit-grid">
+      <div>
+        <table class="hours-table" id="hours">
+          <tr><td>Monday</td><td>7:00 AM – 6:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>7:00 AM – 6:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>7:00 AM – 6:00 PM</td></tr>
+          <tr><td>Thursday</td><td>7:00 AM – 6:00 PM</td></tr>
+          <tr><td>Friday</td><td>7:00 AM – 6:00 PM</td></tr>
+          <tr><td>Saturday</td><td>8:00 AM – 4:00 PM</td></tr>
+          <tr><td>Sunday</td><td class="closed">Closed</td></tr>
+        </table>
+        <div class="addr-block">
+          <strong>Accent Cleaners</strong><br>
+          3767 S Plaza Dr<br>
+          Santa Ana, CA 92704<br>
+          <a href="tel:+17147544008" style="color:var(--teal);font-weight:600">(714) 754-4008</a>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=3767+S+Plaza+Dr,Santa+Ana,CA+92704&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Accent Cleaners, Santa Ana"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="eyebrow">Drop it off today</span>
+    <h2>Bring us your toughest garment.</h2>
+    <p>Whether it's an everyday shirt or the dress of a lifetime, we'd be glad to take care of it.</p>
+    <div class="cta-row" style="justify-content:center">
+      <a href="tel:+17147544008" class="btn btn-primary">Call (714) 754-4008</a>
+      <a href="https://www.google.com/maps?q=Accent+Cleaners,3767+S+Plaza+Dr,Santa+Ana,CA+92704" target="_blank" rel="noopener" class="btn btn-ghost">Get Directions</a>
+    </div>
+    <div class="lines">
+      Open Monday–Friday 7AM–6PM · Saturday 8AM–4PM<br>
+      <a href="https://maps.google.com/?cid=16142378398724560231" target="_blank" rel="noopener">Find us on Google</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <strong style="color:#e2e8f0;font-family:'Fraunces',serif;font-size:1.05rem">Accent Cleaners</strong><br>
+        3767 S Plaza Dr, Santa Ana, CA 92704 · <a href="tel:+17147544008">(714) 754-4008</a>
+      </div>
+      <div class="foot-social">
+        <a href="https://maps.google.com/?cid=16142378398724560231" target="_blank" rel="noopener">Google Business</a>
+        <a href="https://www.google.com/maps?q=3767+S+Plaza+Dr,Santa+Ana,CA+92704" target="_blank" rel="noopener">Directions</a>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Highlight today's row in the hours table (calm, single small enhancement).
+  (function(){
+    var rows=document.querySelectorAll('#hours tr');
+    var idx=new Date().getDay(); // 0=Sun
+    var map=[6,0,1,2,3,4,5];     // map JS day -> row order (Mon-first)
+    var target=map[idx];
+    if(rows[target]) rows[target].classList.add('today');
+  })();
+</script>
+</body>
+</html>

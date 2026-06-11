@@ -1,0 +1,550 @@
+<!--
+  ARCHETYPE: Fun Retro-Pop Family Barber & Salon — a lighthearted, mid-century
+   "soda-shop on main street" feel built around Shane's reputation for patience
+  with kids & special-needs clients. Deliberately DISTINCT from every other
+  barber archetype: NOT vintage-oxblood, NOT modern black/teal grooming studio,
+  NOT urban navy/camel, NOT luxe black/gold, NOT amber-woodshop, NOT regal
+  emerald/gold.
+
+  PALETTE: teal (#1f9b94 / deep #11635f) + coral (#ff6f5e) + cream (#fff6ea),
+           soft ink (#243133). Playful, sunny, warm.
+  TYPE: Display = "Bagel Fat One" (chunky rounded retro-pop) for the logo +
+        section kickers; "Fredoka" (friendly rounded geometric) for headings;
+        body = "Nunito Sans". Retro pop, not serious.
+
+  STRUCTURE (intentional, not a template):
+    - Sticky candy-stripe-accent nav; scroll-padding-top reserves its height.
+    - Asymmetric hero: big rounded coral/teal panel, photo card tilted in a
+      cream frame, a hand-drawn-feeling "open hours" sticker.
+    - Services as a flat, color-blocked PRICE LIST (no 3-up icon columns).
+    - "Meet Shane" band — the human hook, since every testimony names him.
+    - Testimonies as off-kilter sticky-note cards (no stars, no avatars,
+      first name + last initial, labeled "Kind Words From Families").
+    - Hours + keyless Google map, candy-stripe footer with the credit line.
+  ANIMATION: restrained — gentle hover lift/tilt on cards & buttons only.
+             No scroll/AOS fade-up.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Off The Top Barbershop &amp; Family Salon — Oroville, CA</title>
+<meta name="description" content="A friendly, family-friendly barbershop &amp; salon in downtown Oroville. Patient cuts for kids, adults &amp; clients of all abilities. Ask for Shane.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fredoka:wght@400;500;600;700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#1f9b94;
+    --teal-deep:#11635f;
+    --teal-ink:#0c4c49;
+    --coral:#ff6f5e;
+    --coral-deep:#ef5945;
+    --cream:#fff6ea;
+    --cream-2:#ffeed6;
+    --ink:#243133;
+    --sun:#ffc24b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{
+    scroll-behavior:smooth;
+    /* reserve space for the sticky nav so anchored headings clear the bar */
+    scroll-padding-top:84px;
+  }
+  body{
+    font-family:"Nunito Sans",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:"Fredoka",system-ui,sans-serif;line-height:1.05;font-weight:600;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{width:min(1140px,92vw);margin-inline:auto;}
+  .kicker{
+    font-family:"Bagel Fat One",cursive;
+    color:var(--coral);
+    font-size:clamp(.95rem,2.4vw,1.2rem);
+    letter-spacing:.02em;
+  }
+
+  /* ---------- candy stripe utility ---------- */
+  .stripe{
+    background-image:repeating-linear-gradient(
+      45deg,var(--coral) 0 14px,#fff 14px 28px,var(--teal) 28px 42px,#fff 42px 56px);
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    font-family:"Fredoka",sans-serif;font-weight:600;
+    font-size:1.02rem;
+    padding:.85rem 1.5rem;border-radius:999px;
+    border:3px solid var(--ink);
+    transition:transform .14s ease, box-shadow .14s ease;
+    cursor:pointer;white-space:nowrap;
+  }
+  .btn-coral{background:var(--coral);color:#fff;box-shadow:4px 4px 0 var(--ink);}
+  .btn-cream{background:var(--cream);color:var(--ink);box-shadow:4px 4px 0 var(--ink);}
+  .btn-teal{background:var(--teal);color:#fff;box-shadow:4px 4px 0 var(--ink);}
+  .btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink);}
+  .btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink);}
+
+  /* ---------- nav ---------- */
+  nav.bar{
+    position:sticky;top:0;z-index:50;
+    background:var(--cream);
+    border-bottom:3px solid var(--ink);
+  }
+  .bar-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    height:78px;
+  }
+  .brandmark{
+    font-family:"Bagel Fat One",cursive;
+    font-size:clamp(1.15rem,3.4vw,1.5rem);
+    color:var(--teal-deep);line-height:.92;
+  }
+  .brandmark small{display:block;font-size:.5em;color:var(--coral-deep);letter-spacing:.06em;}
+  .navlinks{display:flex;gap:1.6rem;align-items:center;font-family:"Fredoka",sans-serif;font-weight:500;}
+  .navlinks a{position:relative;padding:.2rem 0;}
+  .navlinks a::after{
+    content:"";position:absolute;left:0;bottom:-3px;height:3px;width:0;
+    background:var(--coral);transition:width .18s ease;border-radius:3px;
+  }
+  .navlinks a:hover::after{width:100%;}
+  .nav-cta{margin-left:.4rem;padding:.5rem 1rem;font-size:.95rem;}
+  .menu-btn{display:none;}
+  @media(max-width:860px){
+    .navlinks{display:none;}
+    .nav-cta{display:inline-flex;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:clamp(2.4rem,6vw,4.5rem) 0 0;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3rem);
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.5rem,7.2vw,4.6rem);
+    font-weight:700;color:var(--teal-deep);
+    letter-spacing:-.01em;margin:.4rem 0 .9rem;
+  }
+  .hero h1 .pop{color:var(--coral);}
+  .hero p.lead{font-size:clamp(1.05rem,2vw,1.22rem);max-width:34ch;color:#3a4a4c;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.6rem;}
+  .hero-photo{position:relative;}
+  .photo-frame{
+    background:#fff;border:3px solid var(--ink);border-radius:22px;
+    padding:12px;box-shadow:8px 8px 0 var(--teal);
+    transform:rotate(2.2deg);
+  }
+  .photo-frame img{border-radius:12px;width:100%;height:clamp(320px,46vw,470px);object-fit:cover;}
+  .open-sticker{
+    position:absolute;left:-18px;bottom:-22px;z-index:3;
+    background:var(--coral);color:#fff;border:3px solid var(--ink);
+    border-radius:50%;width:124px;height:124px;
+    display:grid;place-content:center;text-align:center;
+    transform:rotate(-9deg);box-shadow:5px 5px 0 var(--ink);
+    font-family:"Fredoka",sans-serif;font-weight:600;line-height:1.05;
+    padding:8px;
+  }
+  .open-sticker b{font-family:"Bagel Fat One",cursive;font-size:1.5rem;display:block;}
+  .open-sticker span{font-size:.72rem;letter-spacing:.04em;}
+  @media(max-width:820px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-photo{order:-1;max-width:440px;margin-inline:auto;}
+    .photo-frame{transform:rotate(1.5deg);}
+  }
+
+  /* hero bottom candy strip */
+  .hero-strip{height:18px;margin-top:clamp(2.4rem,5vw,3.6rem);}
+
+  /* ---------- trust ticker ---------- */
+  .ticker{
+    background:var(--teal-deep);color:var(--cream);
+    padding:1rem 0;border-bottom:3px solid var(--ink);
+  }
+  .ticker .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2.2rem;justify-content:center;
+    font-family:"Fredoka",sans-serif;font-weight:500;font-size:clamp(.92rem,1.9vw,1.05rem);}
+  .ticker b{color:var(--sun);}
+
+  /* ---------- section scaffolding ---------- */
+  section{padding:clamp(3rem,7vw,5.5rem) 0;}
+  .sec-head{margin-bottom:2.2rem;}
+  .sec-head h2{font-size:clamp(2rem,5vw,3rem);color:var(--teal-deep);font-weight:700;margin-top:.2rem;}
+
+  /* ---------- about / meet shane ---------- */
+  #about{background:var(--cream-2);border-block:3px solid var(--ink);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3.2rem);align-items:center;}
+  .about-copy p{font-size:1.08rem;margin-bottom:1rem;color:#3a4a4c;}
+  .about-copy p:first-of-type{font-size:1.18rem;color:var(--ink);}
+  .shane-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .shane-photos figure{
+    border:3px solid var(--ink);border-radius:16px;overflow:hidden;background:#fff;
+    box-shadow:5px 5px 0 var(--coral);
+  }
+  .shane-photos figure:nth-child(2){box-shadow:5px 5px 0 var(--teal);transform:translateY(18px);}
+  .shane-photos img{width:100%;height:230px;object-fit:cover;}
+  @media(max-width:820px){
+    .about-grid{grid-template-columns:1fr;}
+    .shane-photos figure:nth-child(2){transform:none;}
+    .shane-photos img{height:200px;}
+  }
+
+  /* ---------- services / price list ---------- */
+  .price-card{
+    background:#fff;border:3px solid var(--ink);border-radius:22px;
+    box-shadow:8px 8px 0 var(--teal);overflow:hidden;
+  }
+  .price-card .ph{padding:1.2rem 1.6rem;background:var(--coral);color:#fff;
+    display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--ink);}
+  .price-card .ph span{font-family:"Bagel Fat One",cursive;font-size:1.25rem;}
+  .price-card .ph em{font-style:normal;font-family:"Fredoka",sans-serif;font-weight:500;font-size:.95rem;}
+  .price-list{list-style:none;}
+  .price-list li{
+    display:flex;align-items:baseline;gap:.8rem;
+    padding:1.05rem 1.6rem;border-bottom:2px dashed #e4d9c5;
+  }
+  .price-list li:last-child{border-bottom:0;}
+  .price-list .name{font-family:"Fredoka",sans-serif;font-weight:600;font-size:1.12rem;color:var(--ink);}
+  .price-list .desc{display:block;font-size:.92rem;color:#6a7274;font-weight:400;font-family:"Nunito Sans";}
+  .price-list .dots{flex:1;border-bottom:2px dotted #c9bda6;transform:translateY(-3px);}
+  .price-list .price{font-family:"Fredoka",sans-serif;font-weight:700;font-size:1.2rem;color:var(--teal-deep);white-space:nowrap;}
+  .services-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.4rem,3.5vw,2.6rem);align-items:start;}
+  .svc-note{
+    background:var(--teal-deep);color:var(--cream);border:3px solid var(--ink);
+    border-radius:22px;padding:1.8rem;box-shadow:8px 8px 0 var(--coral);
+  }
+  .svc-note h3{color:#fff;font-size:1.5rem;margin-bottom:.7rem;}
+  .svc-note p{font-size:1.02rem;opacity:.95;margin-bottom:1.2rem;}
+  .svc-note .pill{display:inline-block;background:var(--sun);color:var(--ink);
+    font-family:"Fredoka",sans-serif;font-weight:600;font-size:.85rem;
+    padding:.3rem .8rem;border-radius:999px;border:2px solid var(--ink);margin:.2rem .25rem 0 0;}
+  @media(max-width:820px){.services-grid{grid-template-columns:1fr;}}
+
+  /* ---------- gallery strip ---------- */
+  #gallery{background:var(--teal);border-block:3px solid var(--ink);}
+  #gallery .sec-head h2,#gallery .kicker{color:#fff;}
+  #gallery .kicker{color:var(--cream);}
+  .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .gal figure{border:3px solid var(--ink);border-radius:16px;overflow:hidden;background:#fff;}
+  .gal img{width:100%;height:clamp(180px,24vw,260px);object-fit:cover;transition:transform .35s ease;}
+  .gal figure:hover img{transform:scale(1.06);}
+  @media(max-width:680px){.gal{grid-template-columns:1fr 1fr;}}
+
+  /* ---------- testimonies ---------- */
+  .notes{display:grid;grid-template-columns:repeat(2,1fr);gap:1.8rem;}
+  .note{
+    background:#fff;border:3px solid var(--ink);border-radius:8px;
+    padding:1.6rem 1.7rem;position:relative;
+    box-shadow:5px 6px 0 rgba(36,49,51,.18);
+  }
+  .note:nth-child(4n+1){background:#fff;transform:rotate(-1.1deg);}
+  .note:nth-child(4n+2){background:var(--cream-2);transform:rotate(1deg);}
+  .note:nth-child(4n+3){background:#eafaf8;transform:rotate(.8deg);}
+  .note:nth-child(4n+4){background:#fff2ee;transform:rotate(-.9deg);}
+  .note::before{
+    content:"";position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+    width:60px;height:22px;background:rgba(255,194,75,.7);
+    border:2px solid rgba(36,49,51,.35);border-radius:3px;
+  }
+  .note p{font-size:1.02rem;color:#37474a;margin-bottom:1rem;}
+  .note cite{font-family:"Fredoka",sans-serif;font-weight:600;font-style:normal;color:var(--coral-deep);}
+  @media(max-width:760px){.notes{grid-template-columns:1fr;}}
+
+  /* ---------- visit / hours / map ---------- */
+  #visit{background:var(--cream-2);border-top:3px solid var(--ink);}
+  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.6rem,4vw,3rem);align-items:stretch;}
+  .hours-card{background:#fff;border:3px solid var(--ink);border-radius:22px;
+    box-shadow:8px 8px 0 var(--teal);padding:1.8rem;}
+  .hours-card h3{font-size:1.5rem;color:var(--teal-deep);margin-bottom:1rem;}
+  .hours-row{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:2px dashed #e4d9c5;font-family:"Fredoka",sans-serif;font-weight:500;}
+  .hours-row:last-of-type{border-bottom:0;}
+  .hours-row.today{background:var(--sun);margin-inline:-.6rem;padding-inline:.6rem;border-radius:8px;border-bottom:0;}
+  .hours-row .cl{color:var(--coral-deep);}
+  .contact-line{margin-top:1.3rem;font-size:1.05rem;line-height:1.9;}
+  .contact-line a{font-family:"Fredoka",sans-serif;font-weight:600;color:var(--teal-deep);}
+  .map-card{border:3px solid var(--ink);border-radius:22px;overflow:hidden;box-shadow:8px 8px 0 var(--coral);min-height:360px;}
+  .map-card iframe{width:100%;height:100%;min-height:360px;border:0;display:block;filter:saturate(1.05);}
+  @media(max-width:820px){.visit-grid{grid-template-columns:1fr;}}
+
+  /* ---------- final CTA ---------- */
+  .finalcta{background:var(--teal-deep);color:var(--cream);text-align:center;}
+  .finalcta h2{color:#fff;font-size:clamp(2rem,5.5vw,3.2rem);font-weight:700;margin-bottom:.8rem;}
+  .finalcta p{max-width:46ch;margin:0 auto 1.8rem;font-size:1.1rem;opacity:.95;}
+  .finalcta .hero-cta{justify-content:center;}
+
+  /* ---------- footer ---------- */
+  footer .foot-strip{height:16px;}
+  footer .foot-main{background:var(--ink);color:var(--cream);padding:2.6rem 0;}
+  .foot-grid{display:flex;flex-wrap:wrap;gap:1.4rem;justify-content:space-between;align-items:flex-start;}
+  .foot-brand{font-family:"Bagel Fat One",cursive;font-size:1.4rem;color:#fff;line-height:.95;}
+  .foot-brand small{display:block;font-size:.5em;color:var(--coral);letter-spacing:.06em;}
+  .foot-col p,.foot-col a{font-size:.98rem;opacity:.85;}
+  .foot-col a{font-family:"Fredoka",sans-serif;font-weight:500;}
+  .foot-col a:hover{color:var(--sun);opacity:1;}
+  .foot-find{display:flex;gap:.9rem;margin-top:.6rem;}
+  .foot-find a{border:2px solid var(--cream);border-radius:999px;padding:.35rem .9rem;font-size:.88rem;opacity:.9;transition:all .15s;}
+  .foot-find a:hover{background:var(--coral);border-color:var(--coral);color:#fff;opacity:1;}
+  .credit{border-top:1px solid rgba(255,246,234,.18);margin-top:1.8rem;padding-top:1.3rem;font-size:.88rem;opacity:.7;text-align:center;}
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<nav class="bar">
+  <div class="wrap bar-inner">
+    <a href="#top" class="brandmark">Off&nbsp;The&nbsp;Top<small>BARBERSHOP &amp; FAMILY SALON</small></a>
+    <div class="navlinks">
+      <a href="#about">Meet Shane</a>
+      <a href="#services">Cuts &amp; Prices</a>
+      <a href="#gallery">The Shop</a>
+      <a href="#words">Kind Words</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a href="tel:+15307747894" class="btn btn-coral nav-cta">Call to Book</a>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header id="top" class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="kicker">Downtown Oroville since day one</span>
+      <h1>Fresh cuts &amp; <span class="pop">good vibes</span> for the whole family.</h1>
+      <p class="lead">A laid-back barbershop &amp; salon where kids, grown-ups, and folks of every ability get a great cut — and leave smiling. Just ask for Shane.</p>
+      <div class="hero-cta">
+        <a href="tel:+15307747894" class="btn btn-coral">📞 Call to Book</a>
+        <a href="#services" class="btn btn-cream">See Cuts &amp; Prices</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <img src="./photos/06.jpg" alt="Shane and a happy young client at Off The Top Barbershop">
+      </div>
+      <div class="open-sticker">
+        <span>OPEN</span><b>Tue–Sat</b><span>by appointment</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-strip stripe"></div>
+</header>
+
+<!-- ===================== TRUST TICKER ===================== -->
+<div class="ticker">
+  <div class="wrap">
+    <span>✂️ <b>Family-friendly</b> chairs</span>
+    <span>🧒 Patient with <b>kids</b></span>
+    <span>💙 Welcoming <b>all abilities</b></span>
+    <span>📅 <b>Appointment</b> only — no waiting around</span>
+  </div>
+</div>
+
+<!-- ===================== ABOUT / MEET SHANE ===================== -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <span class="kicker">Meet your barber</span>
+      <h2 class="sec-head" style="margin-bottom:1.1rem">Shane makes the chair feel easy.</h2>
+      <p>At Off The Top, a haircut is more than a haircut — it's a few minutes of feeling welcome. Shane is the barber Oroville families ask for by name, known for steady hands, a kind word, and the patience to make even nervous first-timers comfortable.</p>
+      <p>Parents of kids with autism, sensory sensitivities, and special needs come from all over town because they know their child will be treated with care — high-fives, "I'm so proud of you!", and a cut that actually looks great.</p>
+      <p>Sharp fades for the grown-ups, gentle trims for the little ones, and a friendly salon chair for the whole family. Walk in a stranger, leave a regular.</p>
+    </div>
+    <div class="shane-photos">
+      <figure><img src="./photos/04.jpg" alt="Shane carefully cutting a young boy's hair"></figure>
+      <figure><img src="./photos/05.jpg" alt="A crisp finished fade at Off The Top"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICES / PRICE LIST ===================== -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center">
+      <span class="kicker">Cuts &amp; prices</span>
+      <h2>Pull up a chair.</h2>
+    </div>
+    <div class="services-grid">
+      <div class="price-card">
+        <div class="ph"><span>The Chalkboard</span><em>by appointment</em></div>
+        <ul class="price-list">
+          <li>
+            <span class="name">Men's Cut<span class="desc">Clipper or scissor, hot-towel finish</span></span>
+            <span class="dots"></span><span class="price">$25</span>
+          </li>
+          <li>
+            <span class="name">Skin &amp; Taper Fade<span class="desc">Crisp blend, styled the way you like it</span></span>
+            <span class="dots"></span><span class="price">$28</span>
+          </li>
+          <li>
+            <span class="name">Kids' Cut <span class="desc">Patient &amp; calm — 12 &amp; under</span></span>
+            <span class="dots"></span><span class="price">$20</span>
+          </li>
+          <li>
+            <span class="name">Beard Trim &amp; Line-Up<span class="desc">Shape, edge &amp; tidy</span></span>
+            <span class="dots"></span><span class="price">$15</span>
+          </li>
+          <li>
+            <span class="name">Cut + Beard Combo<span class="desc">The full reset</span></span>
+            <span class="dots"></span><span class="price">$38</span>
+          </li>
+          <li>
+            <span class="name">Family Salon Trim<span class="desc">A friendly chair for everyone</span></span>
+            <span class="dots"></span><span class="price">Ask</span>
+          </li>
+        </ul>
+      </div>
+      <aside class="svc-note">
+        <h3>Booked, not rushed.</h3>
+        <p>Off The Top runs by appointment so every client gets unhurried, one-on-one time in the chair — especially the little ones and anyone who needs it to go a little slower.</p>
+        <p style="margin-bottom:.6rem;font-family:'Fredoka';font-weight:600;color:var(--sun)">A few favorites:</p>
+        <span class="pill">First-timers welcome</span>
+        <span class="pill">Special-needs friendly</span>
+        <span class="pill">Sensory-aware</span>
+        <span class="pill">Dad &amp; kid combos</span>
+        <div style="margin-top:1.5rem">
+          <a href="tel:+15307747894" class="btn btn-coral">📞 Grab a Time</a>
+        </div>
+        <p style="margin-top:1rem;font-size:.85rem;opacity:.85">Prices shown are sample rates for this mockup — final pricing set by the shop.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center">
+      <span class="kicker">Step inside</span>
+      <h2>The shop on Montgomery St.</h2>
+    </div>
+    <div class="gal">
+      <figure><img src="./photos/02.jpg" alt="Vintage barber chair inside Off The Top"></figure>
+      <figure><img src="./photos/03.jpg" alt="Off The Top Barbershop storefront in downtown Oroville"></figure>
+      <figure><img src="./photos/01.jpg" alt="The corner building Off The Top calls home"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIES ===================== -->
+<section id="words">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center">
+      <span class="kicker">Straight from the chair</span>
+      <h2>Kind words from families.</h2>
+    </div>
+    <div class="notes">
+      <blockquote class="note">
+        <p>“What a fantastic family-friendly barbershop! Ask for Shane — so kind, patient, and genuinely sweet to both my young boys. He kept telling them ‘I’m so proud of you!’ during their haircuts. I recommend this place for everyone, especially those with special needs or sensitivities.”</p>
+        <cite>— Bailey C.</cite>
+      </blockquote>
+      <blockquote class="note">
+        <p>“Huge thank you to Off The Top! You did an AMAZING job with my autistic 4-year-old. Seeing the patience you had with my son gave me chills and had me fighting tears. Truly, thank you — we’ll be seeing you again for his next haircut.”</p>
+        <cite>— Kimberly B.</cite>
+      </blockquote>
+      <blockquote class="note">
+        <p>“Shane is the best barber in town. Every time I come in, he does a remarkable job with children of all ages and medical conditions. Never have I been disappointed after a haircut from Shane. Highly recommend if you’re looking for a great barber in Oroville.”</p>
+        <cite>— Ian C.</cite>
+      </blockquote>
+      <blockquote class="note">
+        <p>“First time getting my son’s hair cut from Shane — wow, you did an amazing job. Thank you for all your patience with my boy. We’ll definitely be coming back. We loved all the positive energy you radiate. Keep your shine on.”</p>
+        <cite>— Whitney M.</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VISIT / HOURS / MAP ===================== -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center">
+      <span class="kicker">Come see us</span>
+      <h2>Hours &amp; location.</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="hours-card">
+        <h3>When we're open</h3>
+        <div class="hours-row"><span>Monday</span><span class="cl">Closed</span></div>
+        <div class="hours-row"><span>Tuesday</span><span>9:00 – 4:00</span></div>
+        <div class="hours-row"><span>Wednesday</span><span>9:00 – 4:00</span></div>
+        <div class="hours-row"><span>Thursday</span><span>9:00 – 4:00</span></div>
+        <div class="hours-row"><span>Friday</span><span>9:00 – 4:00</span></div>
+        <div class="hours-row"><span>Saturday</span><span>9:00 – 2:00</span></div>
+        <div class="hours-row"><span>Sunday</span><span class="cl">Closed</span></div>
+        <div class="contact-line">
+          <strong>📍</strong> 1911 Montgomery St, Oroville, CA 95965<br>
+          <strong>📞</strong> <a href="tel:+15307747894">(530) 774-7894</a>
+        </div>
+        <div style="margin-top:1.3rem;display:flex;gap:.7rem;flex-wrap:wrap">
+          <a href="tel:+15307747894" class="btn btn-coral">Call to Book</a>
+          <a href="https://www.google.com/maps?q=1911+Montgomery+St,+Oroville,+CA+95965" target="_blank" rel="noopener" class="btn btn-teal">Get Directions</a>
+        </div>
+      </div>
+      <div class="map-card">
+        <iframe
+          src="https://www.google.com/maps?q=1911%20Montgomery%20St%2C%20Oroville%2C%20CA%2095965&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Off The Top Barbershop & Family Salon"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FINAL CTA ===================== -->
+<section class="finalcta">
+  <div class="wrap">
+    <h2>Ready for a fresh cut?</h2>
+    <p>Off The Top runs by appointment — give us a ring and grab a chair for you or the whole family.</p>
+    <div class="hero-cta">
+      <a href="tel:+15307747894" class="btn btn-coral">📞 Call (530) 774-7894</a>
+      <a href="https://www.google.com/maps?q=1911+Montgomery+St,+Oroville,+CA+95965" target="_blank" rel="noopener" class="btn btn-cream">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="foot-strip stripe"></div>
+  <div class="foot-main">
+    <div class="wrap foot-grid">
+      <div class="foot-col">
+        <div class="foot-brand">Off The Top<small>BARBERSHOP &amp; FAMILY SALON</small></div>
+        <p style="margin-top:.6rem">Downtown Oroville, California</p>
+      </div>
+      <div class="foot-col">
+        <p style="font-family:'Fredoka';font-weight:600;color:#fff;margin-bottom:.3rem">Visit</p>
+        <p>1911 Montgomery St<br>Oroville, CA 95965</p>
+        <p style="margin-top:.4rem"><a href="tel:+15307747894">(530) 774-7894</a></p>
+      </div>
+      <div class="foot-col">
+        <p style="font-family:'Fredoka';font-weight:600;color:#fff;margin-bottom:.3rem">Find us on</p>
+        <div class="foot-find">
+          <a href="https://maps.google.com/?cid=17035401067973612548" target="_blank" rel="noopener">Google</a>
+        </div>
+      </div>
+    </div>
+    <div class="wrap credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Highlight today's row in the hours card. No other JS.
+  (function(){
+    var map = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var today = map[new Date().getDay()];
+    document.querySelectorAll(".hours-row").forEach(function(r){
+      if(r.firstElementChild && r.firstElementChild.textContent.trim() === today){
+        r.classList.add("today");
+      }
+    });
+  })();
+</script>
+</body>
+</html>

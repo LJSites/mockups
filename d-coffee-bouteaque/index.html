@@ -1,0 +1,891 @@
+<!-- flavor: Desert Boutique Cafe | accent: #C8472B | bg: #FBF6EE | hero: full-bleed-photo | service: 2-col-rows -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D' Coffee Bouteaque — Palm Desert, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --acc: #C8472B;
+    --bg: #FBF6EE;
+    --ink: #1A1208;
+    --muted: #6B5E4E;
+    --border: #E4D9C8;
+    --nav-h: 64px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-h);
+    background: var(--bg);
+    color: var(--ink);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background: var(--bg);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: rgba(251,246,238,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+  }
+
+  .nav-brand {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.35rem;
+    letter-spacing: 0.03em;
+    color: var(--acc);
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.75rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--acc); }
+
+  .nav-cta {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--acc);
+    padding: 0.45rem 1rem;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .nav-cta:hover { opacity: 0.85; }
+
+  .nav-mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+  }
+
+  .nav-mobile-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    transition: all 0.25s;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    margin-top: var(--nav-h);
+    position: relative;
+    height: calc(100svh - var(--nav-h));
+    min-height: 480px;
+    overflow: hidden;
+  }
+
+  .hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      rgba(26,18,8,0.72) 0%,
+      rgba(26,18,8,0.38) 55%,
+      rgba(26,18,8,0.08) 100%
+    );
+  }
+
+  .hero-content {
+    position: absolute;
+    bottom: 3.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    max-width: 560px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: 0.01em;
+    color: #FBF6EE;
+    margin-bottom: 1.1rem;
+  }
+
+  .hero-sub {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: rgba(251,246,238,0.88);
+    margin-bottom: 2rem;
+    max-width: 420px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--bg);
+    background: var(--acc);
+    padding: 0.8rem 1.8rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: opacity 0.2s;
+  }
+
+  .btn-primary:hover { opacity: 0.88; }
+
+  .btn-ghost {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #FBF6EE;
+    border: 1px solid rgba(251,246,238,0.6);
+    padding: 0.8rem 1.8rem;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    border-color: #FBF6EE;
+    color: #FBF6EE;
+  }
+
+  /* ── SECTION CONTAINERS ── */
+  section { padding: 4.5rem 1.5rem; }
+
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    letter-spacing: 0.02em;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--bg); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .about-text p {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-photo-collage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 200px 140px;
+    gap: 8px;
+  }
+
+  .about-photo-collage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .collage-tall {
+    grid-row: span 2;
+  }
+
+  /* ── MENU ── */
+  #menu { background: #F5EDE0; }
+
+  .menu-intro {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    max-width: 560px;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .menu-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .menu-item {
+    padding: 1.4rem 1rem 1.4rem 0;
+    border-right: 1px solid var(--border);
+  }
+
+  .menu-item:last-child {
+    border-right: none;
+    padding-left: 1rem;
+    padding-right: 0;
+  }
+
+  .menu-item-name {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .menu-item-desc {
+    font-family: 'Lora', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ── GALLERY ── */
+  #gallery { background: var(--bg); padding-top: 0; padding-bottom: 0; }
+
+  .gallery-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+  }
+
+  .gallery-strip img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.25s;
+  }
+
+  .gallery-strip img:hover { opacity: 0.88; }
+
+  /* ── TESTIMONIES ── */
+  #testimonies { background: var(--ink); }
+
+  #testimonies .section-label { color: var(--acc); }
+  #testimonies .section-title { color: var(--bg); }
+
+  .testimony-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .testimony-card {
+    border-left: 3px solid var(--acc);
+    padding: 1.25rem 1.5rem;
+    background: rgba(251,246,238,0.05);
+  }
+
+  .testimony-quote {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: rgba(251,246,238,0.82);
+    margin-bottom: 0.85rem;
+  }
+
+  .testimony-attr {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--acc);
+  }
+
+  /* ── HOURS & LOCATION ── */
+  #location { background: var(--bg); }
+
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hours-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .hours-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hours-table td {
+    padding: 0.6rem 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .hours-table td:first-child {
+    font-weight: 500;
+    color: var(--ink);
+    width: 50%;
+  }
+
+  .hours-note {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-top: 1rem;
+  }
+
+  .map-wrap {
+    aspect-ratio: 4/3;
+    background: var(--border);
+    overflow: hidden;
+  }
+
+  .map-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: #F5EDE0; }
+
+  .contact-cols {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .contact-item-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--acc);
+  }
+
+  .contact-item-val {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .contact-item-val a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    transition: border-color 0.2s;
+  }
+
+  .contact-item-val a:hover { border-color: var(--acc); }
+
+  .contact-cta {
+    margin-top: 2rem;
+    display: inline-block;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+
+  .footer-brand {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    color: var(--bg);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-tagline {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: rgba(251,246,238,0.55);
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(251,246,238,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--acc); }
+
+  .footer-credit {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(251,246,238,0.35);
+    border-top: 1px solid rgba(251,246,238,0.1);
+    padding-top: 1.25rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (min-width: 640px) {
+    section { padding: 5.5rem 2rem; }
+
+    .hero-content {
+      bottom: 4rem;
+      left: 2rem;
+    }
+
+    .about-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .about-photo-collage {
+      grid-template-rows: 220px 160px;
+    }
+
+    .menu-grid { }
+
+    .testimony-list {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .location-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-cols {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 900px) {
+    .nav-mobile-toggle { display: none; }
+
+    .about-photo-collage {
+      grid-template-rows: 260px 180px;
+    }
+
+    .testimony-list {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 1.5rem;
+      gap: 1.25rem;
+      z-index: 99;
+    }
+    .nav-mobile-toggle { display: flex; }
+    .nav-cta { display: none; }
+
+    .gallery-strip {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery-strip img:nth-child(5),
+    .gallery-strip img:nth-child(6) {
+      display: none;
+    }
+
+    .menu-row {
+      grid-template-columns: 1fr;
+    }
+
+    .menu-item {
+      border-right: none;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .menu-item:last-child {
+      padding-left: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-brand">D' COFFEE</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#location">Hours</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:+17608348344" class="nav-cta">Call Now</a>
+  <button class="nav-mobile-toggle" id="nav-toggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <img src="./photos/01.jpg" alt="D' Coffee Bouteaque interior" class="hero-img">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Palm Desert, California</p>
+    <h1 class="hero-h1">D' COFFEE<br>BOUTEAQUE</h1>
+    <p class="hero-sub">Coffee, brunch &amp; an atmosphere unlike anything else in the desert.</p>
+    <div class="hero-actions">
+      <a href="tel:+17608348344" class="btn-primary">Call Now</a>
+      <a href="#menu" class="btn-ghost">View Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">Our Story</p>
+        <h2 class="section-title">A HIDDEN GEM IN THE DESERT</h2>
+        <p>D' Coffee Bouteaque is more than a café — it's a thoughtfully designed space where every detail has been crafted with heart. Husband-and-wife owned and operated, the Bouteaque brings an unmatched blend of stylish ambiance, extensive menus, and genuine warmth to Cook Street in Palm Desert.</p>
+        <p>From flat whites and Mexican hot chocolate to Fantasy salads and eggs Benedict, every plate and cup is treated as a work of art. Indoor and outdoor seating, a full breakfast-through-dinner menu, and a drink list deep enough to pull you back weekly.</p>
+      </div>
+      <div class="about-photo-collage">
+        <img src="./photos/02.jpg" alt="Coffee at D' Coffee Bouteaque" class="collage-tall">
+        <img src="./photos/03.jpg" alt="Interior of D' Coffee Bouteaque">
+        <img src="./photos/04.jpg" alt="Food at D' Coffee Bouteaque">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="container">
+    <p class="section-label">What We Serve</p>
+    <h2 class="section-title">THE MENU</h2>
+    <p class="menu-intro">Breakfast, brunch, lunch &amp; dinner — plus an extensive coffee and tea bar that goes far beyond the ordinary.</p>
+
+    <div class="menu-grid">
+
+      <div class="menu-row">
+        <div class="menu-item">
+          <p class="menu-item-name">FLAT WHITE</p>
+          <p class="menu-item-desc">Silky espresso pulled to perfection, served classic or with seasonal variations.</p>
+        </div>
+        <div class="menu-item">
+          <p class="menu-item-name">MEXICAN HOT CHOCOLATE</p>
+          <p class="menu-item-desc">Rich, warmly spiced, and exactly what a cold desert night calls for.</p>
+        </div>
+      </div>
+
+      <div class="menu-row">
+        <div class="menu-item">
+          <p class="menu-item-name">CHAI LOVE</p>
+          <p class="menu-item-desc">A spicy-perfect chai blend — one of the Bouteaque's most requested drinks.</p>
+        </div>
+        <div class="menu-item">
+          <p class="menu-item-name">HAZELNUT COFFEE</p>
+          <p class="menu-item-desc">Tastes like liquid Nutella — deep, nutty, and dangerously drinkable.</p>
+        </div>
+      </div>
+
+      <div class="menu-row">
+        <div class="menu-item">
+          <p class="menu-item-name">EGGS BENEDICT</p>
+          <p class="menu-item-desc">Brunch-hour staple — poached to order, dressed with house hollandaise.</p>
+        </div>
+        <div class="menu-item">
+          <p class="menu-item-name">SALMON AVOCADO TOAST</p>
+          <p class="menu-item-desc">Stacked high on artisan bread with fresh seasonal touches.</p>
+        </div>
+      </div>
+
+      <div class="menu-row">
+        <div class="menu-item">
+          <p class="menu-item-name">CRANBERRY TURKEY SANDWICH</p>
+          <p class="menu-item-desc">Served with French Onion Soup — a lunch worth crossing town for.</p>
+        </div>
+        <div class="menu-item">
+          <p class="menu-item-name">FANTASY SALAD</p>
+          <p class="menu-item-desc">The namesake of regulars — fresh, colorful, and uniquely composed.</p>
+        </div>
+      </div>
+
+      <div class="menu-row">
+        <div class="menu-item">
+          <p class="menu-item-name">SIGNATURE WAFFLES</p>
+          <p class="menu-item-desc">Beautiful presentation, golden crust — worth the drive on their own.</p>
+        </div>
+        <div class="menu-item">
+          <p class="menu-item-name">STRAWBERRY REFRESHER</p>
+          <p class="menu-item-desc">A specially prepared house drink that's both vibrant and fantastic.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<div id="gallery">
+  <div class="gallery-strip">
+    <img src="./photos/01.jpg" alt="D' Coffee Bouteaque atmosphere">
+    <img src="./photos/05.jpg" alt="Coffee presentation">
+    <img src="./photos/06.jpg" alt="Food at D' Coffee Bouteaque">
+    <img src="./photos/02.jpg" alt="D' Coffee Bouteaque drinks">
+    <img src="./photos/03.jpg" alt="Interior details">
+    <img src="./photos/04.jpg" alt="Brunch plate">
+  </div>
+</div>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="container">
+    <p class="section-label">In Their Words</p>
+    <h2 class="section-title">CUSTOMER<br>TESTIMONIES</h2>
+
+    <div class="testimony-list">
+
+      <div class="testimony-card">
+        <p class="testimony-quote">"Super cute little gem of a place! The staff are soooo nice and welcoming. We ordered a flat white coffee and a Mexican hot chocolate paired with two pastries — delicious!!! Their drink list has a lot of options. I also wanted to try their Chai Love to go, it was spicy perfection!"</p>
+        <p class="testimony-attr">— Lea S.</p>
+      </div>
+
+      <div class="testimony-card">
+        <p class="testimony-quote">"D'Coffee Boutique is truly one of a kind and, without a doubt, the best coffee shop and brunch place we have ever visited. You can genuinely feel the owner's personal touch throughout the space. The food and drinks are just as impressive as the space — presentation is exceptional, every plate and cup looks like a work of art."</p>
+        <p class="testimony-attr">— Krunal P.</p>
+      </div>
+
+      <div class="testimony-card">
+        <p class="testimony-quote">"This little place is so cute. The food was AMAZING. We had the Cranberry Turkey Sandwich with French Onion Soup and My Hubby had Salmon Avocado Toast — both were so good, and the coffee was not only delicious but absolutely beautiful. 💯 recommend."</p>
+        <p class="testimony-attr">— Amanda T.</p>
+      </div>
+
+      <div class="testimony-card">
+        <p class="testimony-quote">"This is a hidden gem for sure. I ended up going with the hazelnut coffee and it tasted like liquid Nutella — it was delicious. The waffle was also so good and so beautiful! My husband loved the eggs Benedict as well. The atmosphere was so cute and the staff was so kind."</p>
+        <p class="testimony-attr">— Sierra C.</p>
+      </div>
+
+      <div class="testimony-card">
+        <p class="testimony-quote">"Fantasy salad and specially prepared strawberry refresher were fantastic!!! Wonderful, unique atmosphere and decor. Extensive breakfast, lunch and dinner menu. And the husband and wife owners and operators are super-nice, accommodating people. We will be returning weekly."</p>
+        <p class="testimony-attr">— P. V.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & LOCATION -->
+<section id="location">
+  <div class="container">
+    <p class="section-label">Find Us</p>
+    <h2 class="section-title">HOURS &amp;<br>LOCATION</h2>
+
+    <div class="location-grid">
+      <div>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>Monday</td><td>7:00 AM – 4:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>7:00 AM – 4:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>7:00 AM – 4:00 PM</td></tr>
+            <tr><td>Thursday</td><td>7:00 AM – 8:00 PM</td></tr>
+            <tr><td>Friday</td><td>7:00 AM – 8:00 PM</td></tr>
+            <tr><td>Saturday</td><td>7:00 AM – 8:00 PM</td></tr>
+            <tr><td>Sunday</td><td>7:00 AM – 4:00 PM</td></tr>
+          </tbody>
+        </table>
+        <p class="hours-note">Extended hours Thu–Sat — perfect for an evening treat.</p>
+
+        <div style="margin-top:2rem;">
+          <p style="font-family:'Inter',sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--acc);margin-bottom:0.3rem;">Address</p>
+          <p style="font-family:'Lora',serif;font-size:1rem;color:var(--ink);">36901 Cook St Suite 8<br>Palm Desert, CA 92211</p>
+          <a href="https://maps.google.com/?q=36901+Cook+St+Suite+8,+Palm+Desert,+CA+92211" target="_blank" rel="noopener" class="btn-primary" style="display:inline-block;margin-top:1.25rem;">Get Directions</a>
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=33.7808239,-116.3563056&z=15&output=embed"
+          title="D' Coffee Bouteaque location map"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">CONTACT</h2>
+
+    <div class="contact-cols">
+      <div class="contact-item">
+        <span class="contact-item-label">Phone</span>
+        <span class="contact-item-val"><a href="tel:+17608348344">(760) 834-8344</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">Address</span>
+        <span class="contact-item-val">36901 Cook St Suite 8,<br>Palm Desert, CA 92211</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">Google Business</span>
+        <span class="contact-item-val">
+          <a href="https://maps.google.com/?cid=11459784427524435984&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">View on Google</a>
+        </span>
+      </div>
+    </div>
+
+    <a href="tel:+17608348344" class="btn-primary contact-cta">Call Now — (760) 834-8344</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-brand">D' COFFEE BOUTEAQUE</p>
+  <p class="footer-tagline">Palm Desert's hidden gem — coffee, brunch &amp; atmosphere</p>
+  <div class="footer-links">
+    <a href="https://maps.google.com/?cid=11459784427524435984&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+    <a href="tel:+17608348344">Call Us</a>
+    <a href="https://maps.google.com/?q=36901+Cook+St+Suite+8,+Palm+Desert,+CA+92211" target="_blank" rel="noopener">Directions</a>
+  </div>
+  <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+</footer>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const links = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => links.classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>

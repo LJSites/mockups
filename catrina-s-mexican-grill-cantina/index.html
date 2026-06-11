@@ -1,0 +1,560 @@
+<!--
+  ARCHETYPE: "Festive Cantina / Día de Muertos elegance" — an ornate, gallery-framed
+  restaurant page themed to the Catrina namesake (sugar-skull + marigold + papel-picado),
+  but refined and grown-up rather than clip-arty.
+
+  STRUCTURAL DECISIONS (deliberately DISTINCT from the cream/red hand-painted taqueria
+  sibling and the terracotta/cobalt mercado sibling):
+   - Palette: deep teal/jade ground (#0c2b2a) + magenta (#c4316b) + marigold (#e8a128)
+     + warm bone (#f3ead6) on near-black. Ornate display serif (Cormorant Garamond,
+     all-caps tracked) paired with a calm humanist sans (Mulish) for body.
+   - Hero is a SPLIT, not a centered-overlay: left = framed brand plate over a tinted
+     interior photo; right = the actual Catrina logo art floating on jade with a
+     hand-tooled gold border + papel-picado top edge. No dark-overlay/centered-white-headline.
+   - Papel-picado (CSS-only repeating bunting) as a recurring festive motif at section
+     seams — elegant, not childish.
+   - Menu = framed "plates" cards using the real food photos, two-up rhythm.
+   - Cantina strip: the two portrait bar/drink shots in a marquee-framed band.
+   - Testimonies: asymmetric stacked "papel" notes pinned over jade, magenta quote marks,
+     first-name + last-initial, NO stars/scores.
+   - Sticky slim nav -> html{scroll-padding-top:72px}. Map = keyless maps?q=...&output=embed.
+   - Animation: restrained — a single gentle marigold-glow on CTA hover + bunting sway; no AOS.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Catrina's Mexican Grill &amp; Cantina — Wasco, CA</title>
+<meta name="description" content="Catrina's Mexican Grill & Cantina in Wasco, CA — authentic, flavorful Mexican food, generous plates, and a festive cantina. 1345 F St. Call (661) 758-3435." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Mulish:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --jade:#0c2b2a;
+    --jade-2:#10403c;
+    --ink:#08201f;
+    --bone:#f3ead6;
+    --bone-dim:#d8cbab;
+    --magenta:#c4316b;
+    --magenta-lt:#e8629b;
+    --marigold:#e8a128;
+    --marigold-lt:#f4c45c;
+    --teal-line:#3d8c80;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:72px}
+  body{
+    font-family:'Mulish',system-ui,sans-serif;
+    background:var(--jade);
+    color:var(--bone);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;letter-spacing:.02em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+  .eyebrow{
+    font-family:'Mulish',sans-serif;font-weight:600;font-size:.72rem;
+    letter-spacing:.32em;text-transform:uppercase;color:var(--marigold-lt);
+  }
+
+  /* ---------- papel picado (CSS bunting) ---------- */
+  .papel{
+    height:26px;width:100%;
+    background:
+      repeating-linear-gradient(90deg, transparent 0 14px, var(--magenta) 14px 15px),
+      repeating-linear-gradient(90deg,
+        var(--marigold) 0 46px,
+        var(--magenta) 46px 92px,
+        var(--teal-line) 92px 138px,
+        var(--bone) 138px 184px);
+    -webkit-mask:
+      repeating-linear-gradient(90deg,#000 0 30px, transparent 30px 32px) bottom/auto 100% repeat-x,
+      radial-gradient(circle at 16px 0, transparent 9px, #000 10px) bottom left/32px 16px repeat-x;
+    mask:
+      repeating-linear-gradient(90deg,#000 0 30px, transparent 30px 32px) bottom/auto 100% repeat-x,
+      radial-gradient(circle at 16px 0, transparent 9px, #000 10px) bottom left/32px 16px repeat-x;
+    opacity:.9;
+  }
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(8,32,31,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(232,161,40,.28);
+    height:72px;
+  }
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand-mark{display:flex;align-items:center;gap:12px}
+  .brand-mark .skull{
+    width:36px;height:36px;border-radius:50%;
+    background:var(--bone);
+    display:grid;place-items:center;font-size:20px;
+    box-shadow:0 0 0 2px var(--marigold),0 0 0 4px var(--jade);
+  }
+  .brand-mark b{
+    font-family:'Cormorant Garamond',serif;font-weight:700;
+    font-size:1.32rem;letter-spacing:.04em;color:var(--bone);line-height:1;
+  }
+  .brand-mark small{display:block;font-family:'Mulish';font-weight:600;font-size:.56rem;letter-spacing:.34em;color:var(--marigold-lt);text-transform:uppercase;margin-top:3px}
+  nav.links{display:flex;gap:30px;align-items:center}
+  nav.links a{font-size:.78rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--bone-dim);transition:color .2s}
+  nav.links a:hover{color:var(--marigold-lt)}
+  .nav-cta{
+    font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink);background:var(--marigold);
+    padding:9px 16px;border-radius:2px;transition:background .2s, box-shadow .2s;
+  }
+  .nav-cta:hover{background:var(--marigold-lt);box-shadow:0 0 18px rgba(232,161,40,.5)}
+  .nav-toggle{display:none;background:none;border:0;color:var(--bone);font-size:1.5rem;cursor:pointer}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;background:var(--ink);overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:560px}
+  .hero-left{position:relative;display:flex;align-items:center;padding:64px 0 64px 0}
+  .hero-photo{position:absolute;inset:0;
+    background:url('./photos/01.jpg') center/cover;
+    filter:saturate(1.05);
+  }
+  .hero-photo::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(105deg, rgba(8,32,31,.94) 38%, rgba(12,43,42,.72) 100%);}
+  .hero-copy{position:relative;z-index:2;max-width:560px;padding-left:22px}
+  .hero-copy h1{
+    font-size:clamp(3rem,7vw,5.3rem);line-height:.92;
+    text-transform:uppercase;letter-spacing:.03em;color:var(--bone);
+    margin:14px 0 6px;
+  }
+  .hero-copy h1 .amp{color:var(--magenta-lt);font-style:italic;font-weight:500;text-transform:none}
+  .hero-copy .sub{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:clamp(1.2rem,2.6vw,1.6rem);color:var(--marigold-lt);margin-bottom:18px;
+  }
+  .hero-copy p.lede{color:var(--bone-dim);font-size:1rem;max-width:440px;margin-bottom:26px}
+  .hero-rule{display:flex;align-items:center;gap:14px;margin:0 0 22px}
+  .hero-rule span{height:2px;width:54px;background:var(--marigold)}
+  .hero-rule em{font-style:normal;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--magenta-lt)}
+  .btn-row{display:flex;flex-wrap:wrap;gap:14px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;
+    padding:14px 24px;border-radius:2px;transition:.22s;
+  }
+  .btn-gold{background:var(--marigold);color:var(--ink)}
+  .btn-gold:hover{background:var(--marigold-lt);box-shadow:0 0 26px rgba(232,161,40,.55);transform:translateY(-1px)}
+  .btn-ghost{border:1.5px solid var(--magenta);color:var(--bone)}
+  .btn-ghost:hover{background:var(--magenta);color:#fff}
+
+  .hero-right{position:relative;background:
+    radial-gradient(circle at 50% 38%, var(--jade-2) 0%, var(--ink) 80%);
+    display:flex;align-items:center;justify-content:center;padding:48px 30px;
+    border-left:1px solid rgba(232,161,40,.25);
+  }
+  .logo-frame{
+    position:relative;max-width:330px;width:100%;
+    padding:14px;background:var(--ink);
+    border:2px solid var(--marigold);
+    box-shadow:0 0 0 7px var(--ink),0 0 0 8px rgba(196,49,107,.5),0 22px 50px rgba(0,0,0,.55);
+  }
+  .logo-frame img{width:100%;border:1px solid rgba(232,161,40,.4)}
+
+  /* ---------- generic section ---------- */
+  section{position:relative}
+  .band{padding:74px 0}
+  .sec-head{margin-bottom:40px}
+  .sec-head h2{font-size:clamp(2.1rem,4.6vw,3.1rem);text-transform:uppercase;letter-spacing:.04em;color:var(--bone);line-height:1.02;margin-top:8px}
+  .sec-head h2 .accent{color:var(--magenta-lt);font-style:italic;text-transform:none}
+
+  /* ---------- about ---------- */
+  .about{background:var(--jade-2)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .about p{color:var(--bone-dim);margin-bottom:16px}
+  .about p.first::first-letter{
+    font-family:'Cormorant Garamond',serif;font-size:3.4rem;font-weight:700;
+    color:var(--magenta-lt);float:left;line-height:.8;margin:6px 12px 0 0;
+  }
+  .about-photo{position:relative}
+  .about-photo img{width:100%;height:420px;object-fit:cover;
+    border:2px solid var(--marigold);box-shadow:0 18px 40px rgba(0,0,0,.5)}
+  .about-photo .tag{
+    position:absolute;bottom:-18px;left:-18px;background:var(--magenta);color:#fff;
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;
+    padding:10px 22px;box-shadow:0 8px 22px rgba(0,0,0,.4)}
+
+  /* ---------- menu / plates ---------- */
+  .menu{background:var(--jade)}
+  .menu-note{color:var(--bone-dim);max-width:620px;margin-top:10px}
+  .plates{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;margin-top:42px}
+  .plate{
+    background:var(--ink);border:1px solid rgba(232,161,40,.3);
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .plate:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+  .plate-img{height:240px;overflow:hidden;border-bottom:2px solid var(--marigold)}
+  .plate-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .plate:hover .plate-img img{transform:scale(1.05)}
+  .plate-body{padding:22px 24px 26px}
+  .plate-body h3{font-size:1.55rem;color:var(--bone);margin-bottom:5px}
+  .plate-body .kind{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--marigold-lt);font-weight:700}
+  .plate-body p{color:var(--bone-dim);font-size:.92rem;margin-top:9px}
+
+  /* ---------- cantina strip ---------- */
+  .cantina{background:var(--jade-2);overflow:hidden}
+  .cantina-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;align-items:stretch;margin-top:40px}
+  .cantina-copy{display:flex;flex-direction:column;justify-content:center}
+  .cantina-copy p{color:var(--bone-dim);margin-top:14px}
+  .cantina-shot{position:relative;border:2px solid var(--marigold);overflow:hidden;min-height:380px}
+  .cantina-shot img{width:100%;height:100%;object-fit:cover}
+  .cantina-shot figcaption{
+    position:absolute;left:0;bottom:0;right:0;
+    background:linear-gradient(transparent,rgba(8,32,31,.92));
+    color:var(--bone);padding:26px 18px 14px;
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.1rem;letter-spacing:.02em}
+
+  /* ---------- testimonies ---------- */
+  .says{background:var(--jade);position:relative}
+  .notes{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:42px}
+  .note{
+    position:relative;background:var(--bone);color:var(--ink);
+    padding:34px 30px 26px;border-radius:2px;
+    box-shadow:0 14px 34px rgba(0,0,0,.45);
+  }
+  .note:nth-child(1){transform:rotate(-1.1deg)}
+  .note:nth-child(2){transform:rotate(.9deg)}
+  .note:nth-child(3){transform:rotate(.7deg)}
+  .note:nth-child(4){transform:rotate(-.8deg)}
+  .note::before{
+    content:"\201C";position:absolute;top:-14px;left:18px;
+    font-family:'Cormorant Garamond',serif;font-size:5rem;line-height:1;
+    color:var(--magenta);
+  }
+  .note p{font-family:'Cormorant Garamond',serif;font-size:1.32rem;line-height:1.4;color:#1a2e2c}
+  .note .who{
+    margin-top:16px;font-family:'Mulish';font-weight:700;font-size:.72rem;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--magenta);
+    display:flex;align-items:center;gap:10px}
+  .note .who span{height:1px;width:26px;background:var(--marigold)}
+
+  /* ---------- visit (hours / map / contact) ---------- */
+  .visit{background:var(--ink)}
+  .visit-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:46px;align-items:stretch}
+  .hours-card{background:var(--jade-2);border:1px solid rgba(232,161,40,.3);padding:34px 32px}
+  .hours-card h3{font-size:1.7rem;color:var(--bone);margin-bottom:6px}
+  .hours-card .where{color:var(--bone-dim);font-size:.94rem;margin-bottom:22px}
+  .hours-card .where a{color:var(--marigold-lt);border-bottom:1px solid transparent;transition:.2s}
+  .hours-card .where a:hover{border-color:var(--marigold-lt)}
+  table.hours{width:100%;border-collapse:collapse}
+  table.hours td{padding:9px 0;border-bottom:1px dashed rgba(232,161,40,.22);font-size:.92rem}
+  table.hours td.day{color:var(--bone);font-weight:600}
+  table.hours td.time{text-align:right;color:var(--bone-dim)}
+  table.hours tr.today td{color:var(--marigold-lt)}
+  table.hours tr.today td.day::before{content:"●  ";color:var(--magenta-lt);font-size:.7em;vertical-align:middle}
+  table.hours td.closed{color:var(--magenta-lt);font-style:italic}
+  .visit-cta{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
+  .map-col{display:flex;flex-direction:column}
+  .map-frame{flex:1;border:2px solid var(--marigold);min-height:420px;position:relative}
+  .map-frame iframe{width:100%;height:100%;min-height:420px;border:0;filter:saturate(.95)}
+  .find{margin-top:18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .find span.lbl{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--bone-dim)}
+  .find a{font-size:.82rem;font-weight:600;color:var(--marigold-lt);letter-spacing:.04em;border-bottom:1px solid rgba(232,161,40,.4);transition:.2s}
+  .find a:hover{color:var(--bone);border-color:var(--bone)}
+
+  /* ---------- footer ---------- */
+  footer.site{background:var(--jade);border-top:1px solid rgba(232,161,40,.3);padding:54px 0 34px;text-align:center}
+  .foot-mark{font-family:'Cormorant Garamond',serif;font-size:2rem;letter-spacing:.05em;color:var(--bone);text-transform:uppercase}
+  .foot-mark .amp{color:var(--magenta-lt);font-style:italic;text-transform:none}
+  .foot-sub{color:var(--marigold-lt);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;margin-top:6px}
+  .foot-lines{color:var(--bone-dim);font-size:.92rem;margin-top:20px;line-height:1.9}
+  .foot-lines a{color:var(--marigold-lt)}
+  .foot-social{margin-top:18px;display:flex;justify-content:center;gap:22px}
+  .foot-social a{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-dim);transition:.2s}
+  .foot-social a:hover{color:var(--marigold-lt)}
+  .credit{margin-top:30px;padding-top:22px;border-top:1px solid rgba(232,161,40,.18);font-size:.78rem;color:var(--bone-dim)}
+  .credit a{color:var(--marigold-lt)}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:900px){
+    nav.links{display:none}
+    .nav-toggle{display:block}
+    .hero-grid{grid-template-columns:1fr}
+    .hero-right{border-left:0;border-top:1px solid rgba(232,161,40,.25);padding:42px 24px 54px}
+    .hero-left{padding:54px 0 46px}
+    .about-grid,.visit-grid{grid-template-columns:1fr;gap:40px}
+    .about-photo{order:-1}
+    .plates{grid-template-columns:1fr}
+    .cantina-grid{grid-template-columns:1fr}
+    .cantina-shot{min-height:300px}
+    .notes{grid-template-columns:1fr}
+  }
+  @media(max-width:520px){
+    .btn{padding:13px 18px;font-size:.76rem}
+    .foot-social{flex-wrap:wrap;gap:14px}
+  }
+  nav.mobile{display:none}
+  nav.mobile.open{display:block;background:var(--ink);border-bottom:1px solid rgba(232,161,40,.3)}
+  nav.mobile a{display:block;padding:13px 22px;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-dim);border-bottom:1px solid rgba(232,161,40,.12)}
+  nav.mobile a:hover{color:var(--marigold-lt)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand-mark" href="#top" aria-label="Catrina's home">
+      <span class="skull">&#128132;</span>
+      <span><b>Catrina's</b><small>Grill &amp; Cantina</small></span>
+    </a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#menu">The Table</a>
+      <a href="#cantina">Cantina</a>
+      <a href="#says">Testimonies</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="nav-cta" href="tel:+16617583435">Call (661) 758-3435</a>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.getElementById('mnav').classList.toggle('open')">&#9776;</button>
+  </div>
+  <nav class="mobile" id="mnav">
+    <a href="#about" onclick="document.getElementById('mnav').classList.remove('open')">About</a>
+    <a href="#menu" onclick="document.getElementById('mnav').classList.remove('open')">The Table</a>
+    <a href="#cantina" onclick="document.getElementById('mnav').classList.remove('open')">Cantina</a>
+    <a href="#says" onclick="document.getElementById('mnav').classList.remove('open')">Testimonies</a>
+    <a href="#visit" onclick="document.getElementById('mnav').classList.remove('open')">Visit</a>
+    <a href="tel:+16617583435" onclick="document.getElementById('mnav').classList.remove('open')">Call (661) 758-3435</a>
+  </nav>
+</header>
+
+<div class="papel" aria-hidden="true"></div>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-photo" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <div class="hero-rule"><span></span><em>Wasco, California</em></div>
+        <p class="eyebrow">Authentic Mexican Kitchen</p>
+        <h1>Catrina's<br><span class="amp">&amp;</span> Cantina</h1>
+        <p class="sub">Flavor worth a second visit — and a third.</p>
+        <p class="lede">Generous plates, made-from-scratch flavor, and a warm, festive
+          room on F Street. Pull up a booth, order a margarita, and stay a while.</p>
+        <div class="btn-row">
+          <a class="btn btn-gold" href="tel:+16617583435">&#128222;&nbsp; Call Now</a>
+          <a class="btn btn-ghost" href="#visit">Hours &amp; Directions</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <figure class="logo-frame">
+        <img src="./photos/03.jpg" alt="Catrina's Mexican Grill & Cantina emblem — a Día de Muertos Catrina sugar skull" />
+      </figure>
+    </div>
+  </div>
+</section>
+
+<div class="papel" aria-hidden="true"></div>
+
+<!-- ===== ABOUT ===== -->
+<section class="about band" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <p class="eyebrow">Our Table</p>
+      <div class="sec-head"><h2>Authentic, <span class="accent">flavorful</span>, &amp; generous</h2></div>
+      <p class="first">Named for La Catrina, the elegant icon of Mexico's Día de Muertos,
+        Catrina's pairs honest, home-style cooking with a festive cantina spirit. The
+        salsas are bright, the chile verde and colorado simmer slow, and the portions
+        are built to share.</p>
+      <p>Folks find us once — often passing through Bakersfield — and come back the next
+        year just to do it again. Friendly faces, clean tables, and a real meal for your
+        money. That's the whole idea.</p>
+    </div>
+    <figure class="about-photo">
+      <img src="./photos/01.jpg" alt="Catrina's dining room — carved wood booths under stained-glass lamps" />
+      <figcaption class="tag">Pull up a booth</figcaption>
+    </figure>
+  </div>
+</section>
+
+<div class="papel" aria-hidden="true"></div>
+
+<!-- ===== MENU / PLATES ===== -->
+<section class="menu band" id="menu">
+  <div class="wrap">
+    <p class="eyebrow">From The Kitchen</p>
+    <div class="sec-head">
+      <h2>Plates worth the <span class="accent">drive</span></h2>
+      <p class="menu-note">A taste of what comes out of the kitchen — every plate built
+        big, served with rice, beans, and the fixings. Ask your server about today's specials.</p>
+    </div>
+    <div class="plates">
+      <article class="plate">
+        <div class="plate-img"><img src="./photos/02.jpg" alt="Chile colorado with melted cheese, Mexican rice and sautéed vegetables" /></div>
+        <div class="plate-body">
+          <span class="kind">Slow-Simmered</span>
+          <h3>Chile Colorado</h3>
+          <p>Tender beef braised in a deep red chile sauce, blanketed in cheese and
+            served with rice and crisp seasonal vegetables.</p>
+        </div>
+      </article>
+      <article class="plate">
+        <div class="plate-img"><img src="./photos/04.jpg" alt="Enchiladas plate with rice, beans, guacamole, sour cream and pico de gallo" /></div>
+        <div class="plate-body">
+          <span class="kind">House Favorite</span>
+          <h3>Enchiladas Plate</h3>
+          <p>Rolled and smothered, plated with refried beans, Spanish rice, guacamole,
+            crema, jalapeños and fresh pico — the full spread.</p>
+        </div>
+      </article>
+      <article class="plate">
+        <div class="plate-img"><img src="./photos/06.jpg" alt="Golden quesadilla wedges with chips, salsa and guacamole at the cantina bar" /></div>
+        <div class="plate-body">
+          <span class="kind">From The Bar</span>
+          <h3>Cantina Quesadilla</h3>
+          <p>Griddled golden and stuffed, with chips, salsa, guac and pico — the perfect
+            companion to whatever's in your glass.</p>
+        </div>
+      </article>
+      <article class="plate">
+        <div class="plate-img"><img src="./photos/05.jpg" alt="Mango margarita with a chile-salt rim in a blue-stemmed glass" /></div>
+        <div class="plate-body">
+          <span class="kind">Hand-Shaken</span>
+          <h3>Mango Margarita</h3>
+          <p>Cool, fruity, and finished with a chile-salt rim — the kind of drink that
+            makes a Wasco evening feel like a celebration.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="papel" aria-hidden="true"></div>
+
+<!-- ===== CANTINA STRIP ===== -->
+<section class="cantina band" id="cantina">
+  <div class="wrap">
+    <p class="eyebrow">The Cantina</p>
+    <div class="sec-head"><h2>Stay for a <span class="accent">round</span></h2></div>
+    <div class="cantina-grid">
+      <div class="cantina-copy">
+        <p>The bar's lit up nightly — frozen and on the rocks, classic and creative.
+          Grab a stool, order a quesadilla, and let the evening unwind cantina-style.</p>
+        <p style="margin-top:18px">
+          <a class="btn btn-ghost" href="tel:+16617583435" style="display:inline-flex">&#128222;&nbsp; Reserve a Booth</a>
+        </p>
+      </div>
+      <figure class="cantina-shot">
+        <img src="./photos/05.jpg" alt="Chile-rimmed mango margarita on the bar" />
+        <figcaption>Margaritas, chile-rimmed &amp; cold</figcaption>
+      </figure>
+      <figure class="cantina-shot">
+        <img src="./photos/06.jpg" alt="Quesadilla and a martini at the neon-lit bar" />
+        <figcaption>Late-evening bites at the bar</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<div class="papel" aria-hidden="true"></div>
+
+<!-- ===== TESTIMONIES ===== -->
+<section class="says band" id="says">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center;display:block">In Their Words</p>
+    <div class="sec-head" style="text-align:center;margin-bottom:6px">
+      <h2>What people <span class="accent">say</span></h2>
+    </div>
+    <div class="notes">
+      <figure class="note">
+        <p>Great food, excellent service. Authentic Mexican — very flavorful.</p>
+        <figcaption class="who"><span></span>Michael M.</figcaption>
+      </figure>
+      <figure class="note">
+        <p>Really good food, great service. The ladies were so very nice.</p>
+        <figcaption class="who"><span></span>Venessa S.</figcaption>
+      </figure>
+      <figure class="note">
+        <p>The Chile Verde was very good. We found this place a year ago passing through
+          Bakersfield — liked it then, so we had to revisit it again this year.</p>
+        <figcaption class="who"><span></span>Moe M.</figcaption>
+      </figure>
+      <figure class="note">
+        <p>Great place to eat! Friendly service, great tasting food, clean facilities —
+          large portions, a great meal for your money.</p>
+        <figcaption class="who"><span></span>Mariana A.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<div class="papel" aria-hidden="true"></div>
+
+<!-- ===== VISIT ===== -->
+<section class="visit band" id="visit">
+  <div class="wrap">
+    <p class="eyebrow">Find Us</p>
+    <div class="sec-head"><h2>Come <span class="accent">visit</span> in Wasco</h2></div>
+    <div class="visit-grid">
+      <div class="hours-card">
+        <h3>Hours &amp; Location</h3>
+        <p class="where">
+          1345 F St, Wasco, CA 93280<br>
+          <a href="tel:+16617583435">(661) 758-3435</a>
+        </p>
+        <table class="hours">
+          <tr><td class="day">Monday</td><td class="time closed">Closed</td></tr>
+          <tr><td class="day">Tuesday</td><td class="time">3:00 – 8:30 PM</td></tr>
+          <tr><td class="day">Wednesday</td><td class="time">3:00 – 8:30 PM</td></tr>
+          <tr><td class="day">Thursday</td><td class="time">3:00 – 8:30 PM</td></tr>
+          <tr><td class="day">Friday</td><td class="time">3:00 – 8:30 PM</td></tr>
+          <tr><td class="day">Saturday</td><td class="time">3:00 – 8:30 PM</td></tr>
+          <tr><td class="day">Sunday</td><td class="time">11:30 AM – 6:00 PM</td></tr>
+        </table>
+        <div class="visit-cta">
+          <a class="btn btn-gold" href="tel:+16617583435">&#128222;&nbsp; Call Now</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps?q=1345+F+St,+Wasco,+CA+93280" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+      </div>
+      <div class="map-col">
+        <div class="map-frame">
+          <iframe
+            title="Map to Catrina's Mexican Grill & Cantina, Wasco CA"
+            src="https://www.google.com/maps?q=35.587667,-119.334159&z=15&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="find">
+          <span class="lbl">Find us on</span>
+          <a href="https://maps.google.com/?cid=5909909639748257371" target="_blank" rel="noopener">Google Business</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="papel" aria-hidden="true"></div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-mark">Catrina's <span class="amp">&amp;</span> Cantina</div>
+    <div class="foot-sub">Mexican Grill &amp; Cantina · Wasco, CA</div>
+    <div class="foot-lines">
+      1345 F St, Wasco, CA 93280<br>
+      <a href="tel:+16617583435">(661) 758-3435</a> &nbsp;·&nbsp; Tue–Sat 3–8:30 PM · Sun 11:30 AM–6 PM · Mon Closed
+    </div>
+    <div class="foot-social">
+      <a href="https://maps.google.com/?cid=5909909639748257371" target="_blank" rel="noopener">Google Business</a>
+      <a href="https://www.google.com/maps?q=1345+F+St,+Wasco,+CA+93280" target="_blank" rel="noopener">Directions</a>
+      <a href="tel:+16617583435">Call</a>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

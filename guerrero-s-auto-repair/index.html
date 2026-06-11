@@ -1,0 +1,473 @@
+<!--
+  ARCHETYPE: Friendly Neighborhood Tire & Auto — bright, upbeat, approachable.
+  Distinct from other auto shops in the set: NOT navy-technical, NOT gunmetal-diesel,
+  NOT farm-olive, NOT southwestern-sand. This one is petrol/teal-blue (#0e6b73 / #0b545b)
+  + warm marigold-yellow (#f6b417) accent + white, with a rounded bold display.
+
+  PALETTE: petrol/teal-blue #0e6b73, deep teal #0b3f44, marigold #f6b417, white #ffffff,
+           warm off-white #fbf7ee, ink #14333a.
+  FONTS: "Baloo 2" (rounded, bold, friendly) for display + headings;
+         "Inter" for body/UI.
+
+  STRUCTURE NOTES:
+  - Sticky top nav (teal) with marigold "Call" pill; html{scroll-padding-top} reserves its height.
+  - Hero is a split layout (copy left on teal, photo card right) — deliberately NOT a
+    centered-overlay-on-stock-photo hero (anti-pattern).
+  - Services shown as an asymmetric two-row band of "tickets" (rounded chips w/ a marigold
+    left-rule), not a 3-col circular-icon grid.
+  - "Why neighbors trust us" = three flat stat/feature panels, no icons-in-circles.
+  - Testimonies = stacked speech-bubble cards (offset left/right), labeled "What Neighbors Say",
+    first-name + last-initial, NO stars/scores.
+  - Hours + keyless Google map side by side. Single primary CTA "Call Now" repeated (nav + hero + footer band).
+  - Animation: none beyond gentle hover lifts. No scroll fade-up.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Guerrero's Auto Repair — Patterson, CA | Friendly Neighborhood Tire &amp; Auto</title>
+<meta name="description" content="Guerrero's Auto Repair in Patterson, CA — honest neighborhood auto repair, AC service, alignments, tires & maintenance. Call (209) 892-8855." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --teal:#0e6b73;
+    --teal-deep:#0b3f44;
+    --teal-darker:#082f33;
+    --marigold:#f6b417;
+    --marigold-deep:#e09a05;
+    --ink:#14333a;
+    --cream:#fbf7ee;
+    --paper:#ffffff;
+    --muted:#5d7176;
+    --line:#e4ddca;
+    --nav-h:70px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:var(--nav-h);scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Inter",system-ui,-apple-system,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{font-family:"Baloo 2",system-ui,sans-serif;line-height:1.1;letter-spacing:-.01em;}
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{width:min(1140px,92vw);margin:0 auto;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:var(--teal);
+    color:#fff;
+    display:flex;align-items:center;
+    box-shadow:0 2px 0 rgba(0,0,0,.06);
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:min(1140px,94vw);}
+  .brand{display:flex;align-items:center;gap:11px;font-family:"Baloo 2";font-weight:800;font-size:1.22rem;color:#fff;text-decoration:none;}
+  .brand .mark{
+    width:38px;height:38px;border-radius:11px;background:var(--marigold);
+    display:grid;place-items:center;color:var(--teal-deep);font-family:"Baloo 2";font-weight:800;font-size:1.15rem;
+    box-shadow:inset 0 -3px 0 rgba(0,0,0,.12);
+  }
+  .brand small{display:block;font-family:"Inter";font-weight:500;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#bfe3e6;margin-top:-2px;}
+  .navlinks{display:flex;align-items:center;gap:28px;}
+  .navlinks a{font-weight:600;font-size:.93rem;text-decoration:none;color:#e6f4f5;opacity:.92;}
+  .navlinks a:hover{opacity:1;color:#fff;}
+  .nav-call{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--marigold);color:var(--teal-darker);
+    font-family:"Baloo 2";font-weight:700;font-size:.95rem;
+    padding:9px 18px;border-radius:999px;text-decoration:none;
+    box-shadow:0 3px 0 var(--marigold-deep);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .nav-call:hover{transform:translateY(-1px);box-shadow:0 4px 0 var(--marigold-deep);}
+  @media(max-width:860px){.navlinks a:not(.nav-call){display:none;}}
+
+  /* ---------- HERO ---------- */
+  .hero{background:var(--teal);color:#fff;position:relative;overflow:hidden;}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(900px 500px at 88% -10%, rgba(246,180,23,.16), transparent 60%);
+    pointer-events:none;
+  }
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:64px 0 76px;position:relative;}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--marigold);margin-bottom:18px;}
+  .eyebrow::before{content:"";width:26px;height:3px;border-radius:2px;background:var(--marigold);}
+  .hero h1{font-size:clamp(2.5rem,5.2vw,4rem);font-weight:800;margin:0 0 18px;}
+  .hero h1 .y{color:var(--marigold);}
+  .hero p.lede{font-size:1.12rem;color:#d6ecee;max-width:30ch;margin:0 0 30px;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--marigold);color:var(--teal-darker);
+    font-family:"Baloo 2";font-weight:700;font-size:1.08rem;
+    padding:15px 28px;border-radius:14px;text-decoration:none;
+    box-shadow:0 5px 0 var(--marigold-deep);
+    transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--marigold-deep);}
+  .btn-ghost{display:inline-flex;align-items:center;gap:9px;font-weight:600;color:#eafafb;text-decoration:none;border-bottom:2px solid rgba(255,255,255,.35);padding-bottom:2px;}
+  .btn-ghost:hover{border-color:var(--marigold);}
+  .hero-hours{margin-top:30px;font-size:.92rem;color:#bfe3e6;display:flex;flex-wrap:wrap;gap:8px 22px;}
+  .hero-hours b{color:#fff;font-weight:600;}
+
+  .hero-card{position:relative;}
+  .hero-card .photo{
+    border-radius:22px;overflow:hidden;
+    border:7px solid #fff;
+    box-shadow:0 26px 50px -22px rgba(0,0,0,.55);
+    aspect-ratio:4/3.4;
+  }
+  .hero-card .photo img{width:100%;height:100%;object-fit:cover;}
+  .hero-badge{
+    position:absolute;left:-18px;bottom:24px;
+    background:#fff;color:var(--ink);
+    border-radius:16px;padding:14px 18px;
+    box-shadow:0 16px 30px -14px rgba(0,0,0,.45);
+    display:flex;align-items:center;gap:13px;
+  }
+  .hero-badge .big{font-family:"Baloo 2";font-weight:800;font-size:1.6rem;color:var(--teal);line-height:1;}
+  .hero-badge small{display:block;font-size:.72rem;color:var(--muted);font-weight:600;letter-spacing:.04em;text-transform:uppercase;}
+  @media(max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;gap:38px;padding:46px 0 56px;}
+    .hero p.lede{max-width:none;}
+    .hero-badge{left:8px;}
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:74px 0;}
+  .sec-head{margin-bottom:38px;}
+  .sec-head .kick{font-weight:700;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--marigold-deep);display:block;margin-bottom:10px;}
+  .sec-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:800;margin:0;max-width:18ch;}
+  .sec-head p{color:var(--muted);max-width:54ch;margin:14px 0 0;font-size:1.04rem;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--cream);}
+  .about .grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center;}
+  .about .copy h2{font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:800;margin:0 0 18px;}
+  .about .copy p{color:#3c5559;font-size:1.05rem;margin:0 0 16px;}
+  .about-figs{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px;}
+  .about-figs img{width:100%;height:100%;object-fit:cover;border-radius:16px;}
+  .about-figs .tall{grid-row:span 2;aspect-ratio:3/5;}
+  .about-figs .wide{aspect-ratio:4/3;}
+  @media(max-width:860px){.about .grid{grid-template-columns:1fr;gap:32px;}.about-figs .tall{aspect-ratio:4/3;grid-row:auto;}}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--teal-deep);color:#fff;}
+  .services .sec-head h2{color:#fff;}
+  .services .sec-head .kick{color:var(--marigold);}
+  .services .sec-head p{color:#bcd6d9;}
+  .tickets{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .ticket{
+    background:#0e565c;border-radius:16px;padding:22px 22px 22px 26px;
+    border-left:5px solid var(--marigold);position:relative;
+    transition:transform .14s ease, background .14s ease;
+  }
+  .ticket:hover{transform:translateY(-3px);background:#11626a;}
+  .ticket h3{font-size:1.18rem;font-weight:700;margin:0 0 6px;color:#fff;}
+  .ticket p{margin:0;font-size:.93rem;color:#cfe5e7;}
+  .svc-note{margin-top:26px;color:#bcd6d9;font-size:.96rem;}
+  .svc-note b{color:var(--marigold);font-weight:700;}
+  @media(max-width:860px){.tickets{grid-template-columns:1fr;}}
+
+  /* ---------- TRUST PANELS ---------- */
+  .trust{background:var(--paper);}
+  .panels{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .panel{
+    background:var(--cream);border:1px solid var(--line);border-radius:18px;padding:30px 26px;
+  }
+  .panel .num{font-family:"Baloo 2";font-weight:800;font-size:2.4rem;color:var(--teal);line-height:1;margin-bottom:8px;}
+  .panel h3{font-size:1.12rem;font-weight:700;margin:0 0 8px;}
+  .panel p{margin:0;color:var(--muted);font-size:.96rem;}
+  @media(max-width:760px){.panels{grid-template-columns:1fr;}}
+
+  /* ---------- TESTIMONIES ---------- */
+  .says{background:var(--cream);}
+  .bubbles{display:flex;flex-direction:column;gap:26px;max-width:760px;margin:0 auto;}
+  .bubble{
+    background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 30px;position:relative;
+    box-shadow:0 12px 26px -22px rgba(0,0,0,.4);
+  }
+  .bubble::after{content:"";position:absolute;bottom:-12px;width:24px;height:24px;background:#fff;border-right:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(45deg);}
+  .bubble.left{margin-right:auto;width:min(100%,560px);}
+  .bubble.left::after{left:40px;}
+  .bubble.right{margin-left:auto;width:min(100%,560px);background:var(--teal);border-color:var(--teal);color:#fff;}
+  .bubble.right::after{right:40px;left:auto;background:var(--teal);border-color:var(--teal);}
+  .bubble p{margin:0 0 14px;font-size:1.06rem;}
+  .bubble .who{font-family:"Baloo 2";font-weight:700;font-size:.98rem;color:var(--marigold-deep);}
+  .bubble.right .who{color:var(--marigold);}
+  .quote-mark{font-family:"Baloo 2";font-weight:800;font-size:2.4rem;color:var(--marigold);line-height:0;display:block;height:.6em;}
+  .bubble.right .quote-mark{color:var(--marigold);}
+
+  /* ---------- HOURS + MAP ---------- */
+  .visit{background:var(--paper);}
+  .visit .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:34px;align-items:stretch;}
+  .infocard{background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:30px;}
+  .infocard h3{font-size:1.3rem;font-weight:700;margin:0 0 16px;color:var(--teal-deep);}
+  .hours-tbl{width:100%;border-collapse:collapse;font-size:.96rem;}
+  .hours-tbl td{padding:9px 0;border-bottom:1px dashed var(--line);}
+  .hours-tbl td:last-child{text-align:right;font-weight:600;color:var(--teal-deep);}
+  .hours-tbl tr.today td{color:var(--marigold-deep);font-weight:700;}
+  .hours-tbl tr.today td:last-child{color:var(--marigold-deep);}
+  .hours-tbl tr.closed td:last-child{color:#a23b3b;}
+  .addr{margin:18px 0 0;font-size:.98rem;color:#3c5559;}
+  .addr a{color:var(--teal);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(14,107,115,.3);}
+  .findus{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px;}
+  .findus a{display:inline-flex;align-items:center;gap:7px;font-size:.86rem;font-weight:600;color:var(--teal-deep);text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 14px;}
+  .findus a:hover{border-color:var(--teal);color:var(--teal);}
+  .mapwrap{border-radius:20px;overflow:hidden;border:1px solid var(--line);min-height:380px;}
+  .mapwrap iframe{width:100%;height:100%;min-height:380px;border:0;display:block;}
+  @media(max-width:860px){.visit .grid{grid-template-columns:1fr;}}
+
+  /* ---------- CTA BAND ---------- */
+  .ctaband{background:var(--marigold);color:var(--teal-darker);}
+  .ctaband .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding:48px 0;}
+  .ctaband h2{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800;margin:0;max-width:20ch;}
+  .ctaband p{margin:8px 0 0;font-weight:500;color:#5a4406;}
+  .btn-dark{
+    display:inline-flex;align-items:center;gap:10px;background:var(--teal-deep);color:#fff;
+    font-family:"Baloo 2";font-weight:700;font-size:1.1rem;padding:16px 30px;border-radius:14px;text-decoration:none;
+    box-shadow:0 5px 0 #062528;transition:transform .12s ease, box-shadow .12s ease;
+  }
+  .btn-dark:hover{transform:translateY(-2px);box-shadow:0 7px 0 #062528;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--teal-darker);color:#cfe5e7;padding:54px 0 30px;}
+  .foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px;margin-bottom:30px;}
+  .foot-brand{display:flex;align-items:center;gap:12px;font-family:"Baloo 2";font-weight:800;font-size:1.3rem;color:#fff;}
+  .foot-brand .mark{width:40px;height:40px;border-radius:11px;background:var(--marigold);display:grid;place-items:center;color:var(--teal-deep);font-weight:800;}
+  .foot-col h4{font-family:"Baloo 2";font-weight:700;color:#fff;font-size:1rem;margin:0 0 12px;}
+  .foot-col a,.foot-col p{display:block;color:#a9cdcf;text-decoration:none;font-size:.94rem;margin:0 0 8px;}
+  .foot-col a:hover{color:var(--marigold);}
+  .credit{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;font-size:.84rem;color:#7fa8ab;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;}
+  .credit a{color:#a9cdcf;}
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top">
+        <span class="mark">G</span>
+        <span>Guerrero's Auto<small>Patterson, CA</small></span>
+      </a>
+      <nav class="navlinks">
+        <a href="#services">Services</a>
+        <a href="#why">Why Us</a>
+        <a href="#says">Neighbors</a>
+        <a href="#visit">Hours &amp; Map</a>
+        <a class="nav-call" href="tel:+12098928855">📞 (209) 892-8855</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top" style="padding:0;">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">Friendly Neighborhood Tire &amp; Auto</span>
+        <h1>The shop the <span class="y">neighborhood</span> trusts with its cars.</h1>
+        <p class="lede">Honest repairs, real diagnostics, and a wave when you pull in. Family-run service right here in Patterson.</p>
+        <div class="hero-cta">
+          <a class="btn-primary" href="tel:+12098928855">Call Now &nbsp;·&nbsp; (209) 892-8855</a>
+          <a class="btn-ghost" href="#visit">Get directions →</a>
+        </div>
+        <div class="hero-hours">
+          <span><b>Mon–Fri</b> 8a–6p</span>
+          <span><b>Sat</b> 8a–4p</span>
+          <span><b>Sun</b> Closed</span>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="photo"><img src="./photos/04.jpg" alt="A pickup truck up on the Hunter alignment rack at Guerrero's Auto Repair" /></div>
+        <div class="hero-badge">
+          <span class="big">209</span>
+          <small>Local line<br>since day one</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap grid">
+      <div class="copy">
+        <span class="sec-head kick" style="display:block;margin-bottom:10px;color:var(--marigold-deep);font-weight:700;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;">A little about us</span>
+        <h2>Big-shop know-how, neighbor-next-door service.</h2>
+        <p>Guerrero's Auto Repair has kept Patterson's cars, trucks, and work rigs on the road for years — the kind of place where the person turning the wrench is the same person who explains what's going on, in plain English.</p>
+        <p>From AC recharges and check-engine diagnostics to four-wheel alignments and tire work, we handle the everyday stuff and the head-scratchers. No upsell games — just the repair your vehicle actually needs.</p>
+        <p>Pull into the lot on S El Circulo, and you'll usually have your answer the same day.</p>
+      </div>
+      <div class="about-figs">
+        <img class="tall" src="./photos/01.jpg" alt="Technician running the Snap-on AC service machine" />
+        <img class="wide" src="./photos/02.jpg" alt="SUV on the alignment rack in the shop bay" />
+        <img class="wide" src="./photos/06.jpg" alt="Underbody alignment work in progress" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kick">What we do</span>
+        <h2>Everyday auto care, done right the first time.</h2>
+        <p>One shop for the maintenance you can plan and the repairs you can't. Not sure what's wrong? Bring it in and we'll find out.</p>
+      </div>
+      <div class="tickets">
+        <div class="ticket"><h3>A/C Service &amp; Recharge</h3><p>R-134a and R-1234yf systems diagnosed and recharged on our Snap-on station — cold air for the Central Valley heat.</p></div>
+        <div class="ticket"><h3>Wheel Alignments</h3><p>Precision four-wheel alignments on our Hunter rack so your tires last and your steering tracks straight.</p></div>
+        <div class="ticket"><h3>Tires &amp; Rotation</h3><p>Mounting, balancing, rotations, and flat repairs to keep you safe and rolling smooth.</p></div>
+        <div class="ticket"><h3>Brakes &amp; Suspension</h3><p>Pads, rotors, shocks, and struts — the parts that stop you and keep the ride right.</p></div>
+        <div class="ticket"><h3>Check-Engine Diagnostics</h3><p>Code scans and real troubleshooting to find the actual cause — not just clear the light.</p></div>
+        <div class="ticket"><h3>Maintenance &amp; More</h3><p>Oil changes, batteries, belts, fluids and the routine work that keeps small problems small.</p></div>
+      </div>
+      <p class="svc-note"><b>Cars, trucks &amp; work rigs welcome.</b> &nbsp;Don't see your job listed? Give us a call — chances are we do it.</p>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust" id="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kick">Why neighbors keep coming back</span>
+        <h2>Straight answers, fair prices, fast turnaround.</h2>
+      </div>
+      <div class="panels">
+        <div class="panel">
+          <div class="num">Same-day</div>
+          <h3>Quick turnaround</h3>
+          <p>Most everyday jobs are diagnosed and handled the same day you drop off — we know you need your car back.</p>
+        </div>
+        <div class="panel">
+          <div class="num">Honest</div>
+          <h3>No surprise upsells</h3>
+          <p>We tell you what's actually wrong and what it'll cost before we touch a thing. Your call, every time.</p>
+        </div>
+        <div class="panel">
+          <div class="num">Local</div>
+          <h3>Family-run in Patterson</h3>
+          <p>A real neighborhood shop on S El Circulo — the same faces, year after year, who treat your car like their own.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section class="says" id="says">
+    <div class="wrap">
+      <div class="sec-head" style="text-align:center;">
+        <span class="kick">In their words</span>
+        <h2 style="margin:0 auto;">What Neighbors Say</h2>
+      </div>
+      <div class="bubbles">
+        <div class="bubble left">
+          <span class="quote-mark">“</span>
+          <p>Brought my truck in for an alignment and they had it back to me the same afternoon, tracking perfect. Fair price and they explained everything. This is my shop now.</p>
+          <span class="who">— Marco R.</span>
+        </div>
+        <div class="bubble right">
+          <span class="quote-mark">“</span>
+          <p>My AC was blowing warm all summer. Guerrero's found the leak, fixed it right, and didn't try to sell me a bunch of stuff I didn't need. Cold air again, finally.</p>
+          <span class="who">— Jasmine T.</span>
+        </div>
+        <div class="bubble left">
+          <span class="quote-mark">“</span>
+          <p>Honest people. The check-engine light had two other places stumped — these guys actually diagnosed it and fixed it the first time. Highly recommend to anyone in Patterson.</p>
+          <span class="who">— Andrés L.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS + MAP -->
+  <section class="visit" id="visit">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kick">Stop by</span>
+        <h2>Hours &amp; location</h2>
+        <p>We're on S El Circulo Ave just off the main drag — easy to find, easy parking. Closed Sundays.</p>
+      </div>
+      <div class="grid">
+        <div class="infocard">
+          <h3>Open hours</h3>
+          <table class="hours-tbl">
+            <tr><td>Monday</td><td>8:00a – 6:00p</td></tr>
+            <tr><td>Tuesday</td><td>8:00a – 6:00p</td></tr>
+            <tr><td>Wednesday</td><td>8:00a – 6:00p</td></tr>
+            <tr><td>Thursday</td><td>8:00a – 6:00p</td></tr>
+            <tr><td>Friday</td><td>8:00a – 6:00p</td></tr>
+            <tr><td>Saturday</td><td>8:00a – 4:00p</td></tr>
+            <tr class="closed"><td>Sunday</td><td>Closed</td></tr>
+          </table>
+          <p class="addr">
+            208 S El Circulo Ave<br>Patterson, CA 95363<br>
+            <a href="https://www.google.com/maps?q=208+S+El+Circulo+Ave,+Patterson,+CA+95363" target="_blank" rel="noopener">Get directions →</a>
+          </p>
+          <div class="findus">
+            <a href="tel:+12098928855">📞 (209) 892-8855</a>
+            <a href="https://maps.google.com/?cid=10439292975827475136" target="_blank" rel="noopener">📍 Google Business</a>
+          </div>
+        </div>
+        <div class="mapwrap">
+          <iframe
+            src="https://www.google.com/maps?q=208%20S%20El%20Circulo%20Ave%2C%20Patterson%2C%20CA%2095363&z=15&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="Map to Guerrero's Auto Repair, 208 S El Circulo Ave, Patterson, CA"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="ctaband" id="contact" style="scroll-margin-top:var(--nav-h);">
+    <div class="wrap">
+      <div>
+        <h2>Car acting up? Let's take a look.</h2>
+        <p>Call the shop and talk to a real person — no phone tree, no runaround.</p>
+      </div>
+      <a class="btn-dark" href="tel:+12098928855">Call Now · (209) 892-8855</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-brand"><span class="mark">G</span> Guerrero's Auto Repair</div>
+          <p style="color:#a9cdcf;max-width:34ch;margin-top:14px;font-size:.94rem;">Friendly, honest neighborhood auto repair in Patterson, California.</p>
+        </div>
+        <div class="foot-col">
+          <h4>Visit</h4>
+          <a href="https://www.google.com/maps?q=208+S+El+Circulo+Ave,+Patterson,+CA+95363" target="_blank" rel="noopener">208 S El Circulo Ave<br>Patterson, CA 95363</a>
+        </div>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <a href="tel:+12098928855">(209) 892-8855</a>
+          <a href="https://maps.google.com/?cid=10439292975827475136" target="_blank" rel="noopener">Find us on Google</a>
+        </div>
+        <div class="foot-col">
+          <h4>Hours</h4>
+          <p>Mon–Fri · 8a–6p</p>
+          <p>Sat · 8a–4p</p>
+          <p>Sun · Closed</p>
+        </div>
+      </div>
+      <div class="credit">
+        <span>Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</span>
+        <span>© 2026 Guerrero's Auto Repair</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

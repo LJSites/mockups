@@ -1,0 +1,944 @@
+<!-- flavor: Community Market Bold | accent: #0E5A4F | bg: #F2F4EF | hero: left-split | service: numbered-stacked -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Newman Food Center — Newman, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --acc: #0E5A4F;
+      --acc-light: #1a7a6b;
+      --acc-dark: #093d36;
+      --bg: #F2F4EF;
+      --text: #1a1e17;
+      --muted: #5a6157;
+      --border: #d6d9d2;
+      --white: #ffffff;
+      --nav-h: 64px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--acc);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 4vw, 2.5rem);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    }
+
+    .nav-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.55rem;
+      color: var(--bg);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      line-height: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(242,244,239,0.82);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--bg); }
+
+    .nav-cta {
+      background: var(--bg);
+      color: var(--acc) !important;
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      font-weight: 600 !important;
+      letter-spacing: 0.05em !important;
+      transition: background 0.2s, color 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--acc-dark) !important;
+      color: var(--bg) !important;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--bg);
+      transition: all 0.25s;
+    }
+
+    /* HERO — left-split */
+    #hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - var(--nav-h));
+    }
+
+    .hero-left {
+      background: var(--acc-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(242,244,239,0.6);
+      margin-bottom: 1rem;
+    }
+
+    .hero-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      color: var(--bg);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-h1 em {
+      font-style: normal;
+      color: #8fd5cb;
+    }
+
+    .hero-sub {
+      font-family: 'Source Serif 4', serif;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(242,244,239,0.78);
+      max-width: 34ch;
+      margin-bottom: 2.2rem;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--bg);
+      color: var(--acc-dark);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 1px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: #8fd5cb;
+      color: var(--acc-dark);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      border: 1.5px solid rgba(242,244,239,0.45);
+      color: rgba(242,244,239,0.85);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.78rem 1.6rem;
+      border-radius: 1px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--bg);
+      color: var(--bg);
+    }
+
+    .hero-hours-pill {
+      margin-top: 2.4rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(242,244,239,0.55);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-hours-pill::before {
+      content: '';
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #6fcfb6;
+      flex-shrink: 0;
+    }
+
+    .hero-right {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    .hero-right img:first-child {
+      grid-column: 1 / 3;
+      grid-row: 1 / 2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-right img:nth-child(2),
+    .hero-right img:nth-child(3) {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ABOUT STRIP */
+    #about {
+      background: var(--white);
+      padding: clamp(3rem, 7vw, 5.5rem) clamp(1.5rem, 6vw, 5rem);
+    }
+
+    .about-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-img-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      right: -12px;
+      width: 60%;
+      height: 60%;
+      border: 3px solid var(--acc);
+      z-index: -1;
+    }
+
+    .about-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.7rem;
+    }
+
+    .about-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 1.2rem;
+    }
+
+    .about-body {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .about-body p + p { margin-top: 0.9rem; }
+
+    /* WHAT WE CARRY — numbered-stacked */
+    #services {
+      background: var(--bg);
+      padding: clamp(3rem, 7vw, 5.5rem) clamp(1.5rem, 6vw, 5rem);
+    }
+
+    .services-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 3rem;
+    }
+
+    .services-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .service-item {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 0 1.8rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .service-item:first-child { border-top: 1px solid var(--border); }
+
+    .service-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.2rem;
+      line-height: 1;
+      color: var(--acc);
+      opacity: 0.25;
+      user-select: none;
+      padding-top: 0.1rem;
+    }
+
+    .service-content {}
+
+    .service-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.45rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .service-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 55ch;
+    }
+
+    /* PHOTOS GALLERY */
+    #gallery {
+      background: var(--acc-dark);
+      padding: clamp(2.5rem, 5vw, 4rem) 0;
+      overflow: hidden;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      max-height: 420px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.88) saturate(1.1);
+      transition: filter 0.3s;
+    }
+
+    .gallery-grid img:hover {
+      filter: brightness(1) saturate(1.2);
+    }
+
+    /* TESTIMONIES */
+    #testimonies {
+      background: var(--white);
+      padding: clamp(3rem, 7vw, 5.5rem) clamp(1.5rem, 6vw, 5rem);
+    }
+
+    .testimonies-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .testimonies-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 2.5rem;
+    }
+
+    .testimony {
+      background: var(--bg);
+      padding: 2rem 2rem 1.6rem;
+    }
+
+    .testimony:nth-child(1) { background: var(--acc); }
+    .testimony:nth-child(1) .testimony-quote { color: rgba(242,244,239,0.9); }
+    .testimony:nth-child(1) .testimony-attr { color: rgba(242,244,239,0.6); }
+    .testimony:nth-child(1) .open-quote { color: rgba(242,244,239,0.3); }
+
+    .open-quote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      line-height: 0.7;
+      color: var(--acc);
+      opacity: 0.3;
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .testimony-quote {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.97rem;
+      line-height: 1.68;
+      color: var(--text);
+      font-style: italic;
+      margin-bottom: 1.2rem;
+    }
+
+    .testimony-attr {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* HOURS & LOCATION */
+    #location {
+      background: var(--bg);
+      padding: clamp(3rem, 7vw, 5.5rem) clamp(1.5rem, 6vw, 5rem);
+    }
+
+    .location-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.6rem;
+    }
+
+    .hours-table tr { border-bottom: 1px solid var(--border); }
+    .hours-table tr:last-child { border-bottom: none; }
+
+    .hours-table td {
+      padding: 0.6rem 0;
+      font-size: 0.9rem;
+    }
+
+    .hours-table td:first-child {
+      font-weight: 600;
+      color: var(--text);
+      width: 50%;
+    }
+
+    .hours-table td:last-child {
+      color: var(--muted);
+    }
+
+    .map-wrap {
+      border: none;
+      overflow: hidden;
+      height: 340px;
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .address-line {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .address-line a {
+      color: var(--acc);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .address-line a:hover { text-decoration: underline; }
+
+    /* CONTACT BANNER */
+    #contact {
+      background: var(--acc);
+      padding: clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 6vw, 5rem);
+    }
+
+    .contact-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-inner .section-label {
+      color: rgba(242,244,239,0.6);
+      margin-bottom: 0.7rem;
+    }
+
+    .contact-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 0.95;
+      color: var(--bg);
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .contact-sub {
+      font-family: 'Source Serif 4', serif;
+      font-size: 1.05rem;
+      color: rgba(242,244,239,0.72);
+      margin-bottom: 2rem;
+    }
+
+    .contact-phone {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.06em;
+      color: var(--bg);
+      text-decoration: none;
+      border-bottom: 2px solid rgba(242,244,239,0.35);
+      padding-bottom: 0.15rem;
+      transition: border-color 0.2s;
+    }
+
+    .contact-phone:hover { border-color: var(--bg); }
+
+    .contact-links {
+      margin-top: 1.6rem;
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(242,244,239,0.65);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-links a:hover { color: var(--bg); }
+
+    /* FOOTER */
+    footer {
+      background: var(--acc-dark);
+      padding: 1.6rem clamp(1.5rem, 6vw, 5rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      color: rgba(242,244,239,0.5);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-credit {
+      font-size: 0.75rem;
+      color: rgba(242,244,239,0.38);
+      text-align: right;
+    }
+
+    .footer-credit a {
+      color: rgba(242,244,239,0.55);
+      text-decoration: none;
+    }
+
+    .footer-credit a:hover { color: var(--bg); }
+
+    /* MOBILE */
+    @media (max-width: 820px) {
+      #hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-left {
+        padding: 2.8rem 1.5rem;
+        min-height: 70vw;
+      }
+
+      .hero-right {
+        height: 56vw;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right img:first-child {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .hero-right img:nth-child(2),
+      .hero-right img:nth-child(3) {
+        display: none;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .about-img-wrap::after { display: none; }
+
+      .testimonies-grid {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+
+      .location-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        max-height: 360px;
+      }
+
+      .gallery-grid img:nth-child(n+5) { display: none; }
+
+      nav { padding: 0 1rem; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        background: var(--acc-dark);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links li a {
+        display: block;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.82rem;
+      }
+
+      .nav-cta {
+        margin: 0.5rem 1.5rem;
+        text-align: center;
+      }
+
+      .nav-toggle { display: flex; }
+    }
+
+    @media (max-width: 480px) {
+      .service-item {
+        grid-template-columns: 52px 1fr;
+        gap: 0 1rem;
+      }
+
+      .service-num { font-size: 2.4rem; }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-credit { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-brand">Newman Food Center</a>
+    <button class="nav-toggle" aria-label="Toggle menu" onclick="this.nextElementSibling.classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">What We Carry</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Hours</a></li>
+      <li><a href="tel:+12098623600" class="nav-cta">Call Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO — left-split -->
+  <section id="hero">
+    <div class="hero-left">
+      <span class="hero-eyebrow">Newman, CA &mdash; Est. Local Market</span>
+      <h1 class="hero-h1">Your<br><em>Neighborhood</em><br>Food Center</h1>
+      <p class="hero-sub">Fresh produce, quality meats, Mexican breads, and a full deli — everything your kitchen needs, all in one place on Fresno St.</p>
+      <div class="hero-actions">
+        <a href="tel:+12098623600" class="btn-primary">Call Now</a>
+        <a href="https://www.google.com/maps?q=1046+Fresno+St,+Newman,+CA+95360&z=15&output=embed" target="_blank" rel="noopener" class="btn-secondary">Get Directions</a>
+      </div>
+      <span class="hero-hours-pill">Open Daily &bull; 7 AM – 9 PM</span>
+    </div>
+    <div class="hero-right" aria-hidden="true">
+      <img src="./photos/01.jpg" alt="Newman Food Center storefront and produce" />
+      <img src="./photos/02.jpg" alt="Fresh meats at the butcher counter" />
+      <img src="./photos/03.jpg" alt="Store interior" />
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-img-wrap">
+        <img src="./photos/04.jpg" alt="Inside Newman Food Center" />
+      </div>
+      <div class="about-text">
+        <p class="about-label">Our Story</p>
+        <h2 class="about-h2">The Market<br>Newman Trusts</h2>
+        <div class="about-body">
+          <p>Newman Food Center has been the go-to grocery stop on Fresno Street for families across Newman and the surrounding valley. We keep it simple: clean aisles, fair prices, and a team that actually knows your name.</p>
+          <p>From Costco-sized staples to fresh Mexican pastries straight from the deli, we stock what the community actually cooks. Our butcher counter offers handcut meats at prices that make sense — no warehouse membership required.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE CARRY — numbered-stacked -->
+  <section id="services">
+    <div class="services-inner">
+      <p class="section-label">What We Carry</p>
+      <h2 class="section-h2">Everything<br>Your Kitchen Needs</h2>
+      <div class="services-stack">
+
+        <div class="service-item">
+          <span class="service-num">01</span>
+          <div class="service-content">
+            <p class="service-name">Fresh Produce</p>
+            <p class="service-desc">Vegetables, melons, and seasonal fruit selected daily. Always in good shape and reasonably priced — great for enchiladas, chili, or whatever's on the stove tonight.</p>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <span class="service-num">02</span>
+          <div class="service-content">
+            <p class="service-name">Butcher Counter</p>
+            <p class="service-desc">Hand-cut fresh meats at honest prices. Whether it's stew beef, carne asada cuts, or pork, our butcher counter delivers quality without the markup.</p>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <span class="service-num">03</span>
+          <div class="service-content">
+            <p class="service-name">Mexican Deli &amp; Pastries</p>
+            <p class="service-desc">Hot takeout Mexican food and freshly baked pan dulce from the deli. Tamales, tortas, and conchas — the kind you actually want to eat.</p>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <span class="service-num">04</span>
+          <div class="service-content">
+            <p class="service-name">Pantry &amp; Staples</p>
+            <p class="service-desc">Water, paper goods, and bulk staples at prices you'd expect from a warehouse club — without the drive to Modesto. We stock the essentials your household goes through.</p>
+          </div>
+        </div>
+
+        <div class="service-item">
+          <span class="service-num">05</span>
+          <div class="service-content">
+            <p class="service-name">Mexican Imports &amp; Specialty Goods</p>
+            <p class="service-desc">Hard-to-find ingredients for authentic Mexican cooking — dried chiles, spices, masa, and more. If you cook it at home, we probably stock it.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" aria-label="Store photos">
+    <div class="gallery-grid">
+      <img src="./photos/05.jpg" alt="Store aisle" />
+      <img src="./photos/06.jpg" alt="Deli counter" />
+      <img src="./photos/01.jpg" alt="Produce display" />
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="testimonies-inner">
+      <p class="section-label">What People Say</p>
+      <h2 class="section-h2">In Their<br>Own Words</h2>
+      <div class="testimonies-grid">
+
+        <div class="testimony">
+          <span class="open-quote">&ldquo;</span>
+          <p class="testimony-quote">I absolutely love the butcher counter. Meat prices are great, meat is good. Store is clean. And now take out Chinese food is offered — it's delicious.</p>
+          <p class="testimony-attr">Treva S.</p>
+        </div>
+
+        <div class="testimony">
+          <span class="open-quote">&ldquo;</span>
+          <p class="testimony-quote">Fresh meats, produce and Mexican breads. It's always clean and neat too. Great staff and they are reasonably priced.</p>
+          <p class="testimony-attr">George S.</p>
+        </div>
+
+        <div class="testimony">
+          <span class="open-quote">&ldquo;</span>
+          <p class="testimony-quote">I ALWAYS buy my fresh vegetables, melons, and some fresh meats from this market. Their fresh produce is always in good shape. When I cook chili, enchiladas and any types of Mexican dishes I go to Newman Market. The employees are super nice and helpful.</p>
+          <p class="testimony-attr">Ernestine P.</p>
+        </div>
+
+        <div class="testimony">
+          <span class="open-quote">&ldquo;</span>
+          <p class="testimony-quote">Good prices on some items — they have water and toilet paper that you would find at Costco. There's a deli selling Mexican food and Mexican pastries.</p>
+          <p class="testimony-attr">Alejandro C.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section id="location">
+    <div class="location-inner">
+      <div>
+        <p class="section-label">Hours &amp; Location</p>
+        <h2 class="section-h2" style="margin-bottom:0.5rem;">Find Us<br>on Fresno St.</h2>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>Monday</td><td>7:00 AM – 9:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>7:00 AM – 9:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>7:00 AM – 9:00 PM</td></tr>
+            <tr><td>Thursday</td><td>7:00 AM – 9:00 PM</td></tr>
+            <tr><td>Friday</td><td>7:00 AM – 9:00 PM</td></tr>
+            <tr><td>Saturday</td><td>7:00 AM – 9:00 PM</td></tr>
+            <tr><td>Sunday</td><td>7:00 AM – 9:00 PM</td></tr>
+          </tbody>
+        </table>
+        <p class="address-line">
+          1046 Fresno St, Newman, CA 95360<br>
+          <a href="https://www.google.com/maps?q=1046+Fresno+St,+Newman,+CA+95360" target="_blank" rel="noopener">Open in Google Maps &rarr;</a>
+        </p>
+        <p class="address-line" style="margin-top:1.1rem;">
+          <a href="https://maps.google.com/?cid=13544272132702269597" target="_blank" rel="noopener">View on Google Business &rarr;</a>
+        </p>
+      </div>
+      <div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=37.3141667,-121.0233333&z=15&output=embed"
+            title="Newman Food Center location map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            aria-label="Google Map showing Newman Food Center at 1046 Fresno St, Newman CA">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT BANNER -->
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="contact-h2">Come in.<br>Call Ahead.</h2>
+      <p class="contact-sub">Questions about stock, hours, or deli orders? Give us a ring.</p>
+      <a href="tel:+12098623600" class="contact-phone">(209) 862-3600</a>
+      <div class="contact-links">
+        <a href="https://maps.google.com/?cid=13544272132702269597" target="_blank" rel="noopener">Google Business</a>
+        <a href="https://www.google.com/maps?q=1046+Fresno+St,+Newman,+CA+95360" target="_blank" rel="noopener">Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-brand">Newman Food Center &mdash; Newman, CA</span>
+    <p class="footer-credit">Mockup designed by LJ Sites &mdash; interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </footer>
+
+</body>
+</html>

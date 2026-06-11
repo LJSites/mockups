@@ -1,0 +1,456 @@
+<!--
+  ARCHETYPE: Artisanal craft-producer / "maker's storefront" — a small-batch
+  tortilleria presented like a hand-stamped paper goods label. Warmth over polish.
+
+  Key structural decisions:
+  - NO dark-overlay stock hero. Hero is an asymmetric split: a hand-lettered
+    masthead on a warm masa-paper panel beside a real tortilla-press photo (05),
+    framed like a label/seal. Editorial, not template.
+  - Palette: corn-yellow (#e8a93a), husk/nopal green (#4f6b3a), toasted
+    masa-brown (#6b4a2b) on warm tortilla-paper cream (#f4ead3). Talavera-blue
+    (#2b3e7a) as a single accent borrowed from the pots in the photos.
+  - Display type: "Bree Serif" (warm, rounded, bakery-label feel). Body:
+    "Karla". Hand-feel accent: "Caveat" for the small handwritten notes only.
+  - Sections: Masthead hero / "Fresh today" maker statement w/ press photo /
+    "From the counter" product list as a hand-priced chalk-board style menu /
+    photo strip (real photos) / hours as a daily-bake schedule (4:30am callout)
+    / testimonies as pinned recipe cards / find-us w/ keyless map.
+  - Nav: sticky top bar, slim; scroll-padding-top reserves its height.
+  - Animation: none beyond gentle CSS hover lifts. Deliberately still + crafted.
+  - CTA repeated: "Call the Tortilleria" (tel:) — fresh tortillas are a
+    walk-in/phone purchase, not an online order.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mi Pueblito Tortilleria — Fresh Handmade Tortillas · Wasco, CA</title>
+<meta name="description" content="Mi Pueblito Tortilleria in Wasco, CA — fresh handmade corn & flour tortillas, masa, chips and salsa, pressed daily before dawn." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Karla:wght@400;500;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --corn:#e8a93a;
+    --corn-deep:#c8841f;
+    --husk:#4f6b3a;
+    --husk-deep:#3a5129;
+    --masa:#6b4a2b;
+    --masa-dark:#4a3119;
+    --paper:#f4ead3;
+    --paper-2:#efe0c2;
+    --ink:#33271a;
+    --talavera:#2b3e7a;
+    --line:rgba(74,49,25,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:64px; /* reserve sticky nav height */
+  }
+  body{
+    font-family:"Karla",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* subtle paper grain */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:radial-gradient(rgba(107,74,43,.05) 1px,transparent 1px);
+    background-size:5px 5px;opacity:.6;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px;position:relative;z-index:1}
+  h1,h2,h3,.serif{font-family:"Bree Serif",Georgia,serif;font-weight:400;line-height:1.1}
+  a{color:inherit}
+  .hand{font-family:"Caveat",cursive;font-weight:700}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;height:64px;
+    background:var(--masa-dark);
+    border-bottom:3px solid var(--corn);
+    display:flex;align-items:center;
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brandmark{display:flex;align-items:center;gap:11px;color:var(--paper);text-decoration:none}
+  .seal{
+    width:34px;height:34px;border-radius:50%;flex:none;
+    background:var(--corn);color:var(--masa-dark);
+    display:grid;place-items:center;font-family:"Bree Serif",serif;font-size:17px;
+    box-shadow:inset 0 0 0 2px var(--masa-dark);
+  }
+  .brandmark b{font-family:"Bree Serif",serif;font-weight:400;font-size:17px;letter-spacing:.2px}
+  .navlinks{display:flex;gap:26px;align-items:center}
+  .navlinks a{color:var(--paper);text-decoration:none;font-size:14px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;opacity:.82;transition:opacity .2s}
+  .navlinks a:hover{opacity:1}
+  .nav-call{
+    background:var(--corn);color:var(--masa-dark)!important;
+    padding:8px 16px;border-radius:3px;font-weight:700!important;opacity:1!important;
+  }
+  .nav-call:hover{background:#f2b94e}
+  .menu-toggle{display:none}
+  @media(max-width:760px){
+    .navlinks a:not(.nav-call){display:none}
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    background:
+      linear-gradient(0deg,rgba(244,234,211,.35),rgba(244,234,211,.35)),
+      repeating-linear-gradient(135deg,var(--paper-2) 0 26px,var(--paper) 26px 52px);
+    border-bottom:1px solid var(--line);
+    padding:48px 0 0;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:0;align-items:stretch}
+  .hero-copy{padding:8px 44px 56px 4px}
+  .eyebrow{
+    display:inline-block;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--husk-deep);font-weight:700;margin-bottom:18px;
+    border:1.5px solid var(--husk);padding:5px 12px;border-radius:2px;
+  }
+  .hero h1{font-size:clamp(2.6rem,6vw,4.3rem);color:var(--masa-dark)}
+  .hero h1 .accent{color:var(--corn-deep)}
+  .hero .tag{
+    font-size:1.18rem;color:var(--masa);max-width:30ch;margin:18px 0 8px;
+  }
+  .since{font-family:"Caveat",cursive;font-size:1.55rem;color:var(--husk);transform:rotate(-2deg);display:inline-block;margin:6px 0 26px}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-weight:700;
+    padding:14px 24px;border-radius:3px;letter-spacing:.02em;transition:transform .15s,box-shadow .15s,background .15s;
+  }
+  .btn-primary{background:var(--corn);color:var(--masa-dark);box-shadow:0 3px 0 var(--corn-deep)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 5px 0 var(--corn-deep)}
+  .btn-ghost{border:2px solid var(--masa);color:var(--masa)}
+  .btn-ghost:hover{background:var(--masa);color:var(--paper)}
+  .hero-photo{
+    position:relative;min-height:420px;
+    background:url('./photos/05.jpg') center/cover no-repeat;
+    border-left:6px solid var(--masa-dark);
+  }
+  .hero-photo .stamp{
+    position:absolute;bottom:22px;left:-28px;
+    background:var(--talavera);color:var(--paper);
+    font-family:"Bree Serif",serif;font-size:.92rem;letter-spacing:.04em;
+    padding:11px 17px;box-shadow:0 6px 18px rgba(0,0,0,.28);transform:rotate(-3deg);
+  }
+  @media(max-width:820px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-copy{padding:8px 0 40px}
+    .hero-photo{min-height:300px;border-left:none;border-top:6px solid var(--masa-dark)}
+    .hero-photo .stamp{left:16px}
+  }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:70px 0;position:relative}
+  .kicker{font-family:"Caveat",cursive;font-size:1.5rem;color:var(--corn-deep)}
+  .sec-head{margin-bottom:36px;max-width:60ch}
+  .sec-head h2{font-size:clamp(1.9rem,4vw,2.7rem);color:var(--masa-dark);margin-top:2px}
+  .sec-head p{color:var(--masa);margin-top:12px;font-size:1.06rem}
+
+  /* ---------- MAKER STATEMENT ---------- */
+  .maker{background:var(--husk-deep);color:var(--paper)}
+  .maker .kicker{color:var(--corn)}
+  .maker-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .maker h2{color:var(--paper);font-size:clamp(1.9rem,4vw,2.8rem)}
+  .maker p{color:#e9e1cd;margin-top:16px;font-size:1.08rem;max-width:48ch}
+  .maker .photo{
+    height:340px;border-radius:4px;
+    background:url('./photos/01.jpg') center/cover no-repeat;
+    box-shadow:0 14px 30px rgba(0,0,0,.3);border:5px solid var(--paper);
+  }
+  .maker .facts{display:flex;gap:30px;margin-top:30px;flex-wrap:wrap}
+  .fact b{font-family:"Bree Serif",serif;font-size:1.9rem;color:var(--corn);display:block;line-height:1}
+  .fact span{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:#cdd6bd}
+  @media(max-width:820px){.maker-grid{grid-template-columns:1fr;gap:30px}.maker .photo{height:240px;order:-1}}
+
+  /* ---------- COUNTER / MENU ---------- */
+  .counter{background:var(--paper)}
+  .menu-board{
+    background:var(--masa-dark);color:var(--paper);border-radius:6px;
+    padding:38px clamp(22px,5vw,52px);
+    box-shadow:0 16px 40px rgba(74,49,25,.22);
+    border:1px solid rgba(232,169,58,.25);
+  }
+  .menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px 56px}
+  .menu-group h3{
+    font-size:1.18rem;color:var(--corn);letter-spacing:.04em;
+    padding-bottom:8px;margin:18px 0 10px;border-bottom:1px dashed rgba(244,234,211,.3);
+  }
+  .menu-group:first-child h3,.menu-group:nth-child(2) h3{margin-top:0}
+  .item{display:flex;align-items:baseline;gap:8px;padding:7px 0}
+  .item .nm{font-weight:700;color:var(--paper)}
+  .item .dot{flex:1;border-bottom:2px dotted rgba(244,234,211,.32);transform:translateY(-4px)}
+  .item .pr{font-family:"Bree Serif",serif;color:var(--corn);white-space:nowrap}
+  .item small{display:block;font-weight:400;color:#cbbfa6;font-size:.84rem;letter-spacing:.01em}
+  .board-note{margin-top:24px;font-family:"Caveat",cursive;font-size:1.35rem;color:#f0d9a8;transform:rotate(-1deg)}
+  @media(max-width:680px){.menu-cols{grid-template-columns:1fr;gap:0 0}}
+
+  /* ---------- PHOTO STRIP ---------- */
+  .strip{padding:0}
+  .strip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+  .strip-grid div{height:230px;background-size:cover;background-position:center;position:relative}
+  .strip-grid div::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(74,49,25,.12)}
+  .strip-grid .tall{grid-row:span 1}
+  @media(max-width:820px){.strip-grid{grid-template-columns:1fr 1fr}.strip-grid div{height:190px}}
+
+  /* ---------- HOURS / BAKE SCHEDULE ---------- */
+  .hours{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  .schedule{width:100%;border-collapse:collapse}
+  .schedule td{padding:11px 4px;border-bottom:1px solid var(--line);font-size:1.02rem}
+  .schedule td:first-child{font-weight:700;color:var(--masa-dark);width:46%}
+  .schedule td:last-child{text-align:right;color:var(--masa);font-variant-numeric:tabular-nums}
+  .schedule tr.today td{color:var(--husk-deep)}
+  .schedule .closed{color:var(--corn-deep);font-style:italic}
+  .early{
+    background:var(--corn);color:var(--masa-dark);border-radius:5px;padding:24px 26px;
+    box-shadow:0 8px 0 var(--corn-deep);
+  }
+  .early .hand{font-size:1.7rem;display:block;color:var(--masa-dark)}
+  .early h3{font-size:1.4rem;color:var(--masa-dark);margin:4px 0 8px}
+  .early p{color:#5a3f22;font-weight:500}
+  @media(max-width:820px){.hours-grid{grid-template-columns:1fr;gap:30px}}
+
+  /* ---------- TESTIMONIES ---------- */
+  .says{background:var(--paper)}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .card{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:4px;
+    padding:30px 30px 26px;position:relative;
+    box-shadow:0 6px 16px rgba(74,49,25,.08);
+  }
+  .card::before{
+    content:"";position:absolute;top:-11px;left:28px;width:44px;height:22px;
+    background:var(--corn);transform:rotate(-4deg);
+    box-shadow:0 2px 6px rgba(0,0,0,.18);opacity:.92;
+    border-radius:2px;
+  }
+  .card .q{font-family:"Bree Serif",serif;font-size:1.22rem;color:var(--masa-dark);line-height:1.45}
+  .card .by{margin-top:16px;font-family:"Caveat",cursive;font-size:1.4rem;color:var(--husk)}
+  @media(max-width:680px){.cards{grid-template-columns:1fr}}
+
+  /* ---------- FIND US ---------- */
+  .find{background:var(--masa-dark);color:var(--paper)}
+  .find .kicker{color:var(--corn)}
+  .find h2{color:var(--paper)}
+  .find-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:stretch}
+  .find-info p{color:#e3dac4;margin:4px 0}
+  .find-info .label{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--corn);margin-top:22px;font-weight:700}
+  .find-info a.line{color:var(--paper);text-decoration:none;font-size:1.18rem;font-family:"Bree Serif",serif}
+  .find-info a.line:hover{color:var(--corn)}
+  .find-cta{margin-top:26px}
+  .mapframe{border:5px solid var(--paper);border-radius:4px;overflow:hidden;min-height:320px;box-shadow:0 12px 30px rgba(0,0,0,.3)}
+  .mapframe iframe{display:block;width:100%;height:100%;min-height:320px;border:0;filter:saturate(.92)}
+  .findus{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+  .findus a{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    border:1.5px solid rgba(244,234,211,.4);color:var(--paper);
+    padding:8px 14px;border-radius:3px;font-size:.9rem;font-weight:600;transition:.2s;
+  }
+  .findus a:hover{border-color:var(--corn);color:var(--corn)}
+  @media(max-width:820px){.find-grid{grid-template-columns:1fr;gap:28px}}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--masa-dark);color:#cbbfa6;padding:30px 0 38px;border-top:3px solid var(--corn)}
+  .foot-grid{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap}
+  .foot-brand{display:flex;align-items:center;gap:11px;color:var(--paper)}
+  .foot-brand b{font-family:"Bree Serif",serif;font-weight:400;font-size:1.15rem}
+  .credit{font-size:.86rem;color:#9c8e72;margin-top:20px;border-top:1px solid rgba(244,234,211,.12);padding-top:18px}
+  .credit a{color:var(--corn);text-decoration:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brandmark" href="#top">
+      <span class="seal">MP</span>
+      <b>Mi Pueblito Tortilleria</b>
+    </a>
+    <div class="navlinks">
+      <a href="#counter">The Counter</a>
+      <a href="#hours">Hours</a>
+      <a href="#says">In Their Words</a>
+      <a href="#find">Find Us</a>
+      <a class="nav-call" href="tel:+16617595524">(661) 759-5524</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Wasco · California · Tortillería</span>
+        <h1>Handmade <span class="accent">corn &amp; flour</span> tortillas, pressed every morning.</h1>
+        <p class="tag">A small neighborhood tortillería — fresh masa, real comal heat, and salsa worth the early drive.</p>
+        <span class="since">— still warm when you get them home —</span>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="tel:+16617595524">Call the Tortillería · (661) 759-5524</a>
+          <a class="btn btn-ghost" href="#counter">See the counter</a>
+        </div>
+      </div>
+      <div class="hero-photo" role="img" aria-label="A wooden tortilla press with fresh masa balls">
+        <span class="stamp">Pressed fresh by hand</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="maker" id="about">
+  <div class="wrap">
+    <div class="maker-grid">
+      <div>
+        <span class="kicker">Fresh today</span>
+        <h2>Masa, ground &amp; pressed before the town wakes up.</h2>
+        <p>Mi Pueblito is a true tortillería — we start before dawn so the first tortillas off the comal are still warm when the doors open. Corn or flour, by the dozen or by the bag, plus the salsas, chips, and masa to go with them. Stop in some Saturday and you might catch the carnitas, too.</p>
+        <div class="facts">
+          <div class="fact"><b>4:30am</b><span>Weekend bake starts</span></div>
+          <div class="fact"><b>Daily</b><span>Fresh masa, never frozen</span></div>
+          <div class="fact"><b>By hand</b><span>Pressed &amp; griddled</span></div>
+        </div>
+      </div>
+      <div class="photo" role="img" aria-label="Stack of fresh corn tortillas with red and green salsa in talavera bowls"></div>
+    </div>
+  </div>
+</section>
+
+<section class="counter" id="counter">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">From the counter</span>
+      <h2>What we press &amp; sell</h2>
+      <p>Sold by the dozen and by the bag. Prices are a guide — ask at the counter for today's fresh batch.</p>
+    </div>
+    <div class="menu-board">
+      <div class="menu-cols">
+        <div class="menu-group">
+          <h3>Tortillas, fresh-pressed</h3>
+          <div class="item"><span class="nm">Corn tortillas <small>by the dozen, off the comal</small></span><span class="dot"></span><span class="pr">market</span></div>
+          <div class="item"><span class="nm">Flour tortillas <small>soft, made daily</small></span><span class="dot"></span><span class="pr">market</span></div>
+          <div class="item"><span class="nm">Tortillas by the bag <small>for the freezer or the family</small></span><span class="dot"></span><span class="pr">market</span></div>
+        </div>
+        <div class="menu-group">
+          <h3>Masa &amp; chips</h3>
+          <div class="item"><span class="nm">Fresh masa <small>by weight, for your own kitchen</small></span><span class="dot"></span><span class="pr">market</span></div>
+          <div class="item"><span class="nm">Tortilla chips <small>cut &amp; fried in-house</small></span><span class="dot"></span><span class="pr">market</span></div>
+          <div class="item"><span class="nm">Red &amp; green salsa <small>made fresh, by the cup</small></span><span class="dot"></span><span class="pr">market</span></div>
+        </div>
+        <div class="menu-group">
+          <h3>Weekend specials</h3>
+          <div class="item"><span class="nm">Carnitas <small>weekends, while it lasts</small></span><span class="dot"></span><span class="pr">ask</span></div>
+        </div>
+        <div class="menu-group">
+          <h3>Good to know</h3>
+          <div class="item"><span class="nm">Big orders <small>call ahead the day before</small></span><span class="dot"></span><span class="pr">(661) 759-5524</span></div>
+        </div>
+      </div>
+      <p class="board-note">come early — when it's gone, it's gone 🌽</p>
+    </div>
+  </div>
+</section>
+
+<section class="strip" aria-label="Photos from Mi Pueblito Tortilleria">
+  <div class="strip-grid">
+    <div style="background-image:url('./photos/02.jpg')" role="img" aria-label="Carnitas on fresh corn tortillas"></div>
+    <div style="background-image:url('./photos/04.jpg')" role="img" aria-label="Fresh flour tortillas with cilantro"></div>
+    <div style="background-image:url('./photos/06.jpg')" role="img" aria-label="Rolled flour tortillas with red and green salsa"></div>
+    <div style="background-image:url('./photos/03.jpg')" role="img" aria-label="House tortilla chips with talavera salsa pot"></div>
+  </div>
+</section>
+
+<section class="hours" id="hours">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">When we're warm</span>
+      <h2>The daily bake schedule</h2>
+    </div>
+    <div class="hours-grid">
+      <table class="schedule">
+        <tr><td>Monday</td><td class="closed">Closed</td></tr>
+        <tr><td>Tuesday</td><td>5:00 AM – 12:00 PM</td></tr>
+        <tr><td>Wednesday</td><td>5:00 AM – 2:00 PM</td></tr>
+        <tr><td>Thursday</td><td>5:00 AM – 2:00 PM</td></tr>
+        <tr><td>Friday</td><td>5:00 AM – 2:00 PM</td></tr>
+        <tr><td>Saturday</td><td>4:30 AM – 12:00 PM</td></tr>
+        <tr><td>Sunday</td><td>4:30 AM – 12:00 PM</td></tr>
+      </table>
+      <div class="early">
+        <span class="hand">Early birds, this is for you.</span>
+        <h3>Weekends we open at 4:30 AM</h3>
+        <p>The earliest tortillas are the warmest. Beat the line on Saturday and Sunday mornings and take a dozen home before breakfast.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">In their words</span>
+      <h2>What folks tell us</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <p class="q">"I went in for tortillas on a Saturday and they happened to be selling carnitas. Hands down the best in town."</p>
+        <div class="by">— Maritza C.</div>
+      </div>
+      <div class="card">
+        <p class="q">"The staff was incredibly welcoming."</p>
+        <div class="by">— Ruth V.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="find" id="find">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Stop by</span>
+      <h2>Find the tortillería</h2>
+    </div>
+    <div class="find-grid">
+      <div class="find-info">
+        <p class="label">Address</p>
+        <a class="line" href="https://www.google.com/maps?q=1120+7th+St,+Wasco,+CA+93280" target="_blank" rel="noopener">1120 7th St<br>Wasco, CA 93280</a>
+        <p class="label">Phone</p>
+        <a class="line" href="tel:+16617595524">(661) 759-5524</a>
+        <p class="label">Best time to come</p>
+        <p>Early mornings — weekends from 4:30 AM. Closed Mondays.</p>
+        <div class="find-cta">
+          <a class="btn btn-primary" href="tel:+16617595524">Call the Tortillería</a>
+        </div>
+        <div class="findus">
+          <a href="https://maps.google.com/?cid=708448025168743015" target="_blank" rel="noopener">📍 Google Business</a>
+          <a href="https://www.google.com/maps?q=1120+7th+St,+Wasco,+CA+93280" target="_blank" rel="noopener">🧭 Get Directions</a>
+        </div>
+      </div>
+      <div class="mapframe">
+        <iframe src="https://www.google.com/maps?q=35.5946487,-119.3388733&z=16&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Mi Pueblito Tortilleria, 1120 7th St, Wasco, CA"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="seal">MP</span>
+        <div>
+          <b>Mi Pueblito Tortillería</b><br>
+          <span style="font-size:.86rem;color:#9c8e72">Fresh handmade tortillas · Wasco, CA</span>
+        </div>
+      </div>
+      <a class="btn btn-primary" href="tel:+16617595524">Call (661) 759-5524</a>
+    </div>
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

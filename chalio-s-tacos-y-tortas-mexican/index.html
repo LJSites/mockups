@@ -1,0 +1,551 @@
+<!--
+  ARCHETYPE: Vintage neighborhood fonda / classic taco & torta shop — hand-painted sign-shop aesthetic.
+  Evokes an old-school roadside Mexican taqueria sign: a thick painted slab headline on a mustard-gold
+  panel, maroon banners, cream paper background, a thin double-rule "ticket" framing. Warm, neighborhood,
+  not trendy. DISTINCT from lucha-libre, Jalisco red/gold, modern charcoal/lime, retro avocado, adobe
+  terracotta, smoky charcoal/red, coastal aqua taquerias.
+
+  PALETTE: mustard-gold #E0A21A / deep maroon #6E1B22 / warm cream paper #F6EBD4 / ink #2A1E12.
+  TYPE: "Alfa Slab One" (painted slab display) + "Bitter" (warm slab-serif body) + "Oswald" (menu/ticket caps).
+
+  STRUCTURE NOTES:
+  - Top utility bar (24-HRS badge + phone) above a sticky painted-panel nav; scroll-padding-top reserved.
+  - Hero: painted shop-sign block on cream paper with halftone-dot texture, storefront photo set into a
+    framed "card" beside it (asymmetric, not centered-overlay).
+  - "Open 24 Hours" is the spine of the site — a marquee banner + a clock callout.
+  - Menu = a printed taqueria ticket / two-column price list (meats by name), not service cards.
+  - Photos shown as a tilted snapshot strip (polaroid-ish), not a uniform grid.
+  - Testimonies as torn-ticket quote slips, first name + last initial, NO stars/scores.
+  - Animation: none beyond simple hover + a single CSS marquee. No fade-up.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chalio's Tacos y Tortas — Avenal, CA · Open 24 Hours</title>
+<meta name="description" content="Chalio's Tacos y Tortas in Avenal, CA — big, no-skimp tacos, tortas, carnitas, lengua, tripas & barbacoa. Open 24 hours, 7 days. Worth the drive off the I-5." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --gold:#E0A21A;
+    --gold-deep:#C5841A;
+    --maroon:#6E1B22;
+    --maroon-dark:#551217;
+    --cream:#F6EBD4;
+    --cream-2:#EFE0C2;
+    --ink:#2A1E12;
+    --ink-soft:#5b4632;
+    --line:#d6c298;
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:calc(var(--nav-h) + 8px);
+  }
+  body{
+    margin:0;
+    font-family:"Bitter",Georgia,serif;
+    color:var(--ink);
+    background-color:var(--cream);
+    background-image:
+      radial-gradient(rgba(110,27,34,.05) 1px, transparent 1px);
+    background-size:14px 14px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{margin:0;line-height:1.05;}
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px;}
+  .display{font-family:"Alfa Slab One",serif;font-weight:400;letter-spacing:.5px;}
+  .caps{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.14em;}
+
+  /* ---------- utility bar ---------- */
+  .topbar{
+    background:var(--maroon-dark);
+    color:var(--cream);
+    font-family:"Oswald",sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.16em;
+    font-size:12px;
+  }
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px;gap:12px;}
+  .topbar .pulse{
+    display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-weight:600;
+  }
+  .pulse .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 0 rgba(224,162,26,.7);animation:pulse 2.4s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,162,26,.6);}70%{box-shadow:0 0 0 9px rgba(224,162,26,0);}100%{box-shadow:0 0 0 0 rgba(224,162,26,0);}}
+  .topbar a{text-decoration:none;}
+  .topbar .tel{color:var(--cream);white-space:nowrap;}
+  .topbar .tel:hover{color:var(--gold);}
+
+  /* ---------- sticky nav ---------- */
+  nav.bar{
+    position:sticky;top:0;z-index:50;
+    height:var(--nav-h);
+    background:var(--gold);
+    border-bottom:4px solid var(--maroon);
+    box-shadow:0 3px 0 rgba(85,18,23,.25),0 8px 18px rgba(42,30,18,.18);
+  }
+  nav.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:100%;}
+  .brand{
+    font-family:"Alfa Slab One",serif;
+    color:var(--maroon);
+    font-size:20px;
+    text-decoration:none;
+    text-shadow:1px 1px 0 rgba(255,255,255,.35);
+    white-space:nowrap;
+  }
+  .brand small{display:block;font-family:"Oswald",sans-serif;font-weight:600;font-size:10px;letter-spacing:.22em;color:var(--ink);text-shadow:none;margin-top:1px;}
+  .navlinks{display:flex;gap:26px;align-items:center;}
+  .navlinks a{
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.12em;
+    font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;padding:4px 0;
+    border-bottom:2px solid transparent;transition:border-color .15s,color .15s;
+  }
+  .navlinks a:hover{color:var(--maroon);border-bottom-color:var(--maroon);}
+  .navlinks .navcta{
+    background:var(--maroon);color:var(--cream);padding:9px 16px;border-radius:2px;
+    border-bottom:none;letter-spacing:.1em;
+  }
+  .navlinks .navcta:hover{background:var(--maroon-dark);color:#fff;}
+  @media(max-width:860px){.navlinks a:not(.navcta){display:none;}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:46px 0 30px;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:38px;align-items:center;}
+  .sign{
+    background:var(--gold);
+    border:3px solid var(--maroon);
+    border-radius:4px;
+    padding:30px 30px 26px;
+    position:relative;
+    box-shadow:7px 9px 0 var(--maroon);
+    background-image:radial-gradient(rgba(255,255,255,.35) 1.1px, transparent 1.2px);
+    background-size:9px 9px;
+  }
+  .sign .ribbon{
+    display:inline-block;background:var(--maroon);color:var(--cream);
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.22em;
+    font-size:12px;font-weight:600;padding:6px 14px;border-radius:2px;margin-bottom:16px;
+  }
+  .sign h1{
+    font-family:"Alfa Slab One",serif;color:var(--maroon);
+    font-size:clamp(38px,6.6vw,62px);
+    text-shadow:2px 2px 0 #fff, 4px 4px 0 rgba(85,18,23,.18);
+    line-height:.98;
+  }
+  .sign h1 em{display:block;font-style:normal;color:var(--ink);font-size:.5em;letter-spacing:.04em;margin-top:6px;}
+  .sign .sub{font-size:17px;color:var(--ink);margin:16px 0 22px;max-width:42ch;}
+  .sign .sub b{color:var(--maroon);}
+  .btns{display:flex;flex-wrap:wrap;gap:12px;}
+  .btn{
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-weight:600;
+    font-size:15px;text-decoration:none;padding:13px 22px;border-radius:2px;display:inline-flex;align-items:center;gap:9px;
+    transition:transform .12s ease, box-shadow .12s ease, background .15s;
+  }
+  .btn-primary{background:var(--maroon);color:var(--cream);box-shadow:3px 3px 0 var(--maroon-dark);}
+  .btn-primary:hover{background:var(--maroon-dark);transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--maroon-dark);}
+  .btn-ghost{background:var(--cream);color:var(--maroon);border:2px solid var(--maroon);}
+  .btn-ghost:hover{background:#fff;transform:translate(-1px,-1px);}
+
+  .hero-photo{
+    position:relative;
+    background:#fff;
+    padding:12px 12px 46px;
+    border:1px solid var(--line);
+    box-shadow:0 14px 30px rgba(42,30,18,.22);
+    transform:rotate(1.4deg);
+  }
+  .hero-photo img{width:100%;height:420px;object-fit:cover;}
+  .hero-photo figcaption{
+    position:absolute;left:0;right:0;bottom:12px;text-align:center;
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.2em;
+    font-size:12px;color:var(--ink-soft);
+  }
+  @media(max-width:820px){
+    .hero-grid{grid-template-columns:1fr;gap:26px;}
+    .hero-photo{transform:none;}
+    .hero-photo img{height:300px;}
+  }
+
+  /* ---------- marquee 24hr ---------- */
+  .marquee{
+    background:var(--maroon);color:var(--gold);overflow:hidden;white-space:nowrap;
+    border-top:3px solid var(--gold);border-bottom:3px solid var(--gold);
+    font-family:"Alfa Slab One",serif;font-size:18px;letter-spacing:.04em;
+  }
+  .marquee .track{display:inline-block;padding:13px 0;animation:scroll 26s linear infinite;}
+  .marquee span{margin:0 26px;}
+  .marquee .star{color:var(--cream);}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  @media(prefers-reduced-motion:reduce){.marquee .track{animation:none;}}
+
+  /* ---------- section frame ---------- */
+  section{padding:64px 0;}
+  .eyebrow{
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.26em;
+    font-size:13px;color:var(--gold-deep);font-weight:600;
+  }
+  .sec-title{font-family:"Alfa Slab One",serif;color:var(--maroon);font-size:clamp(28px,4.4vw,42px);margin:8px 0 0;}
+  .rule{width:64px;height:5px;background:var(--gold);margin:16px 0 0;border-radius:3px;}
+
+  /* about */
+  .about{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:42px;align-items:center;}
+  .about p{font-size:17.5px;color:var(--ink-soft);margin:16px 0 0;}
+  .about p:first-of-type{color:var(--ink);}
+  .about .pillars{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .pill{
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:12.5px;font-weight:600;
+    background:var(--cream);border:2px solid var(--maroon);color:var(--maroon);padding:7px 13px;border-radius:2px;
+  }
+  .about-pic{border:10px solid #fff;box-shadow:0 14px 30px rgba(42,30,18,.2);}
+  .about-pic img{width:100%;height:380px;object-fit:cover;}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:28px;}.about-pic img{height:280px;}}
+
+  /* menu ticket */
+  #menu .ticket{
+    max-width:760px;margin:34px auto 0;background:#fffaf0;
+    border:2px dashed var(--maroon);padding:32px clamp(20px,5vw,48px) 30px;
+    box-shadow:0 16px 34px rgba(42,30,18,.16);
+    position:relative;
+  }
+  #menu .ticket::before,#menu .ticket::after{
+    content:"";position:absolute;left:0;right:0;height:12px;
+    background:radial-gradient(circle at 8px -2px, transparent 8px, #fffaf0 8px) repeat-x;
+    background-size:18px 12px;
+  }
+  #menu .ticket::before{top:-12px;transform:rotate(180deg);}
+  #menu .ticket::after{bottom:-12px;}
+  .ticket-head{text-align:center;margin-bottom:8px;}
+  .ticket-head .t{font-family:"Alfa Slab One",serif;color:var(--maroon);font-size:26px;}
+  .ticket-head .s{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:var(--ink-soft);margin-top:4px;}
+  .menu-cat{margin-top:26px;}
+  .menu-cat h3{
+    font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:14px;color:var(--gold-deep);
+    border-bottom:2px solid var(--line);padding-bottom:6px;margin-bottom:12px;font-weight:700;
+  }
+  .menu-row{display:flex;align-items:baseline;gap:10px;padding:6px 0;}
+  .menu-row .name{font-family:"Bitter",serif;font-weight:600;font-size:16px;white-space:nowrap;}
+  .menu-row .desc{font-size:13.5px;color:var(--ink-soft);font-style:italic;}
+  .menu-row .leader{flex:1;border-bottom:2px dotted var(--line);transform:translateY(-4px);min-width:18px;}
+  .menu-note{text-align:center;margin-top:24px;font-size:13.5px;color:var(--ink-soft);font-style:italic;}
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 40px;}
+  @media(max-width:620px){.menu-grid{grid-template-columns:1fr;}}
+
+  /* snapshot strip */
+  .snaps{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-top:34px;}
+  .snap{background:#fff;padding:10px 10px 30px;border:1px solid var(--line);box-shadow:0 10px 24px rgba(42,30,18,.18);width:240px;}
+  .snap img{width:100%;height:200px;object-fit:cover;}
+  .snap figcaption{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--ink-soft);text-align:center;margin-top:10px;}
+  .snap:nth-child(odd){transform:rotate(-1.6deg);}
+  .snap:nth-child(even){transform:rotate(1.8deg);}
+  .snap:hover{transform:rotate(0) translateY(-4px);transition:transform .18s;}
+
+  /* testimonies */
+  .says{background:var(--maroon);color:var(--cream);}
+  .says .eyebrow{color:var(--gold);}
+  .says .sec-title{color:var(--cream);}
+  .says .rule{background:var(--gold);}
+  .slips{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:34px;}
+  .slip{
+    background:var(--cream);color:var(--ink);padding:24px 24px 20px;border-radius:3px;
+    box-shadow:0 12px 26px rgba(0,0,0,.28);position:relative;
+  }
+  .slip .mark{font-family:"Alfa Slab One",serif;color:var(--gold);font-size:40px;line-height:.5;}
+  .slip p{font-size:16px;margin:10px 0 16px;}
+  .slip .who{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:12.5px;color:var(--maroon);font-weight:600;}
+  .slip:nth-child(3){grid-column:1/-1;}
+  @media(max-width:760px){.slips{grid-template-columns:1fr;}.slip:nth-child(3){grid-column:auto;}}
+
+  /* hours + location */
+  .visit{background:var(--cream-2);border-top:1px solid var(--line);}
+  .visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:38px;align-items:stretch;}
+  .hours-card{background:#fffaf0;border:2px solid var(--maroon);border-radius:4px;padding:28px;box-shadow:6px 6px 0 var(--maroon);}
+  .hours-card .open24{
+    display:flex;align-items:center;gap:14px;background:var(--maroon);color:var(--cream);
+    margin:-28px -28px 22px;padding:18px 24px;border-radius:2px 2px 0 0;
+  }
+  .open24 .big{font-family:"Alfa Slab One",serif;font-size:24px;color:var(--gold);}
+  .open24 .small{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:11px;}
+  .hours-card ul{list-style:none;margin:0;padding:0;}
+  .hours-card li{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dotted var(--line);font-size:15px;}
+  .hours-card li:last-child{border-bottom:none;}
+  .hours-card li .day{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:var(--ink-soft);}
+  .hours-card li .hrs{font-weight:600;color:var(--maroon);}
+  .addr{margin-top:22px;font-size:15px;color:var(--ink);}
+  .addr .label{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:11px;color:var(--gold-deep);display:block;margin-bottom:4px;}
+  .addr a{color:var(--maroon);font-weight:600;text-decoration:none;}
+  .addr a:hover{text-decoration:underline;}
+  .map-frame{border:3px solid var(--maroon);box-shadow:0 14px 30px rgba(42,30,18,.2);min-height:380px;background:#fff;}
+  .map-frame iframe{display:block;width:100%;height:100%;min-height:380px;border:0;}
+  @media(max-width:820px){.visit-grid{grid-template-columns:1fr;}}
+
+  /* contact strip */
+  .contact{background:var(--maroon-dark);color:var(--cream);text-align:center;}
+  .contact h2{font-family:"Alfa Slab One",serif;color:var(--gold);font-size:clamp(28px,4.6vw,44px);}
+  .contact p{font-size:18px;color:var(--cream);max-width:48ch;margin:14px auto 26px;}
+  .contact .btns{justify-content:center;}
+  .contact .btn-ghost{background:transparent;color:var(--gold);border-color:var(--gold);}
+  .contact .btn-ghost:hover{background:var(--gold);color:var(--maroon-dark);}
+
+  /* footer */
+  footer{background:var(--ink);color:var(--cream);padding:40px 0 30px;}
+  .foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;align-items:flex-start;}
+  .foot-brand{font-family:"Alfa Slab One",serif;color:var(--gold);font-size:22px;}
+  .foot-brand small{display:block;font-family:"Oswald",sans-serif;font-size:11px;letter-spacing:.18em;color:var(--cream);margin-top:6px;text-transform:uppercase;}
+  .foot-links{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:13px;}
+  .foot-links a{color:var(--gold);text-decoration:none;display:inline-block;margin-left:18px;}
+  .foot-links a:hover{color:#fff;text-decoration:underline;}
+  .foot-info{font-size:14px;color:#cdbfa5;line-height:1.8;}
+  .foot-info a{color:var(--gold);text-decoration:none;}
+  .credit{margin-top:30px;padding-top:18px;border-top:1px solid rgba(246,235,212,.2);font-size:12.5px;color:#b6a888;text-align:center;}
+  .credit a{color:var(--gold);text-decoration:none;}
+</style>
+</head>
+<body>
+
+  <!-- utility bar -->
+  <div class="topbar">
+    <div class="wrap">
+      <span class="pulse"><span class="dot"></span>Open Now · 24 Hours, 7 Days</span>
+      <a class="tel" href="tel:+15593869010">Call · (559) 386-9010</a>
+    </div>
+  </div>
+
+  <!-- sticky nav -->
+  <nav class="bar">
+    <div class="wrap">
+      <a class="brand" href="#top">Chalio's<small>Tacos y Tortas · Avenal</small></a>
+      <div class="navlinks">
+        <a href="#about">Our Story</a>
+        <a href="#menu">The Menu</a>
+        <a href="#says">Testimonies</a>
+        <a href="#visit">Hours &amp; Map</a>
+        <a class="navcta" href="tel:+15593869010">Call Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <header class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="sign">
+        <span class="ribbon">Avenal, California · Since the I-5</span>
+        <h1>Tacos y Tortas<em>de "Chalio's"</em></h1>
+        <p class="sub">Big, fat tacos that <b>don't skimp on the meat</b> — carnitas, lengua, tripas, barbacoa, chicharrón — plus tortas, burritos and salsa that hits like a shotgun blast. <b>Open 24 hours.</b></p>
+        <div class="btns">
+          <a class="btn btn-primary" href="tel:+15593869010">Call to Order</a>
+          <a class="btn btn-ghost" href="https://www.google.com/maps?q=836+Skyline+Blvd,+Avenal,+CA+93204" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+      </div>
+      <figure class="hero-photo">
+        <img src="./photos/01.jpg" alt="The Chalio's Tacos y Tortas storefront on Skyline Blvd in Avenal, CA" />
+        <figcaption>836 Skyline Blvd · Avenal</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <!-- 24hr marquee -->
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>Open 24 Hours</span><span class="star">✶</span><span>Carnitas</span><span class="star">✶</span><span>Lengua</span><span class="star">✶</span><span>Tripas</span><span class="star">✶</span><span>Barbacoa</span><span class="star">✶</span><span>Tortas</span><span class="star">✶</span><span>Chicharrón</span><span class="star">✶</span>
+      <span>Open 24 Hours</span><span class="star">✶</span><span>Carnitas</span><span class="star">✶</span><span>Lengua</span><span class="star">✶</span><span>Tripas</span><span class="star">✶</span><span>Barbacoa</span><span class="star">✶</span><span>Tortas</span><span class="star">✶</span><span>Chicharrón</span><span class="star">✶</span>
+    </div>
+  </div>
+
+  <!-- about -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <span class="eyebrow">Our Story</span>
+        <h2 class="sec-title">A taquería worth the detour.</h2>
+        <div class="rule"></div>
+        <p>Tucked into the little town of Avenal just off the I-5, Chalio's is the kind of place road-trippers stumble onto once and then plan their drive around. The meat is cooked over a busy steam table, scooped to order, and piled onto a fresh tortilla — no shortcuts, no skimping.</p>
+        <p>Order by the taco, by the torta, or by the half-pound of carnitas, lengua and tripas crisped up the way you like. Whether you're running the Central Valley at 2 a.m. or cutting over toward SLO, the door's open and the salsa's ready.</p>
+        <div class="pillars">
+          <span class="pill">Open 24 Hours</span>
+          <span class="pill">Meat by the ½ lb</span>
+          <span class="pill">Authentic · No skimping</span>
+          <span class="pill">Off the I-5</span>
+        </div>
+      </div>
+      <figure class="about-pic">
+        <img src="./photos/04.jpg" alt="Behind the counter at Chalio's — the steam table and overhead menu of meats" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- menu -->
+  <section id="menu">
+    <div class="wrap" style="text-align:center;">
+      <span class="eyebrow">Off the Steam Table</span>
+      <h2 class="sec-title">The Menu</h2>
+      <div class="rule" style="margin:16px auto 0;"></div>
+    </div>
+    <div class="wrap">
+      <div class="ticket">
+        <div class="ticket-head">
+          <div class="t">Chalio's</div>
+          <div class="s">Tacos · Tortas · Burritos · Combinaciones</div>
+        </div>
+
+        <div class="menu-cat">
+          <h3>The Meats — pick your taco, torta or burrito</h3>
+          <div class="menu-grid">
+            <div class="menu-row"><span class="name">Carnitas</span><span class="leader"></span><span class="desc">"phenomenal"</span></div>
+            <div class="menu-row"><span class="name">Lengua</span><span class="leader"></span><span class="desc">by the ½ lb</span></div>
+            <div class="menu-row"><span class="name">Tripas</span><span class="leader"></span><span class="desc">crisped to order</span></div>
+            <div class="menu-row"><span class="name">Barbacoa</span><span class="leader"></span><span class="desc">slow &amp; tender</span></div>
+            <div class="menu-row"><span class="name">Chile Verde</span><span class="leader"></span><span class="desc">house salsa</span></div>
+            <div class="menu-row"><span class="name">Cabeza</span><span class="leader"></span><span class="desc">classic</span></div>
+            <div class="menu-row"><span class="name">Chorizo</span><span class="leader"></span><span class="desc"></span></div>
+            <div class="menu-row"><span class="name">Adobada</span><span class="leader"></span><span class="desc"></span></div>
+            <div class="menu-row"><span class="name">Costilla</span><span class="leader"></span><span class="desc"></span></div>
+            <div class="menu-row"><span class="name">Chicharrón en Salsa</span><span class="leader"></span><span class="desc"></span></div>
+            <div class="menu-row"><span class="name">Chicharrón con Carne</span><span class="leader"></span><span class="desc"></span></div>
+            <div class="menu-row"><span class="name">Tacos Dorados de Papa</span><span class="leader"></span><span class="desc">crispy potato</span></div>
+          </div>
+        </div>
+
+        <div class="menu-cat">
+          <h3>Platos &amp; Más</h3>
+          <div class="menu-grid">
+            <div class="menu-row"><span class="name">Tortas</span><span class="leader"></span><span class="desc">stacked &amp; warm</span></div>
+            <div class="menu-row"><span class="name">Burritos</span><span class="leader"></span><span class="desc">foil-wrapped, packed</span></div>
+            <div class="menu-row"><span class="name">Plate of Meat</span><span class="leader"></span><span class="desc">w/ beans &amp; rice</span></div>
+            <div class="menu-row"><span class="name">Loaded Fries</span><span class="leader"></span><span class="desc">asada, jalapeño, crema</span></div>
+            <div class="menu-row"><span class="name">Beans &amp; Rice</span><span class="leader"></span><span class="desc">on the side</span></div>
+            <div class="menu-row"><span class="name">Horchata &amp; Aguas</span><span class="leader"></span><span class="desc">"not too sweet"</span></div>
+          </div>
+        </div>
+
+        <p class="menu-note">Prueba nuestros nuevos platillos. Prices vary — call ahead and we'll have it ready: <a href="tel:+15593869010" style="color:var(--maroon);font-weight:600;">(559) 386-9010</a></p>
+      </div>
+
+      <!-- snapshot strip -->
+      <div class="snaps">
+        <figure class="snap"><img src="./photos/02.jpg" alt="Two plates of Chalio's tacos with lime and Jumex" /><figcaption>Three for the table</figcaption></figure>
+        <figure class="snap"><img src="./photos/03.jpg" alt="Steam table trays of carnitas, chicharrón and stewed meats" /><figcaption>Straight off the steam table</figcaption></figure>
+        <figure class="snap"><img src="./photos/05.jpg" alt="Loaded carne asada fries box with jalapeños and crema" /><figcaption>Loaded asada fries</figcaption></figure>
+        <figure class="snap"><img src="./photos/06.jpg" alt="A foil-wrapped Chalio's burrito cut open showing the carnitas filling" /><figcaption>The foil-wrapped burrito</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- testimonies -->
+  <section class="says" id="says">
+    <div class="wrap" style="text-align:center;">
+      <span class="eyebrow">In Their Words</span>
+      <h2 class="sec-title">Customer Testimonies</h2>
+      <div class="rule" style="margin:16px auto 0;"></div>
+    </div>
+    <div class="wrap">
+      <div class="slips">
+        <figure class="slip">
+          <div class="mark">“</div>
+          <p>Simply put — worth a drive. Salsa hits the tongue like a shotgun blast and the meat is cooked perfectly. They are really big fat tacos and they don't skimp on the meat.</p>
+          <figcaption class="who">— Jesse R.</figcaption>
+        </figure>
+        <figure class="slip">
+          <div class="mark">“</div>
+          <p>Delicious barbacoa and carnitas tacos that live up to the internet hype. Worth the detour whether you're on the I-5 or heading to SLO from the Central Valley.</p>
+          <figcaption class="who">— Sarah S.</figcaption>
+        </figure>
+        <figure class="slip">
+          <div class="mark">“</div>
+          <p>BOMB!!! Had 3 tacos with beans and rice on the side and a chicharrón on top. The tripas was perfectly crispy and the carnitas were phenomenal — I couldn't pick a favorite. The horchata was perfect, not too sweet. Great service. I do tacos for a living — 37 years in business — and I tip my hat to this place.</p>
+          <figcaption class="who">— Will G.</figcaption>
+        </figure>
+        <figure class="slip">
+          <div class="mark">“</div>
+          <p>Stumbled upon this gem. I tried the costillas taco, potato taco, carnitas and the hard chicharrón taco on a yellow tortilla — they were delicious.</p>
+          <figcaption class="who">— Clarisa O.</figcaption>
+        </figure>
+        <figure class="slip">
+          <div class="mark">“</div>
+          <p>Excellent place for taco meat and tacos. We ordered a half pound of lengua and half tripas and they crisped the tripas up for us. A great authentic experience — I highly recommend it.</p>
+          <figcaption class="who">— Daniel G.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- visit -->
+  <section class="visit" id="visit">
+    <div class="wrap" style="text-align:center;">
+      <span class="eyebrow">Come On By</span>
+      <h2 class="sec-title">Hours &amp; Location</h2>
+      <div class="rule" style="margin:16px auto 0;"></div>
+    </div>
+    <div class="wrap visit-grid" style="margin-top:34px;">
+      <div class="hours-card">
+        <div class="open24">
+          <div class="big">24 / 7</div>
+          <div class="small">Open every hour,<br/>every day of the week</div>
+        </div>
+        <ul>
+          <li><span class="day">Monday</span><span class="hrs">Open 24 Hours</span></li>
+          <li><span class="day">Tuesday</span><span class="hrs">Open 24 Hours</span></li>
+          <li><span class="day">Wednesday</span><span class="hrs">Open 24 Hours</span></li>
+          <li><span class="day">Thursday</span><span class="hrs">Open 24 Hours</span></li>
+          <li><span class="day">Friday</span><span class="hrs">Open 24 Hours</span></li>
+          <li><span class="day">Saturday</span><span class="hrs">Open 24 Hours</span></li>
+          <li><span class="day">Sunday</span><span class="hrs">Open 24 Hours</span></li>
+        </ul>
+        <div class="addr">
+          <span class="label">Find Us</span>
+          <a href="https://www.google.com/maps?q=836+Skyline+Blvd,+Avenal,+CA+93204" target="_blank" rel="noopener">836 Skyline Blvd, Avenal, CA 93204</a><br/>
+          <span class="label" style="margin-top:12px;">Call Ahead</span>
+          <a href="tel:+15593869010">(559) 386-9010</a>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=36.005966199999996,-120.12512910000001&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Chalio's Tacos y Tortas, 836 Skyline Blvd, Avenal CA"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- contact -->
+  <section class="contact">
+    <div class="wrap">
+      <h2>Hungry yet?</h2>
+      <p>Whatever time it is, the steam table's hot and the tortillas are fresh. Call your order in or just pull off the I-5.</p>
+      <div class="btns">
+        <a class="btn btn-primary" href="tel:+15593869010" style="box-shadow:3px 3px 0 #000;">Call (559) 386-9010</a>
+        <a class="btn btn-ghost" href="https://www.google.com/maps?q=836+Skyline+Blvd,+Avenal,+CA+93204" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">Chalio's<small>Tacos y Tortas · Avenal, CA</small></div>
+        <div class="foot-info">
+          836 Skyline Blvd, Avenal, CA 93204<br/>
+          <a href="tel:+15593869010">(559) 386-9010</a> · Open 24 Hours, 7 Days
+        </div>
+        <div class="foot-links">
+          <a href="#menu">Menu</a>
+          <a href="#visit">Hours</a>
+          <a href="https://maps.google.com/?cid=6796550774434763638" target="_blank" rel="noopener">Google</a>
+        </div>
+      </div>
+      <div class="credit">
+        Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!--
+  ARCHETYPE: "Mercado / hand-painted taqueria" — vibrant street-taco energy.
+  STRUCTURAL DECISIONS:
+    - NO centered-hero-with-dark-overlay. Hero is an asymmetric split: an off-kilter
+      angled headline block (warm cream) butted against a tilted photo collage that
+      breaks the grid, with a "papel picado" banner strip up top.
+    - Palette honors the brief (cream + bold red + green) AND this taqueria's real
+      identity: its sign + interior are a loud magenta/pink, so pink is the accent
+      that ties the page to the actual storefront photos.
+    - Display face: Bungee Inca / Bungee feel via "Bungee" for the wordmark + "Rye"
+      slab for headings (saloon/mercado), body in Epilogue. Spanish-y, hand-painted.
+    - Menu is a hand-lettered "PIZARRA" (chalkboard-style) board, two columns,
+      dotted leaders — not a 3-col icon grid.
+    - Testimonies = "LO QUE DICE LA GENTE" — speech-bubble cards on an angled red
+      field, no stars/scores.
+    - Sticky nav -> html{scroll-padding-top} reserves the bar height.
+    - Animation: none beyond hover lifts + a slow papel-picado sway (decorative only).
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XX Tacos — Street Tacos, Quesabirria & Agua Frescas | North Highlands, CA</title>
+<meta name="description" content="XX Tacos in North Highlands, CA — quesabirria, chicken & steak street tacos, mariscos, and fresh agua frescas. Open daily 8am–9pm on Watt Ave.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Rye&family=Epilogue:ital,wght@0,400;0,600;0,800;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#fff4e3;
+    --cream-2:#ffe9c9;
+    --red:#d62828;
+    --red-deep:#9d1b1b;
+    --green:#1f7a3d;
+    --green-deep:#155c2c;
+    --pink:#e6157f;        /* matches the real XX TACOS sign / interior */
+    --pink-deep:#b80f64;
+    --ink:#241712;
+    --gold:#f6b40a;
+    --nav-h:68px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth; scroll-padding-top:var(--nav-h);}
+  body{
+    font-family:'Epilogue',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit}
+  h1,h2,h3{font-family:'Rye',serif;line-height:1.05;letter-spacing:.5px}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+
+  /* ---------- papel picado strip ---------- */
+  .papel{
+    height:26px; display:flex; background:var(--red);
+    overflow:hidden;
+  }
+  .papel span{
+    flex:1; height:26px;
+    background:
+      radial-gradient(circle at 50% 0, transparent 9px, currentColor 10px) bottom/22px 22px repeat-x;
+    transform-origin:top;
+    animation:sway 4s ease-in-out infinite;
+  }
+  .papel span:nth-child(odd){color:var(--gold)}
+  .papel span:nth-child(even){color:var(--green)}
+  .papel span:nth-child(3n){color:var(--pink); animation-delay:-1.2s}
+  .papel span:nth-child(4n){color:var(--cream); animation-delay:-2.4s}
+  @keyframes sway{0%,100%{transform:rotate(-.6deg)}50%{transform:rotate(.6deg)}}
+  @media (prefers-reduced-motion:reduce){.papel span{animation:none}}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:var(--ink);
+    display:flex;align-items:center;
+    border-bottom:4px solid var(--pink);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{font-family:'Bungee',cursive;font-size:1.35rem;color:#fff;letter-spacing:1px;text-decoration:none;white-space:nowrap}
+  .brand .xx{color:var(--pink)}
+  .navlinks{display:flex;gap:26px;align-items:center}
+  .navlinks a{font-family:'Epilogue';font-weight:800;text-transform:uppercase;font-size:.74rem;letter-spacing:1.5px;color:var(--cream-2);text-decoration:none;transition:color .15s}
+  .navlinks a:hover{color:var(--gold)}
+  .navlinks .callbtn{
+    background:var(--pink);color:#fff;padding:9px 16px;border-radius:999px;
+    border:2px solid #fff2;letter-spacing:1px;transition:transform .15s,background .15s;
+  }
+  .navlinks .callbtn:hover{background:var(--pink-deep);color:#fff;transform:translateY(-1px)}
+  @media(max-width:780px){.navlinks a:not(.callbtn){display:none}}
+
+  /* ---------- HERO (asymmetric) ---------- */
+  .hero{position:relative;background:var(--cream);padding:46px 0 0}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}
+  .hero-copy{position:relative;z-index:3}
+  .eyebrow{
+    display:inline-block;font-family:'Bungee';font-size:.72rem;letter-spacing:2px;
+    color:#fff;background:var(--green);padding:6px 14px;transform:rotate(-2deg);
+    box-shadow:4px 4px 0 var(--ink);
+  }
+  .hero h1{
+    font-family:'Bungee',cursive;
+    font-size:clamp(2.6rem,7vw,4.7rem);
+    line-height:.95;letter-spacing:0;margin:18px 0 6px;color:var(--red);
+    text-shadow:3px 3px 0 var(--ink);
+  }
+  .hero h1 .l2{display:block;color:var(--green);text-shadow:3px 3px 0 var(--ink)}
+  .hero h1 .l3{display:block;color:var(--pink);text-shadow:3px 3px 0 var(--ink)}
+  .hero p.lead{font-size:1.12rem;font-weight:500;max-width:30ch;margin:14px 0 24px}
+  .hero .cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    font-family:'Epilogue';font-weight:800;text-transform:uppercase;letter-spacing:1px;
+    font-size:.85rem;text-decoration:none;padding:14px 24px;border-radius:6px;
+    display:inline-flex;align-items:center;gap:8px;transition:transform .15s,box-shadow .15s;
+  }
+  .btn-red{background:var(--red);color:#fff;box-shadow:4px 4px 0 var(--ink)}
+  .btn-red:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+  .btn-out{background:transparent;color:var(--ink);border:3px solid var(--green);box-shadow:4px 4px 0 var(--green-deep)}
+  .btn-out:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--green-deep)}
+  .opentag{font-family:'Bungee';font-size:.7rem;color:var(--green-deep);letter-spacing:1px;display:flex;align-items:center;gap:7px}
+  .opentag .dot{width:9px;height:9px;background:var(--green);border-radius:50%;box-shadow:0 0 0 3px #1f7a3d33;display:inline-block}
+
+  /* hero photo collage — broken grid */
+  .hero-art{position:relative;height:480px}
+  .hero-art .ph{
+    position:absolute;border:6px solid #fff;box-shadow:0 14px 30px #2417123d;
+    object-fit:cover;border-radius:4px;
+  }
+  .hero-art .p1{width:64%;height:62%;top:0;right:0;transform:rotate(3deg);z-index:2}
+  .hero-art .p2{width:54%;height:46%;bottom:6%;left:0;transform:rotate(-4deg);z-index:3}
+  .hero-art .p3{width:40%;height:34%;bottom:0;right:8%;transform:rotate(5deg);z-index:4}
+  .blob{position:absolute;width:150px;height:150px;background:var(--gold);border-radius:50%;
+    bottom:-30px;right:-20px;z-index:1;opacity:.55}
+  .sticker{
+    position:absolute;top:8%;left:-6%;z-index:5;background:var(--pink);color:#fff;
+    font-family:'Bungee';font-size:.8rem;width:96px;height:96px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.05;
+    transform:rotate(-12deg);box-shadow:0 8px 18px #b80f6455;border:3px dashed #fff8;padding:8px;
+  }
+
+  /* ---------- marquee strip ---------- */
+  .strip{background:var(--ink);color:var(--cream);overflow:hidden;white-space:nowrap;padding:13px 0;margin-top:46px;border-top:4px solid var(--gold);border-bottom:4px solid var(--gold)}
+  .strip .track{display:inline-block;animation:marq 22s linear infinite}
+  .strip span{font-family:'Bungee';font-size:.95rem;letter-spacing:1px;padding:0 26px}
+  .strip .x{color:var(--pink)}
+  @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.strip .track{animation:none}}
+
+  /* ---------- ABOUT ---------- */
+  .about{padding:70px 0}
+  .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:46px;align-items:center}
+  .section-kicker{font-family:'Bungee';font-size:.72rem;letter-spacing:2px;color:var(--pink-deep)}
+  .about h2{font-size:clamp(2rem,4.5vw,3rem);color:var(--red);margin:8px 0 18px}
+  .about p{font-size:1.06rem;margin-bottom:16px}
+  .about-photo{position:relative}
+  .about-photo img{width:100%;height:420px;object-fit:cover;border-radius:8px;border:6px solid #fff;box-shadow:0 16px 34px #2417122e}
+  .about-photo .tab{position:absolute;top:-18px;left:-14px;background:var(--green);color:#fff;font-family:'Bungee';font-size:.8rem;padding:10px 16px;transform:rotate(-3deg);box-shadow:4px 4px 0 var(--ink)}
+  .factbar{display:flex;gap:18px;flex-wrap:wrap;margin-top:8px}
+  .fact{background:var(--cream-2);border:2px solid var(--ink);border-radius:8px;padding:12px 18px;flex:1;min-width:140px}
+  .fact b{font-family:'Bungee';display:block;color:var(--red);font-size:1.1rem}
+  .fact small{font-weight:700;text-transform:uppercase;letter-spacing:1px;font-size:.66rem}
+
+  /* ---------- MENU board ---------- */
+  .menu{background:var(--red);padding:74px 0;position:relative}
+  .menu:before{content:"";position:absolute;inset:0;background:
+    radial-gradient(circle at 20% 20%, #ffffff14 0 2px, transparent 3px) 0 0/26px 26px;}
+  .menu .wrap{position:relative}
+  .menu h2{text-align:center;color:var(--cream);font-size:clamp(2rem,5vw,3.2rem);text-shadow:3px 3px 0 var(--red-deep)}
+  .menu .sub{text-align:center;color:var(--cream-2);font-weight:600;margin:6px 0 40px;font-style:italic}
+  .board{background:var(--ink);border:8px solid var(--gold);border-radius:10px;padding:38px 40px;box-shadow:0 20px 40px #00000040}
+  .board-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px 56px}
+  .mcat{font-family:'Bungee';color:var(--pink);font-size:.95rem;letter-spacing:1px;margin:18px 0 10px;grid-column:1/-1}
+  .mcat:first-child{margin-top:0}
+  .mitem{display:flex;align-items:baseline;gap:8px;color:var(--cream);padding:5px 0}
+  .mitem .nm{font-weight:700}
+  .mitem .nm small{display:block;font-weight:400;font-size:.78rem;color:#ffffffaa;letter-spacing:.2px}
+  .mitem .dots{flex:1;border-bottom:2px dotted #ffffff55;transform:translateY(-4px)}
+  .mitem .pr{font-family:'Bungee';color:var(--gold);font-size:.85rem;white-space:nowrap}
+  .menu-note{text-align:center;color:var(--cream-2);margin-top:26px;font-style:italic;font-size:.95rem}
+
+  /* ---------- gallery ---------- */
+  .gallery{padding:70px 0 30px}
+  .gallery h2{text-align:center;color:var(--green-deep);font-size:clamp(1.8rem,4vw,2.6rem)}
+  .gallery .section-kicker{display:block;text-align:center;margin-bottom:6px}
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+  .gal-grid img{width:100%;height:100%;object-fit:cover;border-radius:6px;border:4px solid #fff;box-shadow:0 8px 18px #2417121f;transition:transform .2s}
+  .gal-grid img:hover{transform:scale(1.03) rotate(-1deg)}
+  .gal-grid .tall{grid-row:span 2}
+  @media(max-width:680px){.gal-grid{grid-template-columns:1fr 1fr}.gal-grid .tall{grid-row:auto}}
+
+  /* ---------- testimonies ---------- */
+  .testi{background:var(--green);padding:74px 0;position:relative}
+  .testi h2{text-align:center;color:var(--cream);font-size:clamp(1.9rem,4.5vw,2.9rem);text-shadow:3px 3px 0 var(--green-deep)}
+  .testi .section-kicker{display:block;text-align:center;color:var(--gold);margin-bottom:6px}
+  .tgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;margin-top:42px}
+  .bubble{background:var(--cream);border-radius:14px;padding:26px 26px 22px;position:relative;box-shadow:0 12px 26px #00000033}
+  .bubble:nth-child(odd){transform:rotate(-1.2deg)}
+  .bubble:nth-child(even){transform:rotate(1.2deg)}
+  .bubble:after{content:"";position:absolute;bottom:-15px;left:38px;border:9px solid transparent;border-top-color:var(--cream);border-bottom:0}
+  .bubble p{font-size:1.04rem;font-style:italic;color:var(--ink);margin-bottom:14px}
+  .bubble .who{font-family:'Bungee';font-size:.78rem;color:var(--pink-deep);letter-spacing:.5px}
+  .bubble .quotemark{font-family:'Rye';font-size:2.4rem;color:var(--red);line-height:0;position:absolute;top:18px;right:20px;opacity:.25}
+  @media(max-width:680px){.tgrid{grid-template-columns:1fr}}
+
+  /* ---------- visit / hours / map ---------- */
+  .visit{padding:74px 0}
+  .visit-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:42px;align-items:stretch}
+  .visit h2{color:var(--red);font-size:clamp(2rem,4.5vw,2.9rem);margin:6px 0 22px}
+  .hours{list-style:none;border:3px solid var(--ink);border-radius:10px;overflow:hidden;margin-bottom:24px;background:var(--cream-2)}
+  .hours li{display:flex;justify-content:space-between;padding:11px 18px;font-weight:600;border-bottom:1px solid #24171222}
+  .hours li:last-child{border-bottom:0}
+  .hours li b{font-family:'Bungee';font-size:.78rem;color:var(--green-deep)}
+  .infoline{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;font-weight:600}
+  .infoline .ic{font-family:'Bungee';color:#fff;background:var(--pink);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;flex:0 0 34px}
+  .infoline a{color:var(--red-deep);font-weight:800;text-decoration:none}
+  .infoline a:hover{text-decoration:underline}
+  .findus{margin-top:8px;font-weight:700}
+  .findus a{color:var(--green-deep);text-decoration:underline;font-weight:800}
+  .mapwrap{border:6px solid var(--ink);border-radius:12px;overflow:hidden;min-height:380px;box-shadow:0 16px 34px #2417122a}
+  .mapwrap iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+  .visit .cta-row{margin-top:6px;display:flex;gap:14px;flex-wrap:wrap}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:var(--cream);padding:50px 0 26px;border-top:5px solid var(--pink)}
+  .foot-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;align-items:flex-start}
+  .foot-brand{font-family:'Bungee';font-size:1.6rem;color:#fff}
+  .foot-brand .xx{color:var(--pink)}
+  .foot-grid p{font-size:.92rem;color:#fff5e6cc;max-width:32ch;margin-top:8px}
+  .foot-links{display:flex;flex-direction:column;gap:8px}
+  .foot-links a{font-weight:700;text-decoration:none;color:var(--gold)}
+  .foot-links a:hover{text-decoration:underline}
+  .credit{margin-top:34px;padding-top:18px;border-top:1px solid #ffffff22;font-size:.82rem;color:#ffffff99;text-align:center}
+  .credit a{color:var(--gold)}
+
+  @media(max-width:880px){
+    .hero-grid,.about-grid,.visit-grid{grid-template-columns:1fr}
+    .hero-art{height:360px;margin-top:18px}
+    .gal-grid{grid-template-columns:1fr 1fr}
+    .board-cols{grid-template-columns:1fr}
+    .about-photo img{height:320px}
+  }
+</style>
+</head>
+<body>
+
+<!-- papel picado -->
+<div class="papel" aria-hidden="true">
+  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+
+<!-- nav -->
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="xx">XX</span> TACOS</a>
+    <div class="navlinks">
+      <a href="#about">Our Story</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">The Eats</a>
+      <a href="#testimonies">Word on the Street</a>
+      <a href="#visit">Visit</a>
+      <a class="callbtn" href="tel:+19169176569">Call (916) 917-6569</a>
+    </div>
+  </div>
+</nav>
+
+<!-- hero -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">North Highlands · Watt Ave</span>
+      <h1>STREET<span class="l2">TACOS</span><span class="l3">DONE RIGHT</span></h1>
+      <p class="lead">Quesabirria with the cheese pull, sizzling carne asada, and ice-cold agua frescas — straight outta the XX kitchen on Watt Ave.</p>
+      <div class="cta-row">
+        <a class="btn btn-red" href="tel:+19169176569">Call to Order</a>
+        <a class="btn btn-out" href="https://www.google.com/maps?q=4332+Watt+Ave,+North+Highlands,+CA+95660" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+      <p class="opentag" style="margin-top:18px"><span class="dot"></span> OPEN EVERY DAY · 8AM – 9PM</p>
+    </div>
+    <div class="hero-art">
+      <span class="sticker">CHEESE PULL APPROVED</span>
+      <div class="blob"></div>
+      <img class="ph p1" src="./photos/02.jpg" alt="Cheesy birria taco with a long cheese pull at XX Tacos">
+      <img class="ph p2" src="./photos/06.jpg" alt="Order of street tacos and quesabirria in a takeout box">
+      <img class="ph p3" src="./photos/03.jpg" alt="Steak street tacos topped with cheese and cilantro">
+    </div>
+  </div>
+</header>
+
+<!-- marquee -->
+<div class="strip" aria-hidden="true">
+  <div class="track">
+    <span>QUESABIRRIA</span><span class="x">✕</span><span>STREET TACOS</span><span class="x">✕</span><span>MARISCOS</span><span class="x">✕</span><span>AGUA FRESCAS</span><span class="x">✕</span><span>TACOS DE ASADA</span><span class="x">✕</span>
+    <span>QUESABIRRIA</span><span class="x">✕</span><span>STREET TACOS</span><span class="x">✕</span><span>MARISCOS</span><span class="x">✕</span><span>AGUA FRESCAS</span><span class="x">✕</span><span>TACOS DE ASADA</span><span class="x">✕</span>
+  </div>
+</div>
+
+<!-- about -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo">
+      <span class="tab">¡BIENVENIDOS!</span>
+      <img src="./photos/04.jpg" alt="The bright pink dining room inside XX Tacos">
+    </div>
+    <div>
+      <span class="section-kicker">NUESTRA HISTORIA</span>
+      <h2>From a beloved truck to your new favorite table.</h2>
+      <p>XX Tacos started turning heads serving the kind of street tacos people drive across town for. So when we opened the doors to our own spot on Watt Ave, the regulars showed up day one — and the food's only gotten better.</p>
+      <p>Bright, clean, and full of color, it's a sit-down taqueria with truck-stand flavor. Come for the quesabirria, stay for the strawberry-pineapple agua fresca, and meet the owners while you're at it.</p>
+      <div class="factbar">
+        <div class="fact"><b>Daily</b><small>Open 7 days a week</small></div>
+        <div class="fact"><b>8a–9p</b><small>Breakfast to dinner</small></div>
+        <div class="fact"><b>Dine-in</b><small>& takeout ready</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- menu -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <h2>LA PIZARRA</h2>
+    <p class="sub">Hand-pressed, made to order — here's what's good.</p>
+    <div class="board">
+      <div class="board-cols">
+        <div class="mcat">★ Los Tacos</div>
+        <div class="mitem"><span class="nm">Taco de Asada<small>Grilled steak, onion, cilantro</small></span><span class="dots"></span><span class="pr">$3.50</span></div>
+        <div class="mitem"><span class="nm">Taco de Pollo<small>Chicken street taco, the fan favorite</small></span><span class="dots"></span><span class="pr">$3.25</span></div>
+        <div class="mitem"><span class="nm">Al Pastor<small>Marinated pork, onion, cilantro</small></span><span class="dots"></span><span class="pr">$3.50</span></div>
+        <div class="mitem"><span class="nm">Carnitas<small>Slow-cooked pulled pork</small></span><span class="dots"></span><span class="pr">$3.50</span></div>
+
+        <div class="mcat">★ Especialidades</div>
+        <div class="mitem"><span class="nm">Quesabirria Taco<small>Birria, melted cheese, dipping consomé</small></span><span class="dots"></span><span class="pr">$4.75</span></div>
+        <div class="mitem"><span class="nm">Birria Quesadilla<small>Loaded, crispy, full of cheese</small></span><span class="dots"></span><span class="pr">$13</span></div>
+        <div class="mitem"><span class="nm">Mariscos Cup<small>Shrimp + birria, cheesy & saucy</small></span><span class="dots"></span><span class="pr">$12</span></div>
+        <div class="mitem"><span class="nm">Taco Plate<small>Three tacos, grilled onion & jalapeño</small></span><span class="dots"></span><span class="pr">$11</span></div>
+
+        <div class="mcat">★ Aguas Frescas & Más</div>
+        <div class="mitem"><span class="nm">Strawberry-Pineapple Agua<small>Don't skip it — house favorite</small></span><span class="dots"></span><span class="pr">$4</span></div>
+        <div class="mitem"><span class="nm">Horchata<small>Cinnamon rice, hand-blended</small></span><span class="dots"></span><span class="pr">$4</span></div>
+        <div class="mitem"><span class="nm">Jarritos<small>Ask for today's flavors</small></span><span class="dots"></span><span class="pr">$3</span></div>
+        <div class="mitem"><span class="nm">Chips & Salsa<small>Fresh-made daily</small></span><span class="dots"></span><span class="pr">$4.50</span></div>
+      </div>
+      <p class="menu-note">Sample menu for preview — call (916) 917-6569 to hear today's full lineup &amp; specials.</p>
+    </div>
+  </div>
+</section>
+
+<!-- gallery -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <span class="section-kicker">STRAIGHT FROM THE KITCHEN</span>
+    <h2>The Eats</h2>
+    <div class="gal-grid">
+      <img class="tall" src="./photos/02.jpg" alt="Cheese-pull birria taco lifted on a fork">
+      <img src="./photos/03.jpg" alt="Steak tacos with cheese and cilantro on a plate">
+      <img src="./photos/06.jpg" alt="Takeout box with street tacos and quesabirria">
+      <img src="./photos/05.jpg" alt="XX Tacos storefront with a balloon arch on Watt Ave">
+      <img src="./photos/04.jpg" alt="Pink interior dining area at XX Tacos">
+      <img src="./photos/01.jpg" alt="XX Tacos lit sign at night">
+    </div>
+  </div>
+</section>
+
+<!-- testimonies -->
+<section class="testi" id="testimonies">
+  <div class="wrap">
+    <span class="section-kicker">LO QUE DICE LA GENTE</span>
+    <h2>Word on the Street</h2>
+    <div class="tgrid">
+      <div class="bubble">
+        <span class="quotemark">”</span>
+        <p>Food was great, went twice in one day! Owners are super cool! Must-visit spot — you can pass all the Mexican spots in the area and choose XX all day.</p>
+        <span class="who">— Kavish S.</span>
+      </div>
+      <div class="bubble">
+        <span class="quotemark">”</span>
+        <p>New favorite taco spot! The quesabirria tacos are the best! Must try!!!</p>
+        <span class="who">— Keys T.</span>
+      </div>
+      <div class="bubble">
+        <span class="quotemark">”</span>
+        <p>So so good!! Chicken street tacos were fantastic — don't miss the strawberry-pineapple agua fresca! Very fast service. Clean, bright interior!</p>
+        <span class="who">— Dori D.</span>
+      </div>
+      <div class="bubble">
+        <span class="quotemark">”</span>
+        <p>We love XX Tacos, so when we heard they opened a physical location we came immediately. The food is still amazing, the service is still amazing, and the new location is so cute and perfect to sit down and enjoy.</p>
+        <span class="who">— Desirae P.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- visit -->
+<section class="visit" id="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <span class="section-kicker">PÁSATE A VERNOS</span>
+      <h2>Come Find Us</h2>
+      <ul class="hours">
+        <li><b>MON</b><span>8:00 AM – 9:00 PM</span></li>
+        <li><b>TUE</b><span>8:00 AM – 9:00 PM</span></li>
+        <li><b>WED</b><span>8:00 AM – 9:00 PM</span></li>
+        <li><b>THU</b><span>8:00 AM – 9:00 PM</span></li>
+        <li><b>FRI</b><span>8:00 AM – 9:00 PM</span></li>
+        <li><b>SAT</b><span>8:00 AM – 9:00 PM</span></li>
+        <li><b>SUN</b><span>8:00 AM – 9:00 PM</span></li>
+      </ul>
+      <div class="infoline"><span class="ic">◷</span><span>Open every day, 8am to 9pm — breakfast tacos to late dinner.</span></div>
+      <div class="infoline"><span class="ic">⚲</span><span>4332 Watt Ave, North Highlands, CA 95660</span></div>
+      <div class="infoline"><span class="ic">☎</span><a href="tel:+19169176569">(916) 917-6569</a></div>
+      <p class="findus">Find us on <a href="https://maps.google.com/?cid=6539981643743689264" target="_blank" rel="noopener">Google</a>.</p>
+      <div class="cta-row">
+        <a class="btn btn-red" href="tel:+19169176569">Call Now</a>
+        <a class="btn btn-out" href="https://www.google.com/maps?q=4332+Watt+Ave,+North+Highlands,+CA+95660" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </div>
+    <div class="mapwrap">
+      <iframe
+        title="Map to XX Tacos, 4332 Watt Ave, North Highlands"
+        src="https://www.google.com/maps?q=4332+Watt+Ave,+North+Highlands,+CA+95660&z=15&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><span class="xx">XX</span> TACOS</div>
+        <p>Street tacos, quesabirria, and fresh agua frescas on Watt Ave in North Highlands. Pull up.</p>
+      </div>
+      <div class="foot-links">
+        <a href="tel:+19169176569">☎ (916) 917-6569</a>
+        <a href="https://www.google.com/maps?q=4332+Watt+Ave,+North+Highlands,+CA+95660" target="_blank" rel="noopener">⚲ 4332 Watt Ave, North Highlands</a>
+        <a href="https://maps.google.com/?cid=6539981643743689264" target="_blank" rel="noopener">★ Find us on Google</a>
+      </div>
+    </div>
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

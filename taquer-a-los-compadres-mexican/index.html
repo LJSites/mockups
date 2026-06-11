@@ -1,0 +1,862 @@
+<!-- flavor: cantina-bold-typographic | accent: #234E70 | bg: #FDF8F2 | hero: typographic-no-photo | service: inline-prose -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taquería Los Compadres | Red Bluff, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --acc: #234E70;
+      --bg: #FDF8F2;
+      --ink: #1a1612;
+      --muted: #5c5248;
+      --warm: #C8A96E;
+      --nav-h: 60px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--acc);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+
+    .nav-brand {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.1rem;
+      color: var(--bg);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      line-height: 1.15;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(253,248,242,0.82);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      transition: color 0.18s;
+    }
+
+    .nav-links a:hover { color: var(--warm); }
+
+    /* hamburger */
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--bg);
+      border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+
+    .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; }
+    .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        background: var(--acc);
+        padding: 1rem 1.5rem 1.5rem;
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 0.9rem; padding: 0.5rem 0; display: block; border-bottom: 1px solid rgba(253,248,242,0.12); }
+      .burger { display: flex; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--acc);
+      color: var(--bg);
+      padding: 4.5rem 1.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: 'LOS COMPADRES';
+      position: absolute;
+      top: -0.15em;
+      right: -0.05em;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(5rem, 18vw, 14rem);
+      line-height: 1;
+      color: rgba(253,248,242,0.04);
+      pointer-events: none;
+      white-space: nowrap;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-inner {
+      max-width: 780px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--warm);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(2.6rem, 8vw, 5.5rem);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--warm);
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(253,248,242,0.78);
+      max-width: 540px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--warm);
+      color: var(--ink);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: #b8954f;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid rgba(253,248,242,0.45);
+      color: var(--bg);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--warm);
+      color: var(--warm);
+    }
+
+    /* ── PHOTO STRIP ── */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .photo-strip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.92);
+      transition: filter 0.3s;
+    }
+
+    .photo-strip img:hover { filter: brightness(1.05); }
+
+    @media (max-width: 768px) {
+      .photo-strip {
+        grid-template-columns: repeat(3, 1fr);
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .photo-strip {
+        grid-template-columns: repeat(2, 1fr);
+        height: 260px;
+      }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 4rem 1.5rem;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      color: var(--ink);
+    }
+
+    /* rule divider */
+    .rule {
+      border: none;
+      border-top: 2px solid var(--acc);
+      width: 3rem;
+      margin-bottom: 1.8rem;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--bg); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .about-aside {
+      border-left: 3px solid var(--warm);
+      padding-left: 1.5rem;
+    }
+
+    .aside-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .about-aside p {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.4;
+      color: var(--ink);
+    }
+
+    @media (max-width: 640px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    /* ── MENU (inline-prose) ── */
+    #menu { background: #f0ebe3; }
+
+    .menu-prose {
+      columns: 2;
+      column-gap: 3rem;
+    }
+
+    .menu-item {
+      break-inside: avoid;
+      margin-bottom: 1.6rem;
+    }
+
+    .menu-item-name {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.05rem;
+      color: var(--acc);
+      margin-bottom: 0.2rem;
+    }
+
+    .menu-item-desc {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .menu-item-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--warm);
+      color: var(--ink);
+      padding: 0.15rem 0.5rem;
+      margin-top: 0.25rem;
+    }
+
+    @media (max-width: 600px) {
+      .menu-prose { columns: 1; }
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies { background: var(--acc); color: var(--bg); }
+
+    #testimonies .section-label { color: var(--warm); }
+    #testimonies .section-title { color: var(--bg); }
+    #testimonies .rule { border-color: var(--warm); }
+
+    .testimonies-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    .testimony {
+      display: grid;
+      grid-template-columns: 3rem 1fr;
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .testimony-num {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 2.5rem;
+      line-height: 1;
+      color: rgba(253,248,242,0.15);
+      text-align: right;
+      padding-top: 0.1rem;
+    }
+
+    .testimony-body blockquote {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: rgba(253,248,242,0.88);
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+
+    .testimony-attr {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm);
+    }
+
+    @media (max-width: 500px) {
+      .testimony { grid-template-columns: 1fr; gap: 0.5rem; }
+      .testimony-num { font-size: 1.5rem; text-align: left; }
+    }
+
+    /* ── HOURS & LOCATION ── */
+    #location { background: var(--bg); }
+
+    .hours-map-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr td {
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(26,22,18,0.08);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hours-table tr td:first-child {
+      font-weight: 700;
+      color: var(--ink);
+      padding-right: 1rem;
+    }
+
+    .hours-table tr:last-child td { border-bottom: none; }
+
+    .hours-table .closed { color: #a09488; font-style: italic; }
+
+    .map-wrap {
+      border: 3px solid var(--acc);
+      overflow: hidden;
+    }
+
+    .map-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 320px;
+      border: none;
+    }
+
+    .address-line {
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 680px) {
+      .hours-map-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── CONTACT / CTA BANNER ── */
+    #contact {
+      background: var(--warm);
+      padding: 4rem 1.5rem;
+    }
+
+    .contact-inner {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    #contact .section-label { color: var(--acc); }
+
+    #contact .section-title {
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    #contact .section-title { font-size: clamp(1.6rem, 4.5vw, 2.4rem); }
+
+    .contact-body {
+      color: rgba(26,22,18,0.75);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      line-height: 1.65;
+    }
+
+    .contact-body a {
+      color: var(--acc);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .contact-body a:hover { text-decoration: underline; }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .btn-dark {
+      display: inline-block;
+      background: var(--acc);
+      color: var(--bg);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-dark:hover {
+      background: #1a3a56;
+      transform: translateY(-1px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(253,248,242,0.55);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: 0.82rem;
+      line-height: 1.7;
+    }
+
+    footer a {
+      color: var(--warm);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    .footer-brand {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.1rem;
+      color: var(--bg);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin: 0.75rem 0;
+    }
+
+    .footer-links a {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(253,248,242,0.45);
+    }
+
+    .footer-links a:hover { color: var(--warm); }
+
+    .footer-credit {
+      margin-top: 1rem;
+      border-top: 1px solid rgba(253,248,242,0.1);
+      padding-top: 1rem;
+      font-size: 0.78rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand">TAQUERÍA<br>LOS COMPADRES</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Hours</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Red Bluff, California · Est. in the Community</p>
+      <h1>Real Tacos.<br><em>Real Good.</em></h1>
+      <p class="hero-sub">
+        Taquería Los Compadres brings bold, made-from-scratch Mexican flavors to Antelope Blvd — giant burritos, carne asada tacos, flautas, and more. Open seven days for lunch and dinner.
+      </p>
+      <div class="hero-ctas">
+        <a href="tel:+15305860860" class="btn-primary">Call (530) 586-0860</a>
+        <a href="https://www.google.com/maps?q=22690+Antelope+Blvd,+Red+Bluff,+CA+96080&z=15&output=embed" target="_blank" rel="noopener" class="btn-outline">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHOTO STRIP -->
+  <div class="photo-strip" aria-hidden="true">
+    <img src="./photos/01.jpg" alt="Taquería Los Compadres food" />
+    <img src="./photos/02.jpg" alt="Taquería Los Compadres food" />
+    <img src="./photos/03.jpg" alt="Taquería Los Compadres food" />
+    <img src="./photos/04.jpg" alt="Taquería Los Compadres food" />
+    <img src="./photos/05.jpg" alt="Taquería Los Compadres food" />
+    <img src="./photos/06.jpg" alt="Taquería Los Compadres food" />
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title">Compadres in Every Bite</h2>
+      <hr class="rule" />
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            In Red Bluff, where Antelope Boulevard meets the everyday rhythm of a working California town, Taquería Los Compadres has quietly built a reputation for the kind of food that stops you mid-conversation.
+          </p>
+          <p>
+            We're talking flautas you can't put down, super burritos sized for today <em>and</em> tomorrow's lunch, and carne asada tacos that regulars drive across Tehama County to claim as the best they've ever eaten.
+          </p>
+          <p>
+            The salsa carries real heat — the kind that complements, not overpowers. The portions are generous. The welcome is warm. That's Los Compadres.
+          </p>
+        </div>
+        <div class="about-aside">
+          <p class="aside-label">What keeps people coming back</p>
+          <p>"Best carne asada tacos I've ever had… I will eat here every time I'm in Red Bluff."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="container">
+      <p class="section-label">What We Make</p>
+      <h2 class="section-title">The Menu</h2>
+      <hr class="rule" />
+      <div class="menu-prose">
+
+        <div class="menu-item">
+          <p class="menu-item-name">Carne Asada Tacos</p>
+          <p class="menu-item-desc">Grilled beef on house-pressed tortillas with fresh onion, cilantro, and our signature salsa.</p>
+          <span class="menu-item-tag">Guest Favorite</span>
+        </div>
+
+        <div class="menu-item">
+          <p class="menu-item-name">Chicken Flautas</p>
+          <p class="menu-item-desc">Crispy rolled tortillas packed with seasoned chicken — impossible to eat just one, ask Jessica.</p>
+          <span class="menu-item-tag">Must Try</span>
+        </div>
+
+        <div class="menu-item">
+          <p class="menu-item-name">Super Burrito</p>
+          <p class="menu-item-desc">A California-sized burrito stuffed with your choice of meat, rice, beans, cheese, sour cream, and salsa. Large enough for two meals.</p>
+        </div>
+
+        <div class="menu-item">
+          <p class="menu-item-name">Bucce Tacos</p>
+          <p class="menu-item-desc">Cooked to perfection with a salsa that's an explosion of flavor — the right heat, big portions.</p>
+        </div>
+
+        <div class="menu-item">
+          <p class="menu-item-name">Burritos</p>
+          <p class="menu-item-desc">Classic and super styles, built with a perfect balance of seasoned meat, rice, beans, and fresh toppings.</p>
+        </div>
+
+        <div class="menu-item">
+          <p class="menu-item-name">Tacos al Pastor</p>
+          <p class="menu-item-desc">Spit-marinated pork with pineapple, onion, and cilantro — a taquería standard done right.</p>
+        </div>
+
+        <div class="menu-item">
+          <p class="menu-item-name">Quesadillas</p>
+          <p class="menu-item-desc">Melted cheese and your choice of filling in a golden griddled tortilla. Great for the table.</p>
+        </div>
+
+        <div class="menu-item">
+          <p class="menu-item-name">Tortas</p>
+          <p class="menu-item-desc">Mexican sandwiches on toasted bolillo — stacked with meat, avocado, jalapeños, and all the fixings.</p>
+        </div>
+
+        <div class="menu-item">
+          <p class="menu-item-name">House Salsas</p>
+          <p class="menu-item-desc">Made fresh daily — a red and a green, both carrying the exact right amount of heat.</p>
+        </div>
+
+        <div class="menu-item">
+          <p class="menu-item-name">Drinks & Sides</p>
+          <p class="menu-item-desc">Cold aguas frescas, Mexican sodas, and a rotating selection of sides. Ask at the counter.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="container">
+      <p class="section-label">Customer Testimonies</p>
+      <h2 class="section-title">In Their Words</h2>
+      <hr class="rule" />
+      <div class="testimonies-list">
+
+        <div class="testimony">
+          <div class="testimony-num">01</div>
+          <div class="testimony-body">
+            <blockquote>"By far one of the best taco trucks ever!! Highly recommend the chicken flautas and the super burrito omg yum!!!! No pic of Flautas cuz I took one bite and couldn't stop eating…lol"</blockquote>
+            <span class="testimony-attr">Jessica C.</span>
+          </div>
+        </div>
+
+        <div class="testimony">
+          <div class="testimony-num">02</div>
+          <div class="testimony-body">
+            <blockquote>"Got the Bucce tacos — absolutely delicious. Cooked to perfection, salsa was an explosion of flavor with the exact right amount of heat. Big portions as well."</blockquote>
+            <span class="testimony-attr">Joshua T.</span>
+          </div>
+        </div>
+
+        <div class="testimony">
+          <div class="testimony-num">03</div>
+          <div class="testimony-body">
+            <blockquote>"Talk about a gigantic burrito! I was passing through Red Bluff and stopped for dinner. The burrito was large enough for both dinner and lunch the next day. Great flavor and a perfect mix of ingredients. I'll be back!"</blockquote>
+            <span class="testimony-attr">Lance A.</span>
+          </div>
+        </div>
+
+        <div class="testimony">
+          <div class="testimony-num">04</div>
+          <div class="testimony-body">
+            <blockquote>"Best carne asada tacos I've ever had. Great location too. I'm not always in Red Bluff but I will eat here every time that I am."</blockquote>
+            <span class="testimony-attr">Ryan K.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section id="location">
+    <div class="container">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Hours & Location</h2>
+      <hr class="rule" />
+      <div class="hours-map-grid">
+        <div>
+          <table class="hours-table">
+            <tr><td>Monday</td><td>8:00 AM – 7:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>8:00 AM – 7:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>8:00 AM – 7:00 PM</td></tr>
+            <tr><td>Thursday</td><td>8:00 AM – 7:00 PM</td></tr>
+            <tr><td>Friday</td><td>8:00 AM – 7:00 PM</td></tr>
+            <tr><td>Saturday</td><td>8:00 AM – 7:00 PM</td></tr>
+            <tr><td>Sunday</td><td class="closed">Closed</td></tr>
+          </table>
+          <p style="margin-top:1.5rem;">
+            <a href="tel:+15305860860" style="font-weight:700;color:var(--acc);text-decoration:none;font-size:1.05rem;">(530) 586-0860</a>
+          </p>
+          <p style="margin-top:0.4rem;color:var(--muted);font-size:0.9rem;">
+            Find us on <a href="https://maps.google.com/?cid=5957238486167419974" target="_blank" rel="noopener" style="color:var(--acc);font-weight:700;text-decoration:none;">Google Business</a>
+          </p>
+        </div>
+        <div>
+          <div class="map-wrap">
+            <iframe
+              src="https://www.google.com/maps?q=22690+Antelope+Blvd,+Red+Bluff,+CA+96080&z=15&output=embed"
+              title="Taquería Los Compadres location"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+          <p class="address-line">
+            22690 Antelope Blvd<br>
+            Red Bluff, CA 96080
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / CTA BANNER -->
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="section-label">Ready to Eat?</p>
+      <h2 class="section-title">Hungry? We're Open Mon–Sat, 8 AM to 7 PM</h2>
+      <p class="contact-body">
+        Stop by at <strong>22690 Antelope Blvd, Red Bluff</strong> — no reservation needed.<br>
+        Call ahead at <a href="tel:+15305860860">(530) 586-0860</a> with any questions.
+      </p>
+      <div class="cta-row">
+        <a href="tel:+15305860860" class="btn-dark">Call Now</a>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=22690+Antelope+Blvd,+Red+Bluff,+CA+96080" target="_blank" rel="noopener" class="btn-dark">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-brand">Taquería Los Compadres</span>
+    <p>22690 Antelope Blvd · Red Bluff, CA 96080 · <a href="tel:+15305860860">(530) 586-0860</a></p>
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="https://maps.google.com/?cid=5957238486167419974" target="_blank" rel="noopener">Google Business</a>
+      <a href="#menu">Menu</a>
+      <a href="#location">Hours</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p class="footer-credit">
+      Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </p>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const navLinks = document.getElementById('navLinks');
+
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    // Close nav on link click (mobile)
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        burger.classList.remove('open');
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

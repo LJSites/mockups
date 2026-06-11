@@ -1,0 +1,1030 @@
+<!-- flavor: Desert Precision | accent: #2E7D32 | bg: #0E1410 | hero: stacked-overlap | service: bento-cards -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ole's Alignment & Brakes — Yucca Valley, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --acc: #2E7D32;
+      --acc-light: #43A047;
+      --acc-dim: #1B5E20;
+      --bg: #0E1410;
+      --bg-2: #131a14;
+      --bg-3: #192019;
+      --surface: #1d261d;
+      --border: rgba(46,125,50,0.2);
+      --text: #e8ede8;
+      --text-dim: #9aaa9a;
+      --text-muted: #617061;
+      --font-head: 'Space Grotesk', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 68px;
+    }
+
+    body {
+      font-family: var(--font-head);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 4vw, 2.5rem);
+      background: rgba(14, 20, 16, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .nav-brand .word-ole {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--acc-light);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-brand .word-sub {
+      font-size: 0.65rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 3vw, 2rem);
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--acc-light); }
+
+    .nav-cta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem !important;
+      font-weight: 700 !important;
+      color: var(--acc-light) !important;
+      border: 1px solid var(--acc);
+      padding: 0.4rem 0.9rem;
+      letter-spacing: 0.06em;
+      transition: background 0.2s, color 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--acc);
+      color: var(--bg) !important;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-dim);
+      transition: all 0.25s;
+    }
+
+    /* mobile nav */
+    @media (max-width: 640px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 68px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem clamp(1rem, 4vw, 2.5rem);
+        background: rgba(14, 20, 16, 0.98);
+        border-bottom: 1px solid var(--border);
+        gap: 1.25rem;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { font-size: 0.9rem; }
+    }
+
+    /* ── HERO — stacked-overlap ── */
+    .hero {
+      padding-top: 68px;
+      min-height: 100svh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image-stack {
+      position: relative;
+      height: clamp(300px, 55vw, 520px);
+    }
+
+    .hero-image-stack img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-image-stack img:first-child {
+      z-index: 1;
+      filter: brightness(0.45);
+    }
+
+    .hero-image-stack img:last-child {
+      z-index: 2;
+      width: 42%;
+      height: 78%;
+      right: 0;
+      left: auto;
+      top: auto;
+      bottom: 0;
+      object-fit: cover;
+      outline: 3px solid var(--acc);
+      outline-offset: -3px;
+    }
+
+    .hero-overlap-card {
+      position: relative;
+      z-index: 10;
+      margin: -3.5rem clamp(1rem, 5vw, 4rem) 0;
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      max-width: 680px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--acc-light);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-h1 {
+      font-size: clamp(2rem, 6vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--acc-light);
+    }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--bg);
+      background: var(--acc);
+      padding: 0.85rem 1.75rem;
+      border: 1px solid var(--acc);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--acc-light);
+      border-color: var(--acc-light);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text);
+      background: transparent;
+      padding: 0.85rem 1.75rem;
+      border: 1px solid rgba(232,237,232,0.25);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--acc);
+      color: var(--acc-light);
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: clamp(1.5rem, 4vw, 2rem) clamp(1rem, 5vw, 4rem);
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--acc-light);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ── SECTION CHROME ── */
+    section {
+      padding: clamp(3.5rem, 8vw, 6rem) clamp(1rem, 5vw, 4rem);
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--acc-light);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-h2 {
+      font-size: clamp(1.75rem, 4.5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .section-intro {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      max-width: 600px;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--bg-2);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+    }
+
+    .about-img-wrap {
+      position: relative;
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-img-badge {
+      position: absolute;
+      bottom: -1rem;
+      right: -1rem;
+      background: var(--acc);
+      color: var(--bg);
+      padding: 0.9rem 1.2rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    .about-copy p {
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-copy p:last-child { margin-bottom: 0; }
+
+    .trust-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1.75rem;
+    }
+
+    .trust-pill {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acc-light);
+      border: 1px solid var(--acc-dim);
+      padding: 0.35rem 0.75rem;
+      background: rgba(46,125,50,0.08);
+    }
+
+    /* ── SERVICES — bento-cards ── */
+    #services {
+      background: var(--bg);
+    }
+
+    .bento-grid {
+      display: grid;
+      gap: 1.5px;
+      background: var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 480px) {
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .bento-card:first-child {
+        grid-column: span 2;
+      }
+    }
+
+    .bento-card {
+      background: var(--surface);
+      padding: clamp(1.5rem, 3.5vw, 2.25rem);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: background 0.2s;
+    }
+
+    .bento-card:hover {
+      background: var(--bg-3);
+    }
+
+    .bento-num {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      color: var(--acc);
+      text-transform: uppercase;
+    }
+
+    .bento-title {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .bento-desc {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.65;
+      flex: 1;
+    }
+
+    .bento-card:first-child .bento-title {
+      font-size: clamp(1.3rem, 3vw, 1.65rem);
+    }
+
+    .bento-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acc-light);
+      margin-top: auto;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── GALLERY STRIP ── */
+    #gallery {
+      padding-top: 0;
+      padding-bottom: 0;
+      overflow: hidden;
+    }
+
+    .gallery-strip {
+      display: flex;
+      gap: 3px;
+      background: var(--border);
+    }
+
+    .gallery-strip img {
+      flex: 1 1 0;
+      min-width: 0;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.85);
+      transition: filter 0.3s, flex 0.3s;
+    }
+
+    .gallery-strip img:hover {
+      filter: brightness(1);
+      flex: 2 1 0;
+    }
+
+    @media (max-width: 600px) {
+      .gallery-strip { display: grid; grid-template-columns: repeat(3, 1fr); }
+      .gallery-strip img { flex: none; aspect-ratio: 1; }
+      .gallery-strip img:hover { flex: none; }
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies {
+      background: var(--bg-2);
+    }
+
+    .testimony-layout {
+      display: grid;
+      gap: 1.25rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 640px) {
+      .testimony-layout { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 960px) {
+      .testimony-layout { grid-template-columns: repeat(3, 1fr); }
+      .testimony-card:first-child { grid-column: span 2; }
+    }
+
+    .testimony-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .testimony-quote {
+      font-size: 0.95rem;
+      color: var(--text-dim);
+      line-height: 1.75;
+      font-style: italic;
+      flex: 1;
+    }
+
+    .testimony-quote::before {
+      content: '\201C';
+      font-size: 2.5rem;
+      line-height: 0.6;
+      vertical-align: -0.5rem;
+      color: var(--acc);
+      font-style: normal;
+      margin-right: 0.15em;
+      font-family: Georgia, serif;
+    }
+
+    .testimony-attr {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acc-light);
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+
+    /* ── HOURS + MAP ── */
+    #location {
+      background: var(--bg);
+    }
+
+    .location-grid {
+      display: grid;
+      gap: 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) {
+      .location-grid { grid-template-columns: 1fr 1.4fr; }
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hours-table tr:last-child { border-bottom: none; }
+
+    .hours-table td {
+      padding: 0.75rem 0;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+
+    .hours-table td:first-child {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      width: 50%;
+    }
+
+    .hours-table .closed td {
+      color: var(--text-muted);
+    }
+
+    .hours-table .today td:first-child {
+      color: var(--acc-light);
+    }
+
+    .hours-note {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 1rem;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 320px;
+      border: none;
+      display: block;
+      filter: brightness(0.85) saturate(0.6);
+    }
+
+    @media (min-width: 768px) {
+      .map-container iframe { height: 100%; min-height: 280px; }
+    }
+
+    .address-line {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    .address-line a {
+      color: var(--acc-light);
+      text-decoration: none;
+    }
+
+    .address-line a:hover { text-decoration: underline; }
+
+    /* ── CONTACT / CTA ── */
+    #contact {
+      background: var(--bg-3);
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-inner .section-h2 { margin-bottom: 0.5rem; }
+
+    .contact-inner p {
+      color: var(--text-dim);
+      margin-bottom: 2.5rem;
+      font-size: 1.05rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .contact-detail {
+      margin-top: 2.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    .contact-detail a {
+      color: var(--text-dim);
+      text-decoration: none;
+    }
+
+    .contact-detail a:hover { color: var(--acc-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2rem clamp(1rem, 5vw, 4rem);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-dim);
+    }
+
+    .footer-brand span {
+      color: var(--acc-light);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--acc-light); }
+
+    .footer-credit {
+      width: 100%;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      margin-top: 0.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">
+      <span class="word-ole">Ole's</span>
+      <span class="word-sub">Alignment &amp; Brakes</span>
+    </div>
+    <button class="hamburger" id="ham" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Hours &amp; Location</a></li>
+      <li><a href="#contact" class="nav-cta">Call Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO — stacked-overlap -->
+  <div class="hero">
+    <div class="hero-image-stack">
+      <img src="./photos/01.jpg" alt="Ole's Alignment & Brakes shop" />
+      <img src="./photos/03.jpg" alt="Brake and alignment work in progress" />
+    </div>
+    <div class="hero-overlap-card">
+      <p class="hero-eyebrow">Yucca Valley, CA · Est. Since</p>
+      <h1 class="hero-h1">Straight talk.<br /><em>Straight wheels.</em></h1>
+      <p class="hero-sub">Ole's Alignment &amp; Brakes has served the High Desert for years with honest diagnostics, fair labor, and work that's done right the first time. No upsell. No guesswork.</p>
+      <div class="hero-actions">
+        <a href="tel:+17603652707" class="btn-primary">Call (760) 365-2707</a>
+        <a href="https://maps.google.com/?cid=11000606173814697586" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">Decades</span>
+        <span class="stat-label">of desert road experience</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">No upsell</span>
+        <span class="stat-label">diagnostics — only what you need</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">8 AM</span>
+        <span class="stat-label">open Mon – Thu, arrive early</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <img src="./photos/02.jpg" alt="Inside the shop" />
+        <div class="about-img-badge">Yucca Valley<br />High Desert</div>
+      </div>
+      <div class="about-copy">
+        <p class="section-label">About Ole's</p>
+        <h2 class="section-h2">Seasoned mechanics.<br />Straight answers.</h2>
+        <p>Ole's Alignment &amp; Brakes is a no-nonsense shop at the heart of Yucca Valley. The team here has spent decades working on the desert roads' demands — vehicles that take real punishment on rough terrain, long stretches of highway, and unforgiving heat.</p>
+        <p>What keeps customers coming back isn't just the quality of work — it's the honesty. When something doesn't need fixing, they'll say so. When they diagnose an issue, they explain it plainly. If you bring your own parts, they'll work with you on pricing. It's old-school shop integrity with experienced hands behind it.</p>
+        <div class="trust-pills">
+          <span class="trust-pill">Alignment Specialists</span>
+          <span class="trust-pill">Brake Experts</span>
+          <span class="trust-pill">Suspension Work</span>
+          <span class="trust-pill">Bring-Your-Own Parts Welcome</span>
+          <span class="trust-pill">Honest Diagnostics</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES — bento-cards -->
+  <section id="services">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-h2">Core services</h2>
+    <p class="section-intro">Precision work on the systems that keep you safe — alignment, brakes, and suspension — done by mechanics who've seen it all.</p>
+
+    <div class="bento-grid">
+      <div class="bento-card">
+        <span class="bento-num">01 / Core</span>
+        <h3 class="bento-title">Wheel Alignment</h3>
+        <p class="bento-desc">Precise four-wheel alignment corrects your vehicle's angle to factory spec, preventing uneven tire wear and keeping your rig tracking true on the highway. We check toe, camber, and caster — then show you the before/after readout.</p>
+        <span class="bento-tag">Most requested service</span>
+      </div>
+
+      <div class="bento-card">
+        <span class="bento-num">02</span>
+        <h3 class="bento-title">Brake Service</h3>
+        <p class="bento-desc">Brake pads, rotors, calipers, brake lines, and fluid — inspected and serviced as needed. We won't replace parts that still have life in them. Your safety is the metric, not our invoice.</p>
+        <span class="bento-tag">Brakes &amp; rotors</span>
+      </div>
+
+      <div class="bento-card">
+        <span class="bento-num">03</span>
+        <h3 class="bento-title">Suspension Repair</h3>
+        <p class="bento-desc">Worn shocks, struts, CV joints, tie rods, and control arms — suspension problems show up as noise on tight turns, pulling at highway speed, and rough ride quality. We diagnose and fix at the source.</p>
+        <span class="bento-tag">Handling &amp; ride quality</span>
+      </div>
+
+      <div class="bento-card">
+        <span class="bento-num">04</span>
+        <h3 class="bento-title">Diagnostic Inspection</h3>
+        <p class="bento-desc">Hearing a noise but not sure what it is? Bring it in. We put it on the lift, test drive it, and give you a straight answer — even if that answer is "nothing is wrong right now."</p>
+        <span class="bento-tag">No-pressure evaluation</span>
+      </div>
+
+      <div class="bento-card">
+        <span class="bento-num">05</span>
+        <h3 class="bento-title">General Maintenance</h3>
+        <p class="bento-desc">From oil changes and tire rotations to fluid checks — the routine work that extends vehicle life. Bring your own parts and we'll apply our labor at a fair price.</p>
+        <span class="bento-tag">BYOP welcome</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY STRIP -->
+  <div id="gallery">
+    <div class="gallery-strip">
+      <img src="./photos/04.jpg" alt="Shop interior" />
+      <img src="./photos/05.jpg" alt="Vehicle on lift" />
+      <img src="./photos/06.jpg" alt="Brake components" />
+    </div>
+  </div>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <p class="section-label">In Their Words</p>
+    <h2 class="section-h2">Customer Testimonies</h2>
+
+    <div class="testimony-layout">
+      <div class="testimony-card">
+        <p class="testimony-quote">I came in with a worrying clanking noise on tight turns. They got my van on the lift right away, tested everything, even test drove it with sharp turns in both directions. Instead of selling me on work I didn't need, they were completely honest — everything looked solid. I really appreciated the integrity and clear communication. It's rare to find a shop that doesn't upsell or exaggerate problems.</p>
+        <span class="testimony-attr">E. S.</span>
+      </div>
+
+      <div class="testimony-card">
+        <p class="testimony-quote">I'm very impressed. They do what they say and don't overcharge. Highly recommend.</p>
+        <span class="testimony-attr">Douglas S.</span>
+      </div>
+
+      <div class="testimony-card">
+        <p class="testimony-quote">Was told I needed brakes from another shop who wanted way too much. Got a second opinion here and turns out I don't need brakes. I appreciate them not ripping me off. I trust this mechanic.</p>
+        <span class="testimony-attr">Natalie C.</span>
+      </div>
+
+      <div class="testimony-card">
+        <p class="testimony-quote">They're very well seasoned mechanics. We've been coming here for years. If you bring your own parts they give you a good price to put them on. They know what they're doing.</p>
+        <span class="testimony-attr">Rebecca</span>
+      </div>
+
+      <div class="testimony-card">
+        <p class="testimony-quote">Excellent work and fair prices. Worked on my brakes, suspension, and alignment — always happy with results.</p>
+        <span class="testimony-attr">Robbie A.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS + LOCATION -->
+  <section id="location">
+    <p class="section-label">Find Us</p>
+    <h2 class="section-h2">Hours &amp; Location</h2>
+
+    <div class="location-grid">
+      <div>
+        <table class="hours-table">
+          <tbody>
+            <tr>
+              <td>Monday</td><td>8:00 AM – 4:00 PM</td>
+            </tr>
+            <tr>
+              <td>Tuesday</td><td>8:00 AM – 4:00 PM</td>
+            </tr>
+            <tr>
+              <td>Wednesday</td><td>8:00 AM – 4:00 PM</td>
+            </tr>
+            <tr>
+              <td>Thursday</td><td>8:00 AM – 12:00 PM</td>
+            </tr>
+            <tr class="closed">
+              <td>Friday</td><td>Closed</td>
+            </tr>
+            <tr class="closed">
+              <td>Saturday</td><td>Closed</td>
+            </tr>
+            <tr class="closed">
+              <td>Sunday</td><td>Closed</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="hours-note">Arrive early — Thursday closes at noon. Open 8 AM sharp.</p>
+        <p class="address-line">
+          56157 29 Palms Hwy<br />
+          Yucca Valley, CA 92284<br />
+          <a href="tel:+17603652707">(760) 365-2707</a><br /><br />
+          <a href="https://maps.google.com/?cid=11000606173814697586" target="_blank" rel="noopener">View on Google Maps &rarr;</a>
+        </p>
+      </div>
+
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps?q=34.1203045,-116.4392766&z=15&output=embed"
+          title="Ole's Alignment & Brakes location"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / CTA -->
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-h2">Ready to bring your vehicle in?</h2>
+      <p>Call ahead to let us know you're coming. Monday through Wednesday 8 AM – 4 PM. Thursday closes at noon. Get there early — these guys stay busy.</p>
+      <div class="contact-actions">
+        <a href="tel:+17603652707" class="btn-primary">Call (760) 365-2707</a>
+        <a href="https://maps.google.com/?cid=11000606173814697586" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+      </div>
+      <p class="contact-detail">
+        56157 29 Palms Hwy, Yucca Valley, CA 92284 &middot;
+        <a href="https://maps.google.com/?cid=11000606173814697586&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business Listing</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">
+      <span>Ole's</span> Alignment &amp; Brakes · Yucca Valley, CA
+    </div>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#location">Hours</a></li>
+      <li><a href="https://maps.google.com/?cid=11000606173814697586&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a></li>
+    </ul>
+    <p class="footer-credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const ham = document.getElementById('ham');
+    const navLinks = document.getElementById('nav-links');
+    ham.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close nav on link click (mobile)
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+  </script>
+
+</body>
+</html>

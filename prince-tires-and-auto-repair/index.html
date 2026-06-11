@@ -1,0 +1,1090 @@
+<!-- flavor: Industrial Precision | accent: #0F4C81 | bg: #EAF2F8 | hero: full-bleed-photo | service: 2-col-rows -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prince Tires and Auto Repair — Manteca, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --acc: #0F4C81;
+      --bg: #EAF2F8;
+      --acc-dark: #0a3560;
+      --acc-light: #1a6bb5;
+      --text: #0f1923;
+      --muted: #4a5a6a;
+      --border: #c8d9e8;
+      --white: #ffffff;
+      --nav-h: 64px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Syne', sans-serif;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--acc);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 4vw, 2.5rem);
+      box-shadow: 0 2px 12px rgba(15,76,129,0.35);
+    }
+
+    .nav-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+      color: var(--white);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: clamp(1rem, 3vw, 2rem);
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--white);
+      color: var(--acc) !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 2px;
+      font-weight: 700 !important;
+    }
+
+    .nav-cta:hover { background: var(--bg) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: all 0.25s;
+    }
+
+    @media (max-width: 700px) {
+      .hamburger { display: flex; }
+      .nav-links {
+        position: fixed;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: var(--acc-dark);
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        transform: translateY(-110%);
+        transition: transform 0.28s ease;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      }
+      .nav-links.open { transform: translateY(0); }
+      .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.08); }
+      .nav-links a { display: block; padding: 1rem 1.5rem; font-size: 0.9rem; }
+      .nav-cta { margin: 1rem 1.5rem; display: inline-block; border-radius: 2px; }
+    }
+
+    /* ─── HERO ─── */
+    #home {
+      position: relative;
+      height: clamp(480px, 80vh, 780px);
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('./photos/01.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      transform: scale(1.02);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(10,29,48,0.92) 0%,
+        rgba(10,29,48,0.55) 45%,
+        rgba(10,29,48,0.10) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 6vw, 5rem);
+      max-width: 780px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #7cb9f0;
+      margin-bottom: 1rem;
+      padding: 0.3rem 0.75rem;
+      border: 1px solid rgba(124,185,240,0.4);
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-content h1 span {
+      color: #7cb9f0;
+    }
+
+    .hero-content p {
+      font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+      color: rgba(255,255,255,0.78);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      max-width: 540px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: var(--white);
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: var(--acc-light);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--white);
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.45);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--white);
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* ─── TRUST STRIP ─── */
+    .trust-strip {
+      background: var(--acc-dark);
+      display: flex;
+      justify-content: center;
+      gap: clamp(1.5rem, 5vw, 4rem);
+      padding: 1.1rem clamp(1rem, 4vw, 2rem);
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.88);
+      font-family: 'Syne', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .trust-item::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: #7cb9f0;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ─── SECTION WRAPPER ─── */
+    .section {
+      padding: clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 6vw, 5rem);
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .section-full {
+      padding: clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 6vw, 5rem);
+    }
+
+    .section-tag {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title em {
+      font-style: normal;
+      color: var(--acc);
+    }
+
+    /* ─── ABOUT ─── */
+    #about {
+      background: var(--white);
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 720px) {
+      .about-inner { grid-template-columns: 1fr; }
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+
+    .stat-box {
+      background: var(--bg);
+      padding: 1.25rem 1.5rem;
+      border-left: 3px solid var(--acc);
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--acc);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.3rem;
+      font-weight: 500;
+    }
+
+    .about-photo-stack {
+      position: relative;
+    }
+
+    .about-photo-main {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-photo-inset {
+      position: absolute;
+      bottom: -1.25rem;
+      right: -1.25rem;
+      width: 45%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border: 4px solid var(--white);
+      box-shadow: 0 8px 32px rgba(15,76,129,0.2);
+    }
+
+    @media (max-width: 720px) {
+      .about-photo-inset { bottom: -0.75rem; right: -0.75rem; }
+    }
+
+    /* ─── SERVICES ─── */
+    #services {
+      background: var(--bg);
+    }
+
+    .services-header {
+      max-width: 1180px;
+      margin: 0 auto;
+      margin-bottom: 3rem;
+    }
+
+    .services-grid {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+
+    .service-row {
+      background: var(--white);
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1.75rem 2rem;
+      transition: background 0.2s;
+    }
+
+    .service-row:hover {
+      background: #f0f7ff;
+    }
+
+    .service-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--border);
+      line-height: 1;
+      flex-shrink: 0;
+      user-select: none;
+      transition: color 0.2s;
+      min-width: 2.5rem;
+    }
+
+    .service-row:hover .service-num {
+      color: var(--acc);
+    }
+
+    .service-info h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .service-info p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ─── GALLERY ─── */
+    #gallery {
+      background: var(--acc-dark);
+      overflow: hidden;
+    }
+
+    .gallery-label {
+      max-width: 1180px;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+    }
+
+    .gallery-label .section-tag {
+      color: #7cb9f0;
+    }
+
+    .gallery-label .section-title {
+      color: var(--white);
+    }
+
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 600px) {
+      .gallery-strip { grid-template-columns: 1fr 1fr; }
+    }
+
+    .gallery-strip img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.85);
+      transition: filter 0.3s;
+    }
+
+    .gallery-strip img:hover {
+      filter: saturate(1);
+    }
+
+    /* ─── TESTIMONIES ─── */
+    #testimonies {
+      background: var(--white);
+    }
+
+    .testimony-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border);
+      max-width: 900px;
+    }
+
+    .testimony-item {
+      padding: 2rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0 2rem;
+      align-items: start;
+    }
+
+    .testimony-item:last-child {
+      border-bottom: none;
+    }
+
+    .testimony-initial {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--acc);
+      background: var(--bg);
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border-left: 3px solid var(--acc);
+    }
+
+    .testimony-body blockquote {
+      font-size: 0.97rem;
+      color: var(--text);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 0.6rem;
+    }
+
+    .testimony-body blockquote::before {
+      content: '\201C';
+      font-size: 1.4em;
+      color: var(--acc);
+      font-style: normal;
+      vertical-align: -0.15em;
+      margin-right: 0.1em;
+    }
+
+    .testimony-body blockquote::after {
+      content: '\201D';
+      font-size: 1.4em;
+      color: var(--acc);
+      font-style: normal;
+      vertical-align: -0.15em;
+      margin-left: 0.1em;
+    }
+
+    .testimony-attr {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    @media (max-width: 560px) {
+      .testimony-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+    }
+
+    /* ─── HOURS & LOCATION ─── */
+    #location {
+      background: var(--bg);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: start;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 720px) {
+      .location-grid { grid-template-columns: 1fr; }
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hours-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .hours-table td {
+      padding: 0.75rem 0;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+
+    .hours-table td:first-child {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      width: 40%;
+    }
+
+    .hours-note {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: var(--acc);
+      color: rgba(255,255,255,0.9);
+      font-size: 0.85rem;
+      border-radius: 2px;
+    }
+
+    .map-wrap {
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 320px;
+      display: block;
+      border: none;
+    }
+
+    .map-address {
+      padding: 1rem 1.25rem;
+      background: var(--white);
+      font-size: 0.88rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    .map-address strong {
+      display: block;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    /* ─── CONTACT / BOTTOM CTA ─── */
+    #contact {
+      background: var(--acc);
+    }
+
+    .contact-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    @media (max-width: 680px) {
+      .contact-inner { grid-template-columns: 1fr; }
+    }
+
+    .contact-copy .section-tag {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .contact-copy h2 {
+      font-size: clamp(1.6rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-copy p {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: flex-end;
+    }
+
+    @media (max-width: 680px) {
+      .contact-actions { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+    }
+
+    .btn-white {
+      display: inline-block;
+      background: var(--white);
+      color: var(--acc);
+      font-family: 'Syne', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 2px;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-white:hover {
+      background: var(--bg);
+      transform: translateY(-1px);
+    }
+
+    .contact-phone {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+
+    .contact-phone:hover {
+      text-decoration: underline;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--text);
+      padding: 2rem clamp(1.25rem, 6vw, 5rem);
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.82rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-credit {
+      width: 100%;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav role="navigation" aria-label="Main navigation">
+    <a class="nav-brand" href="#home">Prince Tires &amp; Auto</a>
+    <button class="hamburger" id="ham" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Hours &amp; Location</a></li>
+      <li><a href="tel:+12098584258" class="nav-cta">Call Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" aria-label="Hero">
+    <div class="hero-bg" role="img" aria-label="Prince Tires and Auto Repair shop"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-label">Manteca, CA — Est. Local Favorite</span>
+      <h1>Prince <span>Tires</span><br>&amp; Auto Repair</h1>
+      <p>Fast, honest tire service and auto repair for Manteca and the Central Valley. Same-day turnaround — no runaround.</p>
+      <div class="hero-actions">
+        <a href="tel:+12098584258" class="btn-primary">Call (209) 858-4258</a>
+        <a href="https://www.google.com/maps?q=2748+W+Yosemite+Ave+Manteca+CA+95337&z=15&output=embed" target="_blank" rel="noopener" class="btn-outline">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip" aria-label="Quick facts">
+    <div class="trust-item">Open 7 Days a Week</div>
+    <div class="trust-item">Same-Day Service</div>
+    <div class="trust-item">Honest &amp; Straightforward</div>
+    <div class="trust-item">Manteca, CA</div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" aria-labelledby="about-title">
+    <div class="section-full">
+      <div class="about-inner">
+        <div class="about-text">
+          <p class="section-tag">Who We Are</p>
+          <h2 class="section-title" id="about-title">The Shop That<br><em>Gets It Done</em></h2>
+          <p>Prince Tires and Auto Repair has built its reputation on one thing: getting you back on the road fast, without the sales pitch. Our team at 2748 W Yosemite Ave has handled everything from dangerous brake jobs to Sunday flat-tire emergencies — and we do it the same way every time: efficiently, honestly, and without cutting corners.</p>
+          <p>Whether you rolled in from Great Wolf Lodge on a spare or you're hearing a squeal you can't ignore, we treat every vehicle — and every customer — like family. No upsells, no mystery charges.</p>
+          <div class="about-stats">
+            <div class="stat-box">
+              <div class="stat-num">7</div>
+              <div class="stat-label">Days Open Every Week</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">10–20<span style="font-size:1rem">min</span></div>
+              <div class="stat-label">Typical Tire Patch Time</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">Same</div>
+              <div class="stat-label">Day Service Available</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-num">Al +</div>
+              <div class="stat-label">A Friendly, Expert Team</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-photo-stack">
+          <img src="./photos/02.jpg" alt="Prince Tires shop interior" class="about-photo-main" />
+          <img src="./photos/03.jpg" alt="Tire service in progress" class="about-photo-inset" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" aria-labelledby="services-title">
+    <div class="section-full">
+      <div class="services-header">
+        <p class="section-tag">What We Handle</p>
+        <h2 class="section-title" id="services-title">Services We<br><em>Specialize In</em></h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-row">
+          <div class="service-num">01</div>
+          <div class="service-info">
+            <h3>Tire Patch &amp; Plug</h3>
+            <p>Flat tire? We patch and plug most repairs in under 20 minutes so you're not stuck waiting all day.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <div class="service-num">02</div>
+          <div class="service-info">
+            <h3>Tire Sales &amp; Mounting</h3>
+            <p>New tires sourced, mounted, and balanced on the spot. We carry options across all budget ranges.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <div class="service-num">03</div>
+          <div class="service-info">
+            <h3>Brake Pads &amp; Rotors</h3>
+            <p>Squeal or grind? We stock common brake components and can complete most jobs same day — even Sundays.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <div class="service-num">04</div>
+          <div class="service-info">
+            <h3>Wheel Alignment</h3>
+            <p>Pulling left or right? Proper alignment extends tire life and improves handling and fuel efficiency.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <div class="service-num">05</div>
+          <div class="service-info">
+            <h3>Auto Repair &amp; Diagnostics</h3>
+            <p>From check-engine lights to mechanical repairs, our team diagnoses and fixes the problem correctly the first time.</p>
+          </div>
+        </div>
+        <div class="service-row">
+          <div class="service-num">06</div>
+          <div class="service-info">
+            <h3>Oil Changes &amp; Maintenance</h3>
+            <p>Routine oil changes and maintenance services to keep your vehicle running reliably between bigger repairs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" aria-labelledby="gallery-title">
+    <div class="section-full">
+      <div class="gallery-label">
+        <p class="section-tag">Shop Photos</p>
+        <h2 class="section-title" id="gallery-title">See the Work</h2>
+      </div>
+      <div class="gallery-strip">
+        <img src="./photos/01.jpg" alt="Prince Tires exterior" loading="lazy" />
+        <img src="./photos/04.jpg" alt="Auto repair bay" loading="lazy" />
+        <img src="./photos/05.jpg" alt="Tire shop inventory" loading="lazy" />
+        <img src="./photos/06.jpg" alt="Mechanic at work" loading="lazy" />
+        <img src="./photos/02.jpg" alt="Shop interior" loading="lazy" />
+        <img src="./photos/03.jpg" alt="Tire service close-up" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies" aria-labelledby="test-title">
+    <div class="section">
+      <p class="section-tag">What People Say</p>
+      <h2 class="section-title" id="test-title">Customer<br><em>Testimonies</em></h2>
+
+      <div class="testimony-list">
+        <div class="testimony-item">
+          <div class="testimony-initial" aria-hidden="true">N</div>
+          <div class="testimony-body">
+            <blockquote>Highly recommend Prince Auto Repair! I came in on a Sunday with dangerous, worn-out brakes that were squeezing loudly. The team was incredibly friendly and efficient; they had the pads and rotors ready to go and fixed everything the same day. Excellent service and very professional. I'll definitely be back!</blockquote>
+            <div class="testimony-attr">Nitish S.</div>
+          </div>
+        </div>
+        <div class="testimony-item">
+          <div class="testimony-initial" aria-hidden="true">C</div>
+          <div class="testimony-body">
+            <blockquote>Absolutely amazing service: warm and friendly team; honest and straightforward; super fast service. Woke up to a flat tire at Great Wolf Lodge — had the tire patched in 20 mins.</blockquote>
+            <div class="testimony-attr">Chanda L.</div>
+          </div>
+        </div>
+        <div class="testimony-item">
+          <div class="testimony-initial" aria-hidden="true">R</div>
+          <div class="testimony-body">
+            <blockquote>I don't normally write reviews but the service from Al was amazing. Got my tire patched and out of the store within 10 mins. Just amazing!</blockquote>
+            <div class="testimony-attr">Ricky S.</div>
+          </div>
+        </div>
+        <div class="testimony-item">
+          <div class="testimony-initial" aria-hidden="true">A</div>
+          <div class="testimony-body">
+            <blockquote>5 star service. Came in and fixed my tire in less than 5 minutes — very professional and friendly and amazing work, all you can ask for.</blockquote>
+            <div class="testimony-attr">Amandeep D.</div>
+          </div>
+        </div>
+        <div class="testimony-item">
+          <div class="testimony-initial" aria-hidden="true">A</div>
+          <div class="testimony-body">
+            <blockquote>Guys here friendly and working hard, they are efficient too. Will introduce my friends come here when they need service.</blockquote>
+            <div class="testimony-attr">Alan L.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section id="location" aria-labelledby="location-title">
+    <div class="section">
+      <p class="section-tag">Find Us</p>
+      <h2 class="section-title" id="location-title">Hours &amp;<br><em>Location</em></h2>
+      <div class="location-grid">
+        <div>
+          <table class="hours-table" aria-label="Business hours">
+            <tr><td>Monday</td><td>8:00 AM – 5:00 PM</td></tr>
+            <tr><td>Tuesday</td><td>8:00 AM – 5:00 PM</td></tr>
+            <tr><td>Wednesday</td><td>8:00 AM – 5:00 PM</td></tr>
+            <tr><td>Thursday</td><td>8:00 AM – 5:00 PM</td></tr>
+            <tr><td>Friday</td><td>8:00 AM – 5:00 PM</td></tr>
+            <tr><td>Saturday</td><td>8:00 AM – 5:00 PM</td></tr>
+            <tr><td>Sunday</td><td>8:00 AM – 5:00 PM</td></tr>
+          </table>
+          <div class="hours-note">
+            Open every day of the week, 8 AM to 5 PM. Walk-ins welcome — call ahead for faster service.
+          </div>
+        </div>
+        <div>
+          <div class="map-wrap">
+            <iframe
+              src="https://www.google.com/maps?q=2748+W+Yosemite+Ave%2C+Manteca%2C+CA+95337&z=15&output=embed"
+              title="Prince Tires and Auto Repair location map"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              aria-label="Map showing Prince Tires location in Manteca CA">
+            </iframe>
+            <div class="map-address">
+              <strong>2748 W Yosemite Ave</strong>
+              Manteca, CA 95337 &mdash; <a href="https://maps.google.com/?cid=12742135971456168210" target="_blank" rel="noopener" style="color:var(--acc);">View on Google Maps</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / BOTTOM CTA -->
+  <section id="contact" aria-labelledby="contact-title">
+    <div class="section-full">
+      <div class="contact-inner">
+        <div class="contact-copy">
+          <p class="section-tag">Get in Touch</p>
+          <h2 id="contact-title">Ready to Roll?</h2>
+          <p>Call us or stop by — we're here seven days a week, 8 AM to 5 PM. No appointment needed for most tire work.</p>
+        </div>
+        <div class="contact-actions">
+          <a href="tel:+12098584258" class="contact-phone">(209) 858-4258</a>
+          <a href="tel:+12098584258" class="btn-white">Call Now</a>
+          <a href="https://maps.google.com/?cid=12742135971456168210" target="_blank" rel="noopener" class="btn-white" style="background:rgba(255,255,255,0.15);color:var(--white);border:1px solid rgba(255,255,255,0.35);">Google Business</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">Prince Tires &amp; Auto Repair</div>
+      <div class="footer-links">
+        <a href="https://maps.google.com/?cid=12742135971456168210" target="_blank" rel="noopener">Google Business</a>
+        <a href="tel:+12098584258">(209) 858-4258</a>
+        <a href="https://www.google.com/maps?q=2748+W+Yosemite+Ave+Manteca+CA+95337" target="_blank" rel="noopener">2748 W Yosemite Ave, Manteca CA</a>
+      </div>
+      <div class="footer-credit">
+        Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const ham = document.getElementById('ham');
+    const navLinks = document.getElementById('nav-links');
+
+    ham.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      ham.setAttribute('aria-expanded', open);
+    });
+
+    // Close nav on link click (mobile)
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        ham.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>

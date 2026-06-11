@@ -1,0 +1,548 @@
+<!--
+  ARCHETYPE: Luxe "Finest" Gentleman's Barber — upscale members'-club polish.
+  The name is literally "World's Finest," so the site leans into premium grooming:
+  ink-black canvas, antique-gold accents, warm cream type. Display face is an
+  elegant high-contrast serif (Cormorant Garamond) paired with a refined
+  small-caps sans (Jost) for nav/labels — a "private club" feel, NOT vintage
+  oxblood, NOT modern electric-teal, NOT urban navy/camel (siblings own those).
+
+  STRUCTURE NOTES:
+  - Asymmetric hero: full-bleed black with gold hairline frame, oversized
+    serif wordmark + thin gold rule, single photo plate offset to the right.
+  - Nav: thin sticky bar, letter-spaced small-caps, gold underline on hover.
+    scroll-padding-top reserves the bar height (no anchor lands under it).
+  - Services as an engraved "bill of fare" two-column ledger with leader dots,
+    not icon cards.
+  - Gallery as a tight asymmetric photo band (the craft = fades + lux capes).
+  - Testimonies as pull-quotes in a stacked editorial column (no stars/grid).
+  - Hours/Location split with keyless Google Maps embed.
+  - Primary CTA "Call the Shop" (tel:) repeated in hero + a fixed footer band.
+  - Animation: restrained — gold rule draw + subtle image reveal only, no
+    fade-up-on-everything.
+  PHOTOS: local ./photos/NN.jpg only. 05 (personal selfie) intentionally unused.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>World's Finest Barber Shop — Coachella, CA</title>
+<meta name="description" content="World's Finest Barber Shop in Coachella, CA — precision fades, classic cuts and the whole-family treatment under new management. Walk-ins welcome." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0c0c0d;
+    --ink-2:#141416;
+    --panel:#1b1b1e;
+    --gold:#c8a24c;
+    --gold-bright:#e3c47b;
+    --cream:#f4eddf;
+    --cream-dim:#cfc6b4;
+    --line:rgba(200,162,76,.32);
+    --nav-h:68px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:'Jost',system-ui,sans-serif;
+    font-weight:300;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-family:'Jost',sans-serif;font-weight:400;
+    text-transform:uppercase;letter-spacing:.42em;
+    font-size:.66rem;color:var(--gold);
+  }
+  .rule{height:1px;background:var(--line);border:0}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    display:flex;align-items:center;
+    background:rgba(12,12,13,.86);
+    backdrop-filter:blur(9px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between}
+  .brand-mark{
+    font-family:'Cormorant Garamond',serif;font-weight:600;
+    font-size:1.32rem;letter-spacing:.04em;color:var(--cream);
+    display:flex;align-items:baseline;gap:.5ch;
+  }
+  .brand-mark span{color:var(--gold);font-size:.7em;letter-spacing:.3em;text-transform:uppercase}
+  .nav-links{display:flex;gap:2.1rem;align-items:center}
+  .nav-links a{
+    font-size:.72rem;text-transform:uppercase;letter-spacing:.22em;
+    color:var(--cream-dim);position:relative;padding:6px 0;transition:color .25s;
+  }
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:0;height:1px;width:0;
+    background:var(--gold);transition:width .3s ease;
+  }
+  .nav-links a:hover{color:var(--cream)}
+  .nav-links a:hover::after{width:100%}
+  .nav-call{
+    border:1px solid var(--gold);color:var(--gold)!important;
+    padding:9px 18px!important;border-radius:1px;
+  }
+  .nav-call:hover{background:var(--gold);color:var(--ink)!important}
+  .nav-call::after{display:none}
+  .nav-toggle{display:none}
+  @media(max-width:860px){
+    .nav-links{display:none}
+    .nav-call{display:inline-block}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;padding:clamp(48px,9vw,104px) 0 clamp(40px,7vw,80px)}
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,68px);
+    align-items:center;
+  }
+  .hero-kicker{display:flex;align-items:center;gap:16px;margin-bottom:26px}
+  .hero-kicker .dash{width:54px;height:1px;background:var(--gold)}
+  .hero h1{
+    font-weight:600;line-height:.94;letter-spacing:.005em;
+    font-size:clamp(3.3rem,9.4vw,6.6rem);color:var(--cream);
+  }
+  .hero h1 em{
+    display:block;font-style:italic;font-weight:500;color:var(--gold-bright);
+    font-size:.62em;letter-spacing:.01em;margin-top:.06em;
+  }
+  .hero-sub{
+    max-width:30rem;margin:30px 0 36px;color:var(--cream-dim);
+    font-size:1.04rem;font-weight:300;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    font-family:'Jost',sans-serif;font-weight:400;
+    text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;
+    padding:15px 30px;border-radius:1px;cursor:pointer;transition:all .28s ease;
+    display:inline-flex;align-items:center;gap:.7ch;
+  }
+  .btn-gold{background:var(--gold);color:var(--ink);border:1px solid var(--gold)}
+  .btn-gold:hover{background:var(--gold-bright);border-color:var(--gold-bright)}
+  .btn-ghost{border:1px solid var(--line);color:var(--cream)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .hero-meta{
+    display:flex;gap:30px;margin-top:40px;flex-wrap:wrap;
+    font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;color:var(--cream-dim);
+  }
+  .hero-meta b{display:block;font-family:'Cormorant Garamond',serif;
+    font-weight:600;font-size:1.5rem;letter-spacing:.02em;color:var(--gold);
+    text-transform:none;margin-bottom:2px}
+  .hero-plate{position:relative;padding:14px}
+  .hero-plate::before{
+    content:"";position:absolute;inset:0;border:1px solid var(--line);
+    transform:translate(14px,14px);
+  }
+  .hero-plate img{position:relative;width:100%;aspect-ratio:4/5;object-fit:cover;
+    filter:grayscale(.12) contrast(1.03)}
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr}
+    .hero-plate{order:-1;max-width:420px}
+  }
+
+  /* ---------- BANNER STRIP ---------- */
+  .strip{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:var(--ink-2);
+  }
+  .strip .wrap{
+    display:flex;gap:clamp(20px,6vw,72px);flex-wrap:wrap;justify-content:center;
+    padding:20px 28px;font-size:.7rem;text-transform:uppercase;letter-spacing:.26em;
+    color:var(--cream-dim);
+  }
+  .strip span{display:flex;align-items:center;gap:12px}
+  .strip span::before{content:"◆";color:var(--gold);font-size:.6em}
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:clamp(64px,9vw,112px) 0}
+  .sec-head{margin-bottom:54px;max-width:46rem}
+  .sec-head h2{
+    font-weight:500;font-size:clamp(2.2rem,5.2vw,3.5rem);line-height:1.04;
+    color:var(--cream);margin-top:14px;letter-spacing:.01em;
+  }
+  .sec-head h2 em{font-style:italic;color:var(--gold-bright)}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(34px,6vw,76px);align-items:center}
+  .about-copy p{color:var(--cream-dim);margin-bottom:18px;font-size:1.04rem}
+  .about-copy p.lead{
+    font-family:'Cormorant Garamond',serif;font-size:1.55rem;line-height:1.4;
+    font-style:italic;color:var(--cream);font-weight:400;
+  }
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .about-photos figure{overflow:hidden;border:1px solid var(--line)}
+  .about-photos img{width:100%;height:100%;object-fit:cover;filter:grayscale(.1) contrast(1.02);
+    transition:transform .9s ease}
+  .about-photos figure:hover img{transform:scale(1.05)}
+  .about-photos .tall{grid-row:span 2;aspect-ratio:auto}
+  .about-photos .tall img{height:100%}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr}}
+
+  /* ---------- SERVICES (ledger) ---------- */
+  .ledger{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,6vw,80px)}
+  .ledger-col h3{
+    font-family:'Jost',sans-serif;font-weight:400;text-transform:uppercase;
+    letter-spacing:.28em;font-size:.74rem;color:var(--gold);
+    padding-bottom:14px;margin-bottom:8px;border-bottom:1px solid var(--line);
+  }
+  .ledger-row{
+    display:flex;align-items:flex-end;gap:8px;padding:15px 0;
+    border-bottom:1px dashed rgba(200,162,76,.16);
+  }
+  .ledger-row .name{font-family:'Cormorant Garamond',serif;font-size:1.42rem;
+    font-weight:500;color:var(--cream);white-space:nowrap}
+  .ledger-row .name small{display:block;font-family:'Jost',sans-serif;
+    font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--cream-dim);
+    font-weight:300}
+  .ledger-row .dots{flex:1;border-bottom:1px dotted rgba(200,162,76,.4);transform:translateY(-5px)}
+  .ledger-row .price{font-family:'Cormorant Garamond',serif;font-size:1.42rem;
+    color:var(--gold-bright);font-weight:600;white-space:nowrap}
+  .ledger-note{margin-top:30px;font-size:.82rem;color:var(--cream-dim);letter-spacing:.04em;
+    grid-column:1/-1}
+  @media(max-width:680px){.ledger{grid-template-columns:1fr;gap:34px}}
+
+  /* ---------- GALLERY ---------- */
+  .gallery{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .gal-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-auto-rows:1fr;gap:14px}
+  .gal-grid figure{overflow:hidden;border:1px solid var(--line);position:relative;min-height:200px}
+  .gal-grid img{width:100%;height:100%;object-fit:cover;filter:grayscale(.08) contrast(1.04);
+    transition:transform .9s ease,filter .6s ease}
+  .gal-grid figure:hover img{transform:scale(1.06);filter:grayscale(0) contrast(1.06)}
+  .gal-grid .big{grid-row:span 2}
+  @media(max-width:760px){
+    .gal-grid{grid-template-columns:1fr 1fr}
+    .gal-grid .big{grid-column:1/-1;grid-row:auto}
+  }
+
+  /* ---------- TESTIMONIES ---------- */
+  .says{position:relative}
+  .says-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(26px,4vw,48px)}
+  .quote{
+    border-left:1px solid var(--gold);padding:6px 0 6px 28px;position:relative;
+  }
+  .quote::before{
+    content:"\201C";font-family:'Cormorant Garamond',serif;color:var(--gold);
+    font-size:3.4rem;line-height:0;position:absolute;left:-2px;top:26px;opacity:.35;
+  }
+  .quote p{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
+    font-size:1.32rem;line-height:1.46;color:var(--cream);margin-bottom:16px;
+  }
+  .quote cite{
+    font-style:normal;font-family:'Jost',sans-serif;font-weight:400;
+    text-transform:uppercase;letter-spacing:.2em;font-size:.7rem;color:var(--gold);
+  }
+  @media(max-width:680px){.says-grid{grid-template-columns:1fr}}
+
+  /* ---------- VISIT (hours + map) ---------- */
+  .visit{background:var(--ink-2);border-top:1px solid var(--line)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,5vw,64px)}
+  .hours-list{margin-top:8px}
+  .hours-list .row{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:12px 0;border-bottom:1px dashed rgba(200,162,76,.16);
+  }
+  .hours-list .row .day{text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:var(--cream-dim)}
+  .hours-list .row .hrs{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--cream)}
+  .hours-list .row.today .day{color:var(--gold)}
+  .hours-list .row.today .hrs{color:var(--gold-bright)}
+  .visit-info{margin-top:30px}
+  .visit-info .label{font-size:.66rem;text-transform:uppercase;letter-spacing:.26em;color:var(--gold);margin-bottom:6px}
+  .visit-info p{font-family:'Cormorant Garamond',serif;font-size:1.36rem;color:var(--cream);margin-bottom:20px;line-height:1.4}
+  .visit-info a.line{color:var(--cream);border-bottom:1px solid var(--line);transition:border-color .3s}
+  .visit-info a.line:hover{border-color:var(--gold)}
+  .map-frame{border:1px solid var(--line);padding:10px;height:100%;min-height:340px;background:var(--ink)}
+  .map-frame iframe{width:100%;height:100%;min-height:320px;border:0;filter:grayscale(.4) invert(.92) contrast(.86)}
+  @media(max-width:760px){.visit-grid{grid-template-columns:1fr}}
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{background:var(--gold);color:var(--ink);text-align:center;padding:clamp(54px,8vw,86px) 0}
+  .cta-band .eyebrow{color:rgba(12,12,13,.6)}
+  .cta-band h2{font-weight:600;font-size:clamp(2.1rem,5.5vw,3.4rem);margin:14px 0 8px;line-height:1.02}
+  .cta-band p{color:rgba(12,12,13,.72);font-size:1rem;margin-bottom:30px}
+  .btn-ink{background:var(--ink);color:var(--cream);border:1px solid var(--ink)}
+  .btn-ink:hover{background:var(--ink-2)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);padding:clamp(54px,7vw,80px) 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:48px}
+  .foot-brand .brand-mark{font-size:1.7rem;margin-bottom:16px}
+  .foot-brand p{color:var(--cream-dim);font-size:.94rem;max-width:24rem}
+  .foot-col h4{font-family:'Jost',sans-serif;font-weight:400;text-transform:uppercase;
+    letter-spacing:.24em;font-size:.7rem;color:var(--gold);margin-bottom:18px}
+  .foot-col a,.foot-col p{display:block;color:var(--cream-dim);font-size:.92rem;margin-bottom:10px;transition:color .25s}
+  .foot-col a:hover{color:var(--cream)}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:24px;
+    display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center}
+  .foot-bottom p{font-size:.78rem;color:var(--cream-dim);letter-spacing:.04em}
+  .credit{font-size:.78rem;color:var(--cream-dim);letter-spacing:.03em}
+  .credit a{color:var(--gold);border-bottom:1px solid var(--line)}
+  .credit a:hover{border-color:var(--gold)}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand-mark">World's Finest <span>Barber</span></a>
+    <div class="nav-links">
+      <a href="#about">The Shop</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">The Work</a>
+      <a href="#says">In Their Words</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a href="tel:+14423060019" class="nav-call">Call (442) 306-0019</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="hero-kicker">
+        <span class="dash"></span>
+        <span class="eyebrow">Coachella, California · Est. Grapefruit Blvd</span>
+      </div>
+      <h1>World's<br>Finest<em>Barber Shop</em></h1>
+      <p class="hero-sub">Precision fades, clean classics and a sharp finish — delivered with old-school care and a fresh standard under new management. Walk-ins always welcome.</p>
+      <div class="hero-actions">
+        <a href="tel:+14423060019" class="btn btn-gold">Call the Shop</a>
+        <a href="#services" class="btn btn-ghost">View Services</a>
+      </div>
+      <div class="hero-meta">
+        <div><b>7 days</b>Open every week</div>
+        <div><b>All ages</b>Now kid-friendly</div>
+        <div><b>No appt.</b>Walk-ins welcome</div>
+      </div>
+    </div>
+    <div class="hero-plate">
+      <img src="./photos/03.jpg" alt="The hand-painted &quot;World's Finest&quot; mural and classic barber chairs inside the shop" />
+    </div>
+  </div>
+</header>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="wrap">
+    <span>Fades &amp; Tapers</span>
+    <span>Classic Cuts</span>
+    <span>Beard Lineups</span>
+    <span>Kids' Cuts</span>
+    <span>Hot-Towel Finish</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <p class="eyebrow">The Shop</p>
+      <p class="lead">A welcoming chair, a steady hand, and a cut worth coming back for.</p>
+      <p>Tucked along Grapefruit Boulevard in Coachella, World's Finest is a full-service barber shop and salon where the whole family gets looked after. The room is clean, vibrant and easy to settle into — black walls, classic chairs, and a TV on while you wait.</p>
+      <p>Under new management, the shop now welcomes kids alongside the regulars, and keeps walk-ins and same-day chairs open all week. Whether it's a tight skin fade, a beard lineup or a fresh cut for the little ones, the goal is simple: send you out looking sharp at a fair price.</p>
+      <a href="#services" class="btn btn-ghost" style="margin-top:8px">See the Services</a>
+    </div>
+    <div class="about-photos">
+      <figure class="tall"><img src="./photos/01.jpg" alt="Interior of World's Finest Barber Shop with barber chairs and styling mirrors" /></figure>
+      <figure><img src="./photos/02.jpg" alt="Lounge and waiting area inside the shop" /></figure>
+      <figure><img src="./photos/04.jpg" alt="Detailed skin fade finished at the shop" /></figure>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The Bill of Fare</p>
+      <h2>Cuts &amp; <em>grooming</em>, done right.</h2>
+    </div>
+    <div class="ledger">
+      <div class="ledger-col">
+        <h3>For the Gentlemen</h3>
+        <div class="ledger-row">
+          <div class="name">Classic Haircut<small>Wash, cut &amp; style</small></div>
+          <div class="dots"></div><div class="price">Ask</div>
+        </div>
+        <div class="ledger-row">
+          <div class="name">Skin / Taper Fade<small>Blended, sharp &amp; clean</small></div>
+          <div class="dots"></div><div class="price">Ask</div>
+        </div>
+        <div class="ledger-row">
+          <div class="name">Cut &amp; Beard<small>Haircut with full beard shape-up</small></div>
+          <div class="dots"></div><div class="price">Ask</div>
+        </div>
+        <div class="ledger-row">
+          <div class="name">Beard Lineup<small>Trim, edge &amp; hot-towel finish</small></div>
+          <div class="dots"></div><div class="price">Ask</div>
+        </div>
+      </div>
+      <div class="ledger-col">
+        <h3>The Whole Family</h3>
+        <div class="ledger-row">
+          <div class="name">Kids' Cut<small>Patient chairs for the little ones</small></div>
+          <div class="dots"></div><div class="price">Ask</div>
+        </div>
+        <div class="ledger-row">
+          <div class="name">Women's Cut &amp; Style<small>Salon services available</small></div>
+          <div class="dots"></div><div class="price">Ask</div>
+        </div>
+        <div class="ledger-row">
+          <div class="name">Color &amp; Hair Done<small>By appointment</small></div>
+          <div class="dots"></div><div class="price">Ask</div>
+        </div>
+        <div class="ledger-row">
+          <div class="name">Line-Up / Edge-Up<small>Quick reshape between cuts</small></div>
+          <div class="dots"></div><div class="price">Ask</div>
+        </div>
+      </div>
+      <p class="ledger-note">Pricing stays fair and walk-in friendly — call <a href="tel:+14423060019" style="color:var(--gold-bright);border-bottom:1px solid var(--line)">(442) 306-0019</a> for today's rates and same-day availability.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The Work</p>
+      <h2>Sharp finishes, <em>clean lines</em>.</h2>
+    </div>
+    <div class="gal-grid">
+      <figure class="big"><img src="./photos/06.jpg" alt="Textured top with a clean fade, finished under a luxury monogram cape" /></figure>
+      <figure><img src="./photos/04.jpg" alt="Skin fade with detailed lineup" /></figure>
+      <figure><img src="./photos/01.jpg" alt="Barber stations and chairs inside the shop" /></figure>
+      <figure><img src="./photos/03.jpg" alt="The hand-painted World's Finest mural" /></figure>
+      <figure><img src="./photos/02.jpg" alt="The lounge and front desk" /></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">In Their Words</p>
+      <h2>What the <em>regulars</em> say.</h2>
+    </div>
+    <div class="says-grid">
+      <blockquote class="quote">
+        <p>If you're in the Coachella Valley and looking for a top-notch barbershop, I highly recommend this shop. The environment is fantastic — welcoming, clean and vibrant. Walk-ins are always welcome, and with the new management they now cater to kids too. You won't be disappointed.</p>
+        <cite>Marc S.</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>So glad we found this place. My husband got a haircut here and they did an excellent job — professional, took their time, and got it just right. Quality work at reasonable prices. He walked out looking sharp, and we'll definitely be back.</p>
+        <cite>Silvia G.</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>I love this barber shop. I get my son's haircuts here and I get my hair cut and done too. They're so good with walk-ins and same-day appointments. 10/10 recommend coming here.</p>
+        <cite>Juliann T.</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>Great experience. My son loved his haircut. I highly recommend it.</p>
+        <cite>Eva S.</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Visit Us</p>
+      <h2>Hours &amp; <em>location</em>.</h2>
+    </div>
+    <div class="visit-grid">
+      <div>
+        <div class="hours-list" id="hours">
+          <div class="row" data-day="1"><span class="day">Monday</span><span class="hrs">9:00 AM – 7:00 PM</span></div>
+          <div class="row" data-day="2"><span class="day">Tuesday</span><span class="hrs">9:00 AM – 7:00 PM</span></div>
+          <div class="row" data-day="3"><span class="day">Wednesday</span><span class="hrs">9:00 AM – 7:00 PM</span></div>
+          <div class="row" data-day="4"><span class="day">Thursday</span><span class="hrs">9:00 AM – 7:00 PM</span></div>
+          <div class="row" data-day="5"><span class="day">Friday</span><span class="hrs">9:00 AM – 7:00 PM</span></div>
+          <div class="row" data-day="6"><span class="day">Saturday</span><span class="hrs">8:00 AM – 7:00 PM</span></div>
+          <div class="row" data-day="0"><span class="day">Sunday</span><span class="hrs">8:00 AM – 3:00 PM</span></div>
+        </div>
+        <div class="visit-info">
+          <div class="label">Find the Shop</div>
+          <p>49211 Grapefruit Blvd #4<br>Coachella, CA 92236</p>
+          <div class="label">Call or Drop In</div>
+          <p><a href="tel:+14423060019" class="line">(442) 306-0019</a></p>
+          <a href="https://www.google.com/maps?q=49211+Grapefruit+Blvd+%234,+Coachella,+CA+92236" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top:6px">Get Directions</a>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=49211%20Grapefruit%20Blvd%20%234,%20Coachella,%20CA%2092236&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to World's Finest Barber Shop"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="wrap">
+    <p class="eyebrow">Ready for a fresh cut?</p>
+    <h2>The chair's waiting.</h2>
+    <p>Walk in any day of the week — or call ahead for same-day.</p>
+    <a href="tel:+14423060019" class="btn btn-ink">Call (442) 306-0019</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand-mark">World's Finest <span>Barber</span></a>
+        <p>A welcoming, family-friendly barber shop &amp; salon in the heart of Coachella — precision cuts, fair prices and walk-ins all week.</p>
+      </div>
+      <div class="foot-col">
+        <h4>The Shop</h4>
+        <p>49211 Grapefruit Blvd #4<br>Coachella, CA 92236</p>
+        <a href="tel:+14423060019">(442) 306-0019</a>
+        <a href="https://maps.google.com/?cid=13429278100369004465" target="_blank" rel="noopener">Google Business Profile</a>
+      </div>
+      <div class="foot-col">
+        <h4>Hours</h4>
+        <p>Mon–Fri · 9 AM – 7 PM</p>
+        <p>Saturday · 8 AM – 7 PM</p>
+        <p>Sunday · 8 AM – 3 PM</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© <span id="yr"></span> World's Finest Barber Shop · Coachella, CA</p>
+      <p class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  // Highlight today's hours row
+  var today = new Date().getDay();
+  var row = document.querySelector('#hours .row[data-day="'+today+'"]');
+  if(row){row.classList.add('today');}
+</script>
+</body>
+</html>

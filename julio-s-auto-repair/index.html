@@ -1,0 +1,400 @@
+<!--
+  ARCHETYPE: High-desert Southwestern auto shop — "adobe garage."
+  Julio's Auto Repair, Yucca Valley CA. The storefront is literally
+  adobe stucco with terracotta roof tile and a turquoise/rust signboard,
+  so the site leans full Southwestern: sand & adobe ground, turquoise
+  accents, rust-orange CTA. Deliberately NOT gunmetal-diesel, retro-blue,
+  navy-technical, or green-family.
+
+  Palette: sand/adobe (#e7dac4 / #c9a978 / #6b4a2b) + turquoise (#2c8a8f)
+           + rust-orange (#b5562a) on a warm off-white (#f6efe2).
+  Display: "Rye" (woodtype Southwestern slab) for headings; body "Hanken
+           Grotesk" for clean legible warmth. Accent caps "Oswald".
+
+  STRUCTURE:
+   - Sticky thin top bar (turquoise) with phone CTA; scroll-padding-top set.
+   - Split hero: adobe-banded headline panel on left, real storefront
+     photo (01) framed like a hung sign on the right. No dark-overlay hero.
+   - "The shop" about band over photo 02, desert-warmth copy.
+   - Services as a hand-lettered "shop board" list (2-col rows w/ dotted
+     leaders), NOT 3-col icon cards.
+   - Photo strip (03/04) — work in progress.
+   - Testimonies as torn-paper note cards, no stars, first-name+last-initial.
+   - Hours + keyless Google map, "Find us" line.
+   - Footer with required credit line.
+  Animation: none (static); only subtle hover transitions on links/buttons.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julio's Auto Repair — Honest mechanics in Yucca Valley, CA</title>
+<meta name="description" content="Julio's Auto Repair in Yucca Valley — straight-talking, fairly-priced auto repair for the high desert. Brakes, diagnostics, and everything in between.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Oswald:wght@500;600&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6efe2;
+    --sand:#e7dac4;
+    --adobe:#c9a978;
+    --clay:#6b4a2b;
+    --ink:#33271a;
+    --turq:#2c8a8f;
+    --turq-dk:#1f6a6e;
+    --rust:#b5562a;
+    --rust-dk:#8f4220;
+    --line:#d8c8a8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{
+    scroll-behavior:smooth;
+    /* reserve space for the sticky bar (~52px) so anchors don't hide under it */
+    scroll-padding-top:64px;
+  }
+  body{
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Rye',cursive;font-weight:400;letter-spacing:.5px;line-height:1.05}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{width:min(1120px,92%);margin-inline:auto}
+  .eyebrow{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;
+    letter-spacing:.28em;font-size:.72rem;color:var(--turq-dk);font-weight:600;
+  }
+
+  /* ---------- sticky bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:var(--turq);color:#f2efe6;
+    border-bottom:3px solid var(--turq-dk);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:52px;gap:1rem}
+  .brandmark{font-family:'Rye',cursive;font-size:1.15rem;color:#fff;white-space:nowrap}
+  .brandmark span{color:#ffe7c4}
+  .topnav{display:flex;gap:1.4rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem}
+  .topnav a{opacity:.92;transition:opacity .15s,border-color .15s;border-bottom:2px solid transparent;padding-bottom:2px}
+  .topnav a:hover{opacity:1;border-bottom-color:#ffe7c4}
+  .topcall{
+    font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.06em;
+    background:var(--rust);color:#fff;padding:.4rem .9rem;border-radius:3px;
+    border:2px solid var(--rust-dk);transition:background .15s,transform .1s;white-space:nowrap;
+  }
+  .topcall:hover{background:var(--rust-dk)}
+  @media(max-width:760px){.topnav{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      repeating-linear-gradient(135deg,rgba(201,169,120,.10) 0 12px,transparent 12px 26px),
+      var(--sand);
+    border-bottom:6px solid var(--clay);
+    position:relative;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(255,255,255,.35),transparent 40%);
+    pointer-events:none;
+  }
+  .hero .grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;
+    padding:4.2rem 0 4rem;position:relative;
+  }
+  .hero-copy .eyebrow{color:var(--rust-dk)}
+  .hero h1{
+    font-size:clamp(2.5rem,6vw,4.3rem);color:var(--clay);margin:.6rem 0 .2rem;
+    text-shadow:1px 2px 0 #fff;
+  }
+  .hero h1 em{font-style:normal;color:var(--turq-dk);display:block}
+  .hero .lead{font-size:1.12rem;max-width:34ch;margin:1.1rem 0 1.6rem;color:#4a382440}
+  .hero .lead{color:#4a3824}
+  .hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center}
+  .btn{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;
+    font-size:.95rem;padding:.85rem 1.5rem;border-radius:4px;display:inline-flex;
+    align-items:center;gap:.5rem;transition:transform .12s,background .15s,box-shadow .15s;
+  }
+  .btn-primary{background:var(--rust);color:#fff;border:2px solid var(--rust-dk);box-shadow:0 3px 0 var(--rust-dk)}
+  .btn-primary:hover{background:var(--rust-dk);transform:translateY(1px);box-shadow:0 2px 0 var(--rust-dk)}
+  .btn-ghost{background:transparent;color:var(--turq-dk);border:2px solid var(--turq);}
+  .btn-ghost:hover{background:var(--turq);color:#fff}
+  .hero-hours{margin-top:1.4rem;font-size:.9rem;color:var(--clay);font-family:'Oswald',sans-serif;letter-spacing:.04em}
+  .hero-hours b{color:var(--turq-dk)}
+
+  /* framed storefront sign */
+  .signframe{
+    background:#fff;padding:.7rem;border:1px solid var(--line);
+    box-shadow:0 14px 30px rgba(107,74,43,.28);transform:rotate(-1.4deg);
+    position:relative;
+  }
+  .signframe::after{
+    content:"";position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+    width:22px;height:22px;border-radius:50%;background:var(--turq);border:3px solid var(--turq-dk);
+  }
+  .signframe img{aspect-ratio:4/3;object-fit:cover;width:100%}
+  @media(max-width:860px){
+    .hero .grid{grid-template-columns:1fr;gap:2.2rem;padding:3rem 0}
+    .signframe{transform:rotate(-1deg);max-width:440px;margin-inline:auto}
+  }
+
+  /* ---------- band divider ---------- */
+  .band{height:18px;background:
+    repeating-linear-gradient(90deg,var(--rust) 0 28px,var(--turq) 28px 56px,var(--adobe) 56px 84px);
+    opacity:.9}
+
+  /* ---------- about ---------- */
+  .about{padding:4.5rem 0}
+  .about .grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem;align-items:center}
+  .about-photo{position:relative;border:6px solid #fff;box-shadow:0 12px 26px rgba(107,74,43,.22)}
+  .about-photo img{aspect-ratio:3/2;object-fit:cover;width:100%}
+  .about-photo .tag{
+    position:absolute;bottom:-16px;left:-12px;background:var(--turq);color:#fff;
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;
+    font-size:.74rem;padding:.45rem .9rem;border:2px solid var(--turq-dk);
+  }
+  .about h2{font-size:clamp(1.9rem,4vw,2.7rem);color:var(--clay);margin-bottom:.7rem}
+  .about p{margin-bottom:1rem;color:#473827;max-width:54ch}
+  .about p strong{color:var(--rust-dk)}
+  @media(max-width:780px){.about .grid{grid-template-columns:1fr;gap:2.6rem}}
+
+  /* ---------- services as a shop board ---------- */
+  .services{background:var(--clay);color:#f3e6d0;padding:4.5rem 0;border-block:6px solid var(--rust-dk)}
+  .services .head{text-align:center;margin-bottom:2.4rem}
+  .services .head .eyebrow{color:#e7b98a}
+  .services h2{font-size:clamp(2rem,5vw,3rem);color:#fff;margin-top:.3rem}
+  .board{
+    max-width:780px;margin-inline:auto;background:#3a2c1c;border:3px solid #1f1610;
+    border-radius:6px;padding:1.8rem clamp(1.2rem,4vw,2.6rem);
+    box-shadow:inset 0 0 0 8px rgba(201,169,120,.14),0 18px 40px rgba(0,0,0,.3);
+  }
+  .srow{
+    display:flex;align-items:baseline;gap:.4rem;padding:.85rem 0;
+    border-bottom:1px dashed rgba(231,185,138,.3);
+  }
+  .srow:last-child{border-bottom:0}
+  .srow .name{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:1.02rem;color:#ffe7c4;white-space:nowrap}
+  .srow .dots{flex:1;border-bottom:2px dotted rgba(231,185,138,.4);transform:translateY(-4px)}
+  .srow .desc{font-size:.9rem;color:#d8c4a4;text-align:right;max-width:18ch}
+  .services .note{text-align:center;margin-top:1.8rem;font-size:.92rem;color:#e7b98a}
+  .services .note b{color:#fff}
+
+  /* ---------- gallery strip ---------- */
+  .strip{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .strip img{width:100%;height:100%;object-fit:cover;aspect-ratio:16/11}
+  @media(max-width:640px){.strip{grid-template-columns:1fr}.strip img{aspect-ratio:16/10}}
+
+  /* ---------- testimonies ---------- */
+  .says{padding:4.8rem 0;background:
+    radial-gradient(circle at 20% 0%,rgba(44,138,143,.08),transparent 40%),var(--paper)}
+  .says .head{text-align:center;margin-bottom:2.6rem}
+  .says h2{font-size:clamp(2rem,5vw,3rem);color:var(--clay);margin-top:.3rem}
+  .notes{columns:2;column-gap:1.6rem}
+  @media(max-width:720px){.notes{columns:1}}
+  .note-card{
+    break-inside:avoid;margin-bottom:1.6rem;background:#fffaf0;
+    border:1px solid var(--line);padding:1.5rem 1.6rem 1.4rem;
+    box-shadow:0 8px 18px rgba(107,74,43,.14);position:relative;
+  }
+  .note-card:nth-child(odd){transform:rotate(-.6deg)}
+  .note-card:nth-child(even){transform:rotate(.7deg)}
+  .note-card::before{
+    content:"";position:absolute;top:-9px;left:24px;width:54px;height:18px;
+    background:rgba(44,138,143,.4);transform:rotate(-4deg);
+  }
+  .note-card p{font-size:1rem;color:#3d2f20;margin-bottom:.9rem}
+  .note-card .who{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;color:var(--rust-dk)}
+  .note-card .who::before{content:"— "}
+
+  /* ---------- hours + map ---------- */
+  .visit{padding:4.5rem 0}
+  .visit .grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:2.6rem;align-items:stretch}
+  .hourscard{background:var(--sand);border:3px solid var(--adobe);border-radius:6px;padding:2rem 2.1rem}
+  .hourscard h2{font-size:clamp(1.7rem,3.6vw,2.3rem);color:var(--clay);margin-bottom:.4rem}
+  .hourscard .addr{font-size:.96rem;color:#4a3824;margin-bottom:1.3rem}
+  .hourscard .addr a{color:var(--turq-dk);font-weight:700}
+  .hrow{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+  .hrow:last-child{border-bottom:0}
+  .hrow .d{font-family:'Oswald',sans-serif;letter-spacing:.04em;text-transform:uppercase;font-size:.85rem;color:var(--clay)}
+  .hrow.closed .t{color:var(--rust);font-style:italic}
+  .findus{margin-top:1.4rem;font-size:.88rem;color:#4a3824}
+  .findus a{color:var(--turq-dk);font-weight:700;border-bottom:1px solid var(--turq)}
+  .visit .mapwrap{border:3px solid var(--adobe);border-radius:6px;overflow:hidden;min-height:340px;background:#ddd}
+  .visit iframe{width:100%;height:100%;min-height:340px;border:0;display:block}
+  .visit .cta-row{margin-top:1.5rem}
+  @media(max-width:820px){.visit .grid{grid-template-columns:1fr}}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:#d8c8a8;padding:2.8rem 0 2.2rem;text-align:center;border-top:6px solid var(--rust)}
+  footer .fbrand{font-family:'Rye',cursive;font-size:1.5rem;color:#fff}
+  footer .fbrand span{color:var(--turq)}
+  footer .fcall{font-family:'Oswald',sans-serif;letter-spacing:.06em;margin:.6rem 0 .3rem;font-size:1.05rem}
+  footer .fcall a{color:#ffe7c4}
+  footer .faddr{font-size:.9rem;color:#bfae90;margin-bottom:1.2rem}
+  footer .flinks{font-size:.82rem;margin-bottom:1.4rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em}
+  footer .flinks a{color:var(--turq);border-bottom:1px solid transparent}
+  footer .flinks a:hover{border-bottom-color:var(--turq)}
+  .credit{font-size:.78rem;color:#8c7d63;border-top:1px solid #4a3c2a;padding-top:1.3rem;margin-top:.4rem}
+  .credit a{color:#bfae90}
+</style>
+</head>
+<body>
+
+<!-- sticky bar -->
+<header class="topbar">
+  <div class="wrap">
+    <a href="#top" class="brandmark">Julio's <span>Auto Repair</span></a>
+    <nav class="topnav">
+      <a href="#shop">The Shop</a>
+      <a href="#services">Services</a>
+      <a href="#says">Testimonies</a>
+      <a href="#visit">Hours &amp; Map</a>
+    </nav>
+    <a href="tel:+17608202323" class="topcall">Call (760) 820-2323</a>
+  </div>
+</header>
+
+<!-- hero -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Yucca Valley · High Desert</span>
+        <h1>Honest Hands<em>Under Your Hood</em></h1>
+        <p class="lead">Straight answers, fair prices, and real fixes — the high desert's trusted mechanic since the morning you needed one.</p>
+        <div class="hero-cta">
+          <a href="tel:+17608202323" class="btn btn-primary">Call the Shop</a>
+          <a href="#visit" class="btn btn-ghost">Get Directions</a>
+        </div>
+        <p class="hero-hours">Open <b>Mon–Fri · 8AM–5PM</b> &nbsp;·&nbsp; 7190 Mohawk Trail</p>
+      </div>
+      <div class="signframe">
+        <img src="./photos/01.jpg" alt="Julio's Auto Repair storefront sign on the adobe shop in Yucca Valley">
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true"></div>
+
+<!-- about -->
+<section class="about" id="shop">
+  <div class="wrap">
+    <div class="grid">
+      <div class="about-photo">
+        <img src="./photos/02.jpg" alt="Julio's Auto Repair shop with a truck and camper out front in the desert">
+        <span class="tag">On Mohawk Trail</span>
+      </div>
+      <div>
+        <span class="eyebrow">Who You're Dealing With</span>
+        <h2>A real shop, run by a real mechanic.</h2>
+        <p>Out here in Yucca Valley, your truck isn't a luxury — it's how you get to work, to Palm Springs, and back home before dark. That's why folks bring their vehicles to Julio's: because <strong>the diagnosis is honest and the bill is fair.</strong></p>
+        <p>Julio actually investigates the problem instead of guessing — the kind of mechanic who finds the failed part three other shops missed, and tells you the transmission is fine when it's fine. No upsells, no runaround, no dealership-sized invoices.</p>
+        <p>From brakes and suspension to diagnostics and the strange noise you can't quite describe — bring it in, get a straight quote, and get back on the road.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- services board -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">What We Do</span>
+      <h2>On the Shop Board</h2>
+    </div>
+    <div class="board">
+      <div class="srow"><span class="name">Brakes &amp; Rotors</span><span class="dots"></span><span class="desc">pads, calipers, the full job</span></div>
+      <div class="srow"><span class="name">Engine Diagnostics</span><span class="dots"></span><span class="desc">find the real problem first</span></div>
+      <div class="srow"><span class="name">Suspension &amp; Steering</span><span class="dots"></span><span class="desc">desert roads are rough</span></div>
+      <div class="srow"><span class="name">Electrical &amp; Modules</span><span class="dots"></span><span class="desc">limp-mode &amp; gremlins solved</span></div>
+      <div class="srow"><span class="name">Maintenance &amp; Tune-Ups</span><span class="dots"></span><span class="desc">fluids, filters, belts</span></div>
+      <div class="srow"><span class="name">Trucks &amp; Work Vehicles</span><span class="dots"></span><span class="desc">Toyota, Ford, &amp; more</span></div>
+    </div>
+    <p class="note">Not sure what's wrong? <b>That's our job to figure out.</b> Call (760) 820-2323 for a straight answer.</p>
+  </div>
+</section>
+
+<!-- gallery strip -->
+<div class="strip" aria-hidden="false">
+  <img src="./photos/03.jpg" alt="Brake rotor and caliper service on a lifted truck at Julio's">
+  <img src="./photos/04.jpg" alt="Mechanic fitting a new brake rotor at Julio's Auto Repair">
+</div>
+
+<!-- testimonies -->
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">In Their Words</span>
+      <h2>What the High Desert Says</h2>
+    </div>
+    <div class="notes">
+      <div class="note-card">
+        <p>"This is the only shop I will ever take my car to in Yucca Valley. Three other shops thought it was the transmission and couldn't help. Julio actually investigated and found a severely damaged power module. The car's been great ever since — Julio is the most talented mechanic in the high desert."</p>
+        <span class="who">Rae M.</span>
+      </div>
+      <div class="note-card">
+        <p>"Julio's are friendly and have reasonable prices. I'm on a fixed income and I'm a widow. I feel like I can trust them not to take advantage of me, as some others in Yucca Valley have done."</p>
+        <span class="who">Bennie L.</span>
+      </div>
+      <div class="note-card">
+        <p>"Staff went above and beyond several times. The work came in at literally 10% of what the dealership wanted for the exact same repairs. I couldn't believe how little I paid. Trust Julio's with your vehicle when you need some help — we'll be back with every vehicle we own."</p>
+        <span class="who">Sally S.</span>
+      </div>
+      <div class="note-card">
+        <p>"They did a good job on my Toyota Tacoma — had it in and out the same day too. They are good people. I will definitely have Julio do our future work, and refer him to others. Overall I'm satisfied. Thanks, Julio."</p>
+        <span class="who">Roy T.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- hours + map -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="grid">
+      <div class="hourscard">
+        <span class="eyebrow">Stop By</span>
+        <h2>Hours &amp; Location</h2>
+        <p class="addr">7190 Mohawk Trail, Yucca Valley, CA 92284<br>
+          <a href="tel:+17608202323">(760) 820-2323</a></p>
+        <div class="hrow"><span class="d">Monday</span><span class="t">8:00 AM – 5:00 PM</span></div>
+        <div class="hrow"><span class="d">Tuesday</span><span class="t">8:00 AM – 5:00 PM</span></div>
+        <div class="hrow"><span class="d">Wednesday</span><span class="t">8:00 AM – 5:00 PM</span></div>
+        <div class="hrow"><span class="d">Thursday</span><span class="t">8:00 AM – 5:00 PM</span></div>
+        <div class="hrow"><span class="d">Friday</span><span class="t">8:00 AM – 5:00 PM</span></div>
+        <div class="hrow closed"><span class="d">Saturday</span><span class="t">Closed</span></div>
+        <div class="hrow closed"><span class="d">Sunday</span><span class="t">Closed</span></div>
+        <p class="findus">Find us on <a href="https://maps.google.com/?cid=2330756557373196348" target="_blank" rel="noopener">Google Business</a>.</p>
+        <div class="cta-row">
+          <a href="https://www.google.com/maps?q=7190+Mohawk+Trail,+Yucca+Valley,+CA+92284" target="_blank" rel="noopener" class="btn btn-primary">Get Directions</a>
+        </div>
+      </div>
+      <div class="mapwrap">
+        <iframe
+          src="https://www.google.com/maps?q=34.1226033,-116.4397696&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Julio's Auto Repair, Yucca Valley"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="wrap">
+    <div class="fbrand">Julio's <span>Auto Repair</span></div>
+    <p class="fcall"><a href="tel:+17608202323">(760) 820-2323</a></p>
+    <p class="faddr">7190 Mohawk Trail · Yucca Valley, CA 92284</p>
+    <p class="flinks"><a href="https://maps.google.com/?cid=2330756557373196348" target="_blank" rel="noopener">Google Business</a></p>
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

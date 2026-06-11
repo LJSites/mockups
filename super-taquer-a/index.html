@@ -1,0 +1,478 @@
+<!--
+  ARCHETYPE: Retro-70s "fonda" — nostalgic family-taquería diner.
+  Palette: avocado green (#5b7a3f / #6e8f4a), mustard gold (#e0a92e), warm cream (#f6efdd),
+  brick brown (#7a3b22) accents. Display face: "Bagel Fat One" (chunky groovy 70s) +
+  "Fraunces" (warm soft serif) for headings + "Bricolage Grotesque" for body.
+  Structural decisions:
+    - Asymmetric stacked hero: big groovy wordmark left, storefront photo in a rounded
+      "ticket" frame right; mustard sunburst rays behind.
+    - Sticky cream nav bar with green pill links; scroll-padding-top reserves its height.
+    - Menu rendered as a hand-painted "menu board" two-column price ledger (echoes photo 04),
+      NOT service cards. No three-up icon row anywhere.
+    - Testimonies as torn-paper diner placemat quotes in an offset masonry-ish stack.
+    - Hours + map in a split "open daily" panel.
+    - Animation: none beyond CSS hover/transition. No scroll fade.
+    - All photos local ./photos/NN.jpg. Keyless google maps embed. No API keys.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Super Taquería — Hollister's G.O.A.T. Burritos & Tacos</title>
+<meta name="description" content="Super Taquería in Hollister, CA — hefty carnitas & carne asada burritos and authentic Mexican classics in a laid-back, family setting. Open daily 9am–10pm." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,800&family=Bricolage+Grotesque:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --avocado:#5b7a3f;
+    --avocado-deep:#41592c;
+    --leaf:#6e8f4a;
+    --mustard:#e0a92e;
+    --mustard-deep:#c4860f;
+    --cream:#f6efdd;
+    --cream-2:#efe4c8;
+    --brick:#7a3b22;
+    --ink:#2c2415;
+    --paper:#fbf6e9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:84px; /* reserves sticky nav height */
+  }
+  body{
+    font-family:"Bricolage Grotesque",system-ui,sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:"Fraunces",serif;line-height:1.05;letter-spacing:-.01em}
+  .groovy{font-family:"Bagel Fat One",cursive;font-weight:400;letter-spacing:.01em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--cream);
+    border-bottom:3px solid var(--avocado);
+    box-shadow:0 4px 0 rgba(91,122,63,.18);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .brandmark{display:flex;align-items:center;gap:11px}
+  .badge{
+    width:46px;height:46px;flex:none;
+    background:var(--brick);
+    border:3px solid var(--mustard);
+    border-radius:50% 50% 50% 50% / 58% 58% 42% 42%;
+    display:grid;place-items:center;
+    transform:rotate(-4deg);
+    box-shadow:2px 3px 0 rgba(0,0,0,.15);
+  }
+  .badge span{font-family:"Bagel Fat One",cursive;color:var(--mustard);font-size:.62rem;line-height:.95;text-align:center}
+  .brandmark b{font-family:"Bagel Fat One",cursive;font-weight:400;color:var(--avocado);font-size:1.18rem;letter-spacing:.01em}
+  .nav-links{display:flex;align-items:center;gap:6px}
+  .nav-links a{
+    font-weight:600;font-size:.92rem;color:var(--avocado-deep);
+    padding:8px 14px;border-radius:999px;transition:background .18s,color .18s;
+  }
+  .nav-links a:hover{background:var(--avocado);color:var(--cream)}
+  .nav-cta{
+    background:var(--mustard)!important;color:var(--ink)!important;
+    border:2px solid var(--mustard-deep);font-weight:700;
+  }
+  .nav-cta:hover{background:var(--mustard-deep)!important;color:var(--cream)!important}
+  .burger{display:none}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;overflow:hidden;background:var(--cream);padding:54px 0 30px}
+  .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;
+    background:
+      repeating-conic-gradient(from 0deg at 72% 36%,
+        rgba(224,169,46,.16) 0deg 9deg, transparent 9deg 18deg);
+    -webkit-mask:radial-gradient(circle at 72% 36%, #000 0%, transparent 55%);
+            mask:radial-gradient(circle at 72% 36%, #000 0%, transparent 55%);
+  }
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+  .eyebrow{
+    display:inline-block;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    font-size:.74rem;color:var(--brick);
+    background:var(--cream-2);padding:6px 14px;border-radius:999px;border:2px dashed var(--mustard-deep);
+    margin-bottom:18px;
+  }
+  .hero h1{font-size:clamp(2.6rem,6.4vw,4.7rem);color:var(--ink)}
+  .hero h1 .l1{display:block;font-family:"Bagel Fat One",cursive;color:var(--avocado);text-shadow:3px 3px 0 var(--mustard)}
+  .hero h1 .l2{display:block;font-family:"Bagel Fat One",cursive;color:var(--brick);font-size:.82em;text-shadow:3px 3px 0 var(--cream-2)}
+  .hero p.lead{font-size:1.12rem;max-width:30rem;margin:18px 0 10px;color:#4a4127}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 26px}
+  .tag{
+    font-size:.82rem;font-weight:600;color:var(--avocado-deep);
+    background:#fff;border:2px solid var(--leaf);border-radius:999px;padding:5px 13px;
+  }
+  .cta-row{display:flex;flex-wrap:wrap;gap:13px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:1rem;
+    padding:14px 24px;border-radius:14px;transition:transform .14s,box-shadow .14s;cursor:pointer;
+  }
+  .btn-primary{background:var(--brick);color:var(--cream);box-shadow:4px 5px 0 var(--avocado-deep)}
+  .btn-primary:hover{transform:translate(-1px,-2px);box-shadow:5px 7px 0 var(--avocado-deep)}
+  .btn-ghost{background:transparent;color:var(--avocado-deep);border:2.5px solid var(--avocado)}
+  .btn-ghost:hover{background:var(--avocado);color:var(--cream)}
+  .hero-photo{position:relative}
+  .ticket{
+    position:relative;background:#fff;padding:14px;border-radius:22px;
+    border:3px solid var(--ink);box-shadow:8px 10px 0 var(--mustard);
+    transform:rotate(2deg);
+  }
+  .ticket img{border-radius:12px;width:100%;height:380px;object-fit:cover}
+  .ticket .stamp{
+    position:absolute;left:-22px;bottom:24px;transform:rotate(-9deg);
+    background:var(--avocado);color:var(--cream);font-family:"Bagel Fat One",cursive;
+    font-size:.92rem;padding:9px 16px;border-radius:12px;border:2px solid var(--cream);
+    box-shadow:3px 4px 0 rgba(0,0,0,.18);
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:64px 0}
+  .sec-head{margin-bottom:34px;max-width:40rem}
+  .kicker{font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:.74rem;color:var(--mustard-deep);display:block;margin-bottom:9px}
+  .sec-head h2{font-size:clamp(1.9rem,4.2vw,2.9rem);color:var(--avocado-deep)}
+  .sec-head p{margin-top:12px;color:#54492c;font-size:1.05rem}
+
+  /* ---------- ABOUT ---------- */
+  #about{background:var(--avocado);color:var(--cream)}
+  .about-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:46px;align-items:center}
+  #about .kicker{color:var(--mustard)}
+  #about .sec-head h2{color:var(--cream)}
+  #about p{color:#eef3df}
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .about-photos figure{border-radius:16px;overflow:hidden;border:3px solid var(--cream);box-shadow:5px 6px 0 var(--avocado-deep)}
+  .about-photos figure:first-child{grid-column:1/3}
+  .about-photos img{width:100%;height:100%;object-fit:cover}
+  .about-photos figure:first-child img{height:230px}
+  .about-photos figure:not(:first-child) img{height:150px}
+  .est{font-family:"Bagel Fat One",cursive;color:var(--mustard);font-size:1.05rem;margin-top:8px}
+
+  /* ---------- MENU BOARD ---------- */
+  #menu{background:var(--cream)}
+  .board{
+    background:var(--brick);border-radius:22px;padding:30px clamp(20px,4vw,46px);
+    border:5px solid var(--ink);box-shadow:0 14px 0 rgba(122,59,34,.32);
+    color:var(--cream);
+  }
+  .board-top{display:flex;align-items:center;gap:14px;justify-content:center;margin-bottom:8px}
+  .board-top .rule{height:3px;flex:1;background:var(--mustard);border-radius:2px;opacity:.7}
+  .board-top h3{font-family:"Bagel Fat One",cursive;color:var(--mustard);font-size:1.5rem}
+  .board-note{text-align:center;color:#f2d9b8;font-size:.92rem;margin-bottom:26px}
+  .menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px 52px}
+  .mcat{font-family:"Fraunces",serif;font-weight:800;color:var(--mustard);font-size:1.15rem;letter-spacing:.02em;margin:18px 0 6px;display:flex;align-items:center;gap:9px}
+  .mcat::before{content:"";width:14px;height:14px;background:var(--avocado);border:2px solid var(--mustard);border-radius:3px;transform:rotate(12deg);flex:none}
+  .mrow{display:flex;align-items:baseline;gap:8px;padding:5px 0;border-bottom:1px dotted rgba(246,239,221,.35)}
+  .mrow .nm{font-weight:500;color:var(--cream)}
+  .mrow .dots{flex:1;border-bottom:2px dotted rgba(246,239,221,.45);transform:translateY(-4px)}
+  .mrow .pr{font-family:"Fraunces",serif;font-weight:600;color:var(--mustard);white-space:nowrap}
+  .menu-foot{text-align:center;margin-top:24px;font-size:.86rem;color:#f2d9b8;font-style:italic}
+
+  /* ---------- TESTIMONIES ---------- */
+  #testimonies{background:var(--cream-2)}
+  .placemats{column-count:2;column-gap:22px}
+  @media(max-width:760px){.placemats{column-count:1}}
+  .placemat{
+    break-inside:avoid;background:var(--paper);margin:0 0 22px;padding:24px 26px;
+    border-radius:6px;border:1px solid #e3d4ab;
+    box-shadow:3px 4px 0 rgba(122,59,34,.14);
+    position:relative;
+  }
+  .placemat:nth-child(odd){transform:rotate(-.7deg)}
+  .placemat:nth-child(even){transform:rotate(.7deg)}
+  .placemat .q{font-family:"Fraunces",serif;font-size:1.05rem;color:#3a3219;line-height:1.55}
+  .placemat .q::before{content:"\201C";font-family:"Bagel Fat One",cursive;color:var(--mustard);font-size:2.2rem;line-height:0;vertical-align:-.35em;margin-right:4px}
+  .placemat .who{margin-top:16px;font-weight:700;color:var(--avocado-deep);font-size:.95rem;display:flex;align-items:center;gap:8px}
+  .placemat .who::before{content:"";width:24px;height:3px;background:var(--mustard);border-radius:2px}
+
+  /* ---------- VISIT (hours + map) ---------- */
+  #visit{background:var(--avocado-deep);color:var(--cream)}
+  #visit .kicker{color:var(--mustard)}
+  #visit .sec-head h2{color:var(--cream)}
+  .visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:34px;align-items:stretch}
+  .info-card{background:var(--cream);color:var(--ink);border-radius:18px;padding:26px 28px;border:3px solid var(--mustard);box-shadow:6px 7px 0 rgba(0,0,0,.22)}
+  .info-card h3{color:var(--brick);font-size:1.4rem;margin-bottom:4px}
+  .open-pill{display:inline-block;background:var(--avocado);color:var(--cream);font-weight:700;font-size:.82rem;padding:5px 13px;border-radius:999px;margin:6px 0 16px}
+  .hours-line{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dotted #d8c79c;font-size:.96rem}
+  .hours-line span:first-child{font-weight:600;color:var(--avocado-deep)}
+  .hours-line span:last-child{color:#5b502f}
+  .meta{margin-top:18px;font-size:.96rem;color:#4a4127;line-height:1.5}
+  .meta strong{color:var(--brick)}
+  .findus{margin-top:16px;display:flex;flex-wrap:wrap;gap:9px}
+  .findus a{font-size:.84rem;font-weight:700;color:var(--avocado-deep);border:2px solid var(--avocado);border-radius:999px;padding:5px 13px;transition:background .16s,color .16s}
+  .findus a:hover{background:var(--avocado);color:var(--cream)}
+  .map-frame{border-radius:18px;overflow:hidden;border:3px solid var(--mustard);box-shadow:6px 7px 0 rgba(0,0,0,.22);min-height:340px}
+  .map-frame iframe{width:100%;height:100%;min-height:340px;border:0;display:block}
+
+  /* ---------- CTA STRIP ---------- */
+  .strip{background:var(--mustard);color:var(--ink);text-align:center;padding:54px 0}
+  .strip h2{font-family:"Bagel Fat One",cursive;color:var(--brick);font-size:clamp(1.8rem,5vw,3rem)}
+  .strip p{margin:10px auto 22px;max-width:32rem;color:#5a3d18;font-weight:500}
+  .strip .btn-primary{box-shadow:4px 5px 0 var(--mustard-deep)}
+  .strip .btn-primary:hover{box-shadow:5px 7px 0 var(--mustard-deep)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:var(--cream-2);padding:46px 0 30px}
+  .foot-grid{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
+  .foot-brand{display:flex;align-items:center;gap:11px}
+  .foot-brand b{font-family:"Bagel Fat One",cursive;color:var(--mustard);font-size:1.15rem}
+  .foot-col{font-size:.94rem;line-height:1.8}
+  .foot-col a:hover{color:var(--mustard)}
+  .foot-col h4{font-family:"Fraunces",serif;color:var(--mustard);font-size:1rem;margin-bottom:6px}
+  .credit{margin-top:30px;padding-top:18px;border-top:1px solid #463c25;font-size:.84rem;color:#9c906f;text-align:center}
+  .credit a{color:var(--mustard);font-weight:600}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:880px){
+    .hero-grid,.about-grid,.visit-grid{grid-template-columns:1fr}
+    .hero-photo{order:-1;max-width:480px}
+    .ticket{transform:rotate(0)}
+    .menu-cols{grid-template-columns:1fr;gap:0 0}
+  }
+  @media(max-width:680px){
+    .nav-links{
+      position:absolute;top:84px;left:0;right:0;background:var(--cream);
+      flex-direction:column;align-items:stretch;gap:4px;padding:12px 18px 18px;
+      border-bottom:3px solid var(--avocado);display:none;
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{padding:11px 14px}
+    .burger{display:inline-flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+    .burger span{width:26px;height:3px;background:var(--avocado);border-radius:2px;display:block}
+    .about-photos figure:first-child img{height:180px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="brandmark" aria-label="Super Taquería home">
+      <span class="badge"><span>SUPER</span></span>
+      <b>Super&nbsp;Taquería</b>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navlinks">
+      <a href="#about">Our Story</a>
+      <a href="#menu">The Menu</a>
+      <a href="#testimonies">What People Say</a>
+      <a href="#visit">Hours &amp; Map</a>
+      <a href="tel:+18316365849" class="nav-cta">Call (831)&nbsp;636-5849</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Hollister, California · Since the burrito was king</span>
+      <h1>
+        <span class="l1">Hefty Burritos.</span>
+        <span class="l2">Honest Prices.</span>
+      </h1>
+      <p class="lead">The long-standing G.O.A.T. of Hollister — carnitas &amp; carne asada the way the neighborhood likes it. Hand-rolled, fast out the window, and not a penny more than it should be.</p>
+      <div class="tags">
+        <span class="tag">Carnitas &amp; Carne Asada</span>
+        <span class="tag">Super Burritos</span>
+        <span class="tag">Flautas &amp; Tortas</span>
+        <span class="tag">Open Daily 9–10</span>
+      </div>
+      <div class="cta-row">
+        <a href="tel:+18316365849" class="btn btn-primary">Call to Order</a>
+        <a href="https://www.google.com/maps?q=460+Tres+Pinos+Rd,+Hollister,+CA+95023" target="_blank" rel="noopener" class="btn btn-ghost">Get Directions</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="ticket">
+        <img src="./photos/01.jpg" alt="The Super Taquería storefront on Tres Pinos Road in Hollister" />
+        <span class="stamp">Home of the Super!</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-photos">
+      <figure><img src="./photos/05.jpg" alt="A fat burrito in a basket with a Super Taquería cup and house salsas" /></figure>
+      <figure><img src="./photos/06.jpg" alt="Cross-section of a carnitas burrito packed with meat and beans" /></figure>
+      <figure><img src="./photos/02.jpg" alt="Tacos with avocado and a side of crispy tortilla chips" /></figure>
+    </div>
+    <div class="about-copy">
+      <div class="sec-head">
+        <span class="kicker">Our Story</span>
+        <h2>A Hollister hidden gem, one super burrito at a time.</h2>
+      </div>
+      <p>Tucked on Tres Pinos Road, Super Taquería has been the spot locals send out-of-towners to for years. The recipe is simple: fresh ingredients, a counter that greets you with a smile, and burritos hefty enough to make a dollar stretch.</p>
+      <p style="margin-top:14px">Carnitas and carne asada are the headliners, but the tortas, flautas, quesadillas and aguas frescas keep the regulars coming back. Pull up a booth, grab a salsa bottle, and stay a while — it's that kind of place.</p>
+      <p class="est">Fresh · Fast · Family-run</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;margin:0 auto 30px">
+      <span class="kicker">Off the Wall Menu</span>
+      <h2>The Lineup</h2>
+      <p>A taste of the board. Stop in for the full menu of tacos, burritos, plates and drinks.</p>
+    </div>
+    <div class="board">
+      <div class="board-top"><div class="rule"></div><h3>Mexican Fast Food</h3><div class="rule"></div></div>
+      <p class="board-note">Asada · Carnitas · Pollo · Lengua — your pick, our way</p>
+      <div class="menu-cols">
+        <div>
+          <div class="mcat">Burritos &amp; Tacos</div>
+          <div class="mrow"><span class="nm">Super Burrito</span><span class="dots"></span><span class="pr">$9.00</span></div>
+          <div class="mrow"><span class="nm">Carne Asada Burrito</span><span class="dots"></span><span class="pr">Market</span></div>
+          <div class="mrow"><span class="nm">Carnitas Tacos (2)</span><span class="dots"></span><span class="pr">Market</span></div>
+
+          <div class="mcat">Tortas</div>
+          <div class="mrow"><span class="nm">Torta · Asada</span><span class="dots"></span><span class="pr">$6.24</span></div>
+          <div class="mrow"><span class="nm">Torta · Lengua</span><span class="dots"></span><span class="pr">Ask</span></div>
+
+          <div class="mcat">Flautas</div>
+          <div class="mrow"><span class="nm">Flautas (sour cream &amp; guac)</span><span class="dots"></span><span class="pr">$5.19</span></div>
+        </div>
+        <div>
+          <div class="mcat">Nachos</div>
+          <div class="mrow"><span class="nm">Regular Nachos</span><span class="dots"></span><span class="pr">$6.49</span></div>
+          <div class="mrow"><span class="nm">Super Nachos · Asada</span><span class="dots"></span><span class="pr">$9.99</span></div>
+
+          <div class="mcat">Quesadillas</div>
+          <div class="mrow"><span class="nm">Corn Quesadilla w/ Meat</span><span class="dots"></span><span class="pr">$3.24</span></div>
+          <div class="mrow"><span class="nm">Flour Quesadilla · Asada</span><span class="dots"></span><span class="pr">$7.84</span></div>
+
+          <div class="mcat">Tostadas &amp; Drinks</div>
+          <div class="mrow"><span class="nm">Tostada w/ Meat</span><span class="dots"></span><span class="pr">$3.39</span></div>
+          <div class="mrow"><span class="nm">Aguas Frescas / Tropical</span><span class="dots"></span><span class="pr">$2.49</span></div>
+        </div>
+      </div>
+      <p class="menu-foot">Prices shown are a sample from the in-store board and may change.</p>
+    </div>
+  </div>
+</section>
+
+<section id="testimonies">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">In Their Words</span>
+      <h2>What People Say</h2>
+      <p>Hand-picked notes from neighbors and first-timers alike.</p>
+    </div>
+    <div class="placemats">
+      <div class="placemat">
+        <p class="q">This is the absolute best value you will find at any food spot in Hollister, perhaps even in this part of the state. You can get a giant super burrito for 9 dollars, which is insanely solid. The food is delicious, comes out fast, and costs next to nothing. Super Taquería is the long-standing G.O.A.T. for a reason!</p>
+        <div class="who">Dacien F.</div>
+      </div>
+      <div class="placemat">
+        <p class="q">What an amazingly wonderful hidden gem in Hollister. The food is fresh, delicious, and everything about this place delivers on its promise of authentic Mexican cuisine. We ordered the potato flautas and chicken tacos — the flautas came with a heaping serving of sour cream and guacamole that perfectly complimented the crisp, flavorful flauta.</p>
+        <div class="who">Josh R.</div>
+      </div>
+      <div class="placemat">
+        <p class="q">I had a great experience here! The lady at the counter was so kind and took the time to help us through the menu with a smile. The place is spotless, our food came out super quick, and every bite was fantastic. Highly recommended!</p>
+        <div class="who">Martin J.</div>
+      </div>
+      <div class="placemat">
+        <p class="q">Outstanding food and service. The restaurant team is very friendly and knowledgeable. They priced their food very reasonably.</p>
+        <div class="who">Oscar B.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Come on by</span>
+      <h2>Open every single day, 9 to 10.</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="info-card">
+        <h3>Hours &amp; Address</h3>
+        <span class="open-pill">Open Daily · 9:00 AM – 10:00 PM</span>
+        <div class="hours-line"><span>Monday – Friday</span><span>9 AM – 10 PM</span></div>
+        <div class="hours-line"><span>Saturday</span><span>9 AM – 10 PM</span></div>
+        <div class="hours-line"><span>Sunday</span><span>9 AM – 10 PM</span></div>
+        <p class="meta">
+          <strong>Super Taquería</strong><br />
+          460 Tres Pinos Rd<br />
+          Hollister, CA 95023<br />
+          <a href="tel:+18316365849"><strong>(831) 636-5849</strong></a>
+        </p>
+        <div class="findus">
+          <a href="https://maps.google.com/?cid=17857731383557111991" target="_blank" rel="noopener">Google Business</a>
+          <a href="https://www.google.com/maps?q=460+Tres+Pinos+Rd,+Hollister,+CA+95023" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=460+Tres+Pinos+Rd,+Hollister,+CA+95023&z=15&output=embed"
+          title="Map to Super Taquería, 460 Tres Pinos Rd, Hollister, CA"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="wrap">
+    <h2>Hungry yet?</h2>
+    <p>Give us a ring and we'll have your super burrito ready, or roll on over to Tres Pinos Road.</p>
+    <div class="cta-row" style="justify-content:center">
+      <a href="tel:+18316365849" class="btn btn-primary">Call (831) 636-5849</a>
+      <a href="https://www.google.com/maps?q=460+Tres+Pinos+Rd,+Hollister,+CA+95023" target="_blank" rel="noopener" class="btn btn-ghost" style="border-color:var(--brick);color:var(--brick)">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <span class="badge"><span>SUPER</span></span>
+          <b>Super&nbsp;Taquería</b>
+        </div>
+        <p class="foot-col" style="margin-top:12px;max-width:22rem;color:#cdc09b">Hollister's home of the super burrito — authentic Mexican fast food, fresh daily.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Find Us</h4>
+        460 Tres Pinos Rd<br />
+        Hollister, CA 95023<br />
+        <a href="tel:+18316365849">(831) 636-5849</a>
+      </div>
+      <div class="foot-col">
+        <h4>Hours</h4>
+        Open Daily<br />
+        9:00 AM – 10:00 PM<br />
+        <a href="https://maps.google.com/?cid=17857731383557111991" target="_blank" rel="noopener">View on Google</a>
+      </div>
+    </div>
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </div>
+</footer>
+
+<script>
+  var b=document.getElementById('burger'),l=document.getElementById('navlinks');
+  b.addEventListener('click',function(){
+    var open=l.classList.toggle('open');
+    b.setAttribute('aria-expanded',open?'true':'false');
+  });
+  l.addEventListener('click',function(e){if(e.target.tagName==='A')l.classList.remove('open');});
+</script>
+</body>
+</html>

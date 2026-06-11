@@ -1,0 +1,940 @@
+<!-- flavor: Bold Desert Botanica | accent: #0E5A4F | bg: #F2F4EF | hero: left-split | service: numbered-stacked -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twin City Florist — Calexico, CA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --acc: #0E5A4F;
+    --bg: #F2F4EF;
+    --acc-dark: #09403A;
+    --acc-light: #E8F0EE;
+    --text: #1A1A18;
+    --muted: #5A5A54;
+    --border: #D4D9CF;
+    --nav-h: 64px;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-h);
+    font-size: 16px;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(1rem, 4vw, 2.5rem);
+  }
+
+  .nav-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.04em;
+    color: var(--acc);
+    text-decoration: none;
+    line-height: 1;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2rem);
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--acc); }
+
+  .nav-cta {
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: var(--bg) !important;
+    background: var(--acc);
+    padding: 0.5rem 1.1rem;
+    text-decoration: none !important;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--acc-dark) !important; }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    transition: all 0.25s;
+  }
+
+  /* HERO — left-split */
+  #hero {
+    min-height: calc(100svh - var(--nav-h));
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+    background: var(--bg);
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-h1 em {
+    color: var(--acc);
+    font-style: normal;
+  }
+
+  .hero-sub {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    color: var(--muted);
+    max-width: 36ch;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--acc);
+    color: var(--bg);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.8rem;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover {
+    background: var(--acc-dark);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    display: inline-block;
+    color: var(--acc);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.9rem 0;
+    text-decoration: none;
+    border-bottom: 1px solid var(--acc);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-ghost:hover { color: var(--acc-dark); border-color: var(--acc-dark); }
+
+  .hero-img {
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
+  }
+
+  .hero-img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(242,244,239,0.08) 0%, transparent 40%);
+  }
+
+  /* STRIP */
+  .strip {
+    background: var(--acc);
+    color: var(--bg);
+    text-align: center;
+    padding: 1rem clamp(1rem, 4vw, 2rem);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ABOUT */
+  #about {
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 4rem);
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: center;
+  }
+
+  .about-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.75rem;
+  }
+
+  .about-photos img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-photos img:first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 16/9;
+  }
+
+  .about-text {}
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text p {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    line-height: 1.8;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  /* SERVICES — numbered-stacked */
+  #services {
+    background: var(--text);
+    color: var(--bg);
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 4rem);
+  }
+
+  .services-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .services-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    align-items: end;
+  }
+
+  .services-header .section-label { color: #9DC4BC; }
+  .services-header .section-h2 { color: var(--bg); margin-bottom: 0; }
+
+  .services-header p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: #A8ADA4;
+    line-height: 1.8;
+    align-self: end;
+  }
+
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .service-item {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    padding: 1.75rem 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .service-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.12); }
+
+  .service-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    color: var(--acc);
+    line-height: 1;
+    padding-top: 0.25rem;
+    letter-spacing: 0.03em;
+  }
+
+  .service-body {}
+
+  .service-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(1.5rem, 2.8vw, 2rem);
+    letter-spacing: 0.04em;
+    color: var(--bg);
+    margin-bottom: 0.4rem;
+    line-height: 1;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    color: #A8ADA4;
+    line-height: 1.65;
+    max-width: 60ch;
+  }
+
+  /* GALLERY */
+  #gallery {
+    padding: clamp(3rem, 6vw, 5rem) 0;
+    overflow: hidden;
+  }
+
+  .gallery-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--acc);
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .gallery-strip {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 clamp(1rem, 4vw, 2rem);
+  }
+
+  .gallery-strip::-webkit-scrollbar { display: none; }
+
+  .gallery-strip img {
+    flex: 0 0 auto;
+    height: clamp(200px, 30vw, 340px);
+    width: auto;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* TESTIMONIES */
+  #testimonies {
+    background: var(--acc-light);
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 4rem);
+  }
+
+  .testimonies-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .testimonies-header {
+    margin-bottom: 3.5rem;
+  }
+
+  .testimonies-header .section-label { color: var(--acc); }
+
+  .testimonies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 1.5rem;
+  }
+
+  .testimony {
+    background: var(--bg);
+    padding: 2rem 1.75rem;
+    border-left: 3px solid var(--acc);
+  }
+
+  .testimony blockquote {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .testimony blockquote::before {
+    content: '\201C';
+    font-family: 'Lora', serif;
+    font-size: 3rem;
+    color: var(--acc);
+    line-height: 0;
+    vertical-align: -0.75rem;
+    margin-right: 0.15rem;
+    opacity: 0.5;
+  }
+
+  .testimony cite {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--acc);
+    font-style: normal;
+  }
+
+  .testimony.featured {
+    grid-column: span 2;
+    background: var(--acc);
+  }
+
+  .testimony.featured blockquote { color: var(--bg); }
+  .testimony.featured blockquote::before { color: rgba(255,255,255,0.35); }
+  .testimony.featured cite { color: #9DC4BC; }
+
+  /* HOURS & MAP */
+  #location {
+    padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 4rem);
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: clamp(3rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  .hours-block {}
+
+  .hours-table {
+    width: 100%;
+    margin-top: 2rem;
+    border-collapse: collapse;
+  }
+
+  .hours-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hours-table td {
+    padding: 0.65rem 0;
+    font-size: 0.9rem;
+  }
+
+  .hours-table td:first-child {
+    font-weight: 500;
+    color: var(--text);
+    width: 50%;
+  }
+
+  .hours-table td:last-child {
+    color: var(--muted);
+    text-align: right;
+  }
+
+  .hours-table tr:last-child td { border-bottom: none; }
+
+  .contact-details {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .contact-details a {
+    font-size: 0.9rem;
+    color: var(--acc);
+    text-decoration: none;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .contact-details a:hover { color: var(--acc-dark); }
+
+  .contact-details .contact-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.1rem;
+  }
+
+  .contact-item { margin-bottom: 0.75rem; }
+
+  .map-block {}
+
+  .map-block iframe {
+    width: 100%;
+    height: 380px;
+    border: none;
+    display: block;
+    filter: grayscale(20%) contrast(1.05);
+  }
+
+  .map-cta {
+    margin-top: 1rem;
+    display: inline-block;
+  }
+
+  /* SOCIAL */
+  .social-links {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .social-links a {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .social-links a:hover { color: var(--acc); border-color: var(--acc); }
+
+  /* CTA BAND */
+  #cta {
+    background: var(--acc);
+    padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.5rem, 6vw, 4rem);
+    text-align: center;
+  }
+
+  #cta .section-h2 {
+    color: var(--bg);
+    margin-bottom: 0.75rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  #cta p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: #9DC4BC;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+  }
+
+  .btn-light {
+    display: inline-block;
+    background: var(--bg);
+    color: var(--acc);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .btn-light:hover {
+    background: #e6e8e2;
+    transform: translateY(-1px);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--text);
+    color: #A8ADA4;
+    padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 6vw, 4rem);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.04em;
+    color: var(--bg);
+  }
+
+  .footer-credit {
+    font-size: 0.78rem;
+    color: #6B706A;
+    text-align: right;
+  }
+
+  .footer-credit a {
+    color: #9DC4BC;
+    text-decoration: none;
+  }
+
+  .footer-credit a:hover { color: var(--bg); }
+
+  /* RESPONSIVE */
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: var(--nav-h);
+      left: 0;
+      right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem clamp(1rem, 4vw, 2rem);
+      gap: 1.25rem;
+      z-index: 99;
+    }
+    .nav-toggle { display: flex; }
+
+    #hero {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+
+    .hero-text { padding: 3rem 1.5rem 2rem; }
+
+    .hero-img {
+      min-height: 52vw;
+      order: -1;
+    }
+
+    #about {
+      grid-template-columns: 1fr;
+      padding: 3.5rem 1.5rem;
+    }
+
+    .about-photos { order: -1; }
+
+    .services-header {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .testimony.featured { grid-column: span 1; }
+
+    #location {
+      grid-template-columns: 1fr;
+      padding: 3.5rem 1.5rem;
+    }
+
+    footer {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .footer-credit { text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-h1 { font-size: 3rem; }
+    .service-item { grid-template-columns: 2.5rem 1fr; gap: 1rem; }
+    .gallery-strip img { height: 180px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="#hero">Twin City Florist</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonies">Testimonies</a></li>
+    <li><a href="#location">Hours &amp; Map</a></li>
+    <li><a class="nav-cta" href="tel:+17603573291">Call Now</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO — left-split -->
+<section id="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Calexico, CA · Est. Decades of Service</p>
+    <h1 class="hero-h1">FLOWERS<br>THAT <em>SPEAK</em><br>FOR YOU</h1>
+    <p class="hero-sub">Imperial Valley's most trusted florist. Every arrangement handcrafted with fresh flowers and decades of artistry — from everyday love to life's most meaningful moments.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="tel:+17603573291">Call to Order</a>
+      <a class="btn-ghost" href="#services">See Our Services</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <img src="./photos/01.jpg" alt="Twin City Florist arrangement">
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">Same-day delivery available in the Imperial Valley — call us</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-photos">
+    <img src="./photos/02.jpg" alt="Fresh flowers at Twin City Florist">
+    <img src="./photos/03.jpg" alt="Arrangement detail">
+    <img src="./photos/04.jpg" alt="Twin City Florist display">
+  </div>
+  <div class="about-text">
+    <p class="section-label">About Us</p>
+    <h2 class="section-h2">THE HEART OF CALEXICO'S FLOWER SCENE</h2>
+    <p>Twin City Florist has served the Imperial Valley for decades, earning the trust of families, event planners, and last-minute romantics alike. We pour genuine care into every stem — from a single rose to a full funeral tribute.</p>
+    <p>Maggie, Rosa, and our entire team treat every order as personal. You'll always reach someone who listens, helps you choose, and delivers flowers worthy of the person you're honoring.</p>
+    <p>Located at 309 W 2nd St in Calexico, we offer same-day delivery throughout the valley, custom event work, and the kind of attentiveness the big online companies simply can't match.</p>
+  </div>
+</section>
+
+<!-- SERVICES — numbered-stacked -->
+<section id="services">
+  <div class="services-inner">
+    <div class="services-header">
+      <div>
+        <p class="section-label">What We Do</p>
+        <h2 class="section-h2">FRESH FLOWERS FOR EVERY OCCASION</h2>
+      </div>
+      <p>We don't do cookie-cutter. Tell us the occasion, the person, and your budget — we'll create something that makes them feel it.</p>
+    </div>
+    <div class="services-list">
+      <div class="service-item">
+        <div class="service-num">01</div>
+        <div class="service-body">
+          <p class="service-name">Custom Arrangements</p>
+          <p class="service-desc">Signature handcrafted bouquets and floral pieces designed around your vision, your recipient, and your budget. No two are alike — that's the point.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">02</div>
+        <div class="service-body">
+          <p class="service-name">Sympathy &amp; Funeral Tributes</p>
+          <p class="service-desc">Elegant, compassionate arrangements for memorial services. Bring us a photo or describe what you need — we deliver with care and precision, exactly as you envisioned.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">03</div>
+        <div class="service-body">
+          <p class="service-name">Event &amp; Wedding Flowers</p>
+          <p class="service-desc">From intimate ceremonies to full venue décor. Decades of experience mean we understand scale, timeline, and the dramatic WOW factor that transforms a space.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">04</div>
+        <div class="service-body">
+          <p class="service-name">Everyday Gifting</p>
+          <p class="service-desc">Birthday, anniversary, "just because" — same-day delivery throughout the Imperial Valley so you never miss the moment. Call in, tell us the vibe, we handle the rest.</p>
+        </div>
+      </div>
+      <div class="service-item">
+        <div class="service-num">05</div>
+        <div class="service-body">
+          <p class="service-name">High-End Statement Pieces</p>
+          <p class="service-desc">When ordinary won't do. Our premium arrangements command attention — lush, layered, and built to impress. The kind of gift that guarantees the recipient feels truly loved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <p class="gallery-label">Our Work</p>
+  <div class="gallery-strip">
+    <img src="./photos/05.jpg" alt="Floral arrangement">
+    <img src="./photos/06.jpg" alt="Floral display">
+    <img src="./photos/01.jpg" alt="Twin City Florist work">
+    <img src="./photos/03.jpg" alt="Fresh flowers">
+    <img src="./photos/02.jpg" alt="Arrangement">
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="testimonies">
+  <div class="testimonies-inner">
+    <div class="testimonies-header">
+      <p class="section-label">Customer Testimonies</p>
+      <h2 class="section-h2">IN THEIR WORDS</h2>
+    </div>
+    <div class="testimonies-grid">
+      <div class="testimony featured">
+        <blockquote>If you need high end flower arrangements that have the WOW factor or simple yet beautifully elegant pieces delivered in the Imperial Valley, look no further. Their decades of experience will provide whatever floral services you may need at whatever your budget is — and the quality and artistic beauty is the highest you'll find in the area.</blockquote>
+        <cite>Jose Samuel W.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>I've been a loyal customer of Twin City Florist for over a decade. I can count on them to always deliver gorgeous &amp; fresh quality flowers. Thank you Maggie &amp; Rosa for your attention to detail and all the love you pour into every single gorgeous arrangement.</blockquote>
+        <cite>Marissa R.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>Their work was outstanding and beautiful. The arrangements were beautiful, quality flowers and sturdy — for my mother's funeral services, they exceeded every expectation.</blockquote>
+        <cite>Cuca C.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>I called and asked if it was still possible to get same-day delivery. They showed so much kindness and helped me choose the right colors and price for my budget. My dad said the woman delivering the flowers was very nice. Big gorgeous flowers for an amazing price with same-day delivery.</blockquote>
+        <cite>Julliett V.</cite>
+      </div>
+      <div class="testimony">
+        <blockquote>Twin City did the flowers for my mom's funeral. I provided a picture of what I wanted and they delivered them exactly like the picture. They were literally the most beautiful flowers I have ever seen. The staff is amazing and was super helpful.</blockquote>
+        <cite>Nicole G.</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & MAP -->
+<section id="location">
+  <div class="hours-block">
+    <p class="section-label">Visit Us</p>
+    <h2 class="section-h2">HOURS &amp; LOCATION</h2>
+
+    <table class="hours-table">
+      <tr><td>Monday</td><td>10:00 AM – 5:00 PM</td></tr>
+      <tr><td>Tuesday</td><td>10:00 AM – 5:00 PM</td></tr>
+      <tr><td>Wednesday</td><td>10:00 AM – 5:00 PM</td></tr>
+      <tr><td>Thursday</td><td>10:00 AM – 5:00 PM</td></tr>
+      <tr><td>Friday</td><td>10:00 AM – 5:00 PM</td></tr>
+      <tr><td>Saturday</td><td>10:00 AM – 2:00 PM</td></tr>
+      <tr><td>Sunday</td><td>Closed</td></tr>
+    </table>
+
+    <div class="contact-details">
+      <div class="contact-item">
+        <p class="contact-label">Phone</p>
+        <a href="tel:+17603573291">(760) 357-3291</a>
+      </div>
+      <div class="contact-item">
+        <p class="contact-label">Address</p>
+        <a href="https://maps.google.com/?q=309+W+2nd+St,+Calexico,+CA+92231" target="_blank" rel="noopener">309 W 2nd St, Calexico, CA 92231</a>
+      </div>
+    </div>
+
+    <div class="social-links">
+      <a href="https://maps.google.com/?cid=18270565212887461050&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business</a>
+    </div>
+  </div>
+  <div class="map-block">
+    <iframe
+      src="https://www.google.com/maps?q=309+W+2nd+St,+Calexico,+CA+92231&z=15&output=embed"
+      allowfullscreen
+      loading="lazy"
+      title="Twin City Florist location map">
+    </iframe>
+    <a class="btn-primary map-cta" href="https://maps.google.com/?q=309+W+2nd+St,+Calexico,+CA+92231" target="_blank" rel="noopener">Get Directions</a>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section id="cta">
+  <h2 class="section-h2">READY TO SEND SOMETHING BEAUTIFUL?</h2>
+  <p>Call us today — same-day delivery available throughout the Imperial Valley.</p>
+  <a class="btn-light" href="tel:+17603573291">Call (760) 357-3291</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Twin City Florist</div>
+  <div class="footer-credit">
+    309 W 2nd St, Calexico, CA 92231 &nbsp;·&nbsp; (760) 357-3291<br>
+    Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  toggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+
+  // Close nav on link click
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+    });
+  });
+</script>
+</body>
+</html>

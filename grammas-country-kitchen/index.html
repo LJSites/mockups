@@ -1,0 +1,497 @@
+<!--
+  ARCHETYPE: Homey Country Kitchen / roadside comfort-food diner — "front-porch homestead"
+  Distinct from the mustard/brick "comedor" Mexican restaurant already built: here the
+  spine is RED GINGHAM + warm cream + natural wood, evoking a checked tablecloth and a
+  covered-wagon sign on Route 60. Vibe pulled straight from the photos: the red-check
+  menu cover (photo 05), blue/yellow gingham interior (03), the covered wagon (06).
+
+  STRUCTURAL DECISIONS
+  - Hero: NOT a centered-overlay stock shot. Asymmetric split — a cream "menu-card" panel
+    with a script logotype + the wagon's "GOD BLESS AMERICA" spirit on the left, the real
+    waffle photo bleeding off the right. A thin red-gingham band runs full width above the
+    footer and under the hero to tie the tablecloth motif together.
+  - Nav: sticky cream bar with a hand-painted-sign feel; scroll-padding-top reserves its
+    height so anchor jumps never tuck a heading under it.
+  - "From the Griddle" menu: a two-column ruled menu-card (like a real diner laminated
+    menu) — NOT a 3-up icon grid.
+  - Testimonies: stacked "ticket"/order-slip cards on a wood backdrop, first-name + last
+    initial, no stars/scores.
+  - Animation: none beyond gentle CSS hover lifts. No scroll fade-ups.
+
+  HARD RULES OBSERVED: local ./photos/NN.jpg only; keyless google.com/maps?q=...&output=embed;
+  exact footer credit line; testimonies labeled "What Folks Are Saying", no ratings.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gramma's Country Kitchen — Banning, CA | Breakfast All Day</title>
+<meta name="description" content="Gramma's Country Kitchen in Banning, CA — homey breakfast served all day, country-fried comfort food, and our famous giant cinnamon rolls. Right off the 60." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Yellowtail&family=Bitter:ital,wght@0,400;0,600;0,700;1,400&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --gingham:#b22231;        /* tablecloth red */
+    --gingham-deep:#8c1824;
+    --cream:#fbf4e3;          /* warm cream / menu paper */
+    --cream-2:#f3e8cf;
+    --wood:#5a3a25;           /* natural wood */
+    --wood-deep:#3a2516;
+    --butter:#f2c14e;         /* the building yellow / butter */
+    --ink:#33271d;
+    --leaf:#3f6b46;           /* patio green accent */
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:78px; /* reserve sticky nav height */
+  }
+  body{
+    font-family:'Bitter',Georgia,serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{line-height:1.1;}
+  .script{font-family:'Yellowtail',cursive;font-weight:400;}
+  .stamp{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;}
+  a{color:inherit;text-decoration:none;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px;}
+
+  /* gingham band — woven red check via layered linear-gradients */
+  .gingham{
+    height:26px;
+    background-color:#fff;
+    background-image:
+      linear-gradient(90deg, rgba(178,34,49,.78) 50%, transparent 50%),
+      linear-gradient(rgba(178,34,49,.78) 50%, transparent 50%);
+    background-size:26px 26px;
+    background-blend-mode:multiply;
+    box-shadow:inset 0 1px 0 rgba(0,0,0,.06), inset 0 -1px 0 rgba(0,0,0,.06);
+  }
+
+  /* ---------- NAV ---------- */
+  nav.bar{
+    position:sticky;top:0;z-index:50;
+    background:var(--cream);
+    border-bottom:2px solid var(--wood);
+    box-shadow:0 2px 0 rgba(90,58,37,.18);
+  }
+  .bar-inner{display:flex;align-items:center;justify-content:space-between;height:76px;}
+  .brand-mark{display:flex;align-items:baseline;gap:.45rem;}
+  .brand-mark .g{font-family:'Yellowtail',cursive;font-size:1.9rem;color:var(--gingham);line-height:1;}
+  .brand-mark .ck{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:.74rem;color:var(--wood);align-self:center;}
+  .navlinks{display:flex;gap:1.7rem;align-items:center;}
+  .navlinks a{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.07em;font-size:.82rem;color:var(--wood);padding-bottom:3px;border-bottom:2px solid transparent;transition:border-color .15s,color .15s;}
+  .navlinks a:hover{color:var(--gingham);border-color:var(--gingham);}
+  .nav-call{
+    background:var(--gingham);color:var(--cream)!important;
+    padding:.55rem 1.05rem;border-radius:2px;border:0!important;
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:.82rem;
+    box-shadow:0 2px 0 var(--gingham-deep);
+  }
+  .nav-call:hover{background:var(--gingham-deep);color:var(--cream)!important;}
+  .navtoggle{display:none;background:none;border:0;font-size:1.6rem;color:var(--wood);cursor:pointer;}
+
+  /* ---------- HERO ---------- */
+  header.hero{background:var(--cream);position:relative;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.02fr 1fr;min-height:560px;}
+  .hero-copy{padding:56px 0 56px;display:flex;flex-direction:column;justify-content:center;}
+  .hero-copy .eyebrow{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.22em;
+    font-size:.78rem;color:var(--gingham);margin-bottom:.6rem;
+  }
+  .hero-copy h1{margin-bottom:.2rem;}
+  .hero-copy h1 .l1{display:block;font-family:'Yellowtail',cursive;font-weight:400;font-size:clamp(3.2rem,8vw,5.4rem);color:var(--gingham);}
+  .hero-copy h1 .l2{display:block;font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:clamp(1.1rem,2.4vw,1.7rem);color:var(--wood);margin-top:-.4rem;}
+  .hero-copy p.lede{font-size:1.12rem;margin:1.3rem 0 .4rem;max-width:33ch;color:#4a3a2c;}
+  .ribbon{
+    display:inline-block;margin-top:1.4rem;
+    background:var(--gingham);color:var(--cream);
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.72rem;
+    padding:.4rem 1rem;border-radius:2px;align-self:flex-start;
+    box-shadow:2px 2px 0 var(--gingham-deep);
+  }
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.9rem;}
+  .btn{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:.92rem;
+    padding:.85rem 1.5rem;border-radius:2px;display:inline-flex;align-items:center;gap:.5rem;
+    transition:transform .12s, box-shadow .12s, background .15s;cursor:pointer;
+  }
+  .btn-primary{background:var(--gingham);color:var(--cream);box-shadow:0 3px 0 var(--gingham-deep);}
+  .btn-primary:hover{background:var(--gingham-deep);transform:translateY(-1px);box-shadow:0 4px 0 var(--gingham-deep);}
+  .btn-ghost{background:transparent;color:var(--wood);border:2px solid var(--wood);}
+  .btn-ghost:hover{background:var(--wood);color:var(--cream);}
+  .hero-photo{position:relative;}
+  .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero-photo::after{content:"";position:absolute;inset:0;box-shadow:inset 14px 0 30px -18px rgba(90,58,37,.6);}
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:74px 0;}
+  .sec-head{text-align:center;margin-bottom:2.6rem;}
+  .sec-head .kicker{font-family:'Yellowtail',cursive;font-size:1.7rem;color:var(--gingham);display:block;line-height:1;}
+  .sec-head h2{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:clamp(1.5rem,3.4vw,2.2rem);color:var(--wood);margin-top:.25rem;}
+  .sec-head .rule{width:64px;height:3px;background:var(--gingham);margin:1rem auto 0;}
+
+  /* ---------- ABOUT ---------- */
+  #about{background:var(--cream-2);}
+  .about-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:46px;align-items:center;}
+  .about-copy p{margin-bottom:1.1rem;font-size:1.06rem;}
+  .about-copy p:first-of-type::first-letter{
+    font-family:'Yellowtail',cursive;font-size:3.1rem;color:var(--gingham);
+    float:left;line-height:.7;margin:.12em .12em 0 0;
+  }
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .about-photos figure{overflow:hidden;border:5px solid #fff;box-shadow:0 6px 18px -10px rgba(58,37,22,.55);}
+  .about-photos figure.tall{grid-row:span 2;}
+  .about-photos img{width:100%;height:100%;object-fit:cover;}
+
+  /* ---------- MENU ---------- */
+  #menu{background:var(--cream);}
+  .menu-card{
+    max-width:880px;margin:0 auto;background:#fff;
+    border:1px solid #e4d6b8;border-radius:4px;
+    box-shadow:0 16px 40px -26px rgba(58,37,22,.6);
+    padding:40px 42px;position:relative;
+  }
+  .menu-card::before{
+    content:"God Bless America";font-family:'Oswald',sans-serif;text-transform:uppercase;
+    letter-spacing:.32em;font-size:.62rem;color:#b9a983;text-align:center;display:block;margin-bottom:1.4rem;
+  }
+  .menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:34px 50px;}
+  .menu-group h3{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:1rem;color:var(--gingham);
+    padding-bottom:.5rem;margin-bottom:.7rem;border-bottom:2px solid var(--cream-2);
+    display:flex;align-items:center;gap:.5rem;
+  }
+  .menu-item{display:flex;align-items:baseline;gap:.6rem;padding:.4rem 0;}
+  .menu-item .nm{font-weight:600;white-space:nowrap;}
+  .menu-item .dots{flex:1;border-bottom:1px dotted #c9b896;transform:translateY(-4px);}
+  .menu-item .desc{font-size:.86rem;color:#6a5947;font-style:italic;flex-basis:100%;margin:-.2rem 0 .2rem;}
+  .menu-note{
+    margin-top:1.8rem;text-align:center;font-style:italic;color:#6a5947;font-size:.95rem;
+    border-top:2px solid var(--cream-2);padding-top:1.2rem;
+  }
+  .menu-note .star{color:var(--gingham);font-weight:700;font-style:normal;}
+
+  /* ---------- HOURS + MAP ---------- */
+  #visit{background:var(--wood);color:var(--cream);}
+  #visit .sec-head .kicker{color:var(--butter);}
+  #visit .sec-head h2{color:var(--cream);}
+  #visit .sec-head .rule{background:var(--butter);}
+  .visit-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:40px;align-items:stretch;}
+  .hours-card{background:rgba(251,244,227,.06);border:1px solid rgba(251,244,227,.2);border-radius:4px;padding:30px 32px;}
+  .hours-card h3{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:1.05rem;color:var(--butter);margin-bottom:1rem;}
+  .hrow{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px dashed rgba(251,244,227,.22);font-size:.98rem;}
+  .hrow:last-child{border-bottom:0;}
+  .hrow .d{color:var(--cream);}
+  .hrow .t{color:#e8dcc2;font-variant-numeric:tabular-nums;}
+  .hrow.today{background:rgba(242,193,78,.14);margin:0 -10px;padding-left:10px;padding-right:10px;border-radius:3px;}
+  .hrow.today .d{color:var(--butter);font-weight:700;}
+  .visit-info{margin-top:1.4rem;font-size:.96rem;color:#e8dcc2;}
+  .visit-info a{color:var(--butter);border-bottom:1px solid rgba(242,193,78,.5);}
+  .map-frame{border-radius:4px;overflow:hidden;border:4px solid rgba(251,244,227,.14);min-height:360px;}
+  .map-frame iframe{width:100%;height:100%;min-height:360px;border:0;display:block;filter:saturate(.95);}
+  .addr-line{display:flex;align-items:flex-start;gap:.55rem;margin-bottom:1rem;}
+  .addr-line .pin{color:var(--butter);font-size:1.1rem;line-height:1.3;}
+
+  /* ---------- TESTIMONIES ---------- */
+  #folks{background:var(--cream-2);position:relative;}
+  .slips{max-width:980px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:26px;}
+  .slip{
+    background:#fff;border:1px solid #e9dcc0;border-radius:3px;padding:26px 26px 22px;
+    box-shadow:0 8px 22px -14px rgba(58,37,22,.5);position:relative;
+  }
+  .slip::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--gingham);border-radius:3px 0 0 3px;
+  }
+  .slip .quote-mark{font-family:'Yellowtail',cursive;font-size:2.4rem;color:var(--gingham);line-height:.4;display:block;margin-bottom:.4rem;}
+  .slip p{font-size:.99rem;color:#3f3022;margin-bottom:1rem;}
+  .slip .who{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:.78rem;color:var(--wood);}
+  .slip .who::before{content:"— ";color:var(--gingham);}
+  .slip.feature{grid-column:1 / -1;background:#fff;}
+  .slip.feature p{font-size:1.08rem;font-style:italic;}
+
+  /* ---------- CONTACT / CTA ---------- */
+  #contact{background:var(--cream);text-align:center;}
+  .contact-card{max-width:640px;margin:0 auto;}
+  .contact-card .script{display:block;font-size:2.1rem;color:var(--gingham);line-height:1;}
+  .contact-card h2{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--wood);font-size:clamp(1.5rem,3.4vw,2.1rem);margin:.3rem 0 1rem;}
+  .contact-card p{font-size:1.08rem;color:#4a3a2c;margin-bottom:1.6rem;}
+  .phone-big{font-family:'Oswald',sans-serif;font-size:clamp(1.8rem,4.5vw,2.6rem);color:var(--gingham);letter-spacing:.02em;display:inline-block;margin-bottom:1.4rem;}
+  .contact-ctas{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--wood-deep);color:#d9c9b3;padding:46px 0 38px;text-align:center;}
+  footer .fbrand .g{font-family:'Yellowtail',cursive;font-size:1.8rem;color:var(--butter);}
+  footer .fbrand .ck{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;color:#d9c9b3;display:block;margin-top:.1rem;}
+  footer .faddr{font-size:.92rem;margin:.9rem 0;color:#c8b7a0;}
+  footer .flinks{display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap;margin:1rem 0 1.4rem;}
+  footer .flinks a{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.07em;font-size:.78rem;color:var(--butter);border-bottom:1px solid rgba(242,193,78,.4);padding-bottom:2px;}
+  footer .flinks a:hover{color:#fff;}
+  footer .credit{font-size:.8rem;color:#9b8a74;border-top:1px solid rgba(217,201,179,.18);padding-top:1.3rem;margin-top:.6rem;}
+  footer .credit a{color:#c8b7a0;text-decoration:underline;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:880px){
+    html{scroll-padding-top:70px;}
+    .navlinks{
+      position:absolute;top:76px;left:0;right:0;background:var(--cream);
+      flex-direction:column;align-items:stretch;gap:0;padding:.4rem 0;
+      border-bottom:2px solid var(--wood);box-shadow:0 12px 20px -12px rgba(58,37,22,.5);
+      display:none;
+    }
+    .navlinks.open{display:flex;}
+    .navlinks a{padding:.85rem 22px;border-bottom:1px solid var(--cream-2);}
+    .navlinks a.nav-call{margin:.6rem 22px;text-align:center;justify-content:center;}
+    .navtoggle{display:block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-copy{padding:42px 0 38px;text-align:center;align-items:center;}
+    .hero-copy p.lede{margin-left:auto;margin-right:auto;}
+    .ribbon{align-self:center;}
+    .hero-ctas{justify-content:center;}
+    .hero-photo{height:300px;position:relative;}
+    .hero-photo img{position:absolute;}
+    .about-grid,.visit-grid{grid-template-columns:1fr;}
+    .menu-cols{grid-template-columns:1fr;gap:26px;}
+    .slips{grid-template-columns:1fr;}
+    .menu-card{padding:30px 24px;}
+  }
+  @media(max-width:480px){
+    .about-photos{grid-template-columns:1fr 1fr;}
+    .menu-item .nm{white-space:normal;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="bar">
+  <div class="wrap bar-inner">
+    <a href="#top" class="brand-mark" aria-label="Gramma's Country Kitchen home">
+      <span class="g">Gramma's</span><span class="ck">Country Kitchen</span>
+    </a>
+    <button class="navtoggle" aria-label="Menu" onclick="document.getElementById('nl').classList.toggle('open')">&#9776;</button>
+    <div class="navlinks" id="nl">
+      <a href="#about" onclick="closeNav()">Our Story</a>
+      <a href="#menu" onclick="closeNav()">The Menu</a>
+      <a href="#visit" onclick="closeNav()">Hours &amp; Map</a>
+      <a href="#folks" onclick="closeNav()">What Folks Say</a>
+      <a href="tel:+19518498385" class="nav-call" onclick="closeNav()">Call (951) 849-8385</a>
+    </div>
+  </div>
+</nav>
+
+<div class="gingham" id="top"></div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Banning, California &bull; Right off the 60</span>
+        <h1>
+          <span class="l1">Gramma's</span>
+          <span class="l2">Country Kitchen</span>
+        </h1>
+        <p class="lede">Breakfast served all day, country comfort cooking, and the giant cinnamon rolls folks drive out of their way for.</p>
+        <span class="ribbon">Steak Round Up &bull; God Bless America</span>
+        <div class="hero-ctas">
+          <a href="tel:+19518498385" class="btn btn-primary">&#9742;&nbsp; Call Ahead</a>
+          <a href="#menu" class="btn btn-ghost">See the Menu</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="./photos/02.jpg" alt="A golden waffle with melting butter and warm syrup beside a stoneware mug of coffee at Gramma's Country Kitchen" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="gingham"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Pull up a chair</span>
+      <h2>Our Story</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p>The fondest memories are gathered around the table — and at Gramma's, that table's been set since the days when the covered wagon out front was the only landmark you needed on the highway. Step through the door and you step back in time: gingham tablecloths, country knick-knacks on every shelf, and coffee that just keeps coming.</p>
+        <p>We do home cooking the honest way. Eggs and hotcakes and country-fried steak in the morning, burgers and salads come midday, fresh salsa made in the back, and those famous cinnamon rolls so big you'll be planning to share (you won't).</p>
+        <p>Whether you're a regular or you've just pulled off the freeway on the way to the outlets, you'll get the same welcome: a genuine "good morning," a warm plate, and a whole lot of hospitality.</p>
+      </div>
+      <div class="about-photos">
+        <figure class="tall"><img src="./photos/03.jpg" alt="Cozy country dining room with gingham tablecloths, wood-beam ceilings and vintage decor" /></figure>
+        <figure><img src="./photos/06.jpg" alt="The hand-painted covered-wagon sign reading Gramma's Country Kitchen out front" /></figure>
+        <figure><img src="./photos/04.jpg" alt="Sunny outdoor patio with shaded tables beside the yellow country building" /></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">From the griddle &amp; beyond</span>
+      <h2>What's Cooking</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-cols">
+
+        <div class="menu-group">
+          <h3>Breakfast — All Day</h3>
+          <div class="menu-item"><span class="nm">Country Breakfast</span><span class="dots"></span></div>
+          <div class="desc">Two eggs your way, hash browns &amp; toast, with bacon or sausage</div>
+          <div class="menu-item"><span class="nm">Buttermilk Hotcakes</span><span class="dots"></span></div>
+          <div class="desc">A tall short stack griddled to order</div>
+          <div class="menu-item"><span class="nm">Belgian Waffle</span><span class="dots"></span></div>
+          <div class="desc">Golden, crisp-edged, butter &amp; warm syrup</div>
+          <div class="menu-item"><span class="nm">Garden Omelet</span><span class="dots"></span></div>
+          <div class="desc">Fresh-cracked eggs, side of house-made salsa</div>
+          <div class="menu-item"><span class="nm">Chilaquiles &amp; Chorizo</span><span class="dots"></span></div>
+          <div class="desc">A hearty south-of-the-griddle favorite</div>
+        </div>
+
+        <div class="menu-group">
+          <h3>Off the Range</h3>
+          <div class="menu-item"><span class="nm">Country-Fried Steak</span><span class="dots"></span></div>
+          <div class="desc">Smothered in gravy with eggs &amp; potatoes</div>
+          <div class="menu-item"><span class="nm">Chile Relleno Plate</span><span class="dots"></span></div>
+          <div class="desc">A regular's pick, morning or noon</div>
+          <div class="menu-item"><span class="nm">The Ranch Burger</span><span class="dots"></span></div>
+          <div class="desc">Char-griddled, dressed up the way you like it</div>
+          <div class="menu-item"><span class="nm">Garden &amp; Cobb Salads</span><span class="dots"></span></div>
+          <div class="desc">Fresh and generous — lighter, never small</div>
+          <div class="menu-item"><span class="nm">Gramma's Cinnamon Roll</span><span class="dots"></span></div>
+          <div class="desc">Made right here. Giant. Worth the hype.</div>
+        </div>
+
+      </div>
+      <p class="menu-note"><span class="star">&#9733;</span> Bottomless coffee always on the table. Menu favorites shown — ask your server about today's specials.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS + MAP -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Come on by</span>
+      <h2>Hours &amp; Directions</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="visit-grid">
+      <div>
+        <div class="hours-card">
+          <h3>Kitchen Hours</h3>
+          <div class="hrow" data-day="1"><span class="d">Monday</span><span class="t">7:00 AM – 2:00 PM</span></div>
+          <div class="hrow" data-day="2"><span class="d">Tuesday</span><span class="t">7:00 AM – 2:00 PM</span></div>
+          <div class="hrow" data-day="3"><span class="d">Wednesday</span><span class="t">7:00 AM – 2:00 PM</span></div>
+          <div class="hrow" data-day="4"><span class="d">Thursday</span><span class="t">7:00 AM – 2:00 PM</span></div>
+          <div class="hrow" data-day="5"><span class="d">Friday</span><span class="t">7:00 AM – 3:00 PM</span></div>
+          <div class="hrow" data-day="6"><span class="d">Saturday</span><span class="t">7:00 AM – 3:00 PM</span></div>
+          <div class="hrow" data-day="0"><span class="d">Sunday</span><span class="t">7:00 AM – 3:00 PM</span></div>
+        </div>
+        <div class="visit-info">
+          <div class="addr-line"><span class="pin">&#9679;</span><span>2868 W Ramsey St<br/>Banning, CA 92220</span></div>
+          <p>Easy on, easy off the 60 Freeway &mdash; plenty of parking, RVs welcome. Find us by the covered wagon.<br/>
+          <a href="https://maps.google.com/?cid=5196904586604957179" target="_blank" rel="noopener">View on Google Business &rarr;</a></p>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=2868%20W%20Ramsey%20St%2C%20Banning%2C%20CA%2092220&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Gramma's Country Kitchen, 2868 W Ramsey St, Banning, CA"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="folks">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Around the table</span>
+      <h2>What Folks Are Saying</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="slips">
+      <div class="slip feature">
+        <span class="quote-mark">&ldquo;</span>
+        <p>A perfect highway gem that feels like home. The moment you step inside you feel miles away from the road — the warmth is incredible. The coffee flowed abundantly and the food was hearty and satisfying. We're already planning our next stop. A must-visit for amazing comfort food and genuine hospitality.</p>
+        <span class="who">Irwan M.</span>
+      </div>
+      <div class="slip">
+        <span class="quote-mark">&ldquo;</span>
+        <p>This place is cute and quaint — a flash back in time and so homey. They were incredibly nice and friendly. My omelet was amazing and the salsa is made fresh. We obviously had to get a cinnamon roll to go — those things are giant!</p>
+        <span class="who">Shinae G.</span>
+      </div>
+      <div class="slip">
+        <span class="quote-mark">&ldquo;</span>
+        <p>First time here and what a treat. Walking in was like walking back in time — I loved the feel of it. The menu had everything, breakfast to burgers. The service was great, the food even better, and the price is good for what you get. Definitely recommend.</p>
+        <span class="who">Elizabeth C.</span>
+      </div>
+      <div class="slip">
+        <span class="quote-mark">&ldquo;</span>
+        <p>Old country vibes — it's like stepping back into the early 1970s. Parking is plenty, even if you've got a mid-size RV, and it's right off the freeway. It was busy for a Sunday morning and they handled the crowds well.</p>
+        <span class="who">Robert P.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / CTA -->
+<section id="contact">
+  <div class="wrap contact-card">
+    <span class="script">Save room for pie</span>
+    <h2>Stop In &amp; Stay a While</h2>
+    <p>Bring the family, bring the RV, bring an appetite. We'll keep the coffee hot and a table ready.</p>
+    <a href="tel:+19518498385" class="phone-big">(951) 849-8385</a>
+    <div class="contact-ctas">
+      <a href="tel:+19518498385" class="btn btn-primary">&#9742;&nbsp; Call Gramma's</a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=2868+W+Ramsey+St+Banning+CA+92220" target="_blank" rel="noopener" class="btn btn-ghost">Get Directions</a>
+    </div>
+  </div>
+</section>
+
+<div class="gingham"></div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fbrand">
+      <span class="g">Gramma's</span>
+      <span class="ck">Country Kitchen &bull; Banning, CA</span>
+    </div>
+    <p class="faddr">2868 W Ramsey St, Banning, CA 92220 &nbsp;&bull;&nbsp; (951) 849-8385 &nbsp;&bull;&nbsp; Open daily from 7 AM</p>
+    <div class="flinks">
+      <a href="tel:+19518498385">Call</a>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=2868+W+Ramsey+St+Banning+CA+92220" target="_blank" rel="noopener">Directions</a>
+      <a href="https://maps.google.com/?cid=5196904586604957179" target="_blank" rel="noopener">Google Business</a>
+    </div>
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </div>
+</footer>
+
+<script>
+  function closeNav(){document.getElementById('nl').classList.remove('open');}
+  // highlight today's hours row
+  (function(){
+    var d=new Date().getDay();
+    var row=document.querySelector('.hrow[data-day="'+d+'"]');
+    if(row){row.classList.add('today');}
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!--
+  ARCHETYPE: Warm old-school woodshop barber — cozy traditional craftsmanship.
+  Palette: amber/wood-brown (#6b3f1d / #8a5a2b) + cream (#f4ead6) + forest-green accent (#2e4d36),
+           with a warm mustard highlight (#c8862b) pulled from the shop's wood + chairs.
+  Display font: Vollkorn (warm humanist serif) for headings; body Spectral; accents Bitter.
+  Structural decisions:
+    - Asymmetric split hero (woodgrain cream panel + photo) with the shop's mustache mark, NOT a
+      centered overlay hero. Phone number quoted from the actual signage (760-486-8198) plus the
+      listed line (760-946-1177).
+    - Sticky top bar w/ scroll-padding-top:78px to protect anchor headings.
+    - "On the Chair" services laid out as a hand-set price list (two columns, dotted leaders),
+      not 3 icon cards.
+    - Gallery of real cuts as a staggered masonry-ish strip.
+    - Testimonies as stacked quote blocks ("In Their Words"), barber-attributed, no stars/scores.
+    - Animation: none beyond gentle hover states (per brief, "no animation is often strongest").
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Racobs Barber Shop — Apple Valley, CA</title>
+<meta name="description" content="Racobs Barber Shop in Apple Valley — a warm, detail-oriented neighborhood barbershop. Fades, classic cuts, beard work, and a friendly chair for everyone." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@500;600;700;800&family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Bitter:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --wood-deep:#4a2c14;
+    --wood:#6b3f1d;
+    --wood-mid:#8a5a2b;
+    --cream:#f4ead6;
+    --cream-2:#efe1c7;
+    --paper:#fbf5ea;
+    --green:#2e4d36;
+    --green-soft:#3c6248;
+    --mustard:#c8862b;
+    --ink:#33271a;
+    --muted:#6e5a44;
+    --line:#d9c6a4;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:78px;}
+  body{
+    margin:0;
+    font-family:'Spectral',Georgia,serif;
+    color:var(--ink);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.65;
+  }
+  h1,h2,h3{font-family:'Vollkorn',Georgia,serif;line-height:1.12;margin:0;}
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{width:min(1140px,92vw);margin-inline:auto;}
+
+  /* woodgrain texture used on dark panels */
+  .wood{
+    background-color:var(--wood);
+    background-image:
+      repeating-linear-gradient(90deg, rgba(0,0,0,.05) 0 2px, rgba(255,255,255,.02) 2px 5px, rgba(0,0,0,.04) 5px 9px),
+      linear-gradient(160deg, #7a4a22 0%, #5c3415 55%, #4a2c14 100%);
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:var(--wood-deep);
+    color:var(--cream);
+    border-bottom:3px solid var(--mustard);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:72px;}
+  .brand{display:flex;align-items:center;gap:12px;font-family:'Bitter',serif;font-weight:700;letter-spacing:.04em;text-decoration:none;color:var(--cream);}
+  .brand .stache{color:var(--mustard);font-size:1.4rem;line-height:1;}
+  .brand small{display:block;font-family:'Spectral';font-weight:400;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:#cdb78f;}
+  nav.main{display:flex;gap:26px;align-items:center;}
+  nav.main a{
+    text-decoration:none;font-family:'Bitter',serif;font-weight:600;font-size:.82rem;
+    letter-spacing:.06em;text-transform:uppercase;color:#e7d6b6;padding:4px 0;border-bottom:2px solid transparent;
+  }
+  nav.main a:hover{color:#fff;border-bottom-color:var(--mustard);}
+  .top-call{
+    text-decoration:none;background:var(--green-soft);color:#f4ead6;
+    font-family:'Bitter';font-weight:700;font-size:.82rem;letter-spacing:.04em;
+    padding:9px 16px;border-radius:3px;border:1px solid rgba(255,255,255,.12);white-space:nowrap;
+  }
+  .top-call:hover{background:var(--green);}
+  .menu-toggle{display:none;}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;background:var(--cream);}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;}
+  .hero-copy{padding:74px clamp(20px,4vw,64px) 70px;display:flex;flex-direction:column;justify-content:center;}
+  .est{font-family:'Bitter';font-weight:600;letter-spacing:.32em;text-transform:uppercase;font-size:.72rem;color:var(--mustard);margin-bottom:18px;}
+  .est::after{content:"";display:block;width:54px;height:2px;background:var(--mustard);margin-top:14px;}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.5rem);font-weight:800;color:var(--wood-deep);letter-spacing:-.01em;}
+  .hero h1 em{font-style:italic;color:var(--green);}
+  .hero .lead{font-size:1.12rem;color:var(--muted);max-width:46ch;margin:22px 0 30px;}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;text-decoration:none;font-family:'Bitter';font-weight:700;
+    letter-spacing:.03em;font-size:.95rem;padding:14px 24px;border-radius:4px;transition:transform .12s ease,background .15s ease;
+  }
+  .btn-primary{background:var(--green);color:var(--cream);box-shadow:0 6px 0 #20371f;}
+  .btn-primary:hover{background:var(--green-soft);transform:translateY(-1px);}
+  .btn-ghost{background:transparent;color:var(--wood-deep);border:2px solid var(--wood-mid);}
+  .btn-ghost:hover{background:var(--wood);color:var(--cream);}
+  .hero-photo{position:relative;overflow:hidden;border-left:6px solid var(--mustard);}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;min-height:420px;}
+  .hero-badge{
+    position:absolute;left:26px;bottom:26px;background:var(--wood-deep);color:var(--cream);
+    padding:12px 18px;border-radius:4px;border-left:4px solid var(--mustard);
+    font-family:'Bitter';font-weight:600;font-size:.82rem;letter-spacing:.05em;box-shadow:0 10px 24px rgba(0,0,0,.3);
+  }
+  .hero-badge b{display:block;font-size:1.15rem;color:var(--mustard);letter-spacing:.02em;}
+
+  /* ---------- strip ---------- */
+  .strip{background:var(--green);color:#e9dcc4;}
+  .strip .wrap{display:flex;flex-wrap:wrap;gap:10px 40px;justify-content:center;padding:16px 0;text-align:center;}
+  .strip span{font-family:'Bitter';font-weight:600;letter-spacing:.05em;font-size:.86rem;}
+  .strip .dot{color:var(--mustard);}
+
+  /* ---------- section frame ---------- */
+  section{padding:78px 0;}
+  .eyebrow{font-family:'Bitter';font-weight:700;letter-spacing:.26em;text-transform:uppercase;font-size:.72rem;color:var(--mustard);margin-bottom:12px;}
+  .sec-title{font-size:clamp(2rem,4vw,2.9rem);font-weight:700;color:var(--wood-deep);}
+
+  /* ---------- about ---------- */
+  #about{background:var(--paper);}
+  .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center;}
+  .about-copy p{font-size:1.08rem;color:#4f3f2c;margin:18px 0;}
+  .about-copy p:first-of-type{font-size:1.2rem;color:var(--ink);}
+  .about-photo{position:relative;}
+  .about-photo img{border-radius:6px;box-shadow:0 18px 40px rgba(74,44,20,.28);border:5px solid #fff;height:100%;object-fit:cover;width:100%;min-height:360px;}
+  .about-tag{
+    position:absolute;right:-14px;top:-14px;background:var(--mustard);color:var(--wood-deep);
+    width:104px;height:104px;border-radius:50%;display:grid;place-content:center;text-align:center;
+    font-family:'Vollkorn';font-weight:800;line-height:1.05;font-size:.92rem;box-shadow:0 8px 20px rgba(0,0,0,.25);
+    transform:rotate(-8deg);
+  }
+  .about-tag small{display:block;font-family:'Bitter';font-weight:600;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;margin-top:3px;}
+
+  /* ---------- services ---------- */
+  #services{background:var(--cream);}
+  .svc-head{max-width:60ch;}
+  .svc-board{
+    margin-top:42px;display:grid;grid-template-columns:1fr 1fr;gap:8px 64px;
+    padding:40px 44px;background:var(--paper);border:1px solid var(--line);border-radius:8px;
+    box-shadow:inset 0 0 0 6px #fff, 0 14px 32px rgba(74,44,20,.10);
+  }
+  .svc-row{display:flex;align-items:baseline;gap:8px;padding:13px 0;border-bottom:1px dashed var(--line);}
+  .svc-row .name{font-family:'Vollkorn';font-weight:600;font-size:1.12rem;color:var(--wood-deep);white-space:nowrap;}
+  .svc-row .leader{flex:1;border-bottom:2px dotted #cbb893;transform:translateY(-4px);}
+  .svc-row .desc{display:block;font-size:.86rem;color:var(--muted);margin-top:2px;}
+  .svc-row .col-name{display:flex;flex-direction:column;}
+  .svc-note{margin-top:22px;font-size:.95rem;color:var(--muted);font-style:italic;}
+  .svc-note b{color:var(--green);font-style:normal;font-family:'Bitter';}
+
+  /* ---------- gallery ---------- */
+  #work{background:var(--wood-deep);color:var(--cream);}
+  #work .eyebrow{color:var(--mustard);}
+  #work .sec-title{color:var(--cream);}
+  .gal{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .gal figure{margin:0;overflow:hidden;border-radius:6px;border:3px solid rgba(244,234,214,.14);background:#3a2210;}
+  .gal img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;transition:transform .4s ease;}
+  .gal figure:hover img{transform:scale(1.05);}
+  .gal .tall{grid-row:span 1;}
+  .gal-cap{margin-top:26px;color:#d8c4a2;max-width:54ch;font-size:1rem;}
+
+  /* ---------- testimonies ---------- */
+  #voices{background:var(--paper);}
+  .voices-grid{margin-top:44px;display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .quote{
+    background:#fff;border:1px solid var(--line);border-left:5px solid var(--mustard);
+    border-radius:6px;padding:30px 32px;box-shadow:0 8px 22px rgba(74,44,20,.08);position:relative;
+  }
+  .quote::before{content:"\201C";position:absolute;top:6px;left:18px;font-family:'Vollkorn';font-size:4.4rem;color:var(--cream-2);line-height:1;}
+  .quote p{position:relative;font-size:1.03rem;color:#42321f;margin:0 0 18px;}
+  .quote .who{font-family:'Bitter';font-weight:700;color:var(--green);letter-spacing:.03em;font-size:.92rem;}
+  .quote .who span{color:var(--muted);font-weight:500;}
+  .voices-grid .span2{grid-column:1 / -1;}
+
+  /* ---------- visit ---------- */
+  #visit{background:var(--cream);}
+  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 18px 40px rgba(74,44,20,.12);}
+  .visit-info{padding:46px clamp(24px,3.5vw,52px);background:var(--wood-deep);color:var(--cream);}
+  .visit-info h3{font-size:1.7rem;color:#fff;margin-bottom:6px;}
+  .visit-info .sub{color:#cdb78f;font-size:.95rem;margin-bottom:26px;}
+  .hours{list-style:none;margin:0 0 30px;padding:0;}
+  .hours li{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px solid rgba(244,234,214,.14);font-size:.98rem;}
+  .hours li.closed{color:#b79f7d;}
+  .hours .day{font-family:'Bitter';font-weight:600;letter-spacing:.04em;}
+  .hours .time{font-variant-numeric:tabular-nums;}
+  .hours .open{color:var(--mustard);font-weight:600;}
+  .visit-block{margin:22px 0;}
+  .visit-block .lab{font-family:'Bitter';font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.68rem;color:var(--mustard);margin-bottom:5px;}
+  .visit-block a, .visit-block address{color:#f1e6d2;text-decoration:none;font-style:normal;font-size:1.02rem;line-height:1.5;}
+  .visit-block a:hover{color:#fff;text-decoration:underline;}
+  .visit-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;}
+  .btn-call{background:var(--mustard);color:var(--wood-deep);box-shadow:0 5px 0 #9c6418;}
+  .btn-call:hover{background:#d6953a;transform:translateY(-1px);}
+  .btn-dir{background:transparent;color:var(--cream);border:2px solid rgba(244,234,214,.4);}
+  .btn-dir:hover{background:rgba(244,234,214,.12);}
+  .visit-map iframe{width:100%;height:100%;min-height:480px;border:0;display:block;filter:sepia(.12) saturate(1.05);}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--wood-deep);color:#cdb78f;padding:52px 0 30px;}
+  .foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px;align-items:flex-start;}
+  .foot-brand{font-family:'Vollkorn';font-weight:800;font-size:1.5rem;color:var(--cream);display:flex;align-items:center;gap:10px;}
+  .foot-brand .stache{color:var(--mustard);}
+  .foot-links{display:flex;flex-direction:column;gap:6px;}
+  .foot-links a{color:#ddc9a6;text-decoration:none;font-family:'Bitter';font-size:.9rem;letter-spacing:.03em;}
+  .foot-links a:hover{color:#fff;}
+  .findus{margin-top:8px;}
+  .findus .lab{font-family:'Bitter';font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.66rem;color:var(--mustard);margin-bottom:6px;}
+  .findus a{display:inline-flex;align-items:center;gap:6px;color:#e7d6b6;text-decoration:none;font-family:'Bitter';font-weight:600;font-size:.86rem;border:1px solid rgba(244,234,214,.22);padding:7px 13px;border-radius:4px;}
+  .findus a:hover{background:rgba(244,234,214,.1);color:#fff;}
+  .foot-rule{height:1px;background:rgba(244,234,214,.14);margin:34px 0 22px;}
+  .credit{font-size:.86rem;color:#bca680;font-family:'Spectral';}
+  .credit a{color:var(--mustard);text-decoration:none;}
+  .legal{font-size:.78rem;color:#8d7757;margin-top:8px;}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:920px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-photo{order:-1;border-left:0;border-top:6px solid var(--mustard);}
+    .hero-photo img{min-height:300px;}
+    .about-grid{grid-template-columns:1fr;gap:40px;}
+    .svc-board{grid-template-columns:1fr;gap:0 0;}
+    .visit-grid{grid-template-columns:1fr;}
+    .gal{grid-template-columns:repeat(2,1fr);}
+    .voices-grid{grid-template-columns:1fr;}
+    .voices-grid .span2{grid-column:auto;}
+  }
+  @media(max-width:680px){
+    nav.main{
+      position:absolute;top:72px;left:0;right:0;background:var(--wood-deep);
+      flex-direction:column;align-items:flex-start;gap:0;padding:8px 6vw;
+      border-bottom:3px solid var(--mustard);display:none;
+    }
+    nav.main.open{display:flex;}
+    nav.main a{width:100%;padding:13px 0;border-bottom:1px solid rgba(244,234,214,.1);}
+    .menu-toggle{display:inline-flex;background:none;border:1.5px solid rgba(244,234,214,.4);color:var(--cream);border-radius:4px;padding:8px 11px;font-size:1.1rem;cursor:pointer;}
+    .top-call{display:none;}
+    .hero-copy{padding:54px 6vw 50px;}
+    .svc-board{padding:30px 26px;}
+    .gal{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="stache">&#9787;</span>
+      <span>RACOBS BARBER SHOP<small>Apple Valley &middot; High Desert</small></span>
+    </a>
+    <button class="menu-toggle" aria-label="Toggle menu" onclick="document.querySelector('nav.main').classList.toggle('open')">&#9776;</button>
+    <nav class="main">
+      <a href="#about">The Shop</a>
+      <a href="#services">On the Chair</a>
+      <a href="#work">Our Work</a>
+      <a href="#voices">In Their Words</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="top-call" href="tel:+17604868198">Call &middot; 760-486-8198</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="est">Apple Valley &middot; Est. on Highway 18</div>
+      <h1>A good cut and an <em>honest chair</em> — for everyone.</h1>
+      <p class="lead">Racobs is a warm, detail-oriented neighborhood barbershop in the High Desert. Sharp fades, classic cuts, beard work and a friendly welcome — kids, dads, and first-timers all fit right in.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="tel:+17604868198">&#9742;&nbsp; Call the Shop</a>
+        <a class="btn btn-ghost" href="#visit">Hours &amp; Directions</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="./photos/02.jpg" alt="Inside Racobs Barber Shop — classic barber chairs, mirrors and stations" />
+      <div class="hero-badge">Walk-ins welcome<b>Tue&ndash;Sat</b></div>
+    </div>
+  </div>
+</header>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="wrap">
+    <span>Fades &amp; Classic Cuts</span><span class="dot">&bull;</span>
+    <span>Beard &amp; Line-Up Work</span><span class="dot">&bull;</span>
+    <span>Great With Kids</span><span class="dot">&bull;</span>
+    <span>Multicultural &amp; Welcoming</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <div class="eyebrow">The Shop</div>
+      <h2 class="sec-title">Old-school care, every single chair.</h2>
+      <p>Step into Racobs and you'll feel it right away — the easy conversation, the buzz of the clippers, the kind of place where the barber remembers your name and your fade. Folks have come up through a lot of shops in the High Desert and keep landing here for one reason: the work is good and the welcome is real.</p>
+      <p>Our barbers take their time and take pride in the details — clean line-ups, blended fades, comfortable shaves, and beard work done right. We're patient with kids, including those who find the chair a little overwhelming, and we treat every head of hair with the same steady, careful hands.</p>
+      <p>No attitude, no rushing — just an honest cut at a fair price, in a shop that's been part of the neighborhood for years.</p>
+    </div>
+    <div class="about-photo">
+      <img src="./photos/01.jpg" alt="Racobs Barber Shop storefront on Highway 18 in Apple Valley" />
+      <div class="about-tag">Walk-ins<br>Welcome<small>Tue&ndash;Sat</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="svc-head">
+      <div class="eyebrow">On the Chair</div>
+      <h2 class="sec-title">What we do best.</h2>
+    </div>
+    <div class="svc-board">
+      <div class="svc-row">
+        <div class="col-name">
+          <span class="name">Men's Haircut</span>
+          <span class="desc">Tapers, classic cuts, scissor work — your way.</span>
+        </div>
+        <span class="leader"></span>
+      </div>
+      <div class="svc-row">
+        <div class="col-name">
+          <span class="name">Skin &amp; Bald Fades</span>
+          <span class="desc">Clean, blended fades with crisp line-ups.</span>
+        </div>
+        <span class="leader"></span>
+      </div>
+      <div class="svc-row">
+        <div class="col-name">
+          <span class="name">Beard Trim &amp; Shape</span>
+          <span class="desc">Experienced men's beard work — shaped right.</span>
+        </div>
+        <span class="leader"></span>
+      </div>
+      <div class="svc-row">
+        <div class="col-name">
+          <span class="name">Hot Shave &amp; Neck Clean-Up</span>
+          <span class="desc">Comfortable straight-razor finish, long hair welcome.</span>
+        </div>
+        <span class="leader"></span>
+      </div>
+      <div class="svc-row">
+        <div class="col-name">
+          <span class="name">Kids' Cuts</span>
+          <span class="desc">Patient, gentle, and great with the little ones.</span>
+        </div>
+        <span class="leader"></span>
+      </div>
+      <div class="svc-row">
+        <div class="col-name">
+          <span class="name">Hair Designs &amp; Parts</span>
+          <span class="desc">Custom line work and designs by request.</span>
+        </div>
+        <span class="leader"></span>
+      </div>
+    </div>
+    <p class="svc-note"><b>Fair prices, no surprises.</b> &nbsp;Walk in or call ahead — <a href="tel:+17604868198" style="color:var(--green);font-weight:600;">760-486-8198</a>.</p>
+  </div>
+</section>
+
+<!-- WORK / GALLERY -->
+<section id="work">
+  <div class="wrap">
+    <div class="eyebrow">Our Work</div>
+    <h2 class="sec-title">Fresh off the chair.</h2>
+    <div class="gal">
+      <figure><img src="./photos/04.jpg" alt="Clean high fade with a sharp part" /></figure>
+      <figure><img src="./photos/06.jpg" alt="Detailed spiderweb hair design cut at Racobs" /></figure>
+      <figure><img src="./photos/05.jpg" alt="Crisp short fade and line-up" /></figure>
+      <figure><img src="./photos/03.jpg" alt="Racobs Barber Shop storefront, Apple Valley" /></figure>
+    </div>
+    <p class="gal-cap">From everyday fades to custom designs — real cuts from real clients in the chair at Racobs.</p>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="voices">
+  <div class="wrap">
+    <div class="eyebrow">In Their Words</div>
+    <h2 class="sec-title">What folks say about Racobs.</h2>
+    <div class="voices-grid">
+      <div class="quote">
+        <p>Very inviting, detail-oriented and multicultural. My first experience was great. The barber Quincy has amazing hands — he works with my sons and is good with kids who have special needs. My son who is on the spectrum doesn't mind getting his hair cut and doesn't cry anymore.</p>
+        <div class="who">Quincy T. <span>&middot; on barber Quincy</span></div>
+      </div>
+      <div class="quote">
+        <p>There's a woman barber there, Korrin — I highly recommend her, she's the best barber I've ever been to, and I've been around a lot. I'm 70 years old. She cuts your hair the way you want it cut. Try it, you'll like it.</p>
+        <div class="who">Daniel A. <span>&middot; on barber Korrin</span></div>
+      </div>
+      <div class="quote span2">
+        <p>I've been up in the High Desert a very long time and gone through so many salons and barbers — this is by far one of the best experiences I've had. Growing out a beard, I needed a barber experienced in men's beards. Danny was hands-down very professional and did a great job on my hair and beard, even as a walk-in. Prices were great. I highly recommend Danny at Racobs.</p>
+        <div class="who">Daniel W. <span>&middot; on barber Danny</span></div>
+      </div>
+      <div class="quote">
+        <p>My first time here and I found the atmosphere very rock &amp; roll, the employees good-spirited and welcoming. Danny did an excellent job on my shave and cleaning up my neckline without cutting the long hair — rare to find a barber that can shave and is comfortable with long hair. Great price for both. No problem giving repeat business. They are the best.</p>
+        <div class="who">Sam O. <span>&middot; on barber Danny</span></div>
+      </div>
+      <div class="quote">
+        <p>I've been coming here a few months now — Danny does an excellent job on my son's hair every time and never disappoints. Even better, his customer service is amazing; he takes his time and is compassionate. Thank you Danny, and thank you Racobs for being a great shop!</p>
+        <div class="who">Shelby R. <span>&middot; on barber Danny</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="wrap">
+    <div class="eyebrow">Visit</div>
+    <h2 class="sec-title" style="margin-bottom:34px;">Stop by the shop.</h2>
+    <div class="visit-grid">
+      <div class="visit-info">
+        <h3>Racobs Barber Shop</h3>
+        <div class="sub">On Highway 18 in Apple Valley</div>
+
+        <ul class="hours">
+          <li class="closed"><span class="day">Monday</span><span class="time">Closed</span></li>
+          <li><span class="day">Tuesday</span><span class="time open">9:00 AM – 5:00 PM</span></li>
+          <li><span class="day">Wednesday</span><span class="time open">9:00 AM – 5:00 PM</span></li>
+          <li><span class="day">Thursday</span><span class="time open">9:00 AM – 5:00 PM</span></li>
+          <li><span class="day">Friday</span><span class="time open">9:00 AM – 5:00 PM</span></li>
+          <li><span class="day">Saturday</span><span class="time open">9:00 AM – 3:00 PM</span></li>
+          <li class="closed"><span class="day">Sunday</span><span class="time">Closed</span></li>
+        </ul>
+
+        <div class="visit-block">
+          <div class="lab">Where</div>
+          <address>18838 CA-18 #2<br>Apple Valley, CA 92307</address>
+        </div>
+        <div class="visit-block">
+          <div class="lab">Call</div>
+          <a href="tel:+17604868198">760-486-8198</a><br>
+          <a href="tel:+17609461177">760-946-1177</a>
+        </div>
+
+        <div class="visit-ctas">
+          <a class="btn btn-call" href="tel:+17604868198">&#9742;&nbsp; Call Now</a>
+          <a class="btn btn-dir" href="https://www.google.com/maps?q=18838+CA-18+%232,+Apple+Valley,+CA+92307" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+      </div>
+      <div class="visit-map">
+        <iframe
+          src="https://www.google.com/maps?q=18838%20CA-18%20%232%2C%20Apple%20Valley%2C%20CA%2092307&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Racobs Barber Shop, Apple Valley"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><span class="stache">&#9787;</span> Racobs Barber Shop</div>
+        <p style="max-width:34ch;margin:14px 0 0;font-size:.95rem;color:#bca680;">An honest cut and a warm welcome in the High Desert. Walk-ins welcome, Tuesday through Saturday.</p>
+        <div class="findus">
+          <div class="lab">Find Us</div>
+          <a href="https://maps.google.com/?cid=6725516662293727490" target="_blank" rel="noopener">&#9733;&nbsp; Google Business</a>
+        </div>
+      </div>
+      <div class="foot-links">
+        <a href="#about">The Shop</a>
+        <a href="#services">On the Chair</a>
+        <a href="#work">Our Work</a>
+        <a href="#voices">In Their Words</a>
+        <a href="#visit">Visit &amp; Hours</a>
+        <a href="tel:+17604868198">Call &middot; 760-486-8198</a>
+      </div>
+    </div>
+    <div class="foot-rule"></div>
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+    <p class="legal">18838 CA-18 #2, Apple Valley, CA 92307 &middot; (760) 486-8198</p>
+  </div>
+</footer>
+
+<script>
+  // Close mobile menu after tapping a link
+  document.querySelectorAll('nav.main a').forEach(function(a){
+    a.addEventListener('click',function(){document.querySelector('nav.main').classList.remove('open');});
+  });
+</script>
+</body>
+</html>

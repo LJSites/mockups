@@ -1,0 +1,434 @@
+<!--
+  ARCHETYPE: Motorsport Performance Garage — "race-stripe / speed-shop" energy.
+  Black + carbon-gray field, electric chartreuse (#c6ff00) racing accent, thin
+  diagonal race-stripe motifs. Aggressive italic speed display (Saira Condensed,
+  oblique, ultra-tight tracking) over a technical mono/grotesque body
+  (Barlow Semi Condensed + JetBrains Mono for data labels).
+  STRUCTURAL DECISIONS:
+   - Split asymmetric hero: oversized italic wordmark left, photo 01 clipped at a
+     speed-angle right, with a mono "stat strip" rail beneath.
+   - Only 2 real photos -> photo 01 = hero, photo 02 = a wide feature band ("In the
+     bay"). Every other section is pure type + carbon color fields, NO remote images.
+   - Services as a numbered diagonal-bordered ledger (not 3-icon-columns).
+   - Testimonies as a horizontal-scroll "pit wall" of quote slabs (no stars/scores).
+   - Hours/Location as a two-panel data console + keyless embedded map.
+   - Single repeated CTA: "Call Now" (tel:). Sticky nav -> scroll-padding-top.
+  NO star widgets, no review counts, no remote/placeholder images, no map API key.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topside Auto Performance — Yucca Valley Auto Repair</title>
+<meta name="description" content="Topside Auto Performance LLC — honest, expert auto repair & maintenance in Yucca Valley, CA. Diagnostics, brakes, A/C, timing, smog. Call (760) 269-5550.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:ital,wght@0,600;0,800;0,900;1,800;1,900&family=Barlow+Semi+Condensed:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0a0b;
+    --carbon:#141417;
+    --carbon-2:#1c1d21;
+    --steel:#2a2c31;
+    --line:#33353b;
+    --fog:#9a9da6;
+    --bone:#e9eaee;
+    --volt:#c6ff00;
+    --volt-dim:#9fcf00;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:70px}
+  body{
+    font-family:'Barlow Semi Condensed',sans-serif;
+    background:var(--ink);
+    color:var(--bone);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Saira Condensed',sans-serif;font-style:italic;text-transform:uppercase;line-height:.9}
+  .mono{font-family:'JetBrains Mono',monospace}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1180px,92vw);margin-inline:auto}
+  .volt{color:var(--volt)}
+
+  /* race stripe helper */
+  .stripes{
+    background-image:repeating-linear-gradient(115deg,transparent 0 22px,rgba(198,255,0,.07) 22px 24px);
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;height:70px;
+    background:rgba(10,10,11,.86);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    display:flex;align-items:center;
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:min(1180px,94vw)}
+  .brand{display:flex;align-items:baseline;gap:.5rem;font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:900;font-size:1.45rem;letter-spacing:-.02em}
+  .brand b{color:var(--volt)}
+  .brand small{font-family:'JetBrains Mono',monospace;font-style:normal;font-weight:500;font-size:.6rem;letter-spacing:.25em;color:var(--fog);transform:translateY(-2px)}
+  nav.links{display:flex;gap:1.9rem}
+  nav.links a{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);transition:color .15s}
+  nav.links a:hover{color:var(--volt)}
+  .nav-call{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.78rem;letter-spacing:.06em;color:var(--ink);background:var(--volt);padding:.55rem 1rem;clip-path:polygon(8% 0,100% 0,92% 100%,0 100%);transition:transform .15s}
+  .nav-call:hover{transform:translateX(2px)}
+  @media(max-width:860px){nav.links{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;background:var(--ink);border-bottom:1px solid var(--line);overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:stretch;min-height:clamp(520px,72vh,720px)}
+  .hero-copy{padding:4.5rem 0 3.5rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:3}
+  .kicker{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.32em;color:var(--volt);text-transform:uppercase;margin-bottom:1.4rem;display:flex;align-items:center;gap:.8rem}
+  .kicker::before{content:"";width:46px;height:2px;background:var(--volt)}
+  .hero h1{font-weight:900;font-size:clamp(3.4rem,9vw,7rem);letter-spacing:-.025em;text-shadow:0 0 40px rgba(0,0,0,.6)}
+  .hero h1 .line2{display:block;color:var(--volt);-webkit-text-stroke:0}
+  .hero p.sub{max-width:34ch;margin-top:1.5rem;color:var(--fog);font-size:1.08rem}
+  .hero-cta{margin-top:2.2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+  .btn-volt{
+    font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink);background:var(--volt);padding:1rem 1.8rem;
+    clip-path:polygon(6% 0,100% 0,94% 100%,0 100%);
+    transition:background .15s,transform .15s;
+  }
+  .btn-volt:hover{background:#d8ff4a;transform:translateY(-2px)}
+  .btn-ghost{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bone);border:1px solid var(--line);padding:1rem 1.4rem;transition:border-color .15s,color .15s}
+  .btn-ghost:hover{border-color:var(--volt);color:var(--volt)}
+
+  .hero-photo{position:relative}
+  .hero-photo::before{content:"";position:absolute;inset:0;left:-12%;background:var(--carbon);clip-path:polygon(14% 0,100% 0,100% 100%,0 100%);z-index:0}
+  .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;clip-path:polygon(18% 0,100% 0,100% 100%,4% 100%);filter:grayscale(.25) contrast(1.08) brightness(.82)}
+  .hero-photo::after{content:"";position:absolute;inset:0;clip-path:polygon(18% 0,100% 0,100% 100%,4% 100%);background:linear-gradient(100deg,var(--ink) 4%,rgba(10,10,11,.1) 38%);z-index:2}
+  /* accent slash on photo edge */
+  .photo-slash{position:absolute;top:0;bottom:0;left:13%;width:6px;background:var(--volt);transform:skewX(-9deg);z-index:4;box-shadow:0 0 22px rgba(198,255,0,.5)}
+
+  .statstrip{border-top:1px solid var(--line);background:var(--carbon)}
+  .statstrip .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .stat{padding:1.4rem 1.6rem;border-right:1px solid var(--line)}
+  .stat:last-child{border-right:none}
+  .stat .n{font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:900;font-size:1.9rem;color:var(--volt);line-height:1}
+  .stat .l{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fog);margin-top:.4rem}
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;min-height:auto}
+    .hero-copy{padding:3.2rem 0 2.6rem}
+    .hero-photo{height:300px;order:-1}
+    .hero-photo::before,.hero-photo img,.hero-photo::after{clip-path:none;left:0}
+    .photo-slash{display:none}
+    .statstrip .wrap{grid-template-columns:repeat(2,1fr)}
+    .stat:nth-child(2){border-right:none}
+    .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  }
+
+  /* section heads */
+  .sec{padding:5.5rem 0}
+  .sec-tag{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--volt);margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}
+  .sec-tag::before{content:"//";color:var(--steel)}
+  .sec h2{font-weight:900;font-size:clamp(2.4rem,5.5vw,4rem);letter-spacing:-.02em}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--carbon);border-block:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center}
+  .about p{color:var(--fog);font-size:1.08rem;margin-top:1.3rem}
+  .about p strong{color:var(--bone);font-weight:600}
+  .about .who{margin-top:1.8rem;font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--volt);border-left:3px solid var(--volt);padding-left:1rem}
+  .about-panel{background:var(--ink);border:1px solid var(--line);padding:2.2rem}
+  .about-panel h3{font-size:1.5rem;color:var(--bone);letter-spacing:-.01em}
+  .creed{list-style:none;margin-top:1.4rem;display:grid;gap:1rem}
+  .creed li{display:flex;gap:.9rem;font-size:1rem;color:var(--fog)}
+  .creed li::before{content:"›";color:var(--volt);font-family:'JetBrains Mono',monospace;font-weight:700}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:2.2rem}}
+
+  /* ---------- SERVICES LEDGER ---------- */
+  .svc-list{margin-top:2.6rem;border-top:1px solid var(--line)}
+  .svc-row{display:grid;grid-template-columns:64px 1fr auto;align-items:center;gap:1.4rem;padding:1.5rem .4rem;border-bottom:1px solid var(--line);position:relative;transition:background .18s}
+  .svc-row:hover{background:var(--carbon)}
+  .svc-row:hover .svc-name{color:var(--volt)}
+  .svc-num{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--steel);letter-spacing:.1em}
+  .svc-name{font-family:'Saira Condensed',sans-serif;font-style:italic;font-weight:800;text-transform:uppercase;font-size:1.5rem;letter-spacing:-.01em;transition:color .15s}
+  .svc-desc{color:var(--fog);font-size:.92rem;display:block;font-family:'Barlow Semi Condensed';font-style:normal;text-transform:none;letter-spacing:0;margin-top:.15rem}
+  .svc-tag{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fog);border:1px solid var(--line);padding:.3rem .6rem;white-space:nowrap}
+  @media(max-width:560px){.svc-row{grid-template-columns:40px 1fr}.svc-tag{display:none}}
+
+  /* ---------- FEATURE BAND (photo 02) ---------- */
+  .feature{position:relative;height:clamp(360px,52vh,520px);display:flex;align-items:flex-end;overflow:hidden;border-block:1px solid var(--line)}
+  .feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.35) contrast(1.05) brightness(.6)}
+  .feature::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--ink) 6%,rgba(10,10,11,.55) 55%,rgba(10,10,11,.25))}
+  .feature .wrap{position:relative;z-index:2;padding-bottom:3rem}
+  .feature h2{font-weight:900;font-size:clamp(2.2rem,6vw,4.5rem);letter-spacing:-.02em;max-width:18ch}
+  .feature .sec-tag{margin-bottom:1.2rem}
+
+  /* ---------- TESTIMONIES (pit wall) ---------- */
+  .testi{background:var(--carbon);border-bottom:1px solid var(--line);overflow:hidden}
+  .testi-rail{display:flex;gap:1.4rem;margin-top:2.6rem;overflow-x:auto;padding-bottom:1.4rem;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--volt-dim) var(--steel)}
+  .testi-rail::-webkit-scrollbar{height:6px}
+  .testi-rail::-webkit-scrollbar-track{background:var(--steel)}
+  .testi-rail::-webkit-scrollbar-thumb{background:var(--volt-dim)}
+  .slab{flex:0 0 min(420px,82vw);scroll-snap-align:start;background:var(--ink);border:1px solid var(--line);border-top:3px solid var(--volt);padding:2rem 1.9rem 1.7rem;position:relative}
+  .slab .q{font-size:1.04rem;color:var(--bone);line-height:1.55}
+  .slab .q::before{content:"“";font-family:'Saira Condensed';font-style:italic;font-weight:900;color:var(--volt);font-size:2.6rem;line-height:0;position:relative;top:.4rem;margin-right:.2rem}
+  .slab .by{margin-top:1.4rem;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--volt)}
+  .rail-hint{margin-top:1rem;font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--steel)}
+
+  /* ---------- HOURS / LOCATION CONSOLE ---------- */
+  .console{display:grid;grid-template-columns:1fr 1.15fr;gap:0;margin-top:2.6rem;border:1px solid var(--line)}
+  .console-info{padding:2.4rem 2.2rem;background:var(--carbon)}
+  .hours-tbl{width:100%;border-collapse:collapse;margin-top:.4rem}
+  .hours-tbl td{padding:.65rem 0;border-bottom:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.04em}
+  .hours-tbl td.day{color:var(--fog);text-transform:uppercase;font-size:.72rem;letter-spacing:.14em}
+  .hours-tbl td.hrs{text-align:right;color:var(--bone)}
+  .hours-tbl tr.closed td.hrs{color:var(--steel)}
+  .hours-tbl tr.today td{color:var(--volt)}
+  .hours-tbl tr.today td.day{color:var(--volt)}
+  .loc-block{margin-top:2rem}
+  .loc-block .lbl{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--fog);margin-bottom:.4rem}
+  .loc-block address{font-style:normal;color:var(--bone);font-size:1.02rem;line-height:1.5}
+  .loc-call{display:inline-flex;align-items:center;gap:.6rem;margin-top:1.6rem;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.92rem;letter-spacing:.06em;color:var(--volt)}
+  .console-map{position:relative;min-height:340px;background:var(--carbon-2)}
+  .console-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.4) invert(.92) contrast(.9) hue-rotate(180deg)}
+  @media(max-width:860px){.console{grid-template-columns:1fr}.console-map{min-height:300px}}
+
+  /* ---------- CTA BAR ---------- */
+  .ctabar{padding:4.5rem 0;text-align:center;border-bottom:1px solid var(--line)}
+  .ctabar h2{font-weight:900;font-size:clamp(2.2rem,6vw,4.2rem);letter-spacing:-.02em}
+  .ctabar p{color:var(--fog);margin-top:1rem;font-size:1.05rem}
+  .ctabar .btn-volt{margin-top:2rem;font-size:1rem;padding:1.1rem 2.4rem}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--carbon);padding:3.2rem 0 2.4rem}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap}
+  .foot-brand{font-family:'Saira Condensed';font-style:italic;font-weight:900;font-size:1.6rem;letter-spacing:-.02em}
+  .foot-brand b{color:var(--volt)}
+  .foot-links{display:flex;flex-direction:column;gap:.6rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.06em;color:var(--fog)}
+  .foot-links a:hover{color:var(--volt)}
+  .credit{margin-top:2.6rem;padding-top:1.6rem;border-top:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.04em;color:var(--steel);text-align:center}
+  .credit a{color:var(--volt-dim)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">TOPSIDE<b>/</b>AUTO <small>PERFORMANCE LLC</small></a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#testimonies">Testimonies</a>
+      <a href="#visit">Hours &amp; Location</a>
+    </nav>
+    <a href="tel:+17602695550" class="nav-call">(760) 269-5550</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero stripes" id="top">
+  <div class="hero-grid wrap">
+    <div class="hero-copy">
+      <div class="kicker">Yucca Valley · 29 Palms Hwy</div>
+      <h1>Honest power.<span class="line2">Done right.</span></h1>
+      <p class="sub">A full-service auto repair &amp; performance shop in the high desert — diagnostics to A/C, brakes to timing. Straight answers, fair prices, work that holds up.</p>
+      <div class="hero-cta">
+        <a href="tel:+17602695550" class="btn-volt">Call Now</a>
+        <a href="#services" class="btn-ghost">What we do</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <span class="photo-slash"></span>
+      <img src="./photos/01.jpg" alt="Topside Auto Performance shop in Yucca Valley">
+    </div>
+  </div>
+</section>
+
+<div class="statstrip">
+  <div class="wrap">
+    <div class="stat"><div class="n">Mon–Fri</div><div class="l">8a — 5p, no surprises</div></div>
+    <div class="stat"><div class="n">1000%</div><div class="l">Honest — their words</div></div>
+    <div class="stat"><div class="n">Same-day</div><div class="l">Brakes · A/C · diagnostics</div></div>
+    <div class="stat"><div class="n">Local</div><div class="l">High-desert trusted</div></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="sec about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="sec-tag">The Shop</div>
+      <h2>Run by Jimmy<br>&amp; his crew</h2>
+      <p>Topside Auto Performance is the kind of shop people drive across town for — and the kind stranded road-trippers get pointed to when something goes wrong on the 29 Palms Highway. <strong>Diagnostics, brakes, A/C, timing belts, water pumps, smog and full check-ups</strong> — handled in a timely way, at a price you were quoted up front.</p>
+      <p>The reputation is built on one thing: telling you the truth about your vehicle and standing behind the work.</p>
+      <div class="who">Jimmy knows your vehicle — and remembers it</div>
+    </div>
+    <aside class="about-panel">
+      <h3 class="display">How we run it</h3>
+      <ul class="creed">
+        <li>Honest estimates, given on the first call — and kept.</li>
+        <li>Work done in a reasonable, timely window.</li>
+        <li>Rides home and pickups when you need them.</li>
+        <li>Multiple vehicles, one shop you can trust.</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-tag">Capabilities</div>
+    <h2>Under the hood</h2>
+    <div class="svc-list">
+      <div class="svc-row">
+        <span class="svc-num">01</span>
+        <span class="svc-name">Diagnostics &amp; Check Engine
+          <span class="svc-desc">Dashboard warnings figured out on the spot — not guessed at.</span>
+        </span>
+        <span class="svc-tag">Code Read</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-num">02</span>
+        <span class="svc-name">Brakes &amp; Rotors
+          <span class="svc-desc">Pads and rotors done same-day, done right.</span>
+        </span>
+        <span class="svc-tag">Same-Day</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-num">03</span>
+        <span class="svc-name">A/C Repair
+          <span class="svc-desc">Cold air back on the hottest desert days — fast.</span>
+        </span>
+        <span class="svc-tag">Climate</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-num">04</span>
+        <span class="svc-name">Timing &amp; Water Pump
+          <span class="svc-desc">Belts, water pumps and the major service before a big trip.</span>
+        </span>
+        <span class="svc-tag">Engine</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-num">05</span>
+        <span class="svc-name">Oil &amp; Maintenance
+          <span class="svc-desc">Oil changes and the routine service that prevents the breakdown.</span>
+        </span>
+        <span class="svc-tag">Routine</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-num">06</span>
+        <span class="svc-name">Smog &amp; Sensors
+          <span class="svc-desc">Smog testing plus O2 / emissions sensor replacement.</span>
+        </span>
+        <span class="svc-tag">Smog</span>
+      </div>
+      <div class="svc-row">
+        <span class="svc-num">07</span>
+        <span class="svc-name">Full Vehicle Check-Up
+          <span class="svc-desc">A top-to-bottom inspection — peace of mind, in writing.</span>
+        </span>
+        <span class="svc-tag">Inspection</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE BAND (photo 02) -->
+<section class="feature">
+  <img src="./photos/02.jpg" alt="Inside the bay at Topside Auto Performance">
+  <div class="wrap">
+    <div class="sec-tag">In the Bay</div>
+    <h2>Top Notch Service.<br>Top of the desert.</h2>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="sec testi" id="testimonies">
+  <div class="wrap">
+    <div class="sec-tag">In Their Words</div>
+    <h2>Customer testimonies</h2>
+    <div class="testi-rail">
+      <div class="slab">
+        <p class="q">Jimmy and his crew do excellent work. They've worked on multiple vehicles for me — honest, reliable work for reasonable prices, always done in a timely manner. Had an A/C issue on a hellaciously hot day and Jimmy figured it out on the spot in about 90 minutes. Much appreciated!</p>
+        <p class="by">— Tommy V.</p>
+      </div>
+      <div class="slab">
+        <p class="q">Got my '03 Sequoia in for timing belt, water pump and oil change for a cross-country trip. When I came to pick it up my card limit wouldn't cover it — Jimmy trusted me to drive home for cash. He even gave me a roadside-assistance brochure since I was traveling. Top Notch Service!</p>
+        <p class="by">— Gabriel</p>
+      </div>
+      <div class="slab">
+        <p class="q">Awesome service, awesome people, and 1000% honest. Brakes and rotors done the same day, and a full check-up just to be sure nothing else needed fixing. Will be going back for many years to come. Thank you guys!</p>
+        <p class="by">— Israel O.</p>
+      </div>
+      <div class="slab">
+        <p class="q">On a road trip, a vulture hit the front of our car and the dashboard lit up with alarms. AutoZone sent us to Topside. Jimmy and his crew went over and above to get the parts next day and get us back on the road — all with a cheerful, sympathetic attitude. Can't recommend them highly enough!</p>
+        <p class="by">— Eva-Marie A.</p>
+      </div>
+      <div class="slab">
+        <p class="q">Replaced an upstream oxygen sensor and did the smog test, even gave me a ride home and picked me up. Jimmy knew my vehicle well, gave an estimate on the first call and kept his word on it, returned my calls and answered every question. Completely satisfied — I'd recommend him.</p>
+        <p class="by">— Robert B.</p>
+      </div>
+    </div>
+    <p class="rail-hint">‹ drag / scroll to read more ›</p>
+  </div>
+</section>
+
+<!-- HOURS / LOCATION -->
+<section class="sec" id="visit">
+  <div class="wrap">
+    <div class="sec-tag">Find the Shop</div>
+    <h2>Hours &amp; location</h2>
+    <div class="console">
+      <div class="console-info">
+        <table class="hours-tbl">
+          <tr class="today"><td class="day">Monday</td><td class="hrs">8:00a — 5:00p</td></tr>
+          <tr><td class="day">Tuesday</td><td class="hrs">8:00a — 5:00p</td></tr>
+          <tr><td class="day">Wednesday</td><td class="hrs">8:00a — 5:00p</td></tr>
+          <tr><td class="day">Thursday</td><td class="hrs">8:00a — 5:00p</td></tr>
+          <tr><td class="day">Friday</td><td class="hrs">8:00a — 5:00p</td></tr>
+          <tr class="closed"><td class="day">Saturday</td><td class="hrs">Closed</td></tr>
+          <tr class="closed"><td class="day">Sunday</td><td class="hrs">Closed</td></tr>
+        </table>
+        <div class="loc-block">
+          <div class="lbl">Location</div>
+          <address>54461 29 Palms Hwy<br>Yucca Valley, CA 92284</address>
+        </div>
+        <a href="tel:+17602695550" class="loc-call">▸ Call (760) 269-5550</a>
+      </div>
+      <div class="console-map">
+        <iframe
+          src="https://www.google.com/maps?q=54461%2029%20Palms%20Hwy%2C%20Yucca%20Valley%2C%20CA%2092284&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Topside Auto Performance on the map"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ctabar stripes">
+  <div class="wrap">
+    <h2>Got a noise, a light, a trip coming up?</h2>
+    <p>Get a straight answer and an honest estimate on the first call.</p>
+    <a href="tel:+17602695550" class="btn-volt">Call Now · (760) 269-5550</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">TOPSIDE<b>/</b>AUTO PERFORMANCE</div>
+        <p style="color:var(--fog);margin-top:.6rem;max-width:34ch;font-size:.95rem">Honest, reliable auto repair &amp; maintenance in Yucca Valley, CA.</p>
+      </div>
+      <div class="foot-links">
+        <a href="tel:+17602695550">(760) 269-5550</a>
+        <a href="#visit">54461 29 Palms Hwy, Yucca Valley</a>
+        <a href="https://maps.google.com/?cid=15798334018299012833" target="_blank" rel="noopener">Google Business Profile ↗</a>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

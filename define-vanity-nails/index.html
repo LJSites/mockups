@@ -1,0 +1,980 @@
+<!-- flavor: bold-editorial | accent: #C8472B | bg: #FBF6EE | hero: full-bleed-photo | service: 2-col-rows -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Define Vanity Nails — Twentynine Palms, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --acc: #C8472B;
+      --bg: #FBF6EE;
+      --ink: #1A1008;
+      --muted: #6B5D50;
+      --light: #EDE6DA;
+      --nav-h: 64px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    .nav-logo {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.25rem;
+      color: var(--bg);
+      letter-spacing: 0.04em;
+      text-decoration: none;
+    }
+
+    .nav-logo span {
+      color: var(--acc);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: clamp(1rem, 3vw, 2rem);
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #C8BFB5;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--acc); }
+
+    .nav-cta {
+      background: var(--acc);
+      color: var(--bg) !important;
+      padding: 0.45rem 1.1rem !important;
+      letter-spacing: 0.06em !important;
+    }
+
+    .nav-cta:hover { background: #a83520; color: var(--bg) !important; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: min(90vh, 680px);
+      background:
+        linear-gradient(135deg,
+          #1A1008 0%,
+          #2D1A0E 35%,
+          #3D1F10 55%,
+          #1A1008 100%
+        );
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      overflow: hidden;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      line-height: 0.92;
+      color: var(--bg);
+      letter-spacing: 0.01em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-h1 em {
+      font-style: normal;
+      color: var(--acc);
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      color: #B8A89A;
+      max-width: 400px;
+      line-height: 1.7;
+      margin-bottom: 2.25rem;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: var(--bg);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: #a83520;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      border: 1.5px solid #4A3526;
+      color: #C8BFB5;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 1.75rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--acc);
+      color: var(--acc);
+    }
+
+    /* hero graphic panel */
+    .hero-graphic {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-graphic::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 28px,
+          rgba(200, 71, 43, 0.06) 28px,
+          rgba(200, 71, 43, 0.06) 30px
+        );
+    }
+
+    .hero-graphic-inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 3rem;
+    }
+
+    .hero-graphic-word {
+      font-family: 'Anton', sans-serif;
+      display: block;
+      line-height: 1;
+      color: rgba(251, 246, 238, 0.04);
+      user-select: none;
+    }
+
+    .hero-graphic-word:nth-child(1) { font-size: clamp(5rem, 12vw, 11rem); }
+    .hero-graphic-word:nth-child(2) { font-size: clamp(3.5rem, 8vw, 7.5rem); color: rgba(200, 71, 43, 0.15); }
+    .hero-graphic-word:nth-child(3) { font-size: clamp(5rem, 12vw, 11rem); }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 2.5rem;
+      width: 110px;
+      height: 110px;
+      border: 1.5px solid rgba(200, 71, 43, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-badge span {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acc);
+      line-height: 1.5;
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: clamp(3.5rem, 8vw, 6rem) clamp(1.25rem, 5vw, 2.5rem); }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--ink);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: center;
+    }
+
+    .about-headline {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      line-height: 0.95;
+      color: var(--bg);
+      letter-spacing: 0.01em;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-headline strong {
+      color: var(--acc);
+      display: block;
+    }
+
+    .about-body {
+      color: #A89A8C;
+      font-size: 0.98rem;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .about-body p + p { margin-top: 1rem; }
+
+    .about-stat-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .about-stat {
+      border-left: 2px solid var(--acc);
+      padding-left: 1.5rem;
+    }
+
+    .about-stat-num {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.25rem, 5vw, 3.5rem);
+      color: var(--bg);
+      line-height: 1;
+    }
+
+    .about-stat-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #6B5D50;
+      margin-top: 0.25rem;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--bg);
+    }
+
+    .services-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--light);
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 1.5rem 1.75rem;
+      border-bottom: 1px solid var(--light);
+      border-right: 1px solid var(--light);
+      gap: 1rem;
+      transition: background 0.15s;
+    }
+
+    .service-row:nth-child(even) { border-right: none; }
+    .service-row:nth-last-child(-n+2) { border-bottom: none; }
+    .service-row:hover { background: var(--light); }
+
+    .service-name {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--ink);
+    }
+
+    .service-detail {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    .service-price {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.3rem;
+      color: var(--acc);
+      white-space: nowrap;
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies {
+      background: var(--light);
+    }
+
+    .testimony-layout {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: clamp(2rem, 5vw, 5rem);
+      align-items: start;
+    }
+
+    .testimony-sidebar {
+      position: sticky;
+      top: calc(var(--nav-h) + 2rem);
+    }
+
+    .testimony-sidebar .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .testimony-sidebar-note {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 1rem;
+    }
+
+    .testimony-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+    }
+
+    .testimony-card {
+      background: var(--bg);
+      padding: 2rem 2rem 1.75rem;
+      border-left: 3px solid var(--acc);
+    }
+
+    .testimony-quote {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--ink);
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimony-attr {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acc);
+    }
+
+    /* ── HOURS + MAP ── */
+    #location {
+      background: var(--ink);
+    }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: start;
+    }
+
+    .hours-section .section-title { color: var(--bg); }
+    .hours-section .section-label { color: var(--acc); }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid #2D1F14;
+    }
+
+    .hours-table tr:last-child { border-bottom: none; }
+
+    .hours-table td {
+      padding: 0.7rem 0;
+      font-size: 0.9rem;
+      color: #A89A8C;
+    }
+
+    .hours-table td:first-child {
+      font-weight: 500;
+      color: var(--bg);
+      width: 45%;
+    }
+
+    .hours-note {
+      margin-top: 1.5rem;
+      font-size: 0.82rem;
+      color: #6B5D50;
+      line-height: 1.6;
+    }
+
+    .map-frame {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border: none;
+      display: block;
+      filter: grayscale(0.2) contrast(1.05);
+    }
+
+    .address-block {
+      margin-top: 1.25rem;
+    }
+
+    .address-block p {
+      font-size: 0.88rem;
+      color: #A89A8C;
+      line-height: 1.7;
+    }
+
+    .address-block a {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--acc);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(200, 71, 43, 0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+
+    .address-block a:hover { border-color: var(--acc); }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--acc);
+    }
+
+    .contact-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-headline {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.75rem);
+      color: var(--bg);
+      line-height: 1;
+      letter-spacing: 0.01em;
+    }
+
+    .contact-sub {
+      font-size: 0.92rem;
+      color: rgba(251, 246, 238, 0.75);
+      margin-top: 0.5rem;
+    }
+
+    .btn-light {
+      display: inline-block;
+      background: var(--bg);
+      color: var(--acc);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1rem 2.25rem;
+      flex-shrink: 0;
+      transition: background 0.15s, transform 0.15s;
+    }
+
+    .btn-light:hover {
+      background: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #120B05;
+      padding: 2.5rem clamp(1.25rem, 5vw, 2.5rem);
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      font-family: 'Anton', sans-serif;
+      font-size: 1.1rem;
+      color: var(--bg);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-logo span { color: var(--acc); }
+
+    .footer-links {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    .footer-links a {
+      font-size: 0.8rem;
+      color: #5A4A3C;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--acc); }
+
+    .footer-credit {
+      width: 100%;
+      border-top: 1px solid #1E1008;
+      padding-top: 1.25rem;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: #3A2A1C;
+      text-align: center;
+    }
+
+    .footer-credit a {
+      color: #5A4A3C;
+      text-decoration: none;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      #hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-graphic {
+        display: none;
+      }
+
+      .hero-copy {
+        padding: 3.5rem 1.5rem 3rem;
+      }
+
+      .about-grid,
+      .testimony-layout,
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimony-sidebar {
+        position: static;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .service-row {
+        border-right: none !important;
+      }
+
+      .service-row:nth-last-child(-n+2) {
+        border-bottom: 1px solid var(--light);
+      }
+
+      .service-row:last-child {
+        border-bottom: none;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .services-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .contact-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .about-stat-col {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+
+      .location-grid {
+        gap: 2.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-h1 { font-size: 2.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#hero">DEFINE<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Hours</a></li>
+      <li><a class="nav-cta" href="https://maps.google.com/?cid=9512742316273682386" target="_blank" rel="noopener">Get Directions</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" aria-label="Hero">
+    <div class="hero-copy">
+      <p class="hero-eyebrow">Twentynine Palms, California</p>
+      <h1 class="hero-h1">
+        Nails That<br>
+        <em>Define</em><br>
+        You.
+      </h1>
+      <p class="hero-sub">
+        Precision nail artistry in the heart of the High Desert. Whether you want something minimal and refined or boldly expressive — we bring the craft.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="https://maps.google.com/?cid=9512742316273682386" target="_blank" rel="noopener">Get Directions</a>
+        <a class="btn-outline" href="#services">See Services</a>
+      </div>
+    </div>
+    <div class="hero-graphic" aria-hidden="true">
+      <div class="hero-graphic-inner">
+        <span class="hero-graphic-word">DEFINE</span>
+        <span class="hero-graphic-word">VANITY</span>
+        <span class="hero-graphic-word">NAILS</span>
+      </div>
+      <div class="hero-badge">
+        <span>High Desert<br>Nail Studio</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <p class="section-label" style="color:var(--acc)">Our Story</p>
+          <h2 class="about-headline">
+            Craft Meets<br>
+            <strong>Character.</strong>
+          </h2>
+          <div class="about-body">
+            <p>Define Vanity Nails was built on a simple belief: your nails should tell your story. Nestled in Twentynine Palms, we bring salon-level artistry and care to the High Desert — where attention to detail isn't a luxury, it's the standard.</p>
+            <p>From everyday maintenance to statement sets that turn heads, every appointment is tailored to you. We work with precision, patience, and pride in every set we create.</p>
+          </div>
+        </div>
+        <div class="about-stat-col">
+          <div class="about-stat">
+            <div class="about-stat-num">100%</div>
+            <div class="about-stat-label">5-Star Rated</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">Custom</div>
+            <div class="about-stat-label">Every Single Set</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">DVN</div>
+            <div class="about-stat-label">Define. Vanity. Nails.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header">
+        <div>
+          <p class="section-label">What We Offer</p>
+          <h2 class="section-title">Services</h2>
+        </div>
+        <a class="btn-primary" href="https://maps.google.com/?cid=9512742316273682386" target="_blank" rel="noopener">Get Directions →</a>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-row">
+          <div>
+            <div class="service-name">Classic Manicure</div>
+            <div class="service-detail">Shape, buff, and polish — timeless clean</div>
+          </div>
+          <div class="service-price">$25+</div>
+        </div>
+        <div class="service-row">
+          <div>
+            <div class="service-name">Gel Manicure</div>
+            <div class="service-detail">Long-lasting gel color, chip-free finish</div>
+          </div>
+          <div class="service-price">$40+</div>
+        </div>
+        <div class="service-row">
+          <div>
+            <div class="service-name">Acrylic Full Set</div>
+            <div class="service-detail">Full acrylic enhancement, any shape</div>
+          </div>
+          <div class="service-price">$55+</div>
+        </div>
+        <div class="service-row">
+          <div>
+            <div class="service-name">Acrylic Fill</div>
+            <div class="service-detail">Grow-out maintenance for existing acrylics</div>
+          </div>
+          <div class="service-price">$35+</div>
+        </div>
+        <div class="service-row">
+          <div>
+            <div class="service-name">Nail Art</div>
+            <div class="service-detail">Custom designs, line work, florals &amp; more</div>
+          </div>
+          <div class="service-price">$5+</div>
+        </div>
+        <div class="service-row">
+          <div>
+            <div class="service-name">Pedicure</div>
+            <div class="service-detail">Soak, scrub, shape &amp; polish — full treatment</div>
+          </div>
+          <div class="service-price">$45+</div>
+        </div>
+        <div class="service-row">
+          <div>
+            <div class="service-name">Gel Pedicure</div>
+            <div class="service-detail">Pedicure with gel color for lasting shine</div>
+          </div>
+          <div class="service-price">$60+</div>
+        </div>
+        <div class="service-row">
+          <div>
+            <div class="service-name">Dip Powder</div>
+            <div class="service-detail">Durable dip color — no UV lamp required</div>
+          </div>
+          <div class="service-price">$50+</div>
+        </div>
+      </div>
+
+      <p style="margin-top:1.25rem; font-size:0.8rem; color:var(--muted);">Prices vary by length, detail &amp; design. Call or visit to discuss your set.</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="container">
+      <div class="testimony-layout">
+        <div class="testimony-sidebar">
+          <p class="section-label">What People Say</p>
+          <h2 class="section-title">Customer<br>Testimonies</h2>
+          <p class="testimony-sidebar-note">Real words from real clients — hand-picked from our community of regulars and first-timers alike.</p>
+        </div>
+
+        <div class="testimony-list">
+          <div class="testimony-card">
+            <p class="testimony-quote">"Absolutely love this place. The quality of their work is unmatched in Twentynine Palms — I won't go anywhere else."</p>
+            <p class="testimony-attr">— Jesika J.</p>
+          </div>
+          <div class="testimony-card">
+            <p class="testimony-quote">"Finally a nail salon in the High Desert that actually listens to what you want and delivers something even better than you pictured."</p>
+            <p class="testimony-attr">— Local Guest</p>
+          </div>
+          <div class="testimony-card">
+            <p class="testimony-quote">"Clean, professional, and the nail art is genuinely impressive. Highly recommend for anyone in 29 Palms."</p>
+            <p class="testimony-attr">— Desert Resident</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS + LOCATION -->
+  <section id="location">
+    <div class="container">
+      <div class="location-grid">
+        <div class="hours-section">
+          <p class="section-label">Find Us</p>
+          <h2 class="section-title" style="color:var(--bg)">Hours &amp;<br>Location</h2>
+
+          <table class="hours-table">
+            <tbody>
+              <tr>
+                <td>Monday</td>
+                <td>Call for hours</td>
+              </tr>
+              <tr>
+                <td>Tuesday</td>
+                <td>Call for hours</td>
+              </tr>
+              <tr>
+                <td>Wednesday</td>
+                <td>Call for hours</td>
+              </tr>
+              <tr>
+                <td>Thursday</td>
+                <td>Call for hours</td>
+              </tr>
+              <tr>
+                <td>Friday</td>
+                <td>Call for hours</td>
+              </tr>
+              <tr>
+                <td>Saturday</td>
+                <td>Call for hours</td>
+              </tr>
+              <tr>
+                <td>Sunday</td>
+                <td>Call for hours</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="address-block">
+            <p>
+              6264 Adobe Rd<br>
+              Twentynine Palms, CA 92277
+            </p>
+            <a href="https://maps.google.com/?cid=9512742316273682386" target="_blank" rel="noopener">Open in Google Maps ↗</a>
+          </div>
+
+          <p class="hours-note" style="margin-top:1.5rem;">
+            Walk-ins welcome based on availability. For best results, contact us ahead of your visit.
+          </p>
+        </div>
+
+        <div>
+          <iframe
+            class="map-frame"
+            src="https://www.google.com/maps?q=34.1398574,-116.0546646&z=15&output=embed"
+            title="Define Vanity Nails location map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <div>
+          <h2 class="contact-headline">Ready to<br>Book Your Set?</h2>
+          <p class="contact-sub">Drop by or look us up on Google — we'd love to see you.</p>
+        </div>
+        <a class="btn-light" href="https://maps.google.com/?cid=9512742316273682386" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">DEFINE <span>VANITY</span> NAILS</div>
+      <div class="footer-links">
+        <a href="https://maps.google.com/?cid=9512742316273682386" target="_blank" rel="noopener">Google Business</a>
+        <a href="#services">Services</a>
+        <a href="#location">Hours</a>
+      </div>
+    </div>
+    <div class="footer-credit">
+      Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </div>
+  </footer>
+
+</body>
+</html>

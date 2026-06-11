@@ -1,0 +1,556 @@
+<!--
+  ARCHETYPE: Pressed-botanical stationery café — a "pressed flower herbarium" aesthetic.
+  The site is built like a sheet of botanical stationery: cream paper ground, hairline
+  rules, a thin mauve frame, dainty refined serif display (Cormorant Garamond) paired
+  with a quiet humanist sans (Mukta) for body. Palette: soft lavender/mauve + sage +
+  cream. NO photo-overlay hero — instead an asymmetric "specimen plate" hero (typographic
+  left column + a single framed photo on the right, like a mounted pressed specimen).
+  Menu is a two-column herbarium "ledger" with dotted leaders, not service cards. Photos
+  are presented as mounted/labeled plates with caption tags. Testimonies are a single
+  rotating "in their words" column set in large italic serif (no grid, no avatars, no
+  stars). Structural distinctness: side-by-side hero, ledger menu, plate gallery, quote
+  column, hours+map as a paired "visit" card. Animation: none beyond gentle hover.
+  DISTINCT from other cafés: not caramel corner cafe, not espresso roastery, not
+  sage/blush floral, not terracotta pun — this is dusty-lavender herbarium stationery.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pressed + Flower — Coffee Boutique · Azusa, CA</title>
+<meta name="description" content="Pressed + Flower is a botanical coffee boutique in downtown Azusa — handcrafted lattes, fresh pastries, books, and a corner to call your own." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Mukta:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#f6f2ea;
+    --paper:#fbf8f2;
+    --ink:#3a3340;
+    --mauve:#9c7f96;
+    --mauve-deep:#7c6178;
+    --lavender:#c9b6d0;
+    --lavender-soft:#e7dcec;
+    --sage:#8a9b82;
+    --sage-deep:#6c7d65;
+    --sage-soft:#dde4d6;
+    --line:#d8cfd6;
+    --muted:#776f7a;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:84px;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:"Mukta",-apple-system,system-ui,sans-serif;
+    font-weight:400;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;}
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:"Mukta",sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.34em;
+    font-size:.7rem;
+    font-weight:600;
+    color:var(--mauve);
+  }
+  .rule{height:1px;background:var(--line);border:0;margin:0;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,248,242,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    height:64px;
+  }
+  .brandmark{
+    display:flex;align-items:center;gap:.6rem;
+    text-decoration:none;
+  }
+  .brandmark .glyph{
+    width:30px;height:30px;border-radius:50%;
+    border:1px solid var(--mauve);
+    display:grid;place-items:center;
+    color:var(--mauve);font-family:"Cormorant Garamond",serif;
+    font-size:1.05rem;font-style:italic;
+    flex:0 0 auto;
+  }
+  .brandmark b{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;font-size:1.3rem;letter-spacing:.02em;
+    color:var(--ink);
+  }
+  .nav-links{display:flex;gap:2rem;align-items:center;}
+  .nav-links a{
+    text-decoration:none;font-size:.82rem;
+    letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted);font-weight:500;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--mauve-deep);}
+  .nav-call{
+    border:1px solid var(--mauve);
+    color:var(--mauve-deep)!important;
+    padding:.4rem 1rem;border-radius:999px;
+    transition:background .2s,color .2s!important;
+  }
+  .nav-call:hover{background:var(--mauve);color:#fff!important;}
+  .nav-toggle{display:none;}
+  @media(max-width:820px){
+    .nav-links{display:none;}
+    .nav-links.open{
+      display:flex;flex-direction:column;gap:1rem;
+      position:absolute;top:64px;left:0;right:0;
+      background:var(--paper);border-bottom:1px solid var(--line);
+      padding:1.4rem 28px;
+    }
+    .nav-toggle{
+      display:block;background:none;border:0;cursor:pointer;
+      font-family:"Mukta";letter-spacing:.12em;font-size:.78rem;
+      text-transform:uppercase;color:var(--mauve-deep);
+    }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 36px;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;
+    gap:56px;align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(3.1rem,7vw,5.6rem);
+    line-height:.98;margin:.5rem 0 .4rem;letter-spacing:.005em;
+  }
+  .hero h1 em{font-style:italic;color:var(--mauve-deep);font-weight:500;}
+  .hero .lede{
+    font-size:1.06rem;color:var(--muted);max-width:30ch;
+    margin:1.2rem 0 1.8rem;font-weight:300;
+  }
+  .specimen-line{
+    display:flex;align-items:center;gap:.85rem;
+    color:var(--sage-deep);font-size:.82rem;letter-spacing:.06em;
+    margin-bottom:.4rem;
+  }
+  .specimen-line::before,.specimen-line::after{
+    content:"";height:1px;flex:0 0 26px;background:var(--sage);opacity:.5;
+  }
+  .specimen-line span{white-space:nowrap;}
+  .cta-row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;}
+  .btn{
+    display:inline-block;text-decoration:none;
+    font-family:"Mukta";font-weight:600;letter-spacing:.08em;
+    font-size:.82rem;text-transform:uppercase;
+    padding:.85rem 1.6rem;border-radius:999px;
+    transition:transform .2s,background .2s,color .2s;
+  }
+  .btn-solid{background:var(--mauve-deep);color:var(--paper);}
+  .btn-solid:hover{background:var(--ink);transform:translateY(-2px);}
+  .btn-ghost{color:var(--sage-deep);border:1px solid var(--sage);}
+  .btn-ghost:hover{background:var(--sage-soft);}
+  /* mounted specimen photo */
+  .plate{
+    position:relative;
+    background:var(--paper);
+    padding:14px 14px 42px;
+    border:1px solid var(--line);
+    box-shadow:0 18px 40px -28px rgba(58,51,64,.55);
+  }
+  .plate img{width:100%;height:100%;object-fit:cover;}
+  .plate .tag{
+    position:absolute;left:50%;bottom:12px;transform:translateX(-50%);
+    font-family:"Cormorant Garamond",serif;font-style:italic;
+    font-size:1.02rem;color:var(--mauve-deep);letter-spacing:.02em;
+  }
+  .hero .plate{height:480px;}
+  .hero .plate img{height:424px;}
+  @media(max-width:820px){
+    .hero-grid{grid-template-columns:1fr;gap:34px;}
+    .hero .plate{height:360px;}
+    .hero .plate img{height:304px;}
+    .hero{padding:40px 0 24px;}
+  }
+
+  /* ---------- ABOUT ---------- */
+  section{padding:74px 0;}
+  .section-head{display:flex;flex-direction:column;gap:.5rem;margin-bottom:2.4rem;}
+  .section-head h2{font-size:clamp(2.2rem,4.4vw,3.2rem);line-height:1.04;margin:0;}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+  .about-grid p{margin:0 0 1.1rem;font-size:1.04rem;color:#4a434f;font-weight:300;}
+  .about-grid p:last-child{margin-bottom:0;}
+  .drop::first-letter{
+    font-family:"Cormorant Garamond",serif;font-size:3.6rem;
+    float:left;line-height:.74;padding:.12em .12em 0 0;color:var(--mauve);
+  }
+  .pressed-list{list-style:none;padding:0;margin:0;}
+  .pressed-list li{
+    display:flex;gap:.9rem;align-items:baseline;
+    padding:.85rem 0;border-bottom:1px dotted var(--line);
+    font-size:.98rem;color:#4a434f;
+  }
+  .pressed-list li:last-child{border-bottom:0;}
+  .pressed-list .mark{color:var(--sage);font-style:italic;font-family:"Cormorant Garamond",serif;font-size:1.3rem;line-height:1;flex:0 0 auto;}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:34px;}}
+
+  /* ---------- MENU LEDGER ---------- */
+  #menu{background:var(--lavender-soft);}
+  .menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:18px 72px;}
+  .menu-group h3{
+    font-size:1.55rem;margin:0 0 .4rem;color:var(--mauve-deep);
+    display:flex;align-items:center;gap:.6rem;
+  }
+  .menu-group h3 .dash{height:1px;flex:1;background:var(--lavender);}
+  .menu-item{
+    display:flex;align-items:baseline;
+    padding:.5rem 0;
+  }
+  .menu-item .nm{font-family:"Cormorant Garamond",serif;font-size:1.22rem;color:var(--ink);white-space:nowrap;}
+  .menu-item .leader{
+    flex:1;margin:0 .5rem;border-bottom:1px dotted var(--mauve);
+    transform:translateY(-.25rem);opacity:.55;
+  }
+  .menu-item .pr{font-family:"Mukta";font-weight:500;color:var(--mauve-deep);font-size:.95rem;}
+  .menu-item .desc{
+    flex-basis:100%;font-size:.85rem;color:var(--muted);
+    font-weight:300;margin-top:-.1rem;
+  }
+  .menu-note{
+    text-align:center;margin-top:2.6rem;font-style:italic;
+    font-family:"Cormorant Garamond",serif;font-size:1.25rem;color:var(--mauve);
+  }
+  @media(max-width:820px){.menu-cols{grid-template-columns:1fr;gap:8px;}}
+
+  /* ---------- GALLERY PLATES ---------- */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+  }
+  .gallery-grid .plate{height:300px;}
+  .gallery-grid .plate img{height:244px;}
+  .gallery-grid .plate.tall{grid-row:span 2;height:auto;}
+  @media(max-width:820px){
+    .gallery-grid{grid-template-columns:1fr 1fr;gap:16px;}
+    .gallery-grid .plate{height:220px;}
+    .gallery-grid .plate img{height:164px;}
+    .gallery-grid .plate.tall{grid-row:auto;}
+  }
+  @media(max-width:520px){.gallery-grid{grid-template-columns:1fr;}}
+
+  /* ---------- TESTIMONIES ---------- */
+  #words{background:var(--sage-soft);}
+  .words-wrap{max-width:760px;margin:0 auto;text-align:center;}
+  .quote{
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-weight:400;
+    font-size:clamp(1.5rem,3.2vw,2.15rem);line-height:1.4;color:var(--ink);
+    margin:0 0 1.6rem;
+  }
+  .quote::before{content:"\201C";color:var(--sage);font-size:1.2em;line-height:0;}
+  .attr{
+    font-family:"Mukta";letter-spacing:.14em;text-transform:uppercase;
+    font-size:.74rem;color:var(--sage-deep);font-weight:600;
+  }
+  .q-dots{display:flex;gap:.7rem;justify-content:center;margin-top:2.4rem;}
+  .q-dots button{
+    width:9px;height:9px;border-radius:50%;border:1px solid var(--sage);
+    background:transparent;cursor:pointer;padding:0;transition:background .2s;
+  }
+  .q-dots button[aria-current="true"]{background:var(--sage-deep);border-color:var(--sage-deep);}
+
+  /* ---------- VISIT ---------- */
+  .visit-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:stretch;}
+  .hours-card{
+    background:var(--paper);border:1px solid var(--line);
+    padding:34px 34px 30px;
+  }
+  .hours-card h3{font-size:1.7rem;margin:0 0 1rem;color:var(--mauve-deep);}
+  .hours-row{
+    display:flex;justify-content:space-between;
+    padding:.42rem 0;border-bottom:1px dotted var(--line);
+    font-size:.95rem;
+  }
+  .hours-row:last-of-type{border-bottom:0;}
+  .hours-row .d{color:var(--ink);}
+  .hours-row .t{color:var(--muted);font-variant-numeric:tabular-nums;}
+  .hours-row.today{color:var(--mauve-deep);font-weight:600;}
+  .hours-row.today .t,.hours-row.today .d{color:var(--mauve-deep);font-weight:600;}
+  .addr{margin-top:1.5rem;padding-top:1.3rem;border-top:1px solid var(--line);}
+  .addr p{margin:.1rem 0;font-size:.95rem;color:#4a434f;}
+  .addr a{color:var(--mauve-deep);text-decoration:none;}
+  .addr a:hover{text-decoration:underline;}
+  .findus{margin-top:1.1rem;font-size:.85rem;color:var(--muted);}
+  .findus a{color:var(--sage-deep);text-decoration:none;border-bottom:1px solid var(--sage);}
+  .findus a:hover{color:var(--ink);}
+  .map-frame{
+    border:1px solid var(--line);background:var(--paper);padding:12px;
+    min-height:380px;display:flex;
+  }
+  .map-frame iframe{width:100%;height:100%;min-height:356px;border:0;filter:grayscale(.18) sepia(.06);}
+  @media(max-width:820px){.visit-grid{grid-template-columns:1fr;gap:24px;}.map-frame{min-height:320px;}}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#cfc6d0;padding:54px 0 30px;}
+  .foot-top{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap;}
+  .foot-brand b{font-family:"Cormorant Garamond",serif;color:var(--paper);font-size:1.6rem;font-weight:600;}
+  .foot-brand p{margin:.5rem 0 0;font-size:.9rem;color:#a89fb0;font-weight:300;max-width:34ch;}
+  .foot-links{display:flex;flex-direction:column;gap:.5rem;text-align:right;}
+  .foot-links a{color:#cfc6d0;text-decoration:none;font-size:.86rem;letter-spacing:.08em;}
+  .foot-links a:hover{color:#fff;}
+  .foot-cta{
+    display:inline-block;margin-top:.4rem;border:1px solid var(--mauve);
+    color:var(--lavender)!important;padding:.5rem 1.2rem;border-radius:999px;
+    font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;
+    transition:background .2s,color .2s;
+  }
+  .foot-cta:hover{background:var(--mauve);color:#fff!important;}
+  .credit{
+    margin-top:40px;padding-top:22px;border-top:1px solid #4a4350;
+    font-size:.78rem;color:#8d8497;text-align:center;
+  }
+  .credit a{color:#b9aec4;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brandmark" href="#top">
+      <span class="glyph">P</span>
+      <b>Pressed&nbsp;+&nbsp;Flower</b>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false">Menu</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">The Boutique</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Inside</a>
+      <a href="#words">In Their Words</a>
+      <a href="#visit">Visit</a>
+      <a class="nav-call" href="tel:+16268043984">(626) 804-3984</a>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+<main class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="specimen-line"><span>Coffee Boutique · Est. Downtown Azusa</span></div>
+      <h1>Pressed&nbsp;+ <em>Flower</em></h1>
+      <p class="lede">A botanical coffee boutique where every corner is purposely arranged — handcrafted lattes, fresh pastries, and a quiet shelf of books to call your own.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="tel:+16268043984">Call to Order</a>
+        <a class="btn btn-ghost" href="#visit">Plan a Visit</a>
+      </div>
+    </div>
+    <figure class="plate" style="margin:0;">
+      <img src="./photos/02.jpg" alt="Inside Pressed + Flower — pressed-botanical wall art, shelves of merchandise, and long communal tables" />
+      <figcaption class="tag">no. 01 — the gathering room</figcaption>
+    </figure>
+  </div>
+</main>
+
+<hr class="rule" />
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-head" style="margin-bottom:1.4rem;">
+        <span class="eyebrow">The Boutique</span>
+        <h2>A pressed-flower kind<br />of corner.</h2>
+      </div>
+      <p class="drop">Pressed + Flower is a downtown Azusa coffee boutique built like a herbarium — pressed-botanical prints on the walls, bookshelves you can read from or take from, and small, thoughtful pieces tucked into every nook. It is the sort of room where you mean to stay twenty minutes and lose an afternoon.</p>
+      <p>Our baristas pour with care — from the red velvet latte with its painted foam to a honey-cinnamon cup or a whisked matcha. Pastries come out warm, the music stays soft, and there is always a window seat and a kid-friendly corner.</p>
+    </div>
+    <div>
+      <span class="eyebrow">What you'll find</span>
+      <ul class="pressed-list" style="margin-top:1.1rem;">
+        <li><span class="mark">✿</span> <span>Handcrafted lattes &amp; whisked matcha, with foam art on the house</span></li>
+        <li><span class="mark">✿</span> <span>Fresh pastries, croissants &amp; danishes baked for the morning rush</span></li>
+        <li><span class="mark">✿</span> <span>Pressed-botanical décor, books to borrow, and a curated merch shelf</span></li>
+        <li><span class="mark">✿</span> <span>Communal tables, window seats &amp; a quiet, library-calm room</span></li>
+        <li><span class="mark">✿</span> <span>A kid-friendly nook and free Wi-Fi for the long-stay crowd</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head" style="text-align:center;align-items:center;">
+      <span class="eyebrow">The Counter</span>
+      <h2>From the menu</h2>
+    </div>
+    <div class="menu-cols">
+      <div class="menu-group">
+        <h3>Signature Lattes <span class="dash"></span></h3>
+        <div class="menu-item"><span class="nm">Red Velvet Latte</span><span class="leader"></span><span class="pr">6.0</span><span class="desc">Smooth, rich &amp; creamy with painted foam art — a house favorite.</span></div>
+        <div class="menu-item"><span class="nm">Honey Cinnamon Latte</span><span class="leader"></span><span class="pr">5.75</span><span class="desc">Warm honey and a dusting of cinnamon over espresso.</span></div>
+        <div class="menu-item"><span class="nm">Whisked Matcha</span><span class="leader"></span><span class="pr">5.5</span><span class="desc">Stone-ground matcha, whisked to a velvet finish.</span></div>
+        <div class="menu-item"><span class="nm">Lavender Vanilla Cloud</span><span class="leader"></span><span class="pr">6.0</span><span class="desc">Floral lavender steamed into vanilla oat milk.</span></div>
+      </div>
+      <div class="menu-group">
+        <h3>Brews &amp; Pastries <span class="dash"></span></h3>
+        <div class="menu-item"><span class="nm">Pour-Over of the Day</span><span class="leader"></span><span class="pr">4.5</span><span class="desc">Single-origin, brewed by the cup.</span></div>
+        <div class="menu-item"><span class="nm">Iced Boba Coffee</span><span class="leader"></span><span class="pr">5.75</span><span class="desc">Espresso, milk &amp; chewy pearls over ice.</span></div>
+        <div class="menu-item"><span class="nm">Butter Croissant</span><span class="leader"></span><span class="pr">4.0</span><span class="desc">Flaky, golden, baked fresh each morning.</span></div>
+        <div class="menu-item"><span class="nm">Powdered Danish</span><span class="leader"></span><span class="pr">4.5</span><span class="desc">Warm pastry under a snow of sugar.</span></div>
+      </div>
+    </div>
+    <p class="menu-note">Prices are illustrative — ask the counter for today's specials &amp; seasonal pours.</p>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">A Look Inside</span>
+      <h2>Mounted &amp; arranged.</h2>
+    </div>
+    <div class="gallery-grid">
+      <figure class="plate tall" style="margin:0;">
+        <img src="./photos/04.jpg" alt="Storefront of Pressed + Flower Coffee Boutique with botanical logo sign" style="height:512px;" />
+        <figcaption class="tag">no. 02 — the storefront</figcaption>
+      </figure>
+      <figure class="plate" style="margin:0;">
+        <img src="./photos/03.jpg" alt="A branded cup beside a powdered-sugar danish on a wood table" />
+        <figcaption class="tag">no. 03 — coffee &amp; danish</figcaption>
+      </figure>
+      <figure class="plate" style="margin:0;">
+        <img src="./photos/01.jpg" alt="Window seating area, 'The Gathering Place', with bistro tables and a games corner" />
+        <figcaption class="tag">no. 04 — the window seats</figcaption>
+      </figure>
+      <figure class="plate" style="margin:0;">
+        <img src="./photos/05.jpg" alt="Pressed-botanical prints and curated merchandise shelves along the café wall" />
+        <figcaption class="tag">no. 05 — the wall of specimens</figcaption>
+      </figure>
+      <figure class="plate" style="margin:0;">
+        <img src="./photos/06.jpg" alt="A Pressed + Flower branded cup on a games table set with a Connect Four board" />
+        <figcaption class="tag">no. 06 — the house cup</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="words">
+  <div class="wrap words-wrap">
+    <span class="eyebrow">In Their Words</span>
+    <div style="margin-top:2rem;">
+      <p class="quote" id="qText" data-i="0">The vibe here is so impossibly cozy that I'm convinced they've somehow managed to bottle the essence of warmth and sprinkle it into the air. My matcha tasted like liquid happiness whisked into submission.</p>
+      <div class="attr" id="qAttr">Nick M.</div>
+    </div>
+    <div class="q-dots" id="qDots" aria-label="Choose a testimony"></div>
+  </div>
+</section>
+
+<section id="visit" style="padding-bottom:88px;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Visit Us</span>
+      <h2>Find your corner.</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="hours-card">
+        <h3>Hours</h3>
+        <div class="hours-row" data-day="1"><span class="d">Monday</span><span class="t">7:00 – 4:00</span></div>
+        <div class="hours-row" data-day="2"><span class="d">Tuesday</span><span class="t">7:00 – 4:00</span></div>
+        <div class="hours-row" data-day="3"><span class="d">Wednesday</span><span class="t">7:00 – 4:00</span></div>
+        <div class="hours-row" data-day="4"><span class="d">Thursday</span><span class="t">7:00 – 4:00</span></div>
+        <div class="hours-row" data-day="5"><span class="d">Friday</span><span class="t">7:00 – 4:00</span></div>
+        <div class="hours-row" data-day="6"><span class="d">Saturday</span><span class="t">7:00 – 4:00</span></div>
+        <div class="hours-row" data-day="0"><span class="d">Sunday</span><span class="t">8:00 – 4:00</span></div>
+        <div class="addr">
+          <p><strong>Pressed + Flower Coffee Boutique</strong></p>
+          <p>523 N Azusa Ave</p>
+          <p>Azusa, CA 91702</p>
+          <p style="margin-top:.6rem;"><a href="tel:+16268043984">(626) 804-3984</a></p>
+          <p style="margin-top:.9rem;"><a class="btn btn-solid" style="padding:.7rem 1.3rem;font-size:.76rem;" href="https://www.google.com/maps?q=523+N+Azusa+Ave,+Azusa,+CA+91702" target="_blank" rel="noopener">Get Directions</a></p>
+        </div>
+        <p class="findus">Find us on <a href="https://maps.google.com/?cid=11130744522617059947" target="_blank" rel="noopener">Google Business</a></p>
+      </div>
+      <div class="map-frame">
+        <iframe
+          title="Map to Pressed + Flower, 523 N Azusa Ave, Azusa, CA"
+          src="https://www.google.com/maps?q=523%20N%20Azusa%20Ave%2C%20Azusa%2C%20CA%2091702&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <b>Pressed + Flower</b>
+        <p>A botanical coffee boutique in downtown Azusa. Come for the latte, stay for the corner.</p>
+      </div>
+      <div class="foot-links">
+        <a href="tel:+16268043984">(626) 804-3984</a>
+        <a href="https://www.google.com/maps?q=523+N+Azusa+Ave,+Azusa,+CA+91702" target="_blank" rel="noopener">523 N Azusa Ave, Azusa, CA</a>
+        <a href="https://maps.google.com/?cid=11130744522617059947" target="_blank" rel="noopener">Google Business</a>
+        <a class="foot-cta" href="tel:+16268043984">Call to Order</a>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav
+  var t=document.getElementById('navToggle'),l=document.getElementById('navLinks');
+  t.addEventListener('click',function(){
+    var open=l.classList.toggle('open');
+    t.setAttribute('aria-expanded',open);
+  });
+  l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('open');t.setAttribute('aria-expanded',false);});});
+
+  // highlight today's hours
+  (function(){
+    var d=new Date().getDay();
+    var row=document.querySelector('.hours-row[data-day="'+d+'"]');
+    if(row)row.classList.add('today');
+  })();
+
+  // testimonies rotator
+  var quotes=[
+    {q:"The vibe here is so impossibly cozy that I'm convinced they've somehow managed to bottle the essence of warmth and sprinkle it into the air. My matcha tasted like liquid happiness whisked into submission.",a:"Nick M."},
+    {q:"A cozy farmhouse coffee shop in downtown Azusa with ample seating and light upbeat music. I ordered the Red Velvet Latte — smooth, rich, creamy, not too sweet — and I loved the foam art.",a:"Jeremy L."},
+    {q:"Every single corner was purposely designed, even the merchandise they sold. It has the charm of a downtown traditional neighborhood coffee shop, and the coffee was absolutely delicious.",a:"CocoMel K."},
+    {q:"The ambience reminds me of being in a library — so quiet and mellow, and the space is huge for a coffee shop. The honey cinnamon latte and pistachio croissant were both very tasty.",a:"Rosabell M."},
+    {q:"One of the most detailed coffee houses I've ever seen. Every corner is thoughtfully arranged, and there are even bookshelves you can read from or take away. A place I'd definitely recommend.",a:"Brian T."}
+  ];
+  var qText=document.getElementById('qText'),qAttr=document.getElementById('qAttr'),qDots=document.getElementById('qDots'),idx=0;
+  quotes.forEach(function(_,i){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label','Testimony '+(i+1));
+    if(i===0)b.setAttribute('aria-current','true');
+    b.addEventListener('click',function(){show(i);});
+    qDots.appendChild(b);
+  });
+  function show(i){
+    idx=i;
+    qText.style.opacity=0;
+    setTimeout(function(){
+      qText.textContent=quotes[i].q;
+      qAttr.textContent=quotes[i].a;
+      qText.style.opacity=1;
+    },180);
+    qDots.querySelectorAll('button').forEach(function(b,j){
+      if(j===i)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current');
+    });
+  }
+  qText.style.transition='opacity .25s ease';
+  setInterval(function(){show((idx+1)%quotes.length);},6500);
+</script>
+</body>
+</html>

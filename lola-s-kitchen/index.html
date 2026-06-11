@@ -1,0 +1,438 @@
+<!--
+  ARCHETYPE: Cozy home-style diner / "neighborhood comedor" — warm, hand-made, comfort-food.
+  PALETTE: warm mustard (#E0A526), brick-red (#A8331E), cream (#FBF3E2), with a deep
+           fiesta-green accent (#2E7D32) pulled straight from the real interior wall.
+  DISPLAY FONT: "Pacifico" script for the "Lola's" mark (echoes the storefront sign) +
+                "Bitter" rounded slab for headings; "Karla" for body.
+  STRUCTURAL DECISIONS:
+   - Sticky top nav (60px) with script wordmark; html{scroll-padding-top:60px} reserves it.
+   - Hero is a SPLIT layout (not a centered overlay): handwritten welcome + chili motif on
+     cream at left, real interior photo card at right — deliberately avoids the dark-overlay anti-pattern.
+   - "From the kitchen" menu is a hand-written diner-board / ticket layout (dotted leader lines),
+     NOT a 3-col icon grid.
+   - Photos shown as a tilted "snapshot wall" gallery (polaroid feel) — homestyle scrapbook vibe.
+   - Testimonies = stacked "guest book" quote slips, no stars/scores/avatars.
+   - One repeated primary CTA: Call Now (tel:) — phone-forward because it's a tiny fast-pickup spot.
+   - No scroll animations (static); only gentle hover lifts on cards/buttons.
+   - Photos are LOCAL ./photos/NN.jpg only. Keyless Google Maps embed.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lola's Kitchen — Homestyle Mexican in Barstow, CA</title>
+<meta name="description" content="Lola's Kitchen — a vibrant, casual Barstow comedor serving traditional Mexican fare: enchiladas, tacos, carnitas, burritos & more. Just off Route 66.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Bitter:ital,wght@0,500;0,700;0,800;1,500&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mustard:#E0A526;
+    --mustard-deep:#C8881A;
+    --brick:#A8331E;
+    --brick-deep:#7E2414;
+    --cream:#FBF3E2;
+    --cream-2:#F4E6C9;
+    --green:#2E7D32;
+    --ink:#3A2A1A;
+    --ink-soft:#6B5742;
+    --nav-h:60px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    font-family:'Karla',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Bitter',serif;line-height:1.1}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+  .script{font-family:'Pacifico',cursive;font-weight:400}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:var(--brick);
+    color:var(--cream);
+    border-bottom:3px solid var(--mustard);
+    box-shadow:0 2px 14px rgba(0,0,0,.18);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:100%}
+  .brand{display:flex;align-items:center;gap:8px;font-size:1.55rem;color:var(--cream)}
+  .brand .chili{font-size:1.1rem}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-weight:700;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;opacity:.92;transition:opacity .15s,color .15s}
+  .nav-links a:hover{opacity:1;color:var(--mustard)}
+  .nav-call{
+    background:var(--mustard);color:var(--brick-deep)!important;
+    padding:8px 16px;border-radius:999px;font-size:.78rem!important;
+    box-shadow:0 2px 0 var(--mustard-deep);transition:transform .12s;
+  }
+  .nav-call:hover{transform:translateY(-1px)}
+  @media(max-width:760px){
+    .nav-links a:not(.nav-call){display:none}
+    .brand{font-size:1.3rem}
+  }
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:'Bitter',serif;font-weight:700;font-size:1.02rem;
+    padding:14px 26px;border-radius:10px;cursor:pointer;transition:transform .12s,box-shadow .12s;
+  }
+  .btn-primary{background:var(--brick);color:var(--cream);box-shadow:0 4px 0 var(--brick-deep)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--brick-deep)}
+  .btn-ghost{background:transparent;color:var(--brick);border:2px solid var(--brick);padding:12px 24px}
+  .btn-ghost:hover{background:var(--brick);color:var(--cream)}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:56px 0 52px;position:relative;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(224,165,38,.18), transparent 38%),
+      repeating-linear-gradient(45deg, transparent 0 26px, rgba(168,51,30,.035) 26px 27px);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:46px;align-items:center}
+  .eyebrow{
+    display:inline-block;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    font-size:.74rem;color:var(--green);margin-bottom:14px;
+  }
+  .eyebrow::before{content:"◆ ";color:var(--mustard)}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.2rem);color:var(--ink);font-weight:800}
+  .hero h1 .script{color:var(--brick);font-size:1.18em;display:block;line-height:1}
+  .hero p.lede{font-size:1.16rem;color:var(--ink-soft);max-width:30ch;margin:20px 0 28px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .open-note{font-size:.86rem;color:var(--green);font-weight:700;display:flex;align-items:center;gap:7px}
+  .open-note .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(46,125,50,.22)}
+  .hero-photo{
+    position:relative;border-radius:16px;overflow:hidden;
+    border:7px solid #fff;box-shadow:0 18px 40px rgba(58,42,26,.22);
+    transform:rotate(1.4deg);
+  }
+  .hero-photo img{width:100%;height:420px;object-fit:cover}
+  .hero-tag{
+    position:absolute;bottom:14px;left:-10px;background:var(--mustard);color:var(--brick-deep);
+    font-family:'Bitter',serif;font-weight:800;font-size:.92rem;padding:7px 16px;border-radius:6px;
+    transform:rotate(-2deg);box-shadow:0 4px 10px rgba(0,0,0,.18);
+  }
+  @media(max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;gap:34px}
+    .hero-photo{transform:none;order:-1}
+    .hero-photo img{height:300px}
+    .hero p.lede{max-width:none}
+  }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:70px 0}
+  .sec-head{margin-bottom:38px}
+  .sec-head .kicker{font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:.74rem;color:var(--brick)}
+  .sec-head h2{font-size:clamp(1.9rem,4vw,2.7rem);margin-top:8px;color:var(--ink)}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--green);color:#fff;position:relative}
+  .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+  .about .kicker{color:var(--mustard)}
+  .about h2{color:#fff}
+  .about p{color:rgba(255,255,255,.92);font-size:1.08rem;margin-top:16px}
+  .about-photo{border-radius:14px;overflow:hidden;border:6px solid #fff;box-shadow:0 14px 30px rgba(0,0,0,.28);transform:rotate(-1.3deg)}
+  .about-photo img{width:100%;height:380px;object-fit:cover}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .badge{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);padding:7px 14px;border-radius:999px;font-size:.82rem;font-weight:700}
+  @media(max-width:860px){.about .wrap{grid-template-columns:1fr;gap:30px}.about-photo{transform:none}.about-photo img{height:280px}}
+
+  /* ---------- MENU BOARD ---------- */
+  .menu{background:var(--cream-2)}
+  .board{
+    background:var(--cream);border:2px dashed var(--mustard-deep);border-radius:16px;
+    padding:34px 38px;box-shadow:0 10px 28px rgba(58,42,26,.10);
+  }
+  .board-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 52px}
+  .board h3{
+    grid-column:1/-1;font-family:'Pacifico',cursive;font-weight:400;color:var(--brick);
+    font-size:1.5rem;margin:18px 0 4px;
+  }
+  .board h3:first-child{margin-top:0}
+  .item{display:flex;align-items:baseline;gap:8px;padding:5px 0}
+  .item .name{font-weight:700;color:var(--ink);white-space:nowrap}
+  .item .lead{flex:1;border-bottom:2px dotted rgba(107,87,66,.4);transform:translateY(-4px)}
+  .item .desc{color:var(--ink-soft);font-size:.86rem;flex-basis:100%;margin-top:-2px}
+  .menu-note{text-align:center;margin-top:26px;color:var(--ink-soft);font-style:italic}
+  .menu-note strong{color:var(--brick);font-style:normal}
+  @media(max-width:680px){.board{padding:26px 22px}.board-grid{grid-template-columns:1fr;gap:6px}}
+
+  /* ---------- GALLERY (snapshot wall) ---------- */
+  .gallery .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .snap{
+    background:#fff;padding:11px 11px 38px;border-radius:4px;
+    box-shadow:0 10px 24px rgba(58,42,26,.18);position:relative;
+    transition:transform .18s;
+  }
+  .snap img{width:100%;height:230px;object-fit:cover;border-radius:2px}
+  .snap span{position:absolute;bottom:11px;left:0;right:0;text-align:center;font-family:'Pacifico',cursive;color:var(--ink-soft);font-size:.95rem}
+  .snap:nth-child(1){transform:rotate(-2deg)}
+  .snap:nth-child(2){transform:rotate(1.2deg)}
+  .snap:nth-child(3){transform:rotate(-1deg)}
+  .snap:hover{transform:rotate(0) translateY(-4px)}
+  @media(max-width:760px){.gallery .wrap{grid-template-columns:1fr 1fr;gap:18px}.snap:nth-child(3){grid-column:1/-1;max-width:60%;margin:0 auto}}
+  @media(max-width:480px){.gallery .wrap{grid-template-columns:1fr}.snap{transform:none!important}.snap:nth-child(3){max-width:none}}
+
+  /* ---------- TESTIMONIES (guest book) ---------- */
+  .says{background:var(--brick);color:var(--cream)}
+  .says .kicker{color:var(--mustard)}
+  .says h2{color:#fff}
+  .slips{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+  .slip{
+    background:var(--cream);color:var(--ink);border-radius:10px;padding:26px 28px;
+    box-shadow:0 8px 20px rgba(0,0,0,.22);border-left:6px solid var(--mustard);
+  }
+  .slip p{font-size:1rem;line-height:1.6}
+  .slip p::before{content:"“";font-family:'Bitter',serif;color:var(--mustard-deep);font-size:1.4em;font-weight:800;margin-right:2px}
+  .slip .who{margin-top:14px;font-family:'Bitter',serif;font-weight:700;color:var(--brick);font-size:.95rem}
+  .slip.wide{grid-column:1/-1}
+  @media(max-width:760px){.slips{grid-template-columns:1fr}.slip.wide{grid-column:auto}}
+
+  /* ---------- VISIT / MAP ---------- */
+  .visit{background:var(--cream-2)}
+  .visit .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:stretch}
+  .info-card{background:var(--cream);border-radius:14px;padding:30px;box-shadow:0 10px 26px rgba(58,42,26,.10)}
+  .info-card h3{font-size:1.35rem;color:var(--brick);margin-bottom:6px}
+  .hours{list-style:none;margin:14px 0 22px}
+  .hours li{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(107,87,66,.16);font-size:.95rem}
+  .hours li.today{font-weight:700;color:var(--green)}
+  .hours li.closed span:last-child{color:var(--brick);font-weight:700}
+  .info-row{display:flex;gap:10px;align-items:flex-start;margin:12px 0;font-size:.98rem}
+  .info-row .lbl{font-family:'Bitter',serif;font-weight:700;color:var(--green);min-width:74px}
+  .map-frame{border-radius:14px;overflow:hidden;box-shadow:0 10px 26px rgba(58,42,26,.14);min-height:380px;border:5px solid #fff}
+  .map-frame iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+  .find-us{margin-top:18px;font-size:.92rem}
+  .find-us a{color:var(--brick);font-weight:700;border-bottom:2px solid var(--mustard)}
+  .find-us a:hover{color:var(--green)}
+  @media(max-width:860px){.visit .wrap{grid-template-columns:1fr}.map-frame{min-height:300px}}
+
+  /* ---------- CLOSER ---------- */
+  .closer{background:var(--mustard);text-align:center;color:var(--brick-deep)}
+  .closer h2{font-size:clamp(2rem,5vw,3rem);color:var(--brick-deep)}
+  .closer .script{color:var(--brick);display:block;font-size:1.1em}
+  .closer p{max-width:40ch;margin:14px auto 26px;color:#6a4a13;font-weight:500;font-size:1.08rem}
+  .closer .btn-primary{box-shadow:0 4px 0 var(--brick-deep)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:var(--cream-2);padding:46px 0 30px}
+  footer .wrap{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start}
+  .f-brand{font-size:1.7rem;color:var(--cream);margin-bottom:8px}
+  footer p{font-size:.92rem;color:rgba(251,243,226,.72);max-width:34ch}
+  .f-links{display:flex;flex-direction:column;gap:8px;text-align:right}
+  .f-links a{font-weight:700;font-size:.92rem;color:var(--cream-2)}
+  .f-links a:hover{color:var(--mustard)}
+  .credit{border-top:1px solid rgba(251,243,226,.16);margin-top:30px;padding-top:20px;font-size:.82rem;color:rgba(251,243,226,.6);text-align:center}
+  .credit a{color:var(--mustard);font-weight:700}
+  @media(max-width:680px){footer .wrap{grid-template-columns:1fr}.f-links{text-align:left}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="script">Lola's</span><span class="chili">🌶️</span></a>
+    <div class="nav-links">
+      <a href="#about">Our Story</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Photos</a>
+      <a href="#says">Guests</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:+17602551007" class="nav-call">(760) 255-1007</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Homestyle Mexican · Barstow, CA</span>
+      <h1>Made with love at <span class="script">Lola's Kitchen</span></h1>
+      <p class="lede">A little family comedor just off Route 66 — enchiladas, tacos, carnitas & burritos made the way abuela would.</p>
+      <div class="hero-cta">
+        <a href="tel:+17602551007" class="btn btn-primary">📞 Call Now</a>
+        <a href="#menu" class="btn btn-ghost">See the Menu</a>
+      </div>
+      <p class="open-note" style="margin-top:22px"><span class="dot"></span>Open Mon–Fri 4 AM – 7:30 PM · Sat till 4:30 PM</p>
+    </div>
+    <div class="hero-photo">
+      <img src="./photos/06.jpg" alt="The bright, art-filled dining room inside Lola's Kitchen">
+      <span class="hero-tag">¡Bienvenidos!</span>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Our Story</span>
+      <h2>A real local spot — worth getting off the freeway for</h2>
+      <p>Lola's Kitchen is a vibrant, casual eatery on Barstow's East Main, serving the traditional Mexican fare our neighbors (and a whole lot of road-trippers) keep coming back for. Hand-made plates, free chips & salsa while you wait, and the kind of friendly, lightning-fast service you only get from folks who actually cook the food.</p>
+      <p>It's only about a mile off the interstate — spend your money locally with good people, and get a far better meal for it.</p>
+      <div class="badges">
+        <span class="badge">🌮 Traditional recipes</span>
+        <span class="badge">⚡ Fast pickup</span>
+        <span class="badge">🧹 Clean &amp; cozy</span>
+        <span class="badge">🛣️ Just off Route 66</span>
+      </div>
+    </div>
+    <div class="about-photo">
+      <img src="./photos/05.jpg" alt="Carne asada sope topped with crema, cheese and lettuce">
+    </div>
+  </div>
+</section>
+
+<!-- MENU BOARD -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">From the Kitchen</span>
+      <h2>What's on the table</h2>
+    </div>
+    <div class="board">
+      <div class="board-grid">
+        <h3>House Favorites</h3>
+        <div class="item"><span class="name">California Burrito</span><span class="lead"></span>
+          <span class="desc">Stuffed full of carne asada, crispy potatoes, guac &amp; cheese.</span></div>
+        <div class="item"><span class="name">Crunchy Tacos</span><span class="lead"></span>
+          <span class="desc">Packed with meat — the ones with the line out the door.</span></div>
+        <div class="item"><span class="name">Carne Asada Sopes</span><span class="lead"></span>
+          <span class="desc">Thick masa base, beans, lettuce, crema &amp; queso fresco.</span></div>
+        <div class="item"><span class="name">Carnitas Plate</span><span class="lead"></span>
+          <span class="desc">Slow-cooked pork with rice, beans &amp; warm tortillas.</span></div>
+
+        <h3>Plates &amp; Combos</h3>
+        <div class="item"><span class="name">Milanesa</span><span class="lead"></span>
+          <span class="desc">Crispy breaded cutlet, rice, beans &amp; fresh salad.</span></div>
+        <div class="item"><span class="name">Enchiladas</span><span class="lead"></span>
+          <span class="desc">Traditional, smothered &amp; served with the sides.</span></div>
+        <div class="item"><span class="name">Taquitos</span><span class="lead"></span>
+          <span class="desc">Rolled, crisped golden &amp; topped just right.</span></div>
+        <div class="item"><span class="name">Caldos &amp; Sopa</span><span class="lead"></span>
+          <span class="desc">Hearty homestyle soups — ask what's simmering today.</span></div>
+
+        <h3>On the House</h3>
+        <div class="item"><span class="name">Chips &amp; Salsa</span><span class="lead"></span>
+          <span class="desc">Always free while you wait. ¡Buen provecho!</span></div>
+      </div>
+      <p class="menu-note"><strong>Hungry on the road?</strong> Call ahead and we'll have it boxed and ready — <a href="tel:+17602551007" style="color:var(--brick);font-weight:700;border-bottom:2px solid var(--mustard)">(760) 255-1007</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="wrap" style="grid-column:1/-1">
+    <div class="sec-head" style="grid-column:1/-1">
+      <span class="kicker">Straight off the Plate</span>
+      <h2>A few snapshots</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <figure class="snap"><img src="./photos/02.jpg" alt="California burrito sliced in half showing carne asada and potatoes"><span>The California Burrito</span></figure>
+    <figure class="snap"><img src="./photos/04.jpg" alt="Crispy milanesa plate with rice, beans and salad"><span>Milanesa, done right</span></figure>
+    <figure class="snap"><img src="./photos/03.jpg" alt="Lola's Kitchen storefront sign just off Route 66"><span>Find the chiles 🌶️</span></figure>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">From the Guest Book</span>
+      <h2>What people say</h2>
+    </div>
+    <div class="slips">
+      <div class="slip wide">
+        <p>Coming back from Vegas and the Mexican food cravings were hitting hard. We walked into an empty shop and got nervous, but five minutes later there was a line out the door for pickups. That's how you know it's the real deal! Friendly staff, super clean, and lightning-fast service. 10/10 highly recommended.</p>
+        <div class="who">— La Chaz</div>
+      </div>
+      <div class="slip">
+        <p>I cannot recommend this spot more. Even if only traveling through Barstow — it's only about a mile off the interstate and SO worth it. Clean, cute, amazing food and service. Spend your money locally with good folks. We'll come back every time we drive through!</p>
+        <div class="who">— Lynda A.</div>
+      </div>
+      <div class="slip">
+        <p>The food was excellent — we got taquitos and the sopa. The ladies were very sweet and nice, quick to serve, and quick to keep the place clean &amp; tidy. Will definitely visit again when I head to Barstow!</p>
+        <div class="who">— Emily N.</div>
+      </div>
+      <div class="slip">
+        <p>Small little restaurant in Barstow that serves Mexican dishes. Got a California Burrito and it was good — stuffed with meat, and they gave us chips and salsa while we waited.</p>
+        <div class="who">— Thomas L.</div>
+      </div>
+      <div class="slip">
+        <p>Menu's solid and these are stellar people — they give you free chips and salsa and the food is the real thing. Closer to a 4.5 than a 4… you gotta get nuts to get a full 5!</p>
+        <div class="who">— Drifton A.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="info-card">
+      <h3>Come on in</h3>
+      <p style="color:var(--ink-soft);font-size:.95rem">Dine in, take out, or call ahead for pickup.</p>
+      <ul class="hours">
+        <li><span>Monday</span><span>4:00 AM – 7:30 PM</span></li>
+        <li><span>Tuesday</span><span>4:00 AM – 7:30 PM</span></li>
+        <li><span>Wednesday</span><span>4:00 AM – 7:30 PM</span></li>
+        <li><span>Thursday</span><span>4:00 AM – 7:30 PM</span></li>
+        <li><span>Friday</span><span>4:00 AM – 7:30 PM</span></li>
+        <li><span>Saturday</span><span>4:00 AM – 4:30 PM</span></li>
+        <li class="closed"><span>Sunday</span><span>Closed</span></li>
+      </ul>
+      <div class="info-row"><span class="lbl">Address</span><span>1244 E Main St,<br>Barstow, CA 92311</span></div>
+      <div class="info-row"><span class="lbl">Phone</span><span><a href="tel:+17602551007" style="color:var(--brick);font-weight:700">(760) 255-1007</a></span></div>
+      <a href="https://www.google.com/maps?q=1244+E+Main+St,+Barstow,+CA+92311" target="_blank" rel="noopener" class="btn btn-primary" style="margin-top:10px">📍 Get Directions</a>
+      <p class="find-us">Find us on <a href="https://maps.google.com/?cid=6802371674788706598" target="_blank" rel="noopener">Google Business</a></p>
+    </div>
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps?q=1244+E+Main+St,+Barstow,+CA+92311&z=15&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Map to Lola's Kitchen, 1244 E Main St, Barstow CA"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSER -->
+<section class="closer">
+  <div class="wrap">
+    <h2>Driving through Barstow?<span class="script">Stop by Lola's.</span></h2>
+    <p>A real home-cooked meal beats drive-thru every time. Call ahead and we'll have it hot and ready.</p>
+    <a href="tel:+17602551007" class="btn btn-primary">📞 Call (760) 255-1007</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="f-brand script">Lola's Kitchen</div>
+      <p>Traditional homestyle Mexican fare in Barstow, California — just off historic Route 66.</p>
+    </div>
+    <div class="f-links">
+      <a href="tel:+17602551007">(760) 255-1007</a>
+      <a href="https://www.google.com/maps?q=1244+E+Main+St,+Barstow,+CA+92311" target="_blank" rel="noopener">1244 E Main St, Barstow, CA</a>
+      <a href="https://maps.google.com/?cid=6802371674788706598" target="_blank" rel="noopener">Google Business</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

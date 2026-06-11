@@ -1,0 +1,912 @@
+<!-- flavor: desert-honest | accent: #234E70 | bg: #FDF8F2 | hero: typographic-no-photo | service: inline-prose -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>George's Auto Care — Ehrenberg, AZ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --acc: #234E70;
+      --bg: #FDF8F2;
+      --ink: #1a1a18;
+      --muted: #5a5a54;
+      --rule: #d8d2c8;
+      --warm: #B5541E;
+      --nav-h: 64px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+      background: var(--bg);
+      color: var(--ink);
+    }
+
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 300;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      background: var(--bg);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: var(--acc);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+
+    .nav-wordmark {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.1rem;
+      color: #fff;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.18s;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .nav-cta {
+      background: var(--warm);
+      color: #fff !important;
+      padding: 0.35rem 1rem;
+      border-radius: 2px;
+      opacity: 1 !important;
+      transition: background 0.18s !important;
+    }
+
+    .nav-cta:hover { background: #8f3e14 !important; color: #fff !important; }
+
+    /* hamburger */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: transform 0.22s, opacity 0.22s;
+    }
+
+    /* ── HERO ── */
+    #home {
+      background: var(--acc);
+      color: #fff;
+      padding: 5rem 1.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(
+          -45deg,
+          rgba(255,255,255,0.03) 0px,
+          rgba(255,255,255,0.03) 1px,
+          transparent 1px,
+          transparent 28px
+        );
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-family: 'Source Serif 4', serif;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.72em;
+      display: block;
+      margin-top: 0.2em;
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 520px;
+      margin-bottom: 2.2rem;
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--warm);
+      color: #fff;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      padding: 0.75rem 1.8rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.18s, transform 0.12s;
+    }
+
+    .btn-primary:hover { background: #8f3e14; transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-block;
+      color: rgba(255,255,255,0.82);
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(255,255,255,0.35);
+      padding: 0.3rem 0;
+      transition: color 0.18s;
+    }
+
+    .btn-ghost:hover { color: #fff; text-decoration-color: rgba(255,255,255,0.7); }
+
+    .hero-meta {
+      margin-top: 2.8rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+    }
+
+    .hero-meta-item {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-meta-item strong {
+      display: block;
+      color: rgba(255,255,255,0.9);
+      font-weight: 600;
+      font-family: 'Source Serif 4', serif;
+      font-size: 0.92rem;
+    }
+
+    /* ── SECTION SHELLS ── */
+    section {
+      padding: 4.5rem 1.5rem;
+    }
+
+    .section-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+    }
+
+    hr.rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2.5rem 0;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--bg);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 660px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: start;
+        gap: 3rem;
+      }
+    }
+
+    .about-photo {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .about-text p + p {
+      margin-top: 1rem;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .highlight-line {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.35rem;
+      color: var(--acc);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: #f0ebe2;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .services-prose {
+      columns: 1;
+    }
+
+    @media (min-width: 600px) {
+      .services-prose {
+        columns: 2;
+        column-gap: 3rem;
+      }
+    }
+
+    .services-prose p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 0.6rem;
+      break-inside: avoid;
+    }
+
+    .service-item {
+      display: block;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--rule);
+      break-inside: avoid;
+    }
+
+    .service-item:last-child { border-bottom: none; }
+
+    .service-name {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 600;
+      font-size: 0.97rem;
+      color: var(--ink);
+    }
+
+    .service-detail {
+      font-size: 0.87rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies {
+      background: var(--bg);
+    }
+
+    .testimony-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .testimony {
+      padding: 1.8rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .testimony:first-child {
+      border-top: 1px solid var(--rule);
+    }
+
+    blockquote {
+      font-size: 1.05rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
+    }
+
+    blockquote::before {
+      content: '\201C';
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 2rem;
+      color: var(--acc);
+      line-height: 0;
+      vertical-align: -0.5rem;
+      margin-right: 0.15rem;
+    }
+
+    .testimony-attr {
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    /* ── HOURS + MAP ── */
+    #location {
+      background: var(--acc);
+      color: #fff;
+    }
+
+    #location .section-label { color: rgba(255,255,255,0.5); }
+    #location .section-title { color: #fff; }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .location-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: start;
+      }
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .hours-table td {
+      padding: 0.5rem 0;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.78);
+    }
+
+    .hours-table td:last-child {
+      text-align: right;
+      font-weight: 400;
+    }
+
+    .hours-table .today td {
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .map-wrap {
+      border-radius: 2px;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .map-wrap iframe {
+      width: 100%;
+      height: 260px;
+      border: none;
+      display: block;
+      filter: grayscale(15%) contrast(1.05);
+    }
+
+    .location-address {
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+
+    .location-phone {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.1rem;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .location-phone:hover { color: rgba(255,255,255,0.75); }
+
+    .location-cta {
+      display: inline-block;
+      margin-top: 1.4rem;
+      background: var(--warm);
+      color: #fff;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 0.92rem;
+      padding: 0.65rem 1.6rem;
+      border-radius: 2px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: background 0.18s;
+    }
+
+    .location-cta:hover { background: #8f3e14; }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: #f0ebe2;
+      border-top: 1px solid var(--rule);
+    }
+
+    .contact-cols {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 600px) {
+      .contact-cols {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+    }
+
+    .contact-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .contact-value {
+      font-family: 'Archivo Black', sans-serif;
+      font-size: 1.05rem;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .contact-value:hover { color: var(--acc); }
+
+    .contact-note {
+      margin-top: 0.3rem;
+      font-size: 0.84rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--acc);
+      text-decoration: none;
+      border-bottom: 1px solid var(--acc);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .social-link:hover { color: var(--warm); border-color: var(--warm); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color 0.15s;
+    }
+
+    footer a:hover { color: rgba(255,255,255,0.85); }
+
+    /* ── MOBILE NAV ── */
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        background: var(--acc);
+        flex-direction: column;
+        padding: 1.2rem 1.5rem 1.5rem;
+        gap: 0;
+        border-top: 1px solid rgba(255,255,255,0.12);
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links li { border-bottom: 1px solid rgba(255,255,255,0.1); }
+      .nav-links li:last-child { border-bottom: none; }
+
+      .nav-links a {
+        display: block;
+        padding: 0.7rem 0;
+        font-size: 0.95rem;
+      }
+
+      .nav-toggle { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a href="#home" class="nav-wordmark">George's Auto Care</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Hours</a></li>
+      <li><a href="tel:+19289852020" class="nav-cta">Call Now</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="home" style="padding-top:5rem;padding-bottom:4rem;">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Ehrenberg, AZ · Serving the Desert Southwest</p>
+      <h1 class="hero-title">
+        Straight Talk.<br>
+        Honest Work.<br>
+        <em>George's Auto Care</em>
+      </h1>
+      <p class="hero-desc">
+        From a simple muffler to a full AC restoration on a 34-year-old truck —
+        George diagnoses it right the first time, quotes you a fair price,
+        and comes in at or under it. That's the whole deal.
+      </p>
+      <div class="hero-actions">
+        <a href="tel:+19289852020" class="btn-primary">Call (928) 985-2020</a>
+        <a href="#location" class="btn-ghost">See hours &amp; directions →</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <strong>Mon – Fri</strong>
+          8 AM – 4 PM
+        </div>
+        <div class="hero-meta-item">
+          <strong>50139 Ehrenberg Poston Hwy</strong>
+          Ehrenberg, AZ 85334
+        </div>
+        <div class="hero-meta-item">
+          <strong>Sat – Sun</strong>
+          Closed
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">The Shop</p>
+      <div class="about-grid">
+        <div>
+          <img
+            src="./photos/01.jpg"
+            alt="George's Auto Care shop"
+            class="about-photo"
+            loading="lazy"
+          />
+        </div>
+        <div class="about-text">
+          <p class="highlight-line">
+            The mechanic who slides under your truck and tells you what you actually need.
+          </p>
+          <p>
+            George has been the kind of mechanic people drive across the desert to find.
+            He won't upsell you a full exhaust system when a single muffler does the job.
+            He won't guess — he diagnoses. And his front desk, run by Kaitlyn, keeps you
+            informed from the first call to the last text.
+          </p>
+          <p>
+            You'll know what's wrong, what it costs, and when your car is ready —
+            every time. The bill will be at or under the quote. That's been the promise
+            here since day one.
+          </p>
+          <p>
+            Travelers coming through on I-10 know this, too. More than one person has
+            driven off after a 20-minute fix that saved their road trip. That kind of
+            reputation doesn't come from advertising — it comes from doing the job right.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section id="services">
+    <div class="section-inner">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Services</h2>
+      <p style="color:var(--muted);margin-bottom:1.8rem;font-style:italic;font-size:0.95rem;">
+        General automotive repair and maintenance, from quick diagnostics to multi-day restorations.
+        If it's got an engine, we can help.
+      </p>
+      <div class="services-prose">
+        <span class="service-item">
+          <span class="service-name">Engine Diagnostics &amp; Repair</span>
+          <span class="service-detail"> — check engine lights, electrical faults, rodent damage</span>
+        </span>
+        <span class="service-item">
+          <span class="service-name">Air Conditioning Service</span>
+          <span class="service-detail"> — diagnosis, recharge, full component replacement</span>
+        </span>
+        <span class="service-item">
+          <span class="service-name">Exhaust &amp; Muffler</span>
+          <span class="service-detail"> — replace only what needs replacing</span>
+        </span>
+        <span class="service-item">
+          <span class="service-name">Electrical Systems</span>
+          <span class="service-detail"> — wiring, sensors, computerized systems</span>
+        </span>
+        <span class="service-item">
+          <span class="service-name">Brakes</span>
+          <span class="service-detail"> — pads, rotors, lines, fluid flush</span>
+        </span>
+        <span class="service-item">
+          <span class="service-name">Oil Change &amp; Fluid Service</span>
+          <span class="service-detail"> — conventional, synthetic, filter replacement</span>
+        </span>
+        <span class="service-item">
+          <span class="service-name">General Maintenance</span>
+          <span class="service-detail"> — belts, hoses, tune-ups, inspections</span>
+        </span>
+        <span class="service-item">
+          <span class="service-name">Roadside &amp; Traveler Emergencies</span>
+          <span class="service-detail"> — same-day appointments when possible</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIES ── -->
+  <section id="testimonies">
+    <div class="section-inner">
+      <p class="section-label">In Their Words</p>
+      <h2 class="section-title">Customer Testimonies</h2>
+      <div class="testimony-list">
+
+        <div class="testimony">
+          <blockquote>
+            He slid under it and said just a muffler. Nobody does that anymore, they all want to put on a complete system.
+            He gave me a price and said I'll call when the part comes in. He installed the muffler while I waited and the bill
+            was LOWER than the quote. This guy is as honest as the year is long.
+          </blockquote>
+          <cite class="testimony-attr">— Tim C.</cite>
+        </div>
+
+        <div class="testimony">
+          <blockquote>
+            From the time you call and Kaitlyn answers and doesn't rush your explanation of your problem, through the minute
+            she calls you back — or the numerous texts to keep you informed — down to the finished job, I always felt informed
+            and respected as a valued customer.
+          </blockquote>
+          <cite class="testimony-attr">— J. Moncrief</cite>
+        </div>
+
+        <div class="testimony">
+          <blockquote>
+            I was traveling through to get to Phoenix when I started having some car problems. The lady at the front desk was
+            amazing and George fixed my car up within 20 minutes! Best customer service I've ever experienced. They take such
+            good care of their customers!
+          </blockquote>
+          <cite class="testimony-attr">— Adara R.</cite>
+        </div>
+
+        <div class="testimony">
+          <blockquote>
+            Our AC failed on the way to a family wedding. I called George's Auto Care from the road. I scheduled my same-day
+            appointment. The estimated work time was 1.5 to 2 hours. We were out in less than 1 hour. I was fully informed of
+            the work required and they stayed within the quoted price. Great people, great job!
+          </blockquote>
+          <cite class="testimony-attr">— Esther R.</cite>
+        </div>
+
+        <div class="testimony">
+          <blockquote>
+            George takes care of my family very well. I've heard by multiple people the same thing.
+            If you need your car looked at, George's is reliable.
+          </blockquote>
+          <cite class="testimony-attr">— Jose M.</cite>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOURS + LOCATION ── -->
+  <section id="location">
+    <div class="section-inner">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-title">Hours &amp; Location</h2>
+      <div class="location-grid">
+        <div>
+          <table class="hours-table">
+            <tbody>
+              <tr><td>Monday</td><td>8:00 AM – 4:00 PM</td></tr>
+              <tr><td>Tuesday</td><td>8:00 AM – 4:00 PM</td></tr>
+              <tr><td>Wednesday</td><td>8:00 AM – 4:00 PM</td></tr>
+              <tr><td>Thursday</td><td>8:00 AM – 4:00 PM</td></tr>
+              <tr><td>Friday</td><td>8:00 AM – 4:00 PM</td></tr>
+              <tr><td>Saturday</td><td style="color:rgba(255,255,255,0.45)">Closed</td></tr>
+              <tr><td>Sunday</td><td style="color:rgba(255,255,255,0.45)">Closed</td></tr>
+            </tbody>
+          </table>
+          <p class="location-address">
+            50139 Ehrenberg Poston Hwy<br>
+            Ehrenberg, AZ 85334
+          </p>
+          <a href="tel:+19289852020" class="location-phone">(928) 985-2020</a><br>
+          <a
+            href="https://www.google.com/maps?q=33.6066234,-114.5198039"
+            target="_blank"
+            rel="noopener"
+            class="location-cta"
+          >Get Directions</a>
+        </div>
+        <div>
+          <div class="map-wrap">
+            <iframe
+              title="George's Auto Care map"
+              src="https://www.google.com/maps?q=33.6066234,-114.5198039&z=15&output=embed"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="section-inner">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-cols">
+        <div>
+          <p class="contact-label">Phone</p>
+          <a href="tel:+19289852020" class="contact-value">(928) 985-2020</a>
+          <p class="contact-note">Best way to reach us — same-day appointments when available.</p>
+        </div>
+        <div>
+          <p class="contact-label">Address</p>
+          <p class="contact-value" style="font-size:0.97rem;">
+            50139 Ehrenberg Poston Hwy<br>
+            Ehrenberg, AZ 85334
+          </p>
+          <p class="contact-note">On the main highway — easy to spot coming through town.</p>
+          <div class="social-links">
+            <a
+              href="https://maps.google.com/?cid=17792182954985295212"
+              target="_blank"
+              rel="noopener"
+              class="social-link"
+            >Google Business</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>© 2025 George's Auto Care · Ehrenberg, AZ</p>
+    <p style="margin-top:0.4rem;">
+      Mockup designed by LJ Sites — interested in making this yours?
+      <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </p>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    toggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        toggle.setAttribute('aria-expanded', false);
+      });
+    });
+  </script>
+
+</body>
+</html>

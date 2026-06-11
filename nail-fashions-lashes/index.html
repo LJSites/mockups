@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<!--
+  ARCHETYPE: Trendy glam beauty boutique — high-fashion "lookbook" treatment.
+  PALETTE: soft blush pink (#f7e3e7 / #f4c9d4) + near-black (#0c0c0e) + chrome/silver gradient accents.
+  DISPLAY FONT: "Syne" (bold modern geometric display sans) for headings; "Inter" for body/UI.
+  DELIBERATELY DISTINCT from editorial-serif nail bars (no Cormorant, no aubergine/blush-gold).
+  STRUCTURAL DECISIONS:
+    - Split asymmetric hero: oversized type slab on a black panel + tall salon photo column (NO centered-overlay hero).
+    - Sticky slim nav with chrome-underline hover; scroll-padding-top reserves nav height.
+    - Services presented as a horizontal "menu ledger" (price-leader rows), not 3 icon cards.
+    - Work gallery = uneven masonry "lookbook" of the real nail/pedi photos.
+    - Single pull-quote testimony block (only one real quote) styled as a glam editorial spread — not a card grid.
+    - Animation: none beyond CSS hover transitions (intentional restraint).
+    - Primary CTA "Call Now" (tel:) repeated in nav, hero, and contact.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nail Fashions &amp; Lashes — Colton, CA | Nails, Pedicures &amp; Lashes</title>
+<meta name="description" content="Nail Fashions & Lashes in Colton, CA. Manicures, pedicures, gel, full sets and lash work from a salon Colton has trusted for years. Call (909) 533-4755.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0c0c0e;
+    --ink-soft:#1a1a1e;
+    --blush:#f7e3e7;
+    --blush-deep:#f4c9d4;
+    --pink:#e8779a;
+    --pink-hot:#d24f78;
+    --paper:#fbf6f7;
+    --line:#e9d6db;
+    --chrome1:#b9bcc4;
+    --chrome2:#f2f3f5;
+    --chrome3:#8b8e98;
+    --nav-h:68px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.disp{font-family:'Syne',sans-serif;letter-spacing:-.02em;line-height:1.02}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .chrome-text{
+    background:linear-gradient(100deg,var(--chrome3),var(--chrome2) 35%,var(--chrome1) 55%,var(--chrome2) 75%,var(--chrome3));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(12,12,14,.92);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    display:flex;align-items:center;
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{font-family:'Syne';font-weight:800;font-size:1.02rem;color:#fff;letter-spacing:.01em;display:flex;align-items:center;gap:.55rem}
+  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--pink);box-shadow:0 0 0 3px rgba(232,119,154,.25)}
+  .navlinks{display:flex;gap:30px;align-items:center}
+  .navlinks a{color:#d9d9dd;font-size:.82rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;position:relative;padding:6px 0;transition:color .2s}
+  .navlinks a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,var(--chrome1),var(--chrome2),var(--chrome3));transition:width .25s}
+  .navlinks a:hover{color:#fff}
+  .navlinks a:hover::after{width:100%}
+  .nav-call{display:inline-flex;align-items:center;gap:.4rem;background:var(--pink);color:#fff !important;padding:9px 18px;border-radius:999px;font-size:.78rem !important;text-transform:uppercase;letter-spacing:.06em;font-weight:600;transition:background .2s,transform .2s}
+  .nav-call::after{display:none}
+  .nav-call:hover{background:var(--pink-hot);transform:translateY(-1px)}
+  .nav-toggle{display:none}
+
+  /* HERO */
+  .hero{background:var(--ink);color:#fff;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;min-height:calc(100vh - var(--nav-h));max-height:760px}
+  .hero-left{display:flex;flex-direction:column;justify-content:center;padding:64px clamp(24px,5vw,80px)}
+  .eyebrow{font-size:.74rem;letter-spacing:.42em;text-transform:uppercase;color:var(--blush-deep);font-weight:600;margin-bottom:26px;display:flex;align-items:center;gap:14px}
+  .eyebrow::before{content:"";width:46px;height:1px;background:var(--blush-deep);opacity:.6}
+  .hero h1{font-size:clamp(2.7rem,6.4vw,5.4rem);font-weight:800;color:#fff}
+  .hero h1 .ln2{display:block}
+  .hero h1 em{font-style:normal}
+  .hero p.sub{margin:30px 0 38px;max-width:30ch;color:#c9c9cf;font-size:1.06rem;font-weight:300}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn-pink{display:inline-flex;align-items:center;gap:.5rem;background:var(--pink);color:#fff;padding:15px 30px;border-radius:999px;font-weight:600;letter-spacing:.03em;transition:background .2s,transform .2s}
+  .btn-pink:hover{background:var(--pink-hot);transform:translateY(-2px)}
+  .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;border:1px solid rgba(255,255,255,.28);color:#fff;padding:15px 28px;border-radius:999px;font-weight:500;letter-spacing:.03em;transition:border-color .2s,background .2s}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+  .hero-right{position:relative}
+  .hero-right img{width:100%;height:100%;object-fit:cover;filter:saturate(1.02)}
+  .hero-right::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,12,14,.55),transparent 22%)}
+  .hero-tag{position:absolute;left:0;bottom:30px;background:var(--blush);color:var(--ink);font-family:'Syne';font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:10px 18px;z-index:2}
+
+  /* MARQUEE STRIP */
+  .strip{background:var(--blush);color:var(--ink);padding:16px 0}
+  .strip .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 40px;font-family:'Syne';font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem}
+  .strip span{display:inline-flex;align-items:center;gap:12px}
+  .strip span::before{content:"✦";color:var(--pink-hot);font-size:.7rem}
+
+  /* SECTION SHELL */
+  section{padding:90px 0}
+  .sec-head{max-width:680px;margin-bottom:48px}
+  .kicker{font-size:.74rem;letter-spacing:.4em;text-transform:uppercase;color:var(--pink-hot);font-weight:600;margin-bottom:16px}
+  .sec-head h2{font-size:clamp(2rem,4.4vw,3.2rem);font-weight:800}
+  .sec-head p{margin-top:18px;color:#5b545a;font-size:1.05rem;font-weight:300}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:14px}
+  .about-photos img{border-radius:4px;width:100%;height:100%;object-fit:cover}
+  .about-photos .tall{grid-row:span 2;height:100%}
+  .about-photos .tall img{height:100%;min-height:360px}
+  .about-photos .sm img{height:175px}
+  .about-copy h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800;margin-bottom:20px}
+  .about-copy p{color:#4f4950;margin-bottom:18px;font-weight:300;font-size:1.05rem}
+  .about-stats{display:flex;gap:38px;margin-top:30px;border-top:1px solid var(--line);padding-top:26px}
+  .stat .n{font-family:'Syne';font-weight:800;font-size:2rem;color:var(--ink)}
+  .stat .l{font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--pink-hot);font-weight:600}
+
+  /* SERVICES LEDGER */
+  #services{background:var(--ink);color:#fff}
+  #services .kicker{color:var(--blush-deep)}
+  #services .sec-head h2{color:#fff}
+  #services .sec-head p{color:#b6b3b9}
+  .ledger{border-top:1px solid rgba(255,255,255,.14)}
+  .lrow{display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:baseline;padding:26px 4px;border-bottom:1px solid rgba(255,255,255,.12);transition:background .2s,padding-left .2s}
+  .lrow:hover{background:rgba(255,255,255,.03);padding-left:14px}
+  .lrow .name{font-family:'Syne';font-weight:700;font-size:1.32rem;color:#fff}
+  .lrow .desc{color:#9d9aa2;font-size:.92rem;font-weight:300;max-width:46ch}
+  .lrow .price{font-family:'Syne';font-weight:700;font-size:1.18rem}
+  .lrow .price.chrome{ }
+  .svc-note{margin-top:28px;color:#8f8c95;font-size:.86rem;font-weight:300}
+  .svc-note a{color:var(--blush-deep);border-bottom:1px solid rgba(244,201,212,.4)}
+
+  /* LOOKBOOK */
+  .lookbook{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+  .lookbook a{position:relative;overflow:hidden;border-radius:4px;display:block}
+  .lookbook img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+  .lookbook a:hover img{transform:scale(1.06)}
+  .lookbook .w2{grid-column:span 2}
+  .lookbook .h2{grid-row:span 2}
+  .lk-cap{position:absolute;left:12px;bottom:12px;background:rgba(12,12,14,.78);color:#fff;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;font-weight:600;opacity:0;transform:translateY(6px);transition:.3s}
+  .lookbook a:hover .lk-cap{opacity:1;transform:translateY(0)}
+
+  /* TESTIMONY */
+  .testi{background:linear-gradient(160deg,var(--blush),#fff 90%)}
+  .testi .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:center}
+  .testi .kicker{color:var(--pink-hot)}
+  .testi-quote{font-family:'Syne';font-weight:600;font-size:clamp(1.5rem,3.1vw,2.25rem);line-height:1.28;color:var(--ink)}
+  .testi-quote .mark{color:var(--pink);font-size:1.3em;line-height:0;vertical-align:-.25em;margin-right:.1em}
+  .testi-by{margin-top:30px;display:flex;align-items:center;gap:14px}
+  .testi-by .ini{width:54px;height:54px;border-radius:50%;background:var(--ink);color:#fff;font-family:'Syne';font-weight:800;display:grid;place-items:center;font-size:1.1rem}
+  .testi-by b{font-family:'Syne';font-size:1.05rem;display:block}
+  .testi-by span{font-size:.82rem;color:#7a7178;letter-spacing:.06em;text-transform:uppercase}
+  .testi-photo img{width:100%;border-radius:6px;object-fit:cover;aspect-ratio:4/3}
+
+  /* HOURS + MAP + CONTACT */
+  #visit{background:var(--ink);color:#fff;padding-bottom:0}
+  #visit .kicker{color:var(--blush-deep)}
+  #visit .sec-head h2{color:#fff}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .info-block{margin-bottom:34px}
+  .info-block h3{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--blush-deep);font-weight:600;margin-bottom:14px}
+  .info-block p,.info-block a{color:#dcdce0;font-weight:300;font-size:1.02rem}
+  .info-block a.lk:hover{color:#fff}
+  .hours-list{display:grid;grid-template-columns:auto 1fr;gap:8px 28px;max-width:330px}
+  .hours-list dt{color:#bdbac2;font-weight:300}
+  .hours-list dd{text-align:right;color:#fff;font-weight:500}
+  .hours-list .closed{color:var(--pink)}
+  .hours-list .today{color:var(--blush-deep)}
+  .visit-cta{margin-top:8px;display:flex;gap:12px;flex-wrap:wrap}
+  .findus{margin-top:30px}
+  .findus a{display:inline-flex;align-items:center;gap:.45rem;border:1px solid rgba(255,255,255,.24);padding:9px 16px;border-radius:999px;font-size:.82rem;color:#e6e6ea;margin:0 8px 8px 0;transition:.2s}
+  .findus a:hover{border-color:var(--blush-deep);color:#fff;background:rgba(244,201,212,.08)}
+  .map-frame{height:100%;min-height:420px;border-radius:6px;overflow:hidden;border:1px solid rgba(255,255,255,.12)}
+  .map-frame iframe{width:100%;height:100%;min-height:420px;border:0;filter:grayscale(.25) contrast(1.05)}
+
+  /* FOOTER */
+  footer{background:#060607;color:#9a979f;padding:54px 0 40px;text-align:center}
+  footer .fbrand{font-family:'Syne';font-weight:800;color:#fff;font-size:1.3rem;letter-spacing:.02em;margin-bottom:8px}
+  footer .fmeta{font-size:.92rem;font-weight:300;margin-bottom:6px}
+  footer .fmeta a:hover{color:#fff}
+  footer .credit{margin-top:30px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);font-size:.8rem;color:#6c6970}
+  footer .credit a{color:var(--blush-deep)}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;max-height:none}
+    .hero-right{min-height:46vh;order:-1}
+    .hero-right::after{background:linear-gradient(180deg,rgba(12,12,14,.2),rgba(12,12,14,.6))}
+    .hero-left{padding:48px 24px 56px}
+    .about-grid{grid-template-columns:1fr;gap:36px}
+    .testi .wrap{grid-template-columns:1fr;gap:30px}
+    .visit-grid{grid-template-columns:1fr;gap:36px}
+    .lookbook{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
+  }
+  @media(max-width:640px){
+    .navlinks{display:none}
+    .lrow{grid-template-columns:1fr auto;gap:6px 16px}
+    .lrow .desc{grid-column:1 / -1;order:3}
+    .about-stats{gap:24px;flex-wrap:wrap}
+    .lookbook .w2{grid-column:span 1}
+    .hero h1{font-size:2.7rem}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand"><span class="dot"></span>Nail Fashions <span style="color:var(--pink)">&amp;</span> Lashes</a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Lookbook</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:+19095334755" class="nav-call">Call Now</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="eyebrow">Colton, California</div>
+      <h1>Nails done<span class="ln2"><em class="chrome-text">flawless.</em></span></h1>
+      <p class="sub">Manicures, pedicures, gel sets &amp; lashes from the Colton salon that keeps its clients coming back for years.</p>
+      <div class="hero-cta">
+        <a href="tel:+19095334755" class="btn-pink">📞 Call (909) 533-4755</a>
+        <a href="#services" class="btn-ghost">View Services</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="./photos/03.jpg" alt="Glossy red coffin-shape gel manicure by Nail Fashions & Lashes">
+      <div class="hero-tag">Walk-ins welcome</div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <span>Manicures</span>
+    <span>Pedicures</span>
+    <span>Gel &amp; Full Sets</span>
+    <span>Lashes</span>
+    <span>Designs &amp; Art</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-photos">
+      <div class="tall"><img src="./photos/01.jpg" alt="Bright, modern interior of Nail Fashions & Lashes salon"></div>
+      <div class="sm"><img src="./photos/06.jpg" alt="Row of spa pedicure chairs"></div>
+      <div class="sm"><img src="./photos/05.jpg" alt="Nail technician at work beside the polish wall"></div>
+    </div>
+    <div class="about-copy">
+      <div class="kicker">The Salon</div>
+      <h2>A clean, bright space &amp; a team you'll trust.</h2>
+      <p>Nail Fashions &amp; Lashes is a full-service nail salon in Colton run by owner Phong — a name longtime regulars know by heart. From a fresh gel manicure to a relaxing spa pedicure or a crisp French set, every detail gets done right.</p>
+      <p>Our wall-to-wall <em>Polish Center</em> stocks hundreds of colors, so whether it's a barbie-pink moment or a glittered toe for sandal season, the shade you want is on the shelf.</p>
+      <div class="about-stats">
+        <div class="stat"><div class="n">16+</div><div class="l">Years loved by regulars</div></div>
+        <div class="stat"><div class="n">100s</div><div class="l">Polish shades</div></div>
+        <div class="stat"><div class="n">6&nbsp;days</div><div class="l">Open weekly</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">The Menu</div>
+      <h2>Services</h2>
+      <p>A full nail &amp; lash menu for hands, feet and finishing touches. Pricing varies with length, art and add-ons — call for an exact quote.</p>
+    </div>
+    <div class="ledger">
+      <div class="lrow">
+        <div class="name">Manicures</div>
+        <div class="desc">Classic &amp; spa manicures, shaping and cuticle care, finished in the polish or gel of your choice.</div>
+        <div class="price chrome chrome-text">Classic &amp; Gel</div>
+      </div>
+      <div class="lrow">
+        <div class="name">Spa Pedicures</div>
+        <div class="desc">Soak, scrub and massage in our spa chairs — happy feet for sandal season, every time.</div>
+        <div class="price chrome chrome-text">Relax &amp; Renew</div>
+      </div>
+      <div class="lrow">
+        <div class="name">Full Sets &amp; Gel</div>
+        <div class="desc">Acrylic and gel full sets, fills and length you choose — coffin, almond, square or stiletto.</div>
+        <div class="price chrome chrome-text">Build &amp; Fill</div>
+      </div>
+      <div class="lrow">
+        <div class="name">French &amp; Designs</div>
+        <div class="desc">Crisp French tips, glitter, chrome and custom nail art tailored to your look.</div>
+        <div class="price chrome chrome-text">Custom Art</div>
+      </div>
+      <div class="lrow">
+        <div class="name">Lashes</div>
+        <div class="desc">Lash services to frame your eyes and finish the whole look in one sitting.</div>
+        <div class="price chrome chrome-text">Lash &amp; Frame</div>
+      </div>
+    </div>
+    <p class="svc-note">Not sure what you want yet? Tell us your vibe and we'll guide you. <a href="tel:+19095334755">Call (909) 533-4755</a> to book.</p>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Lookbook</div>
+      <h2>Recent work, real nails.</h2>
+      <p>Glossy gels, glittered pedicures and clean French — all done in-house at Nail Fashions &amp; Lashes.</p>
+    </div>
+    <div class="lookbook">
+      <a href="#" class="h2"><img src="./photos/03.jpg" alt="Glossy red coffin gel manicure"><span class="lk-cap">Red Gel Coffin Set</span></a>
+      <a href="#" class="w2"><img src="./photos/06.jpg" alt="Spa pedicure chairs at the salon"><span class="lk-cap">The Pedi Lounge</span></a>
+      <a href="#"><img src="./photos/04.jpg" alt="French tip manicure close-up"><span class="lk-cap">Classic French</span></a>
+      <a href="#"><img src="./photos/02.jpg" alt="Blue glitter pedicure"><span class="lk-cap">Glitter Pedicure</span></a>
+      <a href="#" class="w2"><img src="./photos/05.jpg" alt="Polish Center wall with hundreds of colors"><span class="lk-cap">The Polish Center</span></a>
+      <a href="#"><img src="./photos/01.jpg" alt="Inside the salon"><span class="lk-cap">Our Studio</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="testi" id="testimony">
+  <div class="wrap">
+    <div>
+      <div class="kicker">In Their Words</div>
+      <blockquote class="testi-quote"><span class="mark">“</span>Been rockin' with Nail Fashions since I was 18 and I'm 34 now. When I come to Cali, Nail Fashions is the ONLY place I go. Never disappointed — Nail Fashions gave me happy feet!<span class="mark">”</span></blockquote>
+      <div class="testi-by">
+        <div class="ini">S</div>
+        <div>
+          <b>Shannon B.</b>
+          <span>Regular since 18</span>
+        </div>
+      </div>
+    </div>
+    <div class="testi-photo">
+      <img src="./photos/02.jpg" alt="Glitter pedicure from a happy regular">
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="kicker">Find Us</div>
+      <h2>Visit the salon.</h2>
+    </div>
+    <div class="visit-grid">
+      <div>
+        <div class="info-block">
+          <h3>Address</h3>
+          <p><a class="lk" href="https://www.google.com/maps?q=1220+E+Washington+St+unit+A2,+Colton,+CA+92324" target="_blank" rel="noopener">1220 E Washington St, Unit A2<br>Colton, CA 92324</a></p>
+        </div>
+        <div class="info-block">
+          <h3>Phone</h3>
+          <p><a class="lk" href="tel:+19095334755">(909) 533-4755</a></p>
+        </div>
+        <div class="info-block">
+          <h3>Hours</h3>
+          <dl class="hours-list">
+            <dt>Monday</dt><dd>9:00 AM – 6:00 PM</dd>
+            <dt>Tuesday</dt><dd>9:00 AM – 6:00 PM</dd>
+            <dt>Wednesday</dt><dd>9:00 AM – 6:00 PM</dd>
+            <dt>Thursday</dt><dd>9:00 AM – 6:00 PM</dd>
+            <dt>Friday</dt><dd>9:00 AM – 6:00 PM</dd>
+            <dt>Saturday</dt><dd>9:00 AM – 6:00 PM</dd>
+            <dt>Sunday</dt><dd class="closed">Closed</dd>
+          </dl>
+        </div>
+        <div class="visit-cta">
+          <a href="tel:+19095334755" class="btn-pink">📞 Call Now</a>
+          <a href="https://www.google.com/maps?q=1220+E+Washington+St+unit+A2,+Colton,+CA+92324" target="_blank" rel="noopener" class="btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.3)">Get Directions</a>
+        </div>
+        <div class="findus">
+          <a href="https://maps.google.com/?cid=4041007586089746904" target="_blank" rel="noopener">📍 Google Business</a>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps?q=1220+E+Washington+St+unit+A2,+Colton,+CA+92324&z=15&output=embed" loading="lazy" title="Map to Nail Fashions & Lashes" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">Nail Fashions &amp; Lashes</div>
+    <p class="fmeta">1220 E Washington St, Unit A2, Colton, CA 92324</p>
+    <p class="fmeta"><a href="tel:+19095334755">(909) 533-4755</a> &nbsp;·&nbsp; Mon–Sat 9–6 &nbsp;·&nbsp; <a href="https://maps.google.com/?cid=4041007586089746904" target="_blank" rel="noopener">Google Business</a></p>
+    <p class="credit">Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</p>
+  </div>
+</footer>
+
+</body>
+</html>

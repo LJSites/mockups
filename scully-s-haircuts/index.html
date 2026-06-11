@@ -1,0 +1,1068 @@
+<!-- flavor: dark-industrial bento | accent: #B11226 | bg: #0F0F12 | hero: bento-grid | service: sticker-cards -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scully's Haircuts — Apple Valley, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --acc: #B11226;
+      --bg: #0F0F12;
+      --bg2: #18181C;
+      --bg3: #222228;
+      --text: #E8E6E1;
+      --muted: #8A8884;
+      --border: #2C2C34;
+      --nav-h: 60px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 300;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ===== NAV ===== */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      background: rgba(15, 15, 18, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 4vw, 2.5rem);
+    }
+
+    .nav-logo {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .nav-logo span {
+      color: var(--acc);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--acc); }
+
+    .nav-cta {
+      background: var(--acc);
+      color: #fff !important;
+      padding: 0.4rem 1rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: #8e0e1e !important; color: #fff !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.25s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+      z-index: 99;
+      padding: 1.5rem clamp(1rem, 4vw, 2.5rem);
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--acc); }
+
+    /* ===== HERO BENTO GRID ===== */
+    #home {
+      padding: clamp(1.5rem, 4vw, 3rem) clamp(1rem, 4vw, 2.5rem);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .bento {
+      display: grid;
+      gap: 0.75rem;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto;
+    }
+
+    .bento-cell {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Main identity block */
+    .cell-identity {
+      grid-column: 1 / 3;
+      grid-row: 1 / 2;
+      padding: clamp(2rem, 5vw, 3.5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-height: 280px;
+      background: var(--bg3);
+    }
+
+    .cell-identity::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(177,18,38,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.75rem;
+    }
+
+    .cell-identity h1 {
+      font-size: clamp(2.6rem, 6vw, 4.5rem);
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .cell-identity .tagline {
+      font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+      color: var(--muted);
+      max-width: 44ch;
+      font-style: italic;
+      font-weight: 300;
+      margin-bottom: 1.6rem;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.8rem;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: #8e0e1e;
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      display: inline-block;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.8rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--acc);
+      color: var(--acc);
+    }
+
+    /* Photo cells */
+    .cell-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cell-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .cell-photo:hover img { transform: scale(1.04); }
+
+    .cell-p1 {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+      min-height: 280px;
+    }
+
+    .cell-p2 {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      min-height: 220px;
+    }
+
+    .cell-stat {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--acc);
+    }
+
+    .stat-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+
+    .cell-p3 {
+      grid-column: 3 / 4;
+      grid-row: 2 / 3;
+      min-height: 220px;
+    }
+
+    /* ===== SECTION COMMON ===== */
+    section {
+      padding: clamp(3.5rem, 7vw, 6rem) clamp(1rem, 4vw, 2.5rem);
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ===== ABOUT ===== */
+    #about { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-img {
+      position: relative;
+    }
+
+    .about-img img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .about-img::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: -8px;
+      width: 60%;
+      height: 60%;
+      border-left: 3px solid var(--acc);
+      border-bottom: 3px solid var(--acc);
+      pointer-events: none;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+      font-size: 1.05rem;
+    }
+
+    .about-text p strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .about-badge {
+      display: inline-block;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-top: 0.8rem;
+    }
+
+    /* ===== SERVICES — STICKER CARDS ===== */
+    #services { background: var(--bg); }
+
+    .sticker-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--border);
+      background: var(--border);
+    }
+
+    .sticker-card {
+      background: var(--bg2);
+      padding: 2rem 1.75rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.2s;
+    }
+
+    .sticker-card::before {
+      content: attr(data-num);
+      position: absolute;
+      top: -0.5rem;
+      right: 1rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 5rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.03);
+      line-height: 1;
+      pointer-events: none;
+      transition: color 0.2s;
+    }
+
+    .sticker-card:hover {
+      background: var(--bg3);
+    }
+
+    .sticker-card:hover::before {
+      color: rgba(177,18,38,0.08);
+    }
+
+    .sticker-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .sticker-price {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--acc);
+    }
+
+    .sticker-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .sticker-note {
+      margin-top: 2rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      border-left: 3px solid var(--acc);
+      padding-left: 1rem;
+    }
+
+    /* ===== TESTIMONIES ===== */
+    #testimonies { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .testimony-pile {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .testimony-block {
+      background: var(--bg);
+      padding: 2.25rem;
+      position: relative;
+    }
+
+    .testimony-block:nth-child(odd) {
+      background: var(--bg3);
+    }
+
+    .testimony-block::before {
+      content: '\201C';
+      position: absolute;
+      top: 1.2rem;
+      left: 1.8rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 4rem;
+      color: var(--acc);
+      opacity: 0.5;
+      line-height: 1;
+    }
+
+    .testimony-text {
+      font-size: 0.98rem;
+      color: var(--muted);
+      font-style: italic;
+      padding-top: 2rem;
+      line-height: 1.7;
+    }
+
+    .testimony-author {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-top: 1.2rem;
+    }
+
+    .testimony-bar {
+      width: 2rem;
+      height: 2px;
+      background: var(--acc);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ===== HOURS & LOCATION ===== */
+    #location { background: var(--bg); }
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .hours-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hours-table td {
+      padding: 0.75rem 0;
+      font-size: 0.95rem;
+    }
+
+    .hours-table td:first-child {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      width: 50%;
+    }
+
+    .hours-table td:last-child {
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .hours-table tr.today td:first-child { color: var(--acc); }
+    .hours-closed { color: var(--muted) !important; font-style: italic; }
+
+    .map-wrap {
+      position: relative;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+    }
+
+    .map-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 340px;
+      border: 0;
+      filter: grayscale(0.5) brightness(0.8);
+    }
+
+    /* ===== CONTACT ===== */
+    #contact {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .contact-item {
+      border-left: 2px solid var(--acc);
+      padding-left: 1.2rem;
+    }
+
+    .contact-item-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.3rem;
+    }
+
+    .contact-item-value {
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .contact-item-value a {
+      color: var(--text);
+      transition: color 0.2s;
+    }
+
+    .contact-item-value a:hover { color: var(--acc); }
+
+    .contact-notice {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .contact-notice p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-notice p strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .cta-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .cta-big {
+      display: block;
+      text-align: center;
+      background: var(--acc);
+      color: #fff;
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1.2rem 2rem;
+      transition: background 0.2s;
+    }
+
+    .cta-big:hover { background: #8e0e1e; }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: inline-block;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .social-link:hover {
+      border-color: var(--acc);
+      color: var(--acc);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 2rem clamp(1rem, 4vw, 2.5rem);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .footer-brand span { color: var(--acc); }
+
+    .footer-credit {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .footer-credit a {
+      color: var(--acc);
+      transition: opacity 0.2s;
+    }
+
+    .footer-credit a:hover { opacity: 0.75; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .bento {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .cell-identity {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+      }
+
+      .cell-p1 {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        min-height: 200px;
+      }
+
+      .cell-stat {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+      }
+
+      .cell-p2 {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+        min-height: 200px;
+      }
+
+      .cell-p3 {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+        min-height: 200px;
+      }
+
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .location-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .testimony-pile { grid-template-columns: 1fr; }
+
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    @media (max-width: 600px) {
+      .bento {
+        grid-template-columns: 1fr;
+      }
+
+      .cell-identity {
+        grid-column: 1 / 2;
+        min-height: auto;
+      }
+
+      .cell-p1 { grid-column: 1; grid-row: auto; min-height: 240px; }
+      .cell-stat { grid-column: 1; grid-row: auto; }
+      .cell-p2 { grid-column: 1; grid-row: auto; min-height: 200px; }
+      .cell-p3 { grid-column: 1; grid-row: auto; min-height: 200px; }
+
+      .sticker-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Scully<span>'</span>s</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#location">Hours</a></li>
+      <li><a href="#contact" class="nav-cta">Call Now</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu">
+    <a href="#about" onclick="this.closest('.mobile-menu').classList.remove('open')">About</a>
+    <a href="#services" onclick="this.closest('.mobile-menu').classList.remove('open')">Services</a>
+    <a href="#testimonies" onclick="this.closest('.mobile-menu').classList.remove('open')">Testimonies</a>
+    <a href="#location" onclick="this.closest('.mobile-menu').classList.remove('open')">Hours</a>
+    <a href="#contact" onclick="this.closest('.mobile-menu').classList.remove('open')">Call Now</a>
+  </div>
+
+  <!-- HERO BENTO -->
+  <div id="home">
+    <div class="bento">
+
+      <div class="bento-cell cell-identity">
+        <div class="eyebrow">Apple Valley, CA &mdash; Walk-ins Welcome</div>
+        <h1>Scully's<br>Haircuts</h1>
+        <p class="tagline">The barber that gets it right the first time &mdash; no pictures needed.</p>
+        <div class="cta-group">
+          <a href="tel:7609851565" class="btn-primary">Call (760) 985-1565</a>
+          <a href="https://www.google.com/maps?q=34.498836499999996,-117.1723937&z=15" target="_blank" rel="noopener" class="btn-ghost">Get Directions</a>
+        </div>
+      </div>
+
+      <div class="bento-cell cell-photo cell-p1">
+        <img src="./photos/01.jpg" alt="Scully's Haircuts — shop interior" loading="lazy" />
+      </div>
+
+      <div class="bento-cell cell-photo cell-p2">
+        <img src="./photos/02.jpg" alt="Scully's Haircuts — barber at work" loading="lazy" />
+      </div>
+
+      <div class="bento-cell cell-stat">
+        <div class="stat-number">Since<br>Day 1</div>
+        <div class="stat-label">Loyal Apple Valley Clients</div>
+      </div>
+
+      <div class="bento-cell cell-photo cell-p3">
+        <img src="./photos/03.jpg" alt="Scully's Haircuts — finished cut" loading="lazy" />
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-img">
+          <img src="./photos/04.jpg" alt="Scully's Haircuts — shop atmosphere" />
+        </div>
+        <div class="about-text">
+          <div class="section-label">Our Story</div>
+          <h2 class="section-title">A Cut You Don't Have to Explain Twice</h2>
+          <p>
+            Scully's has been an <strong>Apple Valley staple</strong> since the beginning. What sets us apart isn't a gimmick &mdash; it's that our barbers actually listen. They read what you want, ask the right questions, and deliver the cut you had in mind.
+          </p>
+          <p>
+            Three main barbers, consistent quality, and a welcoming shop atmosphere. Whether you're coming in for a quick tighten-up or a full haircut and beard trim, you'll leave looking sharp &mdash; every single time.
+          </p>
+          <p>
+            <strong>Walk-ins only.</strong> No appointments needed &mdash; just come on in. Cash only.
+          </p>
+          <div class="about-badge">Walk-ins Only &bull; Cash Only</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-inner">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-title">Services</h2>
+      <div class="sticker-grid">
+        <div class="sticker-card" data-num="01">
+          <div class="sticker-name">Haircut</div>
+          <div class="sticker-price">Fair Price</div>
+          <div class="sticker-desc">Classic cut, fade, high-and-tight, taper &mdash; you name it. We get it right the first time, no pictures required.</div>
+        </div>
+        <div class="sticker-card" data-num="02">
+          <div class="sticker-name">Beard Trim</div>
+          <div class="sticker-price">Ask In-Shop</div>
+          <div class="sticker-desc">Clean lines, defined edges. The kind of beard trim that frames your face exactly the way it should.</div>
+        </div>
+        <div class="sticker-card" data-num="03">
+          <div class="sticker-name">Haircut + Beard</div>
+          <div class="sticker-price">Combo Deal</div>
+          <div class="sticker-desc">The full package. Leave the chair looking complete &mdash; hair and beard done right, at a price that doesn't hurt.</div>
+        </div>
+        <div class="sticker-card" data-num="04">
+          <div class="sticker-name">Kids' Cut</div>
+          <div class="sticker-price">Kid-Friendly</div>
+          <div class="sticker-desc">Patient, attentive service for the younger clients. We let kids make their own decisions and deliver exactly what they ask for.</div>
+        </div>
+        <div class="sticker-card" data-num="05">
+          <div class="sticker-name">Fade</div>
+          <div class="sticker-price">Any Length</div>
+          <div class="sticker-desc">Low fade, mid fade, high fade &mdash; clean transitions that hold their shape. If you know your cut, we know how to execute it.</div>
+        </div>
+        <div class="sticker-card" data-num="06">
+          <div class="sticker-name">Neck &amp; Cleanup</div>
+          <div class="sticker-price">Quick Service</div>
+          <div class="sticker-desc">Between-cut touch-up to keep everything sharp and clean. In and out fast without losing quality.</div>
+        </div>
+      </div>
+      <p class="sticker-note"><strong>Pricing:</strong> Fair and reasonable. Come in and ask &mdash; no surprises.</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="section-inner">
+      <div class="section-label">In Their Words</div>
+      <h2 class="section-title">Customer Testimonies</h2>
+      <div class="testimony-pile">
+
+        <div class="testimony-block">
+          <div class="testimony-bar"></div>
+          <p class="testimony-text">"Great cut! Had previously been struggling to find a new barber. Been to 5 different barbers in the last 3 months and no one understood how I wanted my cut even with pictures. Here at Scully's she got it down the first time no problem. I am glad to have finally found a great new spot to go."</p>
+          <div class="testimony-author">Marcus D.</div>
+        </div>
+
+        <div class="testimony-block">
+          <div class="testimony-bar"></div>
+          <p class="testimony-text">"Usually wait to go home to get my haircut and beard trim, but been back in CA for a few months, so it was time. Asked for what my barber calls a Tennessee tighten up. She did absolutely a perfect cut &mdash; high and tight, perfect beard trim, great pricing, super friendly and attentive, shop atmosphere is great! Highly recommend."</p>
+          <div class="testimony-author">Fun T.</div>
+        </div>
+
+        <div class="testimony-block">
+          <div class="testimony-bar"></div>
+          <p class="testimony-text">"Can't say much other than how good they did. Nice people honestly. With that experience I just had, this is going to be the only place I get a haircut in Apple Valley."</p>
+          <div class="testimony-author">MIDL M.</div>
+        </div>
+
+        <div class="testimony-block">
+          <div class="testimony-bar"></div>
+          <p class="testimony-text">"Tania immediately asked if we were ready and sat my boy in the chair straight off. She asked my son what he wanted done and made sure he made his own decision and did exactly what he asked for &mdash; which is extremely important for a 12-year-old. Staff is very nice and friendly. He loves it!"</p>
+          <div class="testimony-author">Loretta W.</div>
+        </div>
+
+        <div class="testimony-block">
+          <div class="testimony-bar"></div>
+          <p class="testimony-text">"I've been going to Scully's since he opened. They have three main barbers there and they're really good. They do exactly what you ask. The prices are fair and reasonable. I highly recommend this barbershop."</p>
+          <div class="testimony-author">Stacy A.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOURS & LOCATION -->
+  <section id="location">
+    <div class="section-inner">
+      <div class="section-label">Find Us</div>
+      <h2 class="section-title">Hours &amp; Location</h2>
+      <div class="location-grid">
+        <div>
+          <table class="hours-table">
+            <tbody>
+              <tr id="row-mon"><td>Monday</td><td>9:00 AM – 3:00 PM</td></tr>
+              <tr id="row-tue"><td>Tuesday</td><td>9:00 AM – 3:00 PM</td></tr>
+              <tr id="row-wed"><td>Wednesday</td><td>9:00 AM – 5:00 PM</td></tr>
+              <tr id="row-thu"><td>Thursday</td><td>9:00 AM – 3:00 PM</td></tr>
+              <tr id="row-fri"><td>Friday</td><td>9:00 AM – 5:00 PM</td></tr>
+              <tr id="row-sat"><td>Saturday</td><td>9:00 AM – 3:00 PM</td></tr>
+              <tr id="row-sun"><td>Sunday</td><td class="hours-closed">Closed</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:1.5rem; font-size:0.85rem; color:var(--muted);">
+            13605 Central Rd Ste. B<br>Apple Valley, CA 92307<br><br>
+            Walk-ins only &bull; Cash only &bull; Plenty of parking
+          </p>
+        </div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps?q=34.498836499999996,-117.1723937&z=15&output=embed"
+            title="Scully's Haircuts location map"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-label">Reach Us</div>
+      <h2 class="section-title">Come On In</h2>
+      <div class="contact-grid">
+        <div class="contact-detail">
+          <div class="contact-item">
+            <div class="contact-item-label">Phone</div>
+            <div class="contact-item-value"><a href="tel:7609851565">(760) 985-1565</a></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-label">Address</div>
+            <div class="contact-item-value">13605 Central Rd Ste. B<br>Apple Valley, CA 92307</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-label">Google Business</div>
+            <div class="contact-item-value">
+              <a href="https://maps.google.com/?cid=12460437451226603898" target="_blank" rel="noopener">View on Google Maps</a>
+            </div>
+          </div>
+          <div class="contact-notice">
+            <p><strong>Walk-ins Only</strong> &mdash; no appointments.</p>
+            <p><strong>Cash Only</strong> &mdash; bring exact change or nearby ATM.</p>
+            <p>Plenty of parking in front of the shop and on the side.</p>
+          </div>
+        </div>
+        <div class="cta-block">
+          <a href="tel:7609851565" class="cta-big">Call Now — (760) 985-1565</a>
+          <a href="https://www.google.com/maps?q=34.498836499999996,-117.1723937&z=15" target="_blank" rel="noopener" class="btn-ghost" style="text-align:center; padding:1.2rem 2rem;">Get Directions</a>
+          <div class="social-links" style="margin-top:0.5rem;">
+            <a href="https://maps.google.com/?cid=12460437451226603898" target="_blank" rel="noopener" class="social-link">Google</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">Scully<span>'</span>s Haircuts</div>
+      <div class="footer-credit">
+        Mockup designed by LJ Sites &mdash; interested in making this yours?
+        <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Highlight today's hours row
+    const days = ['sun','mon','tue','wed','thu','fri','sat'];
+    const today = days[new Date().getDay()];
+    const todayRow = document.getElementById('row-' + today);
+    if (todayRow) todayRow.classList.add('today');
+  </script>
+
+</body>
+</html>

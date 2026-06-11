@@ -1,0 +1,447 @@
+<!--
+ARCHETYPE: Bright cheerful neighborhood florist — "friendly bouquet stand" / playful local-shop vibe.
+Palette: coral (#ff5d52) + sunny yellow (#ffc83d) + leafy green (#3f8a4f) on warm white (#fffaf2).
+Display font: Fredoka (rounded, friendly, playful); body: Nunito (warm humanist sans).
+STRUCTURAL DECISIONS:
+  - Asymmetric hero: big rounded photo card on the right, playful left-aligned headline + dual CTA.
+    NOT a centered dark-overlay stock hero.
+  - Sticky pill nav, top-rounded; scroll-padding-top reserved (88px) so anchors clear the bar.
+  - "What we make" = friendly tag-chips + a staggered photo mosaic, NOT a 3-col icon grid.
+  - Testimonies = hand-written-feel offset note cards on a yellow band, no stars/scores.
+  - Hours as a clean open-every-day banner (8-8 daily). Map keyless embed.
+  - Animation: none beyond CSS hover lifts (deliberate restraint).
+  - DISTINCT from sage/garden-editorial and ivory/wine-luxe florists by design.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flower St Flowers — Bellflower Neighborhood Florist</title>
+<meta name="description" content="Flower St Flowers — a cheerful neighborhood florist in Bellflower, CA. Fresh bouquets, crochet flowers, and arrangements for every occasion. Open 8–8, every day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --coral:#ff5d52;
+    --coral-deep:#e8453b;
+    --yellow:#ffc83d;
+    --yellow-soft:#fff1cf;
+    --green:#3f8a4f;
+    --green-deep:#2c6a3a;
+    --ink:#33272a;
+    --cream:#fffaf2;
+    --white:#ffffff;
+    --shadow:0 18px 40px -18px rgba(232,69,59,.45);
+    --nav-h:88px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.disp{font-family:'Fredoka',sans-serif;line-height:1.05;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{width:min(1140px,92vw);margin-inline:auto}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky;top:0;z-index:50;
+    height:var(--nav-h);display:flex;align-items:center;
+    background:rgba(255,250,242,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid #ffe3bd;
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;width:min(1140px,94vw)}
+  .brand{display:flex;align-items:center;gap:.6rem;font-family:'Fredoka';font-weight:700;font-size:1.32rem;color:var(--ink)}
+  .brand .bloom{
+    width:38px;height:38px;border-radius:50%;
+    background:radial-gradient(circle at 50% 50%, var(--yellow) 0 26%, var(--coral) 28% 100%);
+    box-shadow:0 0 0 5px #fff, 0 0 0 7px var(--green);
+    flex:none;
+  }
+  .nav-links{display:flex;gap:.35rem;align-items:center}
+  .nav-links a{
+    font-weight:700;font-size:.96rem;padding:.5rem .85rem;border-radius:999px;color:#6b5a52;
+    transition:background .15s,color .15s;
+  }
+  .nav-links a:hover{background:var(--yellow-soft);color:var(--coral-deep)}
+  .nav-call{
+    background:var(--coral);color:#fff !important;padding:.62rem 1.2rem !important;border-radius:999px;
+    box-shadow:0 8px 18px -8px var(--coral);transition:transform .15s,background .15s;
+  }
+  .nav-call:hover{background:var(--coral-deep);transform:translateY(-2px)}
+  .nav-toggle{display:none}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:clamp(2.4rem,6vw,4.6rem) 0 clamp(2rem,5vw,3.6rem)}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(1.6rem,4vw,3.4rem);align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:var(--green);color:#fff;font-weight:800;font-size:.78rem;letter-spacing:.08em;
+    text-transform:uppercase;padding:.42rem .9rem;border-radius:999px;margin-bottom:1.1rem;
+  }
+  .hero h1{font-size:clamp(2.7rem,6.4vw,4.5rem);font-weight:700}
+  .hero h1 .pop{color:var(--coral);display:block}
+  .hero h1 .pop em{font-style:normal;color:var(--green)}
+  .hero p.lead{margin-top:1.1rem;font-size:clamp(1.05rem,1.7vw,1.22rem);max-width:34ch;color:#5e4f49;font-weight:600}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.7rem}
+  .btn{
+    display:inline-flex;align-items:center;gap:.55rem;font-family:'Fredoka';font-weight:600;
+    font-size:1.05rem;padding:.92rem 1.6rem;border-radius:999px;transition:transform .15s,box-shadow .15s,background .15s;
+    cursor:pointer;border:none;
+  }
+  .btn-primary{background:var(--coral);color:#fff;box-shadow:var(--shadow)}
+  .btn-primary:hover{background:var(--coral-deep);transform:translateY(-3px)}
+  .btn-ghost{background:#fff;color:var(--green-deep);box-shadow:0 0 0 2px var(--green) inset}
+  .btn-ghost:hover{background:var(--green);color:#fff;transform:translateY(-3px)}
+  .hero-note{margin-top:1.1rem;font-weight:700;color:var(--green-deep);display:flex;align-items:center;gap:.5rem}
+  .hero-note .dot{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px #d6f0d9}
+
+  .hero-photo{position:relative}
+  .hero-photo .frame{
+    border-radius:34px;overflow:hidden;box-shadow:var(--shadow);border:8px solid #fff;
+    transform:rotate(2deg);
+  }
+  .hero-photo .frame img{width:100%;height:clamp(340px,46vw,500px);object-fit:cover}
+  .hero-photo .badge{
+    position:absolute;left:-10px;bottom:18px;background:var(--yellow);color:var(--ink);
+    font-family:'Fredoka';font-weight:700;padding:.85rem 1.25rem;border-radius:20px;
+    box-shadow:0 12px 26px -12px rgba(0,0,0,.3);transform:rotate(-4deg);line-height:1.15;font-size:1.05rem;
+    border:3px solid #fff;
+  }
+  .hero-photo .badge small{display:block;font-family:'Nunito';font-weight:700;font-size:.74rem;color:var(--coral-deep)}
+
+  /* ---------- DECOR STRIP ---------- */
+  .strip{background:var(--coral);color:#fff;padding:.95rem 0;overflow:hidden}
+  .strip .row{display:flex;gap:2.6rem;justify-content:center;flex-wrap:wrap;font-family:'Fredoka';font-weight:600;font-size:1.02rem}
+  .strip .row span{display:inline-flex;align-items:center;gap:.55rem}
+  .strip .row span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--yellow)}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:clamp(3rem,6vw,5rem) 0}
+  .sec-head{max-width:46ch}
+  .sec-tag{font-family:'Fredoka';font-weight:600;color:var(--coral);letter-spacing:.04em;font-size:1.05rem}
+  .sec-head h2{font-size:clamp(2rem,4.5vw,3.1rem);font-weight:700;margin:.3rem 0 .7rem}
+  .sec-head p{color:#5e4f49;font-weight:600;font-size:1.08rem}
+
+  /* ---------- ABOUT ---------- */
+  .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.6rem,4vw,3.6rem);align-items:center}
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .about-photos img{border-radius:22px;width:100%;height:100%;object-fit:cover;box-shadow:0 14px 30px -18px rgba(0,0,0,.4)}
+  .about-photos .tall{grid-row:span 2;height:100%}
+  .about-photos{grid-template-rows:1fr 1fr;min-height:380px}
+  .about-copy p+p{margin-top:1rem}
+  .about-copy strong{color:var(--coral-deep)}
+
+  /* ---------- WHAT WE MAKE ---------- */
+  .make{background:var(--yellow-soft)}
+  .chips{display:flex;flex-wrap:wrap;gap:.7rem;margin:1.8rem 0 2.4rem}
+  .chip{
+    background:#fff;border:2px solid #ffe0b3;border-radius:999px;padding:.62rem 1.15rem;
+    font-weight:800;color:var(--ink);font-size:.98rem;display:inline-flex;align-items:center;gap:.5rem;
+    transition:transform .15s,border-color .15s;
+  }
+  .chip:hover{transform:translateY(-2px);border-color:var(--coral)}
+  .chip i{width:11px;height:11px;border-radius:50%;display:inline-block}
+  .mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;gap:1rem}
+  .mosaic figure{border-radius:22px;overflow:hidden;box-shadow:0 16px 32px -20px rgba(0,0,0,.45);position:relative}
+  .mosaic img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+  .mosaic figure:hover img{transform:scale(1.06)}
+  .mosaic .big{grid-column:span 2;grid-row:span 2}
+  .mosaic .wide{grid-column:span 2}
+  figure cap,figcaption{
+    position:absolute;left:14px;bottom:12px;background:rgba(255,255,255,.92);color:var(--ink);
+    font-family:'Fredoka';font-weight:600;padding:.32rem .8rem;border-radius:999px;font-size:.85rem;
+  }
+
+  /* ---------- TESTIMONIES ---------- */
+  .says{background:var(--yellow)}
+  .says .sec-tag{color:var(--green-deep)}
+  .says .sec-head h2{color:var(--ink)}
+  .notes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.2rem}
+  .note{
+    background:#fff;border-radius:22px;padding:1.7rem 1.6rem;box-shadow:0 16px 34px -20px rgba(0,0,0,.4);
+    position:relative;display:flex;flex-direction:column;
+  }
+  .note:nth-child(2){transform:translateY(-14px)}
+  .note .mark{font-family:'Fredoka';font-weight:700;font-size:2.6rem;color:var(--coral);line-height:.6;height:1rem}
+  .note p{font-weight:600;color:#43352f;margin:.6rem 0 1.1rem;flex:1}
+  .note .who{display:flex;align-items:center;gap:.65rem;font-weight:800;color:var(--green-deep)}
+  .note .who .ava{
+    width:34px;height:34px;border-radius:50%;flex:none;
+    background:radial-gradient(circle at 50% 45%, var(--yellow) 0 30%, var(--coral) 32% 100%);
+    box-shadow:0 0 0 3px #fff,0 0 0 4px #ffe0b3;
+  }
+
+  /* ---------- VISIT (hours + map) ---------- */
+  .visit .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.6rem,4vw,3rem);align-items:stretch}
+  .info-card{background:#fff;border-radius:26px;padding:clamp(1.6rem,3vw,2.4rem);box-shadow:0 18px 40px -24px rgba(0,0,0,.4);border:2px solid #ffe9c9}
+  .open-banner{
+    background:var(--green);color:#fff;border-radius:18px;padding:1rem 1.3rem;margin-bottom:1.5rem;
+    display:flex;align-items:center;gap:.9rem;font-family:'Fredoka';font-weight:600;font-size:1.15rem;
+  }
+  .open-banner .pulse{width:12px;height:12px;border-radius:50%;background:var(--yellow);flex:none;box-shadow:0 0 0 0 rgba(255,200,61,.7);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,200,61,.7)}70%{box-shadow:0 0 0 12px rgba(255,200,61,0)}100%{box-shadow:0 0 0 0 rgba(255,200,61,0)}}
+  .info-line{display:flex;gap:.9rem;padding:.7rem 0;border-bottom:1px dashed #f0ddc2;align-items:flex-start}
+  .info-line:last-of-type{border-bottom:none}
+  .info-line .lbl{font-family:'Fredoka';font-weight:600;color:var(--coral-deep);min-width:96px}
+  .info-line a:hover{color:var(--coral)}
+  .visit-cta{margin-top:1.4rem;width:100%;justify-content:center}
+  .map-card{border-radius:26px;overflow:hidden;box-shadow:0 18px 40px -24px rgba(0,0,0,.4);border:6px solid #fff;min-height:380px}
+  .map-card iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#f6ece6;padding:clamp(2.6rem,5vw,3.6rem) 0 2rem}
+  footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2rem}
+  .f-brand{display:flex;align-items:center;gap:.6rem;font-family:'Fredoka';font-weight:700;font-size:1.4rem;margin-bottom:.7rem}
+  .f-brand .bloom{width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 50% 50%, var(--yellow) 0 26%, var(--coral) 28% 100%);flex:none}
+  footer p,footer a{color:#cdbfb7;font-weight:600}
+  footer a:hover{color:var(--yellow)}
+  footer h4{font-family:'Fredoka';font-weight:600;color:#fff;margin-bottom:.7rem;font-size:1.05rem}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:.45rem}
+  .socials{display:flex;gap:.6rem;margin-top:.4rem}
+  .socials a{
+    width:40px;height:40px;border-radius:50%;background:#4a3a3d;display:flex;align-items:center;justify-content:center;
+    font-family:'Fredoka';font-weight:700;color:#fff;font-size:.78rem;transition:background .15s,transform .15s;
+  }
+  .socials a:hover{background:var(--coral);transform:translateY(-2px);color:#fff}
+  .credit{margin-top:2.2rem;padding-top:1.4rem;border-top:1px solid #4a3a3d;text-align:center;font-size:.92rem}
+  .credit a{color:var(--yellow);font-weight:800}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:880px){
+    :root{--nav-h:74px}
+    .nav-links{
+      position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:stretch;
+      background:var(--cream);border-bottom:2px solid #ffe3bd;padding:.6rem 6vw 1rem;gap:.25rem;
+      display:none;
+    }
+    .nav-links.open{display:flex}
+    .nav-links a{padding:.8rem 1rem}
+    .nav-call{text-align:center}
+    .nav-toggle{display:flex;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:.4rem}
+    .nav-toggle span{width:26px;height:3px;border-radius:3px;background:var(--coral)}
+    .hero .wrap,.about .wrap,.visit .wrap{grid-template-columns:1fr}
+    .hero-photo{order:-1}
+    .hero-photo .frame{transform:rotate(0)}
+    .mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}
+    .mosaic .big{grid-column:span 2;grid-row:span 2}
+    .notes{grid-template-columns:1fr}
+    .note:nth-child(2){transform:none}
+    footer .wrap{grid-template-columns:1fr 1fr}
+    .f-brand{grid-column:1/-1}
+  }
+  @media(max-width:520px){
+    .mosaic{grid-template-columns:1fr;grid-auto-rows:200px}
+    .mosaic .big,.mosaic .wide{grid-column:span 1}
+    footer .wrap{grid-template-columns:1fr}
+    .strip .row{gap:1.3rem;font-size:.92rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="bloom" aria-hidden="true"></span>Flower St Flowers</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#make">Bouquets</a>
+      <a href="#says">What People Say</a>
+      <a href="#visit">Visit</a>
+      <a class="nav-call" href="tel:+15629259800">Call (562) 925-9800</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">🌷 Your Bellflower neighborhood florist</span>
+      <h1>Fresh, friendly<span class="pop">bouquets made <em>with love</em></span></h1>
+      <p class="lead">Hand-tied arrangements, sweet crochet flowers, and a little something for every occasion — wrapped up with a smile on Lakewood Blvd.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="tel:+15629259800">📞 Call Now</a>
+        <a class="btn btn-ghost" href="#visit">Get Directions</a>
+      </div>
+      <div class="hero-note"><span class="dot"></span> Open every day, 8 AM – 8 PM</div>
+    </div>
+    <div class="hero-photo">
+      <div class="frame"><img src="./photos/05.jpg" alt="A colorful display of wrapped bouquets and arrangements inside Flower St Flowers"></div>
+      <div class="badge">Bouquets from $12<small>The cheapest in town 💕</small></div>
+    </div>
+  </div>
+</header>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="row">
+    <span>Hand-tied bouquets</span>
+    <span>Crochet flowers</span>
+    <span>Same-day arrangements</span>
+    <span>Delivery available</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-photos">
+      <img class="tall" src="./photos/03.jpg" alt="A bright mixed bouquet of pink mums, a red rose, and white chrysanthemums">
+      <img src="./photos/02.jpg" alt="A tall rose arrangement topped with Happy Mother's Day balloons">
+      <img src="./photos/06.jpg" alt="A red rose arrangement made into a birthday gift with a coffee cup">
+    </div>
+    <div class="about-copy">
+      <span class="sec-tag">Hi, we're so glad you're here</span>
+      <h2>A little flower shop with a big heart</h2>
+      <p>Flower St Flowers is a family-run shop in the heart of Bellflower, run by a couple of <strong>very sweet ladies</strong> who love nothing more than helping you pick out the perfect arrangement.</p>
+      <p>Bring us a photo, an occasion, or just a feeling — and we'll build something even prettier than you imagined. We'll ask if you'd like a vase, a bow, a card, a little fragrance… the whole experience, with great music playing the whole time.</p>
+      <p>From a single rose to a full event, we've got fresh blooms, keepsake crochet flowers, and a price tag that won't break the bank.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE MAKE -->
+<section class="make" id="make">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">Pick your bloom</span>
+      <h2>A little of everything, all year round</h2>
+      <p>Whatever the occasion, there's a bouquet for it — and a friendly hand to help you choose.</p>
+    </div>
+    <div class="chips">
+      <span class="chip"><i style="background:var(--coral)"></i>Wedding flowers</span>
+      <span class="chip"><i style="background:var(--yellow)"></i>Anniversary</span>
+      <span class="chip"><i style="background:var(--green)"></i>Prom &amp; corsages</span>
+      <span class="chip"><i style="background:var(--coral)"></i>Graduation</span>
+      <span class="chip"><i style="background:var(--green)"></i>Birthdays</span>
+      <span class="chip"><i style="background:var(--yellow)"></i>Just-because bouquets</span>
+      <span class="chip"><i style="background:var(--coral)"></i>Crochet flowers</span>
+      <span class="chip"><i style="background:var(--green)"></i>Custom arrangements</span>
+    </div>
+    <div class="mosaic">
+      <figure class="big">
+        <img src="./photos/05.jpg" alt="Shelves full of colorful wrapped bouquets and crochet flowers">
+        <figcaption>A wall of fresh picks</figcaption>
+      </figure>
+      <figure>
+        <img src="./photos/03.jpg" alt="Mixed bouquet of pink and white blooms with a red rose">
+        <figcaption>Mixed bouquets</figcaption>
+      </figure>
+      <figure>
+        <img src="./photos/02.jpg" alt="Roses with celebration balloons">
+        <figcaption>Balloon add-ons</figcaption>
+      </figure>
+      <figure class="wide">
+        <img src="./photos/04.jpg" alt="A single red rose arrangement made into a sweet birthday gift">
+        <figcaption>Little gift arrangements</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-tag">Straight from the neighborhood</span>
+      <h2>What people say</h2>
+    </div>
+    <div class="notes">
+      <div class="note">
+        <span class="mark">&ldquo;</span>
+        <p>Incredibly beautiful flowers! The bouquets were so cute and they had a wide variety, along with crochet flowers. The employees were so helpful and kind. And don't even get me started with the music — such a vibe! I'd absolutely recommend them for a special occasion.</p>
+        <div class="who"><span class="ava"></span>Lenaa P.</div>
+      </div>
+      <div class="note">
+        <span class="mark">&ldquo;</span>
+        <p>I love the floral and knitted flowers they have. Very sweet ladies have assisted me in my arrangement choosing. I've made more than two purchases there.</p>
+        <div class="who"><span class="ava"></span>CeiCei S.</div>
+      </div>
+      <div class="note">
+        <span class="mark">&ldquo;</span>
+        <p>It's important to me to support local businesses. Every time I've ordered an arrangement, it never fails! I asked for a simple arrangement with a photo reference and once again I'm a very happy customer — they definitely elevated it. Thanks ladies for always making the most beautiful arrangements.</p>
+        <div class="who"><span class="ava"></span>Blanca S.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="info-card">
+      <div class="open-banner"><span class="pulse"></span>Open every day · 8 AM – 8 PM</div>
+      <div class="info-line">
+        <span class="lbl">Find us</span>
+        <a href="https://www.google.com/maps?q=16812+Lakewood+Blvd,+Bellflower,+CA+90706" target="_blank" rel="noopener">16812 Lakewood Blvd<br>Bellflower, CA 90706</a>
+      </div>
+      <div class="info-line">
+        <span class="lbl">Call us</span>
+        <a href="tel:+15629259800">(562) 925-9800</a>
+      </div>
+      <div class="info-line">
+        <span class="lbl">Hours</span>
+        <span>Monday – Sunday<br>8:00 AM – 8:00 PM</span>
+      </div>
+      <div class="info-line">
+        <span class="lbl">Good for</span>
+        <span>Weddings · Anniversaries · Prom · Graduation · Birthdays · Just because</span>
+      </div>
+      <a class="btn btn-primary visit-cta" href="https://www.google.com/maps?q=16812+Lakewood+Blvd,+Bellflower,+CA+90706" target="_blank" rel="noopener">Get Directions →</a>
+    </div>
+    <div class="map-card">
+      <iframe src="https://www.google.com/maps?q=16812%20Lakewood%20Blvd%2C%20Bellflower%2C%20CA%2090706&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Flower St Flowers"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="f-brand"><span class="bloom" aria-hidden="true"></span>Flower St Flowers</div>
+      <p>A cheerful little neighborhood florist in Bellflower, CA. Fresh bouquets, crochet flowers, and arrangements for every occasion — made with love.</p>
+      <div class="socials">
+        <a href="https://maps.google.com/?cid=8641754674280589154" target="_blank" rel="noopener" title="Google Business listing">Maps</a>
+      </div>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <ul>
+        <li><a href="https://www.google.com/maps?q=16812+Lakewood+Blvd,+Bellflower,+CA+90706" target="_blank" rel="noopener">16812 Lakewood Blvd</a></li>
+        <li>Bellflower, CA 90706</li>
+        <li>Open daily · 8 AM – 8 PM</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Get in touch</h4>
+      <ul>
+        <li><a href="tel:+15629259800">(562) 925-9800</a></li>
+        <li><a href="#make">Browse bouquets</a></li>
+        <li><a href="#says">What people say</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap credit">
+    Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  const t=document.getElementById('navToggle'),l=document.getElementById('navLinks');
+  t.addEventListener('click',()=>l.classList.toggle('open'));
+  l.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>l.classList.remove('open')));
+</script>
+</body>
+</html>

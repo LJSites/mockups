@@ -1,0 +1,535 @@
+<!--
+  ARCHETYPE: Open-road / highway motor shop — a route-marker / road-trip field guide.
+  The business literally signs itself with a US-highway shield ("HIGHWAY 33"), so the
+  whole layout is built around the route-marker motif: a US-shield badge as the logo,
+  a milepost / mile-marker rhythm down the page, and copy that reads like a roadside
+  service stop for cars AND motorcycles/road-trippers (its reviews are full of
+  travelers broken down on I-5 and vintage cruisers).
+
+  PALETTE: desert-tan (#e7dcc4 / #cbb994) + asphalt-charcoal (#1d1c1a / #2c2a27)
+           + vintage route-sign red (#b3322a) — NO clean-navy-technical, NO
+           industrial-orange, NO red-service-station. Tan/asphalt ground it as a
+           dusty open-road shop; the red is reserved for the shield + key accents.
+  DISPLAY FACE: "Stardos Stencil" (rugged stenciled route/military signage face) for
+           the route-shield + section mileposts; "Oswald" (condensed highway-gothic)
+           for headings; "Barlow" for body — a road-signage pairing, deliberately
+           distinct from any clean grotesk sibling shops would use.
+
+  STRUCTURE:
+   - Fixed slim top nav with the shield badge; scroll-padding-top reserves its height.
+   - Hero is a split: left a stenciled shield + name on asphalt, right the red Trans Am
+     photo bleeding off-frame — NOT a centered-overlay-pill hero.
+   - "The Route" services laid out as mile-marker rows (numbered like exits), not
+     a 3-up icon grid.
+   - About + a wide garage band photo.
+   - Testimonies as a horizontal "logbook" of road-stop entries (no stars/scores).
+   - Hours + keyless Google map side by side.
+   - One repeated CTA: Call Now (tel:) — this is a phone-first roadside shop.
+  ANIMATION: none beyond CSS hover/underline transitions (deliberate).
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Highway 33 Automotive — Auto &amp; Motorcycle Repair · Patterson, CA</title>
+<meta name="description" content="Highway 33 Automotive in Patterson, CA — honest, road-tested auto and motorcycle repair. Diagnostics, maintenance, and roadside rescues off I-5. Call (209) 895-3276." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Stardos+Stencil:wght@400;700&family=Oswald:wght@300;400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --tan:#e7dcc4;
+    --tan-2:#cbb994;
+    --tan-deep:#a9966f;
+    --asphalt:#1d1c1a;
+    --asphalt-2:#2c2a27;
+    --asphalt-3:#3a3733;
+    --red:#b3322a;
+    --red-dk:#8f261f;
+    --cream:#f4eee0;
+    --line:rgba(168,150,111,.45);
+    --nav-h:64px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:var(--nav-h);
+    -webkit-text-size-adjust:100%;
+  }
+  body{
+    font-family:'Barlow',system-ui,sans-serif;
+    background:var(--tan);
+    color:var(--asphalt);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 22px;}
+
+  /* ---------- route shield badge ---------- */
+  .shield{
+    position:relative;display:inline-flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    background:var(--cream);color:var(--asphalt);
+    border:3px solid var(--asphalt);border-radius:10px 10px 16px 16px;
+    box-shadow:inset 0 0 0 3px var(--cream),inset 0 0 0 5px var(--asphalt);
+    font-family:'Stardos Stencil',sans-serif;line-height:.9;text-align:center;
+  }
+  .shield::before{
+    content:"HIGHWAY";position:absolute;top:7px;left:0;right:0;
+    font-size:.34em;letter-spacing:.12em;font-weight:700;
+  }
+  .shield .num{font-size:1.5em;font-weight:700;margin-top:.18em;}
+  .shield.sm{width:46px;height:52px;font-size:18px;}
+  .shield.lg{width:118px;height:134px;font-size:46px;}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:50;
+    background:rgba(29,28,26,.96);backdrop-filter:blur(6px);
+    border-bottom:2px solid var(--red);
+  }
+  .nav-in{height:100%;display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:12px;color:var(--tan);}
+  .brand .name{
+    font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.04em;
+    text-transform:uppercase;font-size:1.02rem;line-height:1;
+  }
+  .brand .name span{display:block;font-size:.6rem;letter-spacing:.32em;color:var(--tan-2);font-weight:400;margin-top:3px;}
+  nav.links{display:flex;align-items:center;gap:26px;}
+  nav.links a{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.09em;
+    font-size:.82rem;color:var(--tan-2);font-weight:400;padding:4px 0;
+    border-bottom:2px solid transparent;transition:color .18s,border-color .18s;
+  }
+  nav.links a:hover{color:var(--cream);border-color:var(--red);}
+  .nav-call{
+    display:inline-flex;align-items:center;gap:8px;background:var(--red);color:var(--cream)!important;
+    padding:9px 16px;border-radius:4px;font-family:'Oswald',sans-serif;text-transform:uppercase;
+    letter-spacing:.06em;font-weight:600;font-size:.82rem;border:none!important;
+    transition:background .18s,transform .12s;
+  }
+  .nav-call:hover{background:var(--red-dk);transform:translateY(-1px);}
+  .menu-btn{display:none;background:none;border:0;color:var(--tan);cursor:pointer;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 18% 30%,rgba(179,50,42,.16),transparent 55%),
+      linear-gradient(160deg,var(--asphalt) 0%,var(--asphalt-2) 100%);
+    color:var(--tan);padding-top:var(--nav-h);position:relative;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;min-height:560px;align-items:stretch;}
+  .hero-copy{padding:64px 22px 64px 0;display:flex;flex-direction:column;justify-content:center;max-width:600px;margin-left:auto;width:100%;}
+  .hero-copy .wrap-pad{padding-left:22px;}
+  .kicker{
+    display:inline-flex;align-items:center;gap:10px;font-family:'Stardos Stencil',sans-serif;
+    color:var(--red);letter-spacing:.18em;font-size:.78rem;text-transform:uppercase;margin-bottom:22px;
+  }
+  .kicker::before{content:"";width:34px;height:2px;background:var(--red);display:inline-block;}
+  .hero h1{
+    font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;
+    font-size:clamp(2.5rem,6vw,4.4rem);line-height:.95;letter-spacing:.01em;color:var(--cream);
+  }
+  .hero h1 em{font-style:normal;color:var(--red);}
+  .hero .lead{font-size:1.12rem;color:var(--tan-2);max-width:46ch;margin:22px 0 8px;font-weight:300;}
+  .badges{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 34px;}
+  .badges span{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.07em;font-size:.74rem;
+    border:1px solid var(--line);color:var(--tan);padding:7px 13px;border-radius:3px;background:rgba(231,220,196,.05);
+  }
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:10px;background:var(--red);color:var(--cream);
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.07em;font-weight:600;
+    font-size:1rem;padding:15px 26px;border-radius:5px;transition:background .18s,transform .12s;
+  }
+  .btn-primary:hover{background:var(--red-dk);transform:translateY(-2px);}
+  .btn-ghost{
+    display:inline-flex;align-items:center;gap:8px;color:var(--tan);font-family:'Oswald',sans-serif;
+    text-transform:uppercase;letter-spacing:.07em;font-size:.92rem;padding:14px 4px;
+    border-bottom:2px solid transparent;transition:border-color .18s,color .18s;
+  }
+  .btn-ghost:hover{border-color:var(--tan-2);color:var(--cream);}
+  .hero-photo{position:relative;overflow:hidden;border-left:3px solid var(--red);}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(1.02) contrast(1.02);}
+  .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--asphalt) 0%,transparent 28%);}
+  .hero-shield-float{position:absolute;left:-58px;top:50%;transform:translateY(-50%);z-index:3;}
+
+  /* ---------- dashed route divider ---------- */
+  .roadline{height:14px;background:var(--asphalt);position:relative;}
+  .roadline::after{
+    content:"";position:absolute;top:50%;left:0;right:0;height:3px;transform:translateY(-50%);
+    background:repeating-linear-gradient(90deg,var(--tan-2) 0 34px,transparent 34px 64px);
+  }
+
+  /* ---------- section frame ---------- */
+  section{padding:72px 0;}
+  .milepost{display:flex;align-items:baseline;gap:16px;margin-bottom:8px;}
+  .milepost .mm{
+    font-family:'Stardos Stencil',sans-serif;color:var(--red);font-size:.95rem;letter-spacing:.1em;
+    border:2px solid var(--red);padding:3px 9px;border-radius:3px;white-space:nowrap;
+  }
+  h2.sec{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(1.9rem,4vw,2.7rem);letter-spacing:.01em;line-height:1;}
+  .sub{color:var(--asphalt-3);max-width:60ch;margin-top:14px;font-size:1.05rem;}
+
+  /* ---------- about ---------- */
+  #about{background:var(--tan);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:34px;}
+  .about-copy p{margin-bottom:16px;color:var(--asphalt-2);font-size:1.06rem;}
+  .about-copy .pull{
+    font-family:'Oswald',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.03em;
+    color:var(--asphalt);font-size:1.15rem;border-left:4px solid var(--red);padding-left:16px;margin:24px 0;line-height:1.3;
+  }
+  .about-photo{position:relative;}
+  .about-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;border:3px solid var(--asphalt);}
+  .about-photo .tag{
+    position:absolute;bottom:-14px;left:18px;background:var(--asphalt);color:var(--tan);
+    font-family:'Stardos Stencil',sans-serif;font-size:.78rem;letter-spacing:.08em;padding:8px 14px;border-radius:3px;
+    border:1px solid var(--red);
+  }
+
+  /* ---------- services / "the route" ---------- */
+  #services{background:var(--asphalt);color:var(--tan);}
+  #services h2.sec{color:var(--cream);}
+  #services .sub{color:var(--tan-2);}
+  .exits{margin-top:40px;border-top:1px solid var(--asphalt-3);}
+  .exit{
+    display:grid;grid-template-columns:84px 1fr auto;gap:24px;align-items:center;
+    padding:24px 8px;border-bottom:1px solid var(--asphalt-3);transition:background .2s,padding-left .2s;
+  }
+  .exit:hover{background:var(--asphalt-2);padding-left:18px;}
+  .exit .ex-no{
+    font-family:'Stardos Stencil',sans-serif;color:var(--red);font-size:1.5rem;letter-spacing:.04em;
+  }
+  .exit .ex-body h3{font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.03em;font-size:1.25rem;color:var(--cream);}
+  .exit .ex-body p{color:var(--tan-2);font-size:.98rem;margin-top:4px;max-width:62ch;}
+  .exit .ex-tag{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:.74rem;color:var(--tan-deep);white-space:nowrap;}
+
+  /* ---------- testimonies / logbook ---------- */
+  #logbook{background:var(--tan-2);}
+  .logs{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:38px;}
+  .log{
+    background:var(--cream);border:2px solid var(--asphalt);border-radius:6px;padding:26px 26px 22px;
+    position:relative;box-shadow:5px 5px 0 rgba(29,28,26,.14);
+  }
+  .log .quote{font-size:1.04rem;color:var(--asphalt-2);font-style:italic;}
+  .log .quote::before{content:"“";font-family:'Oswald',sans-serif;color:var(--red);font-size:2.4rem;line-height:0;vertical-align:-.35em;margin-right:4px;}
+  .log .by{
+    margin-top:18px;display:flex;align-items:center;gap:12px;
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:.86rem;color:var(--asphalt);
+  }
+  .log .by .dot{width:8px;height:8px;background:var(--red);border-radius:50%;flex:0 0 auto;}
+  .log.wide{grid-column:1 / -1;}
+
+  /* ---------- visit / hours + map ---------- */
+  #visit{background:var(--asphalt-2);color:var(--tan);}
+  #visit h2.sec{color:var(--cream);}
+  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;margin-top:38px;align-items:stretch;}
+  .info-card{background:var(--asphalt);border:1px solid var(--asphalt-3);border-radius:8px;padding:30px;}
+  .info-card h3{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.05em;font-size:1.05rem;color:var(--red);margin-bottom:14px;}
+  .hours-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px dashed var(--asphalt-3);font-size:.98rem;}
+  .hours-row:last-child{border-bottom:0;}
+  .hours-row .d{color:var(--tan);font-family:'Oswald',sans-serif;letter-spacing:.03em;}
+  .hours-row .h{color:var(--tan-2);}
+  .hours-row.closed .h{color:var(--red);}
+  .hours-row.today{background:rgba(179,50,42,.14);margin:0 -12px;padding:9px 12px;border-radius:4px;border-bottom:0;}
+  .addr{margin:22px 0 8px;color:var(--tan-2);line-height:1.7;}
+  .addr strong{color:var(--cream);font-family:'Oswald',sans-serif;letter-spacing:.02em;}
+  .visit-call{margin-top:18px;}
+  .map-frame{border:3px solid var(--asphalt);border-radius:8px;overflow:hidden;min-height:380px;height:100%;}
+  .map-frame iframe{width:100%;height:100%;min-height:380px;border:0;display:block;filter:grayscale(.25) contrast(1.05);}
+
+  /* ---------- final CTA ---------- */
+  .endband{
+    background:var(--red);color:var(--cream);text-align:center;padding:64px 22px;
+  }
+  .endband h2{font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(1.8rem,4.5vw,3rem);line-height:1;letter-spacing:.01em;}
+  .endband p{margin:16px auto 28px;max-width:48ch;color:rgba(244,238,224,.92);font-size:1.08rem;}
+  .endband .btn-end{
+    display:inline-flex;align-items:center;gap:12px;background:var(--asphalt);color:var(--cream);
+    font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.07em;font-weight:600;font-size:1.15rem;
+    padding:17px 34px;border-radius:6px;transition:transform .12s,background .18s;
+  }
+  .endband .btn-end:hover{transform:translateY(-2px);background:#000;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--asphalt);color:var(--tan-2);padding:46px 0 30px;}
+  .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-wrap:wrap;}
+  .foot-brand{display:flex;align-items:center;gap:14px;}
+  .foot-brand .name{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.04em;font-weight:600;color:var(--cream);font-size:1.1rem;line-height:1;}
+  .foot-brand .name span{display:block;font-size:.62rem;letter-spacing:.3em;color:var(--tan-deep);margin-top:5px;font-weight:400;}
+  .foot-links{display:flex;flex-direction:column;gap:8px;font-size:.95rem;}
+  .foot-links a{display:inline-flex;align-items:center;gap:8px;transition:color .18s;}
+  .foot-links a:hover{color:var(--cream);}
+  .foot-links .hd{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:.74rem;color:var(--red);margin-bottom:4px;}
+  .credit{margin-top:34px;padding-top:22px;border-top:1px solid var(--asphalt-3);font-size:.85rem;color:var(--tan-deep);text-align:center;line-height:1.7;}
+  .credit a{color:var(--tan-2);text-decoration:underline;}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-copy{padding:48px 0 52px;max-width:none;}
+    .hero-photo{min-height:300px;border-left:0;border-top:3px solid var(--red);}
+    .hero-shield-float{display:none;}
+    .about-grid,.visit-grid{grid-template-columns:1fr;gap:34px;}
+    .logs{grid-template-columns:1fr;}
+    .log.wide{grid-column:auto;}
+  }
+  @media(max-width:680px){
+    nav.links{display:none;}
+    .menu-btn{display:block;}
+    nav.links.open{
+      display:flex;position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;
+      align-items:flex-start;gap:0;background:var(--asphalt);padding:8px 22px 18px;border-bottom:2px solid var(--red);
+    }
+    nav.links.open a{width:100%;padding:12px 0;border-bottom:1px solid var(--asphalt-3);}
+    nav.links.open a.nav-call{justify-content:center;margin-top:10px;border-bottom:0;}
+    .exit{grid-template-columns:54px 1fr;}
+    .exit .ex-tag{display:none;}
+    section{padding:56px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="Highway 33 Automotive home">
+      <span class="shield sm"><span class="num">33</span></span>
+      <span class="name">Highway&nbsp;33<span>Automotive</span></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <nav class="links" id="navLinks">
+      <a href="#about">The Shop</a>
+      <a href="#services">Services</a>
+      <a href="#logbook">Logbook</a>
+      <a href="#visit">Hours &amp; Map</a>
+      <a class="nav-call" href="tel:+12098953276">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.8 21 3 13.2 3 3.5c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+        Call
+      </a>
+    </nav>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- HERO -->
+<section class="hero" style="padding-bottom:0;">
+  <div class="wrap" style="padding:0;">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <div class="wrap-pad">
+          <span class="kicker">Patterson, California · Off I‑5 &amp; Hwy 33</span>
+          <h1>Built for the<br/><em>Long Haul.</em></h1>
+          <p class="lead">Honest, road-tested repair for everything you drive and ride — daily commuters, weekend bikes, and the vintage iron worth saving. Pull in, get it done right, get back on the road.</p>
+          <div class="badges">
+            <span>Auto Repair</span>
+            <span>Motorcycle Service</span>
+            <span>Diagnostics</span>
+            <span>Roadside Rescues</span>
+            <span>Classic &amp; Vintage</span>
+          </div>
+          <div class="hero-cta">
+            <a class="btn-primary" href="tel:+12098953276">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.8 21 3 13.2 3 3.5c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+              Call (209) 895‑3276
+            </a>
+            <a class="btn-ghost" href="#services">See what we fix →</a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <span class="hero-shield-float"><span class="shield lg"><span class="num">33</span></span></span>
+        <img src="./photos/01.jpg" alt="A restored red Pontiac Trans Am parked outside Highway 33 Automotive" />
+      </div>
+    </div>
+  </div>
+</section>
+<div class="roadline" aria-hidden="true"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="milepost"><span class="mm">MILE 01</span></div>
+    <h2 class="sec">A neighborhood shop with a road-trip reputation</h2>
+    <p class="sub">Highway 33 Automotive sits right in town in Patterson — but ask the travelers who limped off I‑5 and they'll tell you it feels like the kind of garage you wish lived on your block.</p>
+    <div class="about-grid">
+      <div class="about-copy">
+        <p>Run by Jason and his crew, Highway 33 is the spot locals trust for the everyday stuff — oil and brakes, throttle bodies, check-engine diagnostics — and the place stranded drivers get towed to when their road trip goes sideways.</p>
+        <p class="pull">We tell you exactly what's wrong, what it costs, and what can wait. No guesswork, no upsell.</p>
+        <p>Cars, trucks, motorcycles, and the occasional 1975 Airstream motorhome — if it's got wheels and a story, we'll figure it out and get you moving again. Fair prices, straight answers, and a phone call the next day to make sure you made it.</p>
+      </div>
+      <div class="about-photo">
+        <img src="./photos/04.jpg" alt="Jason working on a vintage Airstream-style motorhome outside the Highway 33 shop bay" />
+        <span class="tag">VINTAGE &amp; CLASSIC WELCOME</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES — THE ROUTE -->
+<section id="services">
+  <div class="wrap">
+    <div class="milepost"><span class="mm">MILE 02</span></div>
+    <h2 class="sec">The Route</h2>
+    <p class="sub">From a quick in-and-out tune to a full breakdown diagnosis — here's what we handle under one roof. Not sure where your problem fits? Call and describe it; we'll point you to the right exit.</p>
+    <div class="exits">
+      <div class="exit">
+        <div class="ex-no">01</div>
+        <div class="ex-body"><h3>Diagnostics &amp; Check-Engine</h3><p>Drivability gremlins, warning lights, stalls and rough idle — we read the codes and chase down the actual cause before quoting a fix.</p></div>
+        <div class="ex-tag">Most common stop</div>
+      </div>
+      <div class="exit">
+        <div class="ex-no">02</div>
+        <div class="ex-body"><h3>Maintenance &amp; Tune-Ups</h3><p>Oil and filters, fluids, throttle-body cleaning, belts, batteries — the routine work that keeps you off the shoulder.</p></div>
+        <div class="ex-tag">In &amp; out</div>
+      </div>
+      <div class="exit">
+        <div class="ex-no">03</div>
+        <div class="ex-body"><h3>Brakes, Suspension &amp; Steering</h3><p>Pads, rotors, and the front-end work that makes the miles feel right again — quoted fairly, done right the first time.</p></div>
+        <div class="ex-tag">Safety first</div>
+      </div>
+      <div class="exit">
+        <div class="ex-no">04</div>
+        <div class="ex-body"><h3>Motorcycle Service</h3><p>Two wheels get the same straight-talk treatment as four — service, tuning, and diagnostics for the bikes you actually ride.</p></div>
+        <div class="ex-tag">Cars &amp; bikes</div>
+      </div>
+      <div class="exit">
+        <div class="ex-no">05</div>
+        <div class="ex-body"><h3>Breakdown &amp; Tow-In Repair</h3><p>Towed off I‑5 or Highway 33? We'll keep you posted all day and work fast to get you back on your way at a fair price.</p></div>
+        <div class="ex-tag">Travelers welcome</div>
+      </div>
+      <div class="exit">
+        <div class="ex-no">06</div>
+        <div class="ex-body"><h3>Classic, Vintage &amp; RV</h3><p>Old trucks, project cruisers, vintage motorhomes — the jobs that need someone who knows the parts and takes the time.</p></div>
+        <div class="ex-tag">Our specialty</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGBOOK / TESTIMONIES -->
+<section id="logbook">
+  <div class="wrap">
+    <div class="milepost"><span class="mm">MILE 03</span></div>
+    <h2 class="sec">From the Logbook</h2>
+    <p class="sub" style="color:var(--asphalt-2);">Notes from drivers who pulled in — locals and road-trippers alike.</p>
+    <div class="logs">
+      <div class="log wide">
+        <p class="quote">I have to give a shoutout to Jason! When my 1975 Airstream motorhome broke down, he stepped in and saved the day. He knew exactly what parts I needed and went through every detail to make sure the job was done right — and charged fairly. Even after I was back on the road to LA, he took time to give me advice over the phone. I highly recommend Jason for anyone with a vintage car or truck.</p>
+        <div class="by"><span class="dot"></span>Michael L.</div>
+      </div>
+      <div class="log">
+        <p class="quote">Very friendly and knowledgeable — and right here in town. I took my SUV in for a throttle-body cleaning and we were in and out in an hour. Their prices are very reasonable. This is my new go-to for car issues.</p>
+        <div class="by"><span class="dot"></span>Ashley Z.</div>
+      </div>
+      <div class="log">
+        <p class="quote">Broke down on I‑5 and was towed here. They communicated all day while I waited and worked as fast as possible to get me back on my way. I paid a fair price and left feeling satisfied, valued, and respected.</p>
+        <div class="by"><span class="dot"></span>Cameron P.</div>
+      </div>
+      <div class="log">
+        <p class="quote">Jason did a fantastic job with my 2003 Durango. We stalled on the 5 freeway and were towed to his shop — he diagnosed the problem and even called the next day to check that all was good. Back on the road and extremely happy.</p>
+        <div class="by"><span class="dot"></span>Donald P.</div>
+      </div>
+      <div class="log">
+        <p class="quote">Jason was very straight forward and the team let us know every step of the way. We're just travelers passing through, but I felt like a local and was treated very nicely through the whole process. I recommend this shop for anyone wanting an honest, hardworking crew.</p>
+        <div class="by"><span class="dot"></span>Scout M.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="wrap">
+    <div class="milepost"><span class="mm">MILE 04</span></div>
+    <h2 class="sec">Find the Shop</h2>
+    <p class="sub">We're in the Ramos Center on S 2nd St in Patterson — easy on, easy off. Closed weekends, so call ahead during the week.</p>
+    <div class="visit-grid">
+      <div class="info-card">
+        <h3>Hours</h3>
+        <div id="hours">
+          <div class="hours-row" data-day="1"><span class="d">Monday</span><span class="h">8:00 AM – 5:00 PM</span></div>
+          <div class="hours-row" data-day="2"><span class="d">Tuesday</span><span class="h">8:00 AM – 5:00 PM</span></div>
+          <div class="hours-row" data-day="3"><span class="d">Wednesday</span><span class="h">8:00 AM – 5:00 PM</span></div>
+          <div class="hours-row" data-day="4"><span class="d">Thursday</span><span class="h">8:00 AM – 5:00 PM</span></div>
+          <div class="hours-row" data-day="5"><span class="d">Friday</span><span class="h">8:00 AM – 5:00 PM</span></div>
+          <div class="hours-row closed" data-day="6"><span class="d">Saturday</span><span class="h">Closed</span></div>
+          <div class="hours-row closed" data-day="0"><span class="d">Sunday</span><span class="h">Closed</span></div>
+        </div>
+        <div class="addr">
+          <strong>Highway 33 Automotive</strong><br/>
+          227 S 2nd St<br/>
+          Patterson, CA 95363
+        </div>
+        <a class="btn-primary visit-call" href="tel:+12098953276">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.8 21 3 13.2 3 3.5c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+          (209) 895‑3276
+        </a>
+      </div>
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=227%20S%202nd%20St%2C%20Patterson%2C%20CA%2095363&z=15&output=embed"
+          title="Map to Highway 33 Automotive, 227 S 2nd St, Patterson, CA"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- END CTA -->
+<div class="endband">
+  <h2>Something making a noise it shouldn't?</h2>
+  <p>Tell us what it's doing — we'll give you a straight answer and a fair price. Cars, trucks, and bikes, six days a head start on the week.</p>
+  <a class="btn-end" href="tel:+12098953276">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.8 21 3 13.2 3 3.5c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+    Call (209) 895‑3276
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="shield sm"><span class="num">33</span></span>
+        <span class="name">Highway 33 Automotive<span>Patterson, California</span></span>
+      </div>
+      <div class="foot-links">
+        <span class="hd">Stop In</span>
+        <a href="tel:+12098953276">(209) 895‑3276</a>
+        <a href="https://www.google.com/maps?q=227+S+2nd+St,+Patterson,+CA+95363" target="_blank" rel="noopener">227 S 2nd St, Patterson, CA</a>
+      </div>
+      <div class="foot-links">
+        <span class="hd">Find Us</span>
+        <a href="https://maps.google.com/?cid=4512877631616724528" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C7.6 2 4 5.6 4 10c0 5.4 7 11.6 7.3 11.9.4.3 1 .3 1.4 0C13 21.6 20 15.4 20 10c0-4.4-3.6-8-8-8zm0 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
+          Google Business Profile
+        </a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile menu
+  var btn=document.getElementById('menuBtn'),links=document.getElementById('navLinks');
+  btn.addEventListener('click',function(){links.classList.toggle('open');});
+  links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){links.classList.remove('open');});});
+  // highlight today's hours
+  var today=new Date().getDay();
+  var row=document.querySelector('.hours-row[data-day="'+today+'"]');
+  if(row){row.classList.add('today');}
+</script>
+</body>
+</html>

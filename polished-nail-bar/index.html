@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<!--
+  ARCHETYPE: Upscale modern nail bar — "editorial beauty" boutique.
+  Palette: blush/mauve (#7a4b54, #b97f8a) + warm gold accents (#bd9355) on soft cream (#faf5f0).
+  Display type: Cormorant Garamond (high-contrast serif) paired with Jost (clean geometric sans body).
+  STRUCTURAL DECISIONS:
+   - Asymmetric editorial hero: oversized serif wordmark on cream, single tall real photo (the
+     dramatic black-throne interior) bleeding off the right edge — NOT a centered overlay hero.
+   - Sticky slim nav; html{scroll-padding-top:76px} reserves space so anchors never park under it.
+   - Services as a two-column "menu list" with leader rules + price column (editorial price-list feel),
+     NOT three icon cards.
+   - Photos used as an offset gallery strip + about-section split; nail close-ups carry the work.
+   - Testimonies: stacked editorial pull-quotes with oversized opening quote mark, no cards/avatars/stars.
+   - Animation: none beyond gentle CSS hover transitions (no fade-up-on-scroll).
+   - Map: keyless google.com/maps?q=...&output=embed.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Polished Nail Bar — Downey, CA</title>
+<meta name="description" content="Polished Nail Bar in Downey, CA — gel, builder gel, acrylics, gel-X, and relaxing pedicures in a beautiful, welcoming space. Book with Annie & the team.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#faf5f0;
+    --cream-2:#f3e9e2;
+    --ink:#2b2326;
+    --mauve:#7a4b54;
+    --mauve-soft:#b97f8a;
+    --gold:#bd9355;
+    --gold-deep:#a37a3e;
+    --line:#e2d3c9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:76px;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Jost',system-ui,sans-serif;
+    font-weight:300;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;line-height:1.05;}
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold-deep);font-weight:500;
+  }
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(250,245,240,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+    height:76px;display:flex;align-items:center;
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%;}
+  .brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;letter-spacing:.02em;color:var(--mauve);font-weight:600;}
+  .brand span{color:var(--gold);}
+  .navlinks{display:flex;gap:34px;align-items:center;}
+  .navlinks a{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);opacity:.78;transition:opacity .2s,color .2s;}
+  .navlinks a:hover{opacity:1;color:var(--mauve);}
+  .nav-cta{
+    border:1px solid var(--mauve);color:var(--mauve)!important;opacity:1!important;
+    padding:9px 20px;border-radius:2px;transition:background .2s,color .2s;
+  }
+  .nav-cta:hover{background:var(--mauve);color:#fff!important;}
+  @media(max-width:860px){.navlinks a:not(.nav-cta){display:none;}}
+
+  /* HERO */
+  .hero{position:relative;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:0;min-height:88vh;}
+  .hero-copy{padding:70px 0 70px;}
+  .hero-copy .eyebrow{display:block;margin-bottom:26px;}
+  .hero h1{font-size:clamp(3.4rem,8vw,6.6rem);color:var(--mauve);letter-spacing:.005em;}
+  .hero h1 em{font-style:italic;color:var(--gold);}
+  .hero .lede{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(1.3rem,2.3vw,1.7rem);
+    color:var(--ink);opacity:.82;max-width:30ch;margin:28px 0 38px;font-weight:400;line-height:1.4;
+  }
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;}
+  .btn{
+    display:inline-block;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;
+    padding:15px 30px;border-radius:2px;transition:all .22s;font-weight:400;
+  }
+  .btn-primary{background:var(--mauve);color:#fff;}
+  .btn-primary:hover{background:#623a42;transform:translateY(-2px);}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold-deep);}
+  .hero-photo{position:relative;align-self:stretch;}
+  .hero-photo img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    border-radius:0;
+  }
+  .hero-photo::after{
+    content:"";position:absolute;inset:0;
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);
+    background:linear-gradient(100deg,var(--cream) 0%,rgba(250,245,240,0) 16%);
+  }
+  @media(max-width:860px){
+    .hero-grid{grid-template-columns:1fr;min-height:auto;}
+    .hero-copy{padding:48px 0 30px;}
+    .hero-photo{height:62vw;min-height:340px;border-radius:3px;overflow:hidden;}
+    .hero-photo img{position:relative;}
+    .hero-photo::after{display:none;}
+  }
+
+  /* MARQUEE STRIP */
+  .strip{
+    background:var(--mauve);color:#f6e9e3;
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    text-align:center;padding:18px 20px;font-size:1.15rem;letter-spacing:.02em;
+  }
+  .strip .dot{color:var(--gold);margin:0 14px;}
+
+  /* SECTION SHELL */
+  section{padding:96px 0;}
+  .sec-head{margin-bottom:54px;max-width:60ch;}
+  .sec-head .eyebrow{display:block;margin-bottom:16px;}
+  .sec-head h2{font-size:clamp(2.4rem,5vw,3.6rem);color:var(--mauve);}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .about-text p{margin-bottom:20px;opacity:.86;}
+  .about-text p:first-of-type{
+    font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;
+    color:var(--mauve);opacity:1;line-height:1.45;font-weight:400;
+  }
+  .about-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .about-photos img{border-radius:3px;height:100%;object-fit:cover;width:100%;box-shadow:0 18px 40px -28px rgba(43,35,38,.5);}
+  .about-photos .tall{grid-row:span 2;}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:36px;}}
+
+  /* SERVICES MENU */
+  #services{background:var(--cream-2);}
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 72px;}
+  .menu-item{display:flex;align-items:baseline;gap:14px;padding:18px 0;border-bottom:1px solid var(--line);}
+  .menu-item .name{font-family:'Cormorant Garamond',serif;font-size:1.55rem;color:var(--ink);white-space:nowrap;}
+  .menu-item .desc{font-size:.82rem;color:var(--ink);opacity:.6;display:block;margin-top:2px;letter-spacing:.01em;}
+  .leader{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-4px);}
+  .menu-item .price{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--gold-deep);white-space:nowrap;}
+  .menu-note{margin-top:40px;font-style:italic;font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--mauve);}
+  @media(max-width:760px){.menu-grid{grid-template-columns:1fr;gap:0 0;}}
+
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .gallery figure{overflow:hidden;border-radius:3px;}
+  .gallery img{width:100%;height:340px;object-fit:cover;transition:transform .6s ease,filter .6s ease;filter:saturate(.96);}
+  .gallery figure:hover img{transform:scale(1.05);filter:saturate(1.08);}
+  .gallery .span2{grid-column:span 2;}
+  @media(max-width:760px){
+    .gallery{grid-template-columns:1fr 1fr;}
+    .gallery img{height:48vw;}
+    .gallery .span2{grid-column:span 2;}
+  }
+
+  /* TESTIMONIES */
+  #words{background:var(--mauve);color:#f7ece6;}
+  #words .eyebrow{color:#e6c79f;}
+  #words h2{color:#fff;}
+  .quotes{display:flex;flex-direction:column;gap:54px;max-width:880px;margin:0 auto;}
+  .quote{position:relative;padding-left:54px;}
+  .quote::before{
+    content:"\201C";position:absolute;left:-6px;top:-18px;
+    font-family:'Cormorant Garamond',serif;font-size:5.5rem;color:var(--gold);line-height:1;opacity:.9;
+  }
+  .quote p{
+    font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
+    font-size:clamp(1.3rem,2.4vw,1.85rem);line-height:1.45;color:#fbf2ec;
+  }
+  .quote cite{
+    display:block;margin-top:18px;font-family:'Jost',sans-serif;font-style:normal;
+    font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:#e6c79f;
+  }
+  @media(max-width:600px){.quote{padding-left:34px;}.quote::before{font-size:4rem;left:-8px;}}
+
+  /* VISIT */
+  .visit-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:stretch;}
+  .visit-info .row{padding:20px 0;border-bottom:1px solid var(--line);}
+  .visit-info .row:first-child{border-top:1px solid var(--line);}
+  .visit-info .lbl{font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px;}
+  .visit-info .val{font-size:1.05rem;}
+  .visit-info a.val:hover{color:var(--mauve);}
+  .hours-list{list-style:none;display:grid;gap:7px;}
+  .hours-list li{display:flex;justify-content:space-between;font-size:.95rem;}
+  .hours-list li span:first-child{opacity:.7;}
+  .hours-list li.today{color:var(--mauve);font-weight:500;}
+  .hours-list li.today span{font-weight:500;}
+  .map-frame{width:100%;height:100%;min-height:430px;border:0;border-radius:4px;filter:saturate(.9) contrast(1.02);box-shadow:0 20px 50px -32px rgba(43,35,38,.5);}
+  .visit-cta{margin-top:30px;}
+  @media(max-width:820px){.visit-grid{grid-template-columns:1fr;gap:36px;}.map-frame{min-height:340px;}}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:#e8ddd6;padding:70px 0 40px;}
+  .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start;}
+  .foot-brand{font-family:'Cormorant Garamond',serif;font-size:2rem;color:#fff;}
+  .foot-brand span{color:var(--gold);}
+  .foot-brand p{font-family:'Jost',sans-serif;font-size:.85rem;opacity:.6;margin-top:8px;max-width:32ch;}
+  .foot-links{display:flex;gap:26px;flex-wrap:wrap;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;}
+  .foot-links a{opacity:.75;transition:opacity .2s,color .2s;}
+  .foot-links a:hover{opacity:1;color:var(--gold);}
+  .foot-rule{border:0;border-top:1px solid rgba(255,255,255,.12);margin:44px 0 24px;}
+  .foot-bottom{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:.78rem;opacity:.55;}
+  .credit{color:#cbb9ae;}
+  .credit a{color:var(--gold);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">Polished <span>Nail Bar</span></a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#words">Testimonies</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:+15623812869" class="nav-cta">Call (562) 381-2869</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Downey, California · Est. by Annie</span>
+        <h1>Polished<br><em>to perfection.</em></h1>
+        <p class="lede">A bright, welcoming nail bar where careful hands, fine gel work, and a glass of wine make the whole thing feel like a treat.</p>
+        <div class="hero-actions">
+          <a href="tel:+15623812869" class="btn btn-primary">Call to book</a>
+          <a href="#services" class="btn btn-ghost">View services</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- absolutely-positioned photo column inside grid; rendered via second grid cell -->
+  <div class="wrap" style="position:absolute;inset:0;pointer-events:none;">
+    <div class="hero-grid" aria-hidden="true">
+      <div></div>
+      <div class="hero-photo"><img src="./photos/01.jpg" alt="Inside Polished Nail Bar — black tufted thrones and chandelier"></div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  Gel &amp; Builder Gel <span class="dot">·</span> Gel-X Extensions <span class="dot">·</span> Spa Pedicures <span class="dot">·</span> Nail Art <span class="dot">·</span> Walk-ins Welcome
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="sec-head" style="margin-bottom:28px;">
+          <span class="eyebrow">Our story</span>
+          <h2>A small salon<br>with a big heart.</h2>
+        </div>
+        <p>From the moment you sit down, you're offered a coffee, water, or a glass of wine — and treated like family.</p>
+        <p>Since Annie opened the doors, Polished Nail Bar has built its name on detail-oriented work and genuine warmth. Annie and the team take their time: nails shaped perfectly, polish applied flawlessly, every set built to last.</p>
+        <p>The space is clean, bright, and relaxing, with top-quality products and a small boutique of lashes, lotions, and beauty finds up front. Whether it's a quick fill or a full spa pedicure, you leave feeling cared for.</p>
+      </div>
+      <div class="about-photos">
+        <img class="tall" src="./photos/02.jpg" alt="Marble pedicure room at Polished Nail Bar">
+        <img src="./photos/03.jpg" alt="Glossy nude-and-gold gel nail art">
+        <img src="./photos/06.jpg" alt="Soft lilac square gel manicure">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The menu</span>
+      <h2>Services &amp; care</h2>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <div>
+          <span class="name">Classic Manicure</span>
+          <span class="desc">Shape, cuticle care &amp; polish</span>
+        </div>
+        <span class="leader"></span><span class="price">$25</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="name">Gel Manicure</span>
+          <span class="desc">Long-wear, high-shine gel color</span>
+        </div>
+        <span class="leader"></span><span class="price">$40</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="name">Builder Gel</span>
+          <span class="desc">Strengthens your natural nail — long &amp; beautiful</span>
+        </div>
+        <span class="leader"></span><span class="price">$55+</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="name">Gel-X Extensions</span>
+          <span class="desc">Lightweight full set — lasts up to 3 weeks</span>
+        </div>
+        <span class="leader"></span><span class="price">$65+</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="name">Acrylic Full Set &amp; Fill</span>
+          <span class="desc">Custom length, shape &amp; color</span>
+        </div>
+        <span class="leader"></span><span class="price">$50+</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="name">Spa Pedicure</span>
+          <span class="desc">Soak, callus removal &amp; massage</span>
+        </div>
+        <span class="leader"></span><span class="price">$40+</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="name">Nail Art &amp; Designs</span>
+          <span class="desc">From chrome accents to hand-painted detail</span>
+        </div>
+        <span class="leader"></span><span class="price">Ask</span>
+      </div>
+      <div class="menu-item">
+        <div>
+          <span class="name">Soak-Off &amp; Repair</span>
+          <span class="desc">Gentle removal &amp; nail reconditioning</span>
+        </div>
+        <span class="leader"></span><span class="price">$15+</span>
+      </div>
+    </div>
+    <p class="menu-note">Prices vary with length, art &amp; condition — call and we'll talk it through.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Our work</span>
+      <h2>Recently at the bar</h2>
+    </div>
+    <div class="gallery">
+      <figure class="span2"><img src="./photos/03.jpg" alt="Nude gel nails with gold leaf accents"></figure>
+      <figure><img src="./photos/04.jpg" alt="Bright pink almond gel nails"></figure>
+      <figure><img src="./photos/05.jpg" alt="Red square nails with white bow nail art"></figure>
+      <figure><img src="./photos/06.jpg" alt="Soft lilac square gel manicure"></figure>
+      <figure class="span2"><img src="./photos/02.jpg" alt="Spa pedicure chairs in the marble room"></figure>
+      <figure><img src="./photos/01.jpg" alt="Polished Nail Bar interior with chandelier"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="words">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;margin-left:auto;margin-right:auto;">
+      <span class="eyebrow">In their words</span>
+      <h2>Customer testimonies</h2>
+    </div>
+    <div class="quotes">
+      <blockquote class="quote">
+        <p>Annie and Mouy are incredibly talented and detail-oriented. They took their time to make sure my nails were shaped perfectly and the polish was flawless — and they make you feel comfortable from the moment you sit down. Beautiful, long-lasting nails and amazing service.</p>
+        <cite>Wendy A.</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>A gorgeous, bright atmosphere and complimentary coffee on the way in. The environment is clean, the products are top quality, and everyone is sweet, kind and accommodating. I'm in love with my nails and toes — this is my new permanent nail salon.</p>
+        <cite>Lizzy P.</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>Loved getting pampered — and my gel-X nails last three weeks. Nida is the sweetest, so caring and considerate with every request. I also love that they offer guests wine, coffee or water as part of the service.</p>
+        <cite>Gabby M.</cite>
+      </blockquote>
+      <blockquote class="quote">
+        <p>Annie has been doing my nails for years — her expertise is unmatched. All the staff are super friendly, professional and accommodating of every need. Highly recommend!</p>
+        <cite>Alexandra S.</cite>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Hours &amp; location</span>
+      <h2>Come see us</h2>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-info">
+        <div class="row">
+          <div class="lbl">Find us</div>
+          <a class="val" href="https://www.google.com/maps?q=8221+3rd+St,+Downey,+CA+90241" target="_blank" rel="noopener">8221 3rd St, Downey, CA 90241</a>
+        </div>
+        <div class="row">
+          <div class="lbl">Call / Book</div>
+          <a class="val" href="tel:+15623812869">(562) 381-2869</a>
+        </div>
+        <div class="row">
+          <div class="lbl">Hours</div>
+          <ul class="hours-list">
+            <li><span>Monday</span><span>10:00 AM – 7:00 PM</span></li>
+            <li><span>Tuesday</span><span>10:00 AM – 7:00 PM</span></li>
+            <li><span>Wednesday</span><span>10:00 AM – 7:00 PM</span></li>
+            <li><span>Thursday</span><span>9:30 AM – 7:00 PM</span></li>
+            <li><span>Friday</span><span>9:30 AM – 7:00 PM</span></li>
+            <li><span>Saturday</span><span>9:30 AM – 7:00 PM</span></li>
+            <li><span>Sunday</span><span>9:00 AM – 3:00 PM</span></li>
+          </ul>
+        </div>
+        <div class="visit-cta">
+          <a href="https://www.google.com/maps?q=8221+3rd+St,+Downey,+CA+90241" target="_blank" rel="noopener" class="btn btn-primary">Get directions</a>
+        </div>
+      </div>
+      <iframe class="map-frame" src="https://www.google.com/maps?q=33.9424393,-118.1326868&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Polished Nail Bar"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        Polished <span>Nail Bar</span>
+        <p>Detail-oriented nails, a glass of wine, and a warm welcome in the heart of Downey.</p>
+      </div>
+      <div class="foot-links">
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#visit">Hours</a>
+        <a href="tel:+15623812869">Call</a>
+        <a href="https://maps.google.com/?cid=5152024597869887225" target="_blank" rel="noopener">Google Business</a>
+      </div>
+    </div>
+    <hr class="foot-rule">
+    <div class="foot-bottom">
+      <span>&copy; 2026 Polished Nail Bar · 8221 3rd St, Downey, CA 90241</span>
+      <span class="credit">Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Highlight today's row in the hours list (purely cosmetic; no external data).
+  (function(){
+    var idx = new Date().getDay(); // 0=Sun
+    var map = [6,0,1,2,3,4,5]; // map JS day -> list order (Mon-first list, Sun last)
+    var items = document.querySelectorAll('.hours-list li');
+    if(items[map[idx]]) items[map[idx]].classList.add('today');
+  })();
+</script>
+</body>
+</html>

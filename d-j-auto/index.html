@@ -1,0 +1,980 @@
+<!-- flavor: Industrial Craftsman | accent: #0E5A4F | bg: #F2F4EF | hero: left-split | service: numbered-stacked -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D &amp; J Auto — Fountain Valley, CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --acc: #0E5A4F;
+      --bg: #F2F4EF;
+      --acc-light: #1a7a6b;
+      --acc-dark: #093e36;
+      --text: #1a1a18;
+      --muted: #5a5a55;
+      --rule: #d4d6d0;
+      --white: #ffffff;
+      --nav-h: 64px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    body { overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 5vw, 3rem);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      color: var(--bg);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--acc-light); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--bg);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    .nav-cta {
+      background: var(--acc);
+      color: var(--white) !important;
+      opacity: 1 !important;
+      padding: 0.45rem 1.1rem !important;
+      letter-spacing: 0.08em !important;
+    }
+
+    .nav-cta:hover { background: var(--acc-light); }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-burger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--bg);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: var(--text);
+      padding: 1.5rem clamp(1rem, 5vw, 3rem);
+      z-index: 99;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      color: var(--bg);
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 1rem;
+    }
+
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    /* ── HERO ── */
+    #home {
+      margin-top: var(--nav-h);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100svh - var(--nav-h));
+    }
+
+    .hero-text {
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--acc);
+    }
+
+    .hero-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-h1 em {
+      display: block;
+      color: var(--acc);
+      font-style: normal;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+      color: var(--muted);
+      max-width: 38ch;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--acc-light); }
+
+    .btn-outline {
+      display: inline-block;
+      border: 2px solid var(--text);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.75rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-outline:hover { background: var(--text); color: var(--white); }
+
+    .hero-meta {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item { }
+
+    .hero-meta-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-meta-val {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+      background: var(--acc-dark);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0.88;
+    }
+
+    .hero-image-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(14,90,79,0.5), transparent);
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 5rem); }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--acc);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--acc);
+    }
+
+    .section-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1;
+      letter-spacing: 0.03em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 0;
+    }
+
+    .about-images {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 4px;
+      min-height: 480px;
+    }
+
+    .about-images img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(2.5rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+    }
+
+    .about-body {
+      font-size: 0.975rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .about-body strong { color: var(--text); font-weight: 600; }
+
+    .about-stats {
+      display: flex;
+      gap: 2rem;
+      border-top: 1px solid var(--rule);
+      padding-top: 2rem;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      line-height: 1;
+      color: var(--acc);
+      letter-spacing: 0.02em;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--bg);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: start;
+    }
+
+    .services-intro .section-h2 { margin-bottom: 1rem; }
+
+    .services-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .service-list {
+      counter-reset: svc;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .service-item {
+      counter-increment: svc;
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1.25rem;
+      align-items: start;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.15s;
+    }
+
+    .service-item:first-child { border-top: 1px solid var(--rule); }
+
+    .service-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--acc);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      padding-top: 0.15rem;
+    }
+
+    .service-num::before { content: counter(svc, decimal-leading-zero); }
+
+    .service-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 0.35rem;
+    }
+
+    .service-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ── GALLERY ── */
+    #gallery {
+      background: var(--text);
+      padding-top: clamp(3rem, 6vw, 5rem);
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+    }
+
+    #gallery .section-label { color: var(--acc-light); }
+    #gallery .section-label::before { background: var(--acc-light); }
+    #gallery .section-h2 { color: var(--white); margin-bottom: 2.5rem; }
+
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4px;
+    }
+
+    .gallery-strip img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(15%);
+      transition: filter 0.3s;
+    }
+
+    .gallery-strip img:hover { filter: grayscale(0%); }
+
+    /* ── TESTIMONIES ── */
+    #testimonies {
+      background: var(--bg);
+    }
+
+    .testimonies-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .testimony-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .testimony-item {
+      padding: 2.25rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .testimony-item:first-child { border-top: 1px solid var(--rule); }
+
+    .testimony-quote {
+      font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+      color: var(--text);
+      line-height: 1.75;
+      font-style: italic;
+    }
+
+    .testimony-quote::before { content: '\201C'; }
+    .testimony-quote::after { content: '\201D'; }
+
+    .testimony-attr {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      color: var(--acc);
+      white-space: nowrap;
+      padding-top: 0.25rem;
+    }
+
+    /* ── HOURS + MAP ── */
+    #contact {
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 0;
+      gap: 0;
+    }
+
+    .contact-info {
+      padding: clamp(3rem, 6vw, 5rem) clamp(2rem, 5vw, 4rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .hours-table tr { border-bottom: 1px solid var(--rule); }
+    .hours-table tr:last-child { border-bottom: none; }
+
+    .hours-table td {
+      padding: 0.6rem 0;
+      font-size: 0.9rem;
+    }
+
+    .hours-table td:first-child {
+      font-weight: 600;
+      color: var(--text);
+      width: 40%;
+    }
+
+    .hours-table td:last-child { color: var(--muted); }
+
+    .hours-closed { color: var(--muted) !important; font-style: italic; }
+
+    .contact-phone {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.35rem;
+      transition: color 0.2s;
+    }
+
+    .contact-phone:hover { color: var(--acc); }
+
+    .contact-address {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: 2rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .contact-social {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .contact-social-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--acc);
+      padding-bottom: 1px;
+      transition: color 0.2s;
+    }
+
+    .social-link:hover { color: var(--acc); }
+
+    .contact-map {
+      background: #ccc;
+      min-height: 400px;
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      display: block;
+      border: none;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--acc-dark);
+      color: rgba(242,244,239,0.6);
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      color: var(--bg);
+    }
+
+    .footer-credit {
+      font-size: 0.78rem;
+      line-height: 1.5;
+      text-align: right;
+    }
+
+    .footer-credit a {
+      color: var(--acc-light);
+      text-decoration: none;
+    }
+
+    .footer-credit a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-burger { display: flex; }
+
+      #home {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-image {
+        min-height: 55vw;
+        order: -1;
+      }
+
+      #about {
+        grid-template-columns: 1fr;
+      }
+
+      .about-images {
+        grid-template-rows: auto;
+        grid-template-columns: 1fr 1fr;
+        min-height: 220px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-strip img:last-child { display: none; }
+
+      #contact {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-map { min-height: 300px; }
+      .contact-map iframe { min-height: 300px; }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .footer-credit { text-align: left; }
+
+      .testimony-item {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-meta { gap: 1.5rem; }
+      .gallery-strip { grid-template-columns: 1fr; }
+      .gallery-strip img { display: block !important; }
+      .about-stats { gap: 1.5rem; }
+      .about-images { grid-template-columns: 1fr; grid-template-rows: 180px 180px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#home">D<span>&amp;</span>J AUTO</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonies">Testimonies</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:7149652886" class="nav-cta">Call Now</a></li>
+    </ul>
+    <button class="nav-burger" aria-label="Open menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#testimonies" onclick="closeMenu()">Testimonies</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+    <a href="tel:7149652886">Call (714) 965-2886</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Fountain Valley, CA</p>
+      <h1 class="hero-h1">D&amp;J<em>Auto</em></h1>
+      <p class="hero-sub">Specialty vehicle expertise from Damien and the crew — VW classics, dune buggies, air-cooled engines, and precision repairs you won't find at a chain shop.</p>
+      <div class="hero-actions">
+        <a href="tel:7149652886" class="btn-primary">Call (714) 965-2886</a>
+        <a href="#services" class="btn-outline">Our Services</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Location</div>
+          <div class="hero-meta-val">Fountain Valley, CA</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Hours</div>
+          <div class="hero-meta-val">Mon–Fri 8am–5pm</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-label">Phone</div>
+          <div class="hero-meta-val">(714) 965-2886</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="./photos/01.jpg" alt="D&J Auto shop" />
+      <div class="hero-image-overlay"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-images">
+      <img src="./photos/02.jpg" alt="Shop work in progress" />
+      <img src="./photos/03.jpg" alt="Engine detail" />
+    </div>
+    <div class="about-content">
+      <p class="section-label">About the Shop</p>
+      <h2 class="section-h2">Hands-On Expertise, Not a Corporate Checklist</h2>
+      <p class="about-body">
+        <strong>Damien and the D&amp;J Auto team</strong> specialize in the vehicles most shops won't touch — vintage VWs, air-cooled classics, custom dune buggies, replica speedsters, and the kind of project cars that need someone who genuinely knows what they're doing.
+      </p>
+      <p class="about-body">
+        Every build and repair gets a straight, honest assessment. If there's a deadline, they find a way. If there's a better approach, they'll walk you through it. No corporate scripts, no upsell pressure — just reliable work from people who love these cars as much as you do.
+      </p>
+      <div class="about-stats">
+        <div>
+          <div class="stat-num">Mon–Fri</div>
+          <div class="stat-label">8am to 5pm</div>
+        </div>
+        <div>
+          <div class="stat-num">714</div>
+          <div class="stat-label">965-2886</div>
+        </div>
+        <div>
+          <div class="stat-num">FV</div>
+          <div class="stat-label">Fountain Valley</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-grid">
+      <div class="services-intro">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-h2">Shop Services</h2>
+        <p class="services-desc">From full engine builds to deadline-driven repairs — D&amp;J handles the jobs other shops hand back to you.</p>
+        <a href="tel:7149652886" class="btn-primary" style="margin-top:1rem;">Call to Schedule</a>
+      </div>
+      <div class="service-list">
+        <div class="service-item">
+          <div class="service-num"></div>
+          <div>
+            <div class="service-name">Engine Builds &amp; Rebuilds</div>
+            <div class="service-desc">Custom motor builds for air-cooled classics and vintage platforms. Damien has built motors from scratch — and sourced parts from his own collection to get yours back on the road.</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-num"></div>
+          <div>
+            <div class="service-name">Classic VW &amp; Specialty Imports</div>
+            <div class="service-desc">Bugs, Things, Karmann Ghias, Vanagons — vehicles with character that demand a mechanic who understands their quirks and history.</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-num"></div>
+          <div>
+            <div class="service-name">Dune Buggy &amp; Off-Road Builds</div>
+            <div class="service-desc">Full restoration and mechanical overhaul for custom dune buggies, Speedster replicas, and kit cars with neglected maintenance histories.</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-num"></div>
+          <div>
+            <div class="service-name">Diagnostics &amp; General Repair</div>
+            <div class="service-desc">Honest diagnosis, multiple repair approaches presented clearly. Whether it's a quick fix or a complex system repair, you'll know exactly what's happening and why.</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-num"></div>
+          <div>
+            <div class="service-name">Deadline Repairs</div>
+            <div class="service-desc">Got a show, a rally, or a trip? D&amp;J has a track record of pulling strings when it counts — without cutting corners on the work.</div>
+          </div>
+        </div>
+        <div class="service-item">
+          <div class="service-num"></div>
+          <div>
+            <div class="service-name">Ongoing Maintenance</div>
+            <div class="service-desc">Build a relationship with a shop that knows your car's full history. Preventive care from a mechanic who treats your vehicle like it's his own.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div style="max-width:1200px; margin:0 auto;">
+      <p class="section-label">The Work</p>
+      <h2 class="section-h2">From the Shop Floor</h2>
+      <div class="gallery-strip">
+        <img src="./photos/04.jpg" alt="Vehicle repair in progress" />
+        <img src="./photos/05.jpg" alt="Shop detail" />
+        <img src="./photos/06.jpg" alt="Engine work" />
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIES -->
+  <section id="testimonies">
+    <div class="testimonies-inner">
+      <p class="section-label">Customer Testimonies</p>
+      <h2 class="section-h2">In Their Words</h2>
+      <div class="testimony-stack">
+        <div class="testimony-item">
+          <p class="testimony-quote">Damien came highly recommended. We took our VW Thing in for some work. He was very knowledgeable and very communicative. The car is amazing now! D&amp;J will be the only shop to work on our car.</p>
+          <div class="testimony-attr">Kerry G.</div>
+        </div>
+        <div class="testimony-item">
+          <p class="testimony-quote">He has gotten our '67 dune buggy back on the road after years of abuse and delayed maintenance. Damien is honest and direct in his communication. His knowledge and experience are second to none. I feel very fortunate to have him and team taking care of me.</p>
+          <div class="testimony-attr">James C.</div>
+        </div>
+        <div class="testimony-item">
+          <p class="testimony-quote">I'm so thankful for Damian and his crew for helping us address multiple issues with our Speedster Replica. He was very thorough with giving us different approaches to get the job done correctly. On one occasion, we were faced with a deadline, and D&amp;J Auto pulled all the strings to make it happen without disappointing us.</p>
+          <div class="testimony-attr">Sean S.</div>
+        </div>
+        <div class="testimony-item">
+          <p class="testimony-quote">Damian has built me a motor that ran perfect and helped me build a new replacement for my totaled '69 from his own '65. Great guy, good family, and quality work. Not the cheapest but when you see the rides they put out you'll see why.</p>
+          <div class="testimony-attr">John S.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT + HOURS + MAP -->
+  <section id="contact">
+    <div class="contact-info">
+      <p class="section-label">Find Us</p>
+      <h2 class="section-h2">Hours &amp; Location</h2>
+      <a href="tel:7149652886" class="contact-phone">(714) 965-2886</a>
+      <p class="contact-address">
+        11594 Coley River Cir<br />
+        Fountain Valley, CA 92708
+      </p>
+      <table class="hours-table">
+        <tbody>
+          <tr><td>Monday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Thursday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Friday</td><td>8:00 AM – 5:00 PM</td></tr>
+          <tr><td>Saturday</td><td class="hours-closed">Closed</td></tr>
+          <tr><td>Sunday</td><td class="hours-closed">Closed</td></tr>
+        </tbody>
+      </table>
+      <div class="contact-actions">
+        <a href="tel:7149652886" class="btn-primary">Call Now</a>
+        <a href="https://www.google.com/maps?q=11594+Coley+River+Cir,+Fountain+Valley,+CA+92708" target="_blank" rel="noopener" class="btn-outline">Get Directions</a>
+      </div>
+      <div class="contact-social">
+        <div class="contact-social-label">Find Us Online</div>
+        <div class="social-links">
+          <a href="https://maps.google.com/?cid=10484306330263027121&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener" class="social-link">Google Business</a>
+        </div>
+      </div>
+    </div>
+    <div class="contact-map">
+      <iframe
+        src="https://www.google.com/maps?q=11594+Coley+River+Cir,+Fountain+Valley,+CA+92708&z=15&output=embed"
+        allowfullscreen
+        loading="lazy"
+        title="D&J Auto location map"
+      ></iframe>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">D&amp;J Auto — Fountain Valley</div>
+    <div class="footer-credit">
+      Mockup designed by LJ Sites — interested in making this yours?
+      <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const m = document.getElementById('mobile-menu');
+      m.classList.toggle('open');
+    }
+    function closeMenu() {
+      document.getElementById('mobile-menu').classList.remove('open');
+    }
+    // Close menu on outside click
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('mobile-menu');
+      const burger = document.querySelector('.nav-burger');
+      if (menu.classList.contains('open') && !menu.contains(e.target) && !burger.contains(e.target)) {
+        menu.classList.remove('open');
+      }
+    });
+  </script>
+
+</body>
+</html>

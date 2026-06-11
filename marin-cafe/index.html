@@ -1,0 +1,396 @@
+<!--
+  ARCHETYPE: Cozy neighborhood corner café — "warm everyday haunt"
+  Distinct from the other cafes/coffee in the set: NOT the espresso/copper craft
+  roastery, NOT the sage/blush floral cafe, NOT the terracotta botanical pun cafe,
+  NOT the white/orange minimalist roaster. This one leans into a comfortable,
+  homey, family-run corner-cafe feeling.
+
+  PALETTE: warm caramel-brown (#7b4a2d / #a4683f) + cream (#faf3e7) + sage accent
+           (#7e8c6a). Espresso-brown ink (#3a2a1d).
+  TYPE:    Fraunces (friendly warm serif, soft optical) for display + headings;
+           Mulish for body. Warm, rounded, not sharp/luxe.
+  STRUCTURE:
+   - Sticky slim top bar (cream) with centered wordmark; scroll-padding-top reserved.
+   - Hero: split — warm copy block left on caramel field, photo card right (no dark
+     overlay / no centered white-on-photo headline).
+   - "On the menu" presented as a warm two-column board (coffee + kitchen) sourced
+     from the actual menu-board photo, not 3 circular-icon cards.
+   - Pastry strip: horizontal photo band (the bakery is the star here).
+   - Testimonies: stacked quote rows, no cards/avatars/stars — "What people say".
+   - Hours + map two-up; CTA "Call Now" repeated (hero + sticky footer bar).
+   ANIMATION: none beyond simple hover transitions (deliberate).
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Marin Cafe — Cozy Corner Café in Pico Rivera</title>
+<meta name="description" content="Marin Cafe is a cozy neighborhood corner café in Pico Rivera — house-made pastries, real coffee, breakfast & sandwiches, served with a smile." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --caramel:#7b4a2d;
+    --caramel-lt:#a4683f;
+    --cream:#faf3e7;
+    --cream-deep:#f1e4cf;
+    --sage:#7e8c6a;
+    --sage-deep:#5f6b4d;
+    --ink:#3a2a1d;
+    --ink-soft:#6a5743;
+    --line:#e3d4ba;
+    --nav-h:62px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+  body{
+    font-family:'Mulish',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:500;line-height:1.12;letter-spacing:-.01em}
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit}
+  .wrap{width:min(1140px,92%);margin:0 auto}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;height:var(--nav-h);
+    background:rgba(250,243,231,.94);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    display:flex;align-items:center;
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;width:min(1140px,92%)}
+  .brand{font-family:'Fraunces',serif;font-weight:600;font-size:1.32rem;color:var(--caramel);letter-spacing:.01em;display:flex;align-items:center;gap:.5rem}
+  .brand .dot{width:9px;height:9px;border-radius:50%;background:var(--sage);display:inline-block}
+  .navlinks{display:flex;gap:1.9rem;font-size:.84rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+  .navlinks a{text-decoration:none;color:var(--ink-soft);transition:color .2s}
+  .navlinks a:hover{color:var(--caramel)}
+  .navcall{display:inline-flex;align-items:center;gap:.4rem;background:var(--caramel);color:var(--cream);
+    padding:.5rem 1rem;border-radius:999px;font-size:.82rem;font-weight:700;text-decoration:none;transition:background .2s}
+  .navcall:hover{background:var(--caramel-lt)}
+  @media(max-width:860px){.navlinks{display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{background:var(--caramel);color:var(--cream);position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:0;
+    background:radial-gradient(120% 90% at 12% 8%, rgba(255,255,255,.08), transparent 60%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;padding:4.6rem 0 4.4rem;position:relative;z-index:1}
+  .eyebrow{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cream-deep);font-weight:700;display:flex;align-items:center;gap:.7rem;margin-bottom:1.1rem}
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--sage)}
+  .hero h1{font-size:clamp(2.6rem,5.2vw,4rem);color:#fff;font-weight:600}
+  .hero h1 em{font-style:italic;font-weight:500;color:#f4d9b8}
+  .hero p.lead{margin:1.4rem 0 2rem;font-size:1.1rem;color:var(--cream-deep);max-width:34ch}
+  .hero-cta{display:flex;gap:.9rem;flex-wrap:wrap;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;text-decoration:none;border-radius:999px;
+    padding:.85rem 1.5rem;font-size:.96rem;transition:transform .15s ease,background .2s,color .2s}
+  .btn-primary{background:#fff;color:var(--caramel)}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--cream)}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.5);color:#fff}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+  .hero-photo{position:relative}
+  .hero-photo img{border-radius:14px;box-shadow:0 24px 50px -18px rgba(0,0,0,.55);
+    aspect-ratio:4/5;object-fit:cover;width:100%;border:6px solid #fff}
+  .hero-tag{position:absolute;bottom:-18px;left:-18px;background:var(--sage);color:#fff;
+    font-family:'Fraunces',serif;font-style:italic;font-size:1.02rem;padding:.6rem 1.1rem;border-radius:10px;
+    box-shadow:0 12px 26px -10px rgba(0,0,0,.5)}
+  @media(max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;gap:2.6rem;padding:3.2rem 0 3.4rem}
+    .hero-photo{max-width:380px;margin:0 auto}
+    .hero-tag{left:6px}
+  }
+
+  /* ---------- ABOUT STRIP ---------- */
+  .about{padding:4.6rem 0}
+  .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:3.4rem;align-items:center}
+  .about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+  .about-imgs img{border-radius:12px;aspect-ratio:1/1;object-fit:cover;width:100%}
+  .about-imgs img:first-child{aspect-ratio:1/1.25;grid-row:span 2;align-self:stretch;height:100%}
+  .sec-eyebrow{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sage-deep);font-weight:700;margin-bottom:.9rem}
+  .about h2{font-size:clamp(1.9rem,3.6vw,2.7rem);color:var(--caramel);margin-bottom:1.1rem}
+  .about p{color:var(--ink-soft);margin-bottom:1rem;max-width:46ch}
+  .about p strong{color:var(--ink);font-weight:700}
+  @media(max-width:860px){.about .wrap{grid-template-columns:1fr;gap:2rem}.about-imgs img:first-child{aspect-ratio:1/1;grid-row:auto}}
+
+  /* ---------- MENU BOARD ---------- */
+  .menu{background:var(--cream-deep);padding:4.8rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .menu-head{text-align:center;max-width:34rem;margin:0 auto 2.8rem}
+  .menu-head h2{font-size:clamp(2rem,3.8vw,2.8rem);color:var(--caramel);margin-bottom:.6rem}
+  .menu-head p{color:var(--ink-soft)}
+  .board{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+  .card{background:var(--cream);border:1px solid var(--line);border-radius:16px;padding:2rem 2.1rem;
+    box-shadow:0 10px 30px -22px rgba(58,42,29,.5)}
+  .card h3{font-size:1.45rem;color:var(--caramel-lt);margin-bottom:.3rem;display:flex;align-items:baseline;justify-content:space-between}
+  .card h3 span{font-family:'Mulish';font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sage-deep);font-weight:700}
+  .card .rule{height:1px;background:var(--line);margin:1rem 0 1.1rem}
+  .mrow{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.42rem 0}
+  .mrow .name{font-weight:600;color:var(--ink)}
+  .mrow .desc{display:block;font-size:.84rem;color:var(--ink-soft);font-weight:400}
+  .mrow .leader{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-3px);margin:0 .2rem}
+  .menu-note{text-align:center;margin-top:1.8rem;font-style:italic;color:var(--ink-soft);font-family:'Fraunces',serif}
+  @media(max-width:760px){.board{grid-template-columns:1fr}}
+
+  /* ---------- PASTRY BAND ---------- */
+  .band{padding:4.6rem 0}
+  .band .head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;margin-bottom:1.8rem;flex-wrap:wrap}
+  .band h2{font-size:clamp(1.9rem,3.6vw,2.6rem);color:var(--caramel)}
+  .band .head p{color:var(--ink-soft);max-width:40ch}
+  .strip{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:1rem}
+  .strip figure{position:relative;border-radius:14px;overflow:hidden}
+  .strip img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;transition:transform .5s ease}
+  .strip figure:first-child img{aspect-ratio:3/4}
+  .strip figure:hover img{transform:scale(1.05)}
+  .strip figcaption{position:absolute;left:14px;bottom:12px;color:#fff;font-family:'Fraunces',serif;font-style:italic;
+    font-size:1.02rem;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+  @media(max-width:760px){.strip{grid-template-columns:1fr 1fr}.strip figure:first-child{grid-column:span 2}.strip figure:first-child img{aspect-ratio:16/9}}
+
+  /* ---------- TESTIMONIES ---------- */
+  .says{background:var(--sage-deep);color:var(--cream);padding:5rem 0}
+  .says .lab{text-align:center;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:#cdd4bd;font-weight:700;margin-bottom:.7rem}
+  .says h2{text-align:center;font-size:clamp(2rem,3.8vw,2.8rem);color:#fff;margin-bottom:3rem}
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem 3.4rem;max-width:60rem;margin:0 auto}
+  .q{position:relative;padding-left:1.4rem}
+  .q::before{content:"“";font-family:'Fraunces',serif;font-size:3.4rem;line-height:0;position:absolute;left:-.2rem;top:1.2rem;color:rgba(255,255,255,.28)}
+  .q p{font-family:'Fraunces',serif;font-weight:400;font-size:1.12rem;line-height:1.5;color:#f3efe3;margin-bottom:.8rem}
+  .q cite{font-style:normal;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#c4cdb1}
+  @media(max-width:760px){.quotes{grid-template-columns:1fr;gap:2.2rem}}
+
+  /* ---------- VISIT ---------- */
+  .visit{padding:5rem 0}
+  .visit .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:3rem;align-items:stretch}
+  .visit h2{font-size:clamp(1.9rem,3.6vw,2.6rem);color:var(--caramel);margin-bottom:1.4rem}
+  .hours{list-style:none;margin:0 0 1.8rem}
+  .hours li{display:flex;justify-content:space-between;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.96rem}
+  .hours li span:first-child{font-weight:600;color:var(--ink)}
+  .hours li span:last-child{color:var(--ink-soft)}
+  .hours li.today{color:var(--caramel)}
+  .hours li.today span{color:var(--caramel-lt);font-weight:700}
+  .addr{color:var(--ink-soft);margin-bottom:1.4rem;line-height:1.5}
+  .addr strong{display:block;color:var(--ink);font-family:'Fraunces',serif;font-size:1.1rem;margin-bottom:.2rem}
+  .findus{font-size:.92rem;color:var(--ink-soft)}
+  .findus a{color:var(--caramel-lt);font-weight:700;text-decoration:none;border-bottom:1px solid var(--line)}
+  .findus a:hover{border-color:var(--caramel-lt)}
+  .map{border-radius:16px;overflow:hidden;border:1px solid var(--line);min-height:380px;box-shadow:0 14px 36px -24px rgba(58,42,29,.5)}
+  .map iframe{width:100%;height:100%;min-height:380px;border:0;display:block;filter:saturate(.92)}
+  @media(max-width:860px){.visit .wrap{grid-template-columns:1fr;gap:2.2rem}}
+
+  /* ---------- CTA BAR ---------- */
+  .ctabar{background:var(--caramel);color:var(--cream);text-align:center;padding:3.6rem 0}
+  .ctabar h2{font-size:clamp(1.8rem,3.4vw,2.5rem);color:#fff;margin-bottom:.7rem}
+  .ctabar p{color:var(--cream-deep);margin-bottom:1.6rem}
+  .ctabar .btn-primary{background:#fff}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#d9c8b2;padding:3rem 0 2.2rem;font-size:.9rem}
+  footer .top{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;margin-bottom:2rem}
+  footer .fbrand{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--cream);font-weight:600}
+  footer .fbrand span{color:var(--sage)}
+  footer .fcol h4{font-family:'Mulish';font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:#9c8669;margin-bottom:.7rem;font-weight:700}
+  footer .fcol a,footer .fcol p{color:#d9c8b2;text-decoration:none;display:block;line-height:1.7}
+  footer .fcol a:hover{color:#fff}
+  footer .credit{border-top:1px solid #4a3826;padding-top:1.4rem;font-size:.82rem;color:#a08a6d;text-align:center}
+  footer .credit a{color:#cdb89a;text-decoration:underline}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="dot"></span>Marin Cafe</div>
+    <div class="navlinks">
+      <a href="#about">Our Story</a>
+      <a href="#menu">Menu</a>
+      <a href="#bakery">Bakery</a>
+      <a href="#says">Testimonies</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <a class="navcall" href="tel:+13236290421">Call (323) 629-0421</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="eyebrow">Pico Rivera · est. on the corner</div>
+      <h1>Your friendly little<br><em>corner café.</em></h1>
+      <p class="lead">Real coffee, breakfast made to order, and a pastry case worth slowing down for — served with a smile every single morning.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="tel:+13236290421">Call Now</a>
+        <a class="btn btn-ghost" href="#menu">See the Menu</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="./photos/01.jpg" alt="Inside Marin Cafe — warm wood chairs and a cozy dining room" />
+      <div class="hero-tag">Cozy. Homey. Just down the street.</div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-imgs">
+      <img src="./photos/05.jpg" alt="Marin Cafe coffee &amp; espresso menu board and pastry counter" />
+      <img src="./photos/04.jpg" alt="Fresh-made ham and avocado sandwich with potato salad" />
+      <img src="./photos/06.jpg" alt="Box of house pastries — eclair, cream roll and tiramisu" />
+    </div>
+    <div>
+      <div class="sec-eyebrow">Our Story</div>
+      <h2>A neighborhood spot, run like family.</h2>
+      <p>Marin Cafe is the kind of place where the owner remembers your order and the coffee is poured to <strong>your taste, not a chain's</strong>. It's small, it's warm, and it's grown a loyal following one friendly morning at a time.</p>
+      <p>Pull up a chair beneath the Paris and New York prints, order an Abuelita latte and a slice of strawberry cake, and stay a while. Breakfast is served until mid-day, the pastries are made fresh, and there's always a seat with your name on it.</p>
+      <p>Whether you're grabbing coffee on the way to work or settling in for a proper breakfast, you'll be <strong>greeted with a smile</strong> — every time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <div class="sec-eyebrow" style="text-align:center">On the menu</div>
+      <h2>Coffee &amp; comfort food</h2>
+      <p>A short, honest menu done well — espresso drinks, hearty breakfast, and sandwiches built to order.</p>
+    </div>
+    <div class="board">
+      <div class="card">
+        <h3>Coffee &amp; Espresso <span>Lattes &amp; Frappes</span></h3>
+        <div class="rule"></div>
+        <div class="mrow"><span class="name">Abuelita Latte</span><span class="leader"></span></div>
+        <div class="mrow"><span class="name">Matcha Latte<span class="desc">with your choice of milk</span></span><span class="leader"></span></div>
+        <div class="mrow"><span class="name">Mocha · Vanilla · Horchata</span><span class="leader"></span></div>
+        <div class="mrow"><span class="name">Nutella Frappe</span><span class="leader"></span></div>
+        <div class="mrow"><span class="name">Hazelnut &amp; Chai</span><span class="leader"></span></div>
+        <div class="mrow"><span class="name">Hot Chocolate · Champurrado <span class="desc">seasonal</span></span><span class="leader"></span></div>
+      </div>
+      <div class="card">
+        <h3>From the Kitchen <span>Breakfast &amp; Sandwiches</span></h3>
+        <div class="rule"></div>
+        <div class="mrow"><span class="name">Breakfast Sandwiches</span><span class="leader"></span></div>
+        <div class="mrow"><span class="name">Two Eggs &amp; Pancakes <span class="desc">short stack, eggs your way</span></span><span class="leader"></span></div>
+        <div class="mrow"><span class="name">Egg Muffin</span><span class="leader"></span></div>
+        <div class="mrow"><span class="name">Avocado Toast</span><span class="leader"></span></div>
+        <div class="mrow"><span class="name">Ham &amp; Avocado Sandwich <span class="desc">with potato salad</span></span><span class="leader"></span></div>
+        <div class="mrow"><span class="name">Grilled Cheese</span><span class="leader"></span></div>
+      </div>
+    </div>
+    <p class="menu-note">…and a pastry case full of cakes, tiramisu, eclairs &amp; daily bakes. Ask what's fresh.</p>
+  </div>
+</section>
+
+<!-- BAKERY BAND -->
+<section class="band" id="bakery">
+  <div class="wrap">
+    <div class="head">
+      <h2>Straight from the case</h2>
+      <p>Strawberry shortcakes, tiramisu cups, cream rolls and chocolate-dipped eclairs — eye-catching and "super tasty," as the regulars put it.</p>
+    </div>
+    <div class="strip">
+      <figure><img src="./photos/02.jpg" alt="Strawberry cream cake topped with fresh strawberries" /><figcaption>Strawberry cream cake</figcaption></figure>
+      <figure><img src="./photos/03.jpg" alt="Display case of cakes and pastries at Marin Cafe" /><figcaption>The pastry case</figcaption></figure>
+      <figure><img src="./photos/06.jpg" alt="Eclair, cream roll and tiramisu cup in a bakery box" /><figcaption>A box to go</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section class="says" id="says">
+  <div class="wrap">
+    <div class="lab">What people say</div>
+    <h2>From our regulars</h2>
+    <div class="quotes">
+      <div class="q">
+        <p>Fast service, always greeted with a smile. I brought my 79-year-old mom to eat breakfast here — the food was great, it tastes homey. Pastries are super tasty and eye-catching. I recommend this place to everyone!</p>
+        <cite>— Johanna G.</cite>
+      </div>
+      <div class="q">
+        <p>The coffee and pastries were so great I went three days in a row. The owner was so kind — we chatted about the business and the food. Make your way over there. You will NOT be disappointed!</p>
+        <cite>— Christine C.</cite>
+      </div>
+      <div class="q">
+        <p>Got a matcha latte and an Abuelita latte — both perfectly made, between not too sweet and just right. It's a small cafe but cozy, and the music was a vibe. I will be coming back!</p>
+        <cite>— Zol M.</cite>
+      </div>
+      <div class="q">
+        <p>Found a GREAT coffee place — so personal and friendly! Coffee to your order with great food too, and the pastries are so yummy. My favorite place now, better than the pricey place for coffee.</p>
+        <cite>— Stella I.</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div>
+      <div class="sec-eyebrow">Hours &amp; Location</div>
+      <h2>Come on in.</h2>
+      <ul class="hours">
+        <li><span>Monday</span><span>6:00 AM – 3:00 PM</span></li>
+        <li><span>Tuesday</span><span>6:00 AM – 6:00 PM</span></li>
+        <li><span>Wednesday</span><span>6:00 AM – 6:00 PM</span></li>
+        <li><span>Thursday</span><span>6:00 AM – 6:00 PM</span></li>
+        <li><span>Friday</span><span>6:00 AM – 6:00 PM</span></li>
+        <li><span>Saturday</span><span>7:00 AM – 6:00 PM</span></li>
+        <li><span>Sunday</span><span>7:00 AM – 6:00 PM</span></li>
+      </ul>
+      <p class="addr">
+        <strong>Marin Cafe</strong>
+        6676 Rosemead Blvd<br>Pico Rivera, CA 90660
+      </p>
+      <p class="findus">
+        Find us on <a href="https://maps.google.com/?cid=4488971008742535085" target="_blank" rel="noopener">Google</a>
+        · or just call <a href="tel:+13236290421">(323) 629-0421</a>
+      </p>
+    </div>
+    <div class="map">
+      <iframe
+        title="Map to Marin Cafe, 6676 Rosemead Blvd, Pico Rivera"
+        src="https://www.google.com/maps?q=6676%20Rosemead%20Blvd%2C%20Pico%20Rivera%2C%20CA%2090660&z=15&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ctabar">
+  <div class="wrap">
+    <h2>See you in the morning.</h2>
+    <p>Coffee's on, the pastry case is full, and there's a seat waiting.</p>
+    <a class="btn btn-primary" href="tel:+13236290421">Call Now · (323) 629-0421</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="fbrand">Marin Cafe<span>.</span></div>
+        <p style="margin-top:.5rem;max-width:30ch">Your cozy corner café in Pico Rivera — coffee, pastries &amp; breakfast, served with a smile.</p>
+      </div>
+      <div class="fcol">
+        <h4>Visit</h4>
+        <p>6676 Rosemead Blvd</p>
+        <p>Pico Rivera, CA 90660</p>
+        <a href="https://maps.google.com/?cid=4488971008742535085" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+      <div class="fcol">
+        <h4>Say Hello</h4>
+        <a href="tel:+13236290421">(323) 629-0421</a>
+        <p>Mon 6a–3p · Tue–Fri 6a–6p</p>
+        <p>Sat–Sun 7a–6p</p>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

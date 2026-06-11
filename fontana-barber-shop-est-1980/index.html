@@ -1,0 +1,1011 @@
+<!-- flavor: Heritage Barber — classic editorial serif | accent: #1A1A1A | bg: #F5E9D8 | hero: right-photo | service: price-list-table -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fontana Barber Shop EST.1980 — Foothill Blvd, Fontana CA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Variables ── */
+    :root {
+      --acc: #1A1A1A;
+      --bg: #F5E9D8;
+      --gold: #B8924A;
+      --warm-mid: #E8D5B7;
+      --text: #2C2016;
+      --muted: #6B5740;
+      --rule: rgba(26,26,26,0.15);
+      --nav-h: 64px;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Source Sans 3', system-ui, sans-serif;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-h);
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-weight: 400;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ── Utility ── */
+    .container {
+      width: 92%;
+      max-width: 1100px;
+      margin-inline: auto;
+    }
+
+    .rule {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin-block: 0;
+    }
+
+    /* ── NAV ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--acc);
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+    }
+
+    nav {
+      width: 92%;
+      max-width: 1100px;
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .nav-brand .wordmark {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--bg);
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+    }
+
+    .nav-brand .est {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--warm-mid);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold) !important;
+      color: var(--acc) !important;
+      padding: 0.45rem 1.1rem;
+      font-weight: 600 !important;
+      letter-spacing: 0.08em;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: #d4a85a !important; }
+
+    /* Hamburger — mobile */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--bg);
+      transition: transform 0.25s, opacity 0.25s;
+    }
+
+    .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 700px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0; right: 0;
+        background: var(--acc);
+        flex-direction: column;
+        gap: 0;
+        padding-bottom: 1rem;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        padding: 0.75rem 1.5rem;
+        width: 100%;
+        border-top: 1px solid rgba(255,255,255,0.06);
+      }
+      .nav-cta { margin: 0.5rem 1.5rem 0; width: calc(100% - 3rem); text-align: center; }
+      .hamburger { display: flex; }
+    }
+
+    /* ── HERO ── */
+    #hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 82vh;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 3.5rem 5rem 0;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-text h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.12;
+      color: var(--acc);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-text h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 42ch;
+      line-height: 1.7;
+      margin-bottom: 2.25rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--acc);
+      color: var(--bg);
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.85rem 2rem;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: #333; }
+
+    .btn-secondary {
+      display: inline-block;
+      border-bottom: 1.5px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-secondary:hover { color: var(--acc); border-color: var(--acc); }
+
+    .hero-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--bg) 0%, transparent 12%);
+      pointer-events: none;
+    }
+
+    @media (max-width: 800px) {
+      #hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-photo {
+        height: 55vw;
+        min-height: 260px;
+        order: -1;
+      }
+      .hero-photo::after {
+        background: linear-gradient(to bottom, transparent 60%, var(--bg) 100%);
+      }
+      .hero-text {
+        padding: 2.5rem 0 3rem;
+      }
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: 5rem 0;
+      background: var(--acc);
+    }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .about-photos img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    .about-photos img:first-child {
+      grid-column: 1 / -1;
+      aspect-ratio: 16/9;
+    }
+
+    .about-copy { color: var(--bg); }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.1rem;
+    }
+
+    .about-copy h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--bg);
+      margin-bottom: 1.4rem;
+    }
+
+    .about-copy p {
+      color: rgba(245,233,216,0.75);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+      font-size: 0.97rem;
+    }
+
+    .about-copy p:last-child { margin-bottom: 0; }
+
+    @media (max-width: 800px) {
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-photos img:first-child { aspect-ratio: 16/7; }
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: 5rem 0;
+    }
+
+    .services-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .services-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--acc);
+      line-height: 1.15;
+    }
+
+    .services-header .tagline {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-style: italic;
+      font-family: var(--serif);
+    }
+
+    /* Price-list table */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .price-table thead th {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 0 0.85rem;
+      text-align: left;
+      border-bottom: 1.5px solid var(--acc);
+    }
+
+    .price-table thead th:last-child { text-align: right; }
+
+    .price-table tbody tr {
+      border-bottom: 1px solid var(--rule);
+      transition: background 0.15s;
+    }
+
+    .price-table tbody tr:hover { background: var(--warm-mid); }
+
+    .price-table tbody td {
+      padding: 1.1rem 0;
+      font-size: 0.97rem;
+    }
+
+    .price-table .service-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--acc);
+    }
+
+    .price-table .service-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      font-family: var(--sans);
+    }
+
+    .price-table .price {
+      text-align: right;
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    .price-note {
+      margin-top: 1.25rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    /* ── TESTIMONIES ── */
+    #testimonies {
+      padding: 5rem 0;
+      background: var(--warm-mid);
+    }
+
+    .testimonies-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .testimonies-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--acc);
+      margin-top: 0.5rem;
+    }
+
+    .testimonies-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .testimony {
+      background: var(--bg);
+      padding: 2.5rem 2.25rem;
+    }
+
+    .testimony blockquote {
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      font-style: italic;
+      line-height: 1.75;
+      color: var(--acc);
+      margin-bottom: 1.75rem;
+    }
+
+    .testimony blockquote::before {
+      content: '\201C';
+      font-size: 3rem;
+      line-height: 0;
+      vertical-align: -0.5rem;
+      color: var(--gold);
+      margin-right: 0.1em;
+      font-style: normal;
+      display: inline-block;
+    }
+
+    .testimony cite {
+      display: block;
+      font-style: normal;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .testimony cite::before {
+      content: '— ';
+    }
+
+    @media (max-width: 640px) {
+      .testimonies-grid { grid-template-columns: 1fr; gap: 2px; }
+    }
+
+    /* ── HOURS & LOCATION ── */
+    #location {
+      padding: 5rem 0;
+    }
+
+    .location-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .location-info h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--acc);
+      margin-bottom: 2rem;
+      line-height: 1.15;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+
+    .hours-table tr { border-bottom: 1px solid var(--rule); }
+    .hours-table tr:first-child { border-top: 1.5px solid var(--acc); }
+
+    .hours-table td {
+      padding: 0.7rem 0;
+      font-size: 0.92rem;
+    }
+
+    .hours-table .day {
+      font-weight: 500;
+      color: var(--acc);
+      width: 45%;
+    }
+
+    .hours-table .time {
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .address-block {
+      margin-bottom: 2rem;
+    }
+
+    .address-block .label {
+      font-family: var(--sans);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+
+    .address-block p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .address-block a {
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 1px;
+      display: inline-block;
+      margin-top: 0.6rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .address-block a:hover { color: var(--acc); border-color: var(--acc); }
+
+    .phone-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--acc);
+      margin-bottom: 1.5rem;
+      transition: color 0.2s;
+    }
+
+    .phone-link:hover { color: var(--gold); }
+
+    .map-frame {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border: none;
+      filter: grayscale(20%) sepia(10%);
+    }
+
+    @media (max-width: 800px) {
+      .location-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .map-frame { aspect-ratio: 16/9; }
+    }
+
+    /* ── GALLERY STRIP ── */
+    #gallery {
+      padding: 2px 0;
+      background: var(--acc);
+      overflow: hidden;
+    }
+
+    .gallery-strip {
+      display: flex;
+      gap: 2px;
+    }
+
+    .gallery-strip img {
+      flex: 1 1 0;
+      min-width: 0;
+      height: 220px;
+      object-fit: cover;
+      filter: brightness(0.85) sepia(10%);
+      transition: filter 0.3s;
+    }
+
+    .gallery-strip img:hover { filter: brightness(1) sepia(0%); }
+
+    @media (max-width: 600px) {
+      .gallery-strip img { height: 130px; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--acc);
+      padding: 3rem 0 2rem;
+      border-top: 2px solid var(--gold);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      flex-wrap: wrap;
+      padding-bottom: 2rem;
+    }
+
+    .footer-brand .wordmark {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--bg);
+      line-height: 1.1;
+    }
+
+    .footer-brand .est {
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      color: var(--gold);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-top: 3px;
+    }
+
+    .footer-links h4 {
+      font-family: var(--sans);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links ul li {
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-links ul li a {
+      font-size: 0.87rem;
+      color: rgba(245,233,216,0.7);
+      transition: color 0.2s;
+    }
+
+    .footer-links ul li a:hover { color: var(--bg); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(245,233,216,0.1);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.75rem;
+      color: rgba(245,233,216,0.45);
+      line-height: 1.5;
+    }
+
+    .footer-bottom a {
+      color: var(--gold);
+      transition: color 0.2s;
+    }
+
+    .footer-bottom a:hover { color: var(--bg); }
+
+    /* ── CTA BANNER ── */
+    #cta-banner {
+      background: var(--gold);
+      padding: 3.5rem 0;
+      text-align: center;
+    }
+
+    #cta-banner h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--acc);
+      margin-bottom: 0.5rem;
+    }
+
+    #cta-banner p {
+      font-size: 0.95rem;
+      color: rgba(26,26,26,0.7);
+      margin-bottom: 1.75rem;
+    }
+
+    .btn-dark {
+      display: inline-block;
+      background: var(--acc);
+      color: var(--bg);
+      font-family: var(--sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.9rem 2.25rem;
+      transition: background 0.2s;
+    }
+
+    .btn-dark:hover { background: #333; }
+
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <header>
+    <nav>
+      <a href="#hero" class="nav-brand" aria-label="Fontana Barber Shop home">
+        <span class="wordmark">Fontana Barber Shop</span>
+        <span class="est">Est. 1980 · Fontana, CA</span>
+      </a>
+      <button class="hamburger" aria-expanded="false" aria-label="Toggle menu" onclick="this.setAttribute('aria-expanded', this.getAttribute('aria-expanded')==='true'?'false':'true'); document.querySelector('.nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" role="list">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#testimonies">Testimonies</a></li>
+        <li><a href="#location">Hours</a></li>
+        <li><a href="tel:+19099972768" class="nav-cta">(909) 997-2768</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <div class="container" style="display:contents;">
+      <div class="hero-text container" style="display:flex; flex-direction:column; justify-content:center; padding-block: 5rem; padding-right: 3.5rem; padding-left: calc((100% - 1100px) / 2 + 4%); max-width: none; width: 50%;">
+        <p class="hero-eyebrow">Serving Fontana Since 1980</p>
+        <h1>Where Every Cut<br>Tells a <em>Story.</em></h1>
+        <p class="hero-desc">Four decades of craft on Foothill Blvd. Walk-ins welcome, regulars revered, every head treated with the care it deserves.</p>
+        <div class="hero-actions">
+          <a href="tel:+19099972768" class="btn-primary">Call to Book — (909) 997-2768</a>
+          <a href="https://www.google.com/maps?q=17080+Foothill+Blvd+%23C+Fontana+CA+92335&z=15&output=embed" class="btn-secondary" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+      </div>
+      <div class="hero-photo" style="width:50%;">
+        <img src="./photos/01.jpg" alt="Inside Fontana Barber Shop" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <section id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-photos">
+          <img src="./photos/02.jpg" alt="Barber at work" />
+          <img src="./photos/03.jpg" alt="Shop interior" />
+          <img src="./photos/04.jpg" alt="Haircut detail" />
+        </div>
+        <div class="about-copy">
+          <p class="section-label">Our Story</p>
+          <h2>Old-School Craft.<br>New-School Welcome.</h2>
+          <p>Fontana Barber Shop has been a fixture on Foothill Blvd since 1980 — built on the simple belief that a great haircut deserves real attention, not a rush job. We specialize in all hair types, from tight coils to fine straight hair, and we take the time to do it right.</p>
+          <p>Our team — including our highly regarded lady barber — brings both speed and skill to every chair. Whether you're a long-time regular or stepping in for the first time, expect warm conversation, fair prices, and a cut that actually fits you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section id="services">
+    <div class="container">
+      <div class="services-header">
+        <div>
+          <p class="section-label">What We Offer</p>
+          <h2>Services &amp; Pricing</h2>
+        </div>
+        <p class="tagline">All prices are at the chair — no hidden fees</p>
+      </div>
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="service-name">Classic Haircut</div>
+              <div class="service-note">Scissor or clipper, all hair types</div>
+            </td>
+            <td class="price">Starting at market rate</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="service-name">Fade &amp; Taper</div>
+              <div class="service-note">Skin fade, low taper, or blended</div>
+            </td>
+            <td class="price">Ask at the chair</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="service-name">Lineup &amp; Edge-Up</div>
+              <div class="service-note">Sharp lines, neckline cleanup</div>
+            </td>
+            <td class="price">Ask at the chair</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="service-name">Kids' Cut</div>
+              <div class="service-note">Under 12</div>
+            </td>
+            <td class="price">Ask at the chair</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="service-name">Beard Trim &amp; Shape</div>
+              <div class="service-note">Straight razor finish available</div>
+            </td>
+            <td class="price">Ask at the chair</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="service-name">Full Grooming Session</div>
+              <div class="service-note">Cut + beard + lineup combo</div>
+            </td>
+            <td class="price">Ask at the chair</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="price-note">Call ahead for current pricing: <a href="tel:+19099972768" style="color:var(--gold); border-bottom:1px solid var(--gold);">(909) 997-2768</a></p>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIES ── -->
+  <section id="testimonies">
+    <div class="container">
+      <div class="testimonies-header">
+        <p class="section-label" style="text-align:center;">What People Say</p>
+        <h2>Customer Testimonies</h2>
+      </div>
+      <div class="testimonies-grid">
+        <div class="testimony">
+          <blockquote>It's a good barbershop that offers a good cut for special hair types at a reasonable price. The service is very personalized, warm, and friendly — and the hours are very reasonable.</blockquote>
+          <cite>Jesus J.</cite>
+        </div>
+        <div class="testimony">
+          <blockquote>Best bang for your buck! Great conversations, many long-time clients. And do not underestimate the lady barber — she is very skilled and fast. I have no reason to stop coming here.</blockquote>
+          <cite>J.</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALLERY STRIP ── -->
+  <section id="gallery" aria-label="Photo gallery">
+    <div class="gallery-strip">
+      <img src="./photos/05.jpg" alt="Shop atmosphere" />
+      <img src="./photos/06.jpg" alt="Barber craft detail" />
+      <img src="./photos/01.jpg" alt="Fontana Barber Shop chairs" />
+    </div>
+  </section>
+
+  <!-- ── CTA BANNER ── -->
+  <section id="cta-banner">
+    <div class="container">
+      <h2>Ready for a Fresh Cut?</h2>
+      <p>Walk-ins welcome Monday–Saturday 9 AM – 6 PM · Sunday 10 AM – 4 PM</p>
+      <a href="tel:+19099972768" class="btn-dark">Call Now — (909) 997-2768</a>
+    </div>
+  </section>
+
+  <!-- ── HOURS & LOCATION ── -->
+  <section id="location">
+    <div class="container">
+      <div class="location-inner">
+        <div class="location-info">
+          <p class="section-label">Find Us</p>
+          <h2>Hours &amp;<br>Location</h2>
+          <a href="tel:+19099972768" class="phone-link">(909) 997-2768</a>
+          <table class="hours-table">
+            <tbody>
+              <tr><td class="day">Monday – Friday</td><td class="time">9:00 AM – 6:00 PM</td></tr>
+              <tr><td class="day">Saturday</td><td class="time">9:00 AM – 6:00 PM</td></tr>
+              <tr><td class="day">Sunday</td><td class="time">10:00 AM – 4:00 PM</td></tr>
+            </tbody>
+          </table>
+          <div class="address-block">
+            <p class="label">Address</p>
+            <p>17080 Foothill Blvd #C<br>Fontana, CA 92335</p>
+            <a href="https://maps.google.com/?cid=15153179904727720019" target="_blank" rel="noopener">Open in Google Maps ↗</a>
+          </div>
+          <div class="address-block">
+            <p class="label">Also Find Us On</p>
+            <a href="https://maps.google.com/?cid=15153179904727720019&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business Profile ↗</a>
+          </div>
+        </div>
+        <div>
+          <iframe
+            class="map-frame"
+            src="https://www.google.com/maps?q=17080+Foothill+Blvd+%23C+Fontana+CA+92335&z=15&output=embed"
+            title="Fontana Barber Shop location map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <p class="wordmark">Fontana Barber Shop</p>
+          <p class="est">Est. 1980 · Fontana, CA</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#testimonies">Testimonies</a></li>
+            <li><a href="#location">Hours &amp; Location</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+19099972768">(909) 997-2768</a></li>
+            <li><a href="https://maps.google.com/?cid=15153179904727720019&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA" target="_blank" rel="noopener">Google Business ↗</a></li>
+            <li style="color:rgba(245,233,216,0.45); font-size:0.87rem;">17080 Foothill Blvd #C<br>Fontana, CA 92335</li>
+          </ul>
+        </div>
+      </div>
+      <hr class="rule" style="border-color:rgba(245,233,216,0.1); margin-bottom:1.5rem;" />
+      <div class="footer-bottom">
+        <p>&copy; 2025 Fontana Barber Shop EST.1980</p>
+        <p>Mockup designed by LJ Sites — interested in making this yours? <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

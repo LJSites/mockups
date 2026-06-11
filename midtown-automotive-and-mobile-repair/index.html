@@ -1,0 +1,494 @@
+<!--
+  ARCHETYPE: Industrial Garage Poster — bold signage layout for an auto/mobile-repair shop.
+  Palette: charcoal/near-black (#13151a / #1c1f26) + safety-orange (#ff6a00) + steel grey, raw concrete off-white.
+  Display: Archivo Black (poster slab) for huge stacked headers; Oswald (condensed) for labels/nav; Inter for body.
+  STRUCTURAL DECISIONS:
+   - Fixed top signage bar (Oswald all-caps) w/ orange "CALL NOW" plate; html{scroll-padding-top} matches bar height.
+   - Hero = full-bleed mobile-diagnostics photo (01) behind a hard charcoal panel with an oversized stacked
+     two-line title and an orange diagonal "OPEN 7 DAYS" stamp. No centered overlay/pill cliche.
+   - "What we do" services as a numbered industrial block list (no 3-col circular-icon grid).
+   - Mobile-service emphasis = "We come to you" banner strip (this is a MOBILE repair shop).
+   - Photo strip: real shop work photos as a hard-edged asymmetric mosaic (no rounded cards).
+   - Testimonies = "STRAIGHT TALK" — stacked quote slabs, first name + last initial, NO stars/scores/counts.
+   - Hours = monospace 7-day rota table (open every day). Map = keyless google.com/maps?q=...&output=embed.
+   - Animation: none beyond CSS hover states (deliberate, poster-static).
+   - Distinct from warm-green family shop / navy-technical center / red service-station.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Midtown Automotive &amp; Mobile Repair — Clovis, CA</title>
+<meta name="description" content="Honest, knowledgeable auto repair &amp; mobile mechanic in Clovis, CA. Open 7 days a week. Diagnostics, electrical, batteries, and more — we come to you." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#13151a;
+    --panel:#1c1f26;
+    --panel2:#23272f;
+    --orange:#ff6a00;
+    --orange-d:#e25c00;
+    --steel:#9aa3b0;
+    --concrete:#f1efe9;
+    --line:#33373f;
+    --navh:62px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:var(--navh);}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--ink);
+    color:var(--concrete);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{display:block;width:100%;height:100%;object-fit:cover;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 22px;}
+  .label{
+    font-family:'Oswald',sans-serif;text-transform:uppercase;
+    letter-spacing:.22em;font-weight:600;
+  }
+  .display{font-family:'Archivo Black',sans-serif;line-height:.92;letter-spacing:-.01em;}
+
+  /* ---- NAV ---- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;height:var(--navh);z-index:50;
+    background:#0f1115;border-bottom:3px solid var(--orange);
+    display:flex;align-items:center;
+  }
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%;}
+  .brandmark{display:flex;align-items:center;gap:11px;}
+  .brandmark .tag{
+    width:34px;height:34px;background:var(--orange);color:#0f1115;
+    display:grid;place-items:center;font-family:'Archivo Black',sans-serif;
+    font-size:18px;transform:skewX(-8deg);
+  }
+  .brandmark .tag span{transform:skewX(8deg);}
+  .brandmark b{font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;font-size:15px;}
+  .brandmark .sub{display:block;font-family:'Oswald';font-weight:400;font-size:9.5px;
+    letter-spacing:.28em;color:var(--steel);}
+  nav.links{display:flex;align-items:center;gap:26px;}
+  nav.links a{font-family:'Oswald';text-transform:uppercase;letter-spacing:.13em;
+    font-size:13px;font-weight:500;color:var(--steel);transition:color .15s;}
+  nav.links a:hover{color:var(--concrete);}
+  .callplate{
+    background:var(--orange);color:#0f1115;font-family:'Oswald';font-weight:700;
+    text-transform:uppercase;letter-spacing:.1em;font-size:13px;
+    padding:11px 18px;transform:skewX(-8deg);transition:background .15s;
+  }
+  .callplate span{display:inline-block;transform:skewX(8deg);}
+  .callplate:hover{background:#fff;}
+  .navtoggle{display:none;}
+  @media(max-width:860px){
+    nav.links a:not(.callplate){display:none;}
+    .brandmark .sub{display:none;}
+  }
+
+  /* ---- HERO ---- */
+  .hero{position:relative;padding-top:var(--navh);background:#0c0e12;}
+  .hero-media{position:absolute;inset:var(--navh) 0 0 0;}
+  .hero-media::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(95deg,rgba(12,14,18,.97) 30%,rgba(12,14,18,.55) 70%,rgba(12,14,18,.78) 100%);}
+  .hero-inner{position:relative;z-index:2;padding:74px 0 84px;}
+  .kicker{display:inline-flex;align-items:center;gap:12px;color:var(--orange);
+    font-size:13px;margin-bottom:26px;}
+  .kicker::before{content:"";width:42px;height:3px;background:var(--orange);}
+  h1.hero-title{
+    font-size:clamp(2.7rem,9vw,6.4rem);color:#fff;text-transform:uppercase;
+  }
+  h1.hero-title em{font-style:normal;color:var(--orange);}
+  .hero-sub{max-width:540px;margin-top:24px;color:#cfd3da;font-size:clamp(1rem,2.2vw,1.18rem);}
+  .hero-sub b{color:#fff;}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;}
+  .btn{
+    font-family:'Oswald';text-transform:uppercase;font-weight:600;letter-spacing:.1em;
+    font-size:15px;padding:16px 28px;display:inline-flex;align-items:center;gap:10px;
+    transform:skewX(-8deg);transition:transform .12s,background .15s,color .15s;
+  }
+  .btn span{display:inline-block;transform:skewX(8deg);}
+  .btn-orange{background:var(--orange);color:#0f1115;}
+  .btn-orange:hover{background:#fff;}
+  .btn-ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px var(--line);}
+  .btn-ghost:hover{box-shadow:inset 0 0 0 2px var(--orange);color:var(--orange);}
+  .stamp{
+    position:absolute;right:0;bottom:34px;z-index:3;
+    background:var(--orange);color:#0f1115;font-family:'Archivo Black';
+    text-transform:uppercase;font-size:clamp(.8rem,1.7vw,1.05rem);line-height:1.05;
+    padding:14px 20px;transform:rotate(-6deg);text-align:center;
+    box-shadow:0 14px 30px rgba(0,0,0,.45);
+  }
+  .stamp small{display:block;font-family:'Oswald';font-weight:600;font-size:11px;
+    letter-spacing:.2em;margin-top:3px;}
+  @media(max-width:760px){
+    .hero-media::after{background:linear-gradient(180deg,rgba(12,14,18,.72),rgba(12,14,18,.95));}
+    .stamp{display:none;}
+  }
+
+  /* ---- MARQUEE STRIP ---- */
+  .strip{background:var(--orange);color:#0f1115;overflow:hidden;border-top:3px solid #0c0e12;border-bottom:3px solid #0c0e12;}
+  .strip .row{display:flex;gap:40px;white-space:nowrap;padding:13px 0;
+    font-family:'Oswald';font-weight:700;text-transform:uppercase;letter-spacing:.16em;font-size:14px;}
+  .strip .row span::before{content:"◆";margin-right:40px;}
+
+  section{padding:84px 0;}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;
+    margin-bottom:46px;border-bottom:2px solid var(--line);padding-bottom:20px;flex-wrap:wrap;}
+  .sec-head .num{font-family:'Archivo Black';color:var(--line);font-size:clamp(2.4rem,6vw,4rem);line-height:.8;}
+  .sec-head h2{font-size:clamp(1.8rem,4.6vw,2.9rem);text-transform:uppercase;color:#fff;}
+  .sec-head .eyebrow{color:var(--orange);font-size:12px;margin-bottom:10px;}
+
+  /* ---- ABOUT ---- */
+  #about{background:var(--panel);}
+  .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;}
+  .about-grid p{color:#c8cdd5;margin-bottom:18px;font-size:1.05rem;}
+  .about-grid p b{color:#fff;}
+  .sig{font-family:'Oswald';font-weight:700;text-transform:uppercase;letter-spacing:.12em;
+    color:var(--orange);font-size:14px;margin-top:8px;}
+  .about-img{position:relative;aspect-ratio:4/5;}
+  .about-img::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 0 4px var(--orange);
+    transform:translate(16px,16px);z-index:-1;}
+  .about-img{box-shadow:14px 14px 0 0 #0c0e12;}
+
+  /* ---- SERVICES ---- */
+  .svc-list{display:grid;grid-template-columns:1fr 1fr;gap:0;border:2px solid var(--line);}
+  .svc{display:flex;gap:20px;padding:26px 28px;border-bottom:2px solid var(--line);border-right:2px solid var(--line);
+    transition:background .15s;}
+  .svc:nth-child(2n){border-right:none;}
+  .svc:hover{background:var(--panel2);}
+  .svc .n{font-family:'Archivo Black';color:var(--orange);font-size:1.1rem;min-width:46px;}
+  .svc h3{font-family:'Oswald';font-weight:600;text-transform:uppercase;letter-spacing:.05em;
+    font-size:1.15rem;color:#fff;margin-bottom:5px;}
+  .svc p{color:var(--steel);font-size:.95rem;}
+  @media(max-width:720px){.svc-list{grid-template-columns:1fr;}
+    .svc{border-right:none!important;}}
+  .svc-note{margin-top:22px;font-family:'Oswald';letter-spacing:.05em;color:var(--steel);
+    text-transform:uppercase;font-size:13px;}
+  .svc-note b{color:var(--orange);}
+
+  /* ---- MOBILE BANNER ---- */
+  .mobile-band{background:var(--ink);position:relative;overflow:hidden;}
+  .mobile-band .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+  .mobile-band .copy h2{font-size:clamp(1.9rem,5vw,3.2rem);text-transform:uppercase;color:#fff;margin-bottom:18px;}
+  .mobile-band .copy h2 em{font-style:normal;color:var(--orange);}
+  .mobile-band .copy p{color:#c8cdd5;max-width:460px;}
+  .mb-img{aspect-ratio:16/11;box-shadow:-14px 14px 0 0 var(--orange);}
+  @media(max-width:820px){.mobile-band .wrap{grid-template-columns:1fr;}.mb-img{order:-1;}}
+
+  /* ---- GALLERY ---- */
+  #work{background:var(--panel);}
+  .mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:170px;gap:10px;}
+  .mosaic figure{position:relative;overflow:hidden;background:#0c0e12;}
+  .mosaic figure img{transition:transform .4s ease,filter .4s;filter:grayscale(.15) contrast(1.03);}
+  .mosaic figure:hover img{transform:scale(1.06);filter:grayscale(0) contrast(1.05);}
+  .m-a{grid-column:span 2;grid-row:span 2;}
+  .m-b{grid-column:span 2;}
+  .m-tall{grid-row:span 2;}
+  @media(max-width:720px){
+    .mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;}
+    .m-a{grid-column:span 2;grid-row:span 2;}
+    .m-b{grid-column:span 2;grid-row:auto;}
+    .m-tall{grid-row:auto;}
+  }
+
+  /* ---- TESTIMONIES ---- */
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .quote{background:var(--panel2);border-left:5px solid var(--orange);padding:30px 32px;}
+  .quote p{color:#dfe2e7;font-size:1.04rem;}
+  .quote .mark{font-family:'Archivo Black';color:var(--orange);font-size:2.6rem;line-height:.5;display:block;margin-bottom:14px;}
+  .quote cite{display:block;margin-top:18px;font-family:'Oswald';font-weight:600;text-transform:uppercase;
+    letter-spacing:.13em;font-size:13px;color:#fff;font-style:normal;}
+  .quote.feat{grid-column:span 2;background:#0c0e12;box-shadow:inset 0 0 0 2px var(--line);}
+  .quote.feat p{font-size:1.18rem;}
+  @media(max-width:720px){.quotes{grid-template-columns:1fr;}.quote.feat{grid-column:auto;}}
+
+  /* ---- VISIT (hours + map + contact) ---- */
+  #visit{background:var(--ink);}
+  .visit-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:42px;align-items:stretch;}
+  .hours-card{background:var(--panel);padding:34px;}
+  .hours-card h3{font-family:'Oswald';text-transform:uppercase;letter-spacing:.1em;color:var(--orange);
+    font-size:14px;margin-bottom:20px;}
+  .rota{font-family:'Oswald';font-weight:400;width:100%;border-collapse:collapse;}
+  .rota td{padding:9px 0;border-bottom:1px dashed var(--line);font-size:15px;letter-spacing:.04em;}
+  .rota td:first-child{text-transform:uppercase;color:var(--steel);}
+  .rota td:last-child{text-align:right;color:#fff;}
+  .rota tr.today td{color:var(--orange);}
+  .rota tr.today td:last-child{color:var(--orange);}
+  .contact-line{margin-top:26px;padding-top:24px;border-top:2px solid var(--line);}
+  .contact-line a.big{font-family:'Archivo Black';color:#fff;font-size:clamp(1.4rem,4vw,2rem);
+    display:inline-block;letter-spacing:-.01em;}
+  .contact-line a.big:hover{color:var(--orange);}
+  .contact-line .addr{color:var(--steel);font-family:'Oswald';letter-spacing:.05em;margin-top:8px;text-transform:uppercase;font-size:13px;}
+  .findus{margin-top:18px;display:flex;gap:14px;flex-wrap:wrap;}
+  .findus a{font-family:'Oswald';text-transform:uppercase;letter-spacing:.1em;font-size:12px;
+    color:var(--steel);padding:9px 14px;box-shadow:inset 0 0 0 1px var(--line);transition:.15s;}
+  .findus a:hover{color:#0f1115;background:var(--orange);box-shadow:inset 0 0 0 1px var(--orange);}
+  .mapwrap{position:relative;min-height:420px;box-shadow:inset 0 0 0 2px var(--line);}
+  .mapwrap iframe{width:100%;height:100%;min-height:420px;border:0;filter:grayscale(.4) contrast(1.05) invert(.92) hue-rotate(180deg);}
+  @media(max-width:820px){.visit-grid{grid-template-columns:1fr;}}
+
+  /* ---- FINAL CTA ---- */
+  .finalcta{background:var(--orange);color:#0f1115;text-align:center;padding:70px 0;}
+  .finalcta h2{font-family:'Archivo Black';text-transform:uppercase;font-size:clamp(2rem,6vw,3.6rem);line-height:.95;}
+  .finalcta p{font-family:'Oswald';text-transform:uppercase;letter-spacing:.12em;margin:16px 0 30px;font-weight:500;}
+  .finalcta .btn-dark{background:#0f1115;color:#fff;}
+  .finalcta .btn-dark:hover{background:#fff;color:#0f1115;}
+
+  /* ---- FOOTER ---- */
+  footer{background:#0c0e12;padding:48px 0 38px;border-top:3px solid var(--orange);}
+  .foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start;}
+  .foot-brand b{font-family:'Oswald';font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:18px;color:#fff;}
+  .foot-brand p{color:var(--steel);font-size:13px;margin-top:8px;max-width:280px;}
+  .foot-col h4{font-family:'Oswald';text-transform:uppercase;letter-spacing:.15em;font-size:12px;color:var(--orange);margin-bottom:12px;}
+  .foot-col a,.foot-col p{display:block;color:#c8cdd5;font-size:14px;margin-bottom:7px;}
+  .foot-col a:hover{color:#fff;}
+  .credit{margin-top:38px;padding-top:22px;border-top:1px solid var(--line);
+    color:var(--steel);font-size:12.5px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+  .credit a{color:var(--steel);}
+  .credit a:hover{color:var(--orange);}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brandmark" href="#top" aria-label="Midtown Automotive home">
+      <span class="tag"><span>M</span></span>
+      <span>
+        <b>Midtown Automotive</b>
+        <span class="sub">&amp; Mobile Repair · Clovis</span>
+      </span>
+    </a>
+    <nav class="links">
+      <a href="#about">Shop</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#say">Straight Talk</a>
+      <a href="#visit">Hours &amp; Map</a>
+      <a class="callplate" href="tel:+15597771277"><span>Call (559) 777-1277</span></a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-media"><img src="./photos/01.jpg" alt="Mobile mechanic running diagnostics on a car engine in Clovis" /></div>
+  <div class="wrap hero-inner">
+    <span class="kicker label">Clovis, CA · Open 7 Days</span>
+    <h1 class="hero-title display">Honest Repairs.<br /><em>Done Right.</em></h1>
+    <p class="hero-sub">Run by Chris — a mechanic who picks up the phone, explains the problem in plain English, and gets your vehicle back fast. <b>Shop &amp; mobile service across the Clovis &amp; Fresno area.</b></p>
+    <div class="hero-cta">
+      <a class="btn btn-orange" href="tel:+15597771277"><span>Call Now</span></a>
+      <a class="btn btn-ghost" href="#services"><span>What We Fix</span></a>
+    </div>
+  </div>
+  <div class="stamp">Open<br />7 Days<br /><small>Mon–Sun · 8a–7p</small></div>
+</section>
+
+<div class="strip" aria-hidden="true">
+  <div class="row">
+    <span>Diagnostics</span><span>Electrical</span><span>Batteries &amp; Charging</span><span>Mobile Service</span><span>Honest Quotes</span><span>Same-Day When We Can</span><span>Diagnostics</span><span>Electrical</span><span>Batteries &amp; Charging</span><span>Mobile Service</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow label">The Shop</div>
+        <h2 class="display">Meet Your Mechanic</h2>
+      </div>
+      <div class="num">01</div>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>Midtown Automotive started with a simple idea: treat every customer's vehicle like it's the only one that matters. <b>Chris is the kind of mechanic who reaches out when he can get you in sooner, stays after hours to finish the job, and tells you straight what does — and doesn't — need fixing.</b></p>
+        <p>From a tricky alternator on an '08 Lexus that another shop turned away, to full electrical and battery diagnostics, the work gets done with the kind of communication you rarely find under a hood. Set an appointment online, text questions anytime, and pay the easy way.</p>
+        <p>And because real life doesn't keep banker's hours, the door's open <b>seven days a week</b>.</p>
+        <div class="sig">— Chris · Owner &amp; Lead Mechanic</div>
+      </div>
+      <div class="about-img"><img src="./photos/05.jpg" alt="Chris performing on-site engine diagnostics" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" style="background:var(--ink);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow label">Under The Hood</div>
+        <h2 class="display">What We Fix</h2>
+      </div>
+      <div class="num">02</div>
+    </div>
+    <div class="svc-list">
+      <div class="svc"><div class="n">01</div><div><h3>Computer Diagnostics</h3><p>Check-engine lights, sensors, and hard-to-trace gremlins — read, tested, and explained.</p></div></div>
+      <div class="svc"><div class="n">02</div><div><h3>Electrical &amp; Wiring</h3><p>Starting, charging, lighting, and the electrical faults other shops would rather not touch.</p></div></div>
+      <div class="svc"><div class="n">03</div><div><h3>Batteries &amp; Charging</h3><p>Battery, alternator, and starter testing and replacement so you're never stranded.</p></div></div>
+      <div class="svc"><div class="n">04</div><div><h3>Alternator &amp; Starter</h3><p>Replacements done right — including the jobs other shops say they can't do.</p></div></div>
+      <div class="svc"><div class="n">05</div><div><h3>General Repair &amp; Maintenance</h3><p>Brakes, fluids, belts, and the routine service that keeps your car on the road.</p></div></div>
+      <div class="svc"><div class="n">06</div><div><h3>Mobile Service</h3><p>Can't make it in? We bring the diagnostics and tools to your driveway.</p></div></div>
+    </div>
+    <p class="svc-note">Not sure what's wrong? <b>Call (559) 777-1277</b> — Chris will tell you straight.</p>
+  </div>
+</section>
+
+<!-- MOBILE BAND -->
+<section class="mobile-band">
+  <div class="wrap">
+    <div class="copy">
+      <h2 class="display">We Come <em>To You.</em></h2>
+      <p>Dead battery in the driveway? Won't-start in the work lot? Midtown's mobile service rolls out with full diagnostic gear so a lot of jobs get sorted right where your vehicle sits — no tow, no waiting room.</p>
+      <div class="hero-cta" style="margin-top:28px;">
+        <a class="btn btn-orange" href="tel:+15597771277"><span>Book Mobile Service</span></a>
+      </div>
+    </div>
+    <div class="mb-img"><img src="./photos/01.jpg" alt="Mobile diagnostic setup on a vehicle in a residential driveway" /></div>
+  </div>
+</section>
+
+<!-- WORK / GALLERY -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow label">In The Bay</div>
+        <h2 class="display">Recent Work</h2>
+      </div>
+      <div class="num">03</div>
+    </div>
+    <div class="mosaic">
+      <figure class="m-a"><img src="./photos/05.jpg" alt="On-site engine diagnostics with laptop and scan tool" /></figure>
+      <figure class="m-b"><img src="./photos/02.jpg" alt="Maroon Lexus sedan ready for pickup" /></figure>
+      <figure class="m-tall"><img src="./photos/03.jpg" alt="Close-up of a vehicle headlight assembly" /></figure>
+      <figure><img src="./photos/04.jpg" alt="Vehicle battery replacement and terminal service" /></figure>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="say" style="background:var(--ink);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow label">In Their Words</div>
+        <h2 class="display">Straight Talk</h2>
+      </div>
+      <div class="num">04</div>
+    </div>
+    <div class="quotes">
+      <div class="quote feat">
+        <span class="mark">&ldquo;</span>
+        <p>I found Chris through all of his amazing reviews, and they were spot-on. Professional, extremely knowledgeable, and genuinely great at what he does. He took the time to explain everything in a way I could understand. If you're looking for an honest, skilled, and dependable mechanic, look no further — Chris at Midtown Automotive is your guy.</p>
+        <cite>— PS P.</cite>
+      </div>
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>Chris did an alternator replacement on my '08 Lexus — something another shop couldn't do. He accepted the tow on a Saturday and fixed the car that week. Easy to set an appointment online, easy to communicate by phone and text. It was good. Thanks Chris!</p>
+        <cite>— Darryl B.</cite>
+      </div>
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>Hands down the best mechanic I've had in a long time. Legit, very knowledgeable, and his communication is awesome. He kept me updated the whole time and is open 7 days a week — to me, that's a person serious about his business. He's gained my business and my trust.</p>
+        <cite>— Donald S.</cite>
+      </div>
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>Very professional. Chris was accommodating to my schedule and had my vehicle back the same day. He even stayed after hours to get everything done. Super thorough.</p>
+        <cite>— Greg G.</cite>
+      </div>
+      <div class="quote">
+        <span class="mark">&ldquo;</span>
+        <p>I used Midtown a second time after our normal mechanic left us high and dry, and I'll never bring a vehicle to anyone but Chris. Beyond professional, honest, and he truly discusses your needs and leads with empathy. You found the right one.</p>
+        <cite>— Richard S.</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow label">Find Us</div>
+        <h2 class="display">Hours &amp; Location</h2>
+      </div>
+      <div class="num">05</div>
+    </div>
+    <div class="visit-grid">
+      <div class="hours-card">
+        <h3>Open 7 Days a Week</h3>
+        <table class="rota">
+          <tr><td>Monday</td><td>8:00a – 7:00p</td></tr>
+          <tr><td>Tuesday</td><td>8:00a – 7:00p</td></tr>
+          <tr><td>Wednesday</td><td>8:00a – 7:00p</td></tr>
+          <tr><td>Thursday</td><td>8:00a – 7:00p</td></tr>
+          <tr><td>Friday</td><td>8:00a – 7:00p</td></tr>
+          <tr><td>Saturday</td><td>8:00a – 7:00p</td></tr>
+          <tr><td>Sunday</td><td>8:00a – 7:00p</td></tr>
+        </table>
+        <div class="contact-line">
+          <a class="big" href="tel:+15597771277">(559) 777-1277</a>
+          <div class="addr">32 N Clovis Ave · Clovis, CA 93612</div>
+          <div class="findus">
+            <a href="https://maps.google.com/?cid=10812265294383082860" target="_blank" rel="noopener">Google Business</a>
+            <a href="https://www.google.com/maps?q=32+N+Clovis+Ave,+Clovis,+CA+93612" target="_blank" rel="noopener">Get Directions</a>
+          </div>
+        </div>
+      </div>
+      <div class="mapwrap">
+        <iframe src="https://www.google.com/maps?q=32+N+Clovis+Ave,+Clovis,+CA+93612&z=15&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map to Midtown Automotive, 32 N Clovis Ave, Clovis CA"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="finalcta">
+  <div class="wrap">
+    <h2>Stop Searching.<br />You Found Your Mechanic.</h2>
+    <p>Clovis &amp; Fresno · Shop &amp; Mobile · Open Every Day</p>
+    <a class="btn btn-dark" href="tel:+15597771277"><span>Call (559) 777-1277</span></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <b>Midtown Automotive &amp; Mobile Repair</b>
+        <p>Honest, knowledgeable auto repair and mobile service in Clovis, CA. Open 7 days a week.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <a href="tel:+15597771277">(559) 777-1277</a>
+        <p>32 N Clovis Ave<br />Clovis, CA 93612</p>
+      </div>
+      <div class="foot-col">
+        <h4>Hours</h4>
+        <p>Mon – Sun</p>
+        <p>8:00 AM – 7:00 PM</p>
+      </div>
+      <div class="foot-col">
+        <h4>Find Us</h4>
+        <a href="https://maps.google.com/?cid=10812265294383082860" target="_blank" rel="noopener">Google Business</a>
+        <a href="https://www.google.com/maps?q=32+N+Clovis+Ave,+Clovis,+CA+93612" target="_blank" rel="noopener">Directions</a>
+      </div>
+    </div>
+    <div class="credit">
+      <span>Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com</span>
+      <a href="mailto:LJsites.llc@gmail.com">LJsites.llc@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

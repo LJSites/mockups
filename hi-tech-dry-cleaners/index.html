@@ -1,0 +1,539 @@
+<!--
+  ARCHETYPE: "Tech-Press Console" — a modern, high-precision dry cleaner rendered as a
+  crisp lab/control-panel interface. Crisp white canvas + electric-blue accent (#1452ff)
+  + graphite ink (#16181d). Sharp geometric grotesk (Space Grotesk display / Inter body).
+  Deliberately DISTINCT from the other cleaners in the set:
+    - NOT the navy/teal pressed-shirt minimal cleaner
+    - NOT the mint/eco cleaner
+    - NOT platinum-luxe
+    - NOT plaza-friendly warm
+  Structural decisions:
+    - Sticky top status-bar nav (monospaced labels), scroll-padding-top reserves its height.
+    - Asymmetric hero: oversized type panel on the left, storefront photo "screen" on the right,
+      with a ticker strip of service specs. No dark-overlay/centered-headline cliche.
+    - Services as a labeled spec grid (process cards), each with an index number — not 3 circular icons.
+    - Hours rendered as a console readout table. Testimonies as monospaced "log entries", no stars.
+    - Animation: none beyond crisp hover transitions (deliberate, per prompt).
+  Photos: local ./photos/NN.jpg only. Map: keyless maps?q=...&output=embed.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hi Tech Dry Cleaners — Same-Day Cleaning &amp; Full Tailoring · Maywood, CA</title>
+<meta name="description" content="Hi Tech Dry Cleaners in Maywood, CA. Same-day dry cleaning, wedding gowns, formal wear, leather &amp; suede, plus full on-site tailoring. (323) 585-9999.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16181d;
+    --ink-2:#3a3f4a;
+    --paper:#ffffff;
+    --panel:#f4f6fb;
+    --line:#dfe3ec;
+    --blue:#1452ff;
+    --blue-deep:#0b39c4;
+    --graphite:#2a2e36;
+    --glow:rgba(20,82,255,.16);
+    --nav-h:62px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{
+    scroll-behavior:smooth;
+    scroll-padding-top:var(--nav-h);
+    -webkit-text-size-adjust:100%;
+  }
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    height:var(--nav-h);
+    background:rgba(255,255,255,.86);
+    backdrop-filter:saturate(160%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{
+    max-width:1200px;margin:0 auto;padding:0 24px;height:100%;
+    display:flex;align-items:center;justify-content:space-between;gap:18px;
+  }
+  .brand{display:flex;align-items:center;gap:11px;font-family:'Space Grotesk';font-weight:700;letter-spacing:-.02em;font-size:18px}
+  .brand .dot{
+    width:13px;height:13px;background:var(--blue);
+    box-shadow:0 0 0 4px var(--glow);
+    transform:rotate(45deg);flex:0 0 auto;
+  }
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a{
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;
+    letter-spacing:.04em;color:var(--ink-2);text-transform:uppercase;
+    position:relative;padding:4px 0;transition:color .18s;
+  }
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;
+    background:var(--blue);transition:width .2s ease;
+  }
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{width:100%}
+  .nav-call{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--blue);color:#fff;font-weight:600;font-size:13px;
+    padding:9px 16px;border-radius:2px;letter-spacing:.01em;
+    transition:background .18s, transform .12s;
+  }
+  .nav-call:hover{background:var(--blue-deep)}
+  .nav-call:active{transform:translateY(1px)}
+  @media(max-width:860px){.nav-links a:not(.nav-call){display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:54px 0 0}
+  .hero-grid{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--blue);font-weight:600;margin-bottom:22px;
+  }
+  .eyebrow .bar{height:1px;width:34px;background:var(--blue);opacity:.5}
+  h1{
+    font-family:'Space Grotesk';font-weight:700;letter-spacing:-.035em;
+    font-size:clamp(2.6rem,6.2vw,4.7rem);line-height:.98;color:var(--ink);
+  }
+  h1 .em{color:var(--blue);display:block}
+  .hero p.lede{
+    margin:24px 0 30px;font-size:1.12rem;color:var(--ink-2);max-width:34ch;
+  }
+  .hero-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;font-weight:600;
+    padding:14px 24px;border-radius:2px;font-size:.98rem;letter-spacing:.01em;
+    transition:background .18s,border-color .18s,color .18s,transform .12s;
+  }
+  .btn-primary{background:var(--blue);color:#fff}
+  .btn-primary:hover{background:var(--blue-deep)}
+  .btn-primary:active{transform:translateY(1px)}
+  .btn-ghost{border:1.5px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--blue);color:var(--blue)}
+  .btn svg{width:17px;height:17px}
+
+  .hero-screen{position:relative}
+  .hero-screen .frame{
+    position:relative;border:1px solid var(--line);
+    box-shadow:0 28px 60px -36px rgba(11,57,196,.55);
+    background:#000;overflow:hidden;
+  }
+  .hero-screen .frame::before{
+    content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+    border:6px solid #fff;
+  }
+  .hero-screen img{width:100%;height:520px;object-fit:cover;filter:contrast(1.03) saturate(1.03)}
+  .hero-tag{
+    position:absolute;left:-1px;bottom:22px;z-index:3;
+    background:var(--ink);color:#fff;
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.08em;
+    text-transform:uppercase;padding:9px 16px;
+  }
+  .hero-tag b{color:#7fa0ff;font-weight:500}
+
+  /* ticker spec strip */
+  .specstrip{
+    margin-top:48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:repeat(4,1fr);
+  }
+  .specstrip div{
+    padding:20px 22px;border-right:1px solid var(--line);
+  }
+  .specstrip div:last-child{border-right:none}
+  .specstrip .k{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:var(--blue);text-transform:uppercase}
+  .specstrip .v{font-family:'Space Grotesk';font-weight:600;font-size:1.25rem;margin-top:5px;letter-spacing:-.01em}
+  @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr;gap:36px}
+    .hero-screen img{height:380px}
+    .specstrip{grid-template-columns:repeat(2,1fr)}
+    .specstrip div:nth-child(2){border-right:none}
+    .specstrip div:nth-child(1),.specstrip div:nth-child(2){border-bottom:1px solid var(--line)}
+  }
+  @media(max-width:480px){.specstrip{grid-template-columns:1fr}.specstrip div{border-right:none;border-bottom:1px solid var(--line)}.specstrip div:last-child{border-bottom:none}}
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{padding:88px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:42px}
+  .sec-idx{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--blue);font-weight:600;letter-spacing:.06em}
+  .sec-title{font-family:'Space Grotesk';font-weight:700;letter-spacing:-.03em;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.02}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .about p{font-size:1.08rem;color:var(--ink-2);margin-bottom:18px}
+  .about p:first-of-type{font-size:1.22rem;color:var(--ink);font-weight:500;line-height:1.5}
+  .about .mat{
+    border:1px solid var(--line);overflow:hidden;background:#0b1f6b;
+    box-shadow:0 22px 50px -34px rgba(11,57,196,.6);
+  }
+  .about .mat img{width:100%;height:420px;object-fit:cover}
+  @media(max-width:880px){.about-grid{grid-template-columns:1fr;gap:34px}.about .mat img{height:300px}}
+
+  /* ---------- SERVICES (spec grid) ---------- */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line)}
+  .svc{
+    padding:30px 28px 34px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    position:relative;transition:background .2s;
+  }
+  .svc-grid .svc:nth-child(3n){border-right:none}
+  .svc-grid .svc:nth-last-child(-n+3){border-bottom:none}
+  .svc:hover{background:var(--panel)}
+  .svc .num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--blue);font-weight:600;letter-spacing:.05em}
+  .svc h3{font-family:'Space Grotesk';font-weight:600;letter-spacing:-.02em;font-size:1.32rem;margin:14px 0 9px}
+  .svc p{color:var(--ink-2);font-size:.97rem}
+  .svc .rule{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--blue);transition:width .25s ease}
+  .svc:hover .rule{width:100%}
+  @media(max-width:880px){
+    .svc-grid{grid-template-columns:1fr 1fr}
+    .svc-grid .svc:nth-child(3n){border-right:1px solid var(--line)}
+    .svc-grid .svc:nth-child(2n){border-right:none}
+    .svc-grid .svc:nth-last-child(-n+3){border-bottom:1px solid var(--line)}
+    .svc-grid .svc:nth-last-child(-n+2){border-bottom:none}
+  }
+  @media(max-width:560px){
+    .svc-grid{grid-template-columns:1fr}
+    .svc-grid .svc{border-right:none!important;border-bottom:1px solid var(--line)!important}
+    .svc-grid .svc:last-child{border-bottom:none!important}
+  }
+  .svc-note{
+    margin-top:26px;font-family:'JetBrains Mono',monospace;font-size:12.5px;
+    color:var(--ink-2);letter-spacing:.02em;display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  }
+  .svc-note .chip{background:var(--ink);color:#fff;padding:5px 11px;letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+
+  /* ---------- TESTIMONIES (log entries) ---------- */
+  .voices{background:var(--ink);color:#fff}
+  .voices .sec-title{color:#fff}
+  .voices .sec-idx{color:#7fa0ff}
+  .log{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #2c313c}
+  .entry{
+    padding:30px 30px 28px;border-right:1px solid #2c313c;border-bottom:1px solid #2c313c;
+  }
+  .log .entry:nth-child(2n){border-right:none}
+  .log .entry:nth-last-child(-n+2){border-bottom:none}
+  .entry .meta{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:#7fa0ff;text-transform:uppercase;margin-bottom:14px}
+  .entry blockquote{font-size:1.07rem;color:#e9edf6;line-height:1.55;font-weight:400}
+  .entry .who{margin-top:16px;font-family:'Space Grotesk';font-weight:600;font-size:.98rem;color:#fff}
+  @media(max-width:760px){
+    .log{grid-template-columns:1fr}
+    .log .entry{border-right:none}
+    .log .entry:nth-last-child(-n+2){border-bottom:1px solid #2c313c}
+    .log .entry:last-child{border-bottom:none}
+  }
+
+  /* ---------- INFO / HOURS / MAP ---------- */
+  .info-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:46px;align-items:start}
+  .readout{border:1px solid var(--line)}
+  .readout .bar{
+    background:var(--ink);color:#fff;padding:13px 20px;
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .readout .bar .live{display:inline-flex;align-items:center;gap:8px;color:#7fa0ff}
+  .readout .bar .live i{width:8px;height:8px;background:#2ecb6a;border-radius:50%;display:inline-block;box-shadow:0 0 0 3px rgba(46,203,106,.25)}
+  .hours-row{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:13px 20px;border-bottom:1px solid var(--line);
+    font-size:.98rem;
+  }
+  .hours-row:last-child{border-bottom:none}
+  .hours-row .d{font-weight:500;color:var(--ink)}
+  .hours-row .t{font-family:'JetBrains Mono',monospace;font-size:.9rem;color:var(--ink-2)}
+  .hours-row.closed .t{color:var(--blue);font-weight:700}
+  .hours-row.today{background:var(--panel)}
+  .hours-row.today .d::after{content:" · today";color:var(--blue);font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase}
+
+  .contact-block{margin-top:26px;display:grid;gap:14px}
+  .cline{display:flex;gap:13px;align-items:flex-start;font-size:1rem;color:var(--ink-2)}
+  .cline svg{width:18px;height:18px;color:var(--blue);flex:0 0 auto;margin-top:3px}
+  .cline a:hover{color:var(--blue)}
+  .cline b{color:var(--ink);font-weight:600}
+  .map-wrap{border:1px solid var(--line);overflow:hidden;background:#000}
+  .map-wrap iframe{display:block;width:100%;height:460px;border:0;filter:grayscale(.15) contrast(1.04)}
+  .info-cta{margin-top:24px;display:flex;flex-wrap:wrap;gap:12px}
+  @media(max-width:880px){.info-grid{grid-template-columns:1fr;gap:34px}.map-wrap iframe{height:340px}}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#aeb6c6;border-top:4px solid var(--blue)}
+  .foot-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;padding:54px 0 36px;border-bottom:1px solid #2c313c}
+  .foot-brand{display:flex;align-items:center;gap:11px;font-family:'Space Grotesk';font-weight:700;font-size:21px;color:#fff;letter-spacing:-.02em}
+  .foot-brand .dot{width:13px;height:13px;background:var(--blue);transform:rotate(45deg);box-shadow:0 0 0 4px var(--glow)}
+  .foot-col h4{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7fa0ff;margin-bottom:14px;font-weight:600}
+  .foot-col a,.foot-col p{display:block;color:#aeb6c6;font-size:.95rem;margin-bottom:8px}
+  .foot-col a:hover{color:#fff}
+  .foot-cols{display:flex;gap:64px;flex-wrap:wrap}
+  .credit{padding:22px 0 30px;font-size:.85rem;color:#7c8597;text-align:center;line-height:1.7}
+  .credit a{color:#aeb6c6}.credit a:hover{color:#fff}
+  @media(max-width:620px){.foot-cols{gap:34px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="#top" class="brand"><span class="dot"></span>Hi&nbsp;Tech<span class="mono" style="font-weight:500;font-size:12px;color:var(--blue);letter-spacing:.06em;margin-left:2px;align-self:center">DRY&nbsp;CLEANERS</span></a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#voices">Testimonies</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:+13235859999" class="nav-call">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+        (323) 585-9999
+      </a>
+    </div>
+  </div>
+</nav>
+
+<a id="top"></a>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="bar"></span>Maywood, CA · Est. on Slauson Ave</span>
+        <h1>We speak<span class="em">clean.</span></h1>
+        <p class="lede">Precision dry cleaning, same-day turnaround, and full tailoring done on-site. Drop it off in the morning &mdash; wear it tonight.</p>
+        <div class="hero-cta">
+          <a href="tel:+13235859999" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            Call Now
+          </a>
+          <a href="#services" class="btn btn-ghost">View Services</a>
+        </div>
+      </div>
+      <div class="hero-screen">
+        <div class="frame">
+          <img src="./photos/03.jpg" alt="Hi Tech Dry Cleaners storefront on Slauson Ave, Maywood — same-day service, wedding gowns, formal wear, full tailoring on site">
+          <div class="hero-tag"><b>SAME-DAY</b> &nbsp;·&nbsp; IN BY 9AM &nbsp;·&nbsp; READY BY 4PM</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="specstrip">
+      <div><div class="k">Turnaround</div><div class="v">Same Day</div></div>
+      <div><div class="k">Tailoring</div><div class="v">On-Site</div></div>
+      <div><div class="k">Open</div><div class="v">6 Days / Week</div></div>
+      <div><div class="k">We Speak</div><div class="v">Clean.</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-idx">[01]</span>
+      <h2 class="sec-title">Built for clothes you actually care about.</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>Hi Tech Dry Cleaners has been the go-to on Slauson Avenue for neighbors who want their garments back clean, pressed, and ready &mdash; fast. No tickets lost, no shrugged shoulders.</p>
+        <p>From everyday shirts to wedding gowns, formal wear, silk, wool, leather and suede, every piece is handled with the right process for the fabric. And because our tailoring is done <b>on-site</b>, a hem, a take-in, or a quick fix doesn&rsquo;t mean another trip across town.</p>
+        <p>The result is the kind of service regulars come back for: welcoming people, fair pricing, and clothes that come back better than you left them.</p>
+      </div>
+      <div class="mat">
+        <img src="./photos/06.jpg" alt="Hi Tech Dry Cleaners &lsquo;We Speak Clean&rsquo; counter mat with garment-care icons and accepted card logos">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-idx">[02]</span>
+      <h2 class="sec-title">Services &amp; specialty care.</h2>
+    </div>
+    <div class="svc-grid">
+      <div class="svc">
+        <div class="num">/ 01</div>
+        <h3>Same-Day Dry Cleaning</h3>
+        <p>In by 9AM, ready by 4PM. Shirts, slacks, suits &mdash; cleaned, pressed, and on a hanger when you need them.</p>
+        <div class="rule"></div>
+      </div>
+      <div class="svc">
+        <div class="num">/ 02</div>
+        <h3>Wedding Gowns &amp; Formal</h3>
+        <p>Delicate gowns and formal wear cleaned and preserved with the care a once-in-a-lifetime piece deserves.</p>
+        <div class="rule"></div>
+      </div>
+      <div class="svc">
+        <div class="num">/ 03</div>
+        <h3>Full Tailoring On-Site</h3>
+        <p>Hems, take-ins, repairs and alterations handled in-house &mdash; pants adjusted, fixes done, no second trip.</p>
+        <div class="rule"></div>
+      </div>
+      <div class="svc">
+        <div class="num">/ 04</div>
+        <h3>Silk &amp; Wool</h3>
+        <p>Fine fabrics get fabric-specific processes &mdash; the gentle handling that keeps the drape, color and finish intact.</p>
+        <div class="rule"></div>
+      </div>
+      <div class="svc">
+        <div class="num">/ 05</div>
+        <h3>Leather &amp; Suede</h3>
+        <p>Specialty cleaning and conditioning for jackets, coats and accessories that off-the-shelf cleaners won&rsquo;t touch.</p>
+        <div class="rule"></div>
+      </div>
+      <div class="svc">
+        <div class="num">/ 06</div>
+        <h3>Press &amp; Finishing</h3>
+        <p>Crisp, even pressing on every order &mdash; coats de-fuzzed, creases sharp, everything finished ready to wear.</p>
+        <div class="rule"></div>
+      </div>
+    </div>
+    <div class="svc-note">
+      <span class="chip">VIP Customer Service</span>
+      <span>Ask about our VIP service &mdash; the regulars get looked after.</span>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIES -->
+<section id="voices" class="voices">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-idx">[03]</span>
+      <h2 class="sec-title">What people say.</h2>
+    </div>
+    <div class="log">
+      <div class="entry">
+        <div class="meta">// entry_01 · regular</div>
+        <blockquote>&ldquo;The folks here take great care of me every time I come in. Welcoming energy with great pricing. I had pants that needed adjustments; they fixed it no problem. My clothes are cleaned and pressed each time. Definitely the place to go.&rdquo;</blockquote>
+        <div class="who">Jamal-Akil M.</div>
+      </div>
+      <div class="entry">
+        <div class="meta">// entry_02 · quick turnaround</div>
+        <blockquote>&ldquo;Friendly service, great prices, and quick turnaround. My clothes were perfectly clean and smelled fresh. Highly recommend this dry cleaner!&rdquo;</blockquote>
+        <div class="who">Casey R.</div>
+      </div>
+      <div class="entry">
+        <div class="meta">// entry_03 · specialty care</div>
+        <blockquote>&ldquo;I took my coat here and it came back perfect! They made sure to remove the fuzzies. Highly recommend this place!&rdquo;</blockquote>
+        <div class="who">Yessi V.</div>
+      </div>
+      <div class="entry">
+        <div class="meta">// entry_04 · go-to</div>
+        <blockquote>&ldquo;I can&rsquo;t say enough good things about Hi-Tech Cleaners! Fast, friendly, and always go above and beyond when I&rsquo;m in a rush. Super fair prices and top-notch service. My go-to every single time.&rdquo;</blockquote>
+        <div class="who">Faviola B.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT / HOURS / MAP -->
+<section id="visit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-idx">[04]</span>
+      <h2 class="sec-title">Find us &amp; drop in.</h2>
+    </div>
+    <div class="info-grid">
+      <div>
+        <div class="readout">
+          <div class="bar">
+            <span>Hours</span>
+            <span class="live"><i></i>Open 6 days</span>
+          </div>
+          <div class="hours-row" data-day="1"><span class="d">Monday</span><span class="t">7:00 AM – 6:00 PM</span></div>
+          <div class="hours-row" data-day="2"><span class="d">Tuesday</span><span class="t">7:00 AM – 6:00 PM</span></div>
+          <div class="hours-row" data-day="3"><span class="d">Wednesday</span><span class="t">7:00 AM – 6:00 PM</span></div>
+          <div class="hours-row" data-day="4"><span class="d">Thursday</span><span class="t">7:00 AM – 6:00 PM</span></div>
+          <div class="hours-row" data-day="5"><span class="d">Friday</span><span class="t">7:00 AM – 6:00 PM</span></div>
+          <div class="hours-row" data-day="6"><span class="d">Saturday</span><span class="t">7:00 AM – 5:00 PM</span></div>
+          <div class="hours-row closed" data-day="0"><span class="d">Sunday</span><span class="t">Closed</span></div>
+        </div>
+
+        <div class="contact-block">
+          <div class="cline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><b>4031 Slauson Ave</b><br>Maywood, CA 90270</span>
+          </div>
+          <div class="cline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            <a href="tel:+13235859999"><b>(323) 585-9999</b></a>
+          </div>
+        </div>
+
+        <div class="info-cta">
+          <a href="tel:+13235859999" class="btn btn-primary">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+            Call Now
+          </a>
+          <a href="https://www.google.com/maps?q=4031+Slauson+Ave,+Maywood,+CA+90270" target="_blank" rel="noopener" class="btn btn-ghost">Get Directions</a>
+        </div>
+      </div>
+
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=4031%20Slauson%20Ave%2C%20Maywood%2C%20CA%2090270&z=15&output=embed"
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Map to Hi Tech Dry Cleaners, 4031 Slauson Ave, Maywood, CA"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand"><span class="dot"></span>Hi Tech Dry Cleaners</div>
+        <p style="margin-top:14px;max-width:30ch;color:#8b93a5">Same-day dry cleaning &amp; full tailoring on-site in Maywood, CA. We speak clean.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Visit</h4>
+          <p>4031 Slauson Ave<br>Maywood, CA 90270</p>
+          <a href="https://www.google.com/maps?q=4031+Slauson+Ave,+Maywood,+CA+90270" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+        <div class="foot-col">
+          <h4>Contact</h4>
+          <a href="tel:+13235859999">(323) 585-9999</a>
+          <a href="https://maps.google.com/?cid=4478132457745075073" target="_blank" rel="noopener">Google Business Profile</a>
+        </div>
+        <div class="foot-col">
+          <h4>Hours</h4>
+          <p>Mon–Fri · 7AM – 6PM<br>Sat · 7AM – 5PM<br>Sun · Closed</p>
+        </div>
+      </div>
+    </div>
+    <div class="credit">
+      Mockup designed by LJ Sites — interested in making this yours? LJsites.llc@gmail.com
+    </div>
+  </div>
+</footer>
+
+<script>
+  // highlight today's row in the hours readout (no animation, just a state marker)
+  (function(){
+    var today = new Date().getDay(); // 0 = Sun
+    document.querySelectorAll('.hours-row').forEach(function(r){
+      if(parseInt(r.getAttribute('data-day'),10) === today){ r.classList.add('today'); }
+    });
+  })();
+</script>
+</body>
+</html>
